@@ -1,0 +1,11 @@
+(footprint "MountingHole_M2.5_CM4_Standoff"
+	(version 20240108)
+	(generator "hackerslide_mklib")
+	(layer "F.Cu")
+	(descr "M2.5 plated hole for CM4 module standoff (2.7 mm drill like the RPi CM4IO), tied to GND")
+	(property "Reference" "REF**" (at 0 -3.5 0) (layer "F.SilkS") (uuid "1bd4c154-4d42-5548-ac18-dbd1dbf35758") (effects (font (size 0.8 0.8) (thickness 0.12))))
+	(property "Value" "MountingHole_M2.5_CM4_Standoff" (at 0 3.5 0) (layer "F.Fab") (uuid "39cb54f4-14ba-5e87-9aeb-ca3514b448ce") (effects (font (size 0.8 0.8) (thickness 0.12))))
+	(attr through_hole)
+	(pad "1" thru_hole circle (at 0 0) (size 5.0 5.0) (drill 2.7) (layers "*.Cu" "*.Mask") (uuid "85f8a376-6182-5c36-b47e-da1229bc38ab"))
+	(fp_circle (center 0 0) (end 3.0 0) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (uuid "fe2dc0cb-7e65-5235-85cf-544663960069"))
+)
