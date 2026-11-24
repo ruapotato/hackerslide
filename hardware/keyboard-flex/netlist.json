@@ -1,0 +1,51 @@
+{
+ "name": "keyboard-flex",
+ "components": [
+  {
+   "ref": "P1",
+   "value": "to carrier J9",
+   "footprint": "hackerslide:FPC_Fingers_1x08_P0.5mm_FH34",
+   "dnp": false,
+   "sheet": "flex",
+   "sheet_uuid": "7ae34f9a-f915-5b95-9002-7eba74c84694",
+   "sheetfile": "flex.kicad_sch",
+   "sym_uuid": "de096fe4-d2ff-5d39-a1f2-f03e0fece3ac",
+   "fields": {},
+   "pads": {
+    "1": "GND_1",
+    "2": "+3V3_2",
+    "3": "I2C_B_SDA",
+    "4": "KB_INT_N",
+    "5": "KB_RST_N",
+    "6": "I2C_B_SCL",
+    "7": "+3V3_7",
+    "8": "GND_8"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "P2",
+   "value": "to keyboard J1",
+   "footprint": "hackerslide:FPC_Fingers_1x08_P0.5mm_FH34",
+   "dnp": false,
+   "sheet": "flex",
+   "sheet_uuid": "7ae34f9a-f915-5b95-9002-7eba74c84694",
+   "sheetfile": "flex.kicad_sch",
+   "sym_uuid": "ffeeb217-5354-588a-a7f9-236bdcd89b77",
+   "fields": {},
+   "pads": {
+    "8": "GND_1",
+    "7": "+3V3_2",
+    "6": "I2C_B_SDA",
+    "5": "KB_INT_N",
+    "4": "KB_RST_N",
+    "3": "I2C_B_SCL",
+    "2": "+3V3_7",
+    "1": "GND_8"
+   },
+   "in_bom": false,
+   "nc": {}
+  }
+ ]
+}

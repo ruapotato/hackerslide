@@ -172,6 +172,8 @@ def back_shell():
     # keyboard cable slot through the floor, below carrier J9 (audit E5)
     f = C.FPC_SLOT
     s = s.cut(box(C.KBD_FPC_X - f['w'] / 2, f['y'] - f['l'] / 2, z0 - 0.5, C.KBD_FPC_X + f['w'] / 2, f['y'] + f['l'] / 2, C.Z_BACK_IN + 0.5))
+    # channel in the underside of the floor for the cable run and its rolling loop (0.4 mm of floor remains)
+    s = s.cut(box(C.KBD_FPC_X - f['w'] / 2, C.FPC_LOOP_Y_OPEN_TRAY - 1.0, z0 - 0.01, C.KBD_FPC_X + f['w'] / 2, f['y'], z0 + C.FPC['channel']))
     # rail grooves on the left/right outer faces (the tray lips run in these); cut last so bosses cannot fill them
     gz = z0 + 0.7
     gh = 0.8 + 2 * C.RAIL['clear']
@@ -282,7 +284,7 @@ def main():
     out = os.path.abspath(a.out)
     for d in ('stl', 'step', 'renders'):
         os.makedirs(os.path.join(out, d), exist_ok=True)
-    report = {'stack_mm': {k: round(getattr(C, k), 2) for k in ('TRAY_T', 'Z_BODY_BOTTOM', 'Z_BACK_IN', 'BAY_H', 'CAVITY', 'THERMAL_GAP', 'PANEL_GAP',
+    report = {'stack_mm': {k: round(getattr(C, k), 2) for k in ('TRAY_T', 'Z_BODY_BOTTOM', 'Z_BACK_IN', 'BAY_H', 'CAVITY', 'THERMAL_GAP', 'PANEL_GAP', 'FPC_LOOP_R', 'FPC_LEN',
                                                                   'Z_CARRIER_F', 'Z_PANEL_TOP', 'BODY_T', 'TOTAL_T',
                                                                   'TRAVEL', 'OPEN_H')},
               'battery_layout': C.BATTERY_LAYOUT}

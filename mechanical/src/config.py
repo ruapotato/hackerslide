@@ -124,6 +124,21 @@ HALL_XY = carrier_to_device(*HALL_KICAD)          # sense magnet position in the
 KBD_FPC_X = carrier_to_device(*KBD_FPC_KICAD)[0]
 FPC_SLOT = dict(w=6.5, l=1.6, y=BODY_H - WALL - 1.4)   # slot centre y; width along X
 FPC_LOOP_Y_CLOSED = 21.0                               # [est] loop apex (device y) with the slider closed
+# The cable is our own 0.07 mm flex circuit (hardware/keyboard-flex).  A channel in the back-shell floor above the
+# cable lane gives the rolling loop its height: channel roof down to the keyboard PCB.
+FPC = dict(t=0.07, w=4.5, length=80.0, channel=0.8)
+FPC_LOOP_R = (Z_BODY_BOTTOM + FPC['channel'] - (TRAY_FLOOR + KBD_PCB['t'])) / 2       # 1.9 mm
+assert FPC_LOOP_R >= 15 * FPC['t'], FPC_LOOP_R         # JLCPCB guidance for repeated bending: >= 10-15 x thickness
+J1_TRAY_Y = KBD_XY[1] - 2.5 - 3.4                      # keyboard J1 opening in tray coords (kbd_layout.J1_XY, FH34 depth)
+_j9_mouth_y = CARRIER_XY[1] + KBD_FPC_KICAD[1] + 3.4
+FPC_LEN = (3.0 + (FPC_SLOT['y'] - _j9_mouth_y)                      # in J9, then out to the slot
+           + (Z_CARRIER_F - 0.5) - (Z_BODY_BOTTOM + FPC['channel'])   # down through the slot
+           + (FPC_SLOT['y'] - FPC_LOOP_Y_CLOSED)                      # back under the body
+           + 3.14159 * FPC_LOOP_R                                     # the loop
+           + (J1_TRAY_Y - FPC_LOOP_Y_CLOSED) + 3.0)                   # forward into J1
+assert abs(FPC_LEN - FPC['length']) < 1.0, FPC_LEN     # keep hardware/scripts/flex_design.py LENGTH in step
+FPC_LOOP_Y_OPEN_TRAY = FPC_LOOP_Y_CLOSED - TRAVEL / 2  # loop apex in TRAY coordinates when open
+assert FPC_LOOP_Y_OPEN_TRAY > WALL + 0.5, FPC_LOOP_Y_OPEN_TRAY
 
 MODULE_XY = carrier_to_device(MODULE_KICAD[0] + MODULE['w'], MODULE_KICAD[1])        # module outline, device top-left
 SOC_XY = ((MODULE['w'] - MODULE['soc_xy'][0], MODULE['h'] - MODULE['soc_xy'][1]) if MODULE_ROT180

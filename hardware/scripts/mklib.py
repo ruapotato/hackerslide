@@ -244,6 +244,34 @@ def pj342():
                          body, ref_y=-5.8, val_y=5.8)
 
 
+def fpc_fingers(n=8):
+    # Contact end of our own flex cable for Hirose FH34SRJ-nS-0.5SH: dimensions from the Hirose FH34 catalogue p.5
+    # ("Recommended FPC/FFC Dimensions"): width G = 0.5 (n - 1) + 1.0, contacts 0.3 wide on 0.5 pitch, uncovered
+    # length 1.5 +/- 0.3, total thickness 0.3 +/- 0.03 with a stiffener at least 2.5 long on the back.
+    # JLCPCB flex rule: finger copper stays 0.2 mm off the board edge.  Origin = centre of the tip edge, cable body
+    # toward +Y.  Pad 1 at -X.
+    name = f'FPC_Fingers_1x{n:02d}_P0.5mm_FH34'
+    body = ''
+    for k in range(1, n + 1):
+        x = (k - (n + 1) / 2) * 0.5
+        body += (f'\t(pad "{k}" smd rect (at {x:.3f} 1.0) (size 0.3 1.6) (layers "F.Cu" "F.Mask") (uuid "{uid(name, k)}"))\n')
+    G = 0.5 * (n - 1) + 1.0
+    body += rect('F.Fab', -G / 2, 0, G / 2, 4.0, w=0.1, tag=name)
+    body += rect('Cmts.User', -G / 2, 0, G / 2, 4.0, w=0.1, tag=name + 'st')
+    body += f'\t(fp_text user "PI stiffener 0.225 on the back, 0..4 mm" (at 0 5.0 0) (layer "Cmts.User") (uuid "{uid(name, "t")}") (effects (font (size 0.4 0.4) (thickness 0.06))))\n'
+    return name, fp_text(name, f'Flex cable contact end for Hirose FH34SRJ-{n}S-0.5SH: {n} fingers, 0.5 mm pitch, 1.5 mm uncovered, '
+                               '0.225 mm PI stiffener on the back (0.07 mm flex -> 0.3 mm). Source: Hirose FH34 catalogue p.5.',
+                         body, attr='smd exclude_from_pos_files exclude_from_bom allow_missing_courtyard', ref_y=-1.2, val_y=6.2)
+
+
+def contact_pad():
+    name = 'ContactPad_2x4mm'
+    body = f'\t(pad "1" smd roundrect (at 0 0) (size 2.0 4.0) (layers "F.Cu" "F.Mask") (roundrect_rratio 0.25) (uuid "{uid(name)}"))\n'
+    body += rect('F.CrtYd', -1.25, -2.25, 1.25, 2.25, tag=name)
+    return name, fp_text(name, 'Bare gold landing pad for a spring pin (keyboard link experiment), no paste',
+                         body, attr='smd exclude_from_pos_files exclude_from_bom', ref_y=-3.0, val_y=3.0)
+
+
 def hole_m16_pad():
     name = 'MountingHole_M1.6_Pad'
     body = (f'\t(pad "1" thru_hole circle (at 0 0) (size 3.0 3.0) (drill 1.7) (layers "*.Cu" "*.Mask") (uuid "{uid(name)}"))\n'
@@ -279,7 +307,7 @@ def m2_hole():
 def main():
     os.makedirs(FP, exist_ok=True)
     open(os.path.join(LIB, 'hackerslide.kicad_sym'), 'w').write(symbols())
-    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8)):
+    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8), fpc_fingers, contact_pad):
         name, text = f()
         open(os.path.join(FP, name + '.kicad_mod'), 'w').write(text)
 

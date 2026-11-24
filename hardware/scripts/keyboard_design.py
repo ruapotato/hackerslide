@@ -87,6 +87,10 @@ def build(variant='alps'):
               'Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633', {'1': 'GND'},
               fields=fields('', '9774015633R', 'Wurth Elektronik', Description='top-plate spacer, hand soldered (not stocked at JLC '
                             '2026-11-24); grounds the plate'))
+    # Landing pads for the spring-pin experiment (alternative to the flex cable, see docs/keyboard.md): they sit
+    # under the carrier's bottom strip when the slider is OPEN.  Bare copper, costs nothing.
+    for i, net in enumerate(('GND', '+3V3', 'I2C_B_SDA', 'I2C_B_SCL', 'KB_INT_N', 'KB_RST_N')):
+        s.add(f'LP{i + 1}', 'Connector', 'TestPoint', net, 'hackerslide:ContactPad_2x4mm', {'1': net}, in_bom=False)
     TP(s, 'TP1', 'I2C_B_SDA')
     TP(s, 'TP2', 'I2C_B_SCL')
     TP(s, 'TP3', 'GND')

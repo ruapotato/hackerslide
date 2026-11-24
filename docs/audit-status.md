@@ -14,6 +14,7 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 | Licence | **CERN-OHL-S-2.0** for `hardware/` and `mechanical/`, AGPL-3.0 for the rest |
 | Body | Carrier cut out around the battery; **the keyboard PCB is the tray floor** ("thin keyboard") |
 | USB | One USB-C port for rev 0.1 (a second host port was considered and dropped) |
+| Keyboard cable | Our own flex circuit from the PCB fab, with spring-pin landing pads on the keyboard as an experiment |
 | Routing | Autoroute plus hand clean-up, marked DRAFT |
 
 ## State of the design
@@ -23,6 +24,7 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 | Carrier, 71.6 x 66 mm, 4 layers | Schematic revised, ERC clean. Placed by hand, **not routed** (301 connections). DRC: silkscreen warnings only |
 | Keyboard, 125 x 69 mm, 2 layers, 1.0 mm | Schematic revised, ERC clean. Placed, **not routed** (181 connections). DRC: warnings only |
 | Top plate | ERC/DRC clean |
+| Keyboard flex cable, 4.5 x 80 mm, 1-layer 0.07 mm flex | New (`hardware/keyboard-flex`). ERC/DRC clean, fully routed (eight straight traces) |
 | Dome (Keystone) keyboard variant | Footprint redrawn with non-standard lands. Board **not generated** |
 | Enclosure | **18.65 mm** closed, 107.9 mm open. Collision check passes closed and open |
 | Battery | PKCELL LP785060 (Adafruit 328): 2500 mAh, 8.1 x 50.5 x 62.5 mm max, 1.5 A max charge and discharge |
@@ -108,7 +110,7 @@ removed; the plate is held by four spacers in the D-pad zone. The other three ed
 | E2 | Fixed | One tray magnet per side, two body magnets |
 | E3 | Mitigated | 6 x 1 mm body and 6 x 2 mm tray magnets as parameters. Open: tune on the fit mule |
 | E4 | Mitigated | Thermal gap is now a derived 0.42 mm. Open: `docs/thermal.md`, and measurement |
-| E5 | Mitigated | Slot and loop lane modelled. The loop radius is about 1.5 mm, so it needs a thin dynamic FPC |
+| E5 | Mitigated | The cable is our own 0.07 mm flex circuit. Slot, floor channel and loop lane are modelled; loop radius 1.9 mm, inside JLCPCB's guidance for repeated bending (10-15 x thickness). Stock FFC is rated for 5-10 mm and is for the fit mule only. Open: cycle-test the flex; the fab gives no life rating. Six landing pads on the keyboard allow a spring-pin experiment as the fallback |
 | E6 | Fixed | Panel connectors on the display side where the folded tails land. Open: confirm on a real panel |
 | E7 | Fixed | SMT spacers |
 | E8 | Fixed | 1.9 mm behind the panel |

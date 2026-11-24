@@ -50,6 +50,9 @@ def build(variant, bdir, do_route=False):
     jx, jy = KL.J1_XY
     B.place('J1', jx, jy, 180, 'F')
     B.place('U2', jx, jy + 2.5, 0, 'F')
+    # spring-pin landing pads: device x 105..120, under the carrier bottom strip when open (tray y 19..33)
+    for i in range(6):
+        B.place(f'LP{i + 1}', 104.0 + 3.0 * i, -13.5, 0, 'F')
     # scanner and its passives: D-pad zone corners, clear of the D-pad keycaps and of the spacers
     ko = keepout + flanges
     B.place('U1', 6.0, 9.6, 0, 'F')

@@ -2627,6 +2627,102 @@
    "nc": {}
   },
   {
+   "ref": "LP1",
+   "value": "GND",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "74e38f53-e811-5840-a625-5d0c78b13de6",
+   "fields": {},
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP2",
+   "value": "+3V3",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "84d0d825-f368-5f29-bc35-12d2ef88f65e",
+   "fields": {},
+   "pads": {
+    "1": "+3V3"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP3",
+   "value": "I2C_B_SDA",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "aaf81df6-ce44-5acd-a5fc-ba3c6300c2e3",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SDA"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP4",
+   "value": "I2C_B_SCL",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "88d89454-404b-59a0-9f3f-59efcb6485ce",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SCL"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP5",
+   "value": "KB_INT_N",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "34c79edd-34d4-576b-b017-e08f7c8d9921",
+   "fields": {},
+   "pads": {
+    "1": "KB_INT_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP6",
+   "value": "KB_RST_N",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "5968d093-69e1-5d04-9cd9-ab9f733bd9cb",
+   "fields": {},
+   "pads": {
+    "1": "KB_RST_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
    "ref": "TP1",
    "value": "I2C_B_SDA",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
