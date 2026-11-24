@@ -333,10 +333,11 @@ def build():
     # ================================================================== keyboard link + slider ==========
     kb = d.sheet('keyboard_link', 'Keyboard FPC (I2C scanner), slider sensor', paper='A3', notes=[
         'Keyboard scanner: TI TCA8418 on the keyboard PCB (I2C 0x34, mainline tca8418_keypad). No USB hub or mux.',
-        'A1: J9 and keyboard J1 are the same connector, both with their board above the cable, and the cable runs',
-        '    straight in X (down through the back-shell slot, rolling loop in the tray). That maps J9 pin k to J1',
-        '    pin 9-k, and the keyboard netlist is numbered accordingly. Power and ground are mirror-symmetric',
-        '    (1/8 GND, 2/7 +3V3): a wrong cable swaps signals but cannot short the supply. TODO(verify) on the fit mule.',
+        'A1: J9 (carrier, facing down) and keyboard J1 (on top of the keyboard board) are the same connector with',
+        '    pin 1 toward the device left, and the cable runs straight in X: down through the back-shell slot, back',
+        '    under the body, rolling loop, into J1. So J9 pin k = J1 pin k. The cable reaches J1 with its other face',
+        '    up, which the top+bottom-contact FH34SRJ accepts. Power and ground are mirror-symmetric (1/8 GND,',
+        '    2/7 +3V3): a reversed cable swaps signals but cannot short the supply. TODO(verify) on the fit mule.',
         'A2: U10 senses a dedicated 5 x 2 mm magnet in the tray, on the sensor axis when the slider is closed.',
         '    DRV5032FA: operate <= 4.8 mT, release >= 0.5 mT, push-pull, output low with field. See docs/enclosure.md.'])
     kb.add('J9', 'Connector_Generic_MountingPin', 'Conn_01x08_MountingPin', 'FH34SRJ-8S-0.5SH',

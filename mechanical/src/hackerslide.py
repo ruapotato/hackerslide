@@ -83,7 +83,7 @@ def keyboard_stack(dy=0.0):
     w, h = C.KBD_PCB['w'], C.KBD_PCB['h']
     z = C.TRAY_FLOOR + C.KBD_PCB['under_gap']
     s = {}
-    s['kbd_pcb'] = box(kx, ky + dy, z, kx + w, ky + h + dy, z + C.KBD_PCB['t'])
+    s['kbd_pcb'] = box(kx, ky - C.KBD_PCB['top_ext'] + dy, z, kx + w, ky + h + dy, z + C.KBD_PCB['t'])   # = tray floor
     z += C.KBD_PCB['t'] + C.SWITCH_H + C.KEYCAP['nub_h']      # keycap flange underside (the nub reaches the switch)
     zf = z + C.KEYCAP['flange_t']
     zp0 = zf + 0.1
@@ -181,10 +181,12 @@ def back_shell():
 
 
 def tray(dy=0.0):
-    """Keyboard tray incl. side rails (lips) and detent magnet posts.  dy = slide offset in device-plan y."""
+    """Keyboard tray FRAME incl. side rails (lips) and magnet posts.  It has no floor: the keyboard PCB closes the
+    bottom and is glued into the frame.  dy = slide offset in device-plan y."""
     zt = C.Z_TRAY_TOP
+    zp = C.TRAY_FLOOR + C.KBD_PCB['t']             # top face of the keyboard PCB
     s = rbox(0, dy, 0, C.BODY_W, C.BODY_H + dy, zt, C.CORNER_R)
-    s = s.cut(rbox(C.WALL, C.WALL + dy, C.TRAY_FLOOR, C.BODY_W - C.WALL, C.BODY_H - C.WALL + dy, zt + 0.01, 1.0))
+    s = s.cut(rbox(C.WALL, C.WALL + dy, -0.01, C.BODY_W - C.WALL, C.BODY_H - C.WALL + dy, zt + 0.01, 1.0))
     # side rails: walls rising beside the back-shell tub, with an inward lip into its groove
     zr1 = C.Z_BODY_BOTTOM + C.BACK_TUB_H - 0.3
     gz = C.Z_BODY_BOTTOM + 0.7 + C.RAIL['clear']
@@ -192,12 +194,20 @@ def tray(dy=0.0):
                                (C.BODY_W - C.RAIL['w'], C.BODY_W, C.BODY_W - C.RAIL['w'] - C.RAIL['lip'], C.BODY_W - C.RAIL['w'])):
         s = s.union(box(x0, dy + C.CORNER_R, zt - 0.01, x1, C.BODY_H + dy - C.CORNER_R, zr1))
         s = s.union(box(lx0, dy + C.CORNER_R, gz, lx1, C.BODY_H + dy - C.CORNER_R, gz + 0.8))
-    # magnet posts in the tray's upper half: one detent magnet per side and the slider-closed sense magnet
-    for (x, y, m) in [(x, C.MAGNET_Y_CLOSED, C.MAGNET_TRAY) for x in C.MAGNET_X] + [C.HALL_XY + (C.MAGNET_HALL,)]:
-        post = cyl(x, y + dy, C.TRAY_FLOOR - 0.01, zt - 0.1, m['d'] + 2.4)
+    # magnet posts on the PCB, tied to the nearest frame wall by a rib: one detent magnet per side and the
+    # slider-closed sense magnet
+    posts = ([(x, C.MAGNET_Y_CLOSED, C.MAGNET_TRAY, 'x') for x in C.MAGNET_X] + [C.HALL_XY + (C.MAGNET_HALL, 'y')])
+    for (x, y, m, rib) in posts:
+        d = m['d'] + 2.4
+        post = cyl(x, y + dy, zp, zt - 0.1, d)
+        if rib == 'x':
+            xw = C.WALL if x < C.BODY_W / 2 else C.BODY_W - C.WALL
+            post = post.union(box(min(x, xw), y + dy - d / 2, zp, max(x, xw), y + dy + d / 2, zt - 0.1))
+        else:
+            post = post.union(box(x - d / 2, C.WALL + dy - 0.01, zp, x + d / 2, y + dy, zt - 0.1))
         s = s.union(post).cut(cyl(x, y + dy, zt - 0.1 - m['t'], zt, m['d'] + 2 * m['clear']))
-    # The keyboard cable makes its rolling loop in this upper half, in the lane x = KBD_FPC_X +/- 4 mm, which is
-    # kept free of posts (see docs/enclosure.md).
+    # The keyboard cable makes its rolling loop above the PCB in the tray's upper half, in the lane
+    # x = KBD_FPC_X +/- 4 mm, which is kept free of posts (see docs/enclosure.md).
     return s
 
 

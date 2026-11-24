@@ -1,0 +1,4 @@
+(version 1)
+(rule "wuerth_spacer_ring"
+  (condition "A.memberOfFootprint('H?') && B.memberOfFootprint('H?')")
+  (constraint hole_clearance (min 0mm)))

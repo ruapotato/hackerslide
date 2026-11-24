@@ -4,7 +4,11 @@ All numbers are mm, KiCad board coordinates (origin top-left of the keyboard PCB
 Key field 102 x 29 mm and the ~24 mm D-pad zone come from the design decision (docs/decisions/0003).
 """
 BOARD_W = 125.0          # 23 mm D-pad zone + 102 mm key field; tray walls 1.5 mm -> 128 mm tray
-BOARD_H = 31.0           # 29 mm key field + 1 mm margin top/bottom
+BOARD_H = 31.0           # key area: 29 mm key field + 1 mm margin top/bottom (y = 0..31)
+BOARD_TOP_EXT = 38.0     # the PCB is the tray floor (David, 2026-11-24): it continues above the key area to y = -38
+PCB_T = 1.0              # structural: it is the bottom skin of the device
+PLATE_STANDOFF = 1.5     # top-plate underside above the PCB = height of the Wuerth 9774015633 SMT spacers
+J1_XY = (93.3, -2.5)     # keyboard FPC connector (signal row), under carrier J9: mechanical/src/config.py KBD_FPC_X
 DPAD_ZONE_W = 23.0
 FIELD_X0, FIELD_Y0 = DPAD_ZONE_W, 1.0
 COLS, ROWS = 12, 4
@@ -70,7 +74,7 @@ CAP = {'top_w': 7.0, 'top_h': 5.8, 'flange_w': PITCH_X - CAP_GAP, 'flange_h': PI
        'top_t': 1.2, 'flange_t': 0.5}   # keycap geometry used by the top plate and the printable keycaps
 PLATE_HOLE_CLEAR = 0.15                  # per side, plate hole vs keycap top
 
-# Mounting holes shared by the keyboard PCB, the top plate and the tray (M1.6, plated: GND).  Only the D-pad zone
-# has room: inside the key field the webs between keycap openings are 1.2 mm wide, narrower than a screw hole
-# (the earlier in-field holes cut into the openings).  The tray lips hold the other three plate edges.
+# Top-plate fixing: four M1.6 SMT spacers (Wuerth 9774015633, 1.5 mm) soldered to the PCB in the D-pad zone; the
+# plate is screwed onto them, which also grounds it.  Inside the key field the webs between keycap openings are
+# 1.2 mm wide, too narrow for a screw; the tray frame's lips hold the other three plate edges.
 PLATE_HOLES = [(3.0, 3.0), (20.0, 3.0), (3.0, 28.0), (20.0, 28.0)]

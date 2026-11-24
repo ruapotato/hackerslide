@@ -1,16 +1,16 @@
 {
  "stack_mm": {
-  "TRAY_T": 5.6,
-  "Z_BODY_BOTTOM": 6.0,
-  "Z_BACK_IN": 7.2,
+  "TRAY_T": 3.6,
+  "Z_BODY_BOTTOM": 4.0,
+  "Z_BACK_IN": 5.2,
   "BAY_H": 8.4,
   "CAVITY": 5.5,
   "THERMAL_GAP": 0.42,
   "PANEL_GAP": 1.9,
-  "Z_CARRIER_F": 12.7,
-  "Z_PANEL_TOP": 19.85,
+  "Z_CARRIER_F": 10.7,
+  "Z_PANEL_TOP": 17.85,
   "BODY_T": 14.65,
-  "TOTAL_T": 20.65,
+  "TOTAL_T": 18.65,
   "TRAVEL": 35.9,
   "OPEN_H": 107.9
  },

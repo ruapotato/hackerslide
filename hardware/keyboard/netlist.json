@@ -25,17 +25,18 @@
   },
   {
    "ref": "D1",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "67068a2b-2d50-5c16-bd7f-edfe9684f68b",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -68,17 +69,18 @@
   },
   {
    "ref": "D2",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "b31a4a02-da62-5357-8a33-54895c1592d7",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -111,17 +113,18 @@
   },
   {
    "ref": "D3",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "9f5b5e65-5060-52f9-b9e5-c08111856db7",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -154,17 +157,18 @@
   },
   {
    "ref": "D4",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "fad48284-8a01-54bb-9c40-d031a56225af",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -197,17 +201,18 @@
   },
   {
    "ref": "D5",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "d34312e1-728a-57ad-8e14-1c4b8f733255",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -240,17 +245,18 @@
   },
   {
    "ref": "D6",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "5f6a0f77-100f-5823-84b6-0445dd27492c",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -283,17 +289,18 @@
   },
   {
    "ref": "D7",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "4715c9b1-f090-5170-b701-a85be371ec41",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -326,17 +333,18 @@
   },
   {
    "ref": "D8",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "5063d7dd-0b58-58cf-acef-a9b755d1f2ec",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -369,17 +377,18 @@
   },
   {
    "ref": "D9",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "7aeeea18-b401-5700-9320-6acfb2e8b7ef",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -412,17 +421,18 @@
   },
   {
    "ref": "D10",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "a6c4d72e-5280-50bf-a963-7b11fa7c9b14",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW0",
@@ -455,17 +465,18 @@
   },
   {
    "ref": "D11",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "6467aa4d-4252-5512-965f-f0ce8791d689",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -498,17 +509,18 @@
   },
   {
    "ref": "D12",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "53d655d0-0101-543e-80e3-a7ddeda7700c",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -541,17 +553,18 @@
   },
   {
    "ref": "D13",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "f9d28ae4-ecda-5398-bfd6-1971f66389d9",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -584,17 +597,18 @@
   },
   {
    "ref": "D14",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "6f61a9e4-1df1-5e33-a771-1a2f59985f05",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -627,17 +641,18 @@
   },
   {
    "ref": "D15",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "8877137c-748c-5068-8136-908bde3e1012",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -670,17 +685,18 @@
   },
   {
    "ref": "D16",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "25db03b4-143b-5950-8b82-1b324699fcd9",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -713,17 +729,18 @@
   },
   {
    "ref": "D17",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "0e361cfa-0acb-5b48-8b01-9871b5415369",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -756,17 +773,18 @@
   },
   {
    "ref": "D18",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "d4fd181f-bfdc-5b25-9bd5-5f0cecb2b80e",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -799,17 +817,18 @@
   },
   {
    "ref": "D19",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "10fdf0cd-3ee4-5724-9f18-db138bf9f156",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -842,17 +861,18 @@
   },
   {
    "ref": "D20",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "36363776-fb2e-5bd0-b703-2a4364d89c74",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -885,17 +905,18 @@
   },
   {
    "ref": "D21",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "39a840db-1b6c-52ac-b28f-4b068dcdd3d9",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -928,17 +949,18 @@
   },
   {
    "ref": "D22",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "6063057c-03ff-5eba-895c-562b8d0b4c16",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW1",
@@ -971,17 +993,18 @@
   },
   {
    "ref": "D23",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "1d288367-f32c-53f3-b47c-b917247c3b74",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -1014,17 +1037,18 @@
   },
   {
    "ref": "D24",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "8ae67873-2058-5c77-af7c-6adbc07bae56",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -1057,17 +1081,18 @@
   },
   {
    "ref": "D25",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "cf4299b0-6fef-5045-abfc-b62c952175c0",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1100,17 +1125,18 @@
   },
   {
    "ref": "D26",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "51c331bd-63a1-5b6d-be06-061e9cf63d8b",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1143,17 +1169,18 @@
   },
   {
    "ref": "D27",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "43857e08-3aba-52f5-9545-8493217fd861",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1186,17 +1213,18 @@
   },
   {
    "ref": "D28",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "65e47555-7deb-5339-9425-55ee1efebb74",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1229,17 +1257,18 @@
   },
   {
    "ref": "D29",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "784e60d3-367f-59bd-bf53-78865859db0b",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1272,17 +1301,18 @@
   },
   {
    "ref": "D30",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "46e98823-5962-5356-81e1-596c55191cef",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1315,17 +1345,18 @@
   },
   {
    "ref": "D31",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "94972080-e048-5a4b-a2a0-66ff6fd06ff6",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1358,17 +1389,18 @@
   },
   {
    "ref": "D32",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "ee415896-19bb-5fb2-a3cb-b460795377bb",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1401,17 +1433,18 @@
   },
   {
    "ref": "D33",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "21854e4c-15dc-52c4-8e47-2cc9cc9d1e34",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1444,17 +1477,18 @@
   },
   {
    "ref": "D34",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "584e0706-e702-52ee-8fcd-d123814c0983",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW2",
@@ -1487,17 +1521,18 @@
   },
   {
    "ref": "D35",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "05f75fbe-8f4a-5e74-94e7-b6d8a1ab30b2",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -1530,17 +1565,18 @@
   },
   {
    "ref": "D36",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "9dd66432-f5ed-5aa5-b0de-ebf3419e9c24",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -1573,17 +1609,18 @@
   },
   {
    "ref": "D37",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "e2f3bf5d-adce-51bc-aa9d-58156e01543a",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1616,17 +1653,18 @@
   },
   {
    "ref": "D38",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "9a54f326-b339-5046-8cac-29d7757bc533",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1659,17 +1697,18 @@
   },
   {
    "ref": "D39",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "e17f661a-fd63-5896-a5bc-4bab6660a060",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1702,17 +1741,18 @@
   },
   {
    "ref": "D40",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "3f05bd1a-6605-5174-b070-d847036fe172",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1745,17 +1785,18 @@
   },
   {
    "ref": "D41",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "b25ca3d6-e9ac-5187-afa3-aea191464b04",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1788,17 +1829,18 @@
   },
   {
    "ref": "D42",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "bdefccc1-5269-59be-aa7a-be50264b11d8",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1831,17 +1873,18 @@
   },
   {
    "ref": "D43",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "295bbabc-6568-5e81-b428-6eee0e8fb30f",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1896,17 +1939,18 @@
   },
   {
    "ref": "D45",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "407457b8-30c3-575d-9edc-34ab84952780",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1939,17 +1983,18 @@
   },
   {
    "ref": "D46",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "137211a3-bf18-590a-9836-cb49e8441ef9",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW3",
@@ -1982,17 +2027,18 @@
   },
   {
    "ref": "D47",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "52c3a636-9a50-56ca-8e36-9c7cfcd6e40d",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -2025,17 +2071,18 @@
   },
   {
    "ref": "D48",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "a059ef1e-cbf8-5cd7-aa1a-75e1f1ca7c14",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW4",
@@ -2068,17 +2115,18 @@
   },
   {
    "ref": "D49",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "bc10fa4b-4677-5377-bc88-eb96d7d23d63",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW5",
@@ -2111,17 +2159,18 @@
   },
   {
    "ref": "D50",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "4f44a9c2-55de-5894-8abd-ba04f60149fa",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW5",
@@ -2154,17 +2203,18 @@
   },
   {
    "ref": "D51",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "71810c9d-18c5-5ea1-bdfe-4cc56ba87899",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW5",
@@ -2197,17 +2247,18 @@
   },
   {
    "ref": "D52",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "545dbf6f-9f69-57ab-819f-cec2df73cd9a",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW5",
@@ -2240,17 +2291,18 @@
   },
   {
    "ref": "D53",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
    "dnp": false,
    "sheet": "matrix",
    "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
    "sheetfile": "matrix.kicad_sch",
    "sym_uuid": "a8e2cef2-96c3-5ec9-8b01-7cb21c7478f0",
    "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
    },
    "pads": {
     "2": "ROW5",
@@ -2477,14 +2529,14 @@
     "Description": "keyboard FPC to carrier J9, 1.0 mm high"
    },
    "pads": {
-    "8": "GND",
-    "7": "+3V3",
-    "6": "I2C_B_SDA",
-    "5": "KB_INT_N",
-    "4": "KB_RST_N",
-    "3": "I2C_B_SCL",
-    "2": "+3V3",
     "1": "GND",
+    "2": "+3V3",
+    "3": "I2C_B_SDA",
+    "4": "KB_INT_N",
+    "5": "KB_RST_N",
+    "6": "I2C_B_SCL",
+    "7": "+3V3",
+    "8": "GND",
     "MP": "GND"
    },
    "in_bom": true,
@@ -2492,66 +2544,86 @@
   },
   {
    "ref": "H1",
-   "value": "M1.6",
-   "footprint": "hackerslide:MountingHole_M1.6_Pad",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "6f0ed72f-db59-5e37-ad84-38f4fca7bb78",
-   "fields": {},
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
    "pads": {
     "1": "GND"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {
    "ref": "H2",
-   "value": "M1.6",
-   "footprint": "hackerslide:MountingHole_M1.6_Pad",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "4be79477-d9ef-5f16-8042-1a5668df9cc8",
-   "fields": {},
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
    "pads": {
     "1": "GND"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {
    "ref": "H3",
-   "value": "M1.6",
-   "footprint": "hackerslide:MountingHole_M1.6_Pad",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "99c33f3c-d4bf-5e2b-9121-754948fcfee3",
-   "fields": {},
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
    "pads": {
     "1": "GND"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {
    "ref": "H4",
-   "value": "M1.6",
-   "footprint": "hackerslide:MountingHole_M1.6_Pad",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "b11f0913-89df-5c81-841e-21b9e9e47f02",
-   "fields": {},
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
    "pads": {
     "1": "GND"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {

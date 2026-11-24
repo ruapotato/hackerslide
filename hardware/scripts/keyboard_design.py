@@ -30,7 +30,9 @@ def build(variant='alps'):
                        'Electrical map (kbd_layout.matrix_pos): rows 0-3 = physical rows, physical columns 0-9;',
                        'row 4 = physical column 10 (COL0-3) and column 11 (COL4-7); row 5 = D-pad (COL0-4).',
                        'Both Space switches share one matrix position (ROW3/COL6): one key, one diode (K3).',
-                       'Assembly (K2): the switches allow two reflows at most and must not be washed.'])
+                       'Assembly (K2): the switches allow two reflows at most and must not be washed.',
+                       'Every part is on the TOP side: the bottom of this board is the outside of the device. Keep the',
+                       'bottom free of parts and keep its vias tented.'])
     seen = {}
     for i, (name, pr, pc, x, y) in enumerate(KL.keys(variant)):
         r, c = KL.matrix_pos(pr, pc)
@@ -47,8 +49,9 @@ def build(variant='alps'):
         if (r, c) in seen:
             continue                                    # second Space switch: parallel to the first, same diode
         seen[(r, c)] = i
-        m.add(f'D{i + 1}', 'Diode', '1N4148WS', '1N4148WS', 'Diode_SMD:D_SOD-323', dio,
-              fields=fields('C2128', '1N4148WS', 'Changjiang'))
+        m.add(f'D{i + 1}', 'Diode', '1N4148WS', '1N4148W4', 'Diode_SMD:D_SOD-882', dio,
+              fields=fields('C42432416', '1N4148W4', 'BORN', Description='DFN1006-2, sits under the keycap flange: '
+                            'TODO(verify) height <= 0.5 mm in the BORN datasheet'))
 
     # ---- scanner ------------------------------------------------------------------------------------
     s = d.sheet('scanner', 'TCA8418 keypad scanner, FPC to carrier', paper='A3',
@@ -56,9 +59,9 @@ def build(variant='alps'):
                        'VCC 3.3 V: with a diode in series the row low level is VF + VOL, too high for 1.8 V logic.',
                        'Unused ROW6/ROW7 are tied to VCC through 100k as the datasheet asks.',
                        'The pins are rated 2 kV HBM only: U2 clamps the cable signals, and the top plate copper is grounded',
-                       'through the plated mounting holes H1-H10.',
-                       'FPC: J1 pin k connects to carrier J9 pin 9-k. The cable runs straight in X between two identical',
-                       'connectors that both have their board above the cable (see the carrier keyboard_link sheet).'])
+                       'through the metal spacers H1-H4.',
+                       'FPC: J1 pin k connects to carrier J9 pin k. J1 is on the top side with its pin 1 toward the device',
+                       'left, like J9, and the cable runs straight in X (see the carrier keyboard_link sheet).'])
     nets = {'22': 'I2C_B_SDA', '23': 'I2C_B_SCL', '24': 'KB_INT_N', '20': 'KB_RST_N', '21': '+3V3', '19': 'GND', '25': 'GND'}
     for r in range(6):
         nets[str(8 - r)] = f'ROW{r}'
@@ -77,12 +80,13 @@ def build(variant='alps'):
           {'1': 'I2C_B_SDA', '2': 'I2C_B_SCL', '4': 'KB_INT_N', '5': 'KB_RST_N', '3': 'GND', '8': 'GND'},
           fields=fields('C138714', 'TPD4E05U06DQAR', 'Texas Instruments', Description='ESD clamp on the cable signals'))
     s.add('J1', 'Connector_Generic_MountingPin', 'Conn_01x08_MountingPin', 'FH34SRJ-8S-0.5SH',
-          'hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal',
-          {(k if k == 'MP' else str(9 - int(k))): v for k, v in KB_FPC.items()},     # pin k here = carrier J9 pin 9-k
+          'hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal', dict(KB_FPC),
           fields=fields('C88372', 'FH34SRJ-8S-0.5SH(50)', 'Hirose', Description='keyboard FPC to carrier J9, 1.0 mm high'))
     for i in range(len(KL.PLATE_HOLES)):
-        s.add(f'H{i + 1}', 'Mechanical', 'MountingHole_Pad', 'M1.6', 'hackerslide:MountingHole_M1.6_Pad', {'1': 'GND'},
-              in_bom=False)
+        s.add(f'H{i + 1}', 'Mechanical', 'MountingHole_Pad', 'M1.6 spacer 1.5mm',
+              'Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633', {'1': 'GND'},
+              fields=fields('', '9774015633R', 'Wurth Elektronik', Description='top-plate spacer, hand soldered (not stocked at JLC '
+                            '2026-11-24); grounds the plate'))
     TP(s, 'TP1', 'I2C_B_SDA')
     TP(s, 'TP2', 'I2C_B_SCL')
     TP(s, 'TP3', 'GND')

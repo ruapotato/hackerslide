@@ -13,7 +13,7 @@ BODY_H = 72.0
 CORNER_R = 6.0            # [est] plan-view corner radius
 WALL = 1.4                # [dec] FDM walls 1.2-1.6
 FLOOR = 1.2               # [est] FDM floor/roof
-TRAY_FLOOR = 1.0          # [est]
+TRAY_FLOOR = 0.0          # the keyboard PCB is the tray floor (David, 2026-11-24); the printed tray is a frame
 
 N810 = dict(w=128.0, h=72.0, t=14.0)   # Nokia N810 envelope, reference only (spec 2026-11-20, target dimensions table)
 LIBREM5 = dict(w=152.0, h=74.0, t=15.0)  # Purism Librem 5, reference only (docs.puri.sm hardware specs, read 2026-11-24)
@@ -37,7 +37,8 @@ BATTERY_LAYOUT = 'cutout'  # the carrier does not cover the cell (David, 2026-11
 PANEL_GAP = 1.9            # carrier display side -> panel back: room for the folded panel tails and J4/J5 (1.0 mm)
 
 # ---------------------------------------------------------------- keyboard stack ([dec] 102 x 29 + D-pad)
-KBD_PCB = dict(w=125.0, h=31.0, t=0.8, under_gap=1.2)            # under_gap: SOD-323 diodes on the bottom (1.1 max)
+KBD_PCB = dict(w=125.0, h=31.0, t=1.0, under_gap=0.0,            # h = key area; the board continues top_ext further up
+               top_ext=38.0)                                     # the tray (hardware/scripts/kbd_layout.py BOARD_TOP_EXT)
 SWITCH_H = 0.6                                                   # [ds] Alps SKSWCFE010
 KEYCAP = dict(flange_t=0.5, top_t=1.2, nub_h=0.3)                # nub: audit K1 (was 0.1)
 PLATE_T = 0.8                                                    # top-plate PCB
@@ -54,8 +55,9 @@ SCREWS = dict(insert_d=3.2, insert_l=3.0, screw_d=2.2, boss_d=5.6)   # [est] M2 
 
 # ---------------------------------------------------------------- derived stack (closed)
 PLATE_RIM = 0.3            # tray rim above the top plate = keycap tops flush with the rim
-TRAY_T = (TRAY_FLOOR + KBD_PCB['under_gap'] + KBD_PCB['t'] + SWITCH_H + KEYCAP['nub_h'] + KEYCAP['flange_t'] + 0.1
-          + PLATE_T + PLATE_RIM)
+PLATE_STANDOFF = SWITCH_H + KEYCAP['nub_h'] + KEYCAP['flange_t'] + 0.1   # top plate above the keyboard PCB
+assert abs(PLATE_STANDOFF - 1.5) < 1e-6, PLATE_STANDOFF                # = Wuerth 9774015633 spacer height
+TRAY_T = TRAY_FLOOR + KBD_PCB['under_gap'] + KBD_PCB['t'] + PLATE_STANDOFF + PLATE_T + PLATE_RIM
 Z_TRAY_TOP = TRAY_T
 Z_BODY_BOTTOM = Z_TRAY_TOP + SLIDE_GAP
 Z_BACK_IN = Z_BODY_BOTTOM + FLOOR                 # inside face of the removable back (tub floor)
