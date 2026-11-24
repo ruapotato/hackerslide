@@ -57,7 +57,8 @@ def build(variant='alps'):
                        'Unused ROW6/ROW7 are tied to VCC through 100k as the datasheet asks.',
                        'The pins are rated 2 kV HBM only: U2 clamps the cable signals, and the top plate copper is grounded',
                        'through the plated mounting holes H1-H10.',
-                       'FPC J1 carries the same pin numbers as carrier J9 (see the carrier keyboard_link sheet).'])
+                       'FPC: J1 pin k connects to carrier J9 pin 9-k. The cable runs straight in X between two identical',
+                       'connectors that both have their board above the cable (see the carrier keyboard_link sheet).'])
     nets = {'22': 'I2C_B_SDA', '23': 'I2C_B_SCL', '24': 'KB_INT_N', '20': 'KB_RST_N', '21': '+3V3', '19': 'GND', '25': 'GND'}
     for r in range(6):
         nets[str(8 - r)] = f'ROW{r}'
@@ -76,7 +77,8 @@ def build(variant='alps'):
           {'1': 'I2C_B_SDA', '2': 'I2C_B_SCL', '4': 'KB_INT_N', '5': 'KB_RST_N', '3': 'GND', '8': 'GND'},
           fields=fields('C138714', 'TPD4E05U06DQAR', 'Texas Instruments', Description='ESD clamp on the cable signals'))
     s.add('J1', 'Connector_Generic_MountingPin', 'Conn_01x08_MountingPin', 'FH34SRJ-8S-0.5SH',
-          'hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal', dict(KB_FPC),
+          'hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal',
+          {(k if k == 'MP' else str(9 - int(k))): v for k, v in KB_FPC.items()},     # pin k here = carrier J9 pin 9-k
           fields=fields('C88372', 'FH34SRJ-8S-0.5SH(50)', 'Hirose', Description='keyboard FPC to carrier J9, 1.0 mm high'))
     for i in range(len(KL.PLATE_HOLES)):
         s.add(f'H{i + 1}', 'Mechanical', 'MountingHole_Pad', 'M1.6', 'hackerslide:MountingHole_M1.6_Pad', {'1': 'GND'},

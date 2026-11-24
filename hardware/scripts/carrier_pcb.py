@@ -55,7 +55,7 @@ def module_xy(xr, yr):
 
 def build(bdir, do_route=False):
     B = Board(os.path.join(bdir, 'netlist.json'), layers=4, thickness=1.0)
-    B.outline(0, 0, W, H, r=1.5)
+    B.outline(0, 0, W, H, r=3.0)    # 3 mm corners clear the enclosure's inner corner radius (config.CARRIER['r'])
     P = B.place
     # ---- module sockets + spacers (exact CM4 geometry, verified in the audit against the CM4IO footprint) ----
     for ref, xr in (('J1A', -0.46), ('J1B', 33.46)):
@@ -69,7 +69,7 @@ def build(bdir, do_route=False):
     # ---- edge connectors (E1: mouths reach the 1.4 mm enclosure wall, whose inner face is 0.3 mm off the edge) ----
     P('J2', 2.6, 33.0, -90)          # USB-C, shell front 1.1 mm past the board edge
     P('J6', 0.6, 5.0, 0)             # 3.5 mm jack, collar 1.4 mm past the board edge
-    P('J7', 8.1, 59.2, 90)           # microSD, card end 1.65 mm past the board edge (flush with the body)
+    P('J7', 8.1, 58.6, 90)           # microSD, card end 1.65 mm past the board edge (flush with the body)
     P('SW1', 34.0, 1.7, 180)        # power: plunger toward the top edge (A3)
     P('SW2', 49.0, 1.7, 180)        # volume +
     P('SW3', 57.0, 1.7, 180)        # volume -

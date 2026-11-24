@@ -34,10 +34,7 @@ def cyl(x, y, z0, z1, d):
     return cq.Workplane('XY').circle(d / 2).extrude(z1 - z0).translate((x, C.BODY_H - y, z0))
 
 
-def carrier_to_device(kx, ky):
-    """Carrier KiCad coords (seen from its F side) -> device plan. Carrier is mounted F-side down => mirror X."""
-    x0, y0 = C.CARRIER_XY
-    return x0 + (C.CARRIER['w'] - kx), y0 + ky
+carrier_to_device = C.carrier_to_device
 
 
 # --------------------------------------------------------------------------------------------- envelopes
@@ -45,26 +42,36 @@ def envelopes():
     e = {}
     px, py = C.PANEL_XY
     e['panel'] = box(px, py, C.Z_PANEL_BOTTOM, px + C.PANEL['w'], py + C.PANEL['h'], C.Z_PANEL_TOP)
+    # folded panel tails behind the panel: component bulge of the display tail (along the FPC edge = device right)
+    # and the two connectors J4/J5 on the carrier's display side
+    b = C.PANEL['tail_bulge']
+    e['panel_tails'] = box(px + C.PANEL['w'] - C.PANEL['tft_bulge_len'], py + 4.0, C.Z_PANEL_BOTTOM - b,
+                           px + C.PANEL['w'], py + C.PANEL['h'] - 4.0, C.Z_PANEL_BOTTOM)
+    for (kx, ky), n in ((C.J4_KICAD, 20), (C.J5_KICAD, 8)):
+        x, y = carrier_to_device(kx, ky)
+        half = (0.5 * (n - 1) + 2.5) / 2
+        e['panel_tails'] = e['panel_tails'].union(box(x - 0.4, y - half, C.Z_CARRIER_B, x + 3.4, y + half, C.Z_CARRIER_B + 1.0))
     cx, cy = C.CARRIER_XY
-    e['carrier'] = rbox(cx, cy, C.Z_CARRIER_F, cx + C.CARRIER['w'], cy + C.CARRIER['h'], C.Z_CARRIER_B, 2.0)
-    n = C.CARRIER_NOTCH
-    for ny in (cy, cy + C.CARRIER['h'] - n):
-        e['carrier'] = e['carrier'].cut(box(cx + C.CARRIER['w'] - n, ny - 0.01, C.Z_CARRIER_F - 1, cx + C.CARRIER['w'] + 1,
-                                            ny + n + 0.01, C.Z_CARRIER_B + 1))
+    e['carrier'] = rbox(cx, cy, C.Z_CARRIER_F, cx + C.CARRIER['w'], cy + C.CARRIER['h'], C.Z_CARRIER_B, C.CARRIER['r'])
+    for (x, y) in C.SCREW_XY:
+        e['carrier'] = e['carrier'].cut(cyl(x, y, C.Z_CARRIER_F - 1, C.Z_CARRIER_B + 1, 2.4))
     # module hangs below the carrier F side
-    mx0, my0 = carrier_to_device(C.MODULE_KICAD[0] + C.MODULE['w'], C.MODULE_KICAD[1])
+    mx0, my0 = C.MODULE_XY
     e['module'] = box(mx0, my0, C.Z_CARRIER_F - C.MODULE['mated'], mx0 + C.MODULE['w'], my0 + C.MODULE['h'], C.Z_CARRIER_F)
-    if C.BATTERY_LAYOUT == 'beside':
-        bx0, by0 = carrier_to_device(C.BATT_KICAD[0] + C.BATTERY['w'], C.BATT_KICAD[1])
-        z1 = C.Z_CARRIER_F
-    else:   # under the module: centred on the module footprint, below it
-        bx0 = mx0 + (C.MODULE['w'] - C.BATTERY['w']) / 2
-        by0 = my0 + (C.MODULE['h'] - C.BATTERY['h']) / 2
-        z1 = C.Z_CARRIER_F - C.MODULE['mated'] - 0.3
-    e['battery'] = box(bx0, by0, z1 - C.BATTERY['t'] - C.BATTERY['swell'], bx0 + C.BATTERY['w'], by0 + C.BATTERY['h'], z1)
-    # thermal pad from the SoC to the back-shell floor (SoC position = CM4 drawing estimate)
-    sx = mx0 + C.MODULE['soc_xy'][0] - C.MODULE['soc_size'][0] / 2
-    sy = my0 + C.MODULE['soc_xy'][1] - C.MODULE['soc_size'][1] / 2
+    # tallest carrier parts on the F side (heights from the datasheets quoted in docs/audit-2026-11-24.md)
+    jx, jy = carrier_to_device(0.6, C.JACK_KICAD_Y)
+    e['carrier_parts'] = box(jx - 12.0, jy - 3.2, C.Z_CARRIER_F - 4.5, jx, jy + 3.2, C.Z_CARRIER_F)            # PJ-342, 4.5 high
+    ux, uy = carrier_to_device(0.0, C.USB_KICAD_Y)
+    e['carrier_parts'] = e['carrier_parts'].union(box(ux - 6.3, uy - 4.5, C.Z_CARRIER_F - 3.3, ux + 0.25, uy + 4.5, C.Z_CARRIER_F))
+    sx_, sy_ = carrier_to_device(0.0, C.SD_KICAD_Y)
+    e['carrier_parts'] = e['carrier_parts'].union(box(sx_ - 13.9, sy_ - 6.1, C.Z_CARRIER_F - 1.5, sx_, sy_ + 6.1, C.Z_CARRIER_F))
+    lx, ly = carrier_to_device(54.2, 7.8)                                                                       # L3, 3.0 high
+    e['carrier_parts'] = e['carrier_parts'].union(box(lx - 2.1, ly - 2.1, C.Z_CARRIER_F - 3.0, lx + 2.1, ly + 2.1, C.Z_CARRIER_F))
+    bx0, by0 = C.BATT_XY
+    e['battery'] = box(bx0, by0, C.Z_BACK_IN, bx0 + C.BATTERY['w'], by0 + C.BATTERY['h'], C.Z_BACK_IN + C.BATTERY['t'] + C.BATTERY['swell'])
+    # thermal pad / copper shim from the SoC to the back-shell floor (SoC position = CM4 drawing estimate)
+    sx = mx0 + C.SOC_XY[0] - C.MODULE['soc_size'][0] / 2
+    sy = my0 + C.SOC_XY[1] - C.MODULE['soc_size'][1] / 2
     zb = C.Z_CARRIER_F - C.MODULE['mated']
     e['thermal_pad'] = box(sx, sy, C.Z_BACK_IN, sx + C.MODULE['soc_size'][0], sy + C.MODULE['soc_size'][1], zb)
     return e
@@ -77,7 +84,7 @@ def keyboard_stack(dy=0.0):
     z = C.TRAY_FLOOR + C.KBD_PCB['under_gap']
     s = {}
     s['kbd_pcb'] = box(kx, ky + dy, z, kx + w, ky + h + dy, z + C.KBD_PCB['t'])
-    z += C.KBD_PCB['t'] + C.SWITCH_H
+    z += C.KBD_PCB['t'] + C.SWITCH_H + C.KEYCAP['nub_h']      # keycap flange underside (the nub reaches the switch)
     zf = z + C.KEYCAP['flange_t']
     zp0 = zf + 0.1
     s['top_plate'] = box(kx, ky + dy, zp0, kx + w, ky + h + dy, zp0 + C.PLATE_T)
@@ -114,22 +121,34 @@ def front_shell():
     s = s.cut(rbox(C.WALL, C.WALL, z0 - 0.01, C.BODY_W - C.WALL, C.BODY_H - C.WALL, z1 - C.BEZEL_LIP, C.CORNER_R - C.WALL))
     px, py = C.PANEL_XY
     s = s.cut(box(px - 0.2, py - 0.2, C.Z_PANEL_BOTTOM - 0.5, px + C.PANEL['w'] + 0.2, py + C.PANEL['h'] + 0.2, C.Z_PANEL_TOP))
-    lip = 1.5   # roof overlaps the lens edge by 1.5 mm (lens O.D. 105.15 x 62.1, active area 93.6 x 56.16)
+    lip = 1.5   # roof overlaps the lens edge by 1.5 mm (lens 97.70 x 57.86, touch view area 87.40 x 52.44)
     s = s.cut(rbox(px + lip, py + lip, z1 - C.BEZEL_LIP - 0.1, px + C.PANEL['w'] - lip, py + C.PANEL['h'] - lip, z1 + 0.1, 1.0))
-    # screw bosses with M2 heat-set inserts (screws come in from the back)
+    # screw bosses with M2 heat-set inserts (screws come in from the back).  They stand on the carrier's display
+    # side around HS1/HS2: together with the back-shell bosses they clamp the board.
     for (x, y) in C.SCREW_XY:
-        boss = cyl(x, y, z0, z1 - C.BEZEL_LIP, C.BOSS_D)
-        s = s.union(boss).cut(cyl(x, y, z0 - 0.01, z0 + C.SCREWS['insert_l'] + 0.5, C.SCREWS['insert_d']))
-    # side openings: USB-C, jack, microSD on the device right edge; buttons top edge (positions from carrier_pcb)
+        boss = cyl(x, y, C.Z_CARRIER_B, z1 - C.BEZEL_LIP, C.BOSS_D)
+        s = s.union(boss).cut(cyl(x, y, C.Z_CARRIER_B - 0.01, C.Z_CARRIER_B + C.SCREWS['insert_l'] + 0.5, C.SCREWS['insert_d']))
+    # side openings on the device right edge (audit E1: the connector mouths are 0.3-0.6 mm behind the outer face,
+    # so an opening only needs to pass the metal plug, with 0.3 mm play)
     zc = C.Z_CARRIER_F
-    for (ky, h, d) in ((27.0, 9.5, 3.6), (44.0, 6.4, 5.4), (9.5, 12.5, 2.0)):
-        _, yy = carrier_to_device(0, ky)
-        s = s.cut(box(C.BODY_W - C.WALL - 0.5, yy - h / 2, zc - d - 0.6, C.BODY_W + 0.5, yy + h / 2, zc + 0.2))
-    for kx in (16.5, 98.0, 106.0):
+    xw = C.BODY_W - C.WALL - 0.5
+    _, yu = carrier_to_device(0, C.USB_KICAD_Y)
+    s = s.cut(rbox_x(xw, yu - 4.7, zc - 3.5, C.BODY_W + 0.5, yu + 4.7, zc + 0.1))                    # USB-C shell 8.94 x 3.26
+    _, yj = carrier_to_device(0, C.JACK_KICAD_Y)
+    s = s.cut(cq.Workplane('YZ').circle(2.8).extrude(C.WALL + 1.0).translate((xw, C.BODY_H - yj, zc - 2.3)))   # jack collar dia 5
+    _, ys = carrier_to_device(0, C.SD_KICAD_Y)
+    s = s.cut(box(xw, ys - 6.0, zc - 1.6, C.BODY_W + 0.5, ys + 6.0, zc - 0.1))                       # microSD card 11 wide
+    # button openings on the top edge (printed button caps bridge the 1.6 mm from the switch plunger to the wall)
+    for kx in C.BUTTON_KICAD_X:
         xx, _ = carrier_to_device(kx, 0)
-        s = s.cut(box(xx - 2.2, -0.5, zc - 2.4, xx + 2.2, C.WALL + 0.5, zc - 0.4))
-    # FPC slot to the keyboard (bottom edge, inner side) is inside the body: nothing to cut
+        s = s.cut(box(xx - 2.2, -0.5, zc - 2.0, xx + 2.2, C.WALL + 0.5, zc - 0.1))
     return s
+
+
+def rbox_x(x0, y0, z0, x1, y1, z1):
+    """Box with its edges along X rounded (a slot through a side wall)."""
+    r = min((z1 - z0), (y1 - y0)) / 2 - 0.05
+    return box(x0, y0, z0, x1, y1, z1).edges('|X').fillet(r)
 
 
 def back_shell():
@@ -139,14 +158,20 @@ def back_shell():
     s = rbox(xi, 0, z0, C.BODY_W - xi, C.BODY_H, z1, C.CORNER_R - xi)
     s = s.cut(rbox(xi + C.WALL, C.WALL, C.Z_BACK_IN, C.BODY_W - xi - C.WALL, C.BODY_H - C.WALL, z1 + 0.01,
                    C.CORNER_R - xi - C.WALL))
-    # screw holes (countersink omitted) and detent magnet pockets in the tub bottom
-    outline = rbox(xi, 0, z0, C.BODY_W - xi, C.BODY_H, z1, C.CORNER_R - xi)
+    # screw bosses: from the floor up to the carrier's component side (clamp), screw from outside
     for (x, y) in C.SCREW_XY:
-        s = s.union(cyl(x, y, z0, z1, C.BOSS_D).intersect(outline)).cut(cyl(x, y, z0 - 0.01, z1 + 0.01, C.SCREWS['screw_d']))
-    m = C.MAGNET
+        s = s.union(cyl(x, y, z0, C.Z_CARRIER_F, C.BOSS_D)).cut(cyl(x, y, z0 - 0.01, C.Z_CARRIER_F + 0.01, C.SCREWS['screw_d']))
+    # detent magnet pockets in the floor, pressed in from outside: A = closed, B = open (audit E2/E3)
+    m = C.MAGNET_BODY
     for x in C.MAGNET_X:
         for y in (C.MAGNET_Y_CLOSED, C.MAGNET_Y_OPEN):
             s = s.cut(cyl(x, y, z0 - 0.01, z0 + m['t'], m['d'] + 2 * m['clear']))
+    # the 4.5 mm jack hangs lower than the tub wall top: notch the wall there
+    jx, jy = carrier_to_device(0.6, C.JACK_KICAD_Y)
+    s = s.cut(box(jx - 12.4, jy - 3.6, C.Z_CARRIER_F - 4.8, C.BODY_W, jy + 3.6, z1 + 0.01))
+    # keyboard cable slot through the floor, below carrier J9 (audit E5)
+    f = C.FPC_SLOT
+    s = s.cut(box(C.KBD_FPC_X - f['w'] / 2, f['y'] - f['l'] / 2, z0 - 0.5, C.KBD_FPC_X + f['w'] / 2, f['y'] + f['l'] / 2, C.Z_BACK_IN + 0.5))
     # rail grooves on the left/right outer faces (the tray lips run in these); cut last so bosses cannot fill them
     gz = z0 + 0.7
     gh = 0.8 + 2 * C.RAIL['clear']
@@ -167,24 +192,24 @@ def tray(dy=0.0):
                                (C.BODY_W - C.RAIL['w'], C.BODY_W, C.BODY_W - C.RAIL['w'] - C.RAIL['lip'], C.BODY_W - C.RAIL['w'])):
         s = s.union(box(x0, dy + C.CORNER_R, zt - 0.01, x1, C.BODY_H + dy - C.CORNER_R, zr1))
         s = s.union(box(lx0, dy + C.CORNER_R, gz, lx1, C.BODY_H + dy - C.CORNER_R, gz + 0.8))
-    # magnet posts (closed + open detents) in the tray's upper half
-    m = C.MAGNET
-    for x in C.MAGNET_X:
-        for y in (C.MAGNET_Y_CLOSED, C.MAGNET_Y_OPEN - C.TRAVEL):
-            post = cyl(x, y + dy, C.TRAY_FLOOR - 0.01, zt - 0.1, m['d'] + 2.4)
-            s = s.union(post).cut(cyl(x, y + dy, zt - 0.1 - m['t'], zt, m['d'] + 2 * m['clear']))
-    # keyboard FPC exit: slot in the tray floor region? The FFC loops inside the tray's upper half (service loop).
+    # magnet posts in the tray's upper half: one detent magnet per side and the slider-closed sense magnet
+    for (x, y, m) in [(x, C.MAGNET_Y_CLOSED, C.MAGNET_TRAY) for x in C.MAGNET_X] + [C.HALL_XY + (C.MAGNET_HALL,)]:
+        post = cyl(x, y + dy, C.TRAY_FLOOR - 0.01, zt - 0.1, m['d'] + 2.4)
+        s = s.union(post).cut(cyl(x, y + dy, zt - 0.1 - m['t'], zt, m['d'] + 2 * m['clear']))
+    # The keyboard cable makes its rolling loop in this upper half, in the lane x = KBD_FPC_X +/- 4 mm, which is
+    # kept free of posts (see docs/enclosure.md).
     return s
 
 
 def magnets(dy_tray=0.0):
-    m = C.MAGNET
     out = []
+    mb, mt, mh = C.MAGNET_BODY, C.MAGNET_TRAY, C.MAGNET_HALL
     for x in C.MAGNET_X:
         for y in (C.MAGNET_Y_CLOSED, C.MAGNET_Y_OPEN):
-            out.append(cyl(x, y, C.Z_BODY_BOTTOM, C.Z_BODY_BOTTOM + m['t'], m['d']))
-        for y in (C.MAGNET_Y_CLOSED, C.MAGNET_Y_OPEN - C.TRAVEL):
-            out.append(cyl(x, y + dy_tray, C.Z_TRAY_TOP - 0.1 - m['t'], C.Z_TRAY_TOP - 0.1, m['d']))
+            out.append(cyl(x, y, C.Z_BODY_BOTTOM, C.Z_BODY_BOTTOM + mb['t'], mb['d']))
+        out.append(cyl(x, C.MAGNET_Y_CLOSED + dy_tray, C.Z_TRAY_TOP - 0.1 - mt['t'], C.Z_TRAY_TOP - 0.1, mt['d']))
+    hx, hy = C.HALL_XY
+    out.append(cyl(hx, hy + dy_tray, C.Z_TRAY_TOP - 0.1 - mh['t'], C.Z_TRAY_TOP - 0.1, mh['d']))
     u = out[0]
     for o in out[1:]:
         u = u.union(o)
@@ -207,8 +232,8 @@ def keycap(kind='key'):
     k = cq.Workplane('XY').rect(fw, fh).extrude(c['flange_t']).edges('|Z').fillet(0.4)
     k = k.union(cq.Workplane('XY').rect(tw, th).extrude(c['flange_t'] + c['top_t']).edges('|Z').fillet(0.8))
     k = k.faces('>Z').edges().fillet(0.25)
-    # actuator nub under the cap centre (presses the 0.6 mm tall switch plunger)
-    return k.union(cq.Workplane('XY').circle(0.6).extrude(-0.1))
+    # actuator nub under the cap centre: flat cylinder dia 1.2 (Alps asks for 1.0-1.5), height from config (audit K1)
+    return k.union(cq.Workplane('XY').circle(0.6).extrude(-C.KEYCAP['nub_h']))
 
 
 # --------------------------------------------------------------------------------------------- assembly
@@ -224,6 +249,7 @@ def collisions(parts, tol=0.01):
     names = sorted(parts)
     hits = []
     allowed = {('magnets', 'back_shell'), ('magnets', 'tray'), ('module', 'thermal_pad'), ('back_shell', 'thermal_pad'),
+               ('carrier', 'panel_tails'),
                ('keycap_tops', 'top_plate'), ('keycap_flanges', 'keycap_tops')}   # caps pass through plate openings
     for i, a in enumerate(names):
         for b in names[i + 1:]:
@@ -246,7 +272,7 @@ def main():
     out = os.path.abspath(a.out)
     for d in ('stl', 'step', 'renders'):
         os.makedirs(os.path.join(out, d), exist_ok=True)
-    report = {'stack_mm': {k: round(getattr(C, k), 2) for k in ('TRAY_T', 'Z_BODY_BOTTOM', 'Z_BACK_IN', 'CAVITY',
+    report = {'stack_mm': {k: round(getattr(C, k), 2) for k in ('TRAY_T', 'Z_BODY_BOTTOM', 'Z_BACK_IN', 'BAY_H', 'CAVITY', 'THERMAL_GAP', 'PANEL_GAP',
                                                                   'Z_CARRIER_F', 'Z_PANEL_TOP', 'BODY_T', 'TOTAL_T',
                                                                   'TRAVEL', 'OPEN_H')},
               'battery_layout': C.BATTERY_LAYOUT}

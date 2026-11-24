@@ -14,6 +14,8 @@ from pcbgen import Board, route, set_project_rules
 
 TOP_PLATE_HOLES = KL.PLATE_HOLES
 
+J1_X = 93.3
+
 RULES = {'min_clearance': 0.127, 'min_track_width': 0.127, 'min_via_diameter': 0.45, 'min_through_hole_diameter': 0.2,
          'min_copper_edge_clearance': 0.3, 'min_hole_clearance': 0.2, 'min_hole_to_hole': 0.25,
          'min_via_annular_width': 0.1}
@@ -33,10 +35,12 @@ def build(variant, bdir, do_route=False):
     for i, (kname, r, c, x, y) in enumerate(KL.keys(variant)):
         B.place(f'SW{i + 1}', x, y, 0, 'F')
         B.text(kname, x, y - (2.6 if variant == 'alps' else 0), pcbnew.F_Fab, 0.8)
-    # scanner on the bottom of the D-pad zone; FPC connector at the top edge, opening toward the body
-    B.place('J1', 11.5, 4.3, 0, 'B')     # on the bottom side rot 0 puts the FPC opening toward y = 0
+    # FPC connector at the top edge, opening toward the body, directly below carrier J9 (same device X, so the
+    # cable runs straight: mechanical/src/config.py KBD_FPC_X = 94.8 -> board x 93.3).  ESD clamp next to it.
+    B.place('J1', J1_X, 4.3, 0, 'B')     # on the bottom side rot 0 puts the FPC opening toward y = 0
+    B.place('U2', J1_X, 10.4, 0, 'B')
+    # scanner on the bottom of the D-pad zone
     B.place('U1', 6.3, 10.2, 0, 'B')
-    B.place('U2', 16.8, 8.0, 90, 'B')
     B.pack(['C1', 'C2', 'R3', 'R4', 'R1', 'R2'], 11.5, 8.5, 'B', keepout=keepout)
     for i, (kname, r, c, x, y) in enumerate(KL.keys(variant)):
         if f'D{i + 1}' in B.fps:

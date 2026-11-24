@@ -12,9 +12,11 @@ COLORS = {
     'battery': ([0.75, 0.70, 0.30], 1.0), 'thermal_pad': ([0.85, 0.45, 0.20], 1.0), 'kbd_pcb': ([0.05, 0.40, 0.15], 1.0),
     'top_plate': ([0.08, 0.08, 0.08], 1.0), 'keycap_flanges': ([0.85, 0.85, 0.82], 1.0),
     'keycap_tops': ([0.92, 0.92, 0.90], 1.0), 'magnets': ([0.75, 0.75, 0.80], 1.0),
+    'carrier_parts': ([0.65, 0.65, 0.68], 1.0), 'panel_tails': ([0.85, 0.55, 0.10], 1.0),
 }
 EXPLODE = {'tray': -18, 'kbd_pcb': -12, 'keycap_flanges': -8, 'keycap_tops': -8, 'top_plate': -4, 'magnets': -2,
-           'back_shell': 4, 'battery': 12, 'module': 12, 'thermal_pad': 8, 'carrier': 22, 'panel': 30, 'front_shell': 40}
+           'back_shell': 4, 'battery': 12, 'module': 12, 'thermal_pad': 8, 'carrier': 22, 'carrier_parts': 22,
+           'panel_tails': 26, 'panel': 30, 'front_shell': 40}
 
 
 def scene(scene_dir, tag, explode=False, section=None, hide=()):

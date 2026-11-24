@@ -2477,14 +2477,14 @@
     "Description": "keyboard FPC to carrier J9, 1.0 mm high"
    },
    "pads": {
-    "1": "GND",
-    "2": "+3V3",
-    "3": "I2C_B_SDA",
-    "4": "KB_INT_N",
-    "5": "KB_RST_N",
-    "6": "I2C_B_SCL",
-    "7": "+3V3",
     "8": "GND",
+    "7": "+3V3",
+    "6": "I2C_B_SDA",
+    "5": "KB_INT_N",
+    "4": "KB_RST_N",
+    "3": "I2C_B_SCL",
+    "2": "+3V3",
+    "1": "GND",
     "MP": "GND"
    },
    "in_bom": true,
