@@ -1,9 +1,66 @@
 # HackerSlide 810
 
-Pocketable Linux handheld in the spirit of the Nokia N810: landscape screen, slide-out QWERTY keyboard with a
-D-pad, off-the-shelf CM4-format compute module on a custom carrier board.
+A pocketable Linux handheld in the spirit of the Nokia N810: landscape screen, slide-out QWERTY keyboard with a
+D-pad, an off-the-shelf CM4-format compute module on a custom carrier board. Open hardware.
 
-**Status: rev 0.1 hardware build-out in progress. Nothing here has been built or tested yet.**
+**Status: rev 0.1 design in progress. Nothing here has been built, fabricated or tested.**
+
+![closed](mechanical/renders/closed.png)
+![open](mechanical/renders/open.png)
+![size against the N810 and the Librem 5](mechanical/renders/compare_stack.png)
+
+Dark: HackerSlide 810, 128 x 72 x 18.65 mm. Orange: Nokia N810, 14 mm. Blue: Librem 5, 15 mm.
+
+## What it is
+
+| | |
+|---|---|
+| Compute | LuckFox Core3566 (RK3566, 4x Cortex-A55), swappable for other CM4-format modules within limits |
+| Display | 4.0" 480 x 800 IPS, capacitive touch |
+| Keyboard | 48 keys + D-pad, tact switches, I2C scanner, slides out on rails with magnet detents |
+| Battery | 2500 mAh, USB-C charging |
+| I/O | USB-C, 3.5 mm headset jack, microSD, Wi-Fi/Bluetooth on the module |
+| OS | Debian/Mobian on a mainline-ish kernel (not started) |
+
+## Where things stand
+
+| Part | State |
+|---|---|
+| Carrier board | Schematic audited and revised; placed; **not routed** |
+| Keyboard board | Placed; **not routed** |
+| Top plate, keyboard flex cable | Complete drafts |
+| Enclosure | Parametric fit-mule model, collision-checked |
+| Gerbers | None yet: routing and human review come first |
+
+Start with [`docs/audit-status.md`](docs/audit-status.md), then [`docs/open-questions.md`](docs/open-questions.md).
+
+## Documents
+
+[requirements](docs/requirements.md) · [architecture](docs/architecture.md) ·
+[decisions](docs/decisions/README.md) · [pin matrix](docs/compute-pin-matrix.md) ·
+[power budget](docs/power-budget.md) · [thermal](docs/thermal.md) · [carrier board](docs/carrier-board.md) ·
+[keyboard](docs/keyboard.md) · [enclosure](docs/enclosure.md) · [bring-up plan](docs/bring-up-plan.md) ·
+[risks](docs/risks.md) · [roadmap](docs/roadmap.md) · [audit](docs/audit-2026-11-24.md) ·
+[footprint review](docs/footprint-review.md) · [BOM](bom/bom.csv) · [purchasing](bom/purchasing.md) ·
+[fab orders](bom/fab-orders.md)
+
+## Regenerating everything
+
+The boards and the enclosure are generated from Python. Needs KiCad 9 with its libraries, Python 3, CadQuery and
+OpenSCAD; details in [`docs/HANDOFF.md`](docs/HANDOFF.md), section 2.
+
+```sh
+hardware/scripts/build_all.sh                               # libraries, schematics, boards, ERC/DRC
+cd mechanical/src && ../../.venv/bin/python hackerslide.py  # enclosure, collision check
+python3 render.py ..                                        # renders
+python3 ../../bom/tools/make_bom.py                         # BOM with current JLCPCB prices
+```
+
+## How to help
+
+Review it. The questions we most want answered are in [`docs/open-questions.md`](docs/open-questions.md); the
+things a hardware reviewer should check are in [`docs/carrier-board.md`](docs/carrier-board.md) and
+[`docs/footprint-review.md`](docs/footprint-review.md). Open an issue.
 
 ## Licence
 
