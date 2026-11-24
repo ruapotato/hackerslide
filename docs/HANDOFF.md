@@ -1,5 +1,9 @@
 # HackerSlide 810: handoff notes (2026-11-24)
 
+> **Superseded in part.** These notes describe the first build-out. A design audit followed the same day
+> ([audit-2026-11-24.md](audit-2026-11-24.md)); the current state and the decisions taken since are in
+> [audit-status.md](audit-status.md). Sections 2 (how to regenerate) and 9 (sources) are still accurate.
+
 These notes are for whoever picks up the rev 0.1 hardware build-out next. They assume you have read none of
 the earlier work. The original brief asked for docs, three KiCad boards, a parametric enclosure, renders and a
 sourced BOM. **About half of that exists.** This file lists what is done, what is still draft, how to

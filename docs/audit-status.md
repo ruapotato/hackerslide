@@ -1,0 +1,123 @@
+# Audit follow-up: what was fixed, what is open (2026-11-24)
+
+Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the decisions taken the same day.
+"Fixed" means changed in the design files and checked by ERC/DRC or the collision check. Nothing is built or measured.
+
+## Decisions by David, 2026-11-24
+
+| Topic | Decision |
+|---|---|
+| Display | Pick an in-stock panel: **Focus LCDs E40RB-I-MW430-CB**. A thin AMOLED (DisplayModule DMKDO04301ACA) is a later step, after it has been lit on a dev board |
+| Keyboard scanner | Left to the designer: **TI TCA8418** over I2C. No RP2040, USB hub or mux |
+| Audio | **ES8316** I2S codec approved |
+| Fuel gauge | **MAX17048** approved |
+| Licence | **CERN-OHL-S-2.0** for `hardware/` and `mechanical/`, AGPL-3.0 for the rest |
+| Body | Carrier cut out around the battery; **the keyboard PCB is the tray floor** ("thin keyboard") |
+| USB | One USB-C port for rev 0.1 (a second host port was considered and dropped) |
+| Routing | Autoroute plus hand clean-up, marked DRAFT |
+
+## State of the design
+
+| Item | State |
+|---|---|
+| Carrier, 71.6 x 66 mm, 4 layers | Schematic revised, ERC clean. Placed by hand, **not routed** (301 connections). DRC: silkscreen warnings only |
+| Keyboard, 125 x 69 mm, 2 layers, 1.0 mm | Schematic revised, ERC clean. Placed, **not routed** (181 connections). DRC: warnings only |
+| Top plate | ERC/DRC clean |
+| Dome (Keystone) keyboard variant | Footprint redrawn with non-standard lands. Board **not generated** |
+| Enclosure | **18.65 mm** closed, 107.9 mm open. Collision check passes closed and open |
+| Battery | PKCELL LP785060 (Adafruit 328): 2500 mAh, 8.1 x 50.5 x 62.5 mm max, 1.5 A max charge and discharge |
+
+Thickness stack (mm): keyboard 3.6 (PCB 1.0, plate stand-off 1.5, plate 0.8, rim 0.3), slide gap 0.4, back floor 1.2,
+bay 8.4 (cavity 5.5, carrier 1.0, panel gap 1.9), panel 4.25, bezel lip 0.8.
+
+## Findings
+
+### Power
+
+| ID | Status | What was done |
+|---|---|---|
+| P1 | Fixed | Charger D+/D- disconnected by default (R21/R22 DNP, 15k pull-downs): no HVDCP request, input resets to 500 mA. U2 pin 5 off VBUS; 15 V TVS D5 on VBUS |
+| P2 | Fixed | L2 is MWSA0402S-1R0MT (`C408332`) |
+| P3 | Open (software) | R12 = 300 ohm caps input at about 1.18 A. The device tree must set `ti,use-ilim-pin` |
+| P4 | Fixed | C15, C16, C21 are 22 uF |
+| P5 | Fixed | EN/HYS divider 1M / 560k / 51k: boost on above 3.31 V, off below 3.01 V |
+| P6 | Fixed | Three diodes isolate /QON, module pin 99 and a GPIO power key |
+| P7 | Mitigated | The cell allows 1.5 A; the charger resets to 2.048 A. With the 500 mA input default the cell sees about 0.6 A until Linux sets `ti,charge-current` (estimate). Open: the device tree |
+| P8 | Fixed | 402k / 100k, feed-forward pad C26 |
+| P9 | Open (software) | Ship mode needs userspace i2c or a driver patch |
+| P10-P13 | Fixed | Pull-up, capacitor sizes, part fields, NSR0240H |
+| P14 | Partly | Keyed PH-type connector J10 added. Open: its polarity must be checked against the cell's pigtail |
+| P15 | Open (software) | Backlight PWM period 5-100 kHz in the device tree |
+| P16 | Fixed | Test points added. CC lines reach only resistors, so they carry no ESD part |
+
+New: the cell's 1.5 A discharge rating is below the boost's worst-case input current. Measure the module's real
+draw on a dev board before trusting this cell.
+
+### Module
+
+| ID | Status | What was done |
+|---|---|---|
+| M1 | Mitigated | Pin 99 gets 1k in series and the button also drives GPIO pin 41. Open: measure pin 99 on a real Core3566 |
+| M2 | Fixed | Card-detect pull-up to 1.8 V |
+| M3 | Fixed | Hub and mux removed; the module's USB goes straight to USB-C |
+| M4 | Open (docs) | ArmSoM stuffing variant is noted on the schematic; `compute-pin-matrix.md` is still to write |
+| M5 | Open (docs) | Decision record still to write |
+| M6 | Fixed | No-copper rule area between the DF40 pad rows |
+| M7 | Fixed | 4.7k I2C pull-ups |
+| M8 | Open (software) | UHS disabled in the device tree |
+| M9, M10 | Fixed | 220 ohm reset resistor; 1 uF on pin 78 |
+| M11 | Open (measurement) | Module height: measure a real module |
+
+The module is turned 180 degrees in the carrier frame compared with the audited placement, so that its power, SD,
+I2S and UART pins face the wider bottom strip. It is a pure rotation; the socket geometry is unchanged.
+
+### Audio, storage, connectors
+
+| ID | Status | What was done |
+|---|---|---|
+| A1 | Fixed | 8-way cable, mirror-symmetric power pins, pin order worked out for the real cable path. Open: confirm on the fit mule |
+| A2 | Fixed | Sensor on the axis of a dedicated 5 x 2 mm tray magnet, about 6.7 mm away (about 20 mT, estimate) |
+| A3 | Fixed | Buttons rotated toward the top edge |
+| A4, A5 | Fixed | Capacitors added, 33 ohm, mic detect and jack detect wired |
+| A6 | Fixed | Side-entry SM03B, Raspberry Pi debug-probe pin order |
+| A7 | Mitigated | PJ-342 with a custom footprint. Its pole assignment is inferred, so 0-ohm straps allow swapping. Open: check a sample |
+| A8, A9 | Fixed | Sense ground at the jack; ESD parts on jack, SD; series resistors on UART |
+| A10 | Fixed | FH34SRJ connectors, 1.0 mm high, top and bottom contact |
+
+### Keyboard
+
+| ID | Status | What was done |
+|---|---|---|
+| K1 | Mitigated | Nub 0.3 mm. Cap guidance still to prototype |
+| K2 | Open (fab note) | Goes into `bom/fab-orders.md` |
+| K3 | Fixed | Both Space switches share one matrix position |
+| K4 | Open (David) | Lighter switch versions are a feel decision |
+| K5 | Fixed | No parts under the board at all |
+| K6-K8 | Mitigated | Non-standard lands, D-pad step 7.3 mm, shared nets where pads merge. Open: Keystone's Mini land drawing; board not generated |
+| K9 | Open (David) | 5133 (220 g) instead of 5135 (340 g) |
+| K10, K11 | Open | Centre-pad escape and retention method, with the dome board |
+
+New: the top plate's six screw holes inside the key field cut into the keycap openings (webs are 1.2 mm). They are
+removed; the plate is held by four spacers in the D-pad zone. The other three edges need frame lips, not yet modelled.
+
+### Enclosure
+
+| ID | Status | What was done |
+|---|---|---|
+| E1 | Fixed | Carrier edge 0.3 mm from the wall; connector mouths 0.3-0.6 mm behind the outer face |
+| E2 | Fixed | One tray magnet per side, two body magnets |
+| E3 | Mitigated | 6 x 1 mm body and 6 x 2 mm tray magnets as parameters. Open: tune on the fit mule |
+| E4 | Mitigated | Thermal gap is now a derived 0.42 mm. Open: `docs/thermal.md`, and measurement |
+| E5 | Mitigated | Slot and loop lane modelled. The loop radius is about 1.5 mm, so it needs a thin dynamic FPC |
+| E6 | Fixed | Panel connectors on the display side where the folded tails land. Open: confirm on a real panel |
+| E7 | Fixed | SMT spacers |
+| E8 | Fixed | 1.9 mm behind the panel |
+| E9 | Partly | Bosses clamp the carrier. Still two screws; left side needs snap hooks |
+| E10 | Open | Fit mule |
+
+New: the panel's folded tails carry components up to 1.5 mm high, which the earlier 0.5 mm gap ignored.
+
+## Needs real parts to confirm
+
+Module height and pin 99; PJ-342 pole assignment; panel tail fold and pin order; keyboard cable path; battery
+connector polarity; diode height (0.5 mm) under the keycaps; MAX17048 land pattern.
