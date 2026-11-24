@@ -15,6 +15,8 @@ WALL = 1.4                # [dec] FDM walls 1.2-1.6
 FLOOR = 1.2               # [est] FDM floor/roof
 TRAY_FLOOR = 1.0          # [est]
 
+N810 = dict(w=128.0, h=72.0, t=14.0)   # Nokia N810 envelope, reference only (spec 2026-11-20, target dimensions table)
+
 # ---------------------------------------------------------------- off-the-shelf parts (envelopes)
 MODULE = dict(w=55.0, h=40.0, t=4.7, stack=1.5, mated=5.078,    # [ds] Core3566 datasheet ch.3 (text copied from the CM4
               soc_xy=(31.99, 16.98), soc_size=(14.0, 14.0))     # datasheet; LuckFox's drawing scales to ~4.5: TODO(verify)

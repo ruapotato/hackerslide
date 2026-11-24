@@ -19,9 +19,10 @@ EXPLODE = {'tray': -18, 'kbd_pcb': -12, 'keycap_flanges': -8, 'keycap_tops': -8,
            'panel_tails': 26, 'panel': 30, 'front_shell': 40}
 
 
-def scene(scene_dir, tag, explode=False, section=None, hide=()):
+def scene(scene_dir, tag, explode=False, section=None, hide=(), opaque=False):
     lines = []
     for part, (rgb, a) in COLORS.items():
+        a = 1.0 if opaque else a
         f = os.path.join(scene_dir, f'{tag}_{part}.stl')
         if part in hide or not os.path.exists(f):
             continue
@@ -64,6 +65,15 @@ def main():
     render(scene(sd, 'closed', explode=True), os.path.join(out, 'exploded.png'), '64,36,18,70,0,30,360')
     render(scene(sd, 'section'), os.path.join(out, 'section.png'), '86,36,11,90,0,90,175', ortho=True)
     render(scene(sd, 'open', hide=('front_shell',)), os.path.join(out, 'open_no_front.png'), '64,18,10,40,0,20,330')
+    # size comparison with the Nokia N810 envelope (128 x 72 x 14 mm, from the 2026-11-20 spec), same baseline
+    import config as C
+    n = C.N810
+    ref = (f'color([0.80,0.45,0.15,1]) translate([{C.BODY_W + 12},0,0]) hull() {{ for (x=[6,{n["w"]}-6]) for (y=[6,{n["h"]}-6]) '
+           f'translate([x,y,0]) cylinder(r=6,h={n["t"]},$fn=48); }}')
+    both = scene(sd, 'closed', opaque=True) + '\n' + ref
+    cx = C.BODY_W + 6
+    render(both, os.path.join(out, 'compare_n810_side.png'), f'{cx},36,10,90,0,0,215', size=(1600, 420), ortho=True)
+    render(both, os.path.join(out, 'compare_n810.png'), f'{cx},36,8,62,0,20,430')
     print('renders in', out)
 
 
