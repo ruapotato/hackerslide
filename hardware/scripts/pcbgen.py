@@ -250,7 +250,7 @@ def set_project_rules(pro_path, rules, classes, patterns, sheets=None, title=Non
 
 def route(board_path, passes=20, timeout=3600, jar=None):
     """Export DSN, run Freerouting headless, import the SES back. Returns Freerouting's log tail."""
-    jar = jar or os.environ.get('FREEROUTING_JAR', '/var/tmp/hackerslide-agent/freerouting/freerouting-2.1.0.jar')
+    jar = jar or os.environ['FREEROUTING_JAR']   # path to freerouting-2.1.0.jar (2.1.0 runs on Java 21)
     b = pcbnew.LoadBoard(board_path)
     dsn = board_path.replace('.kicad_pcb', '.dsn')
     ses = board_path.replace('.kicad_pcb', '.ses')
