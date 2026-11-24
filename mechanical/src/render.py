@@ -65,15 +65,27 @@ def main():
     render(scene(sd, 'closed', explode=True), os.path.join(out, 'exploded.png'), '64,36,18,70,0,30,360')
     render(scene(sd, 'section'), os.path.join(out, 'section.png'), '86,36,11,90,0,90,175', ortho=True)
     render(scene(sd, 'open', hide=('front_shell',)), os.path.join(out, 'open_no_front.png'), '64,18,10,40,0,20,330')
-    # size comparison with the Nokia N810 envelope (128 x 72 x 14 mm, from the 2026-11-20 spec), same baseline
+    # size comparisons, all on the same baseline: Nokia N810 (orange) and Purism Librem 5 (blue), envelopes only
     import config as C
-    n = C.N810
-    ref = (f'color([0.80,0.45,0.15,1]) translate([{C.BODY_W + 12},0,0]) hull() {{ for (x=[6,{n["w"]}-6]) for (y=[6,{n["h"]}-6]) '
-           f'translate([x,y,0]) cylinder(r=6,h={n["t"]},$fn=48); }}')
-    both = scene(sd, 'closed', opaque=True) + '\n' + ref
-    cx = C.BODY_W + 6
-    render(both, os.path.join(out, 'compare_n810_side.png'), f'{cx},36,10,90,0,0,215', size=(1600, 420), ortho=True)
-    render(both, os.path.join(out, 'compare_n810.png'), f'{cx},36,8,62,0,20,430')
+
+    def slab(d, x0, rgb, r=6):
+        return (f'color([{rgb[0]},{rgb[1]},{rgb[2]},1]) translate([{x0},0,0]) hull() {{ for (x=[{r},{d["w"]}-{r}]) '
+                f'for (y=[{r},{d["h"]}-{r}]) translate([x,y,0]) cylinder(r={r},h={d["t"]},$fn=48); }}')
+    gap = 12
+    x_n = C.BODY_W + gap
+    x_l = x_n + C.N810['w'] + gap
+    ours = scene(sd, 'closed', opaque=True)
+    n810 = slab(C.N810, x_n, (0.80, 0.45, 0.15))
+    l5 = slab(C.LIBREM5, x_l, (0.25, 0.45, 0.70), r=8)
+    render(ours + n810, os.path.join(out, 'compare_n810_side.png'), f'{C.BODY_W + gap / 2},36,10,90,0,0,215', size=(1600, 420), ortho=True)
+    render(ours + n810, os.path.join(out, 'compare_n810.png'), f'{C.BODY_W + gap / 2},36,8,62,0,20,430')
+    mid = (x_l + C.LIBREM5['w']) / 2
+    render(ours + n810 + l5, os.path.join(out, 'compare_side.png'), f'{mid},36,10,90,0,0,330', size=(2000, 420), ortho=True)
+    render(ours + n810 + l5, os.path.join(out, 'compare.png'), f'{mid},36,8,62,0,25,640', size=(2000, 1000))
+    # stacked on top of each other, seen from the side: thickness against thickness
+    stack = (ours + f'translate([{-x_n},0,{C.TOTAL_T + 6}]) ' + n810.split(' ', 1)[0] + ' ' + n810.split(' ', 1)[1]
+             + f' translate([{-x_l - 12},0,{C.TOTAL_T + 6 + C.N810["t"] + 6}]) ' + l5)
+    render(stack, os.path.join(out, 'compare_stack.png'), f'64,36,{(C.TOTAL_T + 40) / 2},90,0,0,260', size=(1600, 760), ortho=True)
     print('renders in', out)
 
 

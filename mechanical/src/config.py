@@ -16,6 +16,7 @@ FLOOR = 1.2               # [est] FDM floor/roof
 TRAY_FLOOR = 1.0          # [est]
 
 N810 = dict(w=128.0, h=72.0, t=14.0)   # Nokia N810 envelope, reference only (spec 2026-11-20, target dimensions table)
+LIBREM5 = dict(w=152.0, h=74.0, t=15.0)  # Purism Librem 5, reference only (docs.puri.sm hardware specs, read 2026-11-24)
 
 # ---------------------------------------------------------------- off-the-shelf parts (envelopes)
 MODULE = dict(w=55.0, h=40.0, t=4.7, stack=1.5, mated=5.078,    # [ds] Core3566 datasheet ch.3 (text copied from the CM4
