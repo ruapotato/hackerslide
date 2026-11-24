@@ -27,10 +27,10 @@
     "S1": "GND",
     "A5": "CC1",
     "B5": "CC2",
-    "A6": "USBC_DP",
-    "B6": "USBC_DP",
-    "A7": "USBC_DM",
-    "B7": "USBC_DM"
+    "A6": "USB_DP",
+    "B6": "USB_DP",
+    "A7": "USB_DM",
+    "B7": "USB_DM"
    },
    "in_bom": true,
    "nc": {
@@ -51,7 +51,7 @@
     "LCSC": "C25905",
     "MPN": "0402WGF5101TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "UFP Rd"
+    "Description": "UFP Rd (CC lines reach only these resistors: no ESD part needed)"
    },
    "pads": {
     "1": "CC1",
@@ -94,14 +94,145 @@
    "fields": {
     "LCSC": "C7519",
     "MPN": "USBLC6-2SC6",
-    "Manufacturer": "STMicroelectronics"
+    "Manufacturer": "STMicroelectronics",
+    "Description": "P1: pin 5 on a local 100n, not on VBUS (VBUS can be 9-12 V)"
    },
    "pads": {
-    "1": "USBC_DP",
-    "6": "USBC_DP",
-    "3": "USBC_DM",
-    "4": "USBC_DM",
-    "5": "VBUS",
+    "1": "USB_DP",
+    "6": "USB_DP",
+    "3": "USB_DM",
+    "4": "USB_DM",
+    "5": "ESD_BIAS",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C25",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "34a2cfd1-26ca-5fff-ab28-99e6325a4395",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "ESD_BIAS",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D5",
+   "value": "SMF15A",
+   "footprint": "Diode_SMD:D_SOD-123F",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "0c42b865-91fe-5ad8-9892-e9a9198b50e0",
+   "fields": {
+    "LCSC": "C123802",
+    "MPN": "SMF15A",
+    "Manufacturer": "MDD",
+    "Description": "P1: VBUS TVS, 15 V stand-off"
+   },
+   "pads": {
+    "1": "VBUS",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R21",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": true,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "be3da55e-e691-5680-8b44-b22eda4cd954",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "P1/P7: DNP = no adapter detection: 5 V only, 500 mA input until Linux raises it"
+   },
+   "pads": {
+    "1": "USB_DP",
+    "2": "CHG_DP"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R22",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": true,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "fabe46b5-06fc-552f-a0d6-2992c7b4b5ec",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "USB_DM",
+    "2": "CHG_DM"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R28",
+   "value": "15k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "67216425-1466-5623-a605-361d89a32c1c",
+   "fields": {
+    "LCSC": "C25756",
+    "MPN": "0402WGF1502TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "looks like a standard host port to the charger: detection ends at SDP, 500 mA. Remove if R21 is fitted"
+   },
+   "pads": {
+    "1": "CHG_DP",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R29",
+   "value": "15k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "530658f8-ef08-5b77-8c9a-63b07d457c16",
+   "fields": {
+    "LCSC": "C25756",
+    "MPN": "0402WGF1502TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "remove if R22 is fitted"
+   },
+   "pads": {
+    "1": "CHG_DM",
     "2": "GND"
    },
    "in_bom": true,
@@ -123,8 +254,8 @@
    },
    "pads": {
     "1": "VBUS",
-    "2": "USBC_DP",
-    "3": "USBC_DM",
+    "2": "CHG_DP",
+    "3": "CHG_DM",
     "10": "CHG_ILIM",
     "4": "CHG_STAT",
     "6": "I2C_B_SDA",
@@ -164,7 +295,7 @@
    "fields": {
     "LCSC": "C52923",
     "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "VBUS",
@@ -185,7 +316,7 @@
    "fields": {
     "LCSC": "C45783",
     "MPN": "CL21A226MAQNNNE",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "PMID",
@@ -206,7 +337,7 @@
    "fields": {
     "LCSC": "C45783",
     "MPN": "CL21A226MAQNNNE",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "PMID",
@@ -239,16 +370,16 @@
   {
    "ref": "C14",
    "value": "4.7u",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "2429b2b3-f68e-5c27-9079-fbfee751ab82",
    "fields": {
-    "LCSC": "C23733",
-    "MPN": "CL05A475MP5NRNC",
-    "Manufacturer": "Samsung/FH"
+    "LCSC": "C19666",
+    "MPN": "CL10A475KO8NNNC",
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "REGN",
@@ -270,7 +401,7 @@
     "LCSC": "C408335",
     "MPN": "MWSA0402S-2R2MT",
     "Manufacturer": "Sunlord",
-    "Description": "TODO(verify) Isat >= 2.5 A"
+    "Description": "Isat 4.0 A guaranteed, DCR 58 mOhm (Sunlord MWSA)"
    },
    "pads": {
     "1": "CHG_SW",
@@ -281,17 +412,17 @@
   },
   {
    "ref": "C15",
-   "value": "10u",
-   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "22u",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "129ad369-9a79-5a47-bd4e-c853c7540390",
    "fields": {
-    "LCSC": "C19702",
-    "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "LCSC": "C45783",
+    "MPN": "CL21A226MAQNNNE",
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "VSYS",
@@ -302,17 +433,17 @@
   },
   {
    "ref": "C16",
-   "value": "10u",
-   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "22u",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "ea92db7f-4442-545f-938c-87c5b6daba04",
    "fields": {
-    "LCSC": "C19702",
-    "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "LCSC": "C45783",
+    "MPN": "CL21A226MAQNNNE",
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "VSYS",
@@ -333,7 +464,7 @@
    "fields": {
     "LCSC": "C19702",
     "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "VBAT",
@@ -344,7 +475,7 @@
   },
   {
    "ref": "R12",
-   "value": "200",
+   "value": "300",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -352,14 +483,36 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "1d99e968-1caa-5146-abcf-4ded3333296b",
    "fields": {
-    "LCSC": "C25087",
-    "MPN": "0402WGF2000TCE",
+    "LCSC": "C25102",
+    "MPN": "0402WGF3000TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "IINMAX 1.78 A"
+    "Description": "P3/P7: IINMAX = 355/300 = 1.18 A typ (1.07-1.30), needs ti,use-ilim-pin"
    },
    "pads": {
     "1": "CHG_ILIM",
     "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R25",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "e6443a08-9d0f-5077-a91c-54e5d4f576ad",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "P10"
+   },
+   "pads": {
+    "1": "CHG_INT_N",
+    "2": "+3V3"
    },
    "in_bom": true,
    "nc": {}
@@ -377,7 +530,7 @@
     "LCSC": "C25907",
     "MPN": "0402WGF5231TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "TS divider RT1 (datasheet 9.2)"
+    "Description": "TS divider RT1 (SLUSC88C Fig. 9-1)"
    },
    "pads": {
     "1": "REGN",
@@ -421,7 +574,7 @@
     "LCSC": "C77131",
     "MPN": "NCP15XH103F03RC",
     "Manufacturer": "Murata",
-    "Description": "ASSUMPTION: carrier NTC pressed against the cell (cell has no NTC lead)"
+    "Description": "ASSUMPTION: carrier NTC next to the cell bay (2-wire cell). Charge window about 1..40 degC"
    },
    "pads": {
     "1": "CHG_TS",
@@ -474,8 +627,30 @@
    "nc": {}
   },
   {
+   "ref": "J10",
+   "value": "BATT JST-PH",
+   "footprint": "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "5e741f56-5b5d-5018-8891-d49ef367c9ea",
+   "fields": {
+    "LCSC": "C225233",
+    "MPN": "A2001WR-S-2P",
+    "Manufacturer": "CJT",
+    "Description": "P14: keyed PH-type battery connector, pin 1 = +. TODO(verify) polarity against the chosen cell: PH pigtails are NOT standardised. 2 A per contact"
+   },
+   "pads": {
+    "1": "VBAT",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
    "ref": "J3",
-   "value": "BATT",
+   "value": "BATT pads",
    "footprint": "Connector_Wire:SolderWire-0.5sqmm_1x02_P4.6mm_D0.9mm_OD2.1mm",
    "dnp": false,
    "sheet": "power",
@@ -484,88 +659,41 @@
    "sym_uuid": "1c7ccb1d-c4e4-55af-84b2-cd73dd5de04c",
    "fields": {
     "LCSC": "",
-    "MPN": "hand-soldered cell leads",
-    "Description": "1S LiPo with protection PCM; leads soldered by hand"
+    "MPN": "solder pads (alternative to J10)",
+    "Description": "for cells with bare leads; no reverse-polarity protection"
    },
    "pads": {
-    "1": "BATT_P",
+    "1": "VBAT",
     "2": "GND"
    },
    "in_bom": false,
    "nc": {}
   },
   {
-   "ref": "RS1",
-   "value": "10m 1%",
-   "footprint": "Resistor_SMD:R_0603_1608Metric",
-   "dnp": false,
-   "sheet": "power",
-   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
-   "sheetfile": "power.kicad_sch",
-   "sym_uuid": "43dba140-07aa-5b4b-9fe3-dd582571aa56",
-   "fields": {
-    "LCSC": "C156369",
-    "MPN": "STE0603MW50R010F",
-    "Manufacturer": "Ever Ohms",
-    "Description": "gauge sense resistor, Kelvin-route SRP/SRN"
-   },
-   "pads": {
-    "1": "BATT_P",
-    "2": "VBAT"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
    "ref": "U4",
-   "value": "BQ27441DRZR-G1A",
-   "footprint": "Package_SON:Texas_S-PDSO-N12",
+   "value": "MAX17048G+T10",
+   "footprint": "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "7e7dd6ef-0429-54c8-94e9-8d8183e211bc",
    "fields": {
-    "LCSC": "C473397",
-    "MPN": "BQ27441DRZR-G1A",
-    "Manufacturer": "Texas Instruments"
+    "LCSC": "C2682616",
+    "MPN": "MAX17048G+T10",
+    "Manufacturer": "Analog Devices / Maxim",
+    "Description": "fuel gauge 0x36, maxim,max17048. TODO(verify) land pattern vs Maxim 90-0065"
    },
    "pads": {
-    "6": "BATT_P",
-    "1": "I2C_B_SDA",
-    "2": "I2C_B_SCL",
-    "7": "VBAT",
-    "8": "BATT_P",
-    "10": "GND",
-    "13": "GND",
-    "3": "GND",
-    "5": "GAUGE_VDD",
-    "12": "GAUGE_INT"
-   },
-   "in_bom": true,
-   "nc": {
-    "11": "unconnected-(U4-NC-Pad11)",
-    "9": "unconnected-(U4-NC-Pad9)",
-    "4": "unconnected-(U4-NC-Pad4)"
-   }
-  },
-  {
-   "ref": "C18",
-   "value": "1u",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "power",
-   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
-   "sheetfile": "power.kicad_sch",
-   "sym_uuid": "20d08a6b-3ae8-5901-88a9-83f05455e4c4",
-   "fields": {
-    "LCSC": "C52923",
-    "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "GAUGE_VDD",
-    "2": "GND"
+    "1": "GND",
+    "2": "VBAT",
+    "3": "VBAT",
+    "4": "GND",
+    "5": "GAUGE_INT",
+    "6": "GND",
+    "7": "I2C_B_SCL",
+    "8": "I2C_B_SDA",
+    "9": "GND"
    },
    "in_bom": true,
    "nc": {}
@@ -582,10 +710,10 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "BATT_P",
+    "1": "VBAT",
     "2": "GND"
    },
    "in_bom": true,
@@ -624,11 +752,13 @@
    "fields": {
     "LCSC": "C139626",
     "MPN": "TPS61230DRCR",
-    "Manufacturer": "Texas Instruments"
+    "Manufacturer": "Texas Instruments",
+    "Description": "VIN 2.3-5.5 V. NOT the TPS61230A (4.5 V max)"
    },
    "pads": {
     "10": "VSYS",
     "9": "BOOST_EN",
+    "8": "BOOST_HYS",
     "6": "BOOST_SS",
     "11": "GND",
     "1": "BOOST_SW",
@@ -639,24 +769,22 @@
     "5": "BOOST_PG"
    },
    "in_bom": true,
-   "nc": {
-    "8": "unconnected-(U5-HYS-Pad8)"
-   }
+   "nc": {}
   },
   {
    "ref": "L2",
    "value": "1uH",
-   "footprint": "Inductor_SMD:L_Sunlord_MWSA0412S",
+   "footprint": "Inductor_SMD:L_Sunlord_MWSA0402S",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "c5c03592-d88e-5a6d-ae50-499bf7e73011",
    "fields": {
-    "LCSC": "C2991787",
-    "MPN": "MWSA0412S-1R0MT",
+    "LCSC": "C408332",
+    "MPN": "MWSA0402S-1R0MT",
     "Manufacturer": "Sunlord",
-    "Description": "TODO(verify) Isat >= 5 A (switch limit)"
+    "Description": "P2: Isat 5.6 A guaranteed, DCR 27 mOhm, 2.0 mm high"
    },
    "pads": {
     "1": "VSYS",
@@ -667,7 +795,7 @@
   },
   {
    "ref": "R17",
-   "value": "100k",
+   "value": "1M",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -675,14 +803,58 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "75371a8c-86ae-5ac1-9963-01172e80a77e",
    "fields": {
-    "LCSC": "C25741",
-    "MPN": "0402WGF1003TCE",
+    "LCSC": "C26083",
+    "MPN": "0402WGF1004TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "boost always on; ship mode (BATFET off) removes VSYS"
+    "Description": "P5: UVLO divider top"
    },
    "pads": {
     "1": "VSYS",
     "2": "BOOST_EN"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R23",
+   "value": "560k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "0f9cbdf8-853a-5f21-9512-2a4c5dc08fe6",
+   "fields": {
+    "LCSC": "C132339",
+    "MPN": "0402WGF5603TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "P5"
+   },
+   "pads": {
+    "1": "BOOST_EN",
+    "2": "BOOST_HYS"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R24",
+   "value": "51k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "23650b93-854d-5999-a063-652c40d2abb1",
+   "fields": {
+    "LCSC": "C25794",
+    "MPN": "0402WGF5102TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "P5"
+   },
+   "pads": {
+    "1": "BOOST_HYS",
+    "2": "GND"
    },
    "in_bom": true,
    "nc": {}
@@ -699,7 +871,7 @@
    "fields": {
     "LCSC": "C1532",
     "MPN": "0402B223K500NT",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "FH"
    },
    "pads": {
     "1": "BOOST_SS",
@@ -710,7 +882,7 @@
   },
   {
    "ref": "R18",
-   "value": "1M",
+   "value": "402k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -718,9 +890,10 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "c84a9dc8-476a-500c-8ba2-b0d2ecccce54",
    "fields": {
-    "LCSC": "C26083",
-    "MPN": "0402WGF1004TCE",
-    "Manufacturer": "UNI-ROYAL"
+    "LCSC": "C25785",
+    "MPN": "0402WGF4023TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "P8: datasheet divider"
    },
    "pads": {
     "1": "+5V",
@@ -731,7 +904,7 @@
   },
   {
    "ref": "R19",
-   "value": "249k",
+   "value": "100k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -739,13 +912,34 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "b081370f-f8a6-5509-82a2-6bd81247160d",
    "fields": {
-    "LCSC": "C11425",
-    "MPN": "0402WGF2493TCE",
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
     "1": "BOOST_FB",
     "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C26",
+   "value": "22p",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "95194667-2ee2-5156-b87a-d759444f08b9",
+   "fields": {
+    "LCSC": "C1555",
+    "MPN": "0402CG220J500NT",
+    "Manufacturer": "FH"
+   },
+   "pads": {
+    "1": "+5V",
+    "2": "BOOST_FB"
    },
    "in_bom": true,
    "nc": {}
@@ -773,17 +967,17 @@
   },
   {
    "ref": "C21",
-   "value": "10u",
-   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "22u",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "75a60845-0261-514d-a368-8ec41688078c",
    "fields": {
-    "LCSC": "C19702",
-    "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "LCSC": "C45783",
+    "MPN": "CL21A226MAQNNNE",
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "VSYS",
@@ -804,7 +998,7 @@
    "fields": {
     "LCSC": "C45783",
     "MPN": "CL21A226MAQNNNE",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+5V",
@@ -825,7 +1019,7 @@
    "fields": {
     "LCSC": "C45783",
     "MPN": "CL21A226MAQNNNE",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+5V",
@@ -846,7 +1040,7 @@
    "fields": {
     "LCSC": "C45783",
     "MPN": "CL21A226MAQNNNE",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+5V",
@@ -871,7 +1065,7 @@
     "Description": "side-actuated power button"
    },
    "pads": {
-    "1": "PWR_BTN_N",
+    "1": "PWR_SW_N",
     "2": "GND"
    },
    "in_bom": true,
@@ -879,7 +1073,7 @@
   },
   {
    "ref": "D3",
-   "value": "BAT54",
+   "value": "1N5819WS",
    "footprint": "Diode_SMD:D_SOD-323",
    "dnp": false,
    "sheet": "power",
@@ -889,12 +1083,99 @@
    "fields": {
     "LCSC": "C191023",
     "MPN": "1N5819WS",
-    "Manufacturer": "Changjiang",
-    "Description": "isolates /QON from module pin 99"
+    "Manufacturer": "Hottech",
+    "Description": "/QON (VIL 0.4 V max: Schottky needed)"
    },
    "pads": {
-    "1": "PWR_BTN_N",
+    "1": "PWR_SW_N",
     "2": "CHG_QON_N"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D7",
+   "value": "1N5819WS",
+   "footprint": "Diode_SMD:D_SOD-323",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "5bb245b6-0ba9-5a06-b148-da93ed15ea2f",
+   "fields": {
+    "LCSC": "C191023",
+    "MPN": "1N5819WS",
+    "Manufacturer": "Hottech",
+    "Description": "module pin 99 through R26"
+   },
+   "pads": {
+    "1": "PWR_SW_N",
+    "2": "MOD_PWRON"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D8",
+   "value": "1N5819WS",
+   "footprint": "Diode_SMD:D_SOD-323",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "ff698b62-8f7e-57d5-bac0-81c3cb44327b",
+   "fields": {
+    "LCSC": "C191023",
+    "MPN": "1N5819WS",
+    "Manufacturer": "Hottech",
+    "Description": "GPIO power key (gpio-keys, KEY_POWER)"
+   },
+   "pads": {
+    "1": "PWR_SW_N",
+    "2": "PWR_KEY_N"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R26",
+   "value": "1k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "5268b165-aae2-5700-95e0-bbfa1e710ed9",
+   "fields": {
+    "LCSC": "C11702",
+    "MPN": "0402WGF1001TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "M1: limits current if pin 99 is a driven output"
+   },
+   "pads": {
+    "1": "MOD_PWRON",
+    "2": "MOD_PIN99"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R27",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "63fec964-05f1-5fa6-9683-35c1d3acbfff",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "PWR_KEY_N",
+    "2": "+3V3"
    },
    "in_bom": true,
    "nc": {}
@@ -996,6 +1277,70 @@
    "nc": {}
   },
   {
+   "ref": "TP7",
+   "value": "REGN",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "84450a6d-8297-5f5a-834f-d3f14540dfa9",
+   "fields": {},
+   "pads": {
+    "1": "REGN"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP8",
+   "value": "CHG_TS",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "2a562bd7-c1f6-5273-85f0-9f6657b554be",
+   "fields": {},
+   "pads": {
+    "1": "CHG_TS"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP9",
+   "value": "BOOST_EN",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "4e4aa010-653e-596b-8c8d-39e1b6344c9d",
+   "fields": {},
+   "pads": {
+    "1": "BOOST_EN"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP15",
+   "value": "CHG_QON_N",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "ef43252d-9a1d-51d3-a2ca-bb7c025fcf3f",
+   "fields": {},
+   "pads": {
+    "1": "CHG_QON_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
    "ref": "J1A",
    "value": "DF40C-100DS-0.4V(51)",
    "footprint": "hackerslide:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm",
@@ -1032,17 +1377,17 @@
     "36": "I2C_B_SDA",
     "34": "CHG_INT_N",
     "40": "GAUGE_INT",
-    "37": "KB_INT",
+    "37": "KB_INT_N",
     "45": "KB_RST_N",
-    "50": "KB_BOOT_N",
     "38": "VOL_UP_N",
     "39": "VOL_DN_N",
-    "47": "SLIDE_DET",
+    "47": "SLIDE_DET_R",
     "21": "LED_ACT_N",
-    "99": "PWR_BTN_N",
+    "41": "PWR_KEY_N",
+    "50": "HP_DET_SOC",
+    "99": "MOD_PIN99",
     "92": "RUN_PG",
     "93": "NRPIBOOT",
-    "41": "USB_SEL",
     "57": "SD_CLK",
     "62": "SD_CMD",
     "63": "SD_D0",
@@ -1136,7 +1481,7 @@
     "83": "DSI_D1_P",
     "87": "DSI_CLK_N",
     "89": "DSI_CLK_P",
-    "1": "USB_SEL",
+    "1": "USB_OTG_ID",
     "3": "USB_DM",
     "5": "USB_DP",
     "7": "GND",
@@ -1237,77 +1582,113 @@
   },
   {
    "ref": "H1",
-   "value": "M2.5",
-   "footprint": "hackerslide:MountingHole_M2.5_CM4_Standoff",
+   "value": "M2.5 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R",
    "dnp": false,
    "sheet": "module",
    "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "0896069c-7cd0-5ec4-8e8f-85d676b34871",
    "fields": {
-    "LCSC": "",
-    "MPN": "M2.5 standoff 1.5 mm"
+    "LCSC": "C5353804",
+    "MPN": "9774015151R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "E7: SMT spacer, module screws from the back"
    },
    "pads": {
     "1": "GND"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {
    "ref": "H2",
-   "value": "M2.5",
-   "footprint": "hackerslide:MountingHole_M2.5_CM4_Standoff",
+   "value": "M2.5 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R",
    "dnp": false,
    "sheet": "module",
    "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "dfbff7ad-0b07-5d20-a3f3-0c29df80d4ca",
    "fields": {
-    "LCSC": "",
-    "MPN": "M2.5 standoff 1.5 mm"
+    "LCSC": "C5353804",
+    "MPN": "9774015151R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "E7: SMT spacer, module screws from the back"
    },
    "pads": {
     "1": "GND"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {
    "ref": "H3",
-   "value": "M2.5",
-   "footprint": "hackerslide:MountingHole_M2.5_CM4_Standoff",
+   "value": "M2.5 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R",
    "dnp": false,
    "sheet": "module",
    "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "ca734313-5238-528b-b591-44e4fafdffb4",
    "fields": {
-    "LCSC": "",
-    "MPN": "M2.5 standoff 1.5 mm"
+    "LCSC": "C5353804",
+    "MPN": "9774015151R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "E7: SMT spacer, module screws from the back"
    },
    "pads": {
     "1": "GND"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {
    "ref": "H4",
-   "value": "M2.5",
-   "footprint": "hackerslide:MountingHole_M2.5_CM4_Standoff",
+   "value": "M2.5 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R",
    "dnp": false,
    "sheet": "module",
    "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "c9b6c154-d51a-5ddc-a445-08cb9f7c7567",
    "fields": {
-    "LCSC": "",
-    "MPN": "M2.5 standoff 1.5 mm"
+    "LCSC": "C5353804",
+    "MPN": "9774015151R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "E7: SMT spacer, module screws from the back"
    },
    "pads": {
     "1": "GND"
    },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "HS1",
+   "value": "M2 body screw",
+   "footprint": "hackerslide:MountingHole_M2_NPTH_BodyScrew",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "64a5cb5c-7ad5-5fe1-99bc-a1e55c52f19a",
+   "fields": {},
+   "pads": {},
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "HS2",
+   "value": "M2 body screw",
+   "footprint": "hackerslide:MountingHole_M2_NPTH_BodyScrew",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "a2f66d58-a877-5f31-8066-b09c0a14872a",
+   "fields": {},
+   "pads": {},
    "in_bom": false,
    "nc": {}
   },
@@ -1345,7 +1726,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "GPIO_VREF",
@@ -1355,42 +1736,21 @@
    "nc": {}
   },
   {
-   "ref": "C31",
-   "value": "22u",
-   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "ref": "C37",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
    "dnp": false,
    "sheet": "module",
    "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
    "sheetfile": "module.kicad_sch",
-   "sym_uuid": "4d5d11ea-a728-5346-be51-86c22ffd8a8c",
+   "sym_uuid": "61cf51db-d3c9-5a87-9e8f-d729957b379a",
    "fields": {
-    "LCSC": "C45783",
-    "MPN": "CL21A226MAQNNNE",
-    "Manufacturer": "Samsung/FH"
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+5V",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C32",
-   "value": "22u",
-   "footprint": "Capacitor_SMD:C_0805_2012Metric",
-   "dnp": false,
-   "sheet": "module",
-   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
-   "sheetfile": "module.kicad_sch",
-   "sym_uuid": "03a1937f-8c63-5aca-8059-4bb76962a8bb",
-   "fields": {
-    "LCSC": "C45783",
-    "MPN": "CL21A226MAQNNNE",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+5V",
+    "1": "GPIO_VREF",
     "2": "GND"
    },
    "in_bom": true,
@@ -1408,7 +1768,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+5V",
@@ -1429,7 +1789,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+5V",
@@ -1450,7 +1810,7 @@
    "fields": {
     "LCSC": "C19702",
     "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -1471,7 +1831,7 @@
    "fields": {
     "LCSC": "C19702",
     "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+1V8",
@@ -1481,50 +1841,46 @@
    "nc": {}
   },
   {
-   "ref": "R31",
-   "value": "10k",
-   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "ref": "TP16",
+   "value": "USB_OTG_ID",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
    "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "0e73e173-7dc6-55b3-aabe-d326a877cdda",
+   "fields": {},
+   "pads": {
+    "1": "USB_OTG_ID"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "R31",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": true,
    "sheet": "module",
    "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "ccb4ac7e-f5ea-508c-bd94-60b915ea20c7",
    "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "default: host mode through the hub"
+    "Description": "fit to force USB host mode (no VBUS source on this board)"
    },
    "pads": {
-    "1": "USB_SEL",
+    "1": "USB_OTG_ID",
     "2": "GND"
    },
    "in_bom": true,
    "nc": {}
   },
   {
-   "ref": "JP1",
-   "value": "USB_DEV",
-   "footprint": "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm",
-   "dnp": false,
-   "sheet": "module",
-   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
-   "sheetfile": "module.kicad_sch",
-   "sym_uuid": "921cc45e-6204-513d-8bef-7eb05f6962ce",
-   "fields": {
-    "LCSC": "",
-    "MPN": "solder jumper"
-   },
-   "pads": {
-    "1": "USB_SEL",
-    "2": "+3V3"
-   },
-   "in_bom": false,
-   "nc": {}
-  },
-  {
    "ref": "R32",
-   "value": "1k",
+   "value": "330",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "module",
@@ -1532,8 +1888,8 @@
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "d37ccd40-1c95-5611-b738-8a732c7b6235",
    "fields": {
-    "LCSC": "C11702",
-    "MPN": "0402WGF1001TCE",
+    "LCSC": "C25104",
+    "MPN": "0402WGF3300TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -1578,7 +1934,7 @@
     "LCSC": "C388883",
     "MPN": "EVQP7C01P",
     "Manufacturer": "Panasonic",
-    "Description": "hold at power-on: loader/maskrom"
+    "Description": "hold at power-on: loader (Core3566) / maskrom (RK3576 modules)"
    },
    "pads": {
     "1": "NRPIBOOT",
@@ -1603,8 +1959,30 @@
     "Description": "module reset"
    },
    "pads": {
-    "1": "RUN_PG",
+    "1": "RST_SW_N",
     "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R37",
+   "value": "220",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "6cea6aa8-b0c8-561e-8eca-e034d85d86e7",
+   "fields": {
+    "LCSC": "C25091",
+    "MPN": "0402WGF2200TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "M9: CM4 datasheet asks for 220R in series"
+   },
+   "pads": {
+    "1": "RST_SW_N",
+    "2": "RUN_PG"
    },
    "in_bom": true,
    "nc": {}
@@ -1612,21 +1990,21 @@
   {
    "ref": "J8",
    "value": "DEBUG UART",
-   "footprint": "Connector_JST:JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical",
+   "footprint": "Connector_JST:JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal",
    "dnp": false,
    "sheet": "module",
    "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "a8262a04-24b3-5bb9-a57e-b1c656fd7177",
    "fields": {
-    "LCSC": "C160389",
-    "MPN": "BM03B-SRSS-TB(LF)(SN)",
+    "LCSC": "C160403",
+    "MPN": "SM03B-SRSS-TB(LF)(SN)",
     "Manufacturer": "JST",
-    "Description": "1=GND 2=RX(into SoC) 3=TX(from SoC), 3.3 V"
+    "Description": "A6: side entry. Raspberry Pi debug-probe pinout: 1=RX (into SoC) 2=GND 3=TX (from SoC), 3.3 V"
    },
    "pads": {
-    "1": "GND",
-    "2": "UART_DBG_RX",
+    "1": "UART_DBG_RX",
+    "2": "GND",
     "3": "UART_DBG_TX"
    },
    "in_bom": true,
@@ -1634,7 +2012,7 @@
   },
   {
    "ref": "R33",
-   "value": "0",
+   "value": "100",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "module",
@@ -1642,10 +2020,10 @@
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "638dec5c-b46f-5667-a5aa-6b0841335d75",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25076",
+    "MPN": "0402WGF1000TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "CM4 GPIO14 / Core3566 UART2 TX"
+    "Description": "CM4 GPIO14 / Core3566 UART2 TX (1.5 Mbaud)"
    },
    "pads": {
     "1": "UART_TX",
@@ -1656,7 +2034,7 @@
   },
   {
    "ref": "R34",
-   "value": "0",
+   "value": "100",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "module",
@@ -1664,8 +2042,8 @@
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "98526983-a67f-542c-ad15-9a830a9c4404",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25076",
+    "MPN": "0402WGF1000TCE",
     "Manufacturer": "UNI-ROYAL",
     "Description": "CM4 GPIO15 / Core3566 UART2 RX"
    },
@@ -1678,7 +2056,7 @@
   },
   {
    "ref": "R35",
-   "value": "0",
+   "value": "100",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": true,
    "sheet": "module",
@@ -1686,8 +2064,8 @@
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "38b3283d-6fb3-5d51-b698-3129aeb4fc56",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25076",
+    "MPN": "0402WGF1000TCE",
     "Manufacturer": "UNI-ROYAL",
     "Description": "ArmSoM-CM5 UART0 TX on pin 54"
    },
@@ -1700,7 +2078,7 @@
   },
   {
    "ref": "R36",
-   "value": "0",
+   "value": "100",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": true,
    "sheet": "module",
@@ -1708,8 +2086,8 @@
    "sheetfile": "module.kicad_sch",
    "sym_uuid": "d8794d9d-ca1f-5ece-beec-5c2c1f24d608",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25076",
+    "MPN": "0402WGF1000TCE",
     "Manufacturer": "UNI-ROYAL",
     "Description": "ArmSoM-CM5 UART0 RX on pin 56"
    },
@@ -1722,7 +2100,7 @@
   },
   {
    "ref": "TP10",
-   "value": "GPIO2",
+   "value": "CM4_GPIO2",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
    "dnp": false,
    "sheet": "module",
@@ -1785,35 +2163,19 @@
    "nc": {}
   },
   {
-   "ref": "TP14",
-   "value": "GND",
-   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
-   "dnp": false,
-   "sheet": "module",
-   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
-   "sheetfile": "module.kicad_sch",
-   "sym_uuid": "04efdfc2-9dc6-56e0-8587-b2614ae8dac5",
-   "fields": {},
-   "pads": {
-    "1": "GND"
-   },
-   "in_bom": false,
-   "nc": {}
-  },
-  {
    "ref": "J4",
-   "value": "FH12-20S-0.5SH",
-   "footprint": "Connector_FFC-FPC:Hirose_FH12-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal",
+   "value": "FH34SRJ-20S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal",
    "dnp": false,
    "sheet": "display",
    "sheet_uuid": "7a2998f6-a427-503c-b137-c28c4038d4a8",
    "sheetfile": "display.kicad_sch",
    "sym_uuid": "2e5ed920-9d97-5cf6-b743-97aa0facc387",
    "fields": {
-    "LCSC": "C596730",
-    "MPN": "FH12-20S-0.5SH(55)",
+    "LCSC": "C2802370",
+    "MPN": "FH34SRJ-20S-0.5SH(50)",
     "Manufacturer": "Hirose",
-    "Description": "panel FPC"
+    "Description": "panel FPC, 1.0 mm high"
    },
    "pads": {
     "2": "LED_K",
@@ -1844,18 +2206,18 @@
   },
   {
    "ref": "J5",
-   "value": "FH12-8S-0.5SH",
-   "footprint": "Connector_FFC-FPC:Hirose_FH12-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal",
+   "value": "FH34SRJ-8S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal",
    "dnp": false,
    "sheet": "display",
    "sheet_uuid": "7a2998f6-a427-503c-b137-c28c4038d4a8",
    "sheetfile": "display.kicad_sch",
    "sym_uuid": "eca8e13d-19e2-518a-a90d-e8b22020cdff",
    "fields": {
-    "LCSC": "C597995",
-    "MPN": "FH12-8S-0.5SH(55)",
+    "LCSC": "C88372",
+    "MPN": "FH34SRJ-8S-0.5SH(50)",
     "Manufacturer": "Hirose",
-    "Description": "touch FPC (GT911)"
+    "Description": "touch FPC (GT911 0x5D/0x14)"
    },
    "pads": {
     "1": "GND",
@@ -1874,7 +2236,7 @@
   },
   {
    "ref": "R40",
-   "value": "2.2k",
+   "value": "4.7k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "display",
@@ -1882,9 +2244,10 @@
    "sheetfile": "display.kicad_sch",
    "sym_uuid": "939cd799-e7a7-5bf0-a8a4-6c39ed500195",
    "fields": {
-    "LCSC": "C25879",
-    "MPN": "0402WGF2201TCE",
-    "Manufacturer": "UNI-ROYAL"
+    "LCSC": "C25900",
+    "MPN": "0402WGF4701TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "M7"
    },
    "pads": {
     "1": "I2C_A_SCL",
@@ -1895,7 +2258,7 @@
   },
   {
    "ref": "R41",
-   "value": "2.2k",
+   "value": "4.7k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "display",
@@ -1903,8 +2266,8 @@
    "sheetfile": "display.kicad_sch",
    "sym_uuid": "733ae03f-5115-5818-bf64-8cd7b17d39bb",
    "fields": {
-    "LCSC": "C25879",
-    "MPN": "0402WGF2201TCE",
+    "LCSC": "C25900",
+    "MPN": "0402WGF4701TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -1926,7 +2289,7 @@
    "fields": {
     "LCSC": "C19702",
     "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -1947,7 +2310,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -1992,7 +2355,8 @@
    "fields": {
     "LCSC": "C38117",
     "MPN": "SWPA4030S100MT",
-    "Manufacturer": "Sunlord"
+    "Manufacturer": "Sunlord",
+    "Description": "Isat 1.95 A guaranteed; 3.0 mm high"
    },
    "pads": {
     "1": "VSYS",
@@ -2003,7 +2367,7 @@
   },
   {
    "ref": "D4",
-   "value": "1N5819WS",
+   "value": "NSR0240H",
    "footprint": "Diode_SMD:D_SOD-323",
    "dnp": false,
    "sheet": "display",
@@ -2011,10 +2375,10 @@
    "sheetfile": "display.kicad_sch",
    "sym_uuid": "e1773b33-70ec-5c93-bca7-b49bf20b214f",
    "fields": {
-    "LCSC": "C191023",
-    "MPN": "1N5819WS",
-    "Manufacturer": "Changjiang",
-    "Description": "40 V Schottky"
+    "LCSC": "C152519",
+    "MPN": "NSR0240HT1G",
+    "Manufacturer": "onsemi",
+    "Description": "P13: the diode the TPS61169 datasheet recommends"
    },
    "pads": {
     "2": "BL_SW",
@@ -2025,16 +2389,16 @@
   },
   {
    "ref": "C42",
-   "value": "1u 50V",
-   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "2.2u",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
    "dnp": false,
    "sheet": "display",
    "sheet_uuid": "7a2998f6-a427-503c-b137-c28c4038d4a8",
    "sheetfile": "display.kicad_sch",
    "sym_uuid": "5473cac9-9ff8-59f9-aa41-b92a30bf0ac7",
    "fields": {
-    "LCSC": "C15849",
-    "MPN": "CL10A105KB8NNNC",
+    "LCSC": "C307528",
+    "MPN": "CL21A225KBFNNNE",
     "Manufacturer": "Samsung"
    },
    "pads": {
@@ -2056,7 +2420,7 @@
    "fields": {
     "LCSC": "C23733",
     "MPN": "CL05A475MP5NRNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "VSYS",
@@ -2067,7 +2431,7 @@
   },
   {
    "ref": "R42",
-   "value": "10",
+   "value": "5.1",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "display",
@@ -2075,10 +2439,10 @@
    "sheetfile": "display.kicad_sch",
    "sym_uuid": "5d4a1abf-d4d4-5860-b377-39f30793be3f",
    "fields": {
-    "LCSC": "C25077",
-    "MPN": "0402WGF100JTCE",
+    "LCSC": "C25128",
+    "MPN": "0402WGF510KTCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "LED current 20.4 mA"
+    "Description": "LED current 40 mA (2 strings x 20 mA)"
    },
    "pads": {
     "1": "LED_K",
@@ -2144,7 +2508,7 @@
   {
    "ref": "U7",
    "value": "ES8316",
-   "footprint": "Package_DFN_QFN:QFN-32-1EP_4x4mm_P0.4mm_EP2.9x2.9mm",
+   "footprint": "Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm",
    "dnp": false,
    "sheet": "audio",
    "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
@@ -2165,6 +2529,7 @@
     "7": "I2S_DACDAT",
     "9": "I2S_ADCDAT",
     "10": "HP_DET",
+    "11": "MIC_DET",
     "12": "CODEC_IRQ",
     "3": "+1V8",
     "4": "+3V3",
@@ -2181,7 +2546,7 @@
     "15": "CPTOP",
     "16": "CPBOT",
     "13": "CPVSSP",
-    "18": "GND",
+    "18": "HPGND",
     "5": "GND",
     "23": "GND",
     "17": "GND",
@@ -2189,7 +2554,6 @@
    },
    "in_bom": true,
    "nc": {
-    "11": "unconnected-(U7-GPIO2-Pad11)",
     "28": "unconnected-(U7-LIN2-Pad28)",
     "27": "unconnected-(U7-RIN2-Pad27)"
    }
@@ -2228,7 +2592,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+1V8",
@@ -2249,7 +2613,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -2270,7 +2634,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "AVDD_CODEC",
@@ -2291,7 +2655,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+1V8",
@@ -2312,7 +2676,7 @@
    "fields": {
     "LCSC": "C19702",
     "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "AVDD_CODEC",
@@ -2333,7 +2697,7 @@
    "fields": {
     "LCSC": "C52923",
     "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "DACVREF",
@@ -2354,7 +2718,7 @@
    "fields": {
     "LCSC": "C52923",
     "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "ADCVREF",
@@ -2375,7 +2739,7 @@
    "fields": {
     "LCSC": "C52923",
     "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "VMID",
@@ -2396,8 +2760,7 @@
    "fields": {
     "LCSC": "C52923",
     "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung",
-    "Description": "charge pump flying cap"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "CPTOP",
@@ -2418,7 +2781,7 @@
    "fields": {
     "LCSC": "C23733",
     "MPN": "CL05A475MP5NRNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "CPVSSP",
@@ -2460,11 +2823,74 @@
    "fields": {
     "LCSC": "C52923",
     "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "MIC_N",
+    "2": "HPGND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C63",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "3a1d76bc-a069-5b96-b815-128ec724e583",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "MICBIAS",
     "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C64",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "1f470cc9-8996-59c8-8a72-4dd2fb17688e",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C62",
+   "value": "100p",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "27cad6b0-0f64-5c53-91d5-b9db678bf369",
+   "fields": {
+    "LCSC": "C1546",
+    "MPN": "0402CG101J500NT",
+    "Manufacturer": "FH"
+   },
+   "pads": {
+    "1": "MIC_SLEEVE",
+    "2": "HPGND"
    },
    "in_bom": true,
    "nc": {}
@@ -2493,7 +2919,7 @@
   },
   {
    "ref": "R46",
-   "value": "22",
+   "value": "33",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "audio",
@@ -2501,9 +2927,10 @@
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "3a851224-fe9f-5875-9c69-71b3e4bebc91",
    "fields": {
-    "LCSC": "C25092",
-    "MPN": "0402WGF220JTCE",
-    "Manufacturer": "UNI-ROYAL"
+    "LCSC": "C25105",
+    "MPN": "0402WGF330JTCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "A4: datasheet value"
    },
    "pads": {
     "1": "HP_L",
@@ -2514,7 +2941,7 @@
   },
   {
    "ref": "R47",
-   "value": "22",
+   "value": "33",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "audio",
@@ -2522,8 +2949,8 @@
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "e03acb58-c77c-5bad-9fb0-5d5363282cc8",
    "fields": {
-    "LCSC": "C25092",
-    "MPN": "0402WGF220JTCE",
+    "LCSC": "C25105",
+    "MPN": "0402WGF330JTCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -2535,7 +2962,7 @@
   },
   {
    "ref": "R48",
-   "value": "100k",
+   "value": "10k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "audio",
@@ -2543,10 +2970,10 @@
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "579aeba6-d52a-57f4-8d46-dd1120f461ad",
    "fields": {
-    "LCSC": "C25741",
-    "MPN": "0402WGF1003TCE",
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "no jack switch on PJ-320D; pulled inactive"
+    "Description": "A5: low while the tip switch is closed (no plug)"
    },
    "pads": {
     "1": "HP_DET",
@@ -2556,32 +2983,255 @@
    "nc": {}
   },
   {
+   "ref": "R64",
+   "value": "1k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "0e69f1ee-6afd-5fcd-b19f-1dd26de07193",
+   "fields": {
+    "LCSC": "C11702",
+    "MPN": "0402WGF1001TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "same signal to a module GPIO (ES8316 IRQ behaviour unverified)"
+   },
+   "pads": {
+    "1": "HP_DET",
+    "2": "HP_DET_SOC"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R65",
+   "value": "15k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "eecf2d04-fc5c-557e-b499-f0f7dfe9c87f",
+   "fields": {
+    "LCSC": "C25756",
+    "MPN": "0402WGF1502TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "A5: headset mic / button detect (ES8316 GPIO2)"
+   },
+   "pads": {
+    "1": "MIC_SLEEVE",
+    "2": "MIC_DET"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R49",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "edbea36a-f4de-5552-9195-6d4536508f1f",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "A8: single ground join, at the jack"
+   },
+   "pads": {
+    "1": "HPGND",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
    "ref": "J6",
-   "value": "PJ-320D",
-   "footprint": "Connector_Audio:Jack_3.5mm_PJ320D_Horizontal",
+   "value": "PJ-342",
+   "footprint": "hackerslide:Jack_3.5mm_SHOUHAN_PJ-342",
    "dnp": false,
    "sheet": "audio",
    "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "cfea0524-02eb-5e10-a33d-59a373dd86e5",
    "fields": {
-    "LCSC": "C431535",
-    "MPN": "PJ-320D",
+    "LCSC": "C668606",
+    "MPN": "PJ-342",
     "Manufacturer": "SHOU HAN",
-    "Description": "CTIA headset: T=L R1=R R2=GND S=MIC"
+    "Description": "CTIA headset: T=L R1=R R2=GND S=MIC; 4.5 mm high"
    },
    "pads": {
-    "T": "JACK_T",
-    "R1": "JACK_R1",
-    "R2": "GND",
-    "S": "MIC_SLEEVE"
+    "3": "JACK_T",
+    "4": "HP_DET",
+    "6": "JACK_R1",
+    "2": "JACK_P2",
+    "5": "JACK_P5"
+   },
+   "in_bom": true,
+   "nc": {
+    "7": "unconnected-(J6-RING1_SW-Pad7)"
+   }
+  },
+  {
+   "ref": "R60",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "522773a2-270f-584c-b9d2-a80cc1dadc83",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "A7: terminal 2 = ring2 = ground (assumed)"
+   },
+   "pads": {
+    "1": "JACK_P2",
+    "2": "HPGND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R61",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "84a6126e-b2ce-5d45-b467-b84f082a2bb4",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "A7: terminal 5 = sleeve = mic (assumed)"
+   },
+   "pads": {
+    "1": "JACK_P5",
+    "2": "MIC_SLEEVE"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R62",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": true,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "f18430ce-8baa-579b-9a6c-4d4e1e121d97",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "A7: swapped assignment"
+   },
+   "pads": {
+    "1": "JACK_P2",
+    "2": "MIC_SLEEVE"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R63",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": true,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "dba2c848-6889-5852-bf0d-8c73b238aa66",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "A7: swapped assignment"
+   },
+   "pads": {
+    "1": "JACK_P5",
+    "2": "HPGND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D10",
+   "value": "PESD5V0S1BL",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "45cb2c57-0464-5b35-a7e6-40291d4e1522",
+   "fields": {
+    "LCSC": "C84374",
+    "MPN": "PESD5V0S1BL,315",
+    "Manufacturer": "Nexperia",
+    "Description": "ESD, bidirectional"
+   },
+   "pads": {
+    "1": "JACK_T",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D11",
+   "value": "PESD5V0S1BL",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "df39a794-af90-5075-b551-4720e4953f2f",
+   "fields": {
+    "LCSC": "C84374",
+    "MPN": "PESD5V0S1BL,315",
+    "Manufacturer": "Nexperia",
+    "Description": "ESD, bidirectional"
+   },
+   "pads": {
+    "1": "JACK_R1",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D12",
+   "value": "PESD5V0S1BL",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "b1e65786-edeb-5195-b23c-08f795c81c58",
+   "fields": {
+    "LCSC": "C84374",
+    "MPN": "PESD5V0S1BL,315",
+    "Manufacturer": "Nexperia",
+    "Description": "ESD, bidirectional"
+   },
+   "pads": {
+    "1": "MIC_SLEEVE",
+    "2": "GND"
    },
    "in_bom": true,
    "nc": {}
   },
   {
    "ref": "R50",
-   "value": "0",
+   "value": "33",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "audio",
@@ -2589,8 +3239,8 @@
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "8eefa4c1-6d70-550e-8c2b-2fda2d785ad0",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25105",
+    "MPN": "0402WGF330JTCE",
     "Manufacturer": "UNI-ROYAL",
     "Description": "Core3566 I2S3_M1 strap (fitted)"
    },
@@ -2603,7 +3253,7 @@
   },
   {
    "ref": "R51",
-   "value": "0",
+   "value": "33",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "audio",
@@ -2611,8 +3261,8 @@
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "78aea47e-2b25-5207-85d1-33675bc99baa",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25105",
+    "MPN": "0402WGF330JTCE",
     "Manufacturer": "UNI-ROYAL",
     "Description": "Core3566 I2S3_M1 strap (fitted)"
    },
@@ -2691,7 +3341,7 @@
   },
   {
    "ref": "R55",
-   "value": "0",
+   "value": "33",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": true,
    "sheet": "audio",
@@ -2699,8 +3349,8 @@
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "6e4cc2b9-d7a5-5ad9-995d-05c18c5d64fe",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25105",
+    "MPN": "0402WGF330JTCE",
     "Manufacturer": "UNI-ROYAL",
     "Description": "CM4-PCM / Radxa CM4 SAI2 strap (DNP)"
    },
@@ -2713,7 +3363,7 @@
   },
   {
    "ref": "R56",
-   "value": "0",
+   "value": "33",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": true,
    "sheet": "audio",
@@ -2721,8 +3371,8 @@
    "sheetfile": "audio.kicad_sch",
    "sym_uuid": "3714360c-056c-56ab-8e62-23195517b2e7",
    "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
+    "LCSC": "C25105",
+    "MPN": "0402WGF330JTCE",
     "Manufacturer": "UNI-ROYAL",
     "Description": "CM4-PCM / Radxa CM4 SAI2 strap (DNP)"
    },
@@ -2816,360 +3466,96 @@
    "nc": {}
   },
   {
-   "ref": "U8",
-   "value": "FSUSB42MUX",
-   "footprint": "Package_SO:MSOP-10_3x3mm_P0.5mm",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "7d55d612-3f70-5500-8211-b71c5af5a90e",
-   "fields": {
-    "LCSC": "C11355",
-    "MPN": "FSUSB42MUX",
-    "Manufacturer": "onsemi"
-   },
-   "pads": {
-    "3": "USB_DP",
-    "4": "USB_DM",
-    "10": "GND",
-    "2": "USB_SEL",
-    "1": "+3V3",
-    "5": "GND",
-    "7": "HUB_UP_DP",
-    "6": "HUB_UP_DM",
-    "9": "USBC_DP",
-    "8": "USBC_DM"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C70",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "49a664a7-b59f-5c01-bf40-9aecbc4083a0",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+3V3",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "U9",
-   "value": "CH334R",
-   "footprint": "Package_SO:QSOP-16_3.9x4.9mm_P0.635mm",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "6dfa96a7-5c0b-51e7-a127-bfc869c7a745",
-   "fields": {
-    "LCSC": "C4154405",
-    "MPN": "CH334R",
-    "Manufacturer": "WCH"
-   },
-   "pads": {
-    "13": "HUB_V33",
-    "11": "HUB_UP_DP",
-    "10": "HUB_UP_DM",
-    "9": "HUB_RST_N",
-    "15": "HUB_XO",
-    "16": "HUB_XI",
-    "12": "+5V",
-    "14": "GND",
-    "8": "KB_USB_DP",
-    "7": "KB_USB_DM",
-    "6": "P2_DP",
-    "5": "P2_DM",
-    "4": "P3_DP",
-    "3": "P3_DM"
-   },
-   "in_bom": true,
-   "nc": {
-    "1": "unconnected-(U9-DM4--Pad1)",
-    "2": "unconnected-(U9-DP4+-Pad2)"
-   }
-  },
-  {
-   "ref": "C71",
-   "value": "1u",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "d8a2379a-7da9-5d4b-adae-c82989cf5490",
-   "fields": {
-    "LCSC": "C52923",
-    "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "HUB_V33",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C72",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "b9adda98-b22a-5927-99e5-406073473c72",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+5V",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C73",
-   "value": "1u",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "8b4a0d11-b96f-52bf-8347-58f55c0f3c02",
-   "fields": {
-    "LCSC": "C52923",
-    "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+5V",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "R70",
-   "value": "10k",
-   "footprint": "Resistor_SMD:R_0402_1005Metric",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "c38e5ab5-0319-5283-bca4-e12a52bfa13d",
-   "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
-    "Manufacturer": "UNI-ROYAL"
-   },
-   "pads": {
-    "1": "HUB_RST_N",
-    "2": "HUB_V33"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "Y2",
-   "value": "12MHz",
-   "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "bad5bf0c-459f-508f-9c81-8cd72f7820bd",
-   "fields": {
-    "LCSC": "C9002",
-    "MPN": "X322512MSB4SI",
-    "Manufacturer": "YXC",
-    "Description": "optional per WCH datasheet"
-   },
-   "pads": {
-    "1": "HUB_XI",
-    "3": "HUB_XO",
-    "2": "GND",
-    "4": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C74",
-   "value": "15p",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "166f2a94-a33e-579a-887a-b1bfd0272912",
-   "fields": {
-    "LCSC": "C1548",
-    "MPN": "0402CG150J500NT",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "HUB_XI",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C75",
-   "value": "15p",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "cc562af7-6486-5ddf-a126-a7a74acd78a3",
-   "fields": {
-    "LCSC": "C1548",
-    "MPN": "0402CG150J500NT",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "HUB_XO",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "TP40",
-   "value": "P2_DP",
+   "ref": "TP31",
+   "value": "I2S_MCLK",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "c811a1a9-c4fb-54e4-ad22-f7f610606d6e",
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "2d437b48-fbd9-5929-ba1f-49b14785f24b",
    "fields": {},
    "pads": {
-    "1": "P2_DP"
+    "1": "I2S_MCLK"
    },
    "in_bom": false,
    "nc": {}
   },
   {
-   "ref": "TP41",
-   "value": "P2_DM",
+   "ref": "TP32",
+   "value": "I2S_SCLK",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "a7048bcb-4240-5f9b-aa9d-79d3c5e0a7c6",
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "bf5b6ca7-1cf3-5353-94f3-8d7f47e65a31",
    "fields": {},
    "pads": {
-    "1": "P2_DM"
+    "1": "I2S_SCLK"
    },
    "in_bom": false,
    "nc": {}
   },
   {
-   "ref": "TP42",
-   "value": "P3_DP",
+   "ref": "TP33",
+   "value": "I2S_DACDAT",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "99cae6e9-e62a-58db-bf13-1a10ee53206b",
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "71d83d45-e6a3-504a-8785-0157b72a45db",
    "fields": {},
    "pads": {
-    "1": "P3_DP"
-   },
-   "in_bom": false,
-   "nc": {}
-  },
-  {
-   "ref": "TP43",
-   "value": "P3_DM",
-   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
-   "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "5a006173-2377-56dd-9982-e0b76575a427",
-   "fields": {},
-   "pads": {
-    "1": "P3_DM"
+    "1": "I2S_DACDAT"
    },
    "in_bom": false,
    "nc": {}
   },
   {
    "ref": "J9",
-   "value": "FH12-20S-0.5SH",
-   "footprint": "Connector_FFC-FPC:Hirose_FH12-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal",
+   "value": "FH34SRJ-8S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "e6357a66-d803-54ad-a157-44fd9b7839e7",
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "740fca19-5d3f-5364-9dca-3553972af65e",
    "fields": {
-    "LCSC": "C596730",
-    "MPN": "FH12-20S-0.5SH(55)",
+    "LCSC": "C88372",
+    "MPN": "FH34SRJ-8S-0.5SH(50)",
     "Manufacturer": "Hirose",
     "Description": "keyboard FPC through the slider"
    },
    "pads": {
     "1": "GND",
     "2": "+3V3",
-    "3": "+3V3",
-    "4": "GND",
-    "5": "KB_USB_DP",
-    "6": "KB_USB_DM",
-    "7": "GND",
-    "8": "I2C_B_SDA",
-    "9": "I2C_B_SCL",
-    "10": "KB_INT",
-    "11": "KB_RST_N",
-    "12": "KB_BOOT_N",
-    "13": "GND",
-    "17": "GND",
-    "19": "GND",
-    "20": "GND",
+    "3": "I2C_B_SDA",
+    "4": "KB_INT_N",
+    "5": "KB_RST_N",
+    "6": "I2C_B_SCL",
+    "7": "+3V3",
+    "8": "GND",
     "MP": "GND"
    },
    "in_bom": true,
-   "nc": {
-    "14": "unconnected-(J9-Pin_14-Pad14)",
-    "15": "unconnected-(J9-Pin_15-Pad15)",
-    "16": "unconnected-(J9-Pin_16-Pad16)",
-    "18": "unconnected-(J9-Pin_18-Pad18)"
-   }
+   "nc": {}
   },
   {
    "ref": "R71",
-   "value": "2.2k",
+   "value": "4.7k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "56805bad-7109-5a16-a6a4-d4718a917aa9",
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "fb53f55a-98e4-5567-9a42-dae92859586c",
    "fields": {
-    "LCSC": "C25879",
-    "MPN": "0402WGF2201TCE",
-    "Manufacturer": "UNI-ROYAL"
+    "LCSC": "C25900",
+    "MPN": "0402WGF4701TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "M7"
    },
    "pads": {
     "1": "I2C_B_SCL",
@@ -3180,16 +3566,16 @@
   },
   {
    "ref": "R72",
-   "value": "2.2k",
+   "value": "4.7k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "29b20a0c-3e82-58e6-bdc1-73bfcee1596c",
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "b8e7f08b-cb65-5139-b6da-9c961a24c307",
    "fields": {
-    "LCSC": "C25879",
-    "MPN": "0402WGF2201TCE",
+    "LCSC": "C25900",
+    "MPN": "0402WGF4701TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -3204,18 +3590,60 @@
    "value": "10k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "a9733ee8-d845-5a2a-8c7c-399246e91598",
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "88cb2488-9863-5fe8-a07e-ec1a7d06a8ba",
    "fields": {
     "LCSC": "C25744",
     "MPN": "0402WGF1002TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
-    "1": "KB_BOOT_N",
+    "1": "KB_RST_N",
     "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R74",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "72261565-dde7-5446-8524-2b9a3e9245e5",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "KB_INT_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C77",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "d942cdb1-3248-582d-b4b7-481722d5f760",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
    },
    "in_bom": true,
    "nc": {}
@@ -3225,15 +3653,15 @@
    "value": "DRV5032FADBZR",
    "footprint": "Package_TO_SOT_SMD:SOT-23",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "70a95cf7-ed07-5239-ba32-10396d050a04",
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "4408b266-8bdf-58e5-a4e6-154c87ff502c",
    "fields": {
     "LCSC": "C140921",
     "MPN": "DRV5032FADBZR",
     "Manufacturer": "Texas Instruments",
-    "Description": "slider open/closed (hall switch near a detent magnet). TODO(verify) pinout vs DRV5033 symbol"
+    "Description": "slider closed sensor. Pinout verified against SLVSDC7H Table 5-1"
    },
    "pads": {
     "1": "+3V3",
@@ -3248,18 +3676,40 @@
    "value": "100n",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
    "dnp": false,
-   "sheet": "usb",
-   "sheet_uuid": "1bc19a81-ed71-5933-a999-b9e9f0b7fdbb",
-   "sheetfile": "usb.kicad_sch",
-   "sym_uuid": "702566e4-b33a-57c7-a7e9-9ebfd3134969",
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "c482f551-3f45-5ebc-b0b3-1e2af54e288d",
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
     "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R75",
+   "value": "1k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard_link",
+   "sheet_uuid": "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+   "sheetfile": "keyboard_link.kicad_sch",
+   "sym_uuid": "a15dcb59-b802-512c-aa98-e7124530dd82",
+   "fields": {
+    "LCSC": "C11702",
+    "MPN": "0402WGF1001TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "push-pull output into a GPIO"
+   },
+   "pads": {
+    "1": "SLIDE_DET",
+    "2": "SLIDE_DET_R"
    },
    "in_bom": true,
    "nc": {}
@@ -3296,7 +3746,7 @@
   },
   {
    "ref": "R80",
-   "value": "10k",
+   "value": "47k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "storage_io",
@@ -3304,8 +3754,8 @@
    "sheetfile": "storage_io.kicad_sch",
    "sym_uuid": "9b8b24b0-17af-5af2-97b1-06f0c806d912",
    "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -3317,7 +3767,7 @@
   },
   {
    "ref": "R81",
-   "value": "10k",
+   "value": "47k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "storage_io",
@@ -3325,8 +3775,8 @@
    "sheetfile": "storage_io.kicad_sch",
    "sym_uuid": "c559caef-c443-5ab0-a1b3-eb0e95c1e040",
    "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -3338,7 +3788,7 @@
   },
   {
    "ref": "R82",
-   "value": "10k",
+   "value": "47k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "storage_io",
@@ -3346,8 +3796,8 @@
    "sheetfile": "storage_io.kicad_sch",
    "sym_uuid": "7fcdbbda-ec63-5b8d-b0de-919b7aaea944",
    "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -3359,7 +3809,7 @@
   },
   {
    "ref": "R83",
-   "value": "10k",
+   "value": "47k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "storage_io",
@@ -3367,8 +3817,8 @@
    "sheetfile": "storage_io.kicad_sch",
    "sym_uuid": "4df843f8-1aa5-52f6-8cef-9cfc3f1138dc",
    "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -3380,7 +3830,7 @@
   },
   {
    "ref": "R84",
-   "value": "10k",
+   "value": "47k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "storage_io",
@@ -3388,8 +3838,8 @@
    "sheetfile": "storage_io.kicad_sch",
    "sym_uuid": "ad83ab33-f816-5fa7-8aaf-a28c1241d582",
    "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
@@ -3411,11 +3861,12 @@
    "fields": {
     "LCSC": "C25744",
     "MPN": "0402WGF1002TCE",
-    "Manufacturer": "UNI-ROYAL"
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "M2"
    },
    "pads": {
     "1": "SD_CD_N",
-    "2": "+3V3"
+    "2": "+1V8"
    },
    "in_bom": true,
    "nc": {}
@@ -3432,7 +3883,7 @@
    "fields": {
     "LCSC": "C19702",
     "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -3453,7 +3904,7 @@
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -3461,6 +3912,68 @@
    },
    "in_bom": true,
    "nc": {}
+  },
+  {
+   "ref": "U11",
+   "value": "TPD4E05U06DQAR",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+   "dnp": false,
+   "sheet": "storage_io",
+   "sheet_uuid": "3743add9-d7c0-5a01-97bf-776f02f44947",
+   "sheetfile": "storage_io.kicad_sch",
+   "sym_uuid": "e8fcdb08-48cc-55c8-ad83-cca167a08a40",
+   "fields": {
+    "LCSC": "C138714",
+    "MPN": "TPD4E05U06DQAR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "A9: SD ESD"
+   },
+   "pads": {
+    "3": "GND",
+    "8": "GND",
+    "1": "SD_CLK",
+    "2": "SD_CMD",
+    "4": "SD_D0",
+    "5": "SD_D1"
+   },
+   "in_bom": true,
+   "nc": {
+    "10": "unconnected-(U11-NC-Pad10)",
+    "9": "unconnected-(U11-NC-Pad9)",
+    "7": "unconnected-(U11-NC-Pad7)",
+    "6": "unconnected-(U11-NC-Pad6)"
+   }
+  },
+  {
+   "ref": "U12",
+   "value": "TPD4E05U06DQAR",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+   "dnp": false,
+   "sheet": "storage_io",
+   "sheet_uuid": "3743add9-d7c0-5a01-97bf-776f02f44947",
+   "sheetfile": "storage_io.kicad_sch",
+   "sym_uuid": "3e73f1bd-5196-5142-8601-08aabb945633",
+   "fields": {
+    "LCSC": "C138714",
+    "MPN": "TPD4E05U06DQAR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "A9: SD ESD"
+   },
+   "pads": {
+    "3": "GND",
+    "8": "GND",
+    "1": "SD_D2",
+    "2": "SD_D3",
+    "4": "SD_CD_N"
+   },
+   "in_bom": true,
+   "nc": {
+    "10": "unconnected-(U12-NC-Pad10)",
+    "9": "unconnected-(U12-NC-Pad9)",
+    "7": "unconnected-(U12-NC-Pad7)",
+    "5": "unconnected-(U12-D2--Pad5)",
+    "6": "unconnected-(U12-NC-Pad6)"
+   }
   },
   {
    "ref": "SW2",

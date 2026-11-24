@@ -14,7 +14,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Esc\" row 0 col 0"
+    "Description": "key \"Esc\" matrix row 0 col 0"
    },
    "pads": {
     "1": "COL0",
@@ -38,8 +38,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_0",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_0"
    },
    "in_bom": true,
    "nc": {}
@@ -57,7 +57,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"1\" row 0 col 1"
+    "Description": "key \"1\" matrix row 0 col 1"
    },
    "pads": {
     "1": "COL1",
@@ -81,8 +81,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_1",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_1"
    },
    "in_bom": true,
    "nc": {}
@@ -100,7 +100,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"2\" row 0 col 2"
+    "Description": "key \"2\" matrix row 0 col 2"
    },
    "pads": {
     "1": "COL2",
@@ -124,8 +124,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_2",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_2"
    },
    "in_bom": true,
    "nc": {}
@@ -143,7 +143,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"3\" row 0 col 3"
+    "Description": "key \"3\" matrix row 0 col 3"
    },
    "pads": {
     "1": "COL3",
@@ -167,8 +167,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_3",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_3"
    },
    "in_bom": true,
    "nc": {}
@@ -186,7 +186,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"4\" row 0 col 4"
+    "Description": "key \"4\" matrix row 0 col 4"
    },
    "pads": {
     "1": "COL4",
@@ -210,8 +210,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_4",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_4"
    },
    "in_bom": true,
    "nc": {}
@@ -229,7 +229,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"5\" row 0 col 5"
+    "Description": "key \"5\" matrix row 0 col 5"
    },
    "pads": {
     "1": "COL5",
@@ -253,8 +253,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_5",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_5"
    },
    "in_bom": true,
    "nc": {}
@@ -272,7 +272,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"6\" row 0 col 6"
+    "Description": "key \"6\" matrix row 0 col 6"
    },
    "pads": {
     "1": "COL6",
@@ -296,8 +296,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_6",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_6"
    },
    "in_bom": true,
    "nc": {}
@@ -315,7 +315,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"7\" row 0 col 7"
+    "Description": "key \"7\" matrix row 0 col 7"
    },
    "pads": {
     "1": "COL7",
@@ -339,8 +339,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_7",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_7"
    },
    "in_bom": true,
    "nc": {}
@@ -358,7 +358,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"8\" row 0 col 8"
+    "Description": "key \"8\" matrix row 0 col 8"
    },
    "pads": {
     "1": "COL8",
@@ -382,8 +382,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_8",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_8"
    },
    "in_bom": true,
    "nc": {}
@@ -401,7 +401,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"9\" row 0 col 9"
+    "Description": "key \"9\" matrix row 0 col 9"
    },
    "pads": {
     "1": "COL9",
@@ -425,8 +425,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_9",
-    "1": "ROW0"
+    "2": "ROW0",
+    "1": "K0_9"
    },
    "in_bom": true,
    "nc": {}
@@ -444,11 +444,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"0\" row 0 col 10"
+    "Description": "key \"0\" matrix row 4 col 0"
    },
    "pads": {
-    "1": "COL10",
-    "2": "K0_10"
+    "1": "COL0",
+    "2": "K4_0"
    },
    "in_bom": true,
    "nc": {}
@@ -468,8 +468,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_10",
-    "1": "ROW0"
+    "2": "ROW4",
+    "1": "K4_0"
    },
    "in_bom": true,
    "nc": {}
@@ -487,11 +487,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Bksp\" row 0 col 11"
+    "Description": "key \"Bksp\" matrix row 4 col 4"
    },
    "pads": {
-    "1": "COL11",
-    "2": "K0_11"
+    "1": "COL4",
+    "2": "K4_4"
    },
    "in_bom": true,
    "nc": {}
@@ -511,8 +511,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K0_11",
-    "1": "ROW0"
+    "2": "ROW4",
+    "1": "K4_4"
    },
    "in_bom": true,
    "nc": {}
@@ -530,7 +530,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Tab\" row 1 col 0"
+    "Description": "key \"Tab\" matrix row 1 col 0"
    },
    "pads": {
     "1": "COL0",
@@ -554,8 +554,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_0",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_0"
    },
    "in_bom": true,
    "nc": {}
@@ -573,7 +573,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Q\" row 1 col 1"
+    "Description": "key \"Q\" matrix row 1 col 1"
    },
    "pads": {
     "1": "COL1",
@@ -597,8 +597,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_1",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_1"
    },
    "in_bom": true,
    "nc": {}
@@ -616,7 +616,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"W\" row 1 col 2"
+    "Description": "key \"W\" matrix row 1 col 2"
    },
    "pads": {
     "1": "COL2",
@@ -640,8 +640,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_2",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_2"
    },
    "in_bom": true,
    "nc": {}
@@ -659,7 +659,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"E\" row 1 col 3"
+    "Description": "key \"E\" matrix row 1 col 3"
    },
    "pads": {
     "1": "COL3",
@@ -683,8 +683,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_3",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_3"
    },
    "in_bom": true,
    "nc": {}
@@ -702,7 +702,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"R\" row 1 col 4"
+    "Description": "key \"R\" matrix row 1 col 4"
    },
    "pads": {
     "1": "COL4",
@@ -726,8 +726,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_4",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_4"
    },
    "in_bom": true,
    "nc": {}
@@ -745,7 +745,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"T\" row 1 col 5"
+    "Description": "key \"T\" matrix row 1 col 5"
    },
    "pads": {
     "1": "COL5",
@@ -769,8 +769,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_5",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_5"
    },
    "in_bom": true,
    "nc": {}
@@ -788,7 +788,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Y\" row 1 col 6"
+    "Description": "key \"Y\" matrix row 1 col 6"
    },
    "pads": {
     "1": "COL6",
@@ -812,8 +812,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_6",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_6"
    },
    "in_bom": true,
    "nc": {}
@@ -831,7 +831,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"U\" row 1 col 7"
+    "Description": "key \"U\" matrix row 1 col 7"
    },
    "pads": {
     "1": "COL7",
@@ -855,8 +855,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_7",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_7"
    },
    "in_bom": true,
    "nc": {}
@@ -874,7 +874,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"I\" row 1 col 8"
+    "Description": "key \"I\" matrix row 1 col 8"
    },
    "pads": {
     "1": "COL8",
@@ -898,8 +898,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_8",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_8"
    },
    "in_bom": true,
    "nc": {}
@@ -917,7 +917,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"O\" row 1 col 9"
+    "Description": "key \"O\" matrix row 1 col 9"
    },
    "pads": {
     "1": "COL9",
@@ -941,8 +941,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_9",
-    "1": "ROW1"
+    "2": "ROW1",
+    "1": "K1_9"
    },
    "in_bom": true,
    "nc": {}
@@ -960,11 +960,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"P\" row 1 col 10"
+    "Description": "key \"P\" matrix row 4 col 1"
    },
    "pads": {
-    "1": "COL10",
-    "2": "K1_10"
+    "1": "COL1",
+    "2": "K4_1"
    },
    "in_bom": true,
    "nc": {}
@@ -984,8 +984,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_10",
-    "1": "ROW1"
+    "2": "ROW4",
+    "1": "K4_1"
    },
    "in_bom": true,
    "nc": {}
@@ -1003,11 +1003,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"-\" row 1 col 11"
+    "Description": "key \"-\" matrix row 4 col 5"
    },
    "pads": {
-    "1": "COL11",
-    "2": "K1_11"
+    "1": "COL5",
+    "2": "K4_5"
    },
    "in_bom": true,
    "nc": {}
@@ -1027,8 +1027,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K1_11",
-    "1": "ROW1"
+    "2": "ROW4",
+    "1": "K4_5"
    },
    "in_bom": true,
    "nc": {}
@@ -1046,7 +1046,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Ctrl\" row 2 col 0"
+    "Description": "key \"Ctrl\" matrix row 2 col 0"
    },
    "pads": {
     "1": "COL0",
@@ -1070,8 +1070,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_0",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_0"
    },
    "in_bom": true,
    "nc": {}
@@ -1089,7 +1089,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"A\" row 2 col 1"
+    "Description": "key \"A\" matrix row 2 col 1"
    },
    "pads": {
     "1": "COL1",
@@ -1113,8 +1113,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_1",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_1"
    },
    "in_bom": true,
    "nc": {}
@@ -1132,7 +1132,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"S\" row 2 col 2"
+    "Description": "key \"S\" matrix row 2 col 2"
    },
    "pads": {
     "1": "COL2",
@@ -1156,8 +1156,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_2",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_2"
    },
    "in_bom": true,
    "nc": {}
@@ -1175,7 +1175,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"D\" row 2 col 3"
+    "Description": "key \"D\" matrix row 2 col 3"
    },
    "pads": {
     "1": "COL3",
@@ -1199,8 +1199,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_3",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_3"
    },
    "in_bom": true,
    "nc": {}
@@ -1218,7 +1218,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"F\" row 2 col 4"
+    "Description": "key \"F\" matrix row 2 col 4"
    },
    "pads": {
     "1": "COL4",
@@ -1242,8 +1242,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_4",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_4"
    },
    "in_bom": true,
    "nc": {}
@@ -1261,7 +1261,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"G\" row 2 col 5"
+    "Description": "key \"G\" matrix row 2 col 5"
    },
    "pads": {
     "1": "COL5",
@@ -1285,8 +1285,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_5",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_5"
    },
    "in_bom": true,
    "nc": {}
@@ -1304,7 +1304,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"H\" row 2 col 6"
+    "Description": "key \"H\" matrix row 2 col 6"
    },
    "pads": {
     "1": "COL6",
@@ -1328,8 +1328,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_6",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_6"
    },
    "in_bom": true,
    "nc": {}
@@ -1347,7 +1347,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"J\" row 2 col 7"
+    "Description": "key \"J\" matrix row 2 col 7"
    },
    "pads": {
     "1": "COL7",
@@ -1371,8 +1371,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_7",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_7"
    },
    "in_bom": true,
    "nc": {}
@@ -1390,7 +1390,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"K\" row 2 col 8"
+    "Description": "key \"K\" matrix row 2 col 8"
    },
    "pads": {
     "1": "COL8",
@@ -1414,8 +1414,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_8",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_8"
    },
    "in_bom": true,
    "nc": {}
@@ -1433,7 +1433,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"L\" row 2 col 9"
+    "Description": "key \"L\" matrix row 2 col 9"
    },
    "pads": {
     "1": "COL9",
@@ -1457,8 +1457,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_9",
-    "1": "ROW2"
+    "2": "ROW2",
+    "1": "K2_9"
    },
    "in_bom": true,
    "nc": {}
@@ -1476,11 +1476,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \";\" row 2 col 10"
+    "Description": "key \";\" matrix row 4 col 2"
    },
    "pads": {
-    "1": "COL10",
-    "2": "K2_10"
+    "1": "COL2",
+    "2": "K4_2"
    },
    "in_bom": true,
    "nc": {}
@@ -1500,8 +1500,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_10",
-    "1": "ROW2"
+    "2": "ROW4",
+    "1": "K4_2"
    },
    "in_bom": true,
    "nc": {}
@@ -1519,11 +1519,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Enter\" row 2 col 11"
+    "Description": "key \"Enter\" matrix row 4 col 6"
    },
    "pads": {
-    "1": "COL11",
-    "2": "K2_11"
+    "1": "COL6",
+    "2": "K4_6"
    },
    "in_bom": true,
    "nc": {}
@@ -1543,8 +1543,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K2_11",
-    "1": "ROW2"
+    "2": "ROW4",
+    "1": "K4_6"
    },
    "in_bom": true,
    "nc": {}
@@ -1562,7 +1562,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Shift\" row 3 col 0"
+    "Description": "key \"Shift\" matrix row 3 col 0"
    },
    "pads": {
     "1": "COL0",
@@ -1586,8 +1586,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_0",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_0"
    },
    "in_bom": true,
    "nc": {}
@@ -1605,7 +1605,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Fn\" row 3 col 1"
+    "Description": "key \"Fn\" matrix row 3 col 1"
    },
    "pads": {
     "1": "COL1",
@@ -1629,8 +1629,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_1",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_1"
    },
    "in_bom": true,
    "nc": {}
@@ -1648,7 +1648,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Z\" row 3 col 2"
+    "Description": "key \"Z\" matrix row 3 col 2"
    },
    "pads": {
     "1": "COL2",
@@ -1672,8 +1672,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_2",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_2"
    },
    "in_bom": true,
    "nc": {}
@@ -1691,7 +1691,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"X\" row 3 col 3"
+    "Description": "key \"X\" matrix row 3 col 3"
    },
    "pads": {
     "1": "COL3",
@@ -1715,8 +1715,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_3",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_3"
    },
    "in_bom": true,
    "nc": {}
@@ -1734,7 +1734,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"C\" row 3 col 4"
+    "Description": "key \"C\" matrix row 3 col 4"
    },
    "pads": {
     "1": "COL4",
@@ -1758,8 +1758,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_4",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_4"
    },
    "in_bom": true,
    "nc": {}
@@ -1777,7 +1777,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"V\" row 3 col 5"
+    "Description": "key \"V\" matrix row 3 col 5"
    },
    "pads": {
     "1": "COL5",
@@ -1801,8 +1801,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_5",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_5"
    },
    "in_bom": true,
    "nc": {}
@@ -1820,7 +1820,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Space\" row 3 col 6"
+    "Description": "key \"Space\" matrix row 3 col 6"
    },
    "pads": {
     "1": "COL6",
@@ -1844,8 +1844,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_6",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_6"
    },
    "in_bom": true,
    "nc": {}
@@ -1863,32 +1863,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Space\" row 3 col 7"
+    "Description": "key \"Space\" matrix row 3 col 6"
    },
    "pads": {
-    "1": "COL7",
-    "2": "K3_7"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "D44",
-   "value": "1N4148WS",
-   "footprint": "Diode_SMD:D_SOD-323",
-   "dnp": false,
-   "sheet": "matrix",
-   "sheet_uuid": "829c8571-3c38-5218-9e9c-1f88a9537be5",
-   "sheetfile": "matrix.kicad_sch",
-   "sym_uuid": "f75f0cc6-c562-55f1-baea-ee00bd98af85",
-   "fields": {
-    "LCSC": "C2128",
-    "MPN": "1N4148WS",
-    "Manufacturer": "Changjiang"
-   },
-   "pads": {
-    "2": "K3_7",
-    "1": "ROW3"
+    "1": "COL6",
+    "2": "K3_6"
    },
    "in_bom": true,
    "nc": {}
@@ -1906,7 +1885,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"B\" row 3 col 8"
+    "Description": "key \"B\" matrix row 3 col 8"
    },
    "pads": {
     "1": "COL8",
@@ -1930,8 +1909,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_8",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_8"
    },
    "in_bom": true,
    "nc": {}
@@ -1949,7 +1928,7 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"N\" row 3 col 9"
+    "Description": "key \"N\" matrix row 3 col 9"
    },
    "pads": {
     "1": "COL9",
@@ -1973,8 +1952,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_9",
-    "1": "ROW3"
+    "2": "ROW3",
+    "1": "K3_9"
    },
    "in_bom": true,
    "nc": {}
@@ -1992,11 +1971,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"M\" row 3 col 10"
+    "Description": "key \"M\" matrix row 4 col 3"
    },
    "pads": {
-    "1": "COL10",
-    "2": "K3_10"
+    "1": "COL3",
+    "2": "K4_3"
    },
    "in_bom": true,
    "nc": {}
@@ -2016,8 +1995,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_10",
-    "1": "ROW3"
+    "2": "ROW4",
+    "1": "K4_3"
    },
    "in_bom": true,
    "nc": {}
@@ -2035,11 +2014,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \".\" row 3 col 11"
+    "Description": "key \".\" matrix row 4 col 7"
    },
    "pads": {
-    "1": "COL11",
-    "2": "K3_11"
+    "1": "COL7",
+    "2": "K4_7"
    },
    "in_bom": true,
    "nc": {}
@@ -2059,8 +2038,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K3_11",
-    "1": "ROW3"
+    "2": "ROW4",
+    "1": "K4_7"
    },
    "in_bom": true,
    "nc": {}
@@ -2078,11 +2057,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Up\" row 4 col 0"
+    "Description": "key \"Up\" matrix row 5 col 0"
    },
    "pads": {
     "1": "COL0",
-    "2": "K4_0"
+    "2": "K5_0"
    },
    "in_bom": true,
    "nc": {}
@@ -2102,8 +2081,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K4_0",
-    "1": "ROW4"
+    "2": "ROW5",
+    "1": "K5_0"
    },
    "in_bom": true,
    "nc": {}
@@ -2121,11 +2100,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Down\" row 4 col 1"
+    "Description": "key \"Down\" matrix row 5 col 1"
    },
    "pads": {
     "1": "COL1",
-    "2": "K4_1"
+    "2": "K5_1"
    },
    "in_bom": true,
    "nc": {}
@@ -2145,8 +2124,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K4_1",
-    "1": "ROW4"
+    "2": "ROW5",
+    "1": "K5_1"
    },
    "in_bom": true,
    "nc": {}
@@ -2164,11 +2143,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Left\" row 4 col 2"
+    "Description": "key \"Left\" matrix row 5 col 2"
    },
    "pads": {
     "1": "COL2",
-    "2": "K4_2"
+    "2": "K5_2"
    },
    "in_bom": true,
    "nc": {}
@@ -2188,8 +2167,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K4_2",
-    "1": "ROW4"
+    "2": "ROW5",
+    "1": "K5_2"
    },
    "in_bom": true,
    "nc": {}
@@ -2207,11 +2186,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"Right\" row 4 col 3"
+    "Description": "key \"Right\" matrix row 5 col 3"
    },
    "pads": {
     "1": "COL3",
-    "2": "K4_3"
+    "2": "K5_3"
    },
    "in_bom": true,
    "nc": {}
@@ -2231,8 +2210,8 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K4_3",
-    "1": "ROW4"
+    "2": "ROW5",
+    "1": "K5_3"
    },
    "in_bom": true,
    "nc": {}
@@ -2250,11 +2229,11 @@
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
     "Manufacturer": "Alps Alpine",
-    "Description": "key \"OK\" row 4 col 4"
+    "Description": "key \"OK\" matrix row 5 col 4"
    },
    "pads": {
     "1": "COL4",
-    "2": "K4_4"
+    "2": "K5_4"
    },
    "in_bom": true,
    "nc": {}
@@ -2274,142 +2253,59 @@
     "Manufacturer": "Changjiang"
    },
    "pads": {
-    "2": "K4_4",
-    "1": "ROW4"
+    "2": "ROW5",
+    "1": "K5_4"
    },
    "in_bom": true,
    "nc": {}
   },
   {
    "ref": "U1",
-   "value": "RP2040",
-   "footprint": "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm",
+   "value": "TCA8418RTWR",
+   "footprint": "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "64742ace-0c64-50d0-8f1c-2eccc40fafa3",
    "fields": {
-    "LCSC": "C2040",
-    "MPN": "RP2040",
-    "Manufacturer": "Raspberry Pi"
+    "LCSC": "C138713",
+    "MPN": "TCA8418RTWR",
+    "Manufacturer": "Texas Instruments"
    },
    "pads": {
-    "26": "KB_RST_N",
-    "47": "USB_DP_MCU",
-    "46": "USB_DM_MCU",
-    "56": "QSPI_SS",
-    "53": "QSPI_SD0",
-    "55": "QSPI_SD1",
-    "54": "QSPI_SD2",
-    "51": "QSPI_SD3",
-    "52": "QSPI_SCLK",
-    "20": "XIN",
-    "21": "XOUT_R",
-    "24": "SWCLK",
-    "25": "SWDIO",
+    "22": "I2C_B_SDA",
+    "23": "I2C_B_SCL",
+    "24": "KB_INT_N",
+    "20": "KB_RST_N",
+    "21": "+3V3",
     "19": "GND",
-    "45": "+1V1",
-    "23": "+1V1",
-    "50": "+1V1",
-    "57": "GND",
-    "1": "+3V3",
-    "10": "+3V3",
-    "22": "+3V3",
-    "33": "+3V3",
-    "42": "+3V3",
-    "49": "+3V3",
-    "48": "+3V3",
-    "43": "+3V3",
-    "44": "+3V3",
-    "2": "ROW0",
-    "3": "ROW1",
-    "4": "ROW2",
+    "25": "GND",
+    "8": "ROW0",
+    "7": "ROW1",
+    "6": "ROW2",
     "5": "ROW3",
-    "6": "ROW4",
-    "7": "COL0",
-    "8": "COL1",
-    "9": "COL2",
-    "11": "COL3",
-    "12": "COL4",
-    "13": "COL5",
-    "14": "COL6",
-    "15": "COL7",
-    "16": "COL8",
-    "17": "COL9",
-    "18": "COL10",
-    "27": "COL11",
-    "29": "I2C_SDA",
-    "30": "I2C_SCL",
-    "31": "KB_INT"
-   },
-   "in_bom": true,
-   "nc": {
-    "28": "unconnected-(U1-GPIO17-Pad28)",
-    "32": "unconnected-(U1-GPIO21-Pad32)",
-    "34": "unconnected-(U1-GPIO22-Pad34)",
-    "35": "unconnected-(U1-GPIO23-Pad35)",
-    "36": "unconnected-(U1-GPIO24-Pad36)",
-    "37": "unconnected-(U1-GPIO25-Pad37)",
-    "38": "unconnected-(U1-GPIO26_ADC0-Pad38)",
-    "39": "unconnected-(U1-GPIO27_ADC1-Pad39)",
-    "40": "unconnected-(U1-GPIO28_ADC2-Pad40)",
-    "41": "unconnected-(U1-GPIO29_ADC3-Pad41)"
-   }
-  },
-  {
-   "ref": "U2",
-   "value": "W25Q128JVSIQ",
-   "footprint": "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "0c7742c2-e7ed-59f1-aec5-6a0bb59a236e",
-   "fields": {
-    "LCSC": "C97521",
-    "MPN": "W25Q128JVSIQ",
-    "Manufacturer": "Winbond"
-   },
-   "pads": {
-    "1": "QSPI_SS",
-    "6": "QSPI_SCLK",
-    "5": "QSPI_SD0",
-    "2": "QSPI_SD1",
-    "3": "QSPI_SD2",
-    "7": "QSPI_SD3",
-    "8": "+3V3",
-    "4": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "Y1",
-   "value": "12MHz",
-   "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "522dde32-ac12-5a1b-b622-8c4ea2d9ad00",
-   "fields": {
-    "LCSC": "C9002",
-    "MPN": "X322512MSB4SI",
-    "Manufacturer": "YXC"
-   },
-   "pads": {
-    "1": "XIN",
-    "3": "XOUT",
-    "2": "GND",
-    "4": "GND"
+    "4": "ROW4",
+    "3": "ROW5",
+    "2": "ROW6_NC",
+    "1": "ROW7_NC",
+    "9": "COL0",
+    "10": "COL1",
+    "11": "COL2",
+    "12": "COL3",
+    "13": "COL4",
+    "14": "COL5",
+    "15": "COL6",
+    "16": "COL7",
+    "17": "COL8",
+    "18": "COL9"
    },
    "in_bom": true,
    "nc": {}
   },
   {
    "ref": "R1",
-   "value": "1k",
+   "value": "100k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "scanner",
@@ -2417,63 +2313,20 @@
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "49e148a5-ffb0-54e0-83fb-172d25a84594",
    "fields": {
-    "LCSC": "C11702",
-    "MPN": "0402WGF1001TCE",
-    "Manufacturer": "UNI-ROYAL",
-    "Description": "RP2040 crystal drive limiting"
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
-    "1": "XOUT_R",
-    "2": "XOUT"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C1",
-   "value": "15p",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "9d5b986c-fc5c-5857-9fdb-f88d3f26620c",
-   "fields": {
-    "LCSC": "C1548",
-    "MPN": "0402CG150J500NT",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "XIN",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C2",
-   "value": "15p",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "920c96ea-8c2f-5ff5-886d-88719453f36e",
-   "fields": {
-    "LCSC": "C1548",
-    "MPN": "0402CG150J500NT",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "XOUT",
-    "2": "GND"
+    "1": "ROW6_NC",
+    "2": "+3V3"
    },
    "in_bom": true,
    "nc": {}
   },
   {
    "ref": "R2",
-   "value": "27",
+   "value": "100k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "scanner",
@@ -2481,20 +2334,20 @@
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "f6695e63-802e-5b2a-933a-7743d56e4e93",
    "fields": {
-    "LCSC": "C25100",
-    "MPN": "0402WGF270JTCE",
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
     "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
-    "1": "USB_DP_MCU",
-    "2": "USB_DP"
+    "1": "ROW7_NC",
+    "2": "+3V3"
    },
    "in_bom": true,
    "nc": {}
   },
   {
    "ref": "R3",
-   "value": "27",
+   "value": "10k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "scanner",
@@ -2502,13 +2355,14 @@
    "sheetfile": "scanner.kicad_sch",
    "sym_uuid": "d3b88e8a-76e4-54fb-b569-55d8ce8a4ccf",
    "fields": {
-    "LCSC": "C25100",
-    "MPN": "0402WGF270JTCE",
-    "Manufacturer": "UNI-ROYAL"
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "open-drain interrupt (also pulled up on the carrier)"
    },
    "pads": {
-    "1": "USB_DM_MCU",
-    "2": "USB_DM"
+    "1": "KB_INT_N",
+    "2": "+3V3"
    },
    "in_bom": true,
    "nc": {}
@@ -2525,8 +2379,7 @@
    "fields": {
     "LCSC": "C25744",
     "MPN": "0402WGF1002TCE",
-    "Manufacturer": "UNI-ROYAL",
-    "Description": "RUN pull-up; carrier can hold the RP2040 in reset"
+    "Manufacturer": "UNI-ROYAL"
    },
    "pads": {
     "1": "KB_RST_N",
@@ -2536,62 +2389,18 @@
    "nc": {}
   },
   {
-   "ref": "R5",
-   "value": "1k",
-   "footprint": "Resistor_SMD:R_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "eecad175-4094-5211-9f14-f9cc23afeac3",
-   "fields": {
-    "LCSC": "C11702",
-    "MPN": "0402WGF1001TCE",
-    "Manufacturer": "UNI-ROYAL",
-    "Description": "BOOTSEL from carrier GPIO"
-   },
-   "pads": {
-    "1": "QSPI_SS",
-    "2": "KB_BOOT_N"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "R6",
-   "value": "10k",
-   "footprint": "Resistor_SMD:R_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "16bd8b40-2629-51d6-8bfe-804bac0758f5",
-   "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
-    "Manufacturer": "UNI-ROYAL",
-    "Description": "keeps KB_INT low while RP2040 is unprogrammed"
-   },
-   "pads": {
-    "1": "KB_INT",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C10",
+   "ref": "C1",
    "value": "100n",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "0d207658-b0ed-5bac-a267-716bed70af00",
+   "sym_uuid": "9d5b986c-fc5c-5857-9fdb-f88d3f26620c",
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -2601,186 +2410,18 @@
    "nc": {}
   },
   {
-   "ref": "C11",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "79c6ee5d-716b-5dcc-89c1-47b9a4113534",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+3V3",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C12",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "17799f1c-db2f-5f18-91d4-878cadfc86a9",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+3V3",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C13",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "a735359c-834e-5c70-9aab-2b47f241e145",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+3V3",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C14",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "3ad16856-bc1d-5668-93ed-b44355f701e0",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+3V3",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C15",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "34567f62-1b75-5c88-9c08-feade064e79e",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+3V3",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C16",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "8110674d-83a0-5063-8c5e-ea0aea427763",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+1V1",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C17",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "34aedeb7-637b-59ef-928c-af53b0de2b25",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+1V1",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C18",
+   "ref": "C2",
    "value": "1u",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "be956a5d-c10e-577c-abdd-458113b47c67",
+   "sym_uuid": "920c96ea-8c2f-5ff5-886d-88719453f36e",
    "fields": {
     "LCSC": "C52923",
     "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
-   },
-   "pads": {
-    "1": "+1V1",
-    "2": "GND"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
-   "ref": "C19",
-   "value": "1u",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "e7c36ad2-a2b7-5751-ad54-e5f89d768f25",
-   "fields": {
-    "LCSC": "C52923",
-    "MPN": "CL05A105KA5NQNC",
-    "Manufacturer": "Samsung/FH"
+    "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+3V3",
@@ -2790,50 +2431,132 @@
    "nc": {}
   },
   {
-   "ref": "C20",
-   "value": "10u",
-   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "ref": "U2",
+   "value": "TPD4E05U06DQAR",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "2b2e3236-5b28-5be9-9e29-68fd5241f9a9",
+   "sym_uuid": "0c7742c2-e7ed-59f1-aec5-6a0bb59a236e",
    "fields": {
-    "LCSC": "C19702",
-    "MPN": "CL10A106KP8NNNC",
-    "Manufacturer": "Samsung/FH"
+    "LCSC": "C138714",
+    "MPN": "TPD4E05U06DQAR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "ESD clamp on the cable signals"
    },
    "pads": {
-    "1": "+3V3",
-    "2": "GND"
+    "1": "I2C_B_SDA",
+    "2": "I2C_B_SCL",
+    "4": "KB_INT_N",
+    "5": "KB_RST_N",
+    "3": "GND",
+    "8": "GND"
+   },
+   "in_bom": true,
+   "nc": {
+    "10": "unconnected-(U2-NC-Pad10)",
+    "9": "unconnected-(U2-NC-Pad9)",
+    "7": "unconnected-(U2-NC-Pad7)",
+    "6": "unconnected-(U2-NC-Pad6)"
+   }
+  },
+  {
+   "ref": "J1",
+   "value": "FH34SRJ-8S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "ff7f2adc-9211-5f5c-a54b-c6ff92053ec4",
+   "fields": {
+    "LCSC": "C88372",
+    "MPN": "FH34SRJ-8S-0.5SH(50)",
+    "Manufacturer": "Hirose",
+    "Description": "keyboard FPC to carrier J9, 1.0 mm high"
+   },
+   "pads": {
+    "1": "GND",
+    "2": "+3V3",
+    "3": "I2C_B_SDA",
+    "4": "KB_INT_N",
+    "5": "KB_RST_N",
+    "6": "I2C_B_SCL",
+    "7": "+3V3",
+    "8": "GND",
+    "MP": "GND"
    },
    "in_bom": true,
    "nc": {}
   },
   {
-   "ref": "C21",
-   "value": "100n",
-   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "ref": "H1",
+   "value": "M1.6",
+   "footprint": "hackerslide:MountingHole_M1.6_Pad",
    "dnp": false,
    "sheet": "scanner",
    "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
    "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "c2c72fb6-12bd-59c2-84a2-1b1d0f0b2fcf",
-   "fields": {
-    "LCSC": "C1525",
-    "MPN": "CL05B104KO5NNNC",
-    "Manufacturer": "Samsung/FH"
-   },
+   "sym_uuid": "6f0ed72f-db59-5e37-ad84-38f4fca7bb78",
+   "fields": {},
    "pads": {
-    "1": "+3V3",
-    "2": "GND"
+    "1": "GND"
    },
-   "in_bom": true,
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "H2",
+   "value": "M1.6",
+   "footprint": "hackerslide:MountingHole_M1.6_Pad",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "4be79477-d9ef-5f16-8042-1a5668df9cc8",
+   "fields": {},
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "H3",
+   "value": "M1.6",
+   "footprint": "hackerslide:MountingHole_M1.6_Pad",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "99c33f3c-d4bf-5e2b-9121-754948fcfee3",
+   "fields": {},
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "H4",
+   "value": "M1.6",
+   "footprint": "hackerslide:MountingHole_M1.6_Pad",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "b11f0913-89df-5c81-841e-21b9e9e47f02",
+   "fields": {},
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": false,
    "nc": {}
   },
   {
    "ref": "TP1",
-   "value": "SWCLK",
+   "value": "I2C_B_SDA",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
    "dnp": false,
    "sheet": "scanner",
@@ -2842,14 +2565,14 @@
    "sym_uuid": "1d442742-815e-5a27-9f53-962fcfb1af00",
    "fields": {},
    "pads": {
-    "1": "SWCLK"
+    "1": "I2C_B_SDA"
    },
    "in_bom": false,
    "nc": {}
   },
   {
    "ref": "TP2",
-   "value": "SWDIO",
+   "value": "I2C_B_SCL",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
    "dnp": false,
    "sheet": "scanner",
@@ -2858,7 +2581,7 @@
    "sym_uuid": "2b2e1034-6a4f-52f0-90e0-0ab0a40e25d8",
    "fields": {},
    "pads": {
-    "1": "SWDIO"
+    "1": "I2C_B_SCL"
    },
    "in_bom": false,
    "nc": {}
@@ -2894,48 +2617,6 @@
    },
    "in_bom": false,
    "nc": {}
-  },
-  {
-   "ref": "J1",
-   "value": "FH12-20S-0.5SH",
-   "footprint": "Connector_FFC-FPC:Hirose_FH12-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal",
-   "dnp": false,
-   "sheet": "scanner",
-   "sheet_uuid": "14391782-1610-5395-a126-0b651697cb24",
-   "sheetfile": "scanner.kicad_sch",
-   "sym_uuid": "ff7f2adc-9211-5f5c-a54b-c6ff92053ec4",
-   "fields": {
-    "LCSC": "C596730",
-    "MPN": "FH12-20S-0.5SH(55)",
-    "Manufacturer": "Hirose",
-    "Description": "keyboard FPC to carrier J9; 14-16,18 spare"
-   },
-   "pads": {
-    "1": "GND",
-    "2": "+3V3",
-    "3": "+3V3",
-    "4": "GND",
-    "5": "USB_DP",
-    "6": "USB_DM",
-    "7": "GND",
-    "8": "I2C_SDA",
-    "9": "I2C_SCL",
-    "10": "KB_INT",
-    "11": "KB_RST_N",
-    "12": "KB_BOOT_N",
-    "13": "GND",
-    "17": "GND",
-    "19": "GND",
-    "20": "GND",
-    "MP": "GND"
-   },
-   "in_bom": true,
-   "nc": {
-    "14": "unconnected-(J1-Pin_14-Pad14)",
-    "15": "unconnected-(J1-Pin_15-Pad15)",
-    "16": "unconnected-(J1-Pin_16-Pad16)",
-    "18": "unconnected-(J1-Pin_18-Pad18)"
-   }
   }
  ]
 }

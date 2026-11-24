@@ -1,0 +1,11 @@
+(footprint "MountingHole_M1.6_Pad"
+	(version 20240108)
+	(generator "hackerslide_mklib")
+	(layer "F.Cu")
+	(descr "M1.6 plated hole with 3.0 mm pad (ties the top plate to keyboard GND through the screw)")
+	(property "Reference" "REF**" (at 0 -2.5 0) (layer "F.SilkS") (uuid "b5cd1f18-18e7-5adb-971a-2bdd2e7568ff") (effects (font (size 0.8 0.8) (thickness 0.12))))
+	(property "Value" "MountingHole_M1.6_Pad" (at 0 2.5 0) (layer "F.Fab") (uuid "369fc8d4-ea05-5b9e-8ee4-779c41932e80") (effects (font (size 0.8 0.8) (thickness 0.12))))
+	(attr through_hole exclude_from_pos_files)
+	(pad "1" thru_hole circle (at 0 0) (size 3.0 3.0) (drill 1.7) (layers "*.Cu" "*.Mask") (uuid "bb7f400e-6f99-5a22-833d-5a218c0bab67"))
+	(fp_circle (center 0 0) (end 1.75 0) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (uuid "7a1c979f-2e7b-5585-ae17-14cf09780d8c"))
+)

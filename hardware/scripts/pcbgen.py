@@ -135,7 +135,10 @@ class Board:
                     best = cands[0]
                     break
             if best is None:
-                raise RuntimeError(f'no room for {ref} near {ax},{ay}')
+                if not os.environ.get('PLACE_DEBUG'):
+                    raise RuntimeError(f'no room for {ref} near {ax},{ay}')
+                print(f'PLACE_DEBUG: no room for {ref} near {ax},{ay}')      # layout work: place it anyway and look
+                best = (ax, ay)
             self.place(ref, best[0], best[1], rot, side)
 
     # ---------------------------------------------------------------------------------------------------
@@ -203,7 +206,7 @@ class Board:
         z.SetLocalClearance(MM(clearance))
         z.SetMinThickness(MM(min_width))
         z.SetThermalReliefGap(MM(thermal_gap))
-        z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
+        z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)      # fab-assembled boards: solid joints, no starved spokes
         if keepout:
             z.SetIsRuleArea(True)
             z.SetDoNotAllowTracks(False)
@@ -222,6 +225,11 @@ class Board:
     def save(self, path=None):
         path = path or os.path.join(self.dir, self.name + '.kicad_pcb')
         pcbnew.SaveBoard(path, self.b)
+        # Fill the zones on a reloaded copy (filling the in-memory board crashes pcbnew 9.0.2), so that DRC
+        # 'unconnected' counts only what really needs routing.
+        b2 = pcbnew.LoadBoard(path)
+        pcbnew.ZONE_FILLER(b2).Fill(b2.Zones())
+        pcbnew.SaveBoard(path, b2)
         return path
 
 

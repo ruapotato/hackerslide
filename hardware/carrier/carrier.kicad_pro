@@ -328,10 +328,6 @@
       },
       {
         "netclass": "Power",
-        "pattern": "BATT_P"
-      },
-      {
-        "netclass": "Power",
         "pattern": "+5V"
       },
       {
@@ -347,20 +343,20 @@
         "pattern": "BOOST_SW"
       },
       {
+        "netclass": "Power",
+        "pattern": "BL_SW"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "LED_A"
+      },
+      {
         "netclass": "DSI",
         "pattern": "DSI_*"
       },
       {
         "netclass": "USB",
-        "pattern": "USB*_D?"
-      },
-      {
-        "netclass": "USB",
-        "pattern": "HUB_UP_D?"
-      },
-      {
-        "netclass": "USB",
-        "pattern": "KB_USB_D?"
+        "pattern": "USB_D?"
       }
     ]
   },

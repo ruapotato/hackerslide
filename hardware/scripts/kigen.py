@@ -206,7 +206,7 @@ class Design:
         flagged = set()
         for net, conns in sorted(nets.items()):
             types = {c[2] for c in conns}
-            if 'power_in' in types and 'power_out' not in types:
+            if ('power_in' in types and 'power_out' not in types) or types == {'input'}:
                 first = next(p for p in self.parts if net in p.nets.values())
                 first.sheet.flags.append(net)
                 flagged.add(net)
