@@ -9,3 +9,4 @@ _autosave-*
 *.ses
 hs_err_pid*.log
 freerouting.json
+mechanical/renders/scene/

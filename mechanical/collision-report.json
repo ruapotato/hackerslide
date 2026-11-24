@@ -1,0 +1,17 @@
+{
+ "stack_mm": {
+  "TRAY_T": 5.4,
+  "Z_BODY_BOTTOM": 5.8,
+  "Z_BACK_IN": 7.0,
+  "CAVITY": 7.8,
+  "Z_CARRIER_F": 14.8,
+  "Z_PANEL_TOP": 20.23,
+  "BODY_T": 15.23,
+  "TOTAL_T": 21.03,
+  "TRAVEL": 35.9,
+  "OPEN_H": 107.9
+ },
+ "battery_layout": "beside",
+ "collisions_closed": [],
+ "collisions_open": []
+}
