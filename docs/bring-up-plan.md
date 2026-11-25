@@ -43,8 +43,8 @@ Stop if: the module cannot suspend, or its peak draw makes the cell unusable, or
 |---|---|---|
 | 1 | Resistance VBUS, VSYS, VBAT, +5V to ground | No shorts |
 | 2 | USB power, no cell, no module | VSYS about 3.65 V; +5V 5.0 V at TP4; BOOST_PG high |
-| 3 | Load +5V at TP4 in steps up to 1 A | Stays within 4.75-5.25 V until the battery limiter acts: measure the current into VSYS_LIM (TP17) at which BATT_OC_N goes low. Expected 1.2-1.4 A |
-| 4 | Connect the cell (**check polarity first**) | Charge LED on; cell current below 1.5 A |
+| 3 | Load +5V at TP4 in steps up to 1 A | Stays within 4.75-5.25 V until the battery limiter acts: measure the current into VSYS_LIM (TP17) at which BATT_OC_N goes low. Expected 1.6-1.8 A |
+| 4 | Connect the battery pack (**check polarity first**) | Charge LED on; pack current below 1.4 A |
 | 5 | Unplug USB | +5V stays up from the cell; boost turns off near 3.0 V at VSYS |
 | 6 | Hold the power button 12-18 s on battery | VSYS drops for about half a second (charger reset) |
 | 7 | I2C scan through the test points | 0x6A charger, 0x36 gauge, 0x10 codec |

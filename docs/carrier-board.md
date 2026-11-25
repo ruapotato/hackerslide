@@ -59,10 +59,10 @@ points are on the B side, which faces the display.
 - [ ] Pin 99 measured on a real Core3566 (see [compute-pin-matrix.md](compute-pin-matrix.md)).
 - [ ] Module height measured; `MODULE['mated']` in `mechanical/src/config.py` updated.
 - [ ] Stack-up chosen and DSI/USB geometry calculated.
-- [ ] J10 polarity against the cell's pigtail.
+- [ ] J10 against the BAK pack's connector: which position is red (+), which is the thermistor.
 - [ ] PJ-342 sleeve terminal identified; straps R60-R63 set.
 - [ ] Panel tail fold and pin 1 confirmed on a real panel against J4 and J5.
-- [ ] **Battery discharge limit** (requirement: never above the cell's 1.5 A rating): U13 with R66 = 20k. Check the limit on the bench before fitting a module; confirm the module runs inside it. See [power-budget.md](power-budget.md).
+- [ ] **Battery discharge limit** (requirement: never above the pack's rating, 5.6 A): U13 with R66 = 15k, 1.7 A. Check the limit on the bench before fitting a module; confirm the module runs inside it. See [power-budget.md](power-budget.md).
 - [ ] Device-tree requirements collected: `ti,use-ilim-pin`, `ti,charge-current` 1.25 A, PWM period for the backlight, no UHS, `broken-cd` on Core3566.
 
 ## Open TODO(verify) items in the source

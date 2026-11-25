@@ -565,7 +565,7 @@
    "ref": "TH1",
    "value": "10k B3380",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
-   "dnp": false,
+   "dnp": true,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
@@ -574,7 +574,7 @@
     "LCSC": "C77131",
     "MPN": "NCP15XH103F03RC",
     "Manufacturer": "Murata",
-    "Description": "ASSUMPTION: carrier NTC next to the cell bay (2-wire cell). Charge window about 1..40 degC"
+    "Description": "DNP: only for a 2-wire cell without its own thermistor (then remove R68)"
    },
    "pads": {
     "1": "CHG_TS",
@@ -628,45 +628,47 @@
   },
   {
    "ref": "J10",
-   "value": "BATT JST-PH",
-   "footprint": "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
+   "value": "BATT",
+   "footprint": "Connector_Molex:Molex_SPOX_5268-03A_1x03_P2.50mm_Horizontal",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "5e741f56-5b5d-5018-8891-d49ef367c9ea",
    "fields": {
-    "LCSC": "C225233",
-    "MPN": "A2001WR-S-2P",
-    "Manufacturer": "CJT",
-    "Description": "P14: keyed PH-type battery connector, pin 1 = +. TODO(verify) polarity against the chosen cell: PH pigtails are NOT standardised. 2 A per contact"
+    "LCSC": "C185225",
+    "MPN": "22057035",
+    "Manufacturer": "Molex",
+    "Description": "P14: battery connector for the BAK LP-454965-2P-3M pack (Molex 5264 housing: red +, yellow NTC, black -). TODO(verify) which housing position is red: the BAK drawing shows the wire order, not the pin numbers"
    },
    "pads": {
     "1": "VBAT",
-    "2": "GND"
+    "2": "BATT_NTC",
+    "3": "GND"
    },
    "in_bom": true,
    "nc": {}
   },
   {
-   "ref": "J3",
-   "value": "BATT pads",
-   "footprint": "Connector_Wire:SolderWire-0.5sqmm_1x02_P4.6mm_D0.9mm_OD2.1mm",
+   "ref": "R68",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
-   "sym_uuid": "1c7ccb1d-c4e4-55af-84b2-cd73dd5de04c",
+   "sym_uuid": "a4ededc4-a51d-52de-84ef-0c59eb5ba9a4",
    "fields": {
-    "LCSC": "",
-    "MPN": "solder pads (alternative to J10)",
-    "Description": "for cells with bare leads; no reverse-polarity protection"
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "pack thermistor (10k) to the charger TS divider. Remove if TH1 is fitted"
    },
    "pads": {
-    "1": "VBAT",
-    "2": "GND"
+    "1": "BATT_NTC",
+    "2": "CHG_TS"
    },
-   "in_bom": false,
+   "in_bom": true,
    "nc": {}
   },
   {
@@ -768,7 +770,7 @@
   },
   {
    "ref": "R66",
-   "value": "20k",
+   "value": "15k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -776,10 +778,10 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "2aa6a2b8-20a9-5761-b6f5-07a41a3fbd41",
    "fields": {
-    "LCSC": "C25765",
-    "MPN": "0402WGF2002TCE",
+    "LCSC": "C25756",
+    "MPN": "0402WGF1502TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "TPS2553 current limit 1295 mA typ (1215-1375 at 25 degC)"
+    "Description": "TPS2553 current limit 1700 mA typ (1610-1800), its highest setting"
    },
    "pads": {
     "1": "BATT_ILIM",

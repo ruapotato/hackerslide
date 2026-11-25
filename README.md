@@ -9,7 +9,7 @@ D-pad, an off-the-shelf CM4-format compute module on a custom carrier board. Ope
 ![open](mechanical/renders/open.png)
 ![size against the N810 and the Librem 5](mechanical/renders/compare_stack.png)
 
-Dark: HackerSlide 810, 128 x 72 x 18.65 mm. Orange: Nokia N810, 14 mm. Blue: Librem 5, 15 mm.
+Dark: HackerSlide 810, 128 x 72 x 20.05 mm. Orange: Nokia N810, 14 mm. Blue: Librem 5, 15 mm.
 
 ## What it is
 
@@ -18,7 +18,7 @@ Dark: HackerSlide 810, 128 x 72 x 18.65 mm. Orange: Nokia N810, 14 mm. Blue: Lib
 | Compute | LuckFox Core3566 (RK3566, 4x Cortex-A55), swappable for other CM4-format modules within limits |
 | Display | 4.0" 480 x 800 IPS, capacitive touch |
 | Keyboard | 48 keys + D-pad, tact switches, I2C scanner, slides out on rails with magnet detents |
-| Battery | 2500 mAh, USB-C charging |
+| Battery | 2800 mAh pack, USB-C charging |
 | I/O | USB-C, 3.5 mm headset jack, microSD, Wi-Fi/Bluetooth on the module |
 | OS | Debian/Mobian on a mainline-ish kernel (not started) |
 

@@ -4,8 +4,8 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 
 ## For the community
 
-1. **Thin or long-lasting?** Rev 0.1 is 18.65 mm with 2500 mAh. A thin AMOLED could reach about 14.5 mm with about
-   1850 mAh. Which would you carry?
+1. **Thin or long-lasting?** Rev 0.1 is 20.05 mm with a 2800 mAh pack that can deliver 5.6 A. A thin AMOLED and a
+   thinner cell could reach about 14.5 mm with about 1850 mAh. Which would you carry?
 2. **Which screen?** The 4.0" Focus panel has a mainline-ready controller but is thick (4.25 mm). The 4.39"
    AMOLED is 0.75 mm but needs two new drivers and an extra power chip. Do you know a thin 4" DSI panel that is
    in production, sold in ones, and has a mainline driver?
@@ -19,8 +19,9 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 7. **How should a slider last?** Printed rails or metal? Is a 1.9 mm rolling loop in a 0.07 mm flex enough, or
    would you use sliding spring contacts and no cable at all?
 8. **Heat.** How should a sealed handheld shed 2-3 W when the keyboard covers its back?
-9. **Battery.** The only documented off-the-shelf cell that fits allows 1.5 A. Do you know a 50 x 60 mm cell with
-   a datasheet and a higher rating, or a maker who sells custom packs in small numbers?
+9. **Battery.** Cells of this size are mostly rated for 0.6-1 times their capacity; we use a 9.5 mm two-cell BAK
+   pack to get 5.6 A. Do you know a thinner 50 x 68 mm cell with a datasheet rated for 4 A or more, or a maker who
+   sells custom packs in small numbers?
 10. **USB.** One sink-only USB-C port. Is a host port (for a mouse or a drive) worth the hub, the power switch and
     the board space?
 11. **Cellular.** Wi-Fi only for now. Band 71 later: which modem?
@@ -48,7 +49,8 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 
 | Item | Blocks |
 |---|---|
-| Software power cap that keeps the module under the battery limiter (about 3 W on battery) | Usable device |
+| Confirm the BAK pack can be bought (Farnell 2401855) and at what price | Purchasing |
+| Measure the module's peak against the 1.7 A limiter; fit a 4 A eFuse if needed | Carrier rev 0.2 |
 | Choose the PCB stack-up and calculate DSI/USB geometry | Carrier routing |
 | Top-plate retention lips, button caps, snap hooks on the cell side | Fit mule |
 

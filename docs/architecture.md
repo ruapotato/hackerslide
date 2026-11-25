@@ -3,9 +3,9 @@
 ```mermaid
 flowchart LR
   USBC[USB-C, 5 V sink] --> CHG[BQ25895 charger]
-  BAT[1S LiPo 2500 mAh] <--> CHG
+  BAT[1S LiPo pack 2800 mAh] <--> CHG
   BAT --- GAUGE[MAX17048 gauge]
-  CHG -->|VSYS 3.0-4.4 V| LIM[TPS2553 limiter 1.3 A]
+  CHG -->|VSYS 3.0-4.4 V| LIM[TPS2553 limiter 1.7 A]
   LIM --> BOOST[TPS61230 boost] -->|5 V| MOD
   LIM --> BL[TPS61169 backlight]
   subgraph MOD[CM4-format module: LuckFox Core3566]
@@ -43,9 +43,9 @@ flowchart LR
 | Tray rim | 0.3 | 3.6 |
 | Slide gap | 0.4 | 4.0 |
 | Back shell floor | 1.2 | 5.2 |
-| Bay: module 5.08 + thermal gap 0.42 = cavity 5.5; carrier 1.0; panel tails 1.9. Beside it the cell, 8.1 + 0.3 | 8.4 | 13.6 |
-| Panel | 4.25 | 17.85 |
-| Bezel lip | 0.8 | 18.65 |
+| Bay: the battery pack, 9.5 + 0.3 for swelling. Beside it: module 5.08 + thermal gap 0.42 = cavity 5.5; carrier 1.0; 3.3 behind the panel (1.9 needed for its folded tails) | 9.8 | 15.0 |
+| Panel | 4.25 | 19.25 |
+| Bezel lip | 0.8 | 20.05 |
 
 All numbers are in `mechanical/src/config.py`; the model prints them into `mechanical/collision-report.json`.
 

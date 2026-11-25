@@ -21,7 +21,7 @@ python3 render.py ..                      # PNG renders under a private Xvfb dis
 
 ## Results (`mechanical/collision-report.json`)
 
-18.65 mm closed, 107.9 mm open, 35.9 mm travel. No collisions closed or open, with envelopes for the panel and
+20.05 mm closed, 107.9 mm open, 35.9 mm travel. No collisions closed or open, with envelopes for the panel and
 its folded tails, the carrier and its tallest parts, the module, the cell and the keyboard stack.
 
 Size comparison renders: `renders/compare_stack.png` and `compare.png` (N810 128 x 72 x 14 mm; Librem 5

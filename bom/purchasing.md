@@ -10,7 +10,7 @@ stock, with `python3 bom/tools/make_bom.py`.
 |---|---|---|---|---|---|
 | Compute module | LuckFox Core3566, 2 GB, Wi-Fi, no eMMC (`Core3566102000`) | 1 | $83.99 | [luckfox.com](https://www.luckfox.com/EN-Core3566) | In stock. Every eMMC SKU was out of stock, so it boots from microSD. 4 GB + Wi-Fi is $102.99 |
 | Display | Focus LCDs E40RB-I-MW430-CB | 1 | $77.20 | [focuslcds.com](https://focuslcds.com/product/e40rb-i-mw430-cb/) | 10 in stock. Thin supply: buy a spare |
-| Battery | PKCELL LP785060, 2500 mAh (Adafruit 328) | 1 | $14.95 | [adafruit.com](https://www.adafruit.com/product/328) | Check the lead polarity against carrier J10 before plugging in. Lithium cells usually ship by ground only |
+| Battery | BAK LP-454965-2P-3M, 2800 mAh min / 3000 typ, with protection and NTC | 1 | *not verified*: about EUR 24 seen at a reseller | [Farnell 2401855](https://uk.farnell.com/bak/lp-454965-2p-3m/battery-lithium-ion-3-7v-3000mah/dp/2401855) | Confirm stock and price by hand. Check which connector position is red (+) against carrier J10 before plugging in. Lithium cells usually ship by ground only |
 | Top-plate spacers | Wurth 9774015633R, M1.6, 1.5 mm | 4 | $1.46 (JLC list price, 0 in stock) | DigiKey or Mouser, not checked | Hand soldered onto the keyboard board |
 | microSD card | any A1/A2 card | 1 | *estimate* $8-12 | | |
 | Magnets | N52 discs: 6 x 1 mm (4), 6 x 2 mm (2), 5 x 2 mm (1) | 7 | *estimate* $5-10 for assorted packs | | Sizes are parameters to tune on the fit mule |
@@ -42,12 +42,13 @@ no quote was requested.
 |---|---|
 | Module | $84 |
 | Display | $77 |
-| Battery | $15 |
+| Battery | *estimate* $26 |
 | Carrier: parts $16, plus a one-fifth share of PCB, assembly and extended-part fees | *estimate* $45-65 |
 | Keyboard: parts $11, plus share of PCB and assembly | *estimate* $18-28 |
 | Top plate and flex cable, share of five | *estimate* $5-12 |
 | Spacers, magnets, fasteners, thermal pad, card | *estimate* $25-40 |
 | Enclosure prints | *estimate* $5-20 |
-| **Total** | ***estimate* $275-340** |
+| **Total** | ***estimate* $285-350** |
 
-The three large items ($176) are read prices; everything else is an estimate until fab quotes exist.
+The module and display ($161) are read prices; everything else, including the battery, is an estimate until
+prices are confirmed and fab quotes exist.

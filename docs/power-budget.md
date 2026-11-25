@@ -7,9 +7,10 @@ bring-up phase 1 is to replace this table with measurements from a module on a s
 
 | Stage | Datasheet facts |
 |---|---|
-| Cell | PKCELL LP785060: 2500 mAh typical, 3.7 V nominal (9.25 Wh), 1.5 A max charge, 1.5 A max continuous discharge, protection trips between 2 and 5 A |
+| Battery | BAK LP-454965-2P-3M pack: 2800 mAh minimum, 3000 typical, 3.7 V nominal (about 10.4 Wh at minimum capacity), 1.4 A max charge, 5.6 A max continuous discharge, protection trips at 12-16 A, 10k thermistor lead |
 | Charger BQ25895 | Input capped at about 1.18 A by R12; input resets to 500 mA at each plug-in; charge current resets to 2.048 A |
-| Boost TPS61230 | 5.02 V; on above 3.31 V, off below 3.01 V at VSYS; about 2.3 A available at 3.0 V in |
+| Discharge limiter TPS2553 | 1.61 / 1.70 / 1.80 A to the boost and the backlight |
+| Boost TPS61230 | 5.02 V; on above 3.31 V, off below 3.01 V at its input; about 2.3 A available at 3.0 V in |
 | Module | Needs 4.75-5.25 V; supplies 3.3 V and 1.8 V, 600 mA each |
 
 ## Load estimate
@@ -25,57 +26,53 @@ bring-up phase 1 is to replace this table with measurements from a module on a s
 
 ## What that means
 
-| | Estimate |
+| | Estimate, at 10.4 Wh |
 |---|---|
-| Idle, screen on at full brightness | about 4.5 h |
-| Browsing | about 2.5-3.5 h |
-| Suspend | about 3-4 days |
-| Cell current when browsing | 0.7-1.0 A average at 3.7 V |
-| Cell current at a 2 A module peak near empty | about 3.7 A: **above the cell's 1.5 A rating and inside its protection trip window** |
+| Idle, screen on at full brightness | about 5 h |
+| Browsing | about 3-4 h |
+| Suspend | about 4 days |
+| Battery current when browsing | 0.7-1.0 A average at 3.7 V |
 
 For reference, the N810 ran about 4 hours of active use on 5.5 Wh, which is about 1.4 W for the whole device.
 
 ## Keeping the cell inside its rating (requirement, David 2026-11-24)
 
-The cell must not be asked for more than its rated 1.5 A, charging or discharging.
+The battery must not be asked for more than its rating: 5.6 A discharging, 1.4 A charging.
 
-**Charging: limited in hardware.** The charger's input is capped at about 1.18 A by R12 and resets to 500 mA at
-every plug-in, so the cell sees about 0.6 A until Linux sets `ti,charge-current`, which must be 1.25 A or less
-(estimate for the 0.6 A; the caps are datasheet values).
+**Charging.** The charger's input resets to 500 mA at every plug-in (its adapter detection is disconnected), so
+the pack sees about 0.6 A until Linux sets `ti,charge-current`, which must be **1.4 A or less**; from then on the
+charger regulates that current itself. R12 also caps the input at about 1.18 A (the 0.6 A is an estimate; the caps
+are datasheet values).
 
-**Discharging: limited in hardware by U13, a TPS2553 current-limited switch** between the charger's system rail
-and everything it feeds (the 5 V boost and the backlight). With a 20 kohm setting resistor its limit is 1.215 A
-minimum, 1.295 A typical, 1.375 A maximum at 25 degC (TI datasheet SLVS841), so the cell stays below 1.5 A. The cell's
-own protection only trips between 2 and 5 A, which is a safety cut-out, not a limit to design to.
+**Discharging.** U13, a TPS2553 current-limited switch, sits between the charger's system rail and everything it
+feeds (the 5 V boost and the backlight). With R66 = 15 kohm its limit is 1.61 A minimum, 1.70 A typical, 1.80 A
+maximum (TI datasheet SLVS841), less than a third of the pack's rating. The pack's own protection trips at
+12-16 A, which is a safety cut-out, not a limit to design to.
 
 What happens at the limit: the limited rail sags, the boost's under-voltage divider switches the 5 V rail off at
 3.0 V, and the module loses power. U13's FAULT output (module pin 58, `BATT_OC_N`) goes low while it is limiting.
-So the limiter is a backstop. **Software must keep the device below it**: cap CPU frequency and cores, and throttle
-on low cell voltage. Costs: the switch drops about 0.11-0.18 V at 1.3 A (85-135 mohm), and it gets hot while limiting.
+So it is a backstop: software should keep the device below it. Costs: the switch drops about 0.14-0.24 V at
+1.7 A (85-135 mohm) and gets hot while limiting.
 
-What the limit allows (estimate, 90 % boost efficiency, 0.6 W for the backlight):
+What the limiter allows (estimate, 90 % boost efficiency, 0.6 W for the backlight):
 
-| Cell voltage | Power through the limiter at 1.3 A | Left for the module at 5 V |
+| Voltage at the limiter | Power through it at 1.7 A | Left for the module at 5 V |
 |---|---|---|
-| 3.1 V | 4.0 W | about 3.1 W, 0.62 A |
-| 3.7 V (nominal) | 4.8 W | about 3.8 W, 0.76 A |
-| 4.2 V (full) | 5.5 W | about 4.4 W, 0.88 A |
+| 3.1 V | 5.3 W | about 4.2 W, 0.84 A |
+| 3.7 V (nominal) | 6.3 W | about 5.1 W, 1.0 A |
+| 4.2 V (full) | 7.1 W | about 5.9 W, 1.2 A |
 
-So the module has to stay under roughly **0.6 A at 5 V (3 W)** on battery in the worst case. Whether the Core3566
-can boot and browse inside that is the first thing to measure in phase 1. If it cannot:
+So the module can draw roughly **4-6 W** on battery, where the brief expects 2-3 W under load. 1.7 A is the highest
+setting the TPS2553 has; the pack itself would allow three times that. If measurements show the module needs
+more, replace U13 with an eFuse that goes to about 4 A (for example TPS2595, in stock at JLCPCB as `C2155775`,
+not yet evaluated).
 
-| Option | Cost |
-|---|---|
-| A cell with a higher rating, and a larger setting resistor value change on U13 | None found in stock with a datasheet; a custom pack needs a quote |
-| TPS61236P boost with a programmable output current and a current monitor (JLCPCB `C130295`) | Needs an inductor rated for its 8 A switch limit and loses the under-voltage divider; a larger redesign |
-| Tighter software cap | Slower device |
-
-With USB power connected the charger supplies the system rail, but U13 still limits the system to the same current.
+With USB power connected the charger supplies the system rail, and U13 limits the system to the same current.
 
 ## Risks that follow
 
-1. The module may want more than the discharge limiter allows (about 3 W on battery, worst case). Then the 5 V
-   rail drops and the device resets. Measure the real draw; cap it in software.
-2. "All day" battery life is not reachable at these figures. Suspend that works is essential: verify RK3566
+1. A module peak above the discharge limiter (about 4 W on battery, worst case) drops the 5 V rail and resets
+   the device. Measure the real peak in phase 1.
+2. "All day" active use is not reachable at these figures. Suspend that works is essential: verify RK3566
    suspend on mainline in phase 1.
 3. Without a charged cell, a 500 mA USB source cannot boot the module (about 0.4 A available at 5 V).

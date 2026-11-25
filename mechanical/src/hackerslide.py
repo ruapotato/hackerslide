@@ -157,7 +157,7 @@ def back_shell():
     xi = C.RAIL_INSET
     s = rbox(xi, 0, z0, C.BODY_W - xi, C.BODY_H, z1, C.CORNER_R - xi)
     s = s.cut(rbox(xi + C.WALL, C.WALL, C.Z_BACK_IN, C.BODY_W - xi - C.WALL, C.BODY_H - C.WALL, z1 + 0.01,
-                   C.CORNER_R - xi - C.WALL))
+                   0.8))        # nearly square inside corners: the 50 x 68 mm battery pack fills the bay end to end
     # screw bosses: from the floor up to the carrier's component side (clamp), screw from outside
     for (x, y) in C.SCREW_XY:
         s = s.union(cyl(x, y, z0, C.Z_CARRIER_F, C.BOSS_D)).cut(cyl(x, y, z0 - 0.01, C.Z_CARRIER_F + 0.01, C.SCREWS['screw_d']))

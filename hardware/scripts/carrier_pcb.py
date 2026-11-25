@@ -84,8 +84,7 @@ def build(bdir, do_route=False):
     P('SW3', 57.0, 1.7, 180)        # volume -
     PF('J9', 31.5, 61.6, 0)          # keyboard FPC, opening toward the bottom edge (toward the slider)
     P('J8', 23.0, 62.6, 0)           # debug UART, side entry toward the bottom edge
-    P('J10', 65.8, 5.4, 90)          # battery connector, opening toward the battery bay
-    P('J3', 64.6, 54.2, 0)           # alternative battery solder pads
+    P('J10', 66.0, 8.6, 90)          # battery connector (Molex 5268, through-hole), opening toward the battery bay
     PF('J4', *J4_POS, 90, 'B')       # panel FPC: opening toward device-right, pin 1 toward the top (see module docstring)
     PF('J5', *J5_POS, 90, 'B')       # touch FPC
     P('U10', *HALL, 0)               # slider hall switch, top strip: above the tray's upper half
@@ -102,12 +101,12 @@ def build(bdir, do_route=False):
            region=(41.8, 56.8, 56.5, 65.6), keepout=keep)
     B.pack(['C35', 'C36', 'C30', 'C37', 'R30'], 42.5, 57.5, region=(36.0, 52.3, 56.5, 65.6), keepout=keep)
     # ---- power: charger + gauge (left strip, next to the battery bay) ----
-    PF('U3', 67.0, 15.0, 0, lens=(1.2, 2.0))
-    P('L1', 67.0, 21.3, 0)
-    B.pack(['C11', 'C12', 'C13', 'C14', 'C10', 'C15', 'C16', 'C17'], 67.0, 18.0, region=(62.8, 9.8, 71.3, 36.0), keepout=keep)
-    B.pack(['R12', 'R13', 'R14', 'R25', 'R28', 'R29', 'R21', 'R22', 'R15', 'D1'], 67.0, 34.0, region=(62.8, 9.8, 71.3, 44.0), keepout=keep)
-    P('U4', 67.0, 46.0, 0)
-    B.pack(['C19', 'R16', 'TH1', 'TP3', 'TP7', 'TP8', 'TP2'], 67.0, 49.0, region=(62.8, 40.0, 71.3, 65.6), keepout=keep)
+    PF('U3', 67.0, 19.5, 0, lens=(1.2, 2.0))
+    P('L1', 67.0, 26.0, 0)
+    B.pack(['C11', 'C12', 'C13', 'C14', 'C10', 'C15', 'C16', 'C17'], 67.0, 23.0, region=(62.8, 12.6, 71.3, 40.0), keepout=keep)
+    B.pack(['R12', 'R13', 'R14', 'R25', 'R28', 'R29', 'R21', 'R22', 'R15', 'D1'], 67.0, 38.0, region=(62.8, 12.6, 71.3, 47.5), keepout=keep)
+    P('U4', 67.0, 49.5, 0)
+    B.pack(['C19', 'R16', 'TH1', 'R68', 'TP3', 'TP7', 'TP8', 'TP2'], 67.0, 52.0, region=(62.8, 44.0, 71.3, 65.6), keepout=keep)
     # ---- USB-C side (right strip) ----
     P('U2', 3.8, 25.4, 90)
     B.pack(['D5', 'R10', 'R11', 'C25', 'TP1'], 3.8, 40.5, region=(0.4, 12.2, 7.3, 43.0), keepout=keep)
@@ -139,8 +138,8 @@ def build(bdir, do_route=False):
     # ---- bottom strip, left part: boot/reset, LED, test points ----
     P('SW4', 60.0, 55.0, 0)
     P('SW5', 60.0, 60.3, 0)
-    B.pack(['TP4', 'TP6', 'TP9', 'TP11', 'TP12'], 44.0, 28.0, 'B', region=(30.0, 20.0, 56.0, 38.0))   # test points, display side, clear of the panel tails
-    B.pack(['R37', 'TP13', 'R32', 'D2', 'R31', 'TP16', 'R40', 'R41', 'C40', 'C41', 'TP21'], 63.0, 63.5, region=(56.8, 52.3, 71.3, 65.6), keepout=keep)
+    B.pack(['TP4', 'TP6', 'TP9', 'TP11', 'TP12', 'TP5', 'TP13', 'TP16', 'TP21'], 44.0, 28.0, 'B', region=(30.0, 20.0, 56.0, 38.0))   # test points, display side, clear of the panel tails
+    B.pack(['R37', 'R32', 'D2', 'R31', 'R40', 'R41', 'C40', 'C41'], 63.0, 63.5, region=(56.8, 52.3, 71.3, 65.6), keepout=keep)
     rest = B.unplaced()
     B.pack(rest, 66.0, 58.0, region=(56.8, 46.0, 71.3, 65.6), keepout=keep)
     left = B.unplaced()
@@ -151,7 +150,7 @@ def build(bdir, do_route=False):
     B.text('HackerSlide 810 carrier rev 0.1 DRAFT', 35.0, 22.0, pcbnew.F_SilkS, 1.0)
     B.text('NEEDS HUMAN REVIEW', 35.0, 24.0, pcbnew.F_SilkS, 1.0)
     B.text('github.com/ruapotato/hackerslide  CERN-OHL-S-2.0', 35.0, 44.0, pcbnew.F_SilkS, 0.8)
-    B.text('BATT +', 68.3, 8.3, pcbnew.F_SilkS, 0.7)
+    B.text('+ NTC -', 63.6, 6.0, pcbnew.F_SilkS, 0.7, rot=90)
     # no copper between the DF40 pad rows (Hirose DF40 catalogue, land pattern note 3; audit M6)
     for xr in (-0.46, 33.46):
         cx, cy = module_xy(xr, -21.5)
@@ -163,11 +162,11 @@ def build(bdir, do_route=False):
     # pours) so they are not left to thin autorouted tracks; the router or a human drops the vias into them.
     def area(net, layer, x0, y0, x1, y1, prio=2):
         return B.zone(net, layer, [(x0, y0), (x1, y0), (x1, y1), (x0, y1)], priority=prio, clearance=0.2)
-    area('VSYS', pcbnew.In2_Cu, 62.8, 19.2, 71.3, 65.7)          # charger SYS -> discharge limiter U13 (left strip)
+    area('VSYS', pcbnew.In2_Cu, 62.8, 22.0, 71.3, 65.7)          # charger SYS -> discharge limiter U13 (left strip)
     area('VSYS_LIM', pcbnew.In2_Cu, 41.0, 52.4, 62.4, 65.7)      # limiter -> 5 V boost (bottom strip)
     area('VBUS', pcbnew.In2_Cu, 4.5, 16.2, 71.3, 18.8)           # USB-C -> charger, under the module's top edge
     area('VBUS', pcbnew.In2_Cu, 4.5, 16.2, 8.5, 31.0)
-    area('VBAT', pcbnew.B_Cu, 62.8, 0.6, 71.3, 41.5)             # battery connector -> charger and gauge
+    area('VBAT', pcbnew.B_Cu, 62.8, 0.6, 71.3, 52.0)             # battery connector -> charger and gauge
     area('+5V', pcbnew.F_Cu, 42.2, 50.2, 56.4, 57.3)             # boost output -> module pins 77-87
     full = [(0, 0), (W, 0), (W, H), (0, H)]
     B.zone('GND', pcbnew.In1_Cu, full, clearance=0.15)

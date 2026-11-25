@@ -30,11 +30,13 @@ PANEL = dict(w=98.10, h=58.26, t=4.25, aa_w=86.40, aa_h=51.84, lens_w=97.70, len
              tft_tail=(47.75, 30.33), # [ds] folded display tail: contact end from the FPC edge, centre from the long edge
              ctp_tail=(56.5, 15.4))   # [est] touch tail: 57.7 flat minus the fold; centre scaled off the drawing
 CARRIER = dict(w=71.6, h=66.0, t=1.0, r=3.0)                         # hardware/scripts/carrier_pcb.py
-# Battery: PKCELL LP785060 (Adafruit 328), 2500 mAh, the only stocked cell with a datasheet found on 2026-11-24.
-# [ds] MAX 8.1 x 50.5 x 62.5 incl. protection board.  Max charge 1.5 A, max continuous discharge 1.5 A.
-BATTERY = dict(w=50.5, h=62.5, t=8.1, swell=0.3)
+# Battery: BAK LP-454965-2P-3M (Farnell 2401855), chosen by David 2026-11-24: factory 1S2P pack, 2800 mAh min /
+# 3000 typ, 5.6 A max continuous discharge, 1.4 A max charge, protection trip 12-16 A, 10k NTC lead.
+# [ds] MAX 9.5 x 50 x 68 mm (BAK datasheet, pack drawing); leads 60 mm from one corner of a 50 mm edge.
+BATTERY = dict(w=50.0, h=68.0, t=9.5, swell=0.3)
 BATTERY_LAYOUT = 'cutout'  # the carrier does not cover the cell (David, 2026-11-24)
-PANEL_GAP = 1.9            # carrier display side -> panel back: room for the folded panel tails and J4/J5 (1.0 mm)
+PANEL_GAP_MIN = 1.9        # carrier display side -> panel back: room for the folded panel tails and J4/J5 (1.0 mm)
+CAVITY_MIN = 5.5           # carrier component side -> back shell: module 5.08 + thermal interface; jack 4.5; L3 3.0
 
 # ---------------------------------------------------------------- keyboard stack ([dec] 102 x 29 + D-pad)
 KBD_PCB = dict(w=125.0, h=31.0, t=1.0, under_gap=0.0,            # h = key area; the board continues top_ext further up
@@ -66,10 +68,12 @@ RAIL_INSET = RAIL['w'] + RAIL['clear']            # body narrows by this per sid
 if BATTERY_LAYOUT == 'cutout':
     # The cell bay runs from the back-shell floor to the panel back.  The carrier hangs in the same height:
     # cavity (module, jack, inductors) + board + PANEL_GAP.
-    BAY_H = BATTERY['t'] + BATTERY['swell']
-    CAVITY = BAY_H - CARRIER['t'] - PANEL_GAP
+    BAY_H = max(BATTERY['t'] + BATTERY['swell'], CAVITY_MIN + CARRIER['t'] + PANEL_GAP_MIN)
+    CAVITY = CAVITY_MIN                            # keep the module close to the back shell (short thermal path);
+    PANEL_GAP = BAY_H - CARRIER['t'] - CAVITY      # any spare height goes behind the panel
 else:                                             # 'under': cell stacked under the module (spec 3.7), for comparison
     CAVITY = MODULE['mated'] + 0.3 + BATTERY['t'] + BATTERY['swell']
+    PANEL_GAP = PANEL_GAP_MIN
     BAY_H = CAVITY + CARRIER['t'] + PANEL_GAP
 THERMAL_GAP = CAVITY - MODULE['mated'] if BATTERY_LAYOUT == 'cutout' else 0.3   # SoC side of the module -> back shell:
 assert THERMAL_GAP >= 0.2, THERMAL_GAP            # filled by a pad or copper shim of this thickness (audit E4)

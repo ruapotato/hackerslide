@@ -5,97 +5,313 @@ unconnected items; "errors" are DRC errors (warnings such as silkscreen overlaps
 
 ## Carrier (`hardware/carrier`)
 
-Unrouted: **87**. DRC errors: **0**. Schematic parity issues: **0**.
+Unrouted: **303**. DRC errors: **0**. Schematic parity issues: **0**.
 
 | Net | From | To | Near (mm) |
 |---|---|---|---|
+| +1V8 | Pad 1 [+1V8] of C50 | Pad 1 [+1V8] of TP12 | 22.1, 10.2 |
+| +1V8 | Pad 1 [+1V8] of C53 | Track [+1V8] | 22.0, 2.6 |
+| +1V8 | Pad 1 [+1V8] of C64 | Track [+1V8] | 15.0, 3.8 |
 | +1V8 | Pad 2 [+1V8] of R85 | Pad 1 [+1V8] of C36 | 25.4, 54.3 |
-| +1V8 | Track [+1V8] | Pad 1 [+1V8] of C36 | 44.9, 47.4 |
-| +3V3 | Pad 2 [+3V3] of R87 | Track [+3V3] | 60.6, 11.1 |
-| +3V3 | Track [+3V3] | Pad 1 [+3V3] of R30 | 38.2, 61.4 |
-| +3V3 | Track [+3V3] | Pad 2 [+3V3] of R41 | 64.1, 57.8 |
-| +3V3 | Track [+3V3] | Track [+3V3] | 24.8, 6.7 |
-| +3V3 | Track [+3V3] | Track [+3V3] | 62.7, 37.7 |
-| BATT_OC_N | Track [BATT_OC_N] | Track [BATT_OC_N] | 61.9, 63.0 |
-| BOOST_EN | Track [BOOST_EN] | Pad 1 [BOOST_EN] of R23 | 40.5, 62.1 |
+| +1V8 | Pad 88 [+1V8] of J1A | Pad 1 [+1V8] of C36 | 44.9, 47.4 |
+| +1V8 | Pad 88 [+1V8] of J1A | Pad 90 [+1V8] of J1A | 44.9, 47.4 |
+| +1V8 | Track [+1V8] | Pad 1 [+1V8] of C50 | 20.1, 8.3 |
+| +1V8 | Track [+1V8] | Pad 1 [+1V8] of TP12 | 44.9, 47.4 |
+| +1V8 | Track [+1V8] | Pad 14 [+1V8] of U7 | 17.5, 5.7 |
+| +3V3 | Pad 1 [+3V3] of C35 | Pad 1 [+3V3] of R30 | 39.3, 58.2 |
+| +3V3 | Pad 1 [+3V3] of C35 | Pad 84 [+3V3] of J1A | 39.3, 58.2 |
+| +3V3 | Pad 1 [+3V3] of C40 | Pad 2 [+3V3] of R16 | 63.9, 59.0 |
+| +3V3 | Pad 1 [+3V3] of C41 | Pad 2 [+3V3] of R40 | 66.1, 60.7 |
+| +3V3 | Pad 1 [+3V3] of C51 | Track [+3V3] | 15.8, 2.4 |
+| +3V3 | Pad 1 [+3V3] of C77 | Pad 2 [+3V3] of R71 | 33.9, 56.5 |
+| +3V3 | Pad 1 [+3V3] of C81 | Pad 2 [+3V3] of R73 | 24.5, 52.9 |
+| +3V3 | Pad 1 [+3V3] of R44 | Pad 1 [+3V3] of C51 | 15.2, 1.0 |
+| +3V3 | Pad 1 [+3V3] of U10 | Pad 1 [+3V3] of C76 | 40.1, 1.1 |
+| +3V3 | Pad 2 [+3V3] of D2 | Pad 1 [+3V3] of R30 | 61.1, 64.1 |
+| +3V3 | Pad 2 [+3V3] of D2 | Pad 2 [+3V3] of R67 | 61.1, 64.1 |
+| +3V3 | Pad 2 [+3V3] of R25 | Track [+3V3] | 65.9, 39.6 |
+| +3V3 | Pad 2 [+3V3] of R27 | Pad 1 [+3V3] of C76 | 35.4, 9.7 |
+| +3V3 | Pad 2 [+3V3] of R27 | Pad 1 [+3V3] of TP11 | 35.4, 9.7 |
+| +3V3 | Pad 2 [+3V3] of R27 | Pad 2 [+3V3] of R48 | 35.4, 9.7 |
+| +3V3 | Pad 2 [+3V3] of R40 | Pad 1 [+3V3] of C40 | 64.7, 60.7 |
+| +3V3 | Pad 2 [+3V3] of R41 | Pad 1 [+3V3] of C41 | 67.0, 62.0 |
+| +3V3 | Pad 2 [+3V3] of R67 | Pad 2 [+3V3] of R41 | 65.5, 63.1 |
+| +3V3 | Pad 2 [+3V3] of R71 | Pad 2 [+3V3] of R72 | 32.4, 58.6 |
+| +3V3 | Pad 2 [+3V3] of R72 | Pad 2 [+3V3] of R73 | 30.1, 58.5 |
+| +3V3 | Pad 2 [+3V3] of R72 | Track [+3V3] | 30.1, 58.5 |
+| +3V3 | Pad 2 [+3V3] of R74 | Pad 1 [+3V3] of C35 | 35.0, 58.0 |
+| +3V3 | Pad 2 [+3V3] of R74 | Pad 1 [+3V3] of C77 | 35.0, 58.0 |
+| +3V3 | Pad 2 [+3V3] of R80 | Pad 2 [+3V3] of R81 | 18.8, 60.1 |
+| +3V3 | Pad 2 [+3V3] of R80 | Pad 2 [+3V3] of R84 | 18.8, 60.1 |
+| +3V3 | Pad 2 [+3V3] of R81 | Pad 2 [+3V3] of R82 | 18.8, 61.8 |
+| +3V3 | Pad 2 [+3V3] of R82 | Pad 2 [+3V3] of R83 | 18.7, 63.3 |
+| +3V3 | Pad 2 [+3V3] of R84 | Pad 1 [+3V3] of C80 | 22.4, 54.8 |
+| +3V3 | Pad 2 [+3V3] of R84 | Pad 1 [+3V3] of C81 | 22.4, 54.8 |
+| +3V3 | Pad 2 [+3V3] of R86 | Pad 2 [+3V3] of R87 | 60.9, 8.0 |
+| +3V3 | Pad 2 [+3V3] of R87 | Track [+3V3] | 60.9, 9.4 |
+| +3V3 | Pad 4 [+3V3] of J7 | Pad 2 [+3V3] of R80 | 2.6, 58.4 |
+| +3V3 | Pad 84 [+3V3] of J1A | Pad 86 [+3V3] of J1A | 44.1, 47.4 |
+| +3V3 | Track [+3V3] | Pad 1 [+3V3] of TP11 | 44.5, 47.4 |
+| +3V3 | Track [+3V3] | Pad 2 [+3V3] of R16 | 69.2, 46.0 |
+| +3V3 | Track [+3V3] | Pad 2 [+3V3] of R48 | 17.5, 6.1 |
+| +3V3 | Track [+3V3] | Pad 2 [+3V3] of R71 | 32.8, 61.6 |
+| +3V3 | Track [+3V3] | Track [+3V3] | 61.7, 29.6 |
+| +3V3 | Via [+3V3] | Pad 2 [+3V3] of R25 | 63.5, 30.1 |
+| +5V | Pad 1 [+5V] of C26 | Pad 1 [+5V] of R18 | 43.3, 62.2 |
+| +5V | Pad 1 [+5V] of C34 | Pad 3 [+5V] of U5 | 42.5, 56.7 |
+| +5V | Pad 4 [+5V] of U5 | Pad 1 [+5V] of C26 | 44.7, 59.5 |
+| +5V | Pad 4 [+5V] of U5 | Pad 3 [+5V] of U5 | 45.0, 59.5 |
+| +5V | Pad 83 [+5V] of J1A | Pad 1 [+5V] of TP4 | 44.1, 50.5 |
+| +5V | Zone [+5V] | Pad 2 [+5V] of R20 | 42.2, 50.2 |
+| ADCVREF | Pad 1 [ADCVREF] of C56 | Track [ADCVREF] | 20.4, 1.0 |
+| AVDD_CODEC | Pad 1 [AVDD_CODEC] of C54 | Track [AVDD_CODEC] | 25.2, 6.3 |
+| AVDD_CODEC | Pad 2 [AVDD_CODEC] of R44 | Pad 22 [AVDD_CODEC] of U7 | 16.2, 1.0 |
+| AVDD_CODEC | Track [AVDD_CODEC] | Pad 1 [AVDD_CODEC] of C52 | 21.5, 5.7 |
+| BATT_ILIM | Pad 1 [BATT_ILIM] of R66 | Pad 5 [BATT_ILIM] of U13 | 66.8, 63.1 |
+| BATT_NTC | Pad 1 [BATT_NTC] of R68 | PTH pad 2 [BATT_NTC] of J10 | 64.7, 53.4 |
+| BATT_OC_N | Pad 1 [BATT_OC_N] of R67 | Pad 4 [BATT_OC_N] of U13 | 64.5, 63.1 |
+| BATT_OC_N | Pad 58 [BATT_OC_N] of J1A | Pad 1 [BATT_OC_N] of R67 | 38.9, 47.4 |
+| BL_PWM | Pad 1 [BL_PWM] of R43 | Pad 4 [BL_PWM] of U6 | 51.9, 10.9 |
+| BL_PWM | Pad 4 [BL_PWM] of U6 | Track [BL_PWM] | 50.0, 10.4 |
+| BL_SW | Pad 2 [BL_SW] of D4 | Pad 1 [BL_SW] of U6 | 50.0, 6.0 |
+| BL_SW | Pad 2 [BL_SW] of L3 | Pad 2 [BL_SW] of D4 | 55.7, 7.8 |
+| BOOST_EN | Pad 1 [BOOST_EN] of R23 | Pad 2 [BOOST_EN] of R17 | 42.5, 60.4 |
+| BOOST_EN | Pad 9 [BOOST_EN] of U5 | Pad 1 [BOOST_EN] of TP9 | 48.0, 58.5 |
+| BOOST_EN | Pad 9 [BOOST_EN] of U5 | Pad 2 [BOOST_EN] of R17 | 48.0, 58.5 |
 | BOOST_FB | Pad 1 [BOOST_FB] of R19 | Pad 2 [BOOST_FB] of R18 | 44.5, 64.9 |
-| BOOST_FB | Track [BOOST_FB] | Pad 7 [BOOST_FB] of U5 | 44.6, 62.9 |
+| BOOST_FB | Pad 2 [BOOST_FB] of R18 | Pad 2 [BOOST_FB] of C26 | 45.0, 63.5 |
+| BOOST_FB | Pad 7 [BOOST_FB] of U5 | Pad 2 [BOOST_FB] of C26 | 48.0, 59.5 |
+| BOOST_HYS | Pad 1 [BOOST_HYS] of R24 | Pad 2 [BOOST_HYS] of R23 | 42.5, 59.0 |
 | BOOST_HYS | Pad 2 [BOOST_HYS] of R23 | Pad 8 [BOOST_HYS] of U5 | 43.5, 60.4 |
 | BOOST_PG | Pad 1 [BOOST_PG] of R20 | Pad 5 [BOOST_PG] of U5 | 54.7, 63.5 |
 | BOOST_PG | Pad 1 [BOOST_PG] of TP6 | Pad 5 [BOOST_PG] of U5 | 46.5, 28.0 |
+| BOOST_SS | Pad 6 [BOOST_SS] of U5 | Pad 1 [BOOST_SS] of C20 | 48.0, 60.0 |
+| BOOST_SW | Pad 1 [BOOST_SW] of U5 | Pad 2 [BOOST_SW] of U5 | 45.0, 58.0 |
 | BOOST_SW | Pad 2 [BOOST_SW] of L2 | Pad 1 [BOOST_SW] of U5 | 52.2, 57.1 |
 | CC1 | Pad 1 [CC1] of R10 | Pad A5 [CC1] of J2 | 1.2, 16.1 |
-| CHG_BTST | Track [CHG_BTST] | Pad 1 [CHG_BTST] of C13 | 67.2, 13.0 |
-| CHG_DP | Pad 1 [CHG_DP] of R28 | Pad 2 [CHG_DP] of R21 | 66.9, 37.0 |
-| CHG_DP | Pad 2 [CHG_DP] of R21 | Track [CHG_DP] | 70.6, 35.7 |
-| CHG_ILIM | Pad 1 [CHG_ILIM] of R12 | Via [CHG_ILIM] | 66.1, 34.2 |
-| CHG_INT_N | Pad 1 [CHG_INT_N] of R25 | Via [CHG_INT_N] | 64.6, 32.8 |
-| CHG_QON_N | Track [CHG_QON_N] | Pad 1 [CHG_QON_N] of TP15 | 68.2, 17.0 |
-| CHG_STAT | Pad 1 [CHG_STAT] of D1 | Track [CHG_STAT] | 67.8, 38.8 |
-| CHG_TS | Pad 1 [CHG_TS] of TH1 | Pad 1 [CHG_TS] of TP8 | 64.7, 50.4 |
-| CHG_TS | Pad 2 [CHG_TS] of R13 | Pad 1 [CHG_TS] of TP8 | 68.2, 35.6 |
-| CHG_TS | Track [CHG_TS] | Track [CHG_TS] | 67.4, 35.0 |
+| CC2 | Pad 1 [CC2] of R11 | Pad B5 [CC2] of J2 | 3.5, 16.0 |
+| CHG_BTST | Via [CHG_BTST] | Pad 1 [CHG_BTST] of C13 | 67.2, 16.3 |
+| CHG_DM | Pad 1 [CHG_DM] of R29 | Pad 2 [CHG_DM] of R22 | 69.0, 38.3 |
+| CHG_DM | Pad 3 [CHG_DM] of U3 | Pad 1 [CHG_DM] of R29 | 65.0, 19.2 |
+| CHG_DP | Pad 1 [CHG_DP] of R28 | Pad 2 [CHG_DP] of R21 | 64.3, 38.3 |
+| CHG_DP | Pad 2 [CHG_DP] of U3 | Pad 1 [CHG_DP] of R28 | 65.0, 18.8 |
+| CHG_ILIM | Pad 1 [CHG_ILIM] of R12 | Track [CHG_ILIM] | 66.6, 38.2 |
+| CHG_INT_N | Pad 1 [CHG_INT_N] of R25 | Track [CHG_INT_N] | 64.9, 39.6 |
+| CHG_INT_N | Pad 1 [CHG_INT_N] of R25 | Track [CHG_INT_N] | 64.9, 39.6 |
+| CHG_LED_A | Pad 2 [CHG_LED_A] of R15 | Pad 2 [CHG_LED_A] of D1 | 65.5, 41.2 |
+| CHG_QON_N | Pad 1 [CHG_QON_N] of TP15 | Pad 12 [CHG_QON_N] of U3 | 38.1, 7.9 |
+| CHG_QON_N | Pad 2 [CHG_QON_N] of D3 | Pad 1 [CHG_QON_N] of TP15 | 35.0, 5.5 |
+| CHG_STAT | Pad 1 [CHG_STAT] of D1 | Pad 4 [CHG_STAT] of U3 | 67.4, 42.6 |
+| CHG_SW | Pad 1 [CHG_SW] of L1 | Track [CHG_SW] | 65.2, 26.0 |
+| CHG_SW | Track [CHG_SW] | Track [CHG_SW] | 67.8, 17.5 |
+| CHG_SW | Via [CHG_SW] | Pad 2 [CHG_SW] of C13 | 67.8, 15.5 |
+| CHG_TS | Pad 1 [CHG_TS] of TH1 | Pad 1 [CHG_TS] of R14 | 68.7, 52.0 |
+| CHG_TS | Pad 2 [CHG_TS] of R13 | Pad 1 [CHG_TS] of R14 | 67.0, 36.9 |
+| CHG_TS | Pad 2 [CHG_TS] of R13 | Track [CHG_TS] | 67.0, 36.9 |
+| CHG_TS | Pad 2 [CHG_TS] of R68 | Pad 1 [CHG_TS] of TH1 | 65.8, 53.4 |
+| CHG_TS | Pad 2 [CHG_TS] of R68 | Pad 1 [CHG_TS] of TP8 | 65.8, 53.4 |
 | CM4_GPIO16 | Track [CM4_GPIO16] | Pad 2 [CM4_GPIO16] of R55 | 33.3, 50.5 |
-| CM4_GPIO18 | Pad 2 [CM4_GPIO18] of R56 | Via [CM4_GPIO18] | 43.3, 64.9 |
-| CM4_GPIO6 | Track [CM4_GPIO6] | Pad 2 [CM4_GPIO6] of R52 | 33.3, 47.4 |
-| GAUGE_INT | Track [GAUGE_INT] | Pad 1 [GAUGE_INT] of R16 | 35.3, 47.4 |
+| CM4_GPIO18 | Pad 2 [CM4_GPIO18] of R54 | Pad 2 [CM4_GPIO18] of R56 | 37.8, 59.6 |
+| CM4_GPIO18 | Track [CM4_GPIO18] | Pad 2 [CM4_GPIO18] of R54 | 37.3, 50.5 |
+| CM4_GPIO19 | Pad 2 [CM4_GPIO19] of R53 | Pad 2 [CM4_GPIO19] of R57 | 37.6, 58.3 |
+| CM4_GPIO19 | Pad 26 [CM4_GPIO19] of J1A | Pad 2 [CM4_GPIO19] of R53 | 32.5, 47.4 |
+| CM4_GPIO20 | Pad 2 [CM4_GPIO20] of R59 | Pad 2 [CM4_GPIO20] of R51 | 40.3, 63.6 |
+| CM4_GPIO20 | Track [CM4_GPIO20] | Pad 2 [CM4_GPIO20] of R51 | 32.9, 50.5 |
+| CM4_GPIO21 | Pad 2 [CM4_GPIO21] of R58 | Pad 2 [CM4_GPIO21] of R50 | 40.8, 65.0 |
+| CM4_GPIO21 | Track [CM4_GPIO21] | Pad 2 [CM4_GPIO21] of R50 | 32.5, 50.5 |
+| CM4_GPIO3 | Pad 1 [CM4_GPIO3] of R36 | Pad 56 [CM4_GPIO3] of J1A | 24.1, 55.9 |
+| CM4_GPIO4 | Pad 1 [CM4_GPIO4] of R35 | Pad 54 [CM4_GPIO4] of J1A | 24.7, 57.5 |
+| CM4_GPIO6 | Pad 30 [CM4_GPIO6] of J1A | Pad 2 [CM4_GPIO6] of R52 | 33.3, 47.4 |
+| CODEC_IRQ | Track [CODEC_IRQ] | Track [CODEC_IRQ] | 36.1, 47.4 |
+| CPBOT | Pad 2 [CPBOT] of C58 | Pad 16 [CPBOT] of U7 | 24.0, 8.9 |
+| CPTOP | Track [CPTOP] | Pad 1 [CPTOP] of C58 | 20.5, 8.3 |
+| CPVSSP | Pad 1 [CPVSSP] of C59 | Track [CPVSSP] | 16.0, 9.9 |
+| DACVREF | Pad 1 [DACVREF] of C55 | Pad 21 [DACVREF] of U7 | 17.7, 1.0 |
+| DSI_CLK_N | Track [DSI_CLK_N] | Track [DSI_CLK_N] | 44.9, 16.6 |
+| DSI_CLK_P | Track [DSI_CLK_P] | Pad 14 [DSI_CLK_P] of J4 | 45.3, 16.6 |
+| DSI_D0_N | Track [DSI_D0_N] | Track [DSI_D0_N] | 42.5, 16.6 |
+| DSI_D0_P | Track [DSI_D0_P] | Track [DSI_D0_P] | 42.9, 16.6 |
+| DSI_D1_N | Track [DSI_D1_N] | Track [DSI_D1_N] | 43.7, 16.6 |
+| DSI_D1_P | Track [DSI_D1_P] | Track [DSI_D1_P] | 44.1, 16.6 |
+| ESD_BIAS | Pad 1 [ESD_BIAS] of C25 | Pad 5 [ESD_BIAS] of U2 | 1.1, 14.6 |
+| GAUGE_INT | Pad 1 [GAUGE_INT] of R16 | Pad 5 [GAUGE_INT] of U4 | 67.0, 53.4 |
+| GAUGE_INT | Pad 40 [GAUGE_INT] of J1A | Pad 1 [GAUGE_INT] of R16 | 35.3, 47.4 |
 | GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
 | GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
 | GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
 | GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
 | GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
 | GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GPIO_VREF | Track [GPIO_VREF] | Pad 2 [GPIO_VREF] of R30 | 40.9, 60.7 |
-| I2C_A_SCL | Track [I2C_A_SCL] | Pad 1 [I2C_A_SCL] of R40 | 43.3, 47.4 |
-| I2C_A_SCL | Track [I2C_A_SCL] | Pad 1 [I2C_A_SCL] of R40 | 69.2, 46.5 |
-| I2C_A_SDA | Track [I2C_A_SDA] | Pad 1 [I2C_A_SDA] of R41 | 43.7, 47.4 |
-| I2C_A_SDA | Track [I2C_A_SDA] | Pad 1 [I2C_A_SDA] of R41 | 69.2, 47.0 |
-| I2C_B_SCL | Pad 7 [I2C_B_SCL] of U4 | Track [I2C_B_SCL] | 68.0, 45.8 |
-| I2C_B_SCL | Pad 7 [I2C_B_SCL] of U4 | Track [I2C_B_SCL] | 68.0, 45.8 |
-| I2C_B_SDA | Pad 8 [I2C_B_SDA] of U4 | Track [I2C_B_SDA] | 68.0, 45.2 |
-| I2C_B_SDA | Pad 8 [I2C_B_SDA] of U4 | Via [I2C_B_SDA] | 68.0, 45.2 |
-| I2S_ADCDAT | Pad 1 [I2S_ADCDAT] of R54 | Track [I2S_ADCDAT] | 36.7, 59.6 |
+| GPIO_VREF | Pad 1 [GPIO_VREF] of C30 | Pad 2 [GPIO_VREF] of R30 | 40.2, 60.2 |
+| GPIO_VREF | Pad 1 [GPIO_VREF] of C37 | Pad 1 [GPIO_VREF] of C30 | 40.6, 54.6 |
+| GPIO_VREF | Pad 1 [GPIO_VREF] of C37 | Pad 78 [GPIO_VREF] of J1A | 40.6, 54.6 |
+| HPGND | Pad 18 [HPGND] of U7 | Pad 1 [HPGND] of R49 | 21.5, 7.3 |
+| HPGND | Pad 2 [HPGND] of R60 | Pad 1 [HPGND] of R49 | 6.5, 10.9 |
+| HPGND | Pad 2 [HPGND] of R63 | Pad 2 [HPGND] of C62 | 27.8, 10.8 |
+| HPGND | Track [HPGND] | Pad 2 [HPGND] of C61 | 21.5, 7.3 |
+| HPGND | Track [HPGND] | Pad 2 [HPGND] of R63 | 21.5, 7.3 |
+| HP_DET | Pad 1 [HP_DET] of R48 | Pad 1 [HP_DET] of R64 | 28.2, 4.2 |
+| HP_DET | Pad 1 [HP_DET] of R48 | Pad 10 [HP_DET] of U7 | 28.2, 4.2 |
+| HP_DET | Pad 10 [HP_DET] of U7 | Pad 4 [HP_DET] of J6 | 18.5, 8.3 |
+| HP_DET_SOC | Track [HP_DET_SOC] | Pad 2 [HP_DET_SOC] of R64 | 37.3, 47.4 |
+| HP_L | Pad 20 [HP_L] of U7 | Pad 1 [HP_L] of R46 | 21.5, 6.5 |
+| HP_R | Pad 19 [HP_R] of U7 | Pad 1 [HP_R] of R47 | 21.5, 6.9 |
+| I2C_A_SCL | Pad 4 [I2C_A_SCL] of J5 | Pad 1 [I2C_A_SCL] of R40 | 69.2, 46.5 |
+| I2C_A_SCL | Pad 80 [I2C_A_SCL] of J1A | Pad 1 [I2C_A_SCL] of R40 | 43.3, 47.4 |
+| I2C_A_SDA | Pad 5 [I2C_A_SDA] of J5 | Pad 1 [I2C_A_SDA] of R41 | 69.2, 47.0 |
+| I2C_A_SDA | Pad 82 [I2C_A_SDA] of J1A | Pad 5 [I2C_A_SDA] of J5 | 43.7, 47.4 |
+| I2C_B_SCL | Pad 1 [I2C_B_SCL] of R71 | Track [I2C_B_SCL] | 31.4, 58.6 |
+| I2C_B_SCL | Pad 35 [I2C_B_SCL] of J1A | Pad 1 [I2C_B_SCL] of U7 | 34.5, 50.5 |
+| I2C_B_SCL | Pad 35 [I2C_B_SCL] of J1A | Pad 7 [I2C_B_SCL] of U4 | 34.5, 50.5 |
+| I2C_B_SCL | Pad 7 [I2C_B_SCL] of U4 | Pad 5 [I2C_B_SCL] of U3 | 68.0, 49.2 |
+| I2C_B_SCL | Track [I2C_B_SCL] | Pad 1 [I2C_B_SCL] of R71 | 30.8, 61.6 |
+| I2C_B_SDA | Pad 1 [I2C_B_SDA] of R72 | Pad 36 [I2C_B_SDA] of J1A | 29.1, 58.5 |
+| I2C_B_SDA | Pad 8 [I2C_B_SDA] of U4 | Pad 36 [I2C_B_SDA] of J1A | 68.0, 48.8 |
+| I2C_B_SDA | Pad 8 [I2C_B_SDA] of U4 | Pad 6 [I2C_B_SDA] of U3 | 68.0, 48.8 |
+| I2C_B_SDA | Track [I2C_B_SDA] | Pad 1 [I2C_B_SDA] of R72 | 32.2, 61.6 |
+| I2C_B_SDA | Track [I2C_B_SDA] | Track [I2C_B_SDA] | 18.1, 4.3 |
+| I2S_ADCDAT | Pad 1 [I2S_ADCDAT] of R54 | Pad 1 [I2S_ADCDAT] of R59 | 36.7, 59.6 |
+| I2S_ADCDAT | Track [I2S_ADCDAT] | Pad 1 [I2S_ADCDAT] of R54 | 18.1, 8.3 |
+| I2S_DACDAT | Pad 1 [I2S_DACDAT] of R53 | Pad 1 [I2S_DACDAT] of TP33 | 36.6, 58.3 |
+| I2S_DACDAT | Pad 1 [I2S_DACDAT] of R58 | Pad 1 [I2S_DACDAT] of R53 | 39.8, 65.0 |
+| I2S_DACDAT | Pad 7 [I2S_DACDAT] of U7 | Pad 1 [I2S_DACDAT] of TP33 | 17.5, 7.3 |
+| I2S_LRCK | Pad 1 [I2S_LRCK] of R52 | Pad 1 [I2S_LRCK] of TP30 | 36.6, 56.9 |
 | I2S_LRCK | Pad 1 [I2S_LRCK] of R57 | Pad 1 [I2S_LRCK] of R52 | 41.6, 63.5 |
-| I2S_MCLK | Pad 1 [I2S_MCLK] of R50 | Pad 1 [I2S_MCLK] of R55 | 38.0, 54.0 |
-| I2S_SCLK | Pad 1 [I2S_SCLK] of R56 | Track [I2S_SCLK] | 42.3, 64.9 |
-| LED_A | Track [LED_A] | Pad 1 [LED_A] of C42 | 61.7, 28.6 |
+| I2S_LRCK | Pad 1 [I2S_LRCK] of TP30 | Pad 8 [I2S_LRCK] of U7 | 31.9, 54.2 |
+| I2S_MCLK | Pad 1 [I2S_MCLK] of R50 | Pad 1 [I2S_MCLK] of TP31 | 38.0, 54.0 |
+| I2S_MCLK | Pad 1 [I2S_MCLK] of R55 | Pad 1 [I2S_MCLK] of R50 | 46.9, 65.0 |
+| I2S_MCLK | Pad 1 [I2S_MCLK] of TP31 | Pad 2 [I2S_MCLK] of U7 | 29.5, 54.3 |
+| I2S_SCLK | Pad 1 [I2S_SCLK] of R51 | Pad 1 [I2S_SCLK] of TP32 | 36.7, 55.5 |
+| I2S_SCLK | Pad 1 [I2S_SCLK] of R56 | Pad 1 [I2S_SCLK] of R51 | 42.3, 64.9 |
+| I2S_SCLK | Pad 1 [I2S_SCLK] of TP32 | Track [I2S_SCLK] | 32.1, 56.7 |
+| JACK_P2 | Pad 1 [JACK_P2] of R60 | Pad 1 [JACK_P2] of R62 | 5.5, 10.9 |
+| JACK_P2 | Pad 2 [JACK_P2] of J6 | Pad 1 [JACK_P2] of R60 | 3.5, 1.4 |
+| JACK_P5 | Pad 1 [JACK_P5] of R63 | Pad 5 [JACK_P5] of J6 | 26.7, 10.8 |
+| JACK_P5 | Pad 5 [JACK_P5] of J6 | Pad 1 [JACK_P5] of R61 | 3.5, 8.6 |
+| JACK_R1 | Pad 2 [JACK_R1] of R47 | Pad 1 [JACK_R1] of D11 | 11.3, 10.8 |
+| JACK_R1 | Pad 6 [JACK_R1] of J6 | Pad 2 [JACK_R1] of R47 | 6.8, 8.6 |
+| JACK_T | Pad 1 [JACK_T] of D10 | Pad 2 [JACK_T] of R46 | 1.2, 10.9 |
+| JACK_T | Pad 2 [JACK_T] of R46 | Pad 3 [JACK_T] of J6 | 13.5, 10.8 |
+| KB_INT_N | Pad 1 [KB_INT_N] of R74 | Track [KB_INT_N] | 34.0, 58.0 |
+| KB_INT_N | Track [KB_INT_N] | Pad 1 [KB_INT_N] of R74 | 31.8, 61.6 |
+| KB_RST_N | Pad 1 [KB_RST_N] of R73 | Track [KB_RST_N] | 29.0, 57.0 |
+| KB_RST_N | Track [KB_RST_N] | Pad 1 [KB_RST_N] of R73 | 31.2, 61.6 |
+| LCD_RST_N | Track [LCD_RST_N] | Pad 31 [LCD_RST_N] of J1A | 61.7, 31.1 |
+| LCD_TE | Track [LCD_TE] | Track [LCD_TE] | 61.7, 30.6 |
+| LED_A | Pad 1 [LED_A] of C42 | Pad 1 [LED_A] of D4 | 57.8, 6.0 |
+| LED_A | Pad 1 [LED_A] of TP20 | Pad 1 [LED_A] of C42 | 57.9, 8.5 |
+| LED_A | Pad 1 [LED_A] of TP20 | Track [LED_A] | 57.9, 8.5 |
+| LED_ACT_K | Pad 1 [LED_ACT_K] of D2 | Pad 1 [LED_ACT_K] of R32 | 59.5, 64.1 |
 | LED_ACT_N | Track [LED_ACT_N] | Pad 2 [LED_ACT_N] of R32 | 31.7, 50.5 |
-| PMID | Track [PMID] | Track [PMID] | 66.2, 13.0 |
-| PWR_KEY_N | Track [PWR_KEY_N] | Pad 1 [PWR_KEY_N] of R27 | 35.7, 50.5 |
-| REGN | Pad 1 [REGN] of C14 | Track [REGN] | 68.6, 27.2 |
-| REGN | Pad 1 [REGN] of R13 | Pad 1 [REGN] of C14 | 67.2, 35.6 |
-| REGN | Pad 1 [REGN] of TP7 | Pad 1 [REGN] of R13 | 66.0, 43.3 |
-| RUN_PG | Track [RUN_PG] | Pad 1 [RUN_PG] of TP13 | 45.7, 47.4 |
-| SD_CD_N | Track [SD_CD_N] | Track [SD_CD_N] | 23.3, 55.0 |
-| SLIDE_DET_R | Pad 2 [SLIDE_DET_R] of R75 | Track [SLIDE_DET_R] | 42.1, 6.4 |
+| LED_K | Pad 1 [LED_K] of R42 | Pad 3 [LED_K] of U6 | 53.8, 4.5 |
+| LED_K | Pad 3 [LED_K] of U6 | Track [LED_K] | 48.0, 10.4 |
+| MICBIAS | Pad 1 [MICBIAS] of C63 | Pad 1 [MICBIAS] of R45 | 25.3, 8.0 |
+| MICBIAS | Pad 26 [MICBIAS] of U7 | Pad 1 [MICBIAS] of C63 | 20.5, 4.3 |
+| MIC_DET | Pad 2 [MIC_DET] of R65 | Pad 11 [MIC_DET] of U7 | 29.3, 6.1 |
+| MIC_N | Pad 1 [MIC_N] of C61 | Track [MIC_N] | 24.9, 1.0 |
+| MIC_P | Pad 30 [MIC_P] of U7 | Pad 1 [MIC_P] of C60 | 18.9, 4.3 |
+| MIC_SLEEVE | Pad 1 [MIC_SLEEVE] of C62 | Pad 2 [MIC_SLEEVE] of C60 | 29.0, 10.8 |
+| MIC_SLEEVE | Pad 1 [MIC_SLEEVE] of D12 | Pad 2 [MIC_SLEEVE] of R45 | 26.1, 4.3 |
+| MIC_SLEEVE | Pad 1 [MIC_SLEEVE] of R65 | Pad 1 [MIC_SLEEVE] of D12 | 28.3, 6.1 |
+| MIC_SLEEVE | Pad 2 [MIC_SLEEVE] of C60 | Pad 1 [MIC_SLEEVE] of R65 | 28.5, 8.1 |
+| MIC_SLEEVE | Pad 2 [MIC_SLEEVE] of R61 | Pad 2 [MIC_SLEEVE] of R62 | 4.3, 10.8 |
+| MIC_SLEEVE | Pad 2 [MIC_SLEEVE] of R62 | Pad 1 [MIC_SLEEVE] of C62 | 25.5, 10.8 |
+| MOD_PIN99 | Pad 99 [MOD_PIN99] of J1A | Pad 2 [MOD_PIN99] of R26 | 47.3, 50.5 |
+| MOD_PWRON | Pad 1 [MOD_PWRON] of R26 | Pad 2 [MOD_PWRON] of D7 | 31.4, 7.6 |
+| NRPIBOOT | Pad 1 [NRPIBOOT] of SW4 | Pad 1 [NRPIBOOT] of SW4 | 58.2, 54.3 |
+| NRPIBOOT | Track [NRPIBOOT] | Pad 1 [NRPIBOOT] of SW4 | 46.1, 50.5 |
+| PMID | Pad 1 [PMID] of C11 | Pad 1 [PMID] of C12 | 66.6, 29.7 |
+| PMID | Track [PMID] | Pad 1 [PMID] of C11 | 66.2, 17.5 |
+| PWR_KEY_N | Pad 2 [PWR_KEY_N] of D8 | Pad 1 [PWR_KEY_N] of R27 | 38.8, 5.5 |
+| PWR_KEY_N | Pad 41 [PWR_KEY_N] of J1A | Pad 1 [PWR_KEY_N] of R27 | 35.7, 50.5 |
+| PWR_SW_N | Pad 1 [PWR_SW_N] of D3 | Pad 1 [PWR_SW_N] of D7 | 33.0, 5.5 |
+| PWR_SW_N | Pad 1 [PWR_SW_N] of D8 | Pad 1 [PWR_SW_N] of SW1 | 36.7, 5.5 |
+| PWR_SW_N | Pad 1 [PWR_SW_N] of SW1 | Pad 1 [PWR_SW_N] of D3 | 32.2, 2.4 |
+| PWR_SW_N | Pad 1 [PWR_SW_N] of SW1 | Pad 1 [PWR_SW_N] of SW1 | 35.8, 2.4 |
+| REGN | Pad 1 [REGN] of R13 | Pad 1 [REGN] of TP7 | 65.9, 36.9 |
+| REGN | Pad 22 [REGN] of U3 | Pad 1 [REGN] of R13 | 66.8, 17.5 |
+| REGN | Track [REGN] | Pad 1 [REGN] of C14 | 66.8, 17.5 |
+| RST_SW_N | Pad 1 [RST_SW_N] of R37 | Pad 1 [RST_SW_N] of SW5 | 62.6, 63.7 |
+| RST_SW_N | Pad 1 [RST_SW_N] of SW5 | Pad 1 [RST_SW_N] of SW5 | 61.8, 59.6 |
+| RUN_PG | Pad 1 [RUN_PG] of TP13 | Track [RUN_PG] | 42.0, 30.9 |
+| RUN_PG | Pad 92 [RUN_PG] of J1A | Pad 2 [RUN_PG] of R37 | 45.7, 47.4 |
+| SD_CD_N | Pad 1 [SD_CD_N] of R85 | Pad 76 [SD_CD_N] of J1A | 24.3, 54.3 |
+| SD_CD_N | Pad 4 [SD_CD_N] of U12 | Pad 1 [SD_CD_N] of R85 | 18.0, 58.1 |
+| SD_CD_N | Track [SD_CD_N] | Pad 9 [SD_CD_N] of J7 | 18.0, 58.1 |
+| SD_CLK | Track [SD_CLK] | Pad 5 [SD_CLK] of J7 | 18.0, 53.0 |
+| SD_CLK | Track [SD_CLK] | Track [SD_CLK] | 18.0, 53.0 |
+| SD_CMD | Pad 1 [SD_CMD] of R80 | Track [SD_CMD] | 17.7, 60.1 |
+| SD_CMD | Pad 3 [SD_CMD] of J7 | Pad 1 [SD_CMD] of R80 | 2.6, 59.5 |
+| SD_CMD | Track [SD_CMD] | Pad 62 [SD_CMD] of J1A | 18.0, 53.5 |
+| SD_D0 | Track [SD_D0] | Pad 1 [SD_D0] of R81 | 18.0, 54.5 |
+| SD_D0 | Track [SD_D0] | Pad 7 [SD_D0] of J7 | 18.0, 54.5 |
+| SD_D0 | Track [SD_D0] | Track [SD_D0] | 18.0, 54.5 |
+| SD_D1 | Pad 8 [SD_D1] of J7 | Via [SD_D1] | 2.6, 54.1 |
+| SD_D1 | Track [SD_D1] | Pad 1 [SD_D1] of R82 | 18.0, 55.0 |
+| SD_D1 | Track [SD_D1] | Track [SD_D1] | 18.0, 55.0 |
+| SD_D2 | Pad 1 [SD_D2] of J7 | Pad 1 [SD_D2] of R83 | 2.6, 61.7 |
+| SD_D2 | Pad 1 [SD_D2] of R83 | Pad 1 [SD_D2] of U12 | 17.6, 64.6 |
+| SD_D2 | Pad 1 [SD_D2] of U12 | Track [SD_D2] | 18.0, 56.6 |
+| SD_D3 | Pad 1 [SD_D3] of R84 | Track [SD_D3] | 21.3, 54.8 |
+| SD_D3 | Pad 2 [SD_D3] of U12 | Pad 1 [SD_D3] of R84 | 18.0, 57.1 |
+| SD_D3 | Track [SD_D3] | Pad 2 [SD_D3] of J7 | 18.0, 57.1 |
+| SLIDE_DET | Pad 2 [SLIDE_DET] of U10 | Pad 1 [SLIDE_DET] of R75 | 40.1, 3.0 |
+| SLIDE_DET_R | Pad 2 [SLIDE_DET_R] of R75 | Pad 47 [SLIDE_DET_R] of J1A | 42.1, 6.4 |
+| TOUCH_INT | Pad 1 [TOUCH_INT] of TP21 | Track [TOUCH_INT] | 47.1, 30.5 |
+| TOUCH_INT | Pad 1 [TOUCH_INT] of TP21 | Track [TOUCH_INT] | 47.1, 30.5 |
+| TOUCH_RST_N | Pad 28 [TOUCH_RST_N] of J1A | Track [TOUCH_RST_N] | 32.9, 47.4 |
+| UART_DBG_RX | Pad 2 [UART_DBG_RX] of R34 | Pad 1 [UART_DBG_RX] of J8 | 22.8, 56.2 |
+| UART_DBG_RX | Pad 2 [UART_DBG_RX] of R36 | Pad 2 [UART_DBG_RX] of R34 | 25.1, 55.9 |
+| UART_DBG_TX | Pad 2 [UART_DBG_TX] of R33 | Pad 3 [UART_DBG_TX] of J8 | 23.5, 57.5 |
+| UART_DBG_TX | Pad 2 [UART_DBG_TX] of R35 | Pad 2 [UART_DBG_TX] of R33 | 25.8, 57.5 |
 | UART_RX | Pad 1 [UART_RX] of R34 | Track [UART_RX] | 21.8, 56.2 |
-| USB_DM | Pad A7 [USB_DM] of J2 | Pad B7 [USB_DM] of J2 | 6.6, 33.2 |
-| USB_DP | Via [USB_DP] | Pad 1 [USB_DP] of R21 | 28.5, 18.7 |
-| USB_OTG_ID | Track [USB_OTG_ID] | Pad 1 [USB_OTG_ID] of R31 | 27.7, 16.6 |
-| VBUS | Pad A4 [VBUS] of J2 | Track [VBUS] | 6.6, 30.6 |
-| VSYS | Pad 1 [VSYS] of C15 | Pad 1 [VSYS] of C16 | 68.1, 29.3 |
+| UART_TX | Pad 1 [UART_TX] of R33 | Track [UART_TX] | 22.5, 57.5 |
+| USB_DM | Pad 4 [USB_DM] of U2 | Pad 3 [USB_DM] of U2 | 4.8, 24.3 |
+| USB_DM | Pad 4 [USB_DM] of U2 | Track [USB_DM] | 4.8, 24.3 |
+| USB_DM | Pad B7 [USB_DM] of J2 | Pad 3 [USB_DM] of U2 | 6.6, 32.2 |
+| USB_DM | Pad B7 [USB_DM] of J2 | Pad A7 [USB_DM] of J2 | 6.6, 32.2 |
+| USB_DM | Track [USB_DM] | Pad 1 [USB_DM] of R22 | 28.1, 16.6 |
+| USB_DP | Pad 1 [USB_DP] of R21 | Track [USB_DP] | 66.9, 41.0 |
+| USB_DP | Pad 1 [USB_DP] of U2 | Pad A6 [USB_DP] of J2 | 2.9, 26.5 |
+| USB_DP | Pad 6 [USB_DP] of U2 | Pad 1 [USB_DP] of U2 | 2.9, 24.3 |
+| USB_DP | Pad A6 [USB_DP] of J2 | Pad B6 [USB_DP] of J2 | 6.6, 32.8 |
+| USB_DP | Track [USB_DP] | Pad A6 [USB_DP] of J2 | 28.5, 16.6 |
+| USB_OTG_ID | Pad 1 [USB_OTG_ID] of R31 | Pad 1 [USB_OTG_ID] of TP16 | 65.0, 63.5 |
+| USB_OTG_ID | Track [USB_OTG_ID] | Pad 1 [USB_OTG_ID] of TP16 | 27.7, 16.6 |
+| VBAT | Pad 1 [VBAT] of C17 | Pad 2 [VBAT] of U4 | 68.5, 36.6 |
+| VBAT | Pad 1 [VBAT] of C17 | Track [VBAT] | 68.5, 36.6 |
+| VBAT | Pad 1 [VBAT] of C19 | Pad 1 [VBAT] of TP3 | 66.5, 52.0 |
+| VBAT | Pad 2 [VBAT] of U4 | Pad 3 [VBAT] of U4 | 66.0, 49.2 |
+| VBAT | Pad 3 [VBAT] of U4 | Pad 1 [VBAT] of C19 | 66.0, 49.8 |
+| VBUS | Pad 1 [VBUS] of TP1 | Pad B9 [VBUS] of J2 | 3.9, 14.0 |
+| VBUS | Pad 1 [VBUS] of U3 | Pad 1 [VBUS] of C10 | 65.0, 18.2 |
+| VBUS | Pad B4 [VBUS] of J2 | Pad 1 [VBUS] of D5 | 6.6, 35.5 |
+| VBUS | Pad B9 [VBUS] of J2 | Pad B4 [VBUS] of J2 | 6.6, 30.6 |
+| VBUS | Pad B9 [VBUS] of J2 | Track [VBUS] | 6.6, 30.6 |
+| VMID | Pad 1 [VMID] of C57 | Via [VMID] | 22.6, 1.2 |
+| VOL_DN_N | Pad 1 [VOL_DN_N] of R87 | Pad 1 [VOL_DN_N] of SW3 | 59.9, 9.4 |
+| VOL_DN_N | Pad 1 [VOL_DN_N] of R87 | Pad 39 [VOL_DN_N] of J1A | 59.9, 9.4 |
+| VOL_DN_N | Pad 1 [VOL_DN_N] of SW3 | Pad 1 [VOL_DN_N] of SW3 | 58.8, 2.4 |
+| VOL_UP_N | Pad 1 [VOL_UP_N] of R86 | Pad 1 [VOL_UP_N] of SW2 | 59.8, 8.0 |
+| VOL_UP_N | Pad 1 [VOL_UP_N] of SW2 | Pad 1 [VOL_UP_N] of SW2 | 50.8, 2.4 |
+| VOL_UP_N | Pad 1 [VOL_UP_N] of SW2 | Track [VOL_UP_N] | 47.2, 2.4 |
+| VSYS | Pad 1 [VSYS] of C16 | Pad 1 [VSYS] of R15 | 67.1, 34.5 |
 | VSYS | Pad 1 [VSYS] of C27 | Pad 3 [VSYS] of U13 | 65.1, 57.9 |
-| VSYS | Pad 1 [VSYS] of R15 | Pad 1 [VSYS] of C16 | 69.4, 37.1 |
-| VSYS | Pad 1 [VSYS] of TP2 | Pad 1 [VSYS] of C27 | 67.9, 57.2 |
-| VSYS | Pad 1 [VSYS] of TP2 | Pad 1 [VSYS] of R15 | 67.9, 57.2 |
-| VSYS | Pad 2 [VSYS] of L1 | Pad 1 [VSYS] of C15 | 68.8, 21.3 |
-| VSYS | Pad 2 [VSYS] of L1 | Track [VSYS] | 68.8, 21.3 |
-| VSYS | Pad 3 [VSYS] of U13 | Pad 1 [VSYS] of U13 | 65.4, 59.5 |
+| VSYS | Pad 1 [VSYS] of R15 | Pad 1 [VSYS] of TP2 | 64.5, 41.2 |
+| VSYS | Pad 1 [VSYS] of TP2 | Pad 1 [VSYS] of C27 | 65.9, 46.9 |
+| VSYS | Pad 1 [VSYS] of U13 | Pad 3 [VSYS] of U13 | 65.4, 61.5 |
+| VSYS | Pad 15 [VSYS] of U3 | Pad 16 [VSYS] of U3 | 69.0, 19.8 |
+| VSYS | Pad 15 [VSYS] of U3 | Pad 2 [VSYS] of L1 | 69.0, 19.8 |
+| VSYS | Pad 16 [VSYS] of U3 | Pad 1 [VSYS] of C15 | 69.0, 19.2 |
+| VSYS | Pad 2 [VSYS] of L1 | Pad 1 [VSYS] of C16 | 68.8, 26.0 |
 | VSYS_LIM | Pad 1 [VSYS_LIM] of L2 | Pad 1 [VSYS_LIM] of C21 | 52.2, 60.9 |
 | VSYS_LIM | Pad 1 [VSYS_LIM] of L2 | Pad 10 [VSYS_LIM] of U5 | 52.2, 60.9 |
-| VSYS_LIM | Pad 1 [VSYS_LIM] of R17 | Pad 10 [VSYS_LIM] of U5 | 45.7, 62.1 |
-| VSYS_LIM | Track [VSYS_LIM] | Pad 10 [VSYS_LIM] of U5 | 53.6, 49.8 |
+| VSYS_LIM | Pad 1 [VSYS_LIM] of L2 | Pad 6 [VSYS_LIM] of U13 | 52.2, 60.9 |
+| VSYS_LIM | Pad 1 [VSYS_LIM] of L3 | Pad 1 [VSYS_LIM] of C43 | 52.7, 7.8 |
+| VSYS_LIM | Pad 10 [VSYS_LIM] of U5 | Pad 1 [VSYS_LIM] of R17 | 48.0, 58.0 |
+| VSYS_LIM | Pad 5 [VSYS_LIM] of U6 | Pad 1 [VSYS_LIM] of L3 | 50.0, 9.2 |
+| VSYS_LIM | Pad 5 [VSYS_LIM] of U6 | Pad 10 [VSYS_LIM] of U5 | 50.0, 9.2 |
+| VSYS_LIM | Pad 6 [VSYS_LIM] of U13 | Pad 1 [VSYS_LIM] of TP17 | 67.6, 61.5 |
 
 ## Keyboard (Alps) (`hardware/keyboard`)
 

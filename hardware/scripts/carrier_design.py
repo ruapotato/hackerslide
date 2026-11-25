@@ -48,12 +48,13 @@ def build():
         '    so the charger never sees D+/D-: VBUS stays at 5 V and the input limit resets to 500 mA. VBUS parts are',
         '    still rated for 12 V (U2 pin 5 is not on VBUS, D5 is a 15 V stand-off TVS) in case R21/R22 are fitted.',
         'P3: ILIM 300R caps the input at 1.07/1.18/1.30 A, ONLY with "ti,use-ilim-pin" in the device tree.',
-        'P7: the charger resets to 2.048 A charge current and the cell (PKCELL LP785060) allows 1.5 A. With the',
-        '    500 mA input default the cell sees about 0.6 A until Linux sets "ti,charge-current" (1.25 A).',
-        'REQUIRED (David 2026-11-24): never draw the cell above its 1.5 A rating. U13 (TPS2553, RILIM 20k) limits',
-        '    everything fed from VSYS_LIM (the 5 V boost and the backlight) to 1.215 / 1.295 / 1.375 A (TI SLVS841,',
-        '    25 degC). At the limit VSYS_LIM sags, the boost under-voltage divider turns the 5 V rail off, and FAULT',
-        '    tells the module. It is a backstop: software must keep the device below it. docs/power-budget.md.',
+        'P7: the charger resets to 2.048 A charge current and the pack allows 1.4 A. With the 500 mA input default',
+        '    the pack sees about 0.6 A until Linux sets "ti,charge-current" (1.4 A or less).',
+        'Cell: BAK LP-454965-2P-3M pack, 2800 mAh min, 5.6 A max discharge, 1.4 A max charge, 10k NTC (David 2026-11-24).',
+        'REQUIRED (David 2026-11-24): never draw the cell above its rating. U13 (TPS2553, RILIM 15k) limits everything',
+        '    fed from VSYS_LIM (the 5 V boost and the backlight) to 1.61 / 1.70 / 1.80 A (TI SLVS841), far below 5.6 A.',
+        '    At the limit VSYS_LIM sags, the boost under-voltage divider turns the 5 V rail off, and FAULT tells the',
+        '    module. 1.7 A is the most this part allows; a 4 A eFuse (e.g. TPS2595) would release the full boost power.',
         'Fuel gauge MAX17048 (voltage-only, no sense resistor): CELL/VDD taken as a Kelvin tap from the cell + pad.',
         'Boost TPS61230: VOUT = 1 V x (1 + 402k/100k) = 5.02 V (TI SLVSAQ2C 9.2.1.2.1).',
         'P5: EN/HYS divider 1M / 560k / 51k -> boost on above VSYS 3.31 V, off below 3.01 V (SLVSAQ2C 8.3.4, eq. 3).',
@@ -104,19 +105,17 @@ def build():
           fields=fields('C29402', '0402WGF3012TCE', 'UNI-ROYAL', Description='TS divider RT2'))
     p.add('TH1', 'Device', 'Thermistor_NTC', '10k B3380', 'Resistor_SMD:R_0402_1005Metric', {'1': 'CHG_TS', '2': 'GND'},
           fields=fields('C77131', 'NCP15XH103F03RC', 'Murata',
-                        Description='ASSUMPTION: carrier NTC next to the cell bay (2-wire cell). Charge window about 1..40 degC'))
+                        Description='DNP: only for a 2-wire cell without its own thermistor (then remove R68)'), dnp=True)
     R(p, 'R15', '2.2k', 'VSYS', 'CHG_LED_A')
     p.add('D1', 'Device', 'LED', 'red', 'LED_SMD:LED_0603_1608Metric', {'2': 'CHG_LED_A', '1': 'CHG_STAT'},
           fields=fields('C2286', 'KT-0603R', 'Hubei KENTO', Description='charging indicator (STAT low = charging)'))
     # battery + gauge
-    p.add('J10', 'Connector', 'Conn_01x02_Pin', 'BATT JST-PH', 'Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal',
-          {'1': 'VBAT', '2': 'GND'},
-          fields=fields('C225233', 'A2001WR-S-2P', 'CJT', Description='P14: keyed PH-type battery connector, pin 1 = +. '
-                        'TODO(verify) polarity against the chosen cell: PH pigtails are NOT standardised. 2 A per contact'))
-    p.add('J3', 'Connector', 'Conn_01x02_Pin', 'BATT pads', 'Connector_Wire:SolderWire-0.5sqmm_1x02_P4.6mm_D0.9mm_OD2.1mm',
-          {'1': 'VBAT', '2': 'GND'}, fields=fields('', 'solder pads (alternative to J10)', '',
-                                                   Description='for cells with bare leads; no reverse-polarity protection'),
-          in_bom=False)
+    p.add('J10', 'Connector', 'Conn_01x03_Pin', 'BATT', 'Connector_Molex:Molex_SPOX_5268-03A_1x03_P2.50mm_Horizontal',
+          {'1': 'VBAT', '2': 'BATT_NTC', '3': 'GND'},
+          fields=fields('C185225', '22057035', 'Molex', Description='P14: battery connector for the BAK LP-454965-2P-3M pack '
+                        '(Molex 5264 housing: red +, yellow NTC, black -). TODO(verify) which housing position is red: '
+                        'the BAK drawing shows the wire order, not the pin numbers'))
+    R(p, 'R68', '0', 'BATT_NTC', 'CHG_TS', note='pack thermistor (10k) to the charger TS divider. Remove if TH1 is fitted')
     p.add('U4', 'hackerslide', 'MAX17048', 'MAX17048G+T10', 'Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm',
           {'1': 'GND', '2': 'VBAT', '3': 'VBAT', '4': 'GND', '5': 'GAUGE_INT', '6': 'GND', '7': 'I2C_B_SCL',
            '8': 'I2C_B_SDA', '9': 'GND'},
@@ -128,7 +127,7 @@ def build():
     p.add('U13', 'hackerslide', 'TPS2553DBV', 'TPS2553DBVR', 'Package_TO_SOT_SMD:SOT-23-6',
           {'1': 'VSYS', '3': 'VSYS', '2': 'GND', '5': 'BATT_ILIM', '6': 'VSYS_LIM', '4': 'BATT_OC_N'},
           fields=fields('C55266', 'TPS2553DBVR', 'Texas Instruments', Description='discharge current limit 1.3 A typ, auto-retry'))
-    R(p, 'R66', '20k', 'BATT_ILIM', 'GND', note='TPS2553 current limit 1295 mA typ (1215-1375 at 25 degC)')
+    R(p, 'R66', '15k', 'BATT_ILIM', 'GND', note='TPS2553 current limit 1700 mA typ (1610-1800), its highest setting')
     R(p, 'R67', '10k', 'BATT_OC_N', '+3V3', note='FAULT, low while the limiter is active')
     C(p, 'C27', '100n', 'VSYS')
     TP(p, 'TP17', 'VSYS_LIM')
