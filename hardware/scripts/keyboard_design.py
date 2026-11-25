@@ -36,9 +36,13 @@ def build(variant='alps'):
     seen = {}
     for i, (name, pr, pc, x, y) in enumerate(KL.keys(variant)):
         r, c = KL.matrix_pos(pr, pc)
+        if variant == 'dome' and name == 'Space' and pc == 7:
+            r, c = 3, 7       # domes: the second Space dome is its own matrix position (its feet merge with column 7)
         knode = f'K{r}_{c}'
-        # dome variant, D-pad: the foot pads of neighbouring domes merge, so they carry the shared row net (K8)
-        if variant == 'dome' and pr == 4:
+        # Dome variant: the foot pads of vertically adjacent domes merge, so they must share a net.  In physical
+        # columns 0-9 that is the column net.  The two folded columns and the D-pad sit on one chip row each
+        # (ROW4, ROW5), so there the feet carry the row net and the diode goes to the column (K8).
+        if variant == 'dome' and r >= 4:
             pads = {'1': f'ROW{r}', '2': knode}
             dio = {'2': knode, '1': f'COL{c}'}
         else:

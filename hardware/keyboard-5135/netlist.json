@@ -1,0 +1,2865 @@
+{
+ "name": "keyboard-5135",
+ "components": [
+  {
+   "ref": "SW1",
+   "value": "Esc",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "106e69e8-0679-55c3-8f9f-71ca31bf46df",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Esc\" matrix row 0 col 0"
+   },
+   "pads": {
+    "1": "COL0",
+    "2": "K0_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D1",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a48cfef9-0872-548e-bd19-c25bc8c4743d",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW2",
+   "value": "1",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a0d32caf-955a-5bbf-8480-e330f59edb0b",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"1\" matrix row 0 col 1"
+   },
+   "pads": {
+    "1": "COL1",
+    "2": "K0_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D2",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "437b05a6-6068-5288-b790-81d9894307ee",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW3",
+   "value": "2",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "5b890890-45d8-5699-bb78-037b10fe5ee9",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"2\" matrix row 0 col 2"
+   },
+   "pads": {
+    "1": "COL2",
+    "2": "K0_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D3",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "db66031e-47e9-5dc5-a8aa-4d6e1ed1f9b6",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW4",
+   "value": "3",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "27dfb912-0cd1-58b7-a39d-a6dce9bdd186",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"3\" matrix row 0 col 3"
+   },
+   "pads": {
+    "1": "COL3",
+    "2": "K0_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D4",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "e2956f64-b02f-55b0-98e7-4622de5f5b42",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW5",
+   "value": "4",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "c13925c0-3497-5186-a31c-899d5f10b55c",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"4\" matrix row 0 col 4"
+   },
+   "pads": {
+    "1": "COL4",
+    "2": "K0_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D5",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a02c0675-1965-573e-994f-bdb2cac0da06",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW6",
+   "value": "5",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "b35908c7-f1ab-57de-b692-c806328ea652",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"5\" matrix row 0 col 5"
+   },
+   "pads": {
+    "1": "COL5",
+    "2": "K0_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D6",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "5f1f7dc8-0129-5840-8862-3d999c385acd",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW7",
+   "value": "6",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a106b026-ef3e-5b1c-9e9b-7edc170d2bb6",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"6\" matrix row 0 col 6"
+   },
+   "pads": {
+    "1": "COL6",
+    "2": "K0_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D7",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "3f586a64-217d-5699-a5af-63d87e7c5c66",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW8",
+   "value": "7",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "072fd2e8-3362-59d5-8688-069fe61216dc",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"7\" matrix row 0 col 7"
+   },
+   "pads": {
+    "1": "COL7",
+    "2": "K0_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D8",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a24e2210-9e03-5a35-8503-f953e39aa94b",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW9",
+   "value": "8",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "b74674e5-ab80-52f9-9eb3-173ff5beb70a",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"8\" matrix row 0 col 8"
+   },
+   "pads": {
+    "1": "COL8",
+    "2": "K0_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D9",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "02a1df6a-a751-5350-8f38-43e9dd339399",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW10",
+   "value": "9",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "97c28b72-d005-525c-8e44-d288aca426b8",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"9\" matrix row 0 col 9"
+   },
+   "pads": {
+    "1": "COL9",
+    "2": "K0_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D10",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "dfebbd40-165d-5a40-a275-2cd6d0847a47",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW0",
+    "1": "K0_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW11",
+   "value": "0",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "c0fca692-818e-5516-b5a6-5179f8ae9daa",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"0\" matrix row 4 col 0"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D11",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "12aa2d7b-c386-5275-8ec0-c5b3d6669902",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_0",
+    "1": "COL0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW12",
+   "value": "Bksp",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "4725a413-70f4-5801-955b-53cd3222456f",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Bksp\" matrix row 4 col 4"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D12",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "9b2b8e76-545d-5c6a-8c08-7f9b372fd1c7",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_4",
+    "1": "COL4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW13",
+   "value": "Tab",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "344338df-850b-5894-a4f7-f9336216eb95",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Tab\" matrix row 1 col 0"
+   },
+   "pads": {
+    "1": "COL0",
+    "2": "K1_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D13",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "11c39a79-eaa0-5e8d-a7eb-52905812c595",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW14",
+   "value": "Q",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "b5cd4294-ce1c-548b-8569-92a0790ed841",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Q\" matrix row 1 col 1"
+   },
+   "pads": {
+    "1": "COL1",
+    "2": "K1_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D14",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "77c376be-06d6-5e1d-a296-11f4810a966d",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW15",
+   "value": "W",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "3f32690d-5a59-547f-a0d5-a2ce67cb082b",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"W\" matrix row 1 col 2"
+   },
+   "pads": {
+    "1": "COL2",
+    "2": "K1_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D15",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "36970639-3251-54c3-971e-b12c56a524d7",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW16",
+   "value": "E",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "abd7ba4e-d222-597b-9948-8ddbaf1fc321",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"E\" matrix row 1 col 3"
+   },
+   "pads": {
+    "1": "COL3",
+    "2": "K1_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D16",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "af026fe0-a039-5ec1-b219-6bca2e6005a7",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW17",
+   "value": "R",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "3fecdf5d-1319-5d97-bca7-ab52df980fa6",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"R\" matrix row 1 col 4"
+   },
+   "pads": {
+    "1": "COL4",
+    "2": "K1_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D17",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "3eb318ec-7714-5230-a3d9-2a456b125916",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW18",
+   "value": "T",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "2d3c8b2f-7a4e-58b1-a432-3f431799aadc",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"T\" matrix row 1 col 5"
+   },
+   "pads": {
+    "1": "COL5",
+    "2": "K1_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D18",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a3cb97be-bc3a-5514-9cbf-e32b40fb33a0",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW19",
+   "value": "Y",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "181d49d7-1570-5fc0-9f22-68713f11c10b",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Y\" matrix row 1 col 6"
+   },
+   "pads": {
+    "1": "COL6",
+    "2": "K1_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D19",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "ed8a8180-afe7-5545-9c28-1661d503c55b",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW20",
+   "value": "U",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "562e59a4-e3d7-531c-9c29-0a9c1e512711",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"U\" matrix row 1 col 7"
+   },
+   "pads": {
+    "1": "COL7",
+    "2": "K1_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D20",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "8c69aef5-58ac-507e-81d9-7fe11b713c73",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW21",
+   "value": "I",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "782c42e4-8d13-58cb-a114-832dfb6fc60e",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"I\" matrix row 1 col 8"
+   },
+   "pads": {
+    "1": "COL8",
+    "2": "K1_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D21",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "f8758e36-e882-5d8b-8b49-2b7ced5125de",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW22",
+   "value": "O",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "e89af027-1a75-59f1-9ecc-fb431b0c617d",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"O\" matrix row 1 col 9"
+   },
+   "pads": {
+    "1": "COL9",
+    "2": "K1_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D22",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a6ddaeb6-981a-5e11-a2dc-85da75ae2c36",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW1",
+    "1": "K1_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW23",
+   "value": "P",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "45c47682-22a1-517d-9780-6987dd01298b",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"P\" matrix row 4 col 1"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D23",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "c14a7c6e-693f-53ec-a403-979d70ad9797",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_1",
+    "1": "COL1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW24",
+   "value": "-",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "07a49b34-7fea-5313-a992-531db66c2050",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"-\" matrix row 4 col 5"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D24",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "0c2166ab-9e74-5281-84b5-f8e1d339f6b2",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_5",
+    "1": "COL5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW25",
+   "value": "Ctrl",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "1e50c6ea-4f8a-53ed-86dd-6a08a03e0225",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Ctrl\" matrix row 2 col 0"
+   },
+   "pads": {
+    "1": "COL0",
+    "2": "K2_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D25",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "e792c348-777d-5f2e-89d8-6e521c5689fb",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW26",
+   "value": "A",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "36e1a049-f561-5fa2-ac5f-7b85513ff6e9",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"A\" matrix row 2 col 1"
+   },
+   "pads": {
+    "1": "COL1",
+    "2": "K2_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D26",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "0088a2a3-da97-5932-b0e7-da8e944b2b54",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW27",
+   "value": "S",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "bee92ee6-cdf5-5097-a49c-95de4b48c353",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"S\" matrix row 2 col 2"
+   },
+   "pads": {
+    "1": "COL2",
+    "2": "K2_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D27",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "d3960e47-ffcb-5665-9f87-8cb3f608191a",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW28",
+   "value": "D",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "0b234d31-0fb7-5d2a-b1e5-b5cf6e5a50ef",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"D\" matrix row 2 col 3"
+   },
+   "pads": {
+    "1": "COL3",
+    "2": "K2_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D28",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "57cd6217-775f-5149-817e-c48cdb8eb871",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW29",
+   "value": "F",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "61dc6465-e6a0-50c1-8794-3c65a3f8e646",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"F\" matrix row 2 col 4"
+   },
+   "pads": {
+    "1": "COL4",
+    "2": "K2_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D29",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "01d02245-51a6-5f4e-b943-a821423e256c",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW30",
+   "value": "G",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "6935be5a-e6e6-5fff-8357-0fe892713514",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"G\" matrix row 2 col 5"
+   },
+   "pads": {
+    "1": "COL5",
+    "2": "K2_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D30",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "0cf50396-a074-503c-ab3c-d96b90b2e829",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW31",
+   "value": "H",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "6f4a5f3c-0e5b-511a-bc7f-7e227f3982e8",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"H\" matrix row 2 col 6"
+   },
+   "pads": {
+    "1": "COL6",
+    "2": "K2_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D31",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "645c324c-c24f-59ab-ba90-41a8c1bc7177",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW32",
+   "value": "J",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "6b735b7d-854c-5cff-b757-fa4ed851424c",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"J\" matrix row 2 col 7"
+   },
+   "pads": {
+    "1": "COL7",
+    "2": "K2_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D32",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "ec328ed0-5f3a-5199-90fb-1250b6f3a3b6",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW33",
+   "value": "K",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "1e4ffe71-f689-5f49-934d-041f229f070d",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"K\" matrix row 2 col 8"
+   },
+   "pads": {
+    "1": "COL8",
+    "2": "K2_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D33",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "9f8a68ab-dcaa-5ade-bba1-a399644ef260",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW34",
+   "value": "L",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "b9e8cee7-7b2f-5708-a5ad-9a300568e786",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"L\" matrix row 2 col 9"
+   },
+   "pads": {
+    "1": "COL9",
+    "2": "K2_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D34",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "543c7dbb-3105-5d17-9081-9e30f5511759",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW2",
+    "1": "K2_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW35",
+   "value": ";",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "2957a10f-e7f8-5f30-b633-ac98560830fa",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \";\" matrix row 4 col 2"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D35",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "3943967f-5c91-5172-b80d-103c53ade1c1",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_2",
+    "1": "COL2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW36",
+   "value": "Enter",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "3d80a1ea-9dc8-56ae-9450-075b37d10e68",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Enter\" matrix row 4 col 6"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D36",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "8976ab3e-e6ea-51cb-bd1b-76ded4b7f8df",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_6",
+    "1": "COL6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW37",
+   "value": "Shift",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "d757d671-d039-5f4b-8aac-59304baf8e3b",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Shift\" matrix row 3 col 0"
+   },
+   "pads": {
+    "1": "COL0",
+    "2": "K3_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D37",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a7892d67-697c-5f3e-b52c-668d337015ac",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW38",
+   "value": "Fn",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "bfdb9a21-456b-5730-bf62-9387e7d11795",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Fn\" matrix row 3 col 1"
+   },
+   "pads": {
+    "1": "COL1",
+    "2": "K3_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D38",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "ec858754-1a40-5c8d-a5b8-72f64b2d7f45",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW39",
+   "value": "Z",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "6630e233-214a-556d-b531-14f369701797",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Z\" matrix row 3 col 2"
+   },
+   "pads": {
+    "1": "COL2",
+    "2": "K3_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D39",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "64f6f976-e608-5d93-be24-7fe3bea5b23b",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW40",
+   "value": "X",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "9b15f7d1-04df-50ff-8582-ab06792a3372",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"X\" matrix row 3 col 3"
+   },
+   "pads": {
+    "1": "COL3",
+    "2": "K3_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D40",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "ee11cd14-2e05-58ef-b7fc-b7ff95de5ee3",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW41",
+   "value": "C",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "5c059e14-a188-55d6-8afb-403c6007c035",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"C\" matrix row 3 col 4"
+   },
+   "pads": {
+    "1": "COL4",
+    "2": "K3_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D41",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "bf397323-1b73-559b-b1e0-61921d54018c",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW42",
+   "value": "V",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "2cf099a7-fa85-507d-9f5c-ca1543f83c57",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"V\" matrix row 3 col 5"
+   },
+   "pads": {
+    "1": "COL5",
+    "2": "K3_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D42",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "1ea3a084-4d9a-5682-88d2-304494c9b60d",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW43",
+   "value": "Space",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "983eecc2-0fc2-57f8-9dc2-266124929484",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Space\" matrix row 3 col 6"
+   },
+   "pads": {
+    "1": "COL6",
+    "2": "K3_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D43",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "f55adfb2-7bf9-5cea-b613-3c9c66e7f778",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW44",
+   "value": "Space",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "debab648-2d9b-5ba0-b420-8f67a717e842",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Space\" matrix row 3 col 7"
+   },
+   "pads": {
+    "1": "COL7",
+    "2": "K3_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D44",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "fd7e0982-d531-55a7-acbf-11add6c8312a",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW45",
+   "value": "B",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "55eaffa8-9cf9-54ca-b049-174c328498fa",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"B\" matrix row 3 col 8"
+   },
+   "pads": {
+    "1": "COL8",
+    "2": "K3_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D45",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "2bd889e0-3479-5665-b9df-91e5caab3bcb",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW46",
+   "value": "N",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "310ac0da-fa65-5633-9f7e-fa8ff0688b08",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"N\" matrix row 3 col 9"
+   },
+   "pads": {
+    "1": "COL9",
+    "2": "K3_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D46",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "fc585650-592e-5f29-a72f-2853d18cab5c",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "ROW3",
+    "1": "K3_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW47",
+   "value": "M",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "a1e44f5e-d7c6-50b4-b352-ad6976d05a4d",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"M\" matrix row 4 col 3"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D47",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "90a221cb-05c4-5304-aaa0-5a6c67f37ee7",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_3",
+    "1": "COL3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW48",
+   "value": ".",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "d7a33676-3190-5a14-9696-5fe8d1dc2e2b",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \".\" matrix row 4 col 7"
+   },
+   "pads": {
+    "1": "ROW4",
+    "2": "K4_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D48",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "cba483b7-2852-5792-a8da-8549cce1f86a",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K4_7",
+    "1": "COL7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW49",
+   "value": "Up",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "6a84201a-29c8-52f5-a116-13f9e4419920",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Up\" matrix row 5 col 0"
+   },
+   "pads": {
+    "1": "ROW5",
+    "2": "K5_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D49",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "9a6072d2-9a4a-575c-8dcd-8ae5cd49bb1c",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K5_0",
+    "1": "COL0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW50",
+   "value": "Down",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "10d23ce6-95eb-5436-b18e-994f41131d26",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Down\" matrix row 5 col 1"
+   },
+   "pads": {
+    "1": "ROW5",
+    "2": "K5_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D50",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "b191fbaa-33f9-5041-a2a1-20490d83fff2",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K5_1",
+    "1": "COL1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW51",
+   "value": "Left",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "ef79aa20-8cd8-5399-8930-dc4267b10968",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Left\" matrix row 5 col 2"
+   },
+   "pads": {
+    "1": "ROW5",
+    "2": "K5_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D51",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "548d9fcb-2693-5333-a505-5598e8f0e0c7",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K5_2",
+    "1": "COL2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW52",
+   "value": "Right",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "58bb588b-6d0b-5164-8a01-16d8028ec31d",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"Right\" matrix row 5 col 3"
+   },
+   "pads": {
+    "1": "ROW5",
+    "2": "K5_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D52",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "c5b6f9fb-6b83-5b7f-8e07-c7d53ddc3a96",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K5_3",
+    "1": "COL3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW53",
+   "value": "OK",
+   "footprint": "hackerslide:SW_Keystone_5135_Dome_7mm",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "633f6b8d-38c7-567a-98ad-d2914bd4f22c",
+   "fields": {
+    "LCSC": "",
+    "MPN": "5135",
+    "Manufacturer": "Keystone Electronics",
+    "Note": "metal dome, hand placed, not soldered",
+    "Description": "key \"OK\" matrix row 5 col 4"
+   },
+   "pads": {
+    "1": "ROW5",
+    "2": "K5_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D53",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "matrix",
+   "sheet_uuid": "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
+   "sheetfile": "matrix.kicad_sch",
+   "sym_uuid": "9f954c0e-4ca6-5bbe-8153-0a2ff92c7bf1",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+   },
+   "pads": {
+    "2": "K5_4",
+    "1": "COL4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U1",
+   "value": "TCA8418RTWR",
+   "footprint": "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "6bcb08e3-febf-53c6-98f1-f316548e28d1",
+   "fields": {
+    "LCSC": "C138713",
+    "MPN": "TCA8418RTWR",
+    "Manufacturer": "Texas Instruments"
+   },
+   "pads": {
+    "22": "I2C_B_SDA",
+    "23": "I2C_B_SCL",
+    "24": "KB_INT_N",
+    "20": "KB_RST_N",
+    "21": "+3V3",
+    "19": "GND",
+    "25": "GND",
+    "8": "ROW0",
+    "7": "ROW1",
+    "6": "ROW2",
+    "5": "ROW3",
+    "4": "ROW4",
+    "3": "ROW5",
+    "2": "ROW6_NC",
+    "1": "ROW7_NC",
+    "9": "COL0",
+    "10": "COL1",
+    "11": "COL2",
+    "12": "COL3",
+    "13": "COL4",
+    "14": "COL5",
+    "15": "COL6",
+    "16": "COL7",
+    "17": "COL8",
+    "18": "COL9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R1",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "462b31bd-3d66-5cf4-a169-b6603f3359fd",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "ROW6_NC",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R2",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "0a01cf26-6129-5e75-b7f4-17995ed7272d",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "ROW7_NC",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R3",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "0eb45deb-c88a-5ead-872a-74ab8db23c2d",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "open-drain interrupt (also pulled up on the carrier)"
+   },
+   "pads": {
+    "1": "KB_INT_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R4",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "cbb6cb67-c29f-57e6-acf0-915e23ac526d",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "KB_RST_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C1",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "9055c28f-0151-5f01-b0d6-935366abf439",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C2",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "e1b4e9f7-18c4-58d4-9b75-e9f6ebba8995",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U2",
+   "value": "TPD4E05U06DQAR",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "70d5e249-9f81-5e31-a1c8-b8187c776f17",
+   "fields": {
+    "LCSC": "C138714",
+    "MPN": "TPD4E05U06DQAR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "ESD clamp on the cable signals"
+   },
+   "pads": {
+    "1": "I2C_B_SDA",
+    "2": "I2C_B_SCL",
+    "4": "KB_INT_N",
+    "5": "KB_RST_N",
+    "3": "GND",
+    "8": "GND"
+   },
+   "in_bom": true,
+   "nc": {
+    "10": "unconnected-(U2-NC-Pad10)",
+    "9": "unconnected-(U2-NC-Pad9)",
+    "7": "unconnected-(U2-NC-Pad7)",
+    "6": "unconnected-(U2-NC-Pad6)"
+   }
+  },
+  {
+   "ref": "J1",
+   "value": "FH34SRJ-8S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "4a0e5aad-606d-596e-b349-3beb3eb2a760",
+   "fields": {
+    "LCSC": "C88372",
+    "MPN": "FH34SRJ-8S-0.5SH(50)",
+    "Manufacturer": "Hirose",
+    "Description": "keyboard FPC to carrier J9, 1.0 mm high"
+   },
+   "pads": {
+    "1": "GND",
+    "2": "+3V3",
+    "3": "I2C_B_SDA",
+    "4": "KB_INT_N",
+    "5": "KB_RST_N",
+    "6": "I2C_B_SCL",
+    "7": "+3V3",
+    "8": "GND",
+    "MP": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "H1",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "14467822-6321-559d-aeec-b940451d697c",
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "H2",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "bbabfb43-8475-5dfd-8af3-d57efc4e3f3f",
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "H3",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "b12b62b3-1f4b-580a-af8a-b4152b3c621a",
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "H4",
+   "value": "M1.6 spacer 1.5mm",
+   "footprint": "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "8fa96ab1-9bfd-5eda-b488-9d0e4443b59e",
+   "fields": {
+    "LCSC": "",
+    "MPN": "9774015633R",
+    "Manufacturer": "Wurth Elektronik",
+    "Description": "top-plate spacer, hand soldered (not stocked at JLC 2026-11-24); grounds the plate"
+   },
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "LP1",
+   "value": "GND",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "d4200e1c-d74a-5ac9-9a5d-2d9c3f4b6a14",
+   "fields": {},
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP2",
+   "value": "+3V3",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "ab4ff485-e794-5759-b947-b14b927327d5",
+   "fields": {},
+   "pads": {
+    "1": "+3V3"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP3",
+   "value": "I2C_B_SDA",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "13120691-3cb2-5faf-b383-de44ff15ecd3",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SDA"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP4",
+   "value": "I2C_B_SCL",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "90894022-8d15-5347-a744-3378147ee192",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SCL"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP5",
+   "value": "KB_INT_N",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "718e9c9c-3f24-57d0-991b-9fd67921c50b",
+   "fields": {},
+   "pads": {
+    "1": "KB_INT_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "LP6",
+   "value": "KB_RST_N",
+   "footprint": "hackerslide:ContactPad_2x4mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "660396fe-8f4b-5b11-83e7-532bbb63fd49",
+   "fields": {},
+   "pads": {
+    "1": "KB_RST_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP1",
+   "value": "I2C_B_SDA",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "c8c3e66e-8171-5751-83d6-ed6b5199b397",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SDA"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP2",
+   "value": "I2C_B_SCL",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "fca0ba4f-d1ae-5427-b6f5-4434a2f96a1a",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SCL"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP3",
+   "value": "GND",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "62cfcaab-88c0-56e5-b3a7-75f0900360ca",
+   "fields": {},
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP4",
+   "value": "+3V3",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "scanner",
+   "sheet_uuid": "a551567e-f0d8-50d0-8015-a2ffd6d81417",
+   "sheetfile": "scanner.kicad_sch",
+   "sym_uuid": "5d06459b-abc9-52b7-8aa4-993e3e57632f",
+   "fields": {},
+   "pads": {
+    "1": "+3V3"
+   },
+   "in_bom": false,
+   "nc": {}
+  }
+ ]
+}

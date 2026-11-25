@@ -12,8 +12,10 @@ python3 carrier_design.py ../carrier
 python3 carrier_pcb.py ../carrier ${ROUTE:+--route}
 python3 topplate_design.py ../keyboard-topplate
 python3 topplate_design.py ../keyboard-topplate --pcb
+python3 keyboard_design.py dome ../keyboard-5135
+python3 keyboard_pcb.py dome ../keyboard-5135
 python3 flex_design.py ../keyboard-flex
-for b in keyboard:keyboard carrier:carrier keyboard-topplate:keyboard-topplate keyboard-flex:keyboard-flex; do
+for b in keyboard:keyboard carrier:carrier keyboard-topplate:keyboard-topplate keyboard-flex:keyboard-flex keyboard-5135:keyboard-5135; do
   echo "== ${b%%:*}"; ./check.sh ../${b%%:*} ${b##*:} "$OUT"
 done
 echo "reports in $OUT"
