@@ -55,6 +55,7 @@ points are on the B side, which faces the display.
 - [ ] J10 polarity against the cell's pigtail.
 - [ ] PJ-342 sleeve terminal identified; straps R60-R63 set.
 - [ ] Panel tail fold and pin 1 confirmed on a real panel against J4 and J5.
+- [ ] **Battery discharge limit decided and implemented** (requirement: never above the cell's 1.5 A rating). Not in rev 0.1 as drawn. See [power-budget.md](power-budget.md).
 - [ ] Device-tree requirements collected: `ti,use-ilim-pin`, `ti,charge-current` 1.25 A, PWM period for the backlight, no UHS, `broken-cd` on Core3566.
 
 ## Open TODO(verify) items in the source

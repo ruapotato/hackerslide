@@ -44,6 +44,14 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 | ES8316 interrupt pin behaviour | audio sheet | Driver source and a scope |
 | Whether JLCPCB's flex uses rolled-annealed copper | `fab-orders.md` | Their order form |
 
+## Open design items
+
+| Item | Blocks |
+|---|---|
+| Limit battery discharge to the cell's 1.5 A rating (hardware limit in the boost, plus a software cap) | Carrier order |
+| Choose the PCB stack-up and calculate DSI/USB geometry | Carrier routing |
+| Top-plate retention lips, button caps, snap hooks on the cell side | Fit mule |
+
 ## Decisions that are David's
 
 Body thickness targets; any change to the decision records; licences; spending. The AMOLED step needs him to ask

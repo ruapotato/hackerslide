@@ -13,6 +13,12 @@ From David's brief (2026-11-24) and spec (2026-11-20). "Must" items are his hard
 - Off-the-shelf compute module on a custom carrier, assembled by the fab. David hand-solders large parts only.
 - Form factor and efficiency win over "every blob open" when they conflict.
 
+## Added by David, 2026-11-24
+
+- **The battery must never be asked for more current than it is rated for.** For the chosen cell that is 1.5 A
+  discharge and 1.5 A charge. Rev 0.1 limits the charge side in hardware but **not yet the discharge side**: see
+  [power-budget.md](power-budget.md), "Keeping the cell inside its rating".
+
 ## Nice to have
 
 - Cellular with T-Mobile Band 71, as a later module. GPS.

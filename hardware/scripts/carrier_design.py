@@ -50,6 +50,8 @@ def build():
         'P3: ILIM 300R caps the input at 1.07/1.18/1.30 A, ONLY with "ti,use-ilim-pin" in the device tree.',
         'P7: the charger resets to 2.048 A charge current and the cell (PKCELL LP785060) allows 1.5 A. With the',
         '    500 mA input default the cell sees about 0.6 A until Linux sets "ti,charge-current" (1.25 A).',
+        'OPEN, REQUIRED (David 2026-11-24): the cell must never be drawn above its 1.5 A rating. This boost does NOT',
+        '    limit it (4-6 A switch limit). Candidate: TPS61236P with a programmable output current. docs/power-budget.md.',
         'Fuel gauge MAX17048 (voltage-only, no sense resistor): CELL/VDD taken as a Kelvin tap from the cell + pad.',
         'Boost TPS61230: VOUT = 1 V x (1 + 402k/100k) = 5.02 V (TI SLVSAQ2C 9.2.1.2.1).',
         'P5: EN/HYS divider 1M / 560k / 51k -> boost on above VSYS 3.31 V, off below 3.01 V (SLVSAQ2C 8.3.4, eq. 3).',
