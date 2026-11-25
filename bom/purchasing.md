@@ -26,14 +26,14 @@ Development tools, bought once: a CM4 IO board for first boot and power measurem
 
 | Board | Parts cost per board | Extended part types | Notes |
 |---|---|---|---|
-| Carrier (4-layer, assembled) | $15.42 | 34 | Includes the four M2.5 spacers |
+| Carrier (4-layer, assembled) | $15.97 | 35 | Includes the four M2.5 spacers |
 | Keyboard (2-layer, assembled) | $10.64 | 5 | 53 switches at $0.16 are most of it |
 | Top plate (2-layer, bare) | - | - | |
 | Keyboard flex (1-layer flex, bare) | - | - | |
 
 Parts costs are from the JLCPCB parts API on 2026-11-24 at the price break for five boards. JLCPCB charges a
 fee per extended part type per order (about $3 each, from the earlier handoff notes, not re-checked), so the
-carrier's 34 types add roughly $100 to each order of five. PCB, stencil, set-up and shipping are not quoted here:
+carrier's 35 types add roughly $105 to each order of five. PCB, stencil, set-up and shipping are not quoted here:
 no quote was requested.
 
 ## Per-unit estimate, one Wi-Fi prototype
@@ -43,7 +43,7 @@ no quote was requested.
 | Module | $84 |
 | Display | $77 |
 | Battery | $15 |
-| Carrier: parts $15, plus a one-fifth share of PCB, assembly and extended-part fees | *estimate* $45-65 |
+| Carrier: parts $16, plus a one-fifth share of PCB, assembly and extended-part fees | *estimate* $45-65 |
 | Keyboard: parts $11, plus share of PCB and assembly | *estimate* $18-28 |
 | Top plate and flex cable, share of five | *estimate* $5-12 |
 | Spacers, magnets, fasteners, thermal pad, card | *estimate* $25-40 |
