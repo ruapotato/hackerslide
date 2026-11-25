@@ -148,7 +148,16 @@ def build(bdir, do_route=False):
                    keepout=True)
         z.SetDoNotAllowTracks(True); z.SetDoNotAllowVias(True); z.SetDoNotAllowCopperPour(True)
         z.SetZoneName('df40_no_copper')
-    # copper: GND plane on In1, GND pours on F/B; power nets are routed (In2 is the power/signal layer)
+    # copper: GND plane on In1 and GND pours on F/B.  High-current paths get their own areas (priority above the
+    # pours) so they are not left to thin autorouted tracks; the router or a human drops the vias into them.
+    def area(net, layer, x0, y0, x1, y1, prio=2):
+        return B.zone(net, layer, [(x0, y0), (x1, y0), (x1, y1), (x0, y1)], priority=prio, clearance=0.2)
+    area('VSYS', pcbnew.In2_Cu, 62.8, 19.2, 71.3, 65.7)          # charger SYS -> discharge limiter U13 (left strip)
+    area('VSYS_LIM', pcbnew.In2_Cu, 41.0, 52.4, 62.4, 65.7)      # limiter -> 5 V boost (bottom strip)
+    area('VBUS', pcbnew.In2_Cu, 4.5, 16.2, 71.3, 18.8)           # USB-C -> charger, under the module's top edge
+    area('VBUS', pcbnew.In2_Cu, 4.5, 16.2, 8.5, 31.0)
+    area('VBAT', pcbnew.B_Cu, 62.8, 0.6, 71.3, 41.5)             # battery connector -> charger and gauge
+    area('+5V', pcbnew.F_Cu, 42.2, 50.2, 56.4, 57.3)             # boost output -> module pins 77-87
     full = [(0, 0), (W, 0), (W, H), (0, H)]
     B.zone('GND', pcbnew.In1_Cu, full, clearance=0.15)
     B.zone('GND', pcbnew.B_Cu, full, clearance=0.15)
