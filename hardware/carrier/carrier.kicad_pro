@@ -324,6 +324,10 @@
       },
       {
         "netclass": "Power",
+        "pattern": "VSYS_LIM"
+      },
+      {
+        "netclass": "Power",
         "pattern": "VBAT"
       },
       {

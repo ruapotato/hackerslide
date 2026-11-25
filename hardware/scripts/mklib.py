@@ -118,6 +118,11 @@ def symbols():
         descr='Maxim MAX17048 1-cell ModelGauge fuel gauge, address 0x36 (mainline Linux: max17040_battery)',
         footprint='Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm',
         datasheet='https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf'))
+    # TPS2553 (TI SLVS841, DBV pin table: 1 IN, 2 GND, 3 EN (active high), 4 FAULT, 5 ILIM, 6 OUT)
+    out.append(box_symbol('TPS2553DBV', [('1', 'IN', PI), ('3', 'EN', I), ('5', 'ILIM', P), ('2', 'GND', PI)],
+                          [('6', 'OUT', PO), ('4', '~{FAULT}', 'open_collector')],
+                          descr='TI TPS2553 adjustable current-limited power switch, 75 mA - 1.7 A, 85 mOhm, auto-retry',
+                          footprint='Package_TO_SOT_SMD:SOT-23-6', datasheet='https://www.ti.com/lit/ds/symlink/tps2553.pdf'))
     # SHOU HAN PJ-342 3.5 mm 4-pole jack with two switches (terminal numbers from the SHOU HAN drawing).
     # Pole assignment is INFERRED from contact depth in the drawing: TODO(verify) with a sample.
     out.append(box_symbol('PJ-342',

@@ -48,7 +48,7 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 
 | Item | Blocks |
 |---|---|
-| Limit battery discharge to the cell's 1.5 A rating (hardware limit in the boost, plus a software cap) | Carrier order |
+| Software power cap that keeps the module under the battery limiter (about 3 W on battery) | Usable device |
 | Choose the PCB stack-up and calculate DSI/USB geometry | Carrier routing |
 | Top-plate retention lips, button caps, snap hooks on the cell side | Fit mule |
 

@@ -50,8 +50,10 @@ def build():
         'P3: ILIM 300R caps the input at 1.07/1.18/1.30 A, ONLY with "ti,use-ilim-pin" in the device tree.',
         'P7: the charger resets to 2.048 A charge current and the cell (PKCELL LP785060) allows 1.5 A. With the',
         '    500 mA input default the cell sees about 0.6 A until Linux sets "ti,charge-current" (1.25 A).',
-        'OPEN, REQUIRED (David 2026-11-24): the cell must never be drawn above its 1.5 A rating. This boost does NOT',
-        '    limit it (4-6 A switch limit). Candidate: TPS61236P with a programmable output current. docs/power-budget.md.',
+        'REQUIRED (David 2026-11-24): never draw the cell above its 1.5 A rating. U13 (TPS2553, RILIM 20k) limits',
+        '    everything fed from VSYS_LIM (the 5 V boost and the backlight) to 1.215 / 1.295 / 1.375 A (TI SLVS841,',
+        '    25 degC). At the limit VSYS_LIM sags, the boost under-voltage divider turns the 5 V rail off, and FAULT',
+        '    tells the module. It is a backstop: software must keep the device below it. docs/power-budget.md.',
         'Fuel gauge MAX17048 (voltage-only, no sense resistor): CELL/VDD taken as a Kelvin tap from the cell + pad.',
         'Boost TPS61230: VOUT = 1 V x (1 + 402k/100k) = 5.02 V (TI SLVSAQ2C 9.2.1.2.1).',
         'P5: EN/HYS divider 1M / 560k / 51k -> boost on above VSYS 3.31 V, off below 3.01 V (SLVSAQ2C 8.3.4, eq. 3).',
@@ -122,14 +124,22 @@ def build():
                         Description='fuel gauge 0x36, maxim,max17048. TODO(verify) land pattern vs Maxim 90-0065'))
     C(p, 'C19', '100n', 'VBAT')
     R(p, 'R16', '10k', 'GAUGE_INT', '+3V3')
+    # battery discharge limiter: everything downstream of the charger's SYS rail except the charge LED
+    p.add('U13', 'hackerslide', 'TPS2553DBV', 'TPS2553DBVR', 'Package_TO_SOT_SMD:SOT-23-6',
+          {'1': 'VSYS', '3': 'VSYS', '2': 'GND', '5': 'BATT_ILIM', '6': 'VSYS_LIM', '4': 'BATT_OC_N'},
+          fields=fields('C55266', 'TPS2553DBVR', 'Texas Instruments', Description='discharge current limit 1.3 A typ, auto-retry'))
+    R(p, 'R66', '20k', 'BATT_ILIM', 'GND', note='TPS2553 current limit 1295 mA typ (1215-1375 at 25 degC)')
+    R(p, 'R67', '10k', 'BATT_OC_N', '+3V3', note='FAULT, low while the limiter is active')
+    C(p, 'C27', '100n', 'VSYS')
+    TP(p, 'TP17', 'VSYS_LIM')
     # 5 V boost for the module
     p.add('U5', 'Regulator_Switching', 'TPS61230DRC', 'TPS61230DRCR', 'Package_SON:Texas_S-PVSON-N10_ThermalVias',
-          {'10': 'VSYS', '9': 'BOOST_EN', '8': 'BOOST_HYS', '6': 'BOOST_SS', '11': 'GND', '1': 'BOOST_SW', '2': 'BOOST_SW',
+          {'10': 'VSYS_LIM', '9': 'BOOST_EN', '8': 'BOOST_HYS', '6': 'BOOST_SS', '11': 'GND', '1': 'BOOST_SW', '2': 'BOOST_SW',
            '3': '+5V', '4': '+5V', '7': 'BOOST_FB', '5': 'BOOST_PG'},
           fields=fields('C139626', 'TPS61230DRCR', 'Texas Instruments', Description='VIN 2.3-5.5 V. NOT the TPS61230A (4.5 V max)'))
-    p.add('L2', 'Device', 'L', '1uH', 'Inductor_SMD:L_Sunlord_MWSA0402S', {'1': 'VSYS', '2': 'BOOST_SW'},
+    p.add('L2', 'Device', 'L', '1uH', 'Inductor_SMD:L_Sunlord_MWSA0402S', {'1': 'VSYS_LIM', '2': 'BOOST_SW'},
           fields=fields('C408332', 'MWSA0402S-1R0MT', 'Sunlord', Description='P2: Isat 5.6 A guaranteed, DCR 27 mOhm, 2.0 mm high'))
-    R(p, 'R17', '1M', 'VSYS', 'BOOST_EN', note='P5: UVLO divider top')
+    R(p, 'R17', '1M', 'VSYS_LIM', 'BOOST_EN', note='P5: UVLO divider top, sensed after the limiter')
     R(p, 'R23', '560k', 'BOOST_EN', 'BOOST_HYS', note='P5')
     R(p, 'R24', '51k', 'BOOST_HYS', 'GND', note='P5')
     C(p, 'C20', '22n', 'BOOST_SS')
@@ -137,7 +147,7 @@ def build():
     R(p, 'R19', '100k', 'BOOST_FB', 'GND')
     C(p, 'C26', '22p', '+5V', 'BOOST_FB', dnp=True)        # P8: feed-forward pad
     R(p, 'R20', '100k', 'BOOST_PG', '+5V')
-    C(p, 'C21', '22u', 'VSYS')                             # P4: 22 uF at U5 pin 10
+    C(p, 'C21', '22u', 'VSYS_LIM')                         # P4: 22 uF at U5 pin 10
     C(p, 'C22', '22u', '+5V')
     C(p, 'C23', '22u', '+5V')
     C(p, 'C24', '22u', '+5V')
@@ -190,7 +200,7 @@ def build():
     # audio I2S candidates (resistor-selected per module family, see audio sheet)
     m(25, 'CM4_GPIO21'); m(26, 'CM4_GPIO19'); m(27, 'CM4_GPIO20'); m(29, 'CM4_GPIO16'); m(30, 'CM4_GPIO6'); m(49, 'CM4_GPIO18')
     m(44, 'CODEC_IRQ')
-    m(58, 'CM4_GPIO2')   # spare, test point
+    m(58, 'BATT_OC_N')   # battery discharge limiter FAULT (was the spare pin)
     from mklib import CM4
     for pin, name in CM4.items():
         if name == 'GND':
@@ -231,7 +241,6 @@ def build():
     R(mo, 'R34', '100', 'UART_RX', 'UART_DBG_RX', note='CM4 GPIO15 / Core3566 UART2 RX')
     R(mo, 'R35', '100', 'CM4_GPIO4', 'UART_DBG_TX', dnp=True, note='ArmSoM-CM5 UART0 TX on pin 54')
     R(mo, 'R36', '100', 'CM4_GPIO3', 'UART_DBG_RX', dnp=True, note='ArmSoM-CM5 UART0 RX on pin 56')
-    TP(mo, 'TP10', 'CM4_GPIO2')
     for net, ref in (('+3V3', 'TP11'), ('+1V8', 'TP12'), ('RUN_PG', 'TP13')):
         TP(mo, ref, net)
 
@@ -260,14 +269,14 @@ def build():
     C(dp, 'C40', '10u', '+3V3')
     C(dp, 'C41', '100n', '+3V3')
     dp.add('U6', 'hackerslide', 'TPS61169', 'TPS61169DCKR', 'Package_TO_SOT_SMD:SOT-353_SC-70-5',
-           {'5': 'VSYS', '4': 'BL_PWM', '1': 'BL_SW', '3': 'LED_K', '2': 'GND'},
+           {'5': 'VSYS_LIM', '4': 'BL_PWM', '1': 'BL_SW', '3': 'LED_K', '2': 'GND'},
            fields=fields('C71045', 'TPS61169DCKR', 'Texas Instruments'))
-    dp.add('L3', 'Device', 'L', '10uH', 'Inductor_SMD:L_Sunlord_SWPA4030S', {'1': 'VSYS', '2': 'BL_SW'},
+    dp.add('L3', 'Device', 'L', '10uH', 'Inductor_SMD:L_Sunlord_SWPA4030S', {'1': 'VSYS_LIM', '2': 'BL_SW'},
            fields=fields('C38117', 'SWPA4030S100MT', 'Sunlord', Description='Isat 1.95 A guaranteed; 3.0 mm high'))
     dp.add('D4', 'Device', 'D_Schottky', 'NSR0240H', 'Diode_SMD:D_SOD-323', {'2': 'BL_SW', '1': 'LED_A'},
            fields=fields('C152519', 'NSR0240HT1G', 'onsemi', Description='P13: the diode the TPS61169 datasheet recommends'))
     C(dp, 'C42', '2.2u/50V', 'LED_A')                      # P11
-    C(dp, 'C43', '4.7u', 'VSYS')
+    C(dp, 'C43', '4.7u', 'VSYS_LIM')
     R(dp, 'R42', '5.1', 'LED_K', 'GND', note='LED current 40 mA (2 strings x 20 mA)')
     R(dp, 'R43', '100k', 'BL_PWM', 'GND', note='backlight off until the module drives PWM')
     for net, ref in (('LED_A', 'TP20'), ('TOUCH_INT', 'TP21')):

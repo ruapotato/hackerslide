@@ -43,34 +43,39 @@ The cell must not be asked for more than its rated 1.5 A, charging or dischargin
 every plug-in, so the cell sees about 0.6 A until Linux sets `ti,charge-current`, which must be 1.25 A or less
 (estimate for the 0.6 A; the caps are datasheet values).
 
-**Discharging: NOT limited in rev 0.1 as drawn. This must be closed before the carrier is ordered.**
-The TPS61230 boost will pull whatever the module asks for, up to a 4-6 A switch limit. The cell's own protection
-only trips somewhere between 2 and 5 A, which is a safety cut-out, not a limit to design to.
+**Discharging: limited in hardware by U13, a TPS2553 current-limited switch** between the charger's system rail
+and everything it feeds (the 5 V boost and the backlight). With a 20 kohm setting resistor its limit is 1.215 A
+minimum, 1.295 A typical, 1.375 A maximum at 25 degC (TI datasheet SLVS841), so the cell stays below 1.5 A. The cell's
+own protection only trips between 2 and 5 A, which is a safety cut-out, not a limit to design to.
 
-What 1.5 A allows (estimate, 90 % boost efficiency, 0.6 W for the backlight taken from the same rail):
+What happens at the limit: the limited rail sags, the boost's under-voltage divider switches the 5 V rail off at
+3.0 V, and the module loses power. U13's FAULT output (module pin 58, `BATT_OC_N`) goes low while it is limiting.
+So the limiter is a backstop. **Software must keep the device below it**: cap CPU frequency and cores, and throttle
+on low cell voltage. Costs: the switch drops about 0.11-0.18 V at 1.3 A (85-135 mohm), and it gets hot while limiting.
 
-| Cell voltage | Power from the cell at 1.5 A | Left for the module at 5 V |
+What the limit allows (estimate, 90 % boost efficiency, 0.6 W for the backlight):
+
+| Cell voltage | Power through the limiter at 1.3 A | Left for the module at 5 V |
 |---|---|---|
-| 3.0 V (boost about to switch off) | 4.5 W | about 3.5 W, 0.70 A |
-| 3.7 V (nominal) | 5.55 W | about 4.5 W, 0.89 A |
-| 4.2 V (full) | 6.3 W | about 5.1 W, 1.03 A |
+| 3.1 V | 4.0 W | about 3.1 W, 0.62 A |
+| 3.7 V (nominal) | 4.8 W | about 3.8 W, 0.76 A |
+| 4.2 V (full) | 5.5 W | about 4.4 W, 0.88 A |
 
-So the module has to stay under roughly **0.7 A at 5 V** in the worst case. Options, to decide once the module's
-real draw is measured in phase 1:
+So the module has to stay under roughly **0.6 A at 5 V (3 W)** on battery in the worst case. Whether the Core3566
+can boot and browse inside that is the first thing to measure in phase 1. If it cannot:
 
-| Option | How | Cost |
-|---|---|---|
-| Hardware limit in the boost (recommended to evaluate first) | Replace the TPS61230 with the TPS61236P (JLCPCB `C130295`, 1,084 in stock on 2026-11-24). It has a programmable constant output current: about 124 kohm per amp, so about 180 kohm gives 0.7 A. Its CC pin also reports output current, which the design otherwise cannot measure | A different package and application circuit: the boost block is redrawn and re-audited. When the limit is hit the 5 V rail sags and the module may reset, so it is a backstop, not a way to run |
-| Software power cap | Limit CPU frequency and cores so the module stays under the budget; throttle further on low cell voltage from the gauge | No hardware change, but nothing enforces it before Linux is up or if software misbehaves |
-| A cell with a higher rating | A 50 x 60 mm cell rated for 3 A or more | None found in stock with a datasheet; a custom pack needs a quote |
+| Option | Cost |
+|---|---|
+| A cell with a higher rating, and a larger setting resistor value change on U13 | None found in stock with a datasheet; a custom pack needs a quote |
+| TPS61236P boost with a programmable output current and a current monitor (JLCPCB `C130295`) | Needs an inductor rated for its 8 A switch limit and loses the under-voltage divider; a larger redesign |
+| Tighter software cap | Slower device |
 
-A hardware limit plus a software cap that keeps the device below it in normal use is the intended end state.
-With USB power connected the charger supplies the system first, so the limit matters on battery.
+With USB power connected the charger supplies the system rail, but U13 still limits the system to the same current.
 
 ## Risks that follow
 
-1. The module's peak current may trip the cell's protection, especially near empty. Measure the real peak.
-   If it is a problem: a cell with a higher discharge rating, or limit the CPU frequency.
+1. The module may want more than the discharge limiter allows (about 3 W on battery, worst case). Then the 5 V
+   rail drops and the device resets. Measure the real draw; cap it in software.
 2. "All day" battery life is not reachable at these figures. Suspend that works is essential: verify RK3566
    suspend on mainline in phase 1.
 3. Without a charged cell, a 500 mA USB source cannot boot the module (about 0.4 A available at 5 V).

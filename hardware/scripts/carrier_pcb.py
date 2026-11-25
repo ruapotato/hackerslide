@@ -41,7 +41,7 @@ CLASSES = [{'name': 'Default', 'clearance': 0.1, 'track_width': 0.1, 'via_diamet
             'diff_pair_width': 0.1, 'diff_pair_gap': 0.12},
            {'name': 'USB', 'clearance': 0.15, 'track_width': 0.12, 'via_diameter': 0.45, 'via_drill': 0.2,
             'diff_pair_width': 0.12, 'diff_pair_gap': 0.12}]
-PATTERNS = [('VBUS', 'Power'), ('VSYS', 'Power'), ('VBAT', 'Power'), ('+5V', 'Power'), ('PMID', 'Power'),
+PATTERNS = [('VBUS', 'Power'), ('VSYS', 'Power'), ('VSYS_LIM', 'Power'), ('VBAT', 'Power'), ('+5V', 'Power'), ('PMID', 'Power'),
             ('CHG_SW', 'Power'), ('BOOST_SW', 'Power'), ('BL_SW', 'Power'), ('LED_A', 'Power'),
             ('DSI_*', 'DSI'), ('USB_D?', 'USB')]
 
@@ -86,6 +86,8 @@ def build(bdir, do_route=False):
     P('L2', 52.2, 59.0, 90)
     B.pack(['C22', 'C23', 'C24'], 44.0, 53.2, region=(42.6, 52.3, 56.5, 56.8), keepout=keep)
     B.pack(['C21'], 52.0, 63.5, region=(41.8, 52.3, 56.5, 65.6), keepout=keep)
+    # battery discharge limiter: display side, between the charger (left strip) and the boost
+    B.pack(['U13', 'R66', 'C27', 'R67', 'TP17'], 66.5, 60.5, 'B', region=(62.6, 56.8, 71.2, 65.5))
     B.pack(['C33', 'C34'], 47.0, 55.2, region=(41.8, 52.3, 56.5, 58.0), keepout=keep)
     B.pack(['R18', 'R19', 'C26', 'C20', 'R17', 'R23', 'R24', 'R20'], 44.5, 63.5,
            region=(41.8, 56.8, 56.5, 65.6), keepout=keep)

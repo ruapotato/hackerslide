@@ -16,8 +16,8 @@ From David's brief (2026-11-24) and spec (2026-11-20). "Must" items are his hard
 ## Added by David, 2026-11-24
 
 - **The battery must never be asked for more current than it is rated for.** For the chosen cell that is 1.5 A
-  discharge and 1.5 A charge. Rev 0.1 limits the charge side in hardware but **not yet the discharge side**: see
-  [power-budget.md](power-budget.md), "Keeping the cell inside its rating".
+  discharge and 1.5 A charge. Rev 0.1 limits both in hardware: the charger's input cap for charging, and a current-limited switch (U13,
+  1.3 A typical) for discharging. See [power-budget.md](power-budget.md), "Keeping the cell inside its rating".
 
 ## Nice to have
 

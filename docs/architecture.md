@@ -5,8 +5,9 @@ flowchart LR
   USBC[USB-C, 5 V sink] --> CHG[BQ25895 charger]
   BAT[1S LiPo 2500 mAh] <--> CHG
   BAT --- GAUGE[MAX17048 gauge]
-  CHG -->|VSYS 3.0-4.4 V| BOOST[TPS61230 boost] -->|5 V| MOD
-  CHG -->|VSYS| BL[TPS61169 backlight]
+  CHG -->|VSYS 3.0-4.4 V| LIM[TPS2553 limiter 1.3 A]
+  LIM --> BOOST[TPS61230 boost] -->|5 V| MOD
+  LIM --> BL[TPS61169 backlight]
   subgraph MOD[CM4-format module: LuckFox Core3566]
     SOC[RK3566 + PMIC + RAM + Wi-Fi/BT]
   end

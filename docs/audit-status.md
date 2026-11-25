@@ -52,9 +52,10 @@ bay 8.4 (cavity 5.5, carrier 1.0, panel gap 1.9), panel 4.25, bezel lip 0.8.
 | P15 | Open (software) | Backlight PWM period 5-100 kHz in the device tree |
 | P16 | Fixed | Test points added. CC lines reach only resistors, so they carry no ESD part |
 
-**Open, required by David (2026-11-24): the battery must never be drawn beyond its rating.** The cell allows
-1.5 A; the boost can pull about 3.7 A at a 2 A module peak and nothing limits it. Charging is limited in hardware;
-discharging is not. Options and numbers are in [power-budget.md](power-budget.md). This blocks the carrier order.
+**Required by David (2026-11-24): the battery must never be drawn beyond its rating.** The cell allows 1.5 A.
+Charging was already limited in hardware. Discharging is now limited by U13 (TPS2553, 1.3 A typical, 1.375 A
+maximum) feeding the boost and the backlight. It is a backstop that drops the 5 V rail; software must keep the
+module inside about 3 W on battery. Open: measure whether the module can. See [power-budget.md](power-budget.md).
 
 ### Module
 

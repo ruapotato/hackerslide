@@ -741,6 +741,113 @@
    "nc": {}
   },
   {
+   "ref": "U13",
+   "value": "TPS2553DBVR",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "97aa0e90-dded-5788-a49d-98de1cafcccf",
+   "fields": {
+    "LCSC": "C55266",
+    "MPN": "TPS2553DBVR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "discharge current limit 1.3 A typ, auto-retry"
+   },
+   "pads": {
+    "1": "VSYS",
+    "3": "VSYS",
+    "2": "GND",
+    "5": "BATT_ILIM",
+    "6": "VSYS_LIM",
+    "4": "BATT_OC_N"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R66",
+   "value": "20k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "2aa6a2b8-20a9-5761-b6f5-07a41a3fbd41",
+   "fields": {
+    "LCSC": "C25765",
+    "MPN": "0402WGF2002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "TPS2553 current limit 1295 mA typ (1215-1375 at 25 degC)"
+   },
+   "pads": {
+    "1": "BATT_ILIM",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R67",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "0b524caa-8c79-5af4-8833-5cf4308d453b",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "FAULT, low while the limiter is active"
+   },
+   "pads": {
+    "1": "BATT_OC_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C27",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "177b1e0e-19da-596e-9ab7-7f57621b90d0",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "VSYS",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "TP17",
+   "value": "VSYS_LIM",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "a042cff6-69bc-59d7-b34d-97851ba0afd8",
+   "fields": {},
+   "pads": {
+    "1": "VSYS_LIM"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
    "ref": "U5",
    "value": "TPS61230DRCR",
    "footprint": "Package_SON:Texas_S-PVSON-N10_ThermalVias",
@@ -756,7 +863,7 @@
     "Description": "VIN 2.3-5.5 V. NOT the TPS61230A (4.5 V max)"
    },
    "pads": {
-    "10": "VSYS",
+    "10": "VSYS_LIM",
     "9": "BOOST_EN",
     "8": "BOOST_HYS",
     "6": "BOOST_SS",
@@ -787,7 +894,7 @@
     "Description": "P2: Isat 5.6 A guaranteed, DCR 27 mOhm, 2.0 mm high"
    },
    "pads": {
-    "1": "VSYS",
+    "1": "VSYS_LIM",
     "2": "BOOST_SW"
    },
    "in_bom": true,
@@ -806,10 +913,10 @@
     "LCSC": "C26083",
     "MPN": "0402WGF1004TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "P5: UVLO divider top"
+    "Description": "P5: UVLO divider top, sensed after the limiter"
    },
    "pads": {
-    "1": "VSYS",
+    "1": "VSYS_LIM",
     "2": "BOOST_EN"
    },
    "in_bom": true,
@@ -980,7 +1087,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "VSYS",
+    "1": "VSYS_LIM",
     "2": "GND"
    },
    "in_bom": true,
@@ -1406,7 +1513,7 @@
     "30": "CM4_GPIO6",
     "49": "CM4_GPIO18",
     "44": "CODEC_IRQ",
-    "58": "CM4_GPIO2",
+    "58": "BATT_OC_N",
     "1": "GND",
     "2": "GND",
     "7": "GND",
@@ -2099,22 +2206,6 @@
    "nc": {}
   },
   {
-   "ref": "TP10",
-   "value": "CM4_GPIO2",
-   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
-   "dnp": false,
-   "sheet": "module",
-   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
-   "sheetfile": "module.kicad_sch",
-   "sym_uuid": "5302d9d5-3e44-5082-985b-3daf5f60b7f3",
-   "fields": {},
-   "pads": {
-    "1": "CM4_GPIO2"
-   },
-   "in_bom": false,
-   "nc": {}
-  },
-  {
    "ref": "TP11",
    "value": "+3V3",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
@@ -2334,7 +2425,7 @@
     "Manufacturer": "Texas Instruments"
    },
    "pads": {
-    "5": "VSYS",
+    "5": "VSYS_LIM",
     "4": "BL_PWM",
     "1": "BL_SW",
     "3": "LED_K",
@@ -2359,7 +2450,7 @@
     "Description": "Isat 1.95 A guaranteed; 3.0 mm high"
    },
    "pads": {
-    "1": "VSYS",
+    "1": "VSYS_LIM",
     "2": "BL_SW"
    },
    "in_bom": true,
@@ -2423,7 +2514,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "VSYS",
+    "1": "VSYS_LIM",
     "2": "GND"
    },
    "in_bom": true,

@@ -38,6 +38,7 @@ resistor stuffing but has no backlight PWM and no audio. BigTreeTech CB2 is not 
 | 37 | KB_INT_N | 46 | LCD_TE |
 | 38 | VOL_UP_N | 47 | SLIDE_DET (low = slider closed) |
 | 39 | VOL_DN_N | 50 | HP_DET (jack detect, also on the codec) |
+| 58 | BATT_OC_N (low while the battery limiter is active) | | |
 
 ## Stuffing variants
 
