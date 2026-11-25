@@ -6,6 +6,7 @@ continues to y = -38 under the part of the tray that stays below the body (FPC c
 The top plate sits 1.5 mm above the board on four SMT spacers; parts under it are at most 1.0 mm high, and the
 diodes (0.5 mm) sit under the keycap flanges, which ride 0.9 mm above the board.
 """
+import math
 import os
 import sys
 
@@ -34,7 +35,8 @@ def route_matrix(B, variant):
       F  key node: switch pad 2 -> its diode                 F  ROW0-3: one track 3.0 mm below each key row, then up
       B  COL0-9: a vertical per physical column, then a      F  folded columns 10/11: two tracks above each key row
          bus above the key area (one level per column)          bring COL0-3 / COL4-7 across to them; ROW4 on B
-    The buses stop near U1; the scanner fan-out, the D-pad and the cable signals are left to the autorouter or a human.
+    The rows and columns are taken all the way into the scanner U1.  The D-pad, the cable signals, power and ground
+    are left to the grid router.
     """
     MM = pcbnew.FromMM
     nets = B.nets
@@ -64,10 +66,13 @@ def route_matrix(B, variant):
     rowy = {r: KL.key_center(r, 0)[1] for r in range(KL.ROWS)}
     colx = {c: KL.key_center(0, c)[0] for c in range(KL.COLS)}
     xv = {c: colx[c] - 2.7 for c in range(10)}                 # column verticals on B
-    lvl = {c: -0.8 - 0.5 * c for c in range(10)}               # bus level per column, rising to the right
-    lvl_row4 = -0.8 - 0.5 * 10
-    x_bus_end = 21.5                                           # each bus ends in a via, staggered 0.9 mm, left of the risers
+    lvl = {c: -1.2 - 0.5 * c for c in range(10)}               # bus level per column, rising to the right
+    lvl_row4 = -1.2 - 0.5 * 10
+    xend = {c: 13.4 + 0.9 * c for c in range(10)}              # each bus ends in a via; COL0's is the leftmost, so that
+    #                                                            the vias are in the order of the scanner's pins
     rowx = {0: 23.7, 1: 23.3, 2: 22.9, 3: 22.5}                # ROW0-3 risers on F, left of column 0
+    lane = {0: -0.65, 1: -0.3, 2: 0.05, 3: 0.4}                # ROW0-3 run left under the bus vias to the scanner
+    rowv = {0: None, 1: None, 2: 8.75, 3: 8.35}                # their verticals up to U1 (ROW0/1: straight into the pins)
     done = set()
     for i, (name, r, c, x, y) in keys:
         if r == 4:
@@ -101,20 +106,54 @@ def route_matrix(B, variant):
             xr = x - 1.25
             track(rown, [(drx, dry), (xr, dry)])
             via(rown, xr, dry)
-    # ROW0-3 on F: along the row, up the riser, to y = -1.2
+    def chamfer(pts, c=0.3):
+        """cut the corners of an orthogonal polyline"""
+        out = [pts[0]]
+        for p, q, r in zip(pts, pts[1:], pts[2:]):
+            d1 = (q[0] - p[0], q[1] - p[1]); d2 = (r[0] - q[0], r[1] - q[1])
+            l1 = math.hypot(*d1); l2 = math.hypot(*d2)
+            k = min(c, l1 / 2, l2 / 2)
+            out.append((q[0] - d1[0] / l1 * k, q[1] - d1[1] / l1 * k))
+            out.append((q[0] + d2[0] / l2 * k, q[1] + d2[1] / l2 * k))
+        out.append(pts[-1])
+        return out
+
+    # ---- scanner hook-up: everything on F, in pin order, nothing crosses ---------------------------------------
+    # ROW0-3: along the row, up the riser, left along its lane below the column vias, up to U1
     for r in range(4):
         y = rowy[r] + 3.0
         x_right = pad([f'D{i + 1}' for i, k in keys if k[1] == r and k[2] == 9][0], '2')[0]
-        track(f'ROW{r}', [(x_right, y), (rowx[r], y), (rowx[r], -1.2)])
-    # COL0-9 on B: vertical through all four rows, then the bus toward U1
+        px, py, _ = pad('U1', {0: '8', 1: '7', 2: '6', 3: '5'}[r])
+        xv_ = rowv[r] or px
+        end = [(xv_, py)] if rowv[r] is None else [(xv_, py), (px, py)]
+        track(f'ROW{r}', chamfer([(x_right, y), (rowx[r], y), (rowx[r], lane[r]), (xv_, lane[r])] + end))
+    # COL0-9 on B: vertical through all four rows, then the bus to its via; on F from the via up to the scanner:
+    # COL0-3 into the bottom pins, COL4-9 into the right-hand pins
     for c in range(10):
-        track(f'COL{c}', [(xv[c], rowy[3]), (xv[c], lvl[c]), (x_bus_end - 0.9 * c, lvl[c])], Bcu)
-        via(f'COL{c}', x_bus_end - 0.9 * c, lvl[c])
-    # ROW4 on B: one vertical per folded column, joined above the key area, then the bus
+        track(f'COL{c}', [(xv[c], rowy[3]), (xv[c], lvl[c]), (xend[c], lvl[c])], Bcu)
+        via(f'COL{c}', xend[c], lvl[c])
+        px, py, _ = pad('U1', str(9 + c))
+        if c < 4:
+            yl = -9.15 - 0.35 * c
+            track(f'COL{c}', chamfer([(xend[c], lvl[c]), (xend[c], yl), (px, yl), (px, py)]))
+        else:
+            track(f'COL{c}', chamfer([(xend[c], lvl[c]), (xend[c], py), (px, py)]))
+    # scanner ground: pin 19 into the exposed pad, and a via in the pad to the display-side ground
+    px, py, _ = pad('U1', '19')
+    ex, ey = U1_XY
+    track('GND', [(px, py), (px, ey - 0.9)])
+    via('GND', ex, ey)
+    # ROW4 on B: one vertical per folded column, joined above the key area, then the bus past the scanner's row
+    # tracks to a via; ROW5 gets a via next to it for the D-pad routing
     xa, xb = colx[10] - 1.25, colx[11] - 1.25
     track('ROW4', [(xa, rowy[3] + 2.1), (xa, lvl_row4)], Bcu)
-    track('ROW4', [(xb, rowy[3] + 2.1), (xb, lvl_row4), (x_bus_end - 0.9 * 10, lvl_row4)], Bcu)
-    via('ROW4', x_bus_end - 0.9 * 10, lvl_row4)
+    track('ROW4', [(xb, rowy[3] + 2.1), (xb, lvl_row4), (7.75, lvl_row4)], Bcu)
+    via('ROW4', 7.75, lvl_row4)
+    px, py, _ = pad('U1', '4')
+    track('ROW4', chamfer([(7.75, lvl_row4), (7.75, py), (px, py)]))
+    px, py, _ = pad('U1', '3')
+    track('ROW5', chamfer([(px, py), (7.05, py), (7.05, lvl_row4 + 1.0)]))
+    via('ROW5', 7.05, lvl_row4 + 1.0)
 
 
 def build(variant, bdir, do_route=False):
@@ -177,7 +216,8 @@ def build(variant, bdir, do_route=False):
                region=(0.6, -30.0, 30.0, -19.3))
         route_matrix(B, variant)
         for ref in ('U1', 'J1', 'U2'):          # escape stubs and vias for the fine-pitch parts
-            B.fanout(ref, lengths=(1.2, 2.2, 3.2) if ref == 'U1' else (1.2, 2.2))
+            # U1: only the top-side pins; rows and columns are scripted in route_matrix
+            B.fanout(ref, lengths=(1.2, 2.2), only=('KB_RST_N', '+3V3', 'I2C_B_SDA', 'I2C_B_SCL', 'KB_INT_N', 'ROW6_NC', 'ROW7_NC') if ref == 'U1' else None)
     left = B.unplaced()
     assert not left, left
     B.text('HackerSlide 810 keyboard ' + ('Alps SKSW' if variant == 'alps' else 'Keystone 5135 domes') + ' rev 0.1 DRAFT  CERN-OHL-S-2.0',
