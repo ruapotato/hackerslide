@@ -298,16 +298,26 @@ def dsi(B, W=0.1, GAP=0.12):
     """
     d = (W + GAP) / 2
     c = 0.5                                               # chamfer
-    def run(net, y_lane, x_vert, y_j4, x_start, lead_p, lead_n, tail_p, tail_n):
+    def bumps(pts, n, sign, x0, h=0.3, flat=0.3, gap=0.3):
+        """n small detours in the first (eastward) stretch of a line, away from its partner: each adds 0.83 h"""
+        y = pts[0][1]
+        out = [pts[0]]
+        for i in range(n):
+            x = x0 + i * (2 * h + flat + gap)
+            out += [(x, y), (x + h, y + sign * h), (x + h + flat, y + sign * h), (x + 2 * h + flat, y)]
+        return out + pts[1:]
+
+    def run(net, y_lane, x_vert, y_j4, x_start, lead_p, lead_n, tail_p, tail_n, comp=(0, 0), x_comp=47.0):
+        """comp = (bumps on P, bumps on N): length compensation, see docs/carrier-board.md for the measured lengths"""
         cl = [(x_start, y_lane), (x_vert - c, y_lane), (x_vert, y_lane + c), (x_vert, y_j4 - c), (x_vert + c, y_j4), (62.15, y_j4)]
-        B.track(net + '_P', lead_p + offset(cl, d) + tail_p, W)
-        B.track(net + '_N', lead_n + offset(cl, -d) + tail_n, W)
+        B.track(net + '_P', lead_p + bumps(offset(cl, d), comp[0], -1, x_comp) + tail_p, W)
+        B.track(net + '_N', lead_n + bumps(offset(cl, -d), comp[1], 1, x_comp) + tail_n, W)
     v = lambda net, near: B.via_xy(net, near)
     # lane 1: top lane, right-hand vertical
     (px, py), (nx, ny) = v('DSI_D1_P', (44, 18)), v('DSI_D1_N', (44, 18))
     jp, jn = v('DSI_D1_P', (63, 32)), v('DSI_D1_N', (63, 32))
     run('DSI_D1', 19.36, 58.79, 32.3, 44.6, [(px, py), (px, 19.0), (px + 0.25, 19.25)], [(nx, ny), (nx, 19.22), (nx + 0.25, 19.47)],
-        [(62.3, jp[1]), jp], [(62.3, jn[1]), jn])
+        [(62.3, jp[1]), jp], [(62.3, jn[1]), jn], comp=(0, 3), x_comp=45.2)
     # clock: on the display side from its J1B vias to two new vias below lane 1, then the middle lane
     (px, py), (nx, ny) = v('DSI_CLK_P', (45, 18)), v('DSI_CLK_N', (45, 18))
     jp, jn = v('DSI_CLK_P', (63, 34)), v('DSI_CLK_N', (63, 34))
@@ -315,12 +325,12 @@ def dsi(B, W=0.1, GAP=0.12):
     B.track('DSI_CLK_N', [(nx, ny), (nx, 20.4), (nx - 0.15, 20.71)], W, Bk)
     B.via('DSI_CLK_P', px, 20.2); B.via('DSI_CLK_N', nx - 0.15, 20.71)
     run('DSI_CLK', 20.6, 58.19, 33.8, 45.9, [(px, 20.2), (px + 0.29, 20.49)], [(nx - 0.15, 20.71)],
-        [(62.3, jp[1]), jp], [(62.3, jn[1]), jn])
+        [(62.3, jp[1]), jp], [(62.3, jn[1]), jn], comp=(9, 0), x_comp=46.4)
     # lane 0: bottom lane, left-hand vertical
     (px, py), (nx, ny) = v('DSI_D0_P', (43, 18)), v('DSI_D0_N', (43, 18))
     jp, jn = v('DSI_D0_P', (63, 35)), v('DSI_D0_N', (63, 35))
     run('DSI_D0', 21.31, 57.59, 35.3, 43.4, [(px, py), (px, 20.9), (px + 0.3, 21.2)], [(nx, ny), (nx, 21.12), (nx + 0.3, 21.42)],
-        [(62.3, jp[1]), jp], [(62.3, jn[1]), jn])
+        [(62.3, jp[1]), jp], [(62.3, jn[1]), jn], comp=(0, 3), x_comp=44.0)
 
 
 def usb(B, W=0.12, GAP=0.12):

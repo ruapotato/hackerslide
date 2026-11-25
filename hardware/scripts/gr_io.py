@@ -177,11 +177,24 @@ def ripdrc(board_path, drc_path, widths='0.13,0.1', protect='DSI_*,USB_D?'):
     ws = [pcbnew.FromMM(float(w)) for w in widths.split(',')]
     pads = {(p.GetPosition().x // 1000, p.GetPosition().y // 1000) for fp in b.GetFootprints() for p in fp.Pads()}
     lid = {b.GetLayerName(l): l for l in b.GetEnabledLayers().CuStack()}
+    sv = os.path.join(os.path.dirname(board_path), 'scripted-vias.json')
+    keep_vias = json.load(open(sv)) if os.path.exists(sv) else None
     gone = []
     for v in json.load(open(drc_path))['violations']:
         if v['severity'] != 'error' or v['type'] not in ('clearance', 'shorting_items', 'hole_clearance', 'items_not_allowed', 'tracks_crossing'):
             continue
         for it in v['items']:
+            mv = re.match(r'Via \[(.*?)\]', it['description'])
+            if mv and keep_vias is not None:
+                # a via the router placed: none of its net's scripted tracks (any width the router does not use) ends on it
+                for t in b.GetTracks():
+                    if (t.Type() == pcbnew.PCB_VIA_T and t.GetNetname() == mv.group(1)
+                            and abs(MM(t.GetPosition().x) - it['pos']['x']) < 1e-3 and abs(MM(t.GetPosition().y) - it['pos']['y']) < 1e-3):
+                        scripted = [round(MM(t.GetPosition().x), 3), round(MM(t.GetPosition().y), 3)] in keep_vias
+                        if not scripted:
+                            gone.append(t)
+                        break
+                continue
             m = re.match(r'Track \[(.*?)\] on (\S+?), length ([\d.]+)', it['description'])
             if not m or any(fnmatch.fnmatch(m.group(1), p) for p in protect.split(',')):
                 continue
@@ -210,8 +223,50 @@ def ripdrc(board_path, drc_path, widths='0.13,0.1', protect='DSI_*,USB_D?'):
     os._exit(0)          # pcbnew 9.0.2 crashes on interpreter exit after Remove()
 
 
+def tidy(board_path, drc_path, skip=''):
+    """Remove what the check calls dangling: vias used on one layer only (escape vias whose route stayed on the pad's
+    layer, vias left behind by rip-ups) and routed segments that end in nothing.  Scripted tracks stay."""
+    b = pcbnew.LoadBoard(board_path)
+    padpos = {(p.GetPosition().x // 1000, p.GetPosition().y // 1000) for fp in b.GetFootprints() for p in fp.Pads()}
+    vias, segs = {}, []
+    for t in b.GetTracks():
+        if t.Type() == pcbnew.PCB_VIA_T:
+            vias[(t.GetNetname(), round(MM(t.GetPosition().x), 3), round(MM(t.GetPosition().y), 3))] = t
+        else:
+            segs.append(t)
+    gone = []
+    for v in json.load(open(drc_path))['violations']:
+        it = v['items'][0]
+        m = re.search(r'\[(.*?)\]', it['description'])
+        if m and m.group(1) in skip.split(','):
+            continue
+        if v['type'] == 'via_dangling' and m:
+            t = vias.pop((m.group(1), round(it['pos']['x'], 3), round(it['pos']['y'], 3)), None)
+            if t is not None:
+                gone.append(t)
+        elif v['type'] == 'track_dangling' and m:
+            lm = re.match(r'Track \[(.*?)\] on (\S+?), length ([\d.]+)', it['description'])
+            for t in segs:
+                w = MM(t.GetWidth())
+                if (lm and t.GetNetname() == lm.group(1) and b.GetLayerName(t.GetLayer()) == lm.group(2)
+                        and abs(MM(t.GetLength()) - float(lm.group(3))) < 0.002 and min(abs(w - r) for r in ROUTER_WIDTHS) < 0.001
+                        and not any(fnmatch.fnmatch(t.GetNetname(), p) for p in PROTECT)
+                        and not any((q.x // 1000, q.y // 1000) in padpos for q in (t.GetStart(), t.GetEnd()))
+                        and min(abs(MM(q.x) - it['pos']['x']) + abs(MM(q.y) - it['pos']['y']) for q in (t.GetStart(), t.GetEnd(), t.GetCenter())) < 0.05):
+                    gone.append(t); segs.remove(t)
+                    break
+    for t in gone:
+        b.Remove(t)
+    pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+    pcbnew.SaveBoard(board_path, b)
+    print(f'tidy: removed {len(gone)} dangling vias and segments', flush=True)
+    os._exit(0)
+
+
 if __name__ == '__main__':
-    if sys.argv[1] == 'ripdrc':
+    if sys.argv[1] == 'tidy':
+        tidy(*sys.argv[2:])
+    elif sys.argv[1] == 'ripdrc':
         ripdrc(*sys.argv[2:])
     elif sys.argv[1] == 'rip':
         rip(*sys.argv[2:])

@@ -79,6 +79,11 @@ THERMAL_GAP = CAVITY - MODULE['mated'] if BATTERY_LAYOUT == 'cutout' else 0.3   
 assert THERMAL_GAP >= 0.2, THERMAL_GAP            # filled by a pad or copper shim of this thickness (audit E4)
 Z_CARRIER_F = Z_BACK_IN + CAVITY                  # carrier F side (faces down)
 Z_CARRIER_B = Z_CARRIER_F + CARRIER['t']
+# Display side of the carrier: since the board was routed it carries parts, the tallest being the discharge limiter
+# U13 (SOT-23-6, 1.45 mm max, board x 68-71 / y 30-32).  Even with the component area of a folded panel tail
+# lying right over it, it must fit.
+B_SIDE_MAX = 1.45          # [ds] tallest display-side part
+assert B_SIDE_MAX + PANEL['tail_bulge'] <= PANEL_GAP + 1e-9, (B_SIDE_MAX, PANEL['tail_bulge'], PANEL_GAP)
 Z_PANEL_BOTTOM = Z_CARRIER_B + PANEL_GAP
 Z_PANEL_TOP = Z_PANEL_BOTTOM + PANEL['t']
 BEZEL_LIP = 0.8                                   # [est] front-shell roof over the lens edge (holds the panel)

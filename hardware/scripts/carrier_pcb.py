@@ -209,6 +209,12 @@ def build(bdir, do_route=False):
     open(path.replace('.kicad_pcb', '.kicad_dru'), 'w').write(
         '(version 1)\n(rule "wuerth_spacer_ring"\n  (condition "A.memberOfFootprint(\'H?\') && B.memberOfFootprint(\'H?\')")\n'
         '  (constraint hole_clearance (min 0mm)))\n')
+    # which vias are scripted (everything on the board at this point): the repair step may remove any other via
+    import json
+    b0 = pcbnew.LoadBoard(path)
+    json.dump(sorted([round(pcbnew.ToMM(t.GetPosition().x), 3), round(pcbnew.ToMM(t.GetPosition().y), 3)]
+                     for t in b0.GetTracks() if t.Type() == pcbnew.PCB_VIA_T),
+              open(os.path.join(bdir, 'scripted-vias.json'), 'w'))
     if do_route:
         # gridroute.py on F / In2 / B; In1 is the ground plane, so a via anywhere reaches ground.
         # DSI and USB are already in as scripted pairs (carrier_cells); the router does ordinary signals only.
@@ -223,7 +229,7 @@ def build(bdir, do_route=False):
     return path
 
 
-def repair(bdir, rounds=4):
+def repair(bdir, rounds=8):
     """Close the loop with KiCad's own check: remove routed segments it objects to and route what is open again, with
     a larger clearance, until the check is quiet or nothing changes."""
     import json
@@ -238,12 +244,38 @@ def repair(bdir, rounds=4):
         d = json.load(open(drc))
         state = (sum(v['severity'] == 'error' for v in d['violations']), len(d['unconnected_items']))
         print('repair round', i, 'errors, open:', state, flush=True)
-        if state == (0, 0) or state == last:
+        if state == (0, 0) or (state == last and i % 2 == 0):      # no change after both clearance settings
             break
         last = state
         subprocess.run(['python3', os.path.join(here, 'gr_io.py'), 'ripdrc', board, drc], check=True)
         subprocess.run([os.path.join(here, 'gridroute.sh'), os.path.abspath(bdir), 'carrier', '--layers', 'F.Cu,In2.Cu,B.Cu',
-                        '--width', '0.1', '--clearance', '0.15', '--power-width', '0.25', '--stitch', '--reroute'], check=True)
+                        '--width', '0.1', '--clearance', '0.15' if i % 2 == 0 else '0.12', '--power-width', '0.25', '--stitch', '--reroute'],
+                       check=True)
+    # tidy: vias and stubs that ended up unused.  Kept only if the board is still complete afterwards.
+    import shutil
+    skip = set()                                   # nets where removing a "dangling" item opened a connection
+    for i in range(6):
+        drc = os.path.join(tempfile.mkdtemp(), 'drc.json')
+        subprocess.run(['kicad-cli', 'pcb', 'drc', '--format', 'json', '-o', drc, board], check=True, capture_output=True)
+        d = json.load(open(drc))
+        n = sum(v['type'] in ('via_dangling', 'track_dangling') and not any(f'[{s_}]' in v['items'][0]['description'] for s_ in skip)
+                for v in d['violations'])
+        if not n:
+            break
+        shutil.copy(board, board + '.pretidy')
+        subprocess.run(['python3', os.path.join(here, 'gr_io.py'), 'tidy', board, drc, ','.join(sorted(skip))], check=True)
+        subprocess.run(['kicad-cli', 'pcb', 'drc', '--format', 'json', '-o', drc, board], check=True, capture_output=True)
+        d2 = json.load(open(drc))
+        if len(d2['unconnected_items']) > len(d['unconnected_items']) or any(v['severity'] == 'error' for v in d2['violations']):
+            import re
+            opened = {m.group(1) for u in d2['unconnected_items'] for it in u['items'] for m in [re.search(r'\[(.*?)\]', it['description'])] if m}
+            shutil.copy(board + '.pretidy', board)
+            print('tidy: undone for', sorted(opened), flush=True)
+            if not opened or opened <= skip:
+                break
+            skip |= opened
+    if os.path.exists(board + '.pretidy'):
+        os.remove(board + '.pretidy')
     set_project_rules(board.replace('.kicad_pcb', '.kicad_pro'), RULES, CLASSES, PATTERNS)
 
 

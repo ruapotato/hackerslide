@@ -104,7 +104,7 @@ class Maps:
                     self.stamp(self.padown[it['layer']], self.mask_poly(it['poly'], 0), n)
             # a through via must clear copper on every layer; never put one in or against an SMD pad.
             # A power area on a layer the via only passes through is no obstacle: KiCad refills the area around it.
-            # (only ground vias are allowed that: they are few, and a signal via could cut a narrow strip)
+            # (in a narrow strip only ground vias are allowed that: a row of signal vias could cut it)
             if it['kind'] == 'zone' and it['layer'] not in ('F.Cu', 'B.Cu'):
                 m = self.mask_poly(it['poly'], gv)
                 if m is not None:
@@ -114,6 +114,12 @@ class Maps:
             if it.get('fine'):
                 # no vias within FANOUT of fine-pitch pads: a via there would close the neighbours' escape lanes
                 self.stamp(self.vocc, self.mask_poly(it['poly'], FANOUT), -1)
+        if self.vz.any():
+            # ... except where the area is more than 3 mm wide: a via there cannot cut it
+            from scipy.ndimage import distance_transform_edt
+            r = 1.5 / g
+            wide = distance_transform_edt(self.vz != 0) >= r
+            self.vz[distance_transform_edt(~wide) <= r] = 0
         for h in self.d['holes']:
             circ = [(h['x'] + h['d'] / 2 * math.cos(a), h['y'] + h['d'] / 2 * math.sin(a)) for a in np.linspace(0, 2 * math.pi, 48, endpoint=False)]
             hn = self.nid(h.get('net')) if h.get('net') else -1      # a plated hole of net X only blocks other nets
@@ -558,7 +564,7 @@ def main():
             M.refresh()
             out['tracks'] += tr; out['vias'] += vs
         print(f'width {w}: {len(routes) - dropped} routed, rip-ups {sum(ripped.values())}, dropped {dropped}', flush=True)
-    if a.stitch:
+    if a.stitch and by_w:
         # Stitching: every separate piece of the pour on every layer gets one via (placed as deep inside the piece
         # as possible), which ties the pieces together through the other layers / the ground plane.
         from scipy.ndimage import distance_transform_edt

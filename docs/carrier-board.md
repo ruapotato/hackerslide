@@ -38,7 +38,8 @@ The board is drawn from its component (F) side. In the device that side faces DO
 drawing is the device seen from the back: board x = 0 is the device's right edge. The B side faces the display.
 It carries the panel and touch connectors J4/J5, the discharge limiter, the fuel gauge, test pads and about fifty
 0402-size parts for which the component side had no room. The tall ones are U13 (SOT-23-6, up to 1.45 mm), U4 and C17 (0.8 mm); the rest are at most 0.55 mm. The gap
-behind the panel is 3.3 mm and the panel's folded tails need 1.9 mm of it, which leaves 1.4 mm where a tail lies.
+behind the panel is 3.3 mm; a folded panel tail with its components is up to 1.7 mm thick, which leaves 1.6 mm under
+a tail. `mechanical/src/config.py` asserts that the tallest display-side part fits there (0.15 mm to spare).
 
 ## Layout zones
 
@@ -57,8 +58,8 @@ rows there the pins walled each other in.
 
 | Net group | Requirement | Status |
 |---|---|---|
-| DSI_CLK, DSI_D0, DSI_D1 pairs | 100 ohm differential, matched within a pair, over unbroken ground | Hand-laid as edge-coupled pairs on F over In1, about 28-33 mm, 0.1 mm tracks with 0.12 mm gap. The clock pair drops to the display side for 2 mm at J1B to change places with lane 1. **Width and gap are estimates: `TODO(verify)` with the fab's impedance calculator.** Lengths within a pair are equal by construction to about 1 mm, not measured |
-| USB_DP / USB_DM | 90 ohm differential | Hand-laid pair on F over In1, about 40 mm, through U2 pin to pin without a stub; D- has two vias at the connector, D+ none. 0.12 / 0.12 mm, **estimate, `TODO(verify)`** |
+| DSI_CLK, DSI_D0, DSI_D1 pairs | 100 ohm differential, matched within a pair, over unbroken ground | Hand-laid as edge-coupled pairs on F over In1, about 28-33 mm, 0.1 mm tracks with 0.12 mm gap. The clock pair drops to the display side for 2 mm at J1B to change places with lane 1. **Width and gap are estimates: `TODO(verify)` with the fab's impedance calculator.** Copper length per line, pad to pad including the escape stubs: clock 37.25 / 37.38 mm, lane 0 40.30 / 40.27, lane 1 36.13 / 36.10 (P / N), after small compensation bumps on the shorter line of each pair |
+| USB_DP / USB_DM | 90 ohm differential | Hand-laid pair on F over In1, about 40 mm, through U2 pin to pin without a stub; D- has two vias at the connector, D+ none. 0.12 / 0.12 mm, **estimate, `TODO(verify)`**. Not length-compensated: the two lines differ by about 2 mm including their branches at the connector, inside the usual 3.8 mm allowance for USB 2.0 |
 | CHG_SW, PMID, VSYS at U3/L1 | Tight loop; C11/C12 at PMID, C15/C16 at SYS | Hand-laid after TI SLUSC88C section 11: C11 0.2 mm from PMID, ground returns on vias into In1 beside the exposed pad, SW node 0.7 x 4 mm |
 | BOOST_SW, +5V at U5/L2 | Output capacitors right at VOUT, small SW node | Hand-laid after TI SLVSAQ2C section 11. +5V reaches module pins 77-87 through three vias and an area on the display side: about 6 mm |
 | VBAT, J10 to U3 | Up to 1.7 A (limiter) plus charge current 1.4 A | Area on the display side, 1.6 mm wide at its narrowest, three vias at U3 |
@@ -78,7 +79,7 @@ rows there the pins walled each other in.
 - [ ] J10 against the BAK pack's connector: which position is red (+), which is the thermistor.
 - [ ] PJ-342 sleeve terminal identified; straps R60-R63 set.
 - [ ] Panel tail fold and pin 1 confirmed on a real panel against J4 and J5.
-- [ ] With a real panel: no folded tail lies over U13 (board x 68-71, y 30-32, display side, up to 1.45 mm high against 1.4 mm of room under a tail). Move it if one does.
+- [ ] With a real panel: tail thickness measured. U13 (board x 68-71, y 30-32, display side, up to 1.45 mm) has only 0.15 mm to spare if a tail's component area lies over it.
 - [ ] DSI and USB pair width and gap recalculated for the ordered stack-up (`carrier_cells.dsi`, `carrier_cells.usb`, `carrier_pcb.CLASSES`).
 - [ ] The hand-laid power blocks compared with the TI layout examples by a second person.
 - [ ] **Battery discharge limit** (requirement: never above the pack's rating, 5.6 A): U13 with R66 = 15k, 1.7 A. Check the limit on the bench before fitting a module; confirm the module runs inside it. See [power-budget.md](power-budget.md).
