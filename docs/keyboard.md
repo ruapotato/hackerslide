@@ -69,7 +69,7 @@ the supply.
 |---|---|---|
 | Assembly | Fab-assembled, JLCPCB `C255576` | Hand placed, not soldered, adhesive retainer |
 | Force | 2.4 N (1.6 and 1.8 N versions share the footprint) | 340 g; the 5133 is 220 g |
-| State | Board placed | Footprint redrawn with non-standard lands; **board not generated** |
+| State | Board placed, matrix routed by script | `hardware/keyboard-5135`: placed, not routed, lands non-standard and unverified |
 
 The dome variant needs Keystone's Mini-series land drawing before it can be trusted: Keystone's own lands do not
 fit this key pitch. See [audit-status.md](audit-status.md), K6-K11.
@@ -83,4 +83,4 @@ fit this key pitch. See [audit-status.md](audit-status.md), K6-K11.
 ## Not done
 
 Top-plate retention on the three edges away from the D-pad (frame lips, not modelled); keycap guidance against
-tilting; the dome board.
+tilting; a top plate and keycaps for the dome variant.

@@ -25,7 +25,7 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 | Keyboard, 125 x 69 mm, 2 layers, 1.0 mm | Schematic revised, ERC clean. Placed, **not routed** (181 connections). DRC: warnings only |
 | Top plate | ERC/DRC clean |
 | Keyboard flex cable, 4.5 x 80 mm, 1-layer 0.07 mm flex | New (`hardware/keyboard-flex`). ERC/DRC clean, fully routed (eight straight traces) |
-| Dome (Keystone) keyboard variant | Footprint redrawn with non-standard lands. Board **not generated** |
+| Dome (Keystone) keyboard variant, `hardware/keyboard-5135` | Generated and placed, ERC/DRC clean, **not routed**. Lands are non-standard and unverified: do not order |
 | Enclosure | **18.65 mm** closed, 107.9 mm open. Collision check passes closed and open |
 | Battery | PKCELL LP785060 (Adafruit 328): 2500 mAh, 8.1 x 50.5 x 62.5 mm max, 1.5 A max charge and discharge |
 
@@ -95,7 +95,7 @@ I2S and UART pins face the wider bottom strip. It is a pure rotation; the socket
 | K3 | Fixed | Both Space switches share one matrix position |
 | K4 | Open (David) | Lighter switch versions are a feel decision |
 | K5 | Fixed | No parts under the board at all |
-| K6-K8 | Mitigated | Non-standard lands, D-pad step 7.3 mm, shared nets where pads merge. Open: Keystone's Mini land drawing; board not generated |
+| K6-K8 | Mitigated | Non-standard lands, D-pad step 7.3 mm, shared nets where foot pads merge (the two folded columns and the D-pad put the row net on the feet; the second Space dome is its own key). Board generated. Open: Keystone's Mini land drawing |
 | K9 | Open (David) | 5133 (220 g) instead of 5135 (340 g) |
 | K10, K11 | Open | Centre-pad escape and retention method, with the dome board |
 

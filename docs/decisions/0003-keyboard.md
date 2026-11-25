@@ -19,8 +19,8 @@ keycaps. The brief proposed an RP2040 scanner presenting USB HID, with I2C as fa
 
 ## Switches
 
-Alps SKSWCFE010 (fab-assembled) is the default. Keystone 5135 domes are to be compared on camera, but the dome
-board is not generated: Keystone's own lands do not fit the key pitch. See [keyboard.md](../keyboard.md).
+Alps SKSWCFE010 (fab-assembled) is the default. Keystone 5135 domes are to be compared on camera, and the dome
+board exists as a placed draft, but Keystone's own lands do not fit the key pitch, so ours are non-standard and unverified. See [keyboard.md](../keyboard.md).
 
 ## Stack
 
