@@ -24,7 +24,7 @@ CLASSES = [{'name': 'Default', 'clearance': 0.15, 'track_width': 0.15, 'via_diam
 PATTERNS = [('+3V3', 'Power'), ('GND', 'Power')]
 
 
-U1_XY = (11.5, -8.5)
+U1_XY = (11.5, -13.0)
 TRACK, VIA_D, VIA_DRILL = 0.2, 0.45, 0.2
 
 
@@ -64,9 +64,9 @@ def route_matrix(B, variant):
     rowy = {r: KL.key_center(r, 0)[1] for r in range(KL.ROWS)}
     colx = {c: KL.key_center(0, c)[0] for c in range(KL.COLS)}
     xv = {c: colx[c] - 2.7 for c in range(10)}                 # column verticals on B
-    lvl = {c: -0.8 - 0.45 * c for c in range(10)}              # bus level per column, rising to the right
-    lvl_row4 = -0.8 - 0.45 * 10
-    x_bus_end = 26.0
+    lvl = {c: -0.8 - 0.5 * c for c in range(10)}               # bus level per column, rising to the right
+    lvl_row4 = -0.8 - 0.5 * 10
+    x_bus_end = 21.5                                           # each bus ends in a via, staggered 0.9 mm, left of the risers
     rowx = {0: 23.7, 1: 23.3, 2: 22.9, 3: 22.5}                # ROW0-3 risers on F, left of column 0
     done = set()
     for i, (name, r, c, x, y) in keys:
@@ -108,11 +108,13 @@ def route_matrix(B, variant):
         track(f'ROW{r}', [(x_right, y), (rowx[r], y), (rowx[r], -1.2)])
     # COL0-9 on B: vertical through all four rows, then the bus toward U1
     for c in range(10):
-        track(f'COL{c}', [(xv[c], rowy[3]), (xv[c], lvl[c]), (x_bus_end - 0.45 * c, lvl[c])], Bcu)
+        track(f'COL{c}', [(xv[c], rowy[3]), (xv[c], lvl[c]), (x_bus_end - 0.9 * c, lvl[c])], Bcu)
+        via(f'COL{c}', x_bus_end - 0.9 * c, lvl[c])
     # ROW4 on B: one vertical per folded column, joined above the key area, then the bus
     xa, xb = colx[10] - 1.25, colx[11] - 1.25
     track('ROW4', [(xa, rowy[3] + 2.1), (xa, lvl_row4)], Bcu)
-    track('ROW4', [(xb, rowy[3] + 2.1), (xb, lvl_row4), (x_bus_end - 0.45 * 10, lvl_row4)], Bcu)
+    track('ROW4', [(xb, rowy[3] + 2.1), (xb, lvl_row4), (x_bus_end - 0.9 * 10, lvl_row4)], Bcu)
+    via('ROW4', x_bus_end - 0.9 * 10, lvl_row4)
 
 
 def build(variant, bdir, do_route=False):
@@ -156,7 +158,7 @@ def build(variant, bdir, do_route=False):
     jx, jy = KL.J1_XY
     B.place('J1', jx, jy, 180, 'F')
     if variant == 'alps':
-        B.place('U2', jx, jy + 2.5, 0, 'F')
+        B.place('U2', jx - 9.0, jy - 2.0, 90, 'F')     # beside J1, clear of its pins, so both can fan out
     else:                            # a dome foot is in the way below J1
         B.place('U2', jx + 6.0, jy - 1.0, 90, 'F')
     # spring-pin landing pads: device x 105..120, under the carrier bottom strip when open (tray y 19..33)
@@ -170,26 +172,48 @@ def build(variant, bdir, do_route=False):
         B.pack(['C1', 'C2', 'R3', 'R4', 'R1', 'R2', 'TP1', 'TP2', 'TP3', 'TP4'], 11.5, -9.0, 'F', keepout=ko,
                region=(0.6, -14.0, 22.4, 30.4))
     else:
-        B.pack(['C1', 'C2', 'R3', 'R4', 'R1', 'R2', 'TP1', 'TP2', 'TP3', 'TP4'], U1_XY[0], U1_XY[1] - 5.0, 'F', keepout=ko,
-               region=(0.6, -20.0, 30.0, -12.0))
+        # passives stay 3 mm clear of U1 so its fan-out vias are not boxed in
+        B.pack(['C1', 'C2', 'R3', 'R4', 'R1', 'R2', 'TP1', 'TP2', 'TP3', 'TP4'], U1_XY[0], U1_XY[1] - 8.0, 'F', keepout=ko,
+               region=(0.6, -30.0, 30.0, -19.3))
         route_matrix(B, variant)
+        for ref in ('U1', 'J1', 'U2'):          # escape stubs and vias for the fine-pitch parts
+            B.fanout(ref, lengths=(1.2, 2.2, 3.2) if ref == 'U1' else (1.2, 2.2))
     left = B.unplaced()
     assert not left, left
     B.text('HackerSlide 810 keyboard ' + ('Alps SKSW' if variant == 'alps' else 'Keystone 5135 domes') + ' rev 0.1 DRAFT  CERN-OHL-S-2.0',
            KL.BOARD_W / 2, -20.0, pcbnew.F_SilkS, 1.0)
-    # GND pour on both layers
     pts = [(0, top), (KL.BOARD_W, top), (KL.BOARD_W, KL.BOARD_H), (0, KL.BOARD_H)]
-    B.zone('GND', pcbnew.B_Cu, pts, clearance=0.2)
-    B.zone('GND', pcbnew.F_Cu, pts, clearance=0.2)
+    if not do_route:
+        B.zone('GND', pcbnew.B_Cu, pts, clearance=0.2)        # GND pour on both layers
+        B.zone('GND', pcbnew.F_Cu, pts, clearance=0.2)
     path = B.save(os.path.join(bdir, name + '.kicad_pcb'))
-    nl_sheets = None
     set_project_rules(path.replace('.kicad_pcb', '.kicad_pro'), RULES, CLASSES, PATTERNS)
     # The Wuerth WA-SMSI footprint is a solder ring around its own non-plated hole: not a clearance fault.
     open(path.replace('.kicad_pcb', '.kicad_dru'), 'w').write(
         '(version 1)\n(rule "wuerth_spacer_ring"\n  (condition "A.memberOfFootprint(\'H?\') && B.memberOfFootprint(\'H?\')")\n'
         '  (constraint hole_clearance (min 0mm)))\n')
     if do_route:
-        print(route(path, passes=30, timeout=3000))
+        # The scripted matrix and fan-outs are in; gridroute.py finishes the rest.  Ground is routed as ordinary
+        # tracks first (on two layers the pours get cut into pieces by the signals), and the pours go on last.
+        import subprocess
+        gr = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gridroute.sh')
+        for extra in (['--width', '0.2'], ['--width', '0.15'], ['--width', '0.13', '--clearance', '0.17']):
+            subprocess.run([gr, os.path.abspath(bdir), name, '--pour', '', '--power-width', '0.2'] + extra, check=True)
+        b = pcbnew.LoadBoard(path)
+        for layer in (pcbnew.B_Cu, pcbnew.F_Cu):
+            z = pcbnew.ZONE(b)
+            z.SetLayer(layer); z.SetNet(b.FindNet('GND'))
+            ol = z.Outline(); ol.NewOutline()
+            for (x, y) in pts:
+                ol.Append(pcbnew.FromMM(x), pcbnew.FromMM(y))
+            z.SetLocalClearance(pcbnew.FromMM(0.2)); z.SetMinThickness(pcbnew.FromMM(0.2))
+            z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
+            z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
+            b.Add(z)
+        pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+        pcbnew.SaveBoard(path, b)
+        # saving from this process rewrites the project file with defaults: put the rules back
+        set_project_rules(path.replace('.kicad_pcb', '.kicad_pro'), RULES, CLASSES, PATTERNS)
     return path
 
 

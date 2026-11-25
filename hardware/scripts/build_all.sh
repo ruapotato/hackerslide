@@ -1,7 +1,8 @@
 #!/bin/sh
 # Regenerate every board from the Python sources, then run ERC/DRC.  Run from anywhere.
 # Needs: KiCad 9 (kicad-cli + its python3 'pcbnew' module), standard KiCad 9 libraries.
-# Optional: ROUTE=1 FREEROUTING_JAR=/path/freerouting-2.1.0.jar to autoroute (overwrites the boards' tracks).
+# Optional: ROUTE=1 also finishes the routing with gridroute.py (slow; needs VENV=/path/to/venv with numpy,
+# Pillow and scikit-image, default ../../.venv).  Without it the boards keep only their scripted tracks.
 set -e
 cd "$(dirname "$0")"
 OUT=${OUT:-$(mktemp -d)}

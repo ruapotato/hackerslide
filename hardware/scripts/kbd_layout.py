@@ -8,7 +8,7 @@ BOARD_H = 31.0           # key area: 29 mm key field + 1 mm margin top/bottom (y
 BOARD_TOP_EXT = 38.0     # the PCB is the tray floor (David, 2026-11-24): it continues above the key area to y = -38
 PCB_T = 1.0              # structural: it is the bottom skin of the device
 PLATE_STANDOFF = 1.5     # top-plate underside above the PCB = height of the Wuerth 9774015633 SMT spacers
-J1_XY = (93.3, -2.5)     # keyboard FPC connector (signal row), under carrier J9: mechanical/src/config.py KBD_FPC_X
+J1_XY = (93.3, -9.0)     # keyboard FPC connector (signal row), under carrier J9: mechanical/src/config.py KBD_FPC_X
 DPAD_ZONE_W = 23.0
 FIELD_X0, FIELD_Y0 = DPAD_ZONE_W, 1.0
 COLS, ROWS = 12, 4

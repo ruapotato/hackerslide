@@ -20,7 +20,7 @@ from kigen import Design
 N = 8
 W = 0.5 * (N - 1) + 1.0       # 4.5 mm (Hirose FH34 catalogue, dimension G)
 # Length along the cable path, mm (mechanical/src/config.py FPC_LEN re-derives this and asserts it matches):
-LENGTH = 80.0
+LENGTH = 73.0
 TRACE = 0.3
 
 

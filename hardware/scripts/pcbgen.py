@@ -206,6 +206,7 @@ class Board:
         z.SetLocalClearance(MM(clearance))
         z.SetMinThickness(MM(min_width))
         z.SetThermalReliefGap(MM(thermal_gap))
+        z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
         z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)      # fab-assembled boards: solid joints, no starved spokes
         if keepout:
             z.SetIsRuleArea(True)
@@ -215,6 +216,48 @@ class Board:
             z.SetDoNotAllowCopperPour(False)
         self.b.Add(z)
         return z
+
+    def fanout(self, ref, lengths=(1.3, 2.3), width=0.2, via_d=0.45, drill=0.2, skip=('GND',), only=None):
+        """Dog-bone fan-out: from every SMD pad of `ref` a straight stub away from the part and a via at its end.
+        Neighbouring pads alternate between the stub lengths so their vias are staggered.  The router then only
+        has to reach the vias, not thread between fine-pitch pads."""
+        fp = self.fps[ref]
+        pads = [p for p in fp.Pads() if p.GetAttribute() == pcbnew.PAD_ATTRIB_SMD]
+        cx = sum(p.GetPosition().x for p in pads) / len(pads)
+        cy = sum(p.GetPosition().y for p in pads) / len(pads)
+        layer = pcbnew.B_Cu if fp.IsFlipped() else pcbnew.F_Cu
+        sides = {}
+        for p in pads:
+            net = p.GetNetname()
+            bb = p.GetBoundingBox()
+            if (not net or net in skip or net.startswith('unconnected-') or (only and net not in only)
+                    or p.GetNumber() in ('MP', 'SH', '')):        # mounting / shield pads join the pour instead
+                continue
+            horiz = bb.GetWidth() > bb.GetHeight()            # a pad's long axis points away from the part
+            if bb.GetWidth() == bb.GetHeight():
+                continue                                       # square pad (exposed pad, hold-down): no stub
+            d = (1 if p.GetPosition().x > cx else -1, 0) if horiz else (0, 1 if p.GetPosition().y > cy else -1)
+            sides.setdefault(d, []).append(p)
+        for d, ps in sides.items():
+            ps.sort(key=lambda p: p.GetPosition().y if d[0] else p.GetPosition().x)
+            for i, p in enumerate(ps):
+                L = MM(lengths[i % len(lengths)])
+                a = p.GetPosition()
+                e = pcbnew.VECTOR2I(a.x + d[0] * L, a.y + d[1] * L)
+                t = pcbnew.PCB_TRACK(self.b)
+                t.SetStart(a); t.SetEnd(e); t.SetWidth(MM(width)); t.SetLayer(layer); t.SetNet(p.GetNet())
+                self.b.Add(t)
+                v = pcbnew.PCB_VIA(self.b)
+                v.SetPosition(e); v.SetWidth(pcbnew.F_Cu, MM(via_d)); v.SetDrill(MM(drill))
+                v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu); v.SetNet(p.GetNet())
+                self.b.Add(v)
+                # later pack() calls keep clear of the stub (its own side) and of the via (both sides)
+                ax, ay, ex, ey = pcbnew.ToMM(a.x), pcbnew.ToMM(a.y), pcbnew.ToMM(e.x), pcbnew.ToMM(e.y)
+                m = via_d / 2 + 0.2
+                side = 'B' if fp.IsFlipped() else 'F'
+                self.occupied.append((side, min(ax, ex) - 0.25, min(ay, ey) - 0.25, max(ax, ex) + 0.25, max(ay, ey) + 0.25))
+                for sd in ('F', 'B'):
+                    self.occupied.append((sd, ex - m, ey - m, ex + m, ey + m))
 
     def fill(self):
         pcbnew.ZONE_FILLER(self.b).Fill(self.b.Zones())
