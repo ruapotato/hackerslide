@@ -228,7 +228,7 @@ class Board:
         self.b.Add(z)
         return z
 
-    def fanout(self, ref, lengths=(1.3, 2.3), width=0.2, via_d=0.45, drill=0.2, skip=('GND',), only=None):
+    def fanout(self, ref, lengths=(1.3, 2.3), width=0.2, via_d=0.45, drill=0.2, skip=('GND',), only=None, where=None):
         """Dog-bone fan-out: from every SMD pad of `ref` a straight stub away from the part and a via at its end.
         Neighbouring pads alternate between the stub lengths so their vias are staggered.  The router then only
         has to reach the vias, not thread between fine-pitch pads."""
@@ -241,6 +241,8 @@ class Board:
         for p in pads:
             net = p.GetNetname()
             bb = p.GetBoundingBox()
+            if where and not where(pcbnew.ToMM(p.GetPosition().x), pcbnew.ToMM(p.GetPosition().y)):
+                continue
             if (not net or net in skip or net.startswith('unconnected-') or (only and net not in only)
                     or p.GetNumber() in ('MP', 'SH', '')):        # mounting / shield pads join the pour instead
                 continue
@@ -269,6 +271,41 @@ class Board:
                 self.occupied.append((side, min(ax, ex) - 0.25, min(ay, ey) - 0.25, max(ax, ex) + 0.25, max(ay, ey) + 0.25))
                 for sd in ('F', 'B'):
                     self.occupied.append((sd, ex - m, ey - m, ex + m, ey + m))
+
+    # ---- scripted routing (hand-laid blocks) -------------------------------------------------------------
+    def pad_xy(self, ref, num):
+        """Centre of pad `num` of `ref` in mm (the largest pad, where a footprint has several with one number)."""
+        ps = [p for p in self.fps[ref].Pads() if p.GetNumber() == str(num)]
+        p = max(ps, key=lambda q: q.GetSize().x * q.GetSize().y)
+        return pcbnew.ToMM(p.GetPosition().x), pcbnew.ToMM(p.GetPosition().y)
+
+    def track(self, net, pts, w, layer=pcbnew.F_Cu):
+        """A polyline of track segments.  A point is (x, y) or (ref, pad)."""
+        pts = [self.pad_xy(*p) if isinstance(p[0], str) else p for p in pts]
+        side = 'B' if layer == pcbnew.B_Cu else 'F' if layer == pcbnew.F_Cu else None
+        for a, b in zip(pts, pts[1:]):
+            t = pcbnew.PCB_TRACK(self.b)
+            t.SetStart(pcbnew.VECTOR2I(MM(a[0]), MM(a[1]))); t.SetEnd(pcbnew.VECTOR2I(MM(b[0]), MM(b[1])))
+            t.SetWidth(MM(w)); t.SetLayer(layer); t.SetNet(self.nets[net])
+            self.b.Add(t)
+            if side:
+                m = w / 2 + 0.15
+                self.occupied.append((side, min(a[0], b[0]) - m, min(a[1], b[1]) - m, max(a[0], b[0]) + m, max(a[1], b[1]) + m))
+
+    def via(self, net, x, y, d=0.45, drill=0.2):
+        v = pcbnew.PCB_VIA(self.b)
+        v.SetPosition(pcbnew.VECTOR2I(MM(x), MM(y))); v.SetWidth(pcbnew.F_Cu, MM(d)); v.SetDrill(MM(drill))
+        v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu); v.SetNet(self.nets[net])
+        self.b.Add(v)
+        m = d / 2 + 0.2
+        for sd in ('F', 'B'):
+            self.occupied.append((sd, x - m, y - m, x + m, y + m))
+
+    def via_xy(self, net, near):
+        """position of the via of `net` nearest to the point `near` (for hooking scripted tracks onto fan-out vias)"""
+        vs = [(pcbnew.ToMM(t.GetPosition().x), pcbnew.ToMM(t.GetPosition().y)) for t in self.b.GetTracks()
+              if t.Type() == pcbnew.PCB_VIA_T and t.GetNetname() == net]
+        return min(vs, key=lambda v: (v[0] - near[0]) ** 2 + (v[1] - near[1]) ** 2)
 
     def fill(self):
         pcbnew.ZONE_FILLER(self.b).Fill(self.b.Zones())

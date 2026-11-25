@@ -1,7 +1,8 @@
 # Keyboard
 
-**DRAFT - NEEDS HUMAN REVIEW. Routed except one connection (ROW1 at U1 pin 7), no DRC errors.**
-The key matrix is routed by `keyboard_pcb.route_matrix`; the remaining connections by `gridroute.py`.
+**DRAFT - NEEDS HUMAN REVIEW. Fully routed, no DRC errors.**
+The key matrix and the scanner's row and column fan-in are routed by `keyboard_pcb.route_matrix` (the column bus
+vias are in the order of the scanner's pins, so nothing crosses); the D-pad, cable, power and ground by `gridroute.py`.
 
 ## Stack
 

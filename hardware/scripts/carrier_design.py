@@ -159,7 +159,7 @@ def build():
     R(p, 'R26', '1k', 'MOD_PWRON', 'MOD_PIN99', note='M1: limits current if pin 99 is a driven output')
     R(p, 'R27', '10k', 'PWR_KEY_N', '+3V3')
     for ref, net in (('TP1', 'VBUS'), ('TP2', 'VSYS'), ('TP3', 'VBAT'), ('TP4', '+5V'), ('TP5', 'GND'), ('TP6', 'BOOST_PG'),
-                     ('TP7', 'REGN'), ('TP8', 'CHG_TS'), ('TP9', 'BOOST_EN'), ('TP15', 'CHG_QON_N')):
+                     ('TP7', 'REGN'), ('TP8', 'CHG_TS'), ('TP15', 'CHG_QON_N')):
         TP(p, ref, net)
 
     # ================================================================== module ==========================

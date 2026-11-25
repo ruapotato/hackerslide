@@ -5,90 +5,11 @@ unconnected items; "errors" are DRC errors (warnings such as silkscreen overlaps
 
 ## Carrier (`hardware/carrier`)
 
-Unrouted: **72**. DRC errors: **0**. Schematic parity issues: **0**.
-
-| Net | From | To | Near (mm) |
-|---|---|---|---|
-| +1V8 | Via [+1V8] | Track [+1V8] | 15.3, 5.7 |
-| +3V3 | Pad 1 [+3V3] of C40 | Track [+3V3] | 68.6, 56.8 |
-| +3V3 | Pad 1 [+3V3] of TP11 | Track [+3V3] | 41.3, 28.4 |
-| +3V3 | Track [+3V3] | Pad 2 [+3V3] of D2 | 61.2, 64.0 |
-| +3V3 | Track [+3V3] | Track [+3V3] | 28.5, 59.6 |
-| BATT_NTC | PTH pad 2 [BATT_NTC] of J10 | Pad 1 [BATT_NTC] of R68 | 66.0, 6.1 |
-| BOOST_EN | Track [BOOST_EN] | Pad 1 [BOOST_EN] of TP9 | 48.0, 58.5 |
-| BOOST_FB | Pad 1 [BOOST_FB] of R19 | Track [BOOST_FB] | 46.7, 63.5 |
-| BOOST_FB | Pad 2 [BOOST_FB] of R18 | Pad 2 [BOOST_FB] of C26 | 45.0, 63.5 |
-| BOOST_FB | Track [BOOST_FB] | Pad 1 [BOOST_FB] of R19 | 45.3, 63.7 |
-| CC1 | Pad 1 [CC1] of R10 | Pad A5 [CC1] of J2 | 1.2, 15.8 |
-| CHG_DM | Via [CHG_DM] | Pad 1 [CHG_DM] of R29 | 63.8, 19.2 |
-| CHG_DP | Track [CHG_DP] | Pad 1 [CHG_DP] of R28 | 65.0, 18.8 |
-| CHG_ILIM | Pad 1 [CHG_ILIM] of R12 | Via [CHG_ILIM] | 66.7, 40.2 |
-| CHG_INT_N | Pad 1 [CHG_INT_N] of R25 | Via [CHG_INT_N] | 69.4, 40.3 |
-| CHG_INT_N | Track [CHG_INT_N] | Pad 1 [CHG_INT_N] of R25 | 34.1, 47.4 |
-| CHG_QON_N | Track [CHG_QON_N] | Pad 2 [CHG_QON_N] of D3 | 68.2, 21.5 |
-| CHG_STAT | Pad 1 [CHG_STAT] of D1 | Track [CHG_STAT] | 64.5, 45.8 |
-| CHG_TS | Pad 1 [CHG_TS] of R14 | Pad 1 [CHG_TS] of TP8 | 64.1, 40.2 |
-| CHG_TS | Pad 1 [CHG_TS] of TP8 | Pad 1 [CHG_TS] of TH1 | 66.1, 56.6 |
-| CHG_TS | Pad 2 [CHG_TS] of R13 | Pad 1 [CHG_TS] of R14 | 65.7, 35.9 |
-| CHG_TS | Pad 2 [CHG_TS] of R13 | Track [CHG_TS] | 65.7, 35.9 |
-| CM4_GPIO16 | Track [CM4_GPIO16] | Pad 2 [CM4_GPIO16] of R55 | 33.3, 50.5 |
-| CM4_GPIO18 | Pad 2 [CM4_GPIO18] of R54 | Pad 2 [CM4_GPIO18] of R56 | 40.7, 63.9 |
-| CM4_GPIO18 | Track [CM4_GPIO18] | Pad 2 [CM4_GPIO18] of R54 | 37.3, 50.5 |
-| ESD_BIAS | Track [ESD_BIAS] | Via [ESD_BIAS] | 3.6, 23.0 |
-| GAUGE_INT | Pad 40 [GAUGE_INT] of J1A | Pad 1 [GAUGE_INT] of R16 | 35.3, 47.4 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GND | Zone [GND] | Zone [GND] | 0.0, 0.0 |
-| GPIO_VREF | Pad 2 [GPIO_VREF] of R30 | Pad 1 [GPIO_VREF] of C37 | 39.0, 57.0 |
-| I2C_A_SCL | Track [I2C_A_SCL] | Track [I2C_A_SCL] | 59.9, 54.8 |
-| I2C_A_SDA | Track [I2C_A_SDA] | Track [I2C_A_SDA] | 69.2, 47.0 |
-| I2C_B_SCL | Via [I2C_B_SCL] | Track [I2C_B_SCL] | 16.5, 4.9 |
-| I2S_ADCDAT | Pad 1 [I2S_ADCDAT] of R54 | Pad 1 [I2S_ADCDAT] of R59 | 39.7, 63.9 |
-| I2S_ADCDAT | Track [I2S_ADCDAT] | Pad 1 [I2S_ADCDAT] of R54 | 18.1, 8.3 |
-| I2S_MCLK | Track [I2S_MCLK] | Track [I2S_MCLK] | 17.5, 5.3 |
-| LED_ACT_N | Track [LED_ACT_N] | Pad 2 [LED_ACT_N] of R32 | 31.7, 50.5 |
-| MICBIAS | Track [MICBIAS] | Track [MICBIAS] | 20.4, 1.9 |
-| NRPIBOOT | Pad 1 [NRPIBOOT] of SW4 | Pad 1 [NRPIBOOT] of SW4 | 58.2, 54.3 |
-| NRPIBOOT | Track [NRPIBOOT] | Pad 1 [NRPIBOOT] of SW4 | 46.1, 50.5 |
-| REGN | Pad 1 [REGN] of R13 | Track [REGN] | 64.7, 35.9 |
-| REGN | Track [REGN] | Pad 1 [REGN] of C14 | 66.8, 17.5 |
-| RST_SW_N | Track [RST_SW_N] | Pad 1 [RST_SW_N] of R37 | 61.1, 63.8 |
-| TOUCH_INT | Track [TOUCH_INT] | Track [TOUCH_INT] | 69.2, 47.5 |
-| TOUCH_RST_N | Pad 28 [TOUCH_RST_N] of J1A | Track [TOUCH_RST_N] | 32.9, 47.4 |
-| USB_DM | Via [USB_DM] | Pad 1 [USB_DM] of R22 | 28.1, 18.1 |
-| USB_DP | Pad 1 [USB_DP] of R21 | Via [USB_DP] | 67.7, 43.6 |
-| VBUS | Pad A4 [VBUS] of J2 | Track [VBUS] | 6.6, 30.6 |
-| VSYS | Pad 1 [VSYS] of C16 | Pad 1 [VSYS] of C15 | 68.2, 38.1 |
-| VSYS | Pad 1 [VSYS] of C16 | Pad 1 [VSYS] of R15 | 68.2, 38.1 |
-| VSYS | Pad 1 [VSYS] of R15 | Pad 1 [VSYS] of TP2 | 68.0, 45.3 |
-| VSYS | Pad 1 [VSYS] of TP2 | Via [VSYS] | 64.2, 52.0 |
-| VSYS | Pad 2 [VSYS] of L1 | Pad 1 [VSYS] of C15 | 68.8, 26.0 |
-| VSYS | Track [VSYS] | Pad 1 [VSYS] of C27 | 65.4, 61.0 |
-| VSYS | Track [VSYS] | Pad 2 [VSYS] of L1 | 69.0, 19.8 |
-| VSYS_LIM | Pad 1 [VSYS_LIM] of C21 | Pad 1 [VSYS_LIM] of L2 | 51.2, 63.7 |
-| VSYS_LIM | Pad 1 [VSYS_LIM] of L2 | Pad 1 [VSYS_LIM] of TP17 | 52.2, 60.9 |
-| VSYS_LIM | Pad 1 [VSYS_LIM] of R17 | Pad 1 [VSYS_LIM] of C21 | 46.7, 63.5 |
-| VSYS_LIM | Via [VSYS_LIM] | Pad 1 [VSYS_LIM] of L2 | 49.0, 58.0 |
+Unrouted: **0**. DRC errors: **0**. Schematic parity issues: **0**.
 
 ## Keyboard (Alps) (`hardware/keyboard`)
 
-Unrouted: **1**. DRC errors: **0**. Schematic parity issues: **0**.
-
-| Net | From | To | Near (mm) |
-|---|---|---|---|
-| ROW1 | Track [ROW1] | Track [ROW1] | 10.2, -11.1 |
+Unrouted: **0**. DRC errors: **0**. Schematic parity issues: **0**.
 
 ## Top plate (`hardware/keyboard-topplate`)
 

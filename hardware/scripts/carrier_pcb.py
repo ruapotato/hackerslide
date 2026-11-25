@@ -22,6 +22,7 @@ import sys
 
 import pcbnew
 
+import carrier_cells as cells
 from pcbgen import Board, route, set_project_rules
 
 W, H = 71.6, 66.0
@@ -29,6 +30,9 @@ MX, MY = 11.0, 15.5           # module frame origin = CM4 mounting hole "0,0" (R
 MODULE = (MX - 3.5, MY - 3.5, MX + 51.5, MY + 36.5)
 SCREWS = ((3.8, 20.0), (3.8, 46.0))                       # body screws HS1/HS2 (config.SCREW_KICAD)
 HALL = (41.0, 2.1)                                        # U10; the tray sense magnet sits on this axis (config.HALL_KICAD)
+U5_XY = (46.5, 59.6)                                      # 5 V boost block (carrier_cells.boost)
+U3_XY = (65.4, 20.2)                                      # charger block (carrier_cells.charger)
+CHG_SIGNALS = ('I2C_B_SDA', 'I2C_B_SCL', 'CHG_STAT', 'CHG_DM', 'CHG_DP', 'CHG_INT_N', 'CHG_ILIM', 'CHG_TS', 'CHG_QON_N')
 J4_POS, J5_POS = (61.7, 31.8), (69.2, 46.7)               # signal-pad rows of the panel / touch connectors (B side)
 
 RULES = {'min_clearance': 0.09, 'min_track_width': 0.09, 'min_via_diameter': 0.45, 'min_through_hole_diameter': 0.2,
@@ -69,8 +73,12 @@ def build(bdir, do_route=False):
     # Fan-out: an escape stub and a via for every used pin of the fine-pitch parts (ground pins too: their vias
     # land on the In1 ground plane).  Done right after each part is placed, so the passives packed afterwards
     # stay clear.  The router then connects vias; it does not thread between pads.
-    for ref in ('J1A', 'J1B'):
-        B.fanout(ref, lengths=(0.9, 1.5, 2.1), width=0.1, skip=())
+    # J1B and the 5 V end of J1A: three rows of vias.  The rest of J1A (GPIO, I2C, UART, SD, buttons): four rows, so
+    # that three tracks instead of one fit between two vias of a row; with three rows the pins there walled each
+    # other in.
+    B.fanout('J1B', lengths=(0.9, 1.5, 2.1), width=0.1, skip=())
+    B.fanout('J1A', lengths=(0.9, 1.5, 2.1), width=0.1, skip=(), where=lambda x, y: x > 41.5)
+    B.fanout('J1A', lengths=(0.9, 1.5, 2.1, 2.7), width=0.1, skip=(), where=lambda x, y: x <= 41.5)
 
     # Display side.  The panel's folded tails need 1.9 mm of the 3.3 mm gap, so 0402 parts (up to 0.55 mm) and
     # test pads may sit under them; nothing taller is placed there.
@@ -110,27 +118,21 @@ def build(bdir, do_route=False):
     PF('J5', *J5_POS, 90, 'B')       # touch FPC
     P('U10', *HALL, 0)               # slider hall switch, top strip: above the tray's upper half
 
+    PF('U11', 18.4, 54.0, 0, lens=(0.9, 1.5))
+    PF('U12', 18.4, 57.6, 0, lens=(0.9, 1.5))
+    cells.sd_links(B)
+    cells.dsi(B)                     # needs the fan-out vias of J1B and J4
     # ---- power: boost (bottom strip; the 5 V pins of J1A are at x 43..45, y 50.5) ----
-    PF('U5', 46.5, 59.0, 0, lens=(1.0, 1.7))
-    P('L2', 52.2, 59.0, 90)
-    pk(['C22', 'C23', 'C24'], 44.0, 53.2, region=(42.6, 52.3, 56.5, 56.8))
-    pk(['C21'], 52.0, 63.5, region=(41.8, 52.3, 56.5, 65.6))
-    # battery discharge limiter: display side, between the charger (left strip) and the boost
-    PF('U13', 66.5, 60.0, 0, 'B', lens=(1.0,))
-    B.pack(['R66', 'C27', 'R67', 'TP17'], 66.5, 63.5, 'B', region=(60.5, 54.5, 71.2, 65.6), keepout=keep_b)
+    cells.boost(B, *U5_XY)
     pk(['C33', 'C34'], 47.0, 55.2, region=(41.8, 52.3, 56.5, 58.0))
-    pk(['R18', 'R19', 'C26', 'C20', 'R17', 'R23', 'R24', 'R20'], 44.5, 63.5, region=(41.8, 56.8, 56.5, 65.6))
     pk(['C35', 'C36', 'C30', 'C37', 'R30'], 42.5, 57.5, region=(36.0, 52.3, 56.5, 65.6))
     # ---- power: charger + gauge (left strip, next to the battery bay) ----
-    PF('U3', 67.0, 19.5, 0, lens=(1.2, 2.0))
-    P('L1', 67.0, 26.0, 0)
-    pk(['C11', 'C12', 'C13', 'C14', 'C10', 'C15', 'C16', 'C17'], 67.0, 23.0, region=(62.8, 12.6, 71.3, 40.0))
-    pk(['R12', 'R13', 'R14', 'R25', 'R28', 'R29', 'R21', 'R22', 'R15', 'D1'], 67.0, 38.0, region=(62.8, 12.6, 71.3, 47.5))
-    PF('U4', 66.5, 54.5, 0, lens=(0.9, 1.5))
-    pk(['C19', 'R16', 'TH1', 'R68', 'TP3', 'TP7', 'TP8', 'TP2'], 66.5, 57.5, region=(62.8, 50.5, 71.3, 65.6))
+    cells.charger(B, *U3_XY)
+    B.fanout('U3', lengths=(0.9, 1.5), width=0.15, only=CHG_SIGNALS[:5])
+    pk(['R25', 'R67', 'TP17'], 67.0, 38.0, region=(62.8, 30.0, 71.3, 47.5))
+    cells.gauge(B, 69.0, 9.0)
     # ---- USB-C side (right strip) ----
-    PF('U2', 3.8, 25.4, 90, lens=(1.0,))
-    pk(['D5', 'R10', 'R11', 'C25', 'TP1'], 3.8, 40.5, region=(0.4, 12.2, 7.3, 43.0))
+    cells.usb(B)
     # ---- power button diodes near SW1; hall sensor support ----
     pk(['D3', 'D7', 'D8', 'R26', 'R27', 'TP15'], 34.0, 5.5, region=(30.5, 3.8, 40.5, 11.8))
     pk(['C76', 'R75'], HALL[0], 5.0, region=(38.0, 0.3, 45.0, 11.8))
@@ -139,17 +141,17 @@ def build(bdir, do_route=False):
     pk(['C58', 'C59', 'C64', 'C53', 'C50', 'C51', 'C52', 'C54', 'C55', 'C56', 'C57', 'C63', 'R44'], 19.5, 6.3, region=(14.0, 0.3, 30.3, 11.8))
     pk(['R46', 'R47', 'R49', 'R60', 'R61', 'R62', 'R63', 'D10', 'D11', 'D12', 'C60', 'C61', 'C62', 'R45', 'R65', 'R48', 'R64'], 13.0, 10.8, region=(0.4, 0.3, 33.0, 11.8))
     # ---- I2S straps under the J1A I2S pins (x 32..37) ----
-    pk(['TP30', 'TP31', 'TP32', 'TP33'], 31.5, 54.0, region=(26.8, 52.3, 36.0, 58.6))
-    pk([f'R{n}' for n in range(50, 55)], 38.5, 54.0, region=(35.9, 52.3, 42.5, 65.7))
-    pk([f'R{n}' for n in range(55, 60)], 46.0, 64.5, region=(35.9, 52.3, 56.5, 65.7))   # the DNP set
+    # I2S straps and their test pads: display side, under the module just north of J1A.  Both alternatives start at
+    # module pins in x 32..37 and all five signals go on to the codec in the top strip, so nothing has to cross J1A
+    # twice (on the bottom strip, where they were, they did).
+    B.pack([f'R{n}' for n in range(50, 60)], 34.5, 42.5, 'B', region=(28.0, 37.5, 42.0, 44.0), keepout=keep_b)
+    B.pack(['TP30', 'TP31', 'TP32', 'TP33'], 34.5, 39.0, 'B', region=(26.0, 33.0, 44.0, 41.0), keepout=keep_b)
     # ---- backlight (top strip) ----
     PF('U6', 49.0, 9.8, 0, lens=(0.9,))
     P('L3', 54.2, 7.8, 0)
     pk(['D4', 'C42', 'C43', 'R42', 'R43', 'TP20'], 49.0, 6.0, region=(45.0, 3.8, 61.8, 11.8))
     pk(['R86', 'R87'], 58.5, 5.0, region=(45.0, 3.8, 61.8, 11.8))
     # ---- bottom strip, right part: microSD and debug UART ----
-    PF('U11', 18.4, 54.0, 0, lens=(0.9, 1.5))
-    PF('U12', 18.4, 57.6, 0, lens=(0.9, 1.5))
     pk(['R33', 'R34', 'R35', 'R36'], 23.0, 57.5, region=(19.9, 52.3, 26.6, 59.0))
     pk(['C80', 'C81'], 14.0, 52.9, region=(9.0, 52.2, 27.0, 56.0))
     pk(['R80', 'R81', 'R82', 'R83', 'R84', 'R85'], 20.0, 60.0, region=(15.3, 52.3, 27.0, 65.6))
@@ -157,7 +159,7 @@ def build(bdir, do_route=False):
     # ---- bottom strip, left part: boot/reset, LED, test points ----
     P('SW4', 60.0, 55.0, 0)
     P('SW5', 60.0, 60.3, 0)
-    B.pack(['TP4', 'TP6', 'TP9', 'TP11', 'TP12', 'TP5', 'TP13', 'TP16', 'TP21'], 44.0, 28.0, 'B', region=(30.0, 20.0, 56.0, 38.0), keepout=keep_b)   # test points, display side, clear of the panel tails
+    B.pack(['TP4', 'TP11', 'TP12', 'TP5', 'TP13', 'TP16', 'TP21'], 44.0, 28.0, 'B', region=(30.0, 20.0, 56.0, 38.0), keepout=keep_b)   # test points, display side, clear of the panel tails
     pk(['R37', 'R32', 'D2', 'R31', 'R40', 'R41', 'C40', 'C41'], 63.0, 63.5, region=(56.8, 52.3, 71.3, 65.6))
     rest = B.unplaced()
     pk(rest, 66.0, 58.0, region=(56.8, 46.0, 71.3, 65.6))
@@ -182,12 +184,21 @@ def build(bdir, do_route=False):
     # pours) so they are not left to thin autorouted tracks; the router or a human drops the vias into them.
     def area(net, layer, x0, y0, x1, y1, prio=2):
         return B.zone(net, layer, [(x0, y0), (x1, y0), (x1, y1), (x0, y1)], priority=prio, clearance=0.2)
-    area('VSYS', pcbnew.In2_Cu, 62.8, 22.0, 71.3, 65.7)          # charger SYS -> discharge limiter U13 (left strip)
-    area('VSYS_LIM', pcbnew.In2_Cu, 41.0, 52.4, 62.4, 65.7)      # limiter -> 5 V boost (bottom strip)
-    area('VBUS', pcbnew.In2_Cu, 4.5, 16.2, 71.3, 18.8)           # USB-C -> charger, under the module's top edge
-    area('VBUS', pcbnew.In2_Cu, 4.5, 16.2, 8.5, 31.0)
-    area('VBAT', pcbnew.B_Cu, 62.8, 0.6, 71.3, 52.0)             # battery connector -> charger and gauge
-    area('+5V', pcbnew.F_Cu, 42.2, 50.2, 56.4, 57.3)             # boost output -> module pins 77-87
+    # VBUS on In2: USB-C -> under the module below the J1B fan-out vias -> up past the module corner -> top strip
+    # -> down into the charger block.  (The row of J1B vias would cut a straight strip into slivers.)
+    ox, oy = U3_XY
+    for box in ((4.5, 16.2, 9.1, 36.2), (1.3, 34.9, 9.1, 39.9), (4.5, 19.2, 52.5, 21.7), (49.5, 11.2, 52.5, 21.7), (49.5, 11.2, ox + 4.0, 13.3),
+                (ox + 1.4, 11.2, ox + 4.0, oy - 2.6)):
+        area('VBUS', pcbnew.In2_Cu, *box)
+    # VBAT on the display side: battery connector pin 1 -> down the left of the charger -> its BAT vias and C17
+    area('VBAT', pcbnew.B_Cu, ox - 3.4, 7.4, ox + 1.6, 9.9)
+    area('VBAT', pcbnew.B_Cu, ox - 3.3, 7.4, ox - 1.7, oy + 4.9)
+    area('VBAT', pcbnew.B_Cu, ox - 3.3, oy + 2.6, ox - 1.0, oy + 4.9)
+    area('VSYS_LIM', pcbnew.In2_Cu, ox + 2.2, oy + 12.4, 71.3, 65.7)   # limiter -> down the left strip -> along the bottom strip -> boost
+    area('VSYS_LIM', pcbnew.In2_Cu, 41.0, 59.5, 71.3, 65.7)
+    bx, by = U5_XY
+    area('+5V', pcbnew.F_Cu, 42.2, 50.2, 45.6, 53.2)             # ties the stubs of module pins 77-87 together
+    area('+5V', pcbnew.B_Cu, bx - 5.9, 50.6, bx - 1.6, by - 1.9)  # boost output vias -> fan-out vias of pins 77-87
     full = [(0, 0), (W, 0), (W, H), (0, H)]
     B.zone('GND', pcbnew.In1_Cu, full, clearance=0.15)
     B.zone('GND', pcbnew.B_Cu, full, clearance=0.15)
@@ -200,7 +211,7 @@ def build(bdir, do_route=False):
         '  (constraint hole_clearance (min 0mm)))\n')
     if do_route:
         # gridroute.py on F / In2 / B; In1 is the ground plane, so a via anywhere reaches ground.
-        # It routes DSI and USB as single tracks, NOT as impedance-controlled pairs: those must be redone by hand.
+        # DSI and USB are already in as scripted pairs (carrier_cells); the router does ordinary signals only.
         import subprocess
         gr = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gridroute.sh')
         # (gridroute's --fine option, a second attempt inside the same run, was tried here and did not do better)
@@ -212,5 +223,34 @@ def build(bdir, do_route=False):
     return path
 
 
+def repair(bdir, rounds=4):
+    """Close the loop with KiCad's own check: remove routed segments it objects to and route what is open again, with
+    a larger clearance, until the check is quiet or nothing changes."""
+    import json
+    import subprocess
+    import tempfile
+    here = os.path.dirname(os.path.abspath(__file__))
+    board = os.path.join(os.path.abspath(bdir), 'carrier.kicad_pcb')
+    last = None
+    for i in range(rounds):
+        drc = os.path.join(tempfile.mkdtemp(), 'drc.json')
+        subprocess.run(['kicad-cli', 'pcb', 'drc', '--format', 'json', '-o', drc, board], check=True, capture_output=True)
+        d = json.load(open(drc))
+        state = (sum(v['severity'] == 'error' for v in d['violations']), len(d['unconnected_items']))
+        print('repair round', i, 'errors, open:', state, flush=True)
+        if state == (0, 0) or state == last:
+            break
+        last = state
+        subprocess.run(['python3', os.path.join(here, 'gr_io.py'), 'ripdrc', board, drc], check=True)
+        subprocess.run([os.path.join(here, 'gridroute.sh'), os.path.abspath(bdir), 'carrier', '--layers', 'F.Cu,In2.Cu,B.Cu',
+                        '--width', '0.1', '--clearance', '0.15', '--power-width', '0.25', '--stitch', '--reroute'], check=True)
+    set_project_rules(board.replace('.kicad_pcb', '.kicad_pro'), RULES, CLASSES, PATTERNS)
+
+
 if __name__ == '__main__':
-    print(build(sys.argv[1], '--route' in sys.argv))
+    if '--repair' in sys.argv:
+        repair(sys.argv[1])
+    else:
+        print(build(sys.argv[1], '--route' in sys.argv))
+        if '--route' in sys.argv:
+            repair(sys.argv[1])

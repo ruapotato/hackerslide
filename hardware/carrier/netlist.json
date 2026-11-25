@@ -1418,22 +1418,6 @@
    "nc": {}
   },
   {
-   "ref": "TP9",
-   "value": "BOOST_EN",
-   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
-   "dnp": false,
-   "sheet": "power",
-   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
-   "sheetfile": "power.kicad_sch",
-   "sym_uuid": "4e4aa010-653e-596b-8c8d-39e1b6344c9d",
-   "fields": {},
-   "pads": {
-    "1": "BOOST_EN"
-   },
-   "in_bom": false,
-   "nc": {}
-  },
-  {
    "ref": "TP15",
    "value": "CHG_QON_N",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",

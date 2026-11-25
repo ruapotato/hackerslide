@@ -23,8 +23,8 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 
 | Item | State |
 |---|---|
-| Carrier, 71.6 x 66 mm, 4 layers | Schematic revised, ERC clean. Placed by hand, pin fan-outs scripted, **232 of 304 connections routed by the grid router, 72 left**. No DRC errors. 45 small passives and test pads sit on the display side for lack of room (so does the activity LED, which must move back). DSI and USB are routed as single tracks, not as impedance-controlled pairs, and must be redone |
-| Keyboard, 125 x 69 mm, 2 layers, 1.0 mm | Schematic revised, ERC clean. **Routed: 185 of 186 connections** (key matrix by script, the rest by the grid router). One connection, ROW1 at U1 pin 7, is left for hand routing. No DRC errors |
+| Carrier, 71.6 x 66 mm, 4 layers | Schematic revised, ERC clean. **Fully routed: 0 open, no DRC errors.** Charger, limiter, gauge, boost, USB-C corner, USB pair and DSI pairs are laid by hand in `carrier_cells.py`; the rest by the grid router with a DRC-driven repair loop. Pair geometry is an estimate until the stack-up is fixed. About fifty small parts are on the display side. Not reviewed by a person |
+| Keyboard, 125 x 69 mm, 2 layers, 1.0 mm | Schematic revised, ERC clean. **Fully routed: 186 of 186, no DRC errors** (key matrix and scanner fan-in by script, the rest by the grid router) |
 | Top plate | ERC/DRC clean |
 | Keyboard flex cable, 4.5 x 73 mm, 1-layer 0.07 mm flex | New (`hardware/keyboard-flex`). ERC/DRC clean, fully routed (eight straight traces) |
 | Dome (Keystone) keyboard variant, `hardware/keyboard-5135` | Generated and placed, ERC/DRC clean, **not routed**. Lands are non-standard and unverified: do not order |
