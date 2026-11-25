@@ -55,6 +55,7 @@ def module_xy(xr, yr):
 
 def build(bdir, do_route=False):
     B = Board(os.path.join(bdir, 'netlist.json'), layers=4, thickness=1.0)
+    B.margin = 0.3                 # lanes for 0.1 mm tracks between neighbouring passives
     B.outline(0, 0, W, H, r=3.0)    # 3 mm corners clear the enclosure's inner corner radius (config.CARRIER['r'])
     P = B.place
     # ---- module sockets + spacers (exact CM4 geometry, verified in the audit against the CM4IO footprint) ----
@@ -70,6 +71,26 @@ def build(bdir, do_route=False):
     # stay clear.  The router then connects vias; it does not thread between pads.
     for ref in ('J1A', 'J1B'):
         B.fanout(ref, lengths=(0.9, 1.5, 2.1), width=0.1, skip=())
+
+    # Display side.  The panel's folded tails need 1.9 mm of the 3.3 mm gap, so 0402 parts (up to 0.55 mm) and
+    # test pads may sit under them; nothing taller is placed there.
+    keep_b = []
+
+    moved = []
+
+    def pk(refs, x, y, region):
+        """Pack near (x, y) on the component side; a part that does not fit goes to the same spot on the display
+        side (0402 parts are 0.5 mm high, the gap behind the panel is 3.3 mm)."""
+        for ref in refs:
+            dbg = os.environ.pop('PLACE_DEBUG', None)     # pack() must raise here, not force the part in
+            try:
+                B.pack([ref], x, y, 'F', region=region, keepout=keep)
+            except RuntimeError:
+                moved.append(ref)
+                B.pack([ref], x, y, 'B', region=region, keepout=keep_b)
+            finally:
+                if dbg:
+                    os.environ['PLACE_DEBUG'] = dbg
 
     def PF(ref, x, y, rot=0, side='F', lens=(1.1, 1.8)):
         P(ref, x, y, rot, side)
@@ -90,60 +111,59 @@ def build(bdir, do_route=False):
     P('U10', *HALL, 0)               # slider hall switch, top strip: above the tray's upper half
 
     # ---- power: boost (bottom strip; the 5 V pins of J1A are at x 43..45, y 50.5) ----
-    P('U5', 46.5, 59.0, 0)
+    PF('U5', 46.5, 59.0, 0, lens=(1.0, 1.7))
     P('L2', 52.2, 59.0, 90)
-    B.pack(['C22', 'C23', 'C24'], 44.0, 53.2, region=(42.6, 52.3, 56.5, 56.8), keepout=keep)
-    B.pack(['C21'], 52.0, 63.5, region=(41.8, 52.3, 56.5, 65.6), keepout=keep)
+    pk(['C22', 'C23', 'C24'], 44.0, 53.2, region=(42.6, 52.3, 56.5, 56.8))
+    pk(['C21'], 52.0, 63.5, region=(41.8, 52.3, 56.5, 65.6))
     # battery discharge limiter: display side, between the charger (left strip) and the boost
-    B.pack(['U13', 'R66', 'C27', 'R67', 'TP17'], 66.5, 60.5, 'B', region=(62.6, 56.8, 71.2, 65.5))
-    B.pack(['C33', 'C34'], 47.0, 55.2, region=(41.8, 52.3, 56.5, 58.0), keepout=keep)
-    B.pack(['R18', 'R19', 'C26', 'C20', 'R17', 'R23', 'R24', 'R20'], 44.5, 63.5,
-           region=(41.8, 56.8, 56.5, 65.6), keepout=keep)
-    B.pack(['C35', 'C36', 'C30', 'C37', 'R30'], 42.5, 57.5, region=(36.0, 52.3, 56.5, 65.6), keepout=keep)
+    PF('U13', 66.5, 60.0, 0, 'B', lens=(1.0,))
+    B.pack(['R66', 'C27', 'R67', 'TP17'], 66.5, 63.5, 'B', region=(60.5, 54.5, 71.2, 65.6), keepout=keep_b)
+    pk(['C33', 'C34'], 47.0, 55.2, region=(41.8, 52.3, 56.5, 58.0))
+    pk(['R18', 'R19', 'C26', 'C20', 'R17', 'R23', 'R24', 'R20'], 44.5, 63.5, region=(41.8, 56.8, 56.5, 65.6))
+    pk(['C35', 'C36', 'C30', 'C37', 'R30'], 42.5, 57.5, region=(36.0, 52.3, 56.5, 65.6))
     # ---- power: charger + gauge (left strip, next to the battery bay) ----
     PF('U3', 67.0, 19.5, 0, lens=(1.2, 2.0))
     P('L1', 67.0, 26.0, 0)
-    B.pack(['C11', 'C12', 'C13', 'C14', 'C10', 'C15', 'C16', 'C17'], 67.0, 23.0, region=(62.8, 12.6, 71.3, 40.0), keepout=keep)
-    B.pack(['R12', 'R13', 'R14', 'R25', 'R28', 'R29', 'R21', 'R22', 'R15', 'D1'], 67.0, 38.0, region=(62.8, 12.6, 71.3, 47.5), keepout=keep)
-    P('U4', 67.0, 49.5, 0)
-    B.pack(['C19', 'R16', 'TH1', 'R68', 'TP3', 'TP7', 'TP8', 'TP2'], 67.0, 52.0, region=(62.8, 44.0, 71.3, 65.6), keepout=keep)
+    pk(['C11', 'C12', 'C13', 'C14', 'C10', 'C15', 'C16', 'C17'], 67.0, 23.0, region=(62.8, 12.6, 71.3, 40.0))
+    pk(['R12', 'R13', 'R14', 'R25', 'R28', 'R29', 'R21', 'R22', 'R15', 'D1'], 67.0, 38.0, region=(62.8, 12.6, 71.3, 47.5))
+    PF('U4', 66.5, 54.5, 0, lens=(0.9, 1.5))
+    pk(['C19', 'R16', 'TH1', 'R68', 'TP3', 'TP7', 'TP8', 'TP2'], 66.5, 57.5, region=(62.8, 50.5, 71.3, 65.6))
     # ---- USB-C side (right strip) ----
-    P('U2', 3.8, 25.4, 90)
-    B.pack(['D5', 'R10', 'R11', 'C25', 'TP1'], 3.8, 40.5, region=(0.4, 12.2, 7.3, 43.0), keepout=keep)
+    PF('U2', 3.8, 25.4, 90, lens=(1.0,))
+    pk(['D5', 'R10', 'R11', 'C25', 'TP1'], 3.8, 40.5, region=(0.4, 12.2, 7.3, 43.0))
     # ---- power button diodes near SW1; hall sensor support ----
-    B.pack(['D3', 'D7', 'D8', 'R26', 'R27', 'TP15'], 34.0, 5.5, region=(30.5, 3.8, 40.5, 11.8), keepout=keep)
-    B.pack(['C76', 'R75'], HALL[0], 5.0, region=(38.0, 0.3, 45.0, 11.8), keepout=keep)
+    pk(['D3', 'D7', 'D8', 'R26', 'R27', 'TP15'], 34.0, 5.5, region=(30.5, 3.8, 40.5, 11.8))
+    pk(['C76', 'R75'], HALL[0], 5.0, region=(38.0, 0.3, 45.0, 11.8))
     # ---- audio (top strip next to the jack) ----
     PF('U7', 19.5, 6.3, 0, lens=(1.0, 1.6, 2.2))
-    B.pack(['C58', 'C59', 'C64', 'C53', 'C50', 'C51', 'C52', 'C54', 'C55', 'C56', 'C57', 'C63', 'R44'], 19.5, 6.3,
-           region=(14.0, 0.3, 30.3, 11.8), keepout=keep)
-    B.pack(['R46', 'R47', 'R49', 'R60', 'R61', 'R62', 'R63', 'D10', 'D11', 'D12', 'C60', 'C61', 'C62', 'R45', 'R65', 'R48', 'R64'],
-           13.0, 10.8, region=(0.4, 0.3, 33.0, 11.8), keepout=keep)
+    pk(['C58', 'C59', 'C64', 'C53', 'C50', 'C51', 'C52', 'C54', 'C55', 'C56', 'C57', 'C63', 'R44'], 19.5, 6.3, region=(14.0, 0.3, 30.3, 11.8))
+    pk(['R46', 'R47', 'R49', 'R60', 'R61', 'R62', 'R63', 'D10', 'D11', 'D12', 'C60', 'C61', 'C62', 'R45', 'R65', 'R48', 'R64'], 13.0, 10.8, region=(0.4, 0.3, 33.0, 11.8))
     # ---- I2S straps under the J1A I2S pins (x 32..37) ----
-    B.pack(['TP30', 'TP31', 'TP32', 'TP33'], 31.5, 54.0, region=(26.8, 52.3, 36.0, 58.6), keepout=keep)
-    B.pack([f'R{n}' for n in range(50, 55)], 38.5, 54.0, region=(35.9, 52.3, 42.5, 65.7), keepout=keep)
-    B.pack([f'R{n}' for n in range(55, 60)], 46.0, 64.5, region=(35.9, 52.3, 56.5, 65.7), keepout=keep)   # the DNP set
+    pk(['TP30', 'TP31', 'TP32', 'TP33'], 31.5, 54.0, region=(26.8, 52.3, 36.0, 58.6))
+    pk([f'R{n}' for n in range(50, 55)], 38.5, 54.0, region=(35.9, 52.3, 42.5, 65.7))
+    pk([f'R{n}' for n in range(55, 60)], 46.0, 64.5, region=(35.9, 52.3, 56.5, 65.7))   # the DNP set
     # ---- backlight (top strip) ----
-    P('U6', 49.0, 9.8, 0)
+    PF('U6', 49.0, 9.8, 0, lens=(0.9,))
     P('L3', 54.2, 7.8, 0)
-    B.pack(['D4', 'C42', 'C43', 'R42', 'R43', 'TP20'], 49.0, 6.0, region=(45.0, 3.8, 61.8, 11.8), keepout=keep)
-    B.pack(['R86', 'R87'], 58.5, 5.0, region=(45.0, 3.8, 61.8, 11.8), keepout=keep)
+    pk(['D4', 'C42', 'C43', 'R42', 'R43', 'TP20'], 49.0, 6.0, region=(45.0, 3.8, 61.8, 11.8))
+    pk(['R86', 'R87'], 58.5, 5.0, region=(45.0, 3.8, 61.8, 11.8))
     # ---- bottom strip, right part: microSD and debug UART ----
     PF('U11', 18.4, 54.0, 0, lens=(0.9, 1.5))
     PF('U12', 18.4, 57.6, 0, lens=(0.9, 1.5))
-    B.pack(['R33', 'R34', 'R35', 'R36'], 23.0, 57.5, region=(19.9, 52.3, 26.6, 59.0), keepout=keep)
-    B.pack(['C80', 'C81'], 14.0, 52.9, region=(9.0, 52.2, 27.0, 56.0), keepout=keep)
-    B.pack(['R80', 'R81', 'R82', 'R83', 'R84', 'R85'], 20.0, 60.0, region=(15.3, 52.3, 27.0, 65.6), keepout=keep)
-    B.pack(['R71', 'R72', 'R73', 'R74', 'C77'], 31.5, 58.0, region=(27.0, 52.3, 35.9, 60.6), keepout=keep)
+    pk(['R33', 'R34', 'R35', 'R36'], 23.0, 57.5, region=(19.9, 52.3, 26.6, 59.0))
+    pk(['C80', 'C81'], 14.0, 52.9, region=(9.0, 52.2, 27.0, 56.0))
+    pk(['R80', 'R81', 'R82', 'R83', 'R84', 'R85'], 20.0, 60.0, region=(15.3, 52.3, 27.0, 65.6))
+    pk(['R71', 'R72', 'R73', 'R74', 'C77'], 31.5, 58.0, region=(27.0, 52.3, 35.9, 60.6))
     # ---- bottom strip, left part: boot/reset, LED, test points ----
     P('SW4', 60.0, 55.0, 0)
     P('SW5', 60.0, 60.3, 0)
-    B.pack(['TP4', 'TP6', 'TP9', 'TP11', 'TP12', 'TP5', 'TP13', 'TP16', 'TP21'], 44.0, 28.0, 'B', region=(30.0, 20.0, 56.0, 38.0))   # test points, display side, clear of the panel tails
-    B.pack(['R37', 'R32', 'D2', 'R31', 'R40', 'R41', 'C40', 'C41'], 63.0, 63.5, region=(56.8, 52.3, 71.3, 65.6), keepout=keep)
+    B.pack(['TP4', 'TP6', 'TP9', 'TP11', 'TP12', 'TP5', 'TP13', 'TP16', 'TP21'], 44.0, 28.0, 'B', region=(30.0, 20.0, 56.0, 38.0), keepout=keep_b)   # test points, display side, clear of the panel tails
+    pk(['R37', 'R32', 'D2', 'R31', 'R40', 'R41', 'C40', 'C41'], 63.0, 63.5, region=(56.8, 52.3, 71.3, 65.6))
     rest = B.unplaced()
-    B.pack(rest, 66.0, 58.0, region=(56.8, 46.0, 71.3, 65.6), keepout=keep)
+    pk(rest, 66.0, 58.0, region=(56.8, 46.0, 71.3, 65.6))
     left = B.unplaced()
     assert not left, left
+    print('on the display side for lack of room:', ' '.join(moved))
     # ---- documentation layers ----
     B.rect(*MODULE, pcbnew.F_Fab, 0.15)
     B.text('CM4-format module 55x40 (DF40 1.5 mm stack: keep clear)', (MODULE[0] + MODULE[2]) / 2, MY + 16.5, pcbnew.F_Fab, 1.0)
@@ -183,10 +203,9 @@ def build(bdir, do_route=False):
         # It routes DSI and USB as single tracks, NOT as impedance-controlled pairs: those must be redone by hand.
         import subprocess
         gr = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gridroute.sh')
-        for extra in (['--width', '0.13', '--clearance', '0.15'], ['--width', '0.1', '--clearance', '0.13'],
-                      ['--width', '0.1', '--clearance', '0.12', '--stitch'],
-                      ['--width', '0.1', '--clearance', '0.12', '--power-width', '0.25'],
-                      ['--width', '0.1', '--clearance', '0.12', '--power-width', '0.15', '--stitch']):
+        # (gridroute's --fine option, a second attempt inside the same run, was tried here and did not do better)
+        for extra in (['--width', '0.13', '--clearance', '0.15'], ['--width', '0.1', '--clearance', '0.13', '--stitch'],
+                      ['--width', '0.1', '--clearance', '0.12', '--power-width', '0.25', '--stitch']):
             subprocess.run([gr, os.path.abspath(bdir), 'carrier', '--layers', 'F.Cu,In2.Cu,B.Cu', '--power-width', '0.4'] + extra, check=True)
         # (a later --power-width overrides the 0.4: the last passes let short power links neck down)
         set_project_rules(path.replace('.kicad_pcb', '.kicad_pro'), RULES, CLASSES, PATTERNS)

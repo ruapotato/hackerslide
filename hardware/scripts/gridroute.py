@@ -120,7 +120,26 @@ class Maps:
         for l in self.layers:
             self.occ[l][~ins] = -1
         self.vocc[~ins] = -1
+        self.owner = {l: np.zeros((self.H, self.W), np.int32) for l in self.layers}   # which route blocked a cell
+        self.vowner = np.zeros((self.H, self.W), np.int32)
+        self.base = ({l: a.copy() for l, a in self.occ.items()}, {l: a.copy() for l, a in self.own.items()},
+                     self.vocc.copy())
         self.erode_own()
+
+    def reset(self):
+        """back to the board as exported: forget every route added in this run"""
+        for l in self.layers:
+            self.occ[l][:] = self.base[0][l]; self.own[l][:] = self.base[1][l]; self.owner[l][:] = 0
+        self.vocc[:] = self.base[2]; self.vowner[:] = 0
+
+    def stamp_owned(self, occ, owner, m, n, rid):
+        if m is None:
+            return
+        by0, by1, bx0, bx1, mask = m
+        if rid:
+            o = owner[by0:by1, bx0:bx1]
+            o[mask] = rid
+        self.stamp(occ, m, n)
 
     def erode_own(self):
         """core[l] = own copper shrunk by (width/2 - grid/2): cells where a new track of this width, centred there,
@@ -135,30 +154,39 @@ class Maps:
             p = self.padown[l]
             self.core[l] = np.where(p > 0, p, self.core[l])
 
-    def add_track(self, net, layer, pts, width):
+    def add_track(self, net, layer, pts, width, rid=0):
         n = self.nid(net)
-        for l, grow, target in [(layer, self.clr + width / 2 + self.width / 2, self.occ[layer]), (layer, 0.0, self.own[layer]),
-                                (None, self.clr + width / 2 + self.via_d / 2, self.vocc)]:
-            for a, b in zip(pts, pts[1:]):
-                dx, dy = b[0] - a[0], b[1] - a[1]
-                L = math.hypot(dx, dy) or 1e-9
-                nx, ny = -dy / L * 1e-3, dx / L * 1e-3
-                self.stamp(target, self.mask_poly([(a[0] + nx, a[1] + ny), (b[0] + nx, b[1] + ny), (b[0] - nx, b[1] - ny), (a[0] - nx, a[1] - ny)],
-                                                  grow if grow else width / 2), n)
+        for a, b in zip(pts, pts[1:]):
+            dx, dy = b[0] - a[0], b[1] - a[1]
+            L = math.hypot(dx, dy) or 1e-9
+            nx, ny = -dy / L * 1e-3, dx / L * 1e-3
+            quad = [(a[0] + nx, a[1] + ny), (b[0] + nx, b[1] + ny), (b[0] - nx, b[1] - ny), (a[0] - nx, a[1] - ny)]
+            self.stamp_owned(self.occ[layer], self.owner[layer], self.mask_poly(quad, self.clr + width / 2 + self.width / 2), n, rid)
+            self.stamp(self.own[layer], self.mask_poly(quad, width / 2), n)
+            self.stamp_owned(self.vocc, self.vowner, self.mask_poly(quad, self.clr + width / 2 + self.via_d / 2), n, rid)
 
     def refresh(self):
         self.erode_own()
 
-    def add_via(self, net, x, y):
+    def add_via(self, net, x, y, rid=0):
         n = self.nid(net)
         circ = [(x + self.via_d / 2 * math.cos(a), y + self.via_d / 2 * math.sin(a)) for a in np.linspace(0, 2 * math.pi, 16, endpoint=False)]
         for l in self.layers:
-            self.stamp(self.occ[l], self.mask_poly(circ, self.clr + self.width / 2), n)
+            self.stamp_owned(self.occ[l], self.owner[l], self.mask_poly(circ, self.clr + self.width / 2), n, rid)
             self.stamp(self.own[l], self.mask_poly(circ, 0), n)
-        self.stamp(self.vocc, self.mask_poly(circ, self.clr + self.via_d / 2), -1)
+            self.stamp(self.padown[l], self.mask_poly(circ, 0), n) if not rid else None
+        m = self.mask_poly(circ, self.clr + self.via_d / 2)
+        if m is not None:
+            by0, by1, bx0, bx1, mask = m
+            if rid:
+                self.vowner[by0:by1, bx0:bx1][mask] = rid
+            self.vocc[by0:by1, bx0:bx1][mask] = -1
 
 
-def route_one(M, c, margin=None):
+RIP_COST = 60.0
+
+
+def route_one(M, c, relaxed=False):
     """Least-cost path from ANY copper already connected to end a, to ANY copper already connected to end b.
     Returns [] if they are already joined, None if no path exists."""
     from scipy.ndimage import label
@@ -194,8 +222,14 @@ def route_one(M, c, margin=None):
     cost = np.full((nz, M.H, M.W), -1.0, np.float32)
     for i, l in enumerate(L):
         o = M.occ[l]
-        cost[2 * i][(o == 0) | (o == n) | core[i]] = 1.0         # free, own clearance zone, or inside own copper
+        ok = (o == 0) | (o == n) | core[i]                       # free, own clearance zone, or inside own copper
+        if relaxed:                                              # cells blocked only by this run's routes: dear, not closed
+            o0 = M.base[0][l]
+            cost[2 * i][(o0 == 0) | (o0 == n) | core[i]] = RIP_COST
+        cost[2 * i][ok] = 1.0
         if i:
+            if relaxed:
+                cost[2 * i - 1][(M.base[2] == 0) | (M.base[2] == n)] = VIA_COST + RIP_COST
             cost[2 * i - 1][(M.vocc == 0) | (M.vocc == n)] = VIA_COST
     # start on the outline of cluster a only (fewer seeds, same result)
     from scipy.ndimage import binary_erosion
@@ -257,6 +291,7 @@ def main():
     ap.add_argument('--edge', type=float, default=0.35)
     ap.add_argument('--only', default=''); ap.add_argument('--skip', default='')
     ap.add_argument('--pour', default='GND', help='net of the ground pours/plane: a via anywhere connects to it')
+    ap.add_argument('--fine', default='', help='WIDTH:CLEARANCE for a second attempt at what failed')
     ap.add_argument('--stitch', action='store_true', help='give every separate piece of the pour a via')
     ap.add_argument('--power-width', type=float, default=0.4)
     ap.add_argument('--power-last', action='store_true', help='route the Power class after the signals (small boards)')
@@ -265,6 +300,37 @@ def main():
     only, skip = set(filter(None, a.only.split(','))), set(filter(None, a.skip.split(',')))
     conns = [c for c in d['conns'] if (not only or c['net'] in only) and c['net'] not in skip]
     out = {'tracks': [], 'vias': [], 'failed': []}
+    if a.pour:
+        # A piece of the pour that holds pads but no via is cut off from the plane: give one of its pads a route
+        # to a via.  (KiCad reports these only as zone-to-zone gaps, which say nothing about where.)
+        T = Maps(d, a.grid, a.layers.split(','), a.clearance, a.via, a.drill, a.edge)
+        hv = np.zeros((T.H, T.W), bool)
+        for h in d['holes']:
+            if h.get('net') == a.pour:
+                y, x = T.cell(h['x'], h['y'])
+                hv[max(0, y - 1):y + 2, max(0, x - 1):x + 2] = True
+        pads = [(it, sum(p[0] for p in it['poly']) / len(it['poly']), sum(p[1] for p in it['poly']) / len(it['poly']))
+                for it in d['items'] if it['net'] == a.pour and it['kind'] == 'pad' and it['smd']]
+        extra = 0
+        for f in d.get('pour_frags', []):
+            if f['net'] != a.pour or f['layer'] not in T.layers:
+                continue
+            m = T.mask_poly(f['poly'], 0)
+            if m is None:
+                continue
+            by0, by1, bx0, bx1, mask = m
+            if (mask & hv[by0:by1, bx0:bx1]).any():
+                continue
+            for it, px, py in pads:
+                if it['layer'] != f['layer']:
+                    continue
+                y, x = T.cell(px, py)
+                if by0 <= y < by1 and bx0 <= x < bx1 and mask[y - by0, x - bx0]:
+                    conns.append({'net': a.pour, 'a': {'x': px, 'y': py, 'layers': [f['layer']], 'what': 'stranded pour pad', 'zone': False},
+                                  'b': {'x': 0, 'y': 0, 'layers': [], 'what': 'pour', 'zone': True}})
+                    extra += 1
+                    break
+        print('stranded pour pads:', extra, flush=True)
     by_w = {}
     for c in conns:
         w = a.power_width if d['classes'].get(c['net'], 'Default') == 'Power' else a.width
@@ -280,23 +346,120 @@ def main():
         def prio(c):
             # fine-pitch IC and connector pins first (their escape lanes are one cell wide), then short before long
             fine = any(re.search(r'of (U|J)\d', c[e]['what']) for e in 'ab')
-            return (0 if fine else 1, abs(c['a']['x'] - c['b']['x']) + abs(c['a']['y'] - c['b']['y']))
+            fast = d['classes'].get(c['net'], 'Default') in ('DSI', 'USB')     # high-speed nets get the direct paths
+            return (0 if fast else 1 if fine else 2, abs(c['a']['x'] - c['b']['x']) + abs(c['a']['y'] - c['b']['y']))
         cs = sorted(by_w[w], key=prio)
-        for c in cs:
-            path = route_one(M, c)
-            if path == []:
-                continue                                 # already joined by an earlier route
-            if not path:
-                out['failed'].append(c)
-                print('FAILED', c['net'], c['a']['what'], '->', c['b']['what'])
-                continue
-            tr, vs = to_segments(M, path, c['net'], w)
-            for t in tr:
+        import collections
+        queue = collections.deque(cs)
+        ripped = collections.Counter()
+        routes = {}                                       # rid -> (connection, tracks, vias) made at this width
+        next_rid = [1]
+
+        def restamp():
+            M.reset()
+            for t in done_tracks:
                 M.add_track(t['net'], t['layer'], t['pts'], t['w'])
-            for v in vs:
+            for v in done_vias:
                 M.add_via(v['net'], v['x'], v['y'])
+            for rid, (_c, tr, vs, _p) in routes.items():
+                for t in tr:
+                    M.add_track(t['net'], t['layer'], t['pts'], t['w'], rid)
+                for v in vs:
+                    M.add_via(v['net'], v['x'], v['y'], rid)
+            M.refresh()
+        done_tracks, done_vias = list(out['tracks']), list(out['vias'])     # from wider classes: never ripped
+        # Phases: first at the normal width and clearance; then the connections that failed are tried again with
+        # the fine profile (--fine WIDTH:CLEARANCE), still able to rip up and re-route anything made in this run.
+        phases = [(w, a.clearance)]
+        if a.fine and w == a.width:
+            fw, fc = (float(v) for v in a.fine.split(':'))
+            phases.append((fw, fc))
+        class_failed = []
+        for ph, (wcur, ccur) in enumerate(phases):
+            if ph:
+                if not class_failed:
+                    break
+                print(f'fine phase: {len(class_failed)} connections at width {wcur}, clearance {ccur}', flush=True)
+                M.clr = ccur
+                M.build(wcur)
+                restamp()
+                queue = collections.deque(class_failed)
+                class_failed = []
+                ripped.clear()
+            while queue:
+                c = queue.popleft()
+                path = route_one(M, c)
+                if path == []:
+                    continue                                 # already joined by an earlier route
+                if not path:
+                    # Rip-up and retry: find the cheapest path that may cross this run's routes, remove the routes
+                    # it crosses, route this connection, and queue the removed ones again (at most 3 times each).
+                    if ripped[id(c)] < 4 and routes:
+                        rp = route_one(M, c, relaxed=True)
+                        if rp:
+                            n = M.nid(c['net'])
+                            victims = set()
+                            for z, y, x in rp:
+                                if z % 2:
+                                    if M.vocc[y, x] not in (0, n):
+                                        victims.add(int(M.vowner[y, x]))
+                                else:
+                                    l = M.layers[z // 2]
+                                    if M.occ[l][y, x] not in (0, n) and M.core[l][y, x] != n:
+                                        victims.add(int(M.owner[l][y, x]))
+                            victims.discard(0)
+                            victims = {v for v in victims if v in routes}
+                            if victims:
+                                for v in victims:
+                                    queue.append(routes.pop(v)[0])
+                                ripped[id(c)] += 1
+                                restamp()
+                                queue.appendleft(c)
+                                continue
+                    class_failed.append(c)
+                    print('FAILED', c['net'], c['a']['what'], '->', c['b']['what'], flush=True)
+                    continue
+                tr, vs = to_segments(M, path, c['net'], wcur)
+                rid = next_rid[0]; next_rid[0] += 1
+                routes[rid] = (c, tr, vs, path)
+                for t in tr:
+                    M.add_track(t['net'], t['layer'], t['pts'], t['w'], rid)
+                for v in vs:
+                    M.add_via(v['net'], v['x'], v['y'], rid)
+                M.refresh()
+        out['failed'] += class_failed
+        # Final check: rebuild the maps from the exported board and replay the routes one by one.  A route whose
+        # cells are no longer all free at its turn is dropped and reported, so what is written out is consistent.
+        M.reset()
+        for t in done_tracks:
+            M.add_track(t['net'], t['layer'], t['pts'], t['w'])
+        for v in done_vias:
+            M.add_via(v['net'], v['x'], v['y'])
+        M.refresh()
+        dropped = 0
+        for rid, (c, tr, vs, path) in routes.items():
+            n = M.nid(c['net'])
+            good = True
+            for z, y, x in path:
+                if z % 2:
+                    good = M.vocc[y, x] in (0, n)
+                else:
+                    l = M.layers[z // 2]
+                    good = M.occ[l][y, x] in (0, n) or M.core[l][y, x] == n
+                if not good:
+                    break
+            if not good:
+                dropped += 1
+                out['failed'].append(c)
+                print('DROPPED (failed the final check)', c['net'], c['a']['what'], '->', c['b']['what'], flush=True)
+                continue
+            for t in tr:
+                M.add_track(t['net'], t['layer'], t['pts'], t['w'], rid)
+            for v in vs:
+                M.add_via(v['net'], v['x'], v['y'], rid)
             M.refresh()
             out['tracks'] += tr; out['vias'] += vs
+        print(f'width {w}: {len(routes) - dropped} routed, rip-ups {sum(ripped.values())}, dropped {dropped}', flush=True)
     if a.stitch:
         # Stitching: every separate piece of the pour on every layer gets one via (placed as deep inside the piece
         # as possible), which ties the pieces together through the other layers / the ground plane.

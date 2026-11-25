@@ -88,9 +88,20 @@ class Board:
         fp.SetPosition(pcbnew.VECTOR2I(MM(x), MM(y)))
         fp.SetOrientationDegrees(rot)
         self.occupied.append((side,) + self.bbox(ref))
+        # drilled pads (through-hole pins, pegs, thermal vias) also take room on the other side
+        other = 'B' if side == 'F' else 'F'
+        for p in fp.Pads():
+            d = max(p.GetDrillSize().x, p.GetDrillSize().y)
+            if d > 0:
+                r = pcbnew.ToMM(max(d, p.GetSize().x if p.GetAttribute() == pcbnew.PAD_ATTRIB_PTH else d)) / 2 + 0.3
+                px, py = pcbnew.ToMM(p.GetPosition().x), pcbnew.ToMM(p.GetPosition().y)
+                self.occupied.append((other, px - r, py - r, px + r, py + r))
         fp.placed = True
 
-    def bbox(self, ref, margin=0.15):
+    margin = 0.15     # extra room around every placed part; raise it where a router needs lanes between parts
+
+    def bbox(self, ref, margin=None):
+        margin = self.margin if margin is None else margin
         fp = self.fps[ref]
         bb = fp.GetCourtyard(pcbnew.B_CrtYd if fp.IsFlipped() else pcbnew.F_CrtYd).BBox()
         if bb.GetWidth() == 0:

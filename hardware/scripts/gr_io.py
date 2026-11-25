@@ -131,8 +131,22 @@ def import_(board_path, routes_path):
     print(f"imported {len(r['tracks'])} tracks, {len(r['vias'])} vias; {len(r.get('failed', []))} connections failed")
 
 
+def rip(board_path, width, *nets):
+    """Delete the tracks of the given nets that have the given width (the router's, not the fan-out stubs')."""
+    b = pcbnew.LoadBoard(board_path)
+    w = pcbnew.FromMM(float(width))
+    gone = [t for t in b.GetTracks() if t.Type() != pcbnew.PCB_VIA_T and t.GetNetname() in nets and abs(t.GetWidth() - w) < 100]
+    for t in gone:
+        b.Remove(t)
+    pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+    pcbnew.SaveBoard(board_path, b)
+    print(f'removed {len(gone)} track segments')
+
+
 if __name__ == '__main__':
-    if sys.argv[1] == 'export':
+    if sys.argv[1] == 'rip':
+        rip(*sys.argv[2:])
+    elif sys.argv[1] == 'export':
         export(*sys.argv[2:5])
     else:
         import_(*sys.argv[2:4])

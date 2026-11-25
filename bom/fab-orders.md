@@ -1,6 +1,6 @@
 # Fab order sheets (JLCPCB)
 
-**Do not order yet.** The carrier is only partly routed (87 connections open, power and high-speed nets not
+**Do not order yet.** The carrier is only partly routed (72 connections open, power and high-speed nets not
 reviewed), the keyboard has one open connection, and no Gerbers exist. These sheets
 record what each order needs, so they can be checked now. Capabilities quoted are from
 [JLCPCB's capability pages](https://jlcpcb.com/capabilities/pcb-capabilities) and

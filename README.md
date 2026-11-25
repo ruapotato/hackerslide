@@ -26,7 +26,7 @@ Dark: HackerSlide 810, 128 x 72 x 20.05 mm. Orange: Nokia N810, 14 mm. Blue: Lib
 
 | Part | State |
 |---|---|
-| Carrier board | Schematic audited and revised; placed; 214 of 301 connections autorouted, **87 open**; needs hand routing of power, DSI and USB |
+| Carrier board | Schematic audited and revised; placed; 232 of 304 connections routed, **72 open**; the power blocks, DSI and USB still need deliberate layout |
 | Keyboard board | Routed except one connection |
 | Top plate, keyboard flex cable | Complete drafts |
 | Enclosure | Parametric fit-mule model, collision-checked |

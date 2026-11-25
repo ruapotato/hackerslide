@@ -22,7 +22,7 @@ Total: about $1,300-2,300 (estimate; the earlier handoff said $1,300-2,200).
 
 ## Before any fab order
 
-1. Finish the routing: one connection on the keyboard; on the carrier the 87 open connections, and by hand the
+1. Finish the routing: one connection on the keyboard; on the carrier the 72 open connections, and deliberately the
    power loops, DSI and USB ([routing-status.md](routing-status.md)).
 2. Human review: [carrier-board.md](carrier-board.md) checklist and [footprint-review.md](footprint-review.md).
 3. Gerbers and assembly files.
