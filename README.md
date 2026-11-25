@@ -26,8 +26,8 @@ Dark: HackerSlide 810, 128 x 72 x 18.65 mm. Orange: Nokia N810, 14 mm. Blue: Lib
 
 | Part | State |
 |---|---|
-| Carrier board | Schematic audited and revised; placed; **not routed** |
-| Keyboard board | Placed; **not routed** |
+| Carrier board | Schematic audited and revised; placed; 214 of 301 connections autorouted, **87 open**; needs hand routing of power, DSI and USB |
+| Keyboard board | Routed except one connection |
 | Top plate, keyboard flex cable | Complete drafts |
 | Enclosure | Parametric fit-mule model, collision-checked |
 | Gerbers | None yet: routing and human review come first |
@@ -41,7 +41,7 @@ Start with [`docs/audit-status.md`](docs/audit-status.md), then [`docs/open-ques
 [power budget](docs/power-budget.md) · [thermal](docs/thermal.md) · [carrier board](docs/carrier-board.md) ·
 [keyboard](docs/keyboard.md) · [enclosure](docs/enclosure.md) · [bring-up plan](docs/bring-up-plan.md) ·
 [risks](docs/risks.md) · [roadmap](docs/roadmap.md) · [audit](docs/audit-2026-11-24.md) ·
-[footprint review](docs/footprint-review.md) · [BOM](bom/bom.csv) · [purchasing](bom/purchasing.md) ·
+[footprint review](docs/footprint-review.md) · [routing status](docs/routing-status.md) · [BOM](bom/bom.csv) · [purchasing](bom/purchasing.md) ·
 [fab orders](bom/fab-orders.md)
 
 ## Regenerating everything
@@ -51,6 +51,8 @@ OpenSCAD; details in [`docs/HANDOFF.md`](docs/HANDOFF.md), section 2.
 
 ```sh
 hardware/scripts/build_all.sh                               # libraries, schematics, boards, ERC/DRC
+ROUTE=1 VENV=$PWD/.venv hardware/scripts/build_all.sh       # the same, plus routing (slow; venv needs scikit-image)
+hardware/scripts/render_boards.sh                           # board renders
 cd mechanical/src && ../../.venv/bin/python hackerslide.py  # enclosure, collision check
 python3 render.py ..                                        # renders
 python3 ../../bom/tools/make_bom.py                         # BOM with current JLCPCB prices

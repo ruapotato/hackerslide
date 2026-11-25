@@ -31,7 +31,7 @@ flowchart LR
 | Carrier | 71.6 x 66 mm, 1.0 mm | 4 | Module sockets, power chain, codec, connectors, buttons |
 | Keyboard | 125 x 69 mm, 1.0 mm | 2 | 53 switches, diodes, TCA8418. It is also the floor of the keyboard tray |
 | Top plate | 125 x 31 mm, 0.8 mm | 2 | Holds the keycaps; carries the Fn legends |
-| Keyboard flex | 4.5 x 80 mm, 0.07 mm | 1 (flex) | Eight traces between carrier and keyboard |
+| Keyboard flex | 4.5 x 73 mm, 0.07 mm | 1 (flex) | Eight traces between carrier and keyboard |
 
 ## Stack-up, closed, bottom to top (mm)
 

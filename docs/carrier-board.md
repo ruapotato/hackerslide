@@ -1,6 +1,13 @@
 # Carrier board: design notes and review checklist
 
-**DRAFT - NEEDS HUMAN REVIEW. Placed, not routed.** 71.6 x 66 mm, 4 layers, 1.0 mm.
+**DRAFT - NEEDS HUMAN REVIEW. Placed; 214 of 301 connections autorouted, 87 open, no DRC errors.**
+71.6 x 66 mm, 4 layers, 1.0 mm. The open connections are listed in [routing-status.md](routing-status.md).
+
+**How it was routed, and what that means for a reviewer.** Every fine-pitch pin has a scripted escape stub and
+via (`pcbgen.fanout`). The connections were then made by `gridroute.py`, a small grid router in this repository:
+least-cost paths on F, In2 and B, no rip-up, no knowledge of differential pairs, impedance, current or noise.
+In1 is a solid ground plane. Treat every routed track as a suggestion: the power loops, DSI and USB in the table
+below need to be laid out again by a person, and the 87 open connections finished, before this board is ordered.
 Source of truth: [`hardware/scripts/carrier_design.py`](../hardware/scripts/carrier_design.py) (circuit, read it top to
 bottom) and [`carrier_pcb.py`](../hardware/scripts/carrier_pcb.py) (placement). The KiCad schematic puts a label on every
 pin, so it reads as a netlist; it matches the script exactly.

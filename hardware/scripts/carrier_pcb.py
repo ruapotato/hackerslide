@@ -35,11 +35,11 @@ RULES = {'min_clearance': 0.09, 'min_track_width': 0.09, 'min_via_diameter': 0.4
          'min_copper_edge_clearance': 0.25, 'min_hole_clearance': 0.2, 'min_hole_to_hole': 0.25,
          'min_via_annular_width': 0.1}
 # Impedance numbers are ESTIMATES for a JLC 4-layer 1.0 mm stackup; TODO(verify) with the JLC impedance calculator.
-CLASSES = [{'name': 'Default', 'clearance': 0.1, 'track_width': 0.1, 'via_diameter': 0.45, 'via_drill': 0.2},
-           {'name': 'Power', 'clearance': 0.1, 'track_width': 0.5, 'via_diameter': 0.6, 'via_drill': 0.3},
-           {'name': 'DSI', 'clearance': 0.1, 'track_width': 0.1, 'via_diameter': 0.45, 'via_drill': 0.2,
+CLASSES = [{'name': 'Default', 'clearance': 0.09, 'track_width': 0.1, 'via_diameter': 0.45, 'via_drill': 0.2},
+           {'name': 'Power', 'clearance': 0.09, 'track_width': 0.5, 'via_diameter': 0.6, 'via_drill': 0.3},
+           {'name': 'DSI', 'clearance': 0.09, 'track_width': 0.1, 'via_diameter': 0.45, 'via_drill': 0.2,
             'diff_pair_width': 0.1, 'diff_pair_gap': 0.12},
-           {'name': 'USB', 'clearance': 0.1, 'track_width': 0.12, 'via_diameter': 0.45, 'via_drill': 0.2,
+           {'name': 'USB', 'clearance': 0.09, 'track_width': 0.12, 'via_diameter': 0.45, 'via_drill': 0.2,
             'diff_pair_width': 0.12, 'diff_pair_gap': 0.12}]
 PATTERNS = [('VBUS', 'Power'), ('VSYS', 'Power'), ('VSYS_LIM', 'Power'), ('VBAT', 'Power'), ('+5V', 'Power'), ('PMID', 'Power'),
             ('CHG_SW', 'Power'), ('BOOST_SW', 'Power'), ('BL_SW', 'Power'), ('LED_A', 'Power'),
@@ -122,7 +122,8 @@ def build(bdir, do_route=False):
            13.0, 10.8, region=(0.4, 0.3, 33.0, 11.8), keepout=keep)
     # ---- I2S straps under the J1A I2S pins (x 32..37) ----
     B.pack(['TP30', 'TP31', 'TP32', 'TP33'], 31.5, 54.0, region=(26.8, 52.3, 36.0, 58.6), keepout=keep)
-    B.pack([f'R{n}' for n in range(50, 60)], 38.5, 53.0, region=(36.0, 52.3, 42.4, 65.6), keepout=keep)
+    B.pack([f'R{n}' for n in range(50, 55)], 38.5, 54.0, region=(35.9, 52.3, 42.5, 65.7), keepout=keep)
+    B.pack([f'R{n}' for n in range(55, 60)], 46.0, 64.5, region=(35.9, 52.3, 56.5, 65.7), keepout=keep)   # the DNP set
     # ---- backlight (top strip) ----
     P('U6', 49.0, 9.8, 0)
     P('L3', 54.2, 7.8, 0)
@@ -179,7 +180,17 @@ def build(bdir, do_route=False):
         '(version 1)\n(rule "wuerth_spacer_ring"\n  (condition "A.memberOfFootprint(\'H?\') && B.memberOfFootprint(\'H?\')")\n'
         '  (constraint hole_clearance (min 0mm)))\n')
     if do_route:
-        print(route(path, passes=40, timeout=5400))
+        # gridroute.py on F / In2 / B; In1 is the ground plane, so a via anywhere reaches ground.
+        # It routes DSI and USB as single tracks, NOT as impedance-controlled pairs: those must be redone by hand.
+        import subprocess
+        gr = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gridroute.sh')
+        for extra in (['--width', '0.13', '--clearance', '0.15'], ['--width', '0.1', '--clearance', '0.13'],
+                      ['--width', '0.1', '--clearance', '0.12', '--stitch'],
+                      ['--width', '0.1', '--clearance', '0.12', '--power-width', '0.25'],
+                      ['--width', '0.1', '--clearance', '0.12', '--power-width', '0.15', '--stitch']):
+            subprocess.run([gr, os.path.abspath(bdir), 'carrier', '--layers', 'F.Cu,In2.Cu,B.Cu', '--power-width', '0.4'] + extra, check=True)
+        # (a later --power-width overrides the 0.4: the last passes let short power links neck down)
+        set_project_rules(path.replace('.kicad_pcb', '.kicad_pro'), RULES, CLASSES, PATTERNS)
     return path
 
 

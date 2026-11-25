@@ -81,6 +81,7 @@ class Maps:
         self.width = width
         self.occ = {l: np.zeros((self.H, self.W), np.int32) for l in self.layers}
         self.own = {l: np.zeros((self.H, self.W), np.int32) for l in self.layers}     # the copper itself, not grown
+        self.padown = {l: np.zeros((self.H, self.W), np.int32) for l in self.layers}  # pads and vias only
         self.vocc = np.zeros((self.H, self.W), np.int32)
         gt, gv = self.clr + width / 2, self.clr + self.via_d / 2
         for it in self.d['items']:
@@ -88,17 +89,19 @@ class Maps:
             if it['layer'] in self.occ:
                 self.stamp(self.occ[it['layer']], self.mask_poly(it['poly'], gt), n)
                 self.stamp(self.own[it['layer']], self.mask_poly(it['poly'], 0), n)
+                if it['kind'] in ('pad', 'via'):
+                    self.stamp(self.padown[it['layer']], self.mask_poly(it['poly'], 0), n)
             # a through via must clear copper on every layer; never put one in or against an SMD pad
             self.stamp(self.vocc, self.mask_poly(it['poly'], gv), -1 if it['smd'] else n)
             if it.get('fine'):
                 # no vias within FANOUT of fine-pitch pads: a via there would close the neighbours' escape lanes
                 self.stamp(self.vocc, self.mask_poly(it['poly'], FANOUT), -1)
         for h in self.d['holes']:
-            circ = [(h['x'] + h['d'] / 2 * math.cos(a), h['y'] + h['d'] / 2 * math.sin(a)) for a in np.linspace(0, 2 * math.pi, 16, endpoint=False)]
+            circ = [(h['x'] + h['d'] / 2 * math.cos(a), h['y'] + h['d'] / 2 * math.sin(a)) for a in np.linspace(0, 2 * math.pi, 48, endpoint=False)]
             hn = self.nid(h.get('net')) if h.get('net') else -1      # a plated hole of net X only blocks other nets
             for l in self.layers:
-                self.stamp(self.occ[l], self.mask_poly(circ, 0.2 + width / 2), hn)
-            self.stamp(self.vocc, self.mask_poly(circ, 0.25 + self.via_d / 2), -1)
+                self.stamp(self.occ[l], self.mask_poly(circ, 0.26 + width / 2), hn)     # hole-to-copper rule 0.2 + rounding
+            self.stamp(self.vocc, self.mask_poly(circ, 0.3 + self.via_d / 2), -1)
         for k in self.d['keepouts']:
             for l in k['layers']:
                 if l in self.occ:
@@ -128,6 +131,9 @@ class Maps:
         for l in self.layers:
             o = self.own[l]
             self.core[l] = np.where((minimum_filter(o, size=k) == o) & (maximum_filter(o, size=k) == o), o, 0)
+            # a pad is always enterable, even by a track wider than itself (KiCad's DRC judges the result)
+            p = self.padown[l]
+            self.core[l] = np.where(p > 0, p, self.core[l])
 
     def add_track(self, net, layer, pts, width):
         n = self.nid(net)

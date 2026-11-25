@@ -1,6 +1,7 @@
 # Fab order sheets (JLCPCB)
 
-**Do not order yet.** The carrier and keyboard are placed but not routed, and no Gerbers exist. These sheets
+**Do not order yet.** The carrier is only partly routed (87 connections open, power and high-speed nets not
+reviewed), the keyboard has one open connection, and no Gerbers exist. These sheets
 record what each order needs, so they can be checked now. Capabilities quoted are from
 [JLCPCB's capability pages](https://jlcpcb.com/capabilities/pcb-capabilities) and
 [flex capabilities](https://jlcpcb.com/capabilities/flex-pcb-capabilities), read 2026-11-24.
@@ -45,7 +46,7 @@ The 0.6 mm Fn legends are below JLCPCB's recommended silkscreen height and may p
 | Setting | Value | Why |
 |---|---|---|
 | Type | Flexible PCB, 1 layer | Thinnest and most bend-tolerant |
-| Size | 4.5 x 80 mm | Under 20 x 20 mm is "best panelised" per JLCPCB; this is long but narrow, ask for a panel |
+| Size | 4.5 x 73 mm | Under 20 x 20 mm is "best panelised" per JLCPCB; this is long but narrow, ask for a panel |
 | Thickness | 0.07 mm (25 um polyimide) | Loop radius 1.9 mm is 27 x thickness; JLCPCB advises >= 10-15 x for repeated bending |
 | Copper | 18 um (0.5 oz) | The thinnest offered on single-sided flex |
 | Copper type | Ask for rolled-annealed if offered | JLCPCB's page does not say which is standard |

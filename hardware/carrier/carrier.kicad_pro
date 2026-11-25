@@ -237,7 +237,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.09,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -255,7 +255,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.09,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -273,7 +273,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.09,
         "diff_pair_gap": 0.12,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.1,
@@ -291,7 +291,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.09,
         "diff_pair_gap": 0.12,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.12,
@@ -382,6 +382,35 @@
     "legacy_lib_dir": "",
     "legacy_lib_list": []
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "fc6d3393-ad39-570f-a261-316c17da74e8",
+      "Root"
+    ],
+    [
+      "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+      "power"
+    ],
+    [
+      "64899448-b626-5a4d-bd40-31fc8b7282aa",
+      "module"
+    ],
+    [
+      "7a2998f6-a427-503c-b137-c28c4038d4a8",
+      "display"
+    ],
+    [
+      "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+      "audio"
+    ],
+    [
+      "bc4f3033-7999-539b-92ac-54a1ee3845e5",
+      "keyboard_link"
+    ],
+    [
+      "3743add9-d7c0-5a01-97bf-776f02f44947",
+      "storage_io"
+    ]
+  ],
   "text_variables": {}
 }

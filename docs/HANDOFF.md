@@ -51,8 +51,10 @@ There are 13 `TODO(verify)` markers in the sources: `grep -rn "TODO(verify)" har
 On Debian trixie: `apt install kicad kicad-symbols kicad-footprints kicad-packages3d openscad xvfb python3-venv default-jre`.
 
 ```sh
-python3 -m venv .venv && .venv/bin/pip install cadquery openpyxl
+python3 -m venv .venv && .venv/bin/pip install cadquery openpyxl scikit-image scipy pillow
 ```
+
+(scikit-image, scipy and pillow are for `hardware/scripts/gridroute.py`, the grid router added on 2026-11-24.)
 
 The KiCad scripts run with the **system** `python3`, because that is where the `pcbnew` module lives. Only the
 enclosure needs the venv.

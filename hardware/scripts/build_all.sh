@@ -5,12 +5,22 @@
 # Pillow and scikit-image, default ../../.venv).  Without it the boards keep only their scripted tracks.
 set -e
 cd "$(dirname "$0")"
+# The committed keyboard and carrier are ROUTED.  Regenerating them without ROUTE=1 would replace them with
+# unrouted boards, so that needs FORCE=1.
+pcb() {  # pcb SCRIPT ARGS... BOARD_FILE : run the board generator unless it would discard routing
+  for last; do :; done
+  if [ -z "$ROUTE" ] && [ -z "$FORCE" ] && grep -q '(segment' "$last" 2>/dev/null; then
+    echo "keeping routed $last (set ROUTE=1 to regenerate and re-route, or FORCE=1 to regenerate unrouted)"
+  else
+    n=$(($# - 1)); python3 $(echo "$@" | cut -d' ' -f1-$n) ${ROUTE:+--route}
+  fi
+}
 OUT=${OUT:-$(mktemp -d)}
 python3 mklib.py
 python3 keyboard_design.py alps ../keyboard
-python3 keyboard_pcb.py alps ../keyboard ${ROUTE:+--route}
+pcb keyboard_pcb.py alps ../keyboard ../keyboard/keyboard.kicad_pcb
 python3 carrier_design.py ../carrier
-python3 carrier_pcb.py ../carrier ${ROUTE:+--route}
+pcb carrier_pcb.py ../carrier ../carrier/carrier.kicad_pcb
 python3 topplate_design.py ../keyboard-topplate
 python3 topplate_design.py ../keyboard-topplate --pcb
 python3 keyboard_design.py dome ../keyboard-5135

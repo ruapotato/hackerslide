@@ -1,6 +1,7 @@
 # Keyboard
 
-**DRAFT - NEEDS HUMAN REVIEW. Placed, not routed.**
+**DRAFT - NEEDS HUMAN REVIEW. Routed except one connection (ROW1 at U1 pin 7), no DRC errors.**
+The key matrix is routed by `keyboard_pcb.route_matrix`; the remaining connections by `gridroute.py`.
 
 ## Stack
 
@@ -52,7 +53,7 @@ Software notes: the device-tree keymap uses the chip's rows and columns, not the
 
 ## Cable to the carrier
 
-Our own flex circuit, [`hardware/keyboard-flex`](../hardware/keyboard-flex): one layer, 0.07 mm, 4.5 x 80 mm, eight
+Our own flex circuit, [`hardware/keyboard-flex`](../hardware/keyboard-flex): one layer, 0.07 mm, 4.5 x 73 mm, eight
 straight traces. It leaves carrier J9 toward the device's bottom edge, turns down through a slot in the back shell,
 runs back under the body in a channel, makes a rolling loop of 1.9 mm radius in the tray's upper half, and enters
 keyboard J1. Pin k of J9 is pin k of J1. Power and ground are mirror-symmetric, so a reversed cable cannot short
