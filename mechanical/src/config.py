@@ -9,7 +9,7 @@ Sources are noted per value: [ds] = datasheet/vendor page linked in docs/, [dec]
 
 # ---------------------------------------------------------------- body / tray footprint
 BODY_W = 128.0            # [dec] N810 footprint 128 x 72
-BODY_H = 72.0
+BODY_H = 74.0            # [dec] David 2026-11-25: 2 mm longer than the N810's 72, for the battery leads (see BATT_XY)
 CORNER_R = 6.0            # [est] plan-view corner radius
 WALL = 1.4                # [dec] FDM walls 1.2-1.6
 FLOOR = 1.2               # [est] FDM floor/roof
@@ -19,9 +19,13 @@ N810 = dict(w=128.0, h=72.0, t=14.0)   # Nokia N810 envelope, reference only (sp
 LIBREM5 = dict(w=152.0, h=74.0, t=15.0)  # Purism Librem 5, reference only (docs.puri.sm hardware specs, read 2026-11-24)
 
 # ---------------------------------------------------------------- off-the-shelf parts (envelopes)
-MODULE = dict(w=55.0, h=40.0, t=4.7, stack=1.5, mated=5.078,    # [ds] Core3566 datasheet ch.3 (text copied from the CM4
-              soc_xy=(31.99, 16.98), soc_size=(14.0, 14.0))     # datasheet; LuckFox's drawing scales to ~4.5: TODO(verify)
-                                                                # on a real module).  [est] SoC position from the CM4 drawing
+# Heights and the SoC position are measured on LuckFox's own STEP model (core3566_v1_2.stp, files.luckfox.com), not
+# the datasheet text (which repeats the CM4's 4.7 / 5.078 mm): PCB 1.2, tallest top part (an inductor) 1.8, SoC 0.9.
+# TODO(verify) with calipers on a real module; the datasheet gives the SoC as 0.7 +-0.11.
+MODULE = dict(w=55.0, h=40.0, t=4.09, stack=1.5, mated=4.50,    # mated = carrier surface -> tallest part
+              soc_top=3.60,                                     # carrier surface -> SoC lid (1.5 + 1.2 + 0.9)
+              soc_kicad=(34.28, 35.04),                         # SoC centre in carrier KiCad coordinates
+              soc_size=(14.0, 14.0))                            # pad size; the package is 15 x 15, turned 45 degrees
 # Focus LCDs E40RB-I-MW430-CB, landscape, its bottom (FPC) edge toward the device RIGHT.  [ds] spec p.3
 PANEL = dict(w=98.10, h=58.26, t=4.25, aa_w=86.40, aa_h=51.84, lens_w=97.70, lens_h=57.86,
              fpc_end='right',
@@ -75,14 +79,15 @@ else:                                             # 'under': cell stacked under 
     CAVITY = MODULE['mated'] + 0.3 + BATTERY['t'] + BATTERY['swell']
     PANEL_GAP = PANEL_GAP_MIN
     BAY_H = CAVITY + CARRIER['t'] + PANEL_GAP
-THERMAL_GAP = CAVITY - MODULE['mated'] if BATTERY_LAYOUT == 'cutout' else 0.3   # SoC side of the module -> back shell:
+THERMAL_GAP = CAVITY - MODULE['soc_top'] if BATTERY_LAYOUT == 'cutout' else 0.3   # SoC side of the module -> back shell:
 assert THERMAL_GAP >= 0.2, THERMAL_GAP            # filled by a pad or copper shim of this thickness (audit E4)
 Z_CARRIER_F = Z_BACK_IN + CAVITY                  # carrier F side (faces down)
 Z_CARRIER_B = Z_CARRIER_F + CARRIER['t']
-# Display side of the carrier: since the board was routed it carries parts, the tallest being the discharge limiter
-# U13 (SOT-23-6, 1.45 mm max, board x 68-71 / y 30-32).  Even with the component area of a folded panel tail
-# lying right over it, it must fit.
-B_SIDE_MAX = 1.45          # [ds] tallest display-side part
+# Display side of the carrier: since the board was routed it carries parts.  The tallest are the SOD-323 diode D9
+# (1.1 mm max, only fitted for the hard power-cycle option) and the cable connectors J4/J5 (1.0 mm); the battery
+# fuse U13 (WSON), the gauge U4 and C17 are 0.8 mm.  Even with the component area of a folded panel tail lying
+# right over the tallest one, it must fit.
+B_SIDE_MAX = 1.1           # [ds] tallest display-side part
 assert B_SIDE_MAX + PANEL['tail_bulge'] <= PANEL_GAP + 1e-9, (B_SIDE_MAX, PANEL['tail_bulge'], PANEL_GAP)
 Z_PANEL_BOTTOM = Z_CARRIER_B + PANEL_GAP
 Z_PANEL_TOP = Z_PANEL_BOTTOM + PANEL['t']
@@ -96,14 +101,26 @@ TRAVEL = KBD_PCB['h'] + KEY_CLEARANCE + WALL      # expose the keyboard PCB + cl
 OPEN_H = BODY_H + TRAVEL
 
 # plan positions (device top view, mm from body top-left)
-PANEL_XY = ((BODY_W - PANEL['w']) / 2, (BODY_H - PANEL['h']) / 2)
+PANEL_XY = ((BODY_W - PANEL['w']) / 2, 6.87)     # y from the top edge: where it was in the 72 mm body, so the folded
+#                                                  tails still land on J4/J5; the extra 2 mm is below the panel
 # The carrier's port edge sits 0.3 mm from the inner wall on the device right, so the USB-C, jack and microSD
 # mouths reach the wall (audit E1).  The carrier is mounted F-side down, so its KiCad view is mirrored in X:
 #   device_x = CARRIER_XY[0] + CARRIER['w'] - kicad_x,  device_y = CARRIER_XY[1] + kicad_y
-CARRIER_XY = (BODY_W - WALL - 0.3 - CARRIER['w'], (BODY_H - CARRIER['h']) / 2)
+CARRIER_XY = (BODY_W - WALL - 0.3 - CARRIER['w'], 3.0)      # against the top wall: the buttons on its top edge reach it
 MODULE_KICAD = (7.5, 12.0)    # module outline top-left in carrier KiCad coords (carrier_pcb.MODULE)
 MODULE_ROT180 = True          # module turned 180 deg in the carrier frame (carrier_pcb.module_xy)
-BATT_XY = (RAIL_INSET + WALL + 0.25, (BODY_H - BATTERY['h']) / 2)      # cell bay, device left
+# The pack's three leads (22 AWG, 60 mm) leave a corner of its short edge.  The pack sits at the bottom of the bay,
+# which leaves 2.6 mm above it for the leads to turn toward the carrier; they run in the cavity under the carrier's
+# top strip to the plug.
+BATT_LEAD_GAP = 2.6
+BATT_XY = (RAIL_INSET + WALL + 0.25, WALL + BATT_LEAD_GAP)             # cell bay, device left
+assert BATT_XY[1] + BATTERY['h'] <= BODY_H - WALL - 0.5, BATT_XY
+# Battery header J10 (Molex 5268-03A right-angle, 4.9 mm high) and the mated 5264 plug with the bend of its leads,
+# in carrier KiCad coordinates (carrier_pcb.J10_POS, PLUG): x0, y0, x1, y1
+BATT_HEADER_KICAD = (62.85, 2.65, 70.85, 12.55)
+BATT_PLUG_KICAD = (53.0, 3.6, 62.85, 11.6)       # [est] housing about 4.5 mm proud of the shroud + 5 mm for the bend
+BATT_CONN_H = 4.9                                # [ds] Molex 5268-NA catalogue drawing
+assert BATT_CONN_H <= CAVITY - 0.3, (BATT_CONN_H, CAVITY)
 KBD_XY = ((BODY_W - KBD_PCB['w']) / 2, BODY_H - WALL - KBD_PCB['h'])   # keyboard PCB in the tray
 # carrier features, KiCad coords (keep in step with hardware/scripts/carrier_pcb.py)
 SCREW_KICAD = ((3.8, 20.0), (3.8, 46.0))          # HS1 / HS2: the shell bosses clamp the carrier here
@@ -135,7 +152,7 @@ FPC_SLOT = dict(w=6.5, l=1.6, y=BODY_H - WALL - 1.4)   # slot centre y; width al
 FPC_LOOP_Y_CLOSED = 21.0                               # [est] loop apex (device y) with the slider closed
 # The cable is our own 0.07 mm flex circuit (hardware/keyboard-flex).  A channel in the back-shell floor above the
 # cable lane gives the rolling loop its height: channel roof down to the keyboard PCB.
-FPC = dict(t=0.07, w=4.5, length=73.0, channel=0.8)
+FPC = dict(t=0.07, w=4.5, length=79.0, channel=0.8)
 FPC_LOOP_R = (Z_BODY_BOTTOM + FPC['channel'] - (TRAY_FLOOR + KBD_PCB['t'])) / 2       # 1.9 mm
 assert FPC_LOOP_R >= 15 * FPC['t'], FPC_LOOP_R         # JLCPCB guidance for repeated bending: >= 10-15 x thickness
 J1_TRAY_Y = KBD_XY[1] - 9.0 - 3.4                      # keyboard J1 opening in tray coords (kbd_layout.J1_XY, FH34 depth)
@@ -150,6 +167,6 @@ FPC_LOOP_Y_OPEN_TRAY = FPC_LOOP_Y_CLOSED - TRAVEL / 2  # loop apex in TRAY coord
 assert FPC_LOOP_Y_OPEN_TRAY > WALL + 0.5, FPC_LOOP_Y_OPEN_TRAY
 
 MODULE_XY = carrier_to_device(MODULE_KICAD[0] + MODULE['w'], MODULE_KICAD[1])        # module outline, device top-left
-SOC_XY = ((MODULE['w'] - MODULE['soc_xy'][0], MODULE['h'] - MODULE['soc_xy'][1]) if MODULE_ROT180
-          else MODULE['soc_xy'])                                                  # [est] SoC centre in the module outline
+_soc = carrier_to_device(*MODULE['soc_kicad'])
+SOC_XY = (_soc[0] - MODULE_XY[0], _soc[1] - MODULE_XY[1])                         # SoC centre in the module outline (device view)
 SECTION_X = MODULE_XY[0] + SOC_XY[0]              # render cross-section plane: through the (estimated) SoC position

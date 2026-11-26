@@ -65,14 +65,18 @@ def envelopes():
     e['carrier_parts'] = e['carrier_parts'].union(box(ux - 6.3, uy - 4.5, C.Z_CARRIER_F - 3.3, ux + 0.25, uy + 4.5, C.Z_CARRIER_F))
     sx_, sy_ = carrier_to_device(0.0, C.SD_KICAD_Y)
     e['carrier_parts'] = e['carrier_parts'].union(box(sx_ - 13.9, sy_ - 6.1, C.Z_CARRIER_F - 1.5, sx_, sy_ + 6.1, C.Z_CARRIER_F))
-    lx, ly = carrier_to_device(54.2, 7.8)                                                                       # L3, 3.0 high
+    lx, ly = carrier_to_device(67.0, 46.8)                                                                      # L3, 3.0 high
     e['carrier_parts'] = e['carrier_parts'].union(box(lx - 2.1, ly - 2.1, C.Z_CARRIER_F - 3.0, lx + 2.1, ly + 2.1, C.Z_CARRIER_F))
+    for (kx0, ky0, kx1, ky1), nm in ((C.BATT_HEADER_KICAD, 'carrier_parts'), (C.BATT_PLUG_KICAD, 'batt_plug')):
+        (xa, ya), (xb, yb) = carrier_to_device(kx0, ky0), carrier_to_device(kx1, ky1)
+        solid = box(min(xa, xb), min(ya, yb), C.Z_CARRIER_F - C.BATT_CONN_H, max(xa, xb), max(ya, yb), C.Z_CARRIER_F)
+        e[nm] = e[nm].union(solid) if nm in e else solid
     bx0, by0 = C.BATT_XY
     e['battery'] = box(bx0, by0, C.Z_BACK_IN, bx0 + C.BATTERY['w'], by0 + C.BATTERY['h'], C.Z_BACK_IN + C.BATTERY['t'] + C.BATTERY['swell'])
-    # thermal pad / copper shim from the SoC to the back-shell floor (SoC position = CM4 drawing estimate)
+    # thermal pad / copper shim from the SoC to the back-shell floor (SoC position from LuckFox's STEP model)
     sx = mx0 + C.SOC_XY[0] - C.MODULE['soc_size'][0] / 2
     sy = my0 + C.SOC_XY[1] - C.MODULE['soc_size'][1] / 2
-    zb = C.Z_CARRIER_F - C.MODULE['mated']
+    zb = C.Z_CARRIER_F - C.MODULE['soc_top']
     e['thermal_pad'] = box(sx, sy, C.Z_BACK_IN, sx + C.MODULE['soc_size'][0], sy + C.MODULE['soc_size'][1], zb)
     return e
 
