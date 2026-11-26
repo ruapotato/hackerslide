@@ -34,6 +34,14 @@ set by the Linux-class processor.
   evaluation board carries 64 MB as two W9825G6KH, and MicroPython's port for that board already uses the 64 MB
   as its heap (`MICROPY_HW_SDRAM_SIZE = 0x4000000`). Plan: 64 MB, the same arrangement, so the port carries over.
 
+- **Sensors (David, 2026-11-27):** keep essentially all the sensors that are well stocked
+  ([hack-pad-sensors.md](../hack-pad-sensors.md)). Preference: every part should come from the board assembler's
+  own stock, so that ordering boards needs no parts shipped in. Two parts conflict with that and are not yet
+  settled: the SDR radio chip (AT86RF215) and the touchpad chip (IQS7211E) are stocked at DigiKey, not JLCPCB.
+- **Operating system (David, 2026-11-27):** a new kernel written in today's Adder, using Hamnix's parts where
+  they fit and reimplementing where needed ([os-audit-hamnix.md](../os-audit-hamnix.md)). Work starts in an
+  emulator (QEMU's Cortex-M7 machine). An NXP evaluation board for bring-up is approved in principle; David buys it.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
