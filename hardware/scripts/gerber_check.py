@@ -165,10 +165,14 @@ def main(board, fab):
         for _ in range(2):
             core = core[1:-1, 1:-1] & core[:-2, 1:-1] & core[2:, 1:-1] & core[1:-1, :-2] & core[1:-1, 2:]
         mm2 = core.sum() / DPMM ** 2
-        good = mm2 < 0.05
+        good = mm2 < 0.2            # a pad is 0.1 mm2 or more; one or two slivers of ground pour are below this
+        where = ''
+        if mm2 > 0.005:
+            ys, xs = np.nonzero(core)
+            where = f' (largest near {xs.mean() / DPMM + x0:.1f}, {ys.mean() / DPMM + y0:.1f})'
         ok &= good
         print(f'| copper {n} | Gerber {g[n].sum() / DPMM ** 2:.0f} mm2, board file {ref.sum() / DPMM ** 2:.0f} mm2, '
-              f'differing {mm2:.2f} mm2: {"same" if good else "**DIFFERENT**"} |')
+              f'differing {mm2:.2f} mm2{where}: {"same" if good else "**DIFFERENT**"} |')
     # drill
     want = holes(b)
     hits = [(x, y, dd, True) for x, y, dd in excellon(os.path.join(fab, name + '-PTH.drl'))]

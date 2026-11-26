@@ -71,10 +71,10 @@ rows there the pins walled each other in.
 | BOOST_SW, +5V at U5/L2 | Output capacitors right at VOUT, small SW node | Hand-laid after TI SLVSAQ2C section 11. +5V reaches module pins 77-87 through three vias and an area on the display side: 1.0 mm wide at its narrowest for 2 A |
 | VBUS, J2 to U3 | 0.83 A at most (R12), about 75 mm | In2 area routed around the J1B via rows, 1.5 mm wide at its narrowest; two or three vias at each end |
 | VBAT, J10 to U3 | 3 A (fuse) | Area on the display side, 1.65 mm wide at its narrowest, vias at U3 |
-| VSYS_LIM, U13 to U5 and to the backlight | 3 A to the boost | Two parallel areas down the left strip and along the bottom strip: In2 (3.8 mm of copper in all between the vias at its narrowest) and the display side (1.85 mm, along the bottom strip and beside the charger; it is open for 1.8 mm below the touch connector). Together they carry the 3 A with an estimated rise of 41 K if the inner layer carried it alone over a long run (it does so for 2 mm); see the table below |
-| Everything routed by `gridroute.py` | Ordinary signals | Crosstalk screened by `coupling.py` (table below): the worst pair is estimated at 0.6 %, far below what 3.3 V logic notices. SD runs at most 50 MHz here (UHS is disabled) |
+| VSYS_LIM, U13 to U5 and to the backlight | 3 A to the boost | In2 area down the left strip and along the bottom strip, 3.8 mm of copper in all between the vias at its narrowest, with display-side straps in parallel above and below the touch connector (2.55 mm along the bottom), tied to In2 by three vias at each end; six vias at the boost inductor. See the table below |
+| Everything routed by `gridroute.py` | Ordinary signals | Crosstalk screened by `coupling.py` (table below): the worst pair is estimated at 0.3 %, far below what 3.3 V logic notices. SD runs at most 50 MHz here (UHS is disabled) |
 | BL_SW, LED_A | 13-39 V switching node, keep small and away from the codec and the DSI vias | Backlight driver in the left strip, 56 mm from the codec and 4.9 mm from the nearest DSI via; the BL_SW copper is 3.9 mm long |
-| HP_L, HP_R, MIC, HPGND | Away from switch nodes; HPGND joins ground only at R49 by the jack | Codec next to the jack; nearest switch node (charger) 14 mm from the nearest audio track. No audio net runs beside a clock or a switch node (`coupling.py`) |
+| HP_L, HP_R, MIC, HPGND | Away from switch nodes; HPGND joins ground only at R49 by the jack | Codec next to the jack; nearest switch node (charger) 14 mm from the nearest audio track. R49 sits at the jack beside the sleeve strap R60 with its own ground via. The jack's ESD diodes sit on the display-side ground pour, with a via beside each where there was room |
 | DF40 pads | 0.4 mm pitch, 0.2 mm pads, no copper between the rows | Rule areas present; the router keeps tracks and vias out of them, and DRC is clean |
 
 ### Power copper (`power_paths.py`)
@@ -82,35 +82,55 @@ rows there the pins walled each other in.
 | Path | Layer | Current | Widest single passage at the neck | All passages together | IPC-2221 rise for that total, if it were long |
 |---|---|---|---|---|---|
 | USB-C to charger (input limit 0.83 A max, R12) | In2.Cu | 0.83 A | 1.50 mm near (65, 13) | 1.5 mm | 9 K |
-| battery connector to charger (fuse limit 3.0 A typ) | B.Cu | 3.2 A | 1.65 mm near (63, 23) | 1.7 mm | 8 K |
+| battery connector to charger (fuse limit 3.0 A typ) | B.Cu | 3.2 A | 1.55 mm near (63, 16) | 1.6 mm | 9 K |
 | battery fuse to 5 V boost | In2.Cu | 3.2 A | 2.01 mm near (69, 37) | 3.8 mm | 41 K |
-| the same, parallel path on the display side along the bottom strip | B.Cu | 3.2 A | 1.85 mm | 1.9 mm | 7 K |
+| the same, parallel path on the display side along the bottom strip | B.Cu | 3.2 A | 2.55 mm | 2.6 mm | 4 K |
 | boost to module pins 77-87 | B.Cu | 2.0 A | 1.00 mm near (43, 53) | 1.0 mm | 7 K |
 
-The rise is the IPC-2221 figure for a long track of the narrowest width, so for these short necks it overstates.
+"Widest single passage" is the widest corridor between vias at the narrowest line; "all passages together" adds up
+the copper between the vias there. The rise is the IPC-2221 figure for a long track of that total width, so for
+these short necks it overstates. The fuse output runs on In2 with a display-side strap in parallel above and below
+the touch connector (vias at both ends of each strap); across the 1.8 mm gap kept for that connector's signals,
+In2 carries it alone on 4.7-6.9 mm of copper.
 
 ### Side-by-side runs (`coupling.py`)
 
 | Net | Neighbour | Layer | Side by side | Centre spacing | Estimated crosstalk |
 |---|---|---|---|---|---|
-| I2C_A_SCL | I2C_A_SDA | B | 24.3 mm | 0.25 mm | 0.6 % |
-| CHG_INT_N | LCD_TE | F | 16.5 mm | 0.30 mm | 0.3 % |
+| I2C_A_SCL | I2C_A_SDA | B | 12.2 mm | 0.25 mm | 0.3 % |
 | I2C_A_SDA | TOUCH_INT | B | 9.9 mm | 0.25 mm | 0.2 % |
 | TOUCH_INT | TOUCH_RST_N | B | 9.2 mm | 0.25 mm | 0.2 % |
 | +3V3 | I2C_A_SCL | B | 12.2 mm | 0.30 mm | 0.2 % |
-| LCD_RST_N | LED_ACT_N | B | 10.0 mm | 0.30 mm | 0.2 % ** |
+| SD_CLK | SD_D0 | B | 11.3 mm | 0.32 mm | 0.2 % ** |
 | LED_ACT_N | RUN_PG | F | 9.3 mm | 0.30 mm | 0.2 % ** |
-| CODEC_IRQ | I2S_MCLK | B | 7.9 mm | 0.35 mm | 0.1 % ** |
-| I2S_MCLK | USB_OTG_ID | B | 6.8 mm | 0.35 mm | 0.1 % ** |
-| I2C_B_SDA | I2S_MCLK | B | 2.8 mm | 0.35 mm | 0.0 % ** |
-| HPGND | I2S_SCLK | B | 2.1 mm | 0.30 mm | 0.0 % ** |
-| I2C_B_SCL | LED_ACT_N | In2 | 2.0 mm | 0.35 mm | 0.0 % ** |
-| CHG_QON_N | DSI_D1_P | F | 1.3 mm | 0.31 mm | 0.0 % ** |
+| I2S_DACDAT | I2S_MCLK | In2 | 1.9 mm | 0.40 mm | 0.0 % ** |
 | +1V8 | I2S_MCLK | F | 1.6 mm | 0.40 mm | 0.0 % ** |
+| HP_DET_SOC | I2S_MCLK | B | 1.2 mm | 0.35 mm | 0.0 % ** |
+| I2S_ADCDAT | I2S_SCLK | F | 1.2 mm | 0.35 mm | 0.0 % ** |
+
+128 net pairs run side by side within 0.3 mm; worst estimate 0.3 %.
 
 The estimate assumes copper 0.1 mm below or above the tracks, which holds on F (over In1) and on B and In2 where a
 ground pour or power area faces them. Where an In2 track has neither, the coupling is a few times higher: still
 well under a tenth of the logic swing at these lengths.
+
+### Track ends (`gr_io.py anchor`)
+
+The router works on a grid, so a track can end beside a pad or via with only its round end cap overlapping:
+connected for KiCad, a neck of a few hundredths of a millimetre on the board. An independent layout review found
+about 200 of these. Every such end is now extended into the centre of what it joins (336 on this board; two
+extensions were taken back because they came too close to a neighbour). `python3 gr_io.py anchor BOARD 0` lists
+what is left: four ends of hand-laid power tracks that end across a pair of pins, each overlapping both pads fully.
+
+### Known compromises
+
+| What | Why it was left |
+|---|---|
+| +3V3 and +1V8 are distributed as 0.1-0.13 mm tracks: 0.3-0.4 ohm to the SD socket, the touch connector and the codec | Routing them wide made the board unroutable in one pass. About 60 mV drop at 200 mA; a 3.3 V area on In2 is the fix for a second revision |
+| Codec capacitors are on the display side behind the codec, 0.5-5.6 mm from their pins through the board, each on the ground pour | The module side around the codec is taken by its escape vias. Expect some charge-pump ripple in the audio until the codec is laid by hand |
+| Boost input capacitor C21 is 4.4 mm of 0.4 mm track from VIN; SW and VOUT leave the chip on 0.5 mm tracks | Wider tracks short to the neighbouring pins of the 0.5 mm-pitch package; lengths are 1-3 mm |
+| The three switchers return through the In1 plane (0.1 mm below) rather than on the component layer | Vias beside every capacitor; a same-layer return needs the parts turned, which did not fit the strips |
+| LED_A (up to 38 V if the panel is unplugged) has 0.18 mm to its nearest neighbour | IPC-2221 asks 0.13 mm at that voltage on a coated outer layer |
 
 ## What is left for the bench
 

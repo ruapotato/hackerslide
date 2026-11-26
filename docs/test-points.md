@@ -24,7 +24,7 @@ picture is mirrored, so it shows that side as you see it with the board turned o
 | TP15 | CHG_QON_N | display | 34.6 | 8.2 | high (pack voltage); low while the power button is held |
 | TP16 | USB_OTG_ID | display | 46.4 | 25.1 | module OTG ID pin |
 | TP17 | VSYS_LIM | display | 69.8 | 35.2 | same as VSYS when the fuse U13 is on; 0 V if it has tripped or is held off |
-| TP20 | LED_A | module | 66.3 | 47.5 | backlight anode: about 12.8 V when lit, up to 39 V if the panel is unplugged (careful) |
+| TP20 | LED_A | module | 66.8 | 47.5 | backlight anode: about 12.8 V when lit, up to 39 V if the panel is unplugged (careful) |
 | TP21 | TOUCH_INT | display | 41.5 | 31.1 | pulses low on touch |
 | TP30 | I2S_LRCK | display | 33.5 | 37.0 | 48 kHz while audio plays |
 | TP31 | I2S_MCLK | display | 36.3 | 36.6 | 12.288 MHz while the codec is open |
@@ -34,8 +34,8 @@ picture is mirrored, so it shows that side as you see it with the board turned o
 | TP35 | UART_DBG_RX | display | 26.3 | 57.0 | console into the module: from the adapter's TX (3.3 V adapters only) |
 | TP36 | I2C_B_SCL | display | 40.8 | 25.6 | system I2C clock, idles at 3.3 V (0x6A charger, 0x36 gauge, 0x10 codec, 0x34 keyboard) |
 | TP37 | I2C_B_SDA | display | 47.2 | 30.8 | system I2C data, idles at 3.3 V |
-| D1 |  | module | 70.6 | 24.6 | red: charging (blinks on a charger fault) |
 | SW1 |  | module | 34.0 | 1.7 | power button |
+| D1 |  | module | 70.6 | 24.6 | red: charging (blinks on a charger fault) |
 | D2 |  | module | 60.1 | 64.4 | green: module activity |
 | SW4 |  | module | 60.0 | 55.0 | BOOT: hold while applying power for the USB loader |
 | SW5 |  | module | 60.0 | 60.3 | RESET |

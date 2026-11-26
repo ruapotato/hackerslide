@@ -16,6 +16,7 @@ for b in carrier keyboard keyboard-topplate keyboard-flex; do
 done
 echo "== carrier: power copper";      python3 power_paths.py 2>/dev/null | tee "$O/power.txt"; grep -q "not joined" "$O/power.txt" && bad=1
 echo "== carrier: side-by-side runs"; python3 coupling.py 2>/dev/null
+for b in carrier keyboard; do echo "== $b: track ends joined only by their rim"; python3 gr_io.py anchor ../$b/$b.kicad_pcb 0 2>/dev/null | tail -6; done
 echo "== carrier: part heights";      python3 fit_check.py 2>/dev/null || bad=1
 for b in carrier keyboard keyboard-topplate keyboard-flex; do
   echo "== $b: fabrication files in $O/fab/$b"

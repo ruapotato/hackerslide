@@ -301,6 +301,37 @@ class Board:
         for sd in ('F', 'B'):
             self.occupied.append((sd, x - m, y - m, x + m, y + m))
 
+    def gnd_via(self, ref, num, dist=0.75, w=0.2, d=0.45, drill=0.2):
+        """A ground via beside pad `num` of `ref`, at the first of eight directions where it is clear of everything
+        placed or scripted so far on either side, joined to the pad by a short track.  False if there is no room."""
+        x, y = self.pad_xy(ref, num)
+        fp = self.fps[ref]
+        side = 'B' if fp.IsFlipped() else 'F'
+        cx, cy = pcbnew.ToMM(fp.GetPosition().x), pcbnew.ToMM(fp.GetPosition().y)
+        out = math.atan2(y - cy, x - cx)                      # away from the part first
+        m = d / 2 + 0.2
+        for k in (0, 1, -1, 2, -2):                           # never back across the part's other pad
+            a = out + k * math.pi / 4
+            vx, vy = x + dist * math.cos(a), y + dist * math.sin(a)
+            box = (vx - m, vy - m, vx + m, vy + m)
+            rx0, ry0, rx1, ry1 = self.region
+            if vx - m < rx0 or vy - m < ry0 or vx + m > rx1 or vy + m > ry1:
+                continue
+            own = self.bbox(ref)
+            hit = False
+            for (sd, *o) in self.occupied:
+                if tuple(o) == tuple(own) and sd == side:
+                    continue
+                if not (box[2] <= o[0] or box[0] >= o[2] or box[3] <= o[1] or box[1] >= o[3]):
+                    hit = True
+                    break
+            if hit:
+                continue
+            self.track('GND', [(x, y), (vx, vy)], w, pcbnew.B_Cu if side == 'B' else pcbnew.F_Cu)
+            self.via('GND', vx, vy, d, drill)
+            return True
+        return False
+
     def via_xy(self, net, near):
         """position of the via of `net` nearest to the point `near` (for hooking scripted tracks onto fan-out vias)"""
         vs = [(pcbnew.ToMM(t.GetPosition().x), pcbnew.ToMM(t.GetPosition().y)) for t in self.b.GetTracks()
@@ -421,6 +452,16 @@ def finish_routing(board, route_args, clearances, rounds=16):
             skip |= opened
     if os.path.exists(board + '.pretidy'):
         os.remove(board + '.pretidy')
+    # full-width joints: every track end that only touches its pad, via or neighbour at the rim is extended into it;
+    # an extension the check objects to is taken back
+    if check()[2] == (0, 0):
+        subprocess.run(['python3', gr_io, 'anchor', board], check=True)
+        if os.path.exists(board + '.anchored'):
+            drc, d, state = check()
+            if state != (0, 0):
+                subprocess.run(['python3', gr_io, 'unanchor', board, drc], check=True)
+            os.remove(board + '.anchored')
+        print('after anchoring:', check()[2], flush=True)
     return check()[2]
 
 

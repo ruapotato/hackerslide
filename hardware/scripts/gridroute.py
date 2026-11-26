@@ -385,7 +385,7 @@ def main():
         print('stranded pour pads:', extra, flush=True)
     by_w = {}
     for c in conns:
-        w = a.power_width if d['classes'].get(c['net'], 'Default') == 'Power' else a.width
+        w = a.power_width if d['classes'].get(c['net'], 'Default') in ('Power', 'HV') else a.width
         by_w.setdefault(w, []).append(c)
     for w in sorted(by_w, reverse=not a.power_last):     # wide (power) nets first unless --power-last
         M = Maps(d, a.grid, a.layers.split(','), a.clearance, a.via, a.drill, a.edge)

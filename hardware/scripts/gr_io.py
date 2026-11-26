@@ -7,6 +7,7 @@ See gridroute.py for what happens in between.  Runs with the system python3 (it 
 """
 import fnmatch
 import json
+import math
 import os
 import re
 import sys
@@ -66,7 +67,7 @@ def export(board_path, drc_path, out_path):
             add(t, t.GetNetname(), [t.GetLayer()], 'track')
             # a segment the router itself laid in an earlier pass may be taken up again (gridroute --reroute);
             # the wide power class is left alone
-            if sc.routed(t) and power.get(t.GetNetname()) != 'Power':
+            if sc.routed(t) and power.get(t.GetNetname()) not in ('Power', 'HV'):
                 for it in items[n_before:]:
                     it['rip'] = {'seg': [MM(t.GetStart().x), MM(t.GetStart().y), MM(t.GetEnd().x), MM(t.GetEnd().y)], 'w': MM(t.GetWidth())}
     for z in b.Zones():
@@ -272,6 +273,125 @@ def ripnear(board_path, drc_path, radius):
     _finish(b, board_path, gone, f'ripnear {r} mm')
 
 
+def anchor(board_path, fix='1'):
+    """Give every track end a full-width joint.  The router works on a grid, so a track can end beside a pad, via or
+    other track with only its round end cap overlapping it: connected for KiCad, but a neck of a few hundredths of a
+    millimetre on the real board.  For each end whose centre is not inside copper of its own net, a short segment
+    is added to the centre of the pad or via it touches, or square onto the centreline of the track it touches.
+    With fix='0' it only counts."""
+    b = pcbnew.LoadBoard(board_path)
+    F = pcbnew.FromMM
+    tracks = [t for t in b.GetTracks() if t.Type() != pcbnew.PCB_VIA_T]
+    vias = [t for t in b.GetTracks() if t.Type() == pcbnew.PCB_VIA_T]
+    pads = [p for f in b.GetFootprints() for p in f.Pads() if p.GetNetname()]
+    by = {}
+    for t in tracks:
+        by.setdefault((t.GetNetCode(), t.GetLayer()), []).append(t)
+    vby, pby = {}, {}
+    for v in vias:
+        vby.setdefault(v.GetNetCode(), []).append(v)
+    for p in pads:
+        pby.setdefault(p.GetNetCode(), []).append(p)
+
+    def foot(pt, t):          # nearest point on a segment's centreline, and the distance to it
+        ax, ay, bx, by_ = t.GetStart().x, t.GetStart().y, t.GetEnd().x, t.GetEnd().y
+        dx, dy = bx - ax, by_ - ay
+        L2 = dx * dx + dy * dy
+        u = 0.0 if not L2 else max(0.0, min(1.0, ((pt.x - ax) * dx + (pt.y - ay) * dy) / L2))
+        qx, qy = ax + u * dx, ay + u * dy
+        return (qx, qy), math.hypot(pt.x - qx, pt.y - qy)
+    weak, added = 0, []
+    for t in tracks:
+        n, l, w = t.GetNetCode(), t.GetLayer(), t.GetWidth()
+        for pt in (t.GetStart(), t.GetEnd()):
+            target, inside = None, False
+            for o in by[(n, l)]:
+                if o is t:
+                    continue
+                q, d = foot(pt, o)
+                if d <= o.GetWidth() / 2 - w / 4 or d < 2000:       # well inside the other track, or on its centreline
+                    inside = True
+                    break
+                if d <= (o.GetWidth() + w) / 2 and (target is None or d < target[1]):
+                    target = (q, d)
+            if inside:
+                continue
+            for v in vby.get(n, []):
+                d = math.hypot(pt.x - v.GetPosition().x, pt.y - v.GetPosition().y)
+                if d < 2000:
+                    inside = True
+                    break
+                if d <= (v.GetWidth(l) + w) / 2 and (target is None or d <= target[1] + w):
+                    target = ((v.GetPosition().x, v.GetPosition().y), 0)
+            if inside:
+                continue
+            for p in pby.get(n, []):
+                if not p.IsOnLayer(l):
+                    continue
+                poly = p.GetEffectivePolygon(l, pcbnew.ERROR_INSIDE)
+                if poly.Contains(pcbnew.VECTOR2I(pt.x, pt.y), -1, int(w / 4)) and not poly.Contains(pcbnew.VECTOR2I(pt.x, pt.y), -1, 0):
+                    target = ((p.GetPosition().x, p.GetPosition().y), 0)       # on the rim
+                elif poly.Contains(pcbnew.VECTOR2I(pt.x, pt.y), -1, 0):
+                    # inside the pad: good if at least a quarter width from its edge, else pull it to the centre
+                    shrunk = pcbnew.SHAPE_POLY_SET(poly)
+                    shrunk.Deflate(int(w / 4), pcbnew.CORNER_STRATEGY_ROUND_ALL_CORNERS, 5000)
+                    if shrunk.OutlineCount() and shrunk.Contains(pcbnew.VECTOR2I(pt.x, pt.y), -1, 0):
+                        inside = True
+                    else:
+                        target = ((p.GetPosition().x, p.GetPosition().y), 0)
+                    break
+                elif poly.Contains(pcbnew.VECTOR2I(pt.x, pt.y), -1, int(w / 2) + 1000):
+                    target = ((p.GetPosition().x, p.GetPosition().y), 0)
+            if inside or target is None:
+                continue
+            weak += 1
+            if fix != '1':
+                print(f'  {t.GetNetname()} on {t.GetLayerName()} at ({MM(pt.x):.3f}, {MM(pt.y):.3f}), track {MM(w):.2f} mm')
+            if fix == '1':
+                s = pcbnew.PCB_TRACK(b)
+                s.SetStart(pcbnew.VECTOR2I(pt.x, pt.y)); s.SetEnd(pcbnew.VECTOR2I(int(target[0][0]), int(target[0][1])))
+                s.SetWidth(w); s.SetLayer(l); s.SetNetCode(n)
+                added.append(s)
+    for s in added:
+        b.Add(s)
+    print(f'anchor: {weak} track ends joined only by their rim' + (f', {len(added)} extended' if fix == '1' else ''), flush=True)
+    if added:
+        json.dump([[s.GetNetname(), s.GetLayerName(), MM(s.GetStart().x), MM(s.GetStart().y), MM(s.GetEnd().x), MM(s.GetEnd().y)]
+                   for s in added], open(board_path + '.anchored', 'w'))
+        pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+        pcbnew.SaveBoard(board_path, b)
+    os._exit(0)
+
+
+def unanchor(board_path, drc_path):
+    """Take back the extensions made by anchor() that the design-rule check objects to (an extension toward a pad's
+    centre can come too close to a neighbour).  Those few ends keep their rim joint; anchor(fix='0') counts them."""
+    b = pcbnew.LoadBoard(board_path)
+    added = json.load(open(board_path + '.anchored'))
+    bad = [it for v in json.load(open(drc_path))['violations'] if v['severity'] == 'error' for it in v['items']]
+    gone = []
+    for t in b.GetTracks():
+        if t.Type() == pcbnew.PCB_VIA_T:
+            continue
+        k = [t.GetNetname(), t.GetLayerName(), MM(t.GetStart().x), MM(t.GetStart().y), MM(t.GetEnd().x), MM(t.GetEnd().y)]
+        if not any(k[:2] == a[:2] and all(abs(p - q) < 1e-4 for p, q in zip(k[2:], a[2:])) for a in added):
+            continue
+        mx, my = (k[2] + k[4]) / 2, (k[3] + k[5]) / 2
+        L = math.hypot(k[4] - k[2], k[5] - k[3])
+        for it in bad:
+            if f'[{k[0]}]' in it['description'] and it['description'].startswith('Track') and \
+                    math.hypot(it['pos']['x'] - mx, it['pos']['y'] - my) <= L / 2 + 0.05:
+                gone.append(t)
+                break
+    for t in gone:
+        b.Remove(t)
+    print(f'anchor: {len(gone)} extensions taken back', flush=True)
+    if gone:
+        pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+        pcbnew.SaveBoard(board_path, b)
+    os._exit(0)
+
+
 def tidy(board_path, drc_path, skip=''):
     """Remove what the check calls dangling, if the router made it: vias used on one layer only and segments that end
     in nothing.  Scripted escape vias that turned out unused are removed too; scripted tracks stay."""
@@ -298,7 +418,7 @@ def tidy(board_path, drc_path, skip=''):
 
 if __name__ == '__main__':
     cmd = sys.argv[1]
-    if cmd in ('tidy', 'ripdrc', 'ripnear', 'rip', 'save_scripted'):
+    if cmd in ('tidy', 'ripdrc', 'ripnear', 'rip', 'save_scripted', 'anchor', 'unanchor'):
         globals()[cmd](*sys.argv[2:])
     elif cmd == 'export':
         export(*sys.argv[2:5])

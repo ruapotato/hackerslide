@@ -74,6 +74,7 @@ def charger(B, ox, oy):
     c.T('GND', [('C11', '2'), ('C12', '2')], 0.9)
     c.gnd('C12', '2', -0.5, -1.25)
     c.gnd('C12', '2', 0.15, -1.25)
+    c.V('GND', c.rel('C11', '2')[0], -2.75)               # and one on the bar between the two, 1 mm from C11
     # SW: pins 19/20 -> L1 pad 1, bootstrap capacitor C13 from BTST straight onto the SW copper
     c.P('L1', 1.15, 5.5, 180)
     c.P('C13', 3.45, 0.7, -90)
@@ -163,7 +164,8 @@ def charger(B, ox, oy):
     c.gnd('C27', '2', 0.0, 0.8, w=0.3, d=0.45, drill=0.2)
     c.P('TP2', 4.8, 6.1, 0, 'B')
     c.T('VSYS', [(4.5, 7.9), ('TP2', '1')], 0.4, Bk)
-    c.V('GND', 3.8, 10.3, 0.45, 0.2)                      # in the exposed pad
+    for dx in (-0.5, 0.0, 0.5):                           # in the exposed pad (1.6 x 0.9 mm as turned, about 0.3 W at 3 A)
+        c.V('GND', 3.8 + dx, 10.3, 0.45, 0.2)
     c.T('GND', [('U13', '8'), (3.3, 10.6)], 0.25, Bk)
     # current limit: R66 right at ILM
     c.two('R66', 3.3, 13.1, 'U', 'B')
@@ -236,7 +238,7 @@ def boost(B, ox, oy):
     c.T('+5V', [(-0.25, -1.48), (-0.25, -3.3)], 0.5)
     c.T('+5V', [('C22', '1'), ('C24', '1'), (-5.4, -3.3)], 1.0)
     c.T('GND', [('C22', '2'), ('C24', '2')], 0.9)
-    for x in (-0.25, -2.25, -4.25):
+    for x in (-0.25, -2.25, -4.25):                        # one via each: more would cut the +5V copper behind them
         c.T('GND', [(x, -5.2), (x, -6.2)], 0.4)
         c.V('GND', x, -6.2)
     # +5V to the module: three vias into the +5V copper on the display side, which runs to the fan-out vias of
@@ -254,10 +256,11 @@ def boost(B, ox, oy):
     c.two('C21', 3.9, 4.85, 'L')
     c.T('VSYS_LIM', [(2.91, 2.1), (2.91, 4.5)], 0.4)
     c.gnd('C21', '2', 1.05, 0.0)
-    c.T('VSYS_LIM', [(5.2, 1.85), (6.4, 1.85)], 0.6)
-    c.T('VSYS_LIM', [(6.4, 1.1), (6.4, 2.6)], 0.6)
-    for y in (1.1, 1.85, 2.6):
-        c.V('VSYS_LIM', 6.4, y)
+    c.T('VSYS_LIM', [(5.2, 1.85), (7.3, 1.85)], 1.2)       # six vias for up to 3 A, on copper as wide as the pad allows
+    for x in (6.4, 7.3):
+        c.T('VSYS_LIM', [(x, 1.0), (x, 2.7)], 0.6)
+        for y in (1.0, 1.85, 2.7):
+            c.V('VSYS_LIM', x, y)
     # under-voltage divider: R17 from VIN to EN, R23 from EN to HYS, R24 from HYS to ground
     c.two('R23', 0.5, 2.75, 'R')
     c.T('BOOST_HYS', [('U5', '8'), ('R23', '2')], 0.15)
@@ -496,6 +499,8 @@ def backlight(B, ox, oy):
     gx, gy = c.rel('U6', '2')
     c.T('GND', [(gx, gy), (gx, gy + 0.8)], 0.25)
     c.V('GND', gx, gy + 0.8, 0.45, 0.2)
+    c.V('GND', gx, gy - 0.95, 0.45, 0.2)                   # and one under the part, between the pin rows
+    c.T('GND', [(gx, gy), (gx, gy - 0.95)], 0.25)
     fx, fy = c.rel('U6', '3')
     c.two('R42', fx + 1.8, fy, 'L')
     c.T('LED_K', [('U6', '3'), ('R42', '1')], 0.2)

@@ -45,12 +45,13 @@ RULES = {'min_clearance': 0.09, 'min_track_width': 0.09, 'min_via_diameter': 0.4
 # (JLCPCB JLC04101H-3313, see bom/fab-orders.md); with 7628 prepreg (0.21 mm) these pairs would be 107 / 97 ohm.
 CLASSES = [{'name': 'Default', 'clearance': 0.09, 'track_width': 0.1, 'via_diameter': 0.45, 'via_drill': 0.2},
            {'name': 'Power', 'clearance': 0.09, 'track_width': 0.5, 'via_diameter': 0.6, 'via_drill': 0.3},
+           {'name': 'HV', 'clearance': 0.09, 'track_width': 0.3, 'via_diameter': 0.6, 'via_drill': 0.3},   # backlight: up to 38 V
            {'name': 'DSI', 'clearance': 0.09, 'track_width': 0.1, 'via_diameter': 0.45, 'via_drill': 0.2,
             'diff_pair_width': 0.1, 'diff_pair_gap': 0.15},
            {'name': 'USB', 'clearance': 0.09, 'track_width': 0.12, 'via_diameter': 0.45, 'via_drill': 0.2,
             'diff_pair_width': 0.12, 'diff_pair_gap': 0.12}]
 PATTERNS = [('VBUS', 'Power'), ('VSYS', 'Power'), ('VSYS_LIM', 'Power'), ('VBAT', 'Power'), ('+5V', 'Power'), ('PMID', 'Power'),
-            ('CHG_SW', 'Power'), ('BOOST_SW', 'Power'), ('BL_SW', 'Power'), ('LED_A', 'Power'),
+            ('CHG_SW', 'Power'), ('BOOST_SW', 'Power'), ('BL_SW', 'HV'), ('LED_A', 'HV'),
             ('DSI_*', 'DSI'), ('USB_D?', 'USB')]
 
 
@@ -142,10 +143,14 @@ def build(bdir, do_route=False):
     # ---- power: charger + gauge (left strip, next to the battery bay) ----
     cells.charger(B, *U3_XY)
     # second VSYS_LIM path on the display side, parallel to the In2 area (3 A): keep parts and vias out of it
-    for vx in (64.8, 65.8, 66.8, 67.8):
+    for vx in (64.9, 66.1, 67.3):                 # 1.2 mm apart: the ground plane keeps its webs between them
         B.via('VSYS_LIM', vx, 58.9, 0.6, 0.3)
+        B.via('VSYS_LIM', vx - 0.2, 53.2, 0.6, 0.3)   # and again above, so both ends of the lower strap are tied to In2
+    for vy in (46.3, 47.5, 48.7):                 # lower end of the upper strap (beside J5's body)
+        B.via('VSYS_LIM', 64.75, vy, 0.6, 0.3)
+    keep.append((64.2, 45.8, 65.3, 49.3)); keep.append((64.1, 52.6, 67.8, 53.8))
     keep_b.append((64.0, U3_XY[1] + 13.8, 68.4, 65.7))
-    keep_b.append((52.0, 62.2, 68.4, 65.7)); keep_b.append((52.0, 60.0, 54.2, 65.7))
+    keep_b.append((52.0, 62.2, 68.4, 65.7)); keep_b.append((52.0, 60.0, 54.9, 65.7))
     B.fanout('U3', lengths=(0.9, 1.5), width=0.15, only=CHG_SIGNALS[:5])
     cells.gauge(B, 65.0, 9.0)
     # ---- USB-C side (right strip) ----
@@ -155,8 +160,20 @@ def build(bdir, do_route=False):
     pk(['C76', 'R75'], HALL[0], 5.0, region=(38.0, 0.3, 45.0, 11.8))
     # ---- audio (top strip next to the jack) ----
     PF('U7', 19.5, 6.3, 0, lens=(1.0, 1.6, 2.2))
-    pk(['C58', 'C59', 'C64', 'C53', 'C50', 'C51', 'C52', 'C54', 'C55', 'C56', 'C57', 'C63', 'R44'], 19.5, 6.3, region=(14.0, 0.3, 30.3, 11.8))
-    pk(['R46', 'R47', 'R49', 'R69', 'R60', 'R61', 'R62', 'R63', 'D10', 'D11', 'D12', 'C60', 'C61', 'C62', 'R45', 'R65', 'R48', 'R64'], 13.0, 10.8, region=(0.4, 0.3, 33.0, 11.8))
+    # codec decoupling: on the display side straight behind the codec, each capacitor at the escape via of its pin
+    # (the vias ring the part on the module side, so there the nearest free spot is 5-10 mm away); then a ground
+    # via at each capacitor
+    for ref, ax, ay in (('C50', 20.1, 10.3), ('C58', 21.2, 10.3), ('C59', 19.2, 10.3), ('C52', 23.5, 5.6),
+                        ('C55', 23.5, 6.4), ('C56', 23.5, 4.6), ('C57', 21.1, 2.3), ('C63', 20.2, 2.3),
+                        ('C53', 15.5, 5.5), ('C51', 15.5, 6.3), ('C64', 20.1, 11.2), ('C54', 24.8, 5.2)):
+        B.pack([ref], ax, ay, 'B', region=(13.5, 0.4, 30.0, 11.9), keepout=keep_b)
+        if ref != 'C58' and not any(B.gnd_via(ref, '2', dist=d_) for d_ in (0.75, 1.1, 1.5)):
+            print('no room for a ground via at', ref)
+    pk(['R44'], 24.0, 3.0, region=(14.0, 0.3, 30.3, 11.8))
+    # HPGND joins ground at the jack and nowhere else: R49 beside the sleeve strap R60
+    B.pack(['R49'], 13.6, 10.4, 'B', region=(9.0, 6.0, 19.0, 11.9), keepout=keep_b)
+    B.gnd_via('R49', '2')
+    pk(['R46', 'R47', 'R69', 'R60', 'R61', 'R62', 'R63', 'D10', 'D11', 'D12', 'C60', 'C61', 'C62', 'R45', 'R65', 'R48', 'R64'], 13.0, 10.8, region=(0.4, 0.3, 33.0, 11.8))
     # ---- I2S straps under the J1A I2S pins (x 32..37) ----
     # I2S straps and their test pads: display side, under the module just north of J1A.  Both alternatives start at
     # module pins in x 32..37 and all five signals go on to the codec in the top strip, so nothing has to cross J1A
@@ -169,6 +186,10 @@ def build(bdir, do_route=False):
     # Everything of it stays above y 45: the touch connector J5 is on the display side at y 44-50, and the module
     # side is the only layer on which its signals can cross this strip (In2 and the display side are VSYS_LIM copper)
     cells.backlight(B, 66.5, 38.4)
+    lx, ly = B.pad_xy('L3', '1'); rx, _ = B.pad_xy('L3', '2')
+    z = B.zone(None, pcbnew.F_Cu, [(min(lx, rx) + 0.75, ly - 1.7), (max(lx, rx) - 0.75, ly - 1.7), (max(lx, rx) - 0.75, ly + 1.7),
+                                  (min(lx, rx) + 0.75, ly + 1.7)], keepout=True)
+    z.SetDoNotAllowTracks(True); z.SetZoneName('no_tracks_under_L3')     # nothing between the inductor's pads
     pk(['TP20'], 64.5, 47.5, region=(62.8, 36.3, 71.3, 58.0))
     pk(['R25', 'R67'], 67.0, 36.0, region=(62.8, 33.0, 71.3, 58.0))
     pk(['R86', 'R87'], 58.5, 5.0, region=(45.0, 3.8, 61.8, 11.8))
@@ -198,6 +219,12 @@ def build(bdir, do_route=False):
     pk(rest, 66.0, 58.0, region=(56.8, 46.0, 71.3, 65.6))
     left = B.unplaced()
     assert not left, left
+    # ground vias right at the parts whose ground the pour and the router would otherwise bring from afar:
+    # the jack's ESD diodes, the SD and panel supply capacitors, the hall sensor's capacitor, the USB ESD part
+    for ref, pad in (('D10', '2'), ('D11', '2'), ('D12', '2'), ('C80', '2'), ('C81', '2'), ('C41', '2'), ('C40', '2'),
+                     ('C76', '2'), ('C33', '2'), ('C34', '2'), ('C35', '2'), ('C36', '2')):
+        if not any(B.gnd_via(ref, pad, dist=d_) for d_ in (0.75, 1.1, 1.5, 2.0)):
+            print('no room for a ground via at', ref)
     print('on the display side for lack of room:', ' '.join(moved))
     # ---- documentation layers ----
     B.rect(*MODULE, pcbnew.F_Fab, 0.15)
@@ -238,7 +265,7 @@ def build(bdir, do_route=False):
     area('VSYS_LIM', pcbnew.B_Cu, ox - 1.2, oy + 14.0, ox + 2.8, 50.1)
     area('VSYS_LIM', pcbnew.B_Cu, ox - 1.2, 51.9, ox + 2.8, 65.65)
     area('VSYS_LIM', pcbnew.B_Cu, 52.2, 62.4, ox + 2.8, 65.65)                # ... along the bottom edge ...
-    area('VSYS_LIM', pcbnew.B_Cu, 52.2, 60.2, 54.0, 65.65)                    # ... to the boost's three VSYS_LIM vias
+    area('VSYS_LIM', pcbnew.B_Cu, 52.2, 60.2, 54.7, 65.65)                    # ... to the boost's three VSYS_LIM vias
     bx, by = U5_XY
     area('+5V', pcbnew.F_Cu, 42.2, 50.2, 45.6, 53.2)             # ties the stubs of module pins 77-87 together
     area('+5V', pcbnew.B_Cu, bx - 5.9, 50.6, bx - 1.6, by - 1.9)  # boost output vias -> fan-out vias of pins 77-87

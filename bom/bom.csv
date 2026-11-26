@@ -1,138 +1,138 @@
 board,refs,qty,fitted,value,footprint,maker,mpn,lcsc,jlc_type,unit_price_usd,stock,source_url,date_checked,status
-carrier,C10 C37 C55 C56 C57 C58 C60 C61 C63 C64 C77,11,yes,1u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A105KA5NQNC,C52923,basic,0.0046,12389312,https://jlcpcb.com/partdetail/C52923,2026-11-25,in stock
-carrier,C11 C12 C15 C16 C21 C22 C23 C24,8,yes,22u,C_0805_2012Metric,Samsung Electro-Mechanics,CL21A226MAQNNNE,C45783,basic,0.0915,4526031,https://jlcpcb.com/partdetail/C45783,2026-11-25,in stock
-carrier,C13,1,yes,47n,C_0402_1005Metric,Samsung Electro-Mechanics,CL05B473KO5NNNC,C307434,extended,0.0077,80523,https://jlcpcb.com/partdetail/C307434,2026-11-25,in stock
-carrier,C14,1,yes,4.7u,C_0603_1608Metric,Samsung Electro-Mechanics,CL10A475KO8NNNC,C19666,basic,0.0169,2976045,https://jlcpcb.com/partdetail/C19666,2026-11-25,in stock
-carrier,C17 C35 C36 C40 C54 C80,6,yes,10u,C_0603_1608Metric,Samsung Electro-Mechanics,CL10A106KP8NNNC,C19702,basic,0.014,8977784,https://jlcpcb.com/partdetail/C19702,2026-11-25,in stock
-carrier,C20,1,yes,22n,C_0402_1005Metric,FH (Guangdong Fenghua Advanced Tech),0402B223K500NT,C1532,basic,0.0034,540029,https://jlcpcb.com/partdetail/C1532,2026-11-25,in stock
-carrier,C19 C25 C27 C30 C33 C34 C41 C50 C51 C52 C53 C76 C81,13,yes,100n,C_0402_1005Metric,Samsung Electro-Mechanics,CL05B104KO5NNNC,C1525,basic,0.0029,31140553,https://jlcpcb.com/partdetail/C1525,2026-11-25,in stock
-carrier,C26,1,DNP,22p,C_0402_1005Metric,FH (Guangdong Fenghua Advanced Tech),0402CG220J500NT,C1555,basic,0.0018,2099946,https://jlcpcb.com/partdetail/C1555,2026-11-25,in stock
-carrier,C42,1,yes,2.2u,C_0805_2012Metric,Samsung Electro-Mechanics,CL21A225KBFNNNE,C307528,extended,0.1242,17040,https://jlcpcb.com/partdetail/C307528,2026-11-25,in stock
-carrier,C43 C59,2,yes,4.7u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A475MP5NRNC,C23733,basic,0.0096,2811214,https://jlcpcb.com/partdetail/C23733,2026-11-25,in stock
-carrier,C62,1,yes,100p,C_0402_1005Metric,FH (Guangdong Fenghua Advanced Tech),0402CG101J500NT,C1546,basic,0.0018,2640912,https://jlcpcb.com/partdetail/C1546,2026-11-25,in stock
-carrier,C90,1,DNP,2.2u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A225MQ5NSNC,C12530,basic,0.005,2797019,https://jlcpcb.com/partdetail/C12530,2026-11-25,in stock
-carrier,D1,1,yes,red,LED_0603_1608Metric,Hubei KENTO Elec,KT-0603R,C2286,basic,0.0077,8657445,https://jlcpcb.com/partdetail/C2286,2026-11-25,in stock
-carrier,D10 D11 D12,3,yes,PESD5V0S1BL,D_SOD-882,Nexperia,"PESD5V0S1BL,315",C84374,extended,0.0333,73750,https://jlcpcb.com/partdetail/C84374,2026-11-25,in stock
-carrier,D2 D13,2,yes,green,LED_0603_1608Metric,Hubei KENTO Elec,KT-0603G,C12624,extended,0.0119,159314,https://jlcpcb.com/partdetail/C12624,2026-11-25,in stock
-carrier,D3 D7 D8,3,yes,BAT54WS,D_SOD-323,Diodes Incorporated,BAT54WS-7-F,C124205,extended,0.1085,62351,https://jlcpcb.com/partdetail/C124205,2026-11-25,in stock
-carrier,D4,1,yes,NSR0240H,D_SOD-323,onsemi,NSR0240HT1G,C152519,extended,0.0748,14712,https://jlcpcb.com/partdetail/C152519,2026-11-25,in stock
-carrier,D5,1,yes,SMF6.0A,D_SOD-123F,MDD(Microdiode Semiconductor),SMF6.0A,C123790,extended,0.0361,72707,https://jlcpcb.com/partdetail/C123790,2026-11-25,in stock
-carrier,D9,1,DNP,BAT54WS,D_SOD-323,Diodes Incorporated,BAT54WS-7-F,C124205,extended,0.1085,62351,https://jlcpcb.com/partdetail/C124205,2026-11-25,in stock
-carrier,H1 H2 H3 H4,4,yes,M2.5 spacer 1.5mm,Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R,Wurth Elektronik,9774015151R,C5353804,extended,0.4342,1831,https://jlcpcb.com/partdetail/C5353804,2026-11-25,in stock
-carrier,J10,1,yes,BATT,Molex_SPOX_5268-03A_1x03_P2.50mm_Horizontal,MOLEX,22057035,C185225,extended,0.1149,15500,https://jlcpcb.com/partdetail/C185225,2026-11-25,in stock
-carrier,J1A J1B,2,yes,DF40C-100DS-0.4V(51),Hirose_DF40C-100DS-0.4V_2x50_P0.4mm,HRS(Hirose),DF40C-100DS-0.4V(51),C597931,extended,0.9174,13896,https://jlcpcb.com/partdetail/C597931,2026-11-25,in stock
-carrier,J2,1,yes,TYPE-C-31-M-12,USB_C_Receptacle_HRO_TYPE-C-31-M-12,Korean Hroparts Elec,TYPE-C-31-M-12,C165948,extended,0.1871,436396,https://jlcpcb.com/partdetail/C165948,2026-11-25,in stock
-carrier,J4,1,yes,FH34SRJ-20S-0.5SH,Hirose_FH34SRJ-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal,HRS(Hirose),FH34SRJ-20S-0.5SH(50),C2802370,extended,0.2841,2625,https://jlcpcb.com/partdetail/C2802370,2026-11-25,in stock
-carrier,J5 J9,2,yes,FH34SRJ-8S-0.5SH,Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal,HRS(Hirose),FH34SRJ-8S-0.5SH(50),C88372,extended,0.1255,64587,https://jlcpcb.com/partdetail/C88372,2026-11-25,in stock
-carrier,J6,1,yes,PJ-342,Jack_3.5mm_SHOUHAN_PJ-342,SHOU HAN,PJ-342,C668606,extended,0.1763,56193,https://jlcpcb.com/partdetail/C668606,2026-11-25,in stock
-carrier,J7,1,yes,microSD,microSD_HC_Molex_104031-0811,MOLEX,1040310811,C585350,extended,0.6782,44663,https://jlcpcb.com/partdetail/C585350,2026-11-25,in stock
-carrier,J8,1,yes,DEBUG UART,JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal,JST,SM03B-SRSS-TB(LF)(SN),C160403,extended,0.196,20234,https://jlcpcb.com/partdetail/C160403,2026-11-25,in stock
-carrier,L1,1,yes,2.2uH,L_Sunlord_MWSA0402S,Sunlord,MWSA0402S-2R2MT,C408335,extended,0.1445,15588,https://jlcpcb.com/partdetail/C408335,2026-11-25,in stock
-carrier,L2,1,yes,1uH,L_Sunlord_MWSA0402S,Sunlord,MWSA0402S-1R0MT,C408332,extended,0.157,11042,https://jlcpcb.com/partdetail/C408332,2026-11-25,in stock
-carrier,L3,1,yes,10uH,L_Sunlord_SWPA4030S,Sunlord,SWPA4030S100MT,C38117,extended,0.0479,17013,https://jlcpcb.com/partdetail/C38117,2026-11-25,in stock
-carrier,R10 R11,2,yes,5.1k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5101TCE,C25905,basic,0.0014,5354537,https://jlcpcb.com/partdetail/C25905,2026-11-25,in stock
-carrier,R12,1,yes,470,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4700TCE,C25117,basic,0.001,2203947,https://jlcpcb.com/partdetail/C25117,2026-11-25,in stock
-carrier,R13,1,yes,5.23k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5231TCE,C25907,extended,0.0012,205793,https://jlcpcb.com/partdetail/C25907,2026-11-25,in stock
-carrier,R14,1,yes,30.1k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF3012TCE,C29402,extended,0.0012,193656,https://jlcpcb.com/partdetail/C29402,2026-11-25,in stock
-carrier,R15 R45,2,yes,2.2k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF2201TCE,C25879,basic,0.0011,2602948,https://jlcpcb.com/partdetail/C25879,2026-11-25,in stock
-carrier,R17,1,yes,1M,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1004TCE,C26083,basic,0.001,3310457,https://jlcpcb.com/partdetail/C26083,2026-11-25,in stock
-carrier,R18,1,yes,402k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4023TCE,C25785,extended,0.0011,133187,https://jlcpcb.com/partdetail/C25785,2026-11-25,in stock
-carrier,R19 R20 R43,3,yes,100k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1003TCE,C25741,basic,0.0009,12002569,https://jlcpcb.com/partdetail/C25741,2026-11-25,in stock
-carrier,R21 R22 R31 R57 R58 R59 R62 R63,8,DNP,0,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF0000TCE,C17168,basic,0.0012,13124488,https://jlcpcb.com/partdetail/C17168,2026-11-25,in stock
-carrier,R23,1,yes,560k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5603TCE,C132339,extended,0.0013,717948,https://jlcpcb.com/partdetail/C132339,2026-11-25,in stock
-carrier,R24,1,yes,51k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5102TCE,C25794,basic,0.0013,1240165,https://jlcpcb.com/partdetail/C25794,2026-11-25,in stock
-carrier,R16 R25 R27 R48 R67 R69 R73 R74 R85 R86 R87,11,yes,10k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1002TCE,C25744,basic,0.0009,33104762,https://jlcpcb.com/partdetail/C25744,2026-11-25,in stock
-carrier,R26 R64 R75,3,yes,1k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1001TCE,C11702,basic,0.0011,28172446,https://jlcpcb.com/partdetail/C11702,2026-11-25,in stock
-carrier,R28 R29 R65,3,yes,15k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1502TCE,C25756,basic,0.0011,1902782,https://jlcpcb.com/partdetail/C25756,2026-11-25,in stock
-carrier,R32,1,yes,330,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF3300TCE,C25104,basic,0.0011,1987688,https://jlcpcb.com/partdetail/C25104,2026-11-25,in stock
-carrier,R33 R34,2,yes,100,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1000TCE,C25076,basic,0.0011,9512766,https://jlcpcb.com/partdetail/C25076,2026-11-25,in stock
-carrier,R35 R36,2,DNP,100,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1000TCE,C25076,basic,0.0011,9512766,https://jlcpcb.com/partdetail/C25076,2026-11-25,in stock
-carrier,R37,1,yes,220,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF2200TCE,C25091,basic,0.0018,1492242,https://jlcpcb.com/partdetail/C25091,2026-11-25,in stock
-carrier,R42,1,yes,5.1,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF510KTCE,C25128,extended,0.0014,235822,https://jlcpcb.com/partdetail/C25128,2026-11-25,in stock
-carrier,R46 R47 R50 R51,4,yes,33,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF330JTCE,C25105,basic,0.001,4261316,https://jlcpcb.com/partdetail/C25105,2026-11-25,in stock
-carrier,R55 R56,2,DNP,33,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF330JTCE,C25105,basic,0.001,4261316,https://jlcpcb.com/partdetail/C25105,2026-11-25,in stock
-carrier,R66,1,yes,680,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF6800TCE,C25130,extended,0.0012,179939,https://jlcpcb.com/partdetail/C25130,2026-11-25,in stock
-carrier,R30 R44 R49 R52 R53 R54 R60 R61 R68,9,yes,0,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF0000TCE,C17168,basic,0.0012,13124488,https://jlcpcb.com/partdetail/C17168,2026-11-25,in stock
-carrier,R80 R81 R82 R83 R84,5,yes,47k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4702TCE,C25792,basic,0.0019,5045116,https://jlcpcb.com/partdetail/C25792,2026-11-25,in stock
-carrier,R90,1,yes,10M,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1005TCE,C26082,extended,0.0012,1172197,https://jlcpcb.com/partdetail/C26082,2026-11-25,in stock
-carrier,R91,1,DNP,1M,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1004TCE,C26083,basic,0.001,3310457,https://jlcpcb.com/partdetail/C26083,2026-11-25,in stock
-carrier,R40 R41 R71 R72 R92,5,yes,4.7k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4701TCE,C25900,basic,0.0016,12376177,https://jlcpcb.com/partdetail/C25900,2026-11-25,in stock
-carrier,SW1,1,yes,PWR,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.1832,12363,https://jlcpcb.com/partdetail/C388883,2026-11-25,in stock
-carrier,SW2,1,yes,VOL+,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.1832,12363,https://jlcpcb.com/partdetail/C388883,2026-11-25,in stock
-carrier,SW3,1,yes,VOL-,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.1832,12363,https://jlcpcb.com/partdetail/C388883,2026-11-25,in stock
-carrier,SW4,1,yes,BOOT,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.1832,12363,https://jlcpcb.com/partdetail/C388883,2026-11-25,in stock
-carrier,SW5,1,yes,RESET,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.1832,12363,https://jlcpcb.com/partdetail/C388883,2026-11-25,in stock
-carrier,TH1,1,DNP,10k B3380,R_0402_1005Metric,Murata Electronics,NCP15XH103F03RC,C77131,extended,0.0158,303760,https://jlcpcb.com/partdetail/C77131,2026-11-25,in stock
-carrier,U10,1,yes,DRV5032FADBZR,SOT-23,Texas Instruments,DRV5032FADBZR,C140921,extended,0.1709,58542,https://jlcpcb.com/partdetail/C140921,2026-11-25,in stock
-carrier,U11 U12,2,yes,TPD4E05U06DQAR,USON-10_2.5x1.0mm_P0.5mm,Texas Instruments,TPD4E05U06DQAR,C138714,extended,0.0843,34308,https://jlcpcb.com/partdetail/C138714,2026-11-25,in stock
-carrier,U13,1,yes,TPS259571DSGR,WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm,Texas Instruments,TPS259571DSGR,C471038,extended,0.7503,143,https://jlcpcb.com/partdetail/C471038,2026-11-25,in stock
-carrier,U2,1,yes,USBLC6-2SC6,SOT-23-6,STMicroelectronics,USBLC6-2SC6,C7519,extended,0.1522,37847,https://jlcpcb.com/partdetail/C7519,2026-11-25,in stock
-carrier,U3,1,yes,BQ25895RTWR,Texas_RTW_WQFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm_ThermalVias,Texas Instruments,BQ25895RTWR,C80200,extended,1.7234,5943,https://jlcpcb.com/partdetail/C80200,2026-11-25,in stock
-carrier,U4,1,yes,MAX17048G+T10,TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm,Analog Devices Inc./Maxim Integrated,MAX17048G+T10,C2682616,extended,1.9462,25398,https://jlcpcb.com/partdetail/C2682616,2026-11-25,in stock
-carrier,U5,1,yes,TPS61230DRCR,Texas_S-PVSON-N10_ThermalVias,Texas Instruments,TPS61230DRCR,C139626,extended,1.648,15258,https://jlcpcb.com/partdetail/C139626,2026-11-25,in stock
-carrier,U6,1,yes,TPS61169DCKR,SOT-353_SC-70-5,Texas Instruments,TPS61169DCKR,C71045,extended,0.4007,15532,https://jlcpcb.com/partdetail/C71045,2026-11-25,in stock
-carrier,U7,1,yes,ES8316,VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm,Everest-semi(Everest Semiconductor),ES8316,C365735,extended,0.9141,4306,https://jlcpcb.com/partdetail/C365735,2026-11-25,in stock
-keyboard,C1,1,yes,100n,C_0402_1005Metric,Samsung Electro-Mechanics,CL05B104KO5NNNC,C1525,basic,0.0029,31140553,https://jlcpcb.com/partdetail/C1525,2026-11-25,in stock
-keyboard,C2,1,yes,1u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A105KA5NQNC,C52923,basic,0.0046,12389312,https://jlcpcb.com/partdetail/C52923,2026-11-25,in stock
-keyboard,D1 D2 D3 D4 D5 D6 D7 D8 D9 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D45 D46 D47 D48 D49 D50 D51 D52 D53,52,yes,1N4148W4,D_SOD-882,BORN,1N4148W4,C42432416,extended,0.0149,29104,https://jlcpcb.com/partdetail/C42432416,2026-11-25,in stock
+carrier,C10 C37 C55 C56 C57 C58 C60 C61 C63 C64 C77,11,yes,1u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A105KA5NQNC,C52923,basic,0.0046,12202060,https://jlcpcb.com/partdetail/C52923,2026-11-26,in stock
+carrier,C11 C12 C15 C16 C21 C22 C23 C24,8,yes,22u,C_0805_2012Metric,Samsung Electro-Mechanics,CL21A226MAQNNNE,C45783,basic,0.0914,4454477,https://jlcpcb.com/partdetail/C45783,2026-11-26,in stock
+carrier,C13,1,yes,47n,C_0402_1005Metric,Samsung Electro-Mechanics,CL05B473KO5NNNC,C307434,extended,0.0077,80003,https://jlcpcb.com/partdetail/C307434,2026-11-26,in stock
+carrier,C14,1,yes,4.7u,C_0603_1608Metric,Samsung Electro-Mechanics,CL10A475KO8NNNC,C19666,basic,0.0153,2941196,https://jlcpcb.com/partdetail/C19666,2026-11-26,in stock
+carrier,C17 C35 C36 C40 C54 C80,6,yes,10u,C_0603_1608Metric,Samsung Electro-Mechanics,CL10A106KP8NNNC,C19702,basic,0.014,10979923,https://jlcpcb.com/partdetail/C19702,2026-11-26,in stock
+carrier,C20,1,yes,22n,C_0402_1005Metric,FH (Guangdong Fenghua Advanced Tech),0402B223K500NT,C1532,basic,0.0034,535477,https://jlcpcb.com/partdetail/C1532,2026-11-26,in stock
+carrier,C19 C25 C27 C30 C33 C34 C41 C50 C51 C52 C53 C76 C81,13,yes,100n,C_0402_1005Metric,Samsung Electro-Mechanics,CL05B104KO5NNNC,C1525,basic,0.0029,30838862,https://jlcpcb.com/partdetail/C1525,2026-11-26,in stock
+carrier,C26,1,DNP,22p,C_0402_1005Metric,FH (Guangdong Fenghua Advanced Tech),0402CG220J500NT,C1555,basic,0.0018,2079592,https://jlcpcb.com/partdetail/C1555,2026-11-26,in stock
+carrier,C42,1,yes,2.2u,C_0805_2012Metric,Samsung Electro-Mechanics,CL21A225KBFNNNE,C307528,extended,0.1241,17005,https://jlcpcb.com/partdetail/C307528,2026-11-26,in stock
+carrier,C43 C59,2,yes,4.7u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A475MP5NRNC,C23733,basic,0.0096,2783299,https://jlcpcb.com/partdetail/C23733,2026-11-26,in stock
+carrier,C62,1,yes,100p,C_0402_1005Metric,FH (Guangdong Fenghua Advanced Tech),0402CG101J500NT,C1546,basic,0.0018,2576807,https://jlcpcb.com/partdetail/C1546,2026-11-26,in stock
+carrier,C90,1,DNP,2.2u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A225MQ5NSNC,C12530,basic,0.005,2790335,https://jlcpcb.com/partdetail/C12530,2026-11-26,in stock
+carrier,D1,1,yes,red,LED_0603_1608Metric,Hubei KENTO Elec,KT-0603R,C2286,basic,0.0077,8600059,https://jlcpcb.com/partdetail/C2286,2026-11-26,in stock
+carrier,D10 D11 D12,3,yes,PESD5V0S1BL,D_SOD-882,Nexperia,"PESD5V0S1BL,315",C84374,extended,0.0333,73583,https://jlcpcb.com/partdetail/C84374,2026-11-26,in stock
+carrier,D2 D13,2,yes,green,LED_0603_1608Metric,Hubei KENTO Elec,KT-0603G,C12624,extended,0.0119,158245,https://jlcpcb.com/partdetail/C12624,2026-11-26,in stock
+carrier,D3 D7 D8,3,yes,BAT54WS,D_SOD-323,Diodes Incorporated,BAT54WS-7-F,C124205,extended,0.1084,59549,https://jlcpcb.com/partdetail/C124205,2026-11-26,in stock
+carrier,D4,1,yes,NSR0240H,D_SOD-323,onsemi,NSR0240HT1G,C152519,extended,0.0747,14608,https://jlcpcb.com/partdetail/C152519,2026-11-26,in stock
+carrier,D5,1,yes,SMF6.0A,D_SOD-123F,MDD(Microdiode Semiconductor),SMF6.0A,C123790,extended,0.0361,70667,https://jlcpcb.com/partdetail/C123790,2026-11-26,in stock
+carrier,D9,1,DNP,BAT54WS,D_SOD-323,Diodes Incorporated,BAT54WS-7-F,C124205,extended,0.1084,59549,https://jlcpcb.com/partdetail/C124205,2026-11-26,in stock
+carrier,H1 H2 H3 H4,4,yes,M2.5 spacer 1.5mm,Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R,Wurth Elektronik,9774015151R,C5353804,extended,0.4337,1831,https://jlcpcb.com/partdetail/C5353804,2026-11-26,in stock
+carrier,J10,1,yes,BATT,Molex_SPOX_5268-03A_1x03_P2.50mm_Horizontal,MOLEX,22057035,C185225,extended,0.1148,15493,https://jlcpcb.com/partdetail/C185225,2026-11-26,in stock
+carrier,J1A J1B,2,yes,DF40C-100DS-0.4V(51),Hirose_DF40C-100DS-0.4V_2x50_P0.4mm,HRS(Hirose),DF40C-100DS-0.4V(51),C597931,extended,0.9165,12826,https://jlcpcb.com/partdetail/C597931,2026-11-26,in stock
+carrier,J2,1,yes,TYPE-C-31-M-12,USB_C_Receptacle_HRO_TYPE-C-31-M-12,Korean Hroparts Elec,TYPE-C-31-M-12,C165948,extended,0.1869,425240,https://jlcpcb.com/partdetail/C165948,2026-11-26,in stock
+carrier,J4,1,yes,FH34SRJ-20S-0.5SH,Hirose_FH34SRJ-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal,HRS(Hirose),FH34SRJ-20S-0.5SH(50),C2802370,extended,0.2838,2518,https://jlcpcb.com/partdetail/C2802370,2026-11-26,in stock
+carrier,J5 J9,2,yes,FH34SRJ-8S-0.5SH,Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal,HRS(Hirose),FH34SRJ-8S-0.5SH(50),C88372,extended,0.1254,48255,https://jlcpcb.com/partdetail/C88372,2026-11-26,in stock
+carrier,J6,1,yes,PJ-342,Jack_3.5mm_SHOUHAN_PJ-342,SHOU HAN,PJ-342,C668606,extended,0.1761,56193,https://jlcpcb.com/partdetail/C668606,2026-11-26,in stock
+carrier,J7,1,yes,microSD,microSD_HC_Molex_104031-0811,MOLEX,1040310811,C585350,extended,0.6776,44553,https://jlcpcb.com/partdetail/C585350,2026-11-26,in stock
+carrier,J8,1,yes,DEBUG UART,JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal,JST,SM03B-SRSS-TB(LF)(SN),C160403,extended,0.1958,20028,https://jlcpcb.com/partdetail/C160403,2026-11-26,in stock
+carrier,L1,1,yes,2.2uH,L_Sunlord_MWSA0402S,Sunlord,MWSA0402S-2R2MT,C408335,extended,0.1444,15267,https://jlcpcb.com/partdetail/C408335,2026-11-26,in stock
+carrier,L2,1,yes,1uH,L_Sunlord_MWSA0402S,Sunlord,MWSA0402S-1R0MT,C408332,extended,0.1568,11001,https://jlcpcb.com/partdetail/C408332,2026-11-26,in stock
+carrier,L3,1,yes,10uH,L_Sunlord_SWPA4030S,Sunlord,SWPA4030S100MT,C38117,extended,0.0478,16020,https://jlcpcb.com/partdetail/C38117,2026-11-26,in stock
+carrier,R10 R11,2,yes,5.1k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5101TCE,C25905,basic,0.0014,5284630,https://jlcpcb.com/partdetail/C25905,2026-11-26,in stock
+carrier,R12,1,yes,470,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4700TCE,C25117,basic,0.001,2171522,https://jlcpcb.com/partdetail/C25117,2026-11-26,in stock
+carrier,R13,1,yes,5.23k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5231TCE,C25907,extended,0.0012,205733,https://jlcpcb.com/partdetail/C25907,2026-11-26,in stock
+carrier,R14,1,yes,30.1k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF3012TCE,C29402,extended,0.0012,193566,https://jlcpcb.com/partdetail/C29402,2026-11-26,in stock
+carrier,R15 R45,2,yes,2.2k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF2201TCE,C25879,basic,0.0011,2573276,https://jlcpcb.com/partdetail/C25879,2026-11-26,in stock
+carrier,R17,1,yes,1M,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1004TCE,C26083,basic,0.001,3264111,https://jlcpcb.com/partdetail/C26083,2026-11-26,in stock
+carrier,R18,1,yes,402k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4023TCE,C25785,extended,0.0011,133047,https://jlcpcb.com/partdetail/C25785,2026-11-26,in stock
+carrier,R19 R20 R43,3,yes,100k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1003TCE,C25741,basic,0.0009,11665294,https://jlcpcb.com/partdetail/C25741,2026-11-26,in stock
+carrier,R21 R22 R31 R57 R58 R59 R62 R63,8,DNP,0,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF0000TCE,C17168,basic,0.0012,12569125,https://jlcpcb.com/partdetail/C17168,2026-11-26,in stock
+carrier,R23,1,yes,560k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5603TCE,C132339,extended,0.0013,717754,https://jlcpcb.com/partdetail/C132339,2026-11-26,in stock
+carrier,R24,1,yes,51k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF5102TCE,C25794,basic,0.0013,1229236,https://jlcpcb.com/partdetail/C25794,2026-11-26,in stock
+carrier,R16 R25 R27 R48 R67 R69 R73 R74 R85 R86 R87,11,yes,10k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1002TCE,C25744,basic,0.0009,32584687,https://jlcpcb.com/partdetail/C25744,2026-11-26,in stock
+carrier,R26 R64 R75,3,yes,1k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1001TCE,C11702,basic,0.0011,25421208,https://jlcpcb.com/partdetail/C11702,2026-11-26,in stock
+carrier,R28 R29 R65,3,yes,15k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1502TCE,C25756,basic,0.0011,1885936,https://jlcpcb.com/partdetail/C25756,2026-11-26,in stock
+carrier,R32,1,yes,330,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF3300TCE,C25104,basic,0.0011,1982395,https://jlcpcb.com/partdetail/C25104,2026-11-26,in stock
+carrier,R33 R34,2,yes,100,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1000TCE,C25076,basic,0.0011,9417892,https://jlcpcb.com/partdetail/C25076,2026-11-26,in stock
+carrier,R35 R36,2,DNP,100,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1000TCE,C25076,basic,0.0011,9417892,https://jlcpcb.com/partdetail/C25076,2026-11-26,in stock
+carrier,R37,1,yes,220,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF2200TCE,C25091,basic,0.0018,1484804,https://jlcpcb.com/partdetail/C25091,2026-11-26,in stock
+carrier,R42,1,yes,5.1,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF510KTCE,C25128,extended,0.0014,235678,https://jlcpcb.com/partdetail/C25128,2026-11-26,in stock
+carrier,R46 R47 R50 R51,4,yes,33,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF330JTCE,C25105,basic,0.001,4196390,https://jlcpcb.com/partdetail/C25105,2026-11-26,in stock
+carrier,R55 R56,2,DNP,33,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF330JTCE,C25105,basic,0.001,4196390,https://jlcpcb.com/partdetail/C25105,2026-11-26,in stock
+carrier,R66,1,yes,680,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF6800TCE,C25130,extended,0.0012,178487,https://jlcpcb.com/partdetail/C25130,2026-11-26,in stock
+carrier,R30 R44 R49 R52 R53 R54 R60 R61 R68,9,yes,0,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF0000TCE,C17168,basic,0.0012,12569125,https://jlcpcb.com/partdetail/C17168,2026-11-26,in stock
+carrier,R80 R81 R82 R83 R84,5,yes,47k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4702TCE,C25792,basic,0.0019,4818063,https://jlcpcb.com/partdetail/C25792,2026-11-26,in stock
+carrier,R90,1,yes,10M,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1005TCE,C26082,extended,0.0012,1161444,https://jlcpcb.com/partdetail/C26082,2026-11-26,in stock
+carrier,R91,1,DNP,1M,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1004TCE,C26083,basic,0.001,3264111,https://jlcpcb.com/partdetail/C26083,2026-11-26,in stock
+carrier,R40 R41 R71 R72 R92,5,yes,4.7k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF4701TCE,C25900,basic,0.0016,12071313,https://jlcpcb.com/partdetail/C25900,2026-11-26,in stock
+carrier,SW1,1,yes,PWR,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.183,12363,https://jlcpcb.com/partdetail/C388883,2026-11-26,in stock
+carrier,SW2,1,yes,VOL+,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.183,12363,https://jlcpcb.com/partdetail/C388883,2026-11-26,in stock
+carrier,SW3,1,yes,VOL-,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.183,12363,https://jlcpcb.com/partdetail/C388883,2026-11-26,in stock
+carrier,SW4,1,yes,BOOT,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.183,12363,https://jlcpcb.com/partdetail/C388883,2026-11-26,in stock
+carrier,SW5,1,yes,RESET,SW_SPST_EVQP7C,PANASONIC,EVQP7C01P,C388883,extended,0.183,12363,https://jlcpcb.com/partdetail/C388883,2026-11-26,in stock
+carrier,TH1,1,DNP,10k B3380,R_0402_1005Metric,Murata Electronics,NCP15XH103F03RC,C77131,extended,0.0158,297474,https://jlcpcb.com/partdetail/C77131,2026-11-26,in stock
+carrier,U10,1,yes,DRV5032FADBZR,SOT-23,Texas Instruments,DRV5032FADBZR,C140921,extended,0.1708,58497,https://jlcpcb.com/partdetail/C140921,2026-11-26,in stock
+carrier,U11 U12,2,yes,TPD4E05U06DQAR,USON-10_2.5x1.0mm_P0.5mm,Texas Instruments,TPD4E05U06DQAR,C138714,extended,0.0842,30534,https://jlcpcb.com/partdetail/C138714,2026-11-26,in stock
+carrier,U13,1,yes,TPS259571DSGR,WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm,Texas Instruments,TPS259571DSGR,C471038,extended,0.7496,118,https://jlcpcb.com/partdetail/C471038,2026-11-26,in stock
+carrier,U2,1,yes,USBLC6-2SC6,SOT-23-6,STMicroelectronics,USBLC6-2SC6,C7519,extended,0.1521,35067,https://jlcpcb.com/partdetail/C7519,2026-11-26,in stock
+carrier,U3,1,yes,BQ25895RTWR,Texas_RTW_WQFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm_ThermalVias,Texas Instruments,BQ25895RTWR,C80200,extended,1.7217,5942,https://jlcpcb.com/partdetail/C80200,2026-11-26,in stock
+carrier,U4,1,yes,MAX17048G+T10,TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm,Analog Devices Inc./Maxim Integrated,MAX17048G+T10,C2682616,extended,1.9443,24479,https://jlcpcb.com/partdetail/C2682616,2026-11-26,in stock
+carrier,U5,1,yes,TPS61230DRCR,Texas_S-PVSON-N10_ThermalVias,Texas Instruments,TPS61230DRCR,C139626,extended,1.6464,15250,https://jlcpcb.com/partdetail/C139626,2026-11-26,in stock
+carrier,U6,1,yes,TPS61169DCKR,SOT-353_SC-70-5,Texas Instruments,TPS61169DCKR,C71045,extended,0.4004,15521,https://jlcpcb.com/partdetail/C71045,2026-11-26,in stock
+carrier,U7,1,yes,ES8316,VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm,Everest-semi(Everest Semiconductor),ES8316,C365735,extended,0.9133,4303,https://jlcpcb.com/partdetail/C365735,2026-11-26,in stock
+keyboard,C1,1,yes,100n,C_0402_1005Metric,Samsung Electro-Mechanics,CL05B104KO5NNNC,C1525,basic,0.0029,30838862,https://jlcpcb.com/partdetail/C1525,2026-11-26,in stock
+keyboard,C2,1,yes,1u,C_0402_1005Metric,Samsung Electro-Mechanics,CL05A105KA5NQNC,C52923,basic,0.0046,12202060,https://jlcpcb.com/partdetail/C52923,2026-11-26,in stock
+keyboard,D1 D2 D3 D4 D5 D6 D7 D8 D9 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D45 D46 D47 D48 D49 D50 D51 D52 D53,52,yes,1N4148W4,D_SOD-882,BORN,1N4148W4,C42432416,extended,0.0148,29104,https://jlcpcb.com/partdetail/C42432416,2026-11-26,in stock
 keyboard,H1 H2 H3 H4,4,yes,M1.6 spacer 1.5mm,Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633,,9774015633R,,,,,,,buy elsewhere
-keyboard,J1,1,yes,FH34SRJ-8S-0.5SH,Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal,HRS(Hirose),FH34SRJ-8S-0.5SH(50),C88372,extended,0.1255,64587,https://jlcpcb.com/partdetail/C88372,2026-11-25,in stock
-keyboard,R1 R2,2,yes,100k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1003TCE,C25741,basic,0.0009,12002569,https://jlcpcb.com/partdetail/C25741,2026-11-25,in stock
-keyboard,R3 R4,2,yes,10k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1002TCE,C25744,basic,0.0009,33104762,https://jlcpcb.com/partdetail/C25744,2026-11-25,in stock
-keyboard,SW1,1,yes,Esc,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW10,1,yes,9,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW11,1,yes,0,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW12,1,yes,Bksp,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW13,1,yes,Tab,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW14,1,yes,Q,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW15,1,yes,W,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW16,1,yes,E,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW17,1,yes,R,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW18,1,yes,T,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW19,1,yes,Y,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW2,1,yes,1,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW20,1,yes,U,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW21,1,yes,I,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW22,1,yes,O,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW23,1,yes,P,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW24,1,yes,-,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW25,1,yes,Ctrl,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW26,1,yes,A,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW27,1,yes,S,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW28,1,yes,D,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW29,1,yes,F,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW3,1,yes,2,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW30,1,yes,G,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW31,1,yes,H,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW32,1,yes,J,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW33,1,yes,K,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW34,1,yes,L,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW35,1,yes,;,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW36,1,yes,Enter,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW37,1,yes,Shift,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW38,1,yes,Fn,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW39,1,yes,Z,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW4,1,yes,3,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW40,1,yes,X,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW41,1,yes,C,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW42,1,yes,V,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW43 SW44,2,yes,Space,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW45,1,yes,B,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW46,1,yes,N,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW47,1,yes,M,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW48,1,yes,.,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW49,1,yes,Up,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW5,1,yes,4,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW50,1,yes,Down,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW51,1,yes,Left,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW52,1,yes,Right,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW53,1,yes,OK,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW6,1,yes,5,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW7,1,yes,6,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW8,1,yes,7,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,SW9,1,yes,8,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1617,9024,https://jlcpcb.com/partdetail/C255576,2026-11-25,in stock
-keyboard,U1,1,yes,TCA8418RTWR,WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm,Texas Instruments,TCA8418RTWR,C138713,extended,1.078,30212,https://jlcpcb.com/partdetail/C138713,2026-11-25,in stock
-keyboard,U2,1,yes,TPD4E05U06DQAR,USON-10_2.5x1.0mm_P0.5mm,Texas Instruments,TPD4E05U06DQAR,C138714,extended,0.0843,34308,https://jlcpcb.com/partdetail/C138714,2026-11-25,in stock
+keyboard,J1,1,yes,FH34SRJ-8S-0.5SH,Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal,HRS(Hirose),FH34SRJ-8S-0.5SH(50),C88372,extended,0.1254,48255,https://jlcpcb.com/partdetail/C88372,2026-11-26,in stock
+keyboard,R1 R2,2,yes,100k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1003TCE,C25741,basic,0.0009,11665294,https://jlcpcb.com/partdetail/C25741,2026-11-26,in stock
+keyboard,R3 R4,2,yes,10k,R_0402_1005Metric,UNI-ROYAL(Uniroyal Elec),0402WGF1002TCE,C25744,basic,0.0009,32584687,https://jlcpcb.com/partdetail/C25744,2026-11-26,in stock
+keyboard,SW1,1,yes,Esc,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW10,1,yes,9,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW11,1,yes,0,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW12,1,yes,Bksp,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW13,1,yes,Tab,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW14,1,yes,Q,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW15,1,yes,W,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW16,1,yes,E,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW17,1,yes,R,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW18,1,yes,T,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW19,1,yes,Y,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW2,1,yes,1,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW20,1,yes,U,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW21,1,yes,I,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW22,1,yes,O,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW23,1,yes,P,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW24,1,yes,-,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW25,1,yes,Ctrl,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW26,1,yes,A,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW27,1,yes,S,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW28,1,yes,D,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW29,1,yes,F,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW3,1,yes,2,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW30,1,yes,G,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW31,1,yes,H,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW32,1,yes,J,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW33,1,yes,K,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW34,1,yes,L,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW35,1,yes,;,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW36,1,yes,Enter,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW37,1,yes,Shift,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW38,1,yes,Fn,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW39,1,yes,Z,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW4,1,yes,3,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW40,1,yes,X,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW41,1,yes,C,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW42,1,yes,V,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW43 SW44,2,yes,Space,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW45,1,yes,B,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW46,1,yes,N,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW47,1,yes,M,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW48,1,yes,.,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW49,1,yes,Up,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW5,1,yes,4,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW50,1,yes,Down,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW51,1,yes,Left,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW52,1,yes,Right,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW53,1,yes,OK,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW6,1,yes,5,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW7,1,yes,6,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW8,1,yes,7,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,SW9,1,yes,8,SW_Alps_SKSWCFE010_3x2mm,ALPSALPINE,SKSWCFE010,C255576,extended,0.1616,9024,https://jlcpcb.com/partdetail/C255576,2026-11-26,in stock
+keyboard,U1,1,yes,TCA8418RTWR,WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm,Texas Instruments,TCA8418RTWR,C138713,extended,1.0769,30307,https://jlcpcb.com/partdetail/C138713,2026-11-26,in stock
+keyboard,U2,1,yes,TPD4E05U06DQAR,USON-10_2.5x1.0mm_P0.5mm,Texas Instruments,TPD4E05U06DQAR,C138714,extended,0.0842,30534,https://jlcpcb.com/partdetail/C138714,2026-11-26,in stock
 device,"Compute module (2 GB, Wi-Fi, no eMMC)",1,yes,every eMMC SKU was out of stock; boots from microSD,,LuckFox,Core3566102000,,,83.99,,https://www.luckfox.com/EN-Core3566,2026-11-24,in stock
 device,"Display 4.0"" 480x800 IPS DSI + touch",1,yes,ST7701S + GT911,,Focus LCDs,E40RB-I-MW430-CB,,,77.2,,https://focuslcds.com/product/e40rb-i-mw430-cb/,2026-11-24,"10 in stock, Recommended for New Designs"
 device,Battery pack 1S2P LiPo 2800 mAh min with PCM and NTC,1,yes,"max 9.5 x 50 x 68 mm; 5.6 A max discharge, 1.4 A max charge; datasheet farnell.com/datasheets/1806914.pdf",,BAK,LP-454965-2P-3M,,,,,https://uk.farnell.com/bak/lp-454965-2p-3m/battery-lithium-ion-3-7v-3000mah/dp/2401855,,"Farnell 2401855: stock and price NOT verified (about EUR 24 seen at a reseller, April 2026)"
