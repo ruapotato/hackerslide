@@ -352,7 +352,7 @@ def save_scripted(board_path):
     subprocess.run(['python3', os.path.join(HERE, 'gr_io.py'), 'save_scripted', board_path], check=True)
 
 
-def finish_routing(board, route_args, clearances, rounds=10):
+def finish_routing(board, route_args, clearances, rounds=16):
     """Close the loop with KiCad's own check, after the plain gridroute passes.
 
     Each round: run the design-rule check; take up the routed segments and vias it objects to; route what is open,
@@ -375,11 +375,16 @@ def finish_routing(board, route_args, clearances, rounds=10):
         return drc, d, (sum(v['severity'] == 'error' for v in d['violations']), len(d['unconnected_items']))
     nets = lambda d: sorted({m.group(1) for u in d['unconnected_items'] for it in u['items']
                              for m in [re.search(r'\[(.*?)\]', it['description'])] if m})
-    last, stuck = None, 0
+    last, stuck, best = None, 0, None
     for i in range(rounds):
         drc, d, state = check()
         print('repair round', i, 'errors, open:', state, flush=True)
+        if best is None or (state[0] == 0 and (best[0] != 0 or state[1] < best[1])):
+            best = state                           # the best board so far is kept: a later round can make it worse
+            shutil.copy(board, board + '.best')
         if state == (0, 0):
+            break
+        if i == rounds - 1:
             break
         stuck = stuck + 1 if state == last else 0
         last = state
@@ -390,9 +395,16 @@ def finish_routing(board, route_args, clearances, rounds=10):
             extra = ['--first', ','.join(nets(d))]
         subprocess.run([os.path.join(HERE, 'gridroute.sh'), bdir, name] + route_args +
                        ['--clearance', str(clearances[i % len(clearances)]), '--reroute'] + extra, check=True)
+    if os.path.exists(board + '.best'):
+        if check()[2] != best:
+            shutil.copy(board + '.best', board)
+            print('kept the best round:', best, flush=True)
+        os.remove(board + '.best')
     skip = set()                                   # nets where removing a "dangling" item opened a connection
     for i in range(6):
         drc, d, state = check()
+        if state != (0, 0):
+            break                                  # an unfinished board keeps its loose ends: they are half-made routes
         n = sum(v['type'] in ('via_dangling', 'track_dangling') and not any(f'[{s_}]' in v['items'][0]['description'] for s_ in skip)
                 for v in d['violations'])
         if not n:

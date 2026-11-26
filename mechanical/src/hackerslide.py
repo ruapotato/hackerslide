@@ -65,7 +65,7 @@ def envelopes():
     e['carrier_parts'] = e['carrier_parts'].union(box(ux - 6.3, uy - 4.5, C.Z_CARRIER_F - 3.3, ux + 0.25, uy + 4.5, C.Z_CARRIER_F))
     sx_, sy_ = carrier_to_device(0.0, C.SD_KICAD_Y)
     e['carrier_parts'] = e['carrier_parts'].union(box(sx_ - 13.9, sy_ - 6.1, C.Z_CARRIER_F - 1.5, sx_, sy_ + 6.1, C.Z_CARRIER_F))
-    lx, ly = carrier_to_device(67.0, 46.8)                                                                      # L3, 3.0 high
+    lx, ly = carrier_to_device(67.0, 42.6)                                                                      # L3, 3.0 high
     e['carrier_parts'] = e['carrier_parts'].union(box(lx - 2.1, ly - 2.1, C.Z_CARRIER_F - 3.0, lx + 2.1, ly + 2.1, C.Z_CARRIER_F))
     for (kx0, ky0, kx1, ky1), nm in ((C.BATT_HEADER_KICAD, 'carrier_parts'), (C.BATT_PLUG_KICAD, 'batt_plug')):
         (xa, ya), (xb, yb) = carrier_to_device(kx0, ky0), carrier_to_device(kx1, ky1)

@@ -131,7 +131,7 @@
   },
   {
    "ref": "D5",
-   "value": "SMF15A",
+   "value": "SMF6.0A",
    "footprint": "Diode_SMD:D_SOD-123F",
    "dnp": false,
    "sheet": "power",
@@ -139,10 +139,10 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "0c42b865-91fe-5ad8-9892-e9a9198b50e0",
    "fields": {
-    "LCSC": "C123802",
-    "MPN": "SMF15A",
+    "LCSC": "C123790",
+    "MPN": "SMF6.0A",
     "Manufacturer": "MDD",
-    "Description": "P1: VBUS TVS, 15 V stand-off"
+    "Description": "VBUS TVS, 6 V stand-off, clamps about 10.3 V"
    },
    "pads": {
     "1": "VBUS",
@@ -475,7 +475,7 @@
   },
   {
    "ref": "R12",
-   "value": "300",
+   "value": "470",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -483,10 +483,10 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "1d99e968-1caa-5146-abcf-4ded3333296b",
    "fields": {
-    "LCSC": "C25102",
-    "MPN": "0402WGF3000TCE",
+    "LCSC": "C25117",
+    "MPN": "0402WGF4700TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "P3/P7: IINMAX = 355/300 = 1.18 A typ (1.07-1.30), needs ti,use-ilim-pin"
+    "Description": "IINMAX = 355/470 = 0.755 A typ (0.68-0.83): even at the reset charge current of 2.05 A the pack then gets at most about 1.25 A (0.83 A x 5 V x 0.9 / 3.0 V). Needs ti,use-ilim-pin, which is the reset default"
    },
    "pads": {
     "1": "CHG_ILIM",
@@ -639,7 +639,7 @@
     "LCSC": "C185225",
     "MPN": "22057035",
     "Manufacturer": "Molex",
-    "Description": "P14: battery connector for the BAK LP-454965-2P-3M pack (Molex 5264 housing: red +, yellow NTC, black -). TODO(verify) which housing position is red: the BAK drawing shows the wire order, not the pin numbers"
+    "Description": "P14: battery connector for the BAK LP-454965-2P-3M pack (Molex 5264 housing: red +, yellow NTC, black -). The pack drawing and the Molex 5264 catalogue show the plug in the same view with red at circuit 1 = pin 1 here. Still put a meter on the loose plug before the first use: reversed, the pack destroys the charger"
    },
    "pads": {
     "1": "VBAT",
@@ -684,7 +684,7 @@
     "LCSC": "C2682616",
     "MPN": "MAX17048G+T10",
     "Manufacturer": "Analog Devices / Maxim",
-    "Description": "fuel gauge 0x36, maxim,max17048. TODO(verify) land pattern vs Maxim 90-0065"
+    "Description": "fuel gauge 0x36, maxim,max17048. land pattern checked against Maxim 90-0065 (2026-11-25)"
    },
    "pads": {
     "1": "GND",
@@ -744,33 +744,37 @@
   },
   {
    "ref": "U13",
-   "value": "TPS2553DBVR",
-   "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+   "value": "TPS259571DSGR",
+   "footprint": "Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm",
    "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "97aa0e90-dded-5788-a49d-98de1cafcccf",
    "fields": {
-    "LCSC": "C55266",
-    "MPN": "TPS2553DBVR",
+    "LCSC": "C471038",
+    "MPN": "TPS259571DSGR",
     "Manufacturer": "Texas Instruments",
-    "Description": "discharge current limit 1.3 A typ, auto-retry"
+    "Description": "eFuse, no output clamp, auto-retry (the -521 has a 3.8 V clamp: not usable on a Li-ion rail). Alternative reel: C2155692. dVdt (pin 1) open = fastest turn-on"
    },
    "pads": {
-    "1": "VSYS",
     "3": "VSYS",
-    "2": "GND",
-    "5": "BATT_ILIM",
-    "6": "VSYS_LIM",
-    "4": "BATT_OC_N"
+    "4": "VSYS",
+    "2": "FUSE_EN",
+    "7": "BATT_ILIM",
+    "5": "VSYS_LIM",
+    "6": "BATT_OC_N",
+    "8": "GND",
+    "9": "GND"
    },
    "in_bom": true,
-   "nc": {}
+   "nc": {
+    "1": "unconnected-(U13-dVdt-Pad1)"
+   }
   },
   {
    "ref": "R66",
-   "value": "15k",
+   "value": "680",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -778,10 +782,10 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "2aa6a2b8-20a9-5761-b6f5-07a41a3fbd41",
    "fields": {
-    "LCSC": "C25756",
-    "MPN": "0402WGF1502TCE",
+    "LCSC": "C25130",
+    "MPN": "0402WGF6800TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "TPS2553 current limit 1700 mA typ (1610-1800), its highest setting"
+    "Description": "current limit about 2020 / 680 = 3.0 A typ (TI SLVSE57 eq. 6 and the table: 487R 4.17 A, 1780R 1.17 A)"
    },
    "pads": {
     "1": "BATT_ILIM",
@@ -803,11 +807,97 @@
     "LCSC": "C25744",
     "MPN": "0402WGF1002TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "FAULT, low while the limiter is active"
+    "Description": "FLT, low while the fuse is in thermal shutdown"
    },
    "pads": {
     "1": "BATT_OC_N",
     "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R90",
+   "value": "10M",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "7814c6b7-a5d6-50df-92ee-d6fe5531d685",
+   "fields": {
+    "LCSC": "C26082",
+    "MPN": "0402WGF1005TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "enable: on whenever VSYS is present (threshold 1.2 V, pin leakage 0.1 uA)"
+   },
+   "pads": {
+    "1": "VSYS",
+    "2": "FUSE_EN"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C90",
+   "value": "2.2u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "ab6ed3ad-6499-5cc9-9cf7-23729b821aea",
+   "fields": {
+    "LCSC": "C12530",
+    "MPN": "CL05A225MQ5NSNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "FUSE_EN",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R91",
+   "value": "1M",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": true,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "d512dd6d-3000-5ea8-8a7a-1996e10adc8e",
+   "fields": {
+    "LCSC": "C26083",
+    "MPN": "0402WGF1004TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "FUSE_EN",
+    "2": "FUSE_CUT"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D9",
+   "value": "BAT54WS",
+   "footprint": "Diode_SMD:D_SOD-323",
+   "dnp": true,
+   "sheet": "power",
+   "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
+   "sheetfile": "power.kicad_sch",
+   "sym_uuid": "75978227-d92e-56e2-99dd-ef2eb11c89fc",
+   "fields": {
+    "LCSC": "C124205",
+    "MPN": "BAT54WS-7-F",
+    "Manufacturer": "Diodes Incorporated",
+    "Description": "DNP: hard power-cycle option"
+   },
+   "pads": {
+    "1": "PWR_SW_N",
+    "2": "FUSE_CUT"
    },
    "in_bom": true,
    "nc": {}
@@ -1182,7 +1272,7 @@
   },
   {
    "ref": "D3",
-   "value": "1N5819WS",
+   "value": "BAT54WS",
    "footprint": "Diode_SMD:D_SOD-323",
    "dnp": false,
    "sheet": "power",
@@ -1190,9 +1280,9 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "d0519dbc-4cf9-5017-9c3f-f917f2a0c69a",
    "fields": {
-    "LCSC": "C191023",
-    "MPN": "1N5819WS",
-    "Manufacturer": "Hottech",
+    "LCSC": "C124205",
+    "MPN": "BAT54WS-7-F",
+    "Manufacturer": "Diodes Incorporated",
     "Description": "/QON (VIL 0.4 V max: Schottky needed)"
    },
    "pads": {
@@ -1204,7 +1294,7 @@
   },
   {
    "ref": "D7",
-   "value": "1N5819WS",
+   "value": "BAT54WS",
    "footprint": "Diode_SMD:D_SOD-323",
    "dnp": false,
    "sheet": "power",
@@ -1212,9 +1302,9 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "5bb245b6-0ba9-5a06-b148-da93ed15ea2f",
    "fields": {
-    "LCSC": "C191023",
-    "MPN": "1N5819WS",
-    "Manufacturer": "Hottech",
+    "LCSC": "C124205",
+    "MPN": "BAT54WS-7-F",
+    "Manufacturer": "Diodes Incorporated",
     "Description": "module pin 99 through R26"
    },
    "pads": {
@@ -1226,7 +1316,7 @@
   },
   {
    "ref": "D8",
-   "value": "1N5819WS",
+   "value": "BAT54WS",
    "footprint": "Diode_SMD:D_SOD-323",
    "dnp": false,
    "sheet": "power",
@@ -1234,9 +1324,9 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "ff698b62-8f7e-57d5-bac0-81c3cb44327b",
    "fields": {
-    "LCSC": "C191023",
-    "MPN": "1N5819WS",
-    "Manufacturer": "Hottech",
+    "LCSC": "C124205",
+    "MPN": "BAT54WS-7-F",
+    "Manufacturer": "Diodes Incorporated",
     "Description": "GPIO power key (gpio-keys, KEY_POWER)"
    },
    "pads": {
@@ -2192,6 +2282,114 @@
    "nc": {}
   },
   {
+   "ref": "TP34",
+   "value": "UART_DBG_TX",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "7ded5bb6-12cc-5781-a9f3-3c93b279e73b",
+   "fields": {},
+   "pads": {
+    "1": "UART_DBG_TX"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP35",
+   "value": "UART_DBG_RX",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "871c87ee-9730-5b51-9f83-0aad81d4599e",
+   "fields": {},
+   "pads": {
+    "1": "UART_DBG_RX"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP36",
+   "value": "I2C_B_SCL",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "2fd27138-89e1-5d27-afb4-7d43021bd337",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SCL"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP37",
+   "value": "I2C_B_SDA",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "e450b98a-327c-55ea-8f8c-310a54286e91",
+   "fields": {},
+   "pads": {
+    "1": "I2C_B_SDA"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "R92",
+   "value": "4.7k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "6b3c8413-f27d-577c-b454-2169b8dd3479",
+   "fields": {
+    "LCSC": "C25900",
+    "MPN": "0402WGF4701TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "about 0.6 mA"
+   },
+   "pads": {
+    "1": "+5V",
+    "2": "PWR_LED_A"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D13",
+   "value": "green",
+   "footprint": "LED_SMD:LED_0603_1608Metric",
+   "dnp": false,
+   "sheet": "module",
+   "sheet_uuid": "64899448-b626-5a4d-bd40-31fc8b7282aa",
+   "sheetfile": "module.kicad_sch",
+   "sym_uuid": "3fe62e0a-d8be-5a03-beed-e50b84c868b8",
+   "fields": {
+    "LCSC": "C12624",
+    "MPN": "KT-0603G",
+    "Manufacturer": "Hubei KENTO",
+    "Description": "5 V rail present (boost running)"
+   },
+   "pads": {
+    "2": "PWR_LED_A",
+    "1": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
    "ref": "TP11",
    "value": "+3V3",
    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
@@ -2605,7 +2803,7 @@
     "8": "I2S_LRCK",
     "7": "I2S_DACDAT",
     "9": "I2S_ADCDAT",
-    "10": "HP_DET",
+    "10": "HP_DET_C",
     "11": "MIC_DET",
     "12": "CODEC_IRQ",
     "3": "+1V8",
@@ -3055,6 +3253,28 @@
    "pads": {
     "1": "HP_DET",
     "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R69",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "audio",
+   "sheet_uuid": "56ec6875-5ec1-5b8d-bb24-285598cf9edf",
+   "sheetfile": "audio.kicad_sch",
+   "sym_uuid": "633c7c7b-4d41-5258-9a2d-4aa621c3d2f3",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "with no plug HP_DET follows HP_L, which swings below ground: limits the current into GPIO1"
+   },
+   "pads": {
+    "1": "HP_DET",
+    "2": "HP_DET_C"
    },
    "in_bom": true,
    "nc": {}

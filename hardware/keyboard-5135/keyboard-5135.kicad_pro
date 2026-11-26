@@ -306,19 +306,6 @@
     "legacy_lib_dir": "",
     "legacy_lib_list": []
   },
-  "sheets": [
-    [
-      "1a641f00-2d7c-5d82-9f98-a76ed0a3216d",
-      "Root"
-    ],
-    [
-      "b13e4225-6fbf-5d7f-b91c-2d80ce0c6a56",
-      "matrix"
-    ],
-    [
-      "a551567e-f0d8-50d0-8015-a2ffd6d81417",
-      "scanner"
-    ]
-  ],
+  "sheets": [],
   "text_variables": {}
 }

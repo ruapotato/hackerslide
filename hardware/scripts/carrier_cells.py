@@ -91,8 +91,9 @@ def charger(B, ox, oy):
     c.P('C16', 1.7, 9.6, -90)
     c.T('VSYS', [(-0.7, 6.5), (-0.7, 8.6)], 1.2)
     c.T('VSYS', [('C15', '1'), ('C16', '1'), (4.9, 8.65)], 0.9)
-    for x in (3.3, 4.1, 4.9):
-        c.V('VSYS', x, 8.65)
+    c.T('VSYS', [(4.5, 8.65), (4.5, 7.9)], 0.9)
+    for x, y in ((4.1, 8.65), (4.9, 8.65), (4.5, 7.9)):
+        c.V('VSYS', x, y)
     c.T('GND', [('C15', '2'), ('C16', '2')], 0.9)
     c.gnd('C15', '2', 0.0, 1.15)
     c.gnd('C15', '2', 1.0, 1.15)
@@ -138,63 +139,84 @@ def charger(B, ox, oy):
     c.P('TP7', 4.2, -1.35, 0, 'B')
     c.T('REGN', [(4.2, -0.25), ('TP7', '1')], 0.15, Bk)
     # pack thermistor: battery connector pin 2 -> past the spacer hole -> R68
-    c.T('BATT_NTC', [('J10', '2'), (-3.6, B.pad_xy('J10', '2')[1] - oy), (-3.6, 1.8), ('R68', '1')], 0.15, Bk)
+    # (around the top of the VBAT copper at J10 pin 1, then down between the spacer hole and the VBAT channel)
+    jx, jy = c.rel('J10', '2')
+    c.T('BATT_NTC', [(jx, jy), (jx + 1.55, jy), (jx + 1.55, 3.3 - oy), (-3.6, 3.3 - oy), (-3.6, 1.8), ('R68', '1')], 0.15, Bk)
     # top side: the generic fan-out gives SDA, SCL, STAT, D-, D+ their vias (carrier_pcb); the D+/D- pull-downs on the display side
     # (the DNP links R21/R22 to the USB pair are at the USB connector, so that they leave no stub on the pair)
     c.two('R29', -0.6, -5.4, 'R', 'B')                    # D- pull-down
     c.T('CHG_DM', [(0.25, -3.46), (0.25, -5.4), ('R29', '1')], 0.15, Bk)
     c.two('R28', 1.25, -6.3, 'D', 'B')                    # D+ pull-down
     c.T('CHG_DP', [(0.75, -2.86), (0.75, -4.9), (1.25, -5.4), ('R28', '1')], 0.15, Bk)
-    c.gnd('R28', '2', 0.0, -0.8, w=0.25, d=0.45, drill=0.2)
+    c.gnd('R28', '2', 0.7, -0.4, w=0.25, d=0.45, drill=0.2)
     c.gnd('R29', '2', 0.0, -0.8, w=0.25, d=0.45, drill=0.2)
     c.P('TP3', -2.5, -7.5, 0, 'B')                        # VBAT, inside the VBAT copper
 
-    # ---- discharge limiter U13 (TPS2553) on the display side, straight under the VSYS vias --------------------
-    c.P('U13', 4.1, 11.0, 0, 'B')                         # pins: 3 IN (top left), 2 GND, 1 EN | 4 FAULT (top right), 5 ILIM, 6 OUT
-    c.T('VSYS', [(4.1, 8.65), (3.3, 8.65), (3.3, 9.6), ('U13', '3')], 0.6, Bk)
-    c.T('VSYS', [(3.62, 10.05), (3.85, 10.3), (3.85, 11.7), (3.62, 11.95)], 0.2, Bk)        # EN = IN, under the package
-    c.two('C27', 0.95, 10.05, 'R', 'B')
-    c.T('VSYS', [('U13', '3'), ('C27', '1')], 0.4, Bk)
-    c.P('TP2', 2.2, 8.3, 0, 'B')
-    c.T('VSYS', [(3.3, 8.65), ('TP2', '1')], 0.4, Bk)
-    c.V('GND', 1.6, 11.0)
-    c.T('GND', [('U13', '2'), (1.6, 11.0), ('C27', '2')], 0.3, Bk)
-    c.T('BATT_ILIM', [(4.58, 11.0), (4.25, 11.4), (4.25, 12.9)], 0.15, Bk)
-    c.two('R66', 4.25, 13.7, 'U', 'B')
-    c.gnd('R66', '2', 0.0, 0.85, w=0.25, d=0.45, drill=0.2)
-    c.T('BATT_OC_N', [('U13', '4'), (5.5, 10.05), (5.55, 9.35)], 0.15, Bk)
-    c.V('BATT_OC_N', 5.55, 9.35, 0.45, 0.2)
-    c.T('VSYS_LIM', [('U13', '6'), (5.3, 13.0), (5.3, 13.8)], 0.5, Bk)
-    c.V('VSYS_LIM', 5.3, 13.0); c.V('VSYS_LIM', 5.3, 13.8)
-    # charge LED on the component side, fed from the SYS copper
-    c.two('R15', 3.5, 9.9, 'U')
-    c.T('VSYS', [(3.5, 8.65), ('R15', '1')], 0.3)
-    c.P('D1', 3.5, 12.5, 90)
+    # ---- battery fuse U13 (TPS259571, 2 x 2 mm) on the display side, straight under the VSYS vias --------------
+    # turned so that IN (pins 3, 4) faces the vias and OUT (pin 5) faces the In2 VSYS_LIM area:
+    #   top row    dVdt  EN  IN  IN        bottom row    GND  ILM  FLT  OUT
+    c.P('U13', 3.8, 10.3, 270, 'B')
+    c.T('VSYS', [(4.1, 8.65), (4.9, 8.65)], 0.6, Bk)
+    c.T('VSYS', [(4.5, 7.9), (4.5, 8.65), (4.3, 8.9), (4.3, 9.35)], 0.6, Bk)
+    c.two('C27', 5.55, 9.6, 'U', 'B')                      # input capacitor at IN
+    c.T('VSYS', [(4.9, 8.65), ('C27', '1')], 0.4, Bk)
+    c.gnd('C27', '2', 0.0, 0.8, w=0.3, d=0.45, drill=0.2)
+    c.P('TP2', 4.8, 6.1, 0, 'B')
+    c.T('VSYS', [(4.5, 7.9), ('TP2', '1')], 0.4, Bk)
+    c.V('GND', 3.8, 10.3, 0.45, 0.2)                      # in the exposed pad
+    c.T('GND', [('U13', '8'), (3.3, 10.6)], 0.25, Bk)
+    # current limit: R66 right at ILM
+    c.two('R66', 3.3, 13.1, 'U', 'B')
+    c.T('BATT_ILIM', [('U13', '7'), ('R66', '1')], 0.15, Bk)
+    c.T('GND', [('R66', '2'), (2.5, 13.3)], 0.25, Bk)
+    c.V('GND', 2.5, 13.3, 0.45, 0.2)
+    # FLT: a stub for the router (pull-up R67 and module pin 58)
+    c.T('BATT_OC_N', [('U13', '6'), (4.05, 12.4)], 0.15, Bk)
+    # OUT: four vias into the In2 VSYS_LIM area
+    c.T('VSYS_LIM', [('U13', '5'), (4.6, 11.6), (5.3, 11.9), (5.3, 13.5)], 0.5, Bk)
+    c.T('VSYS_LIM', [(5.3, 12.7), (4.5, 13.1)], 0.5, Bk)
+    for x, y in ((5.3, 11.9), (5.3, 12.7), (5.3, 13.5), (4.5, 13.1)):
+        c.V('VSYS_LIM', x, y)
+    c.P('TP17', 4.4, 15.0, 0, 'B')                        # inside the display-side VSYS_LIM area
+    c.T('VSYS_LIM', [(5.3, 13.5), (5.3, 15.0)], 0.6, Bk)
+    # enable: R90 from VSYS; C90, R91 (both DNP) are the hard power-cycle option, see carrier_design.py
+    c.two('R90', 3.6, 7.6, 'R', 'B')
+    c.T('VSYS', [(4.5, 7.9), ('R90', '1')], 0.2, Bk)
+    c.T('FUSE_EN', [('U13', '2'), (3.55, 8.1), ('R90', '2')], 0.15, Bk)
+    c.two('C90', 1.6, 7.6, 'R', 'B')
+    c.T('FUSE_EN', [('R90', '2'), ('C90', '1')], 0.15, Bk)
+    c.gnd('C90', '2', -0.8, 0.0, w=0.25, d=0.45, drill=0.2)
+    c.two('R91', 2.7, 6.0, 'D', 'B')
+    c.T('FUSE_EN', [('R91', '1'), (2.7, 7.6)], 0.15, Bk)
+    # charge LED on the component side beside the inductor, fed from the SYS copper
+    c.two('R15', 5.2, 6.9, 'D')
+    c.T('VSYS', [(4.5, 7.9), ('R15', '1')], 0.3)
+    c.two('D1', 5.2, 4.45, 'U')                            # pad 1 = cathode (CHG_STAT), pad 2 = anode
     c.T('CHG_LED_A', [('R15', '2'), ('D1', '2')], 0.2)
     return c
 
 
 def gauge(B, x, y):
     """MAX17048 fuel gauge (U4) on the display side beside the battery connector, so that CELL/VDD see the pack
-    voltage at the connector and not after the charge-current path.  Pins: bottom 4 3 2 1 (GND CELL VDD GND, left to
-    right as drawn), top 5 6 7 8 (ALRT, QSTRT = GND, SCL, SDA)."""
+    voltage at the connector and not after the charge-current path.  Turned so that CELL/VDD face the VBAT copper
+    above it:  top row 1 2 3 4 (GND VDD CELL GND), bottom row 8 7 6 5 (SDA, SCL, QSTRT = GND, ALRT)."""
     c = Cell(B, x, y)
-    c.P('U4', 0, 0, 90, 'B')
-    c.T('VBAT', [('U4', '2'), (0.25, 1.7), (-0.25, 1.7), ('U4', '3')], 0.25, Bk)
-    c.T('VBAT', [(0.0, 1.7), (0.0, 2.0), (-1.5, 2.0), (-1.5, 0.5), (-2.4, 0.5)], 0.25, Bk)      # ends inside the VBAT copper at J10 pin 1
-    c.two('C19', 0.0, 2.9, 'U', 'B')
-    c.T('VBAT', [(0.0, 2.0), ('C19', '1')], 0.25, Bk)
-    c.gnd('C19', '2', 0.9, 0.0, w=0.25, d=0.45, drill=0.2)
+    c.P('U4', 0, 0, 270, 'B')
+    c.T('VBAT', [('U4', '2'), (-0.25, -1.7), (0.25, -1.7), ('U4', '3')], 0.25, Bk)
+    c.T('VBAT', [(0.0, -1.7), (0.0, -3.4)], 0.25, Bk)      # ends inside the VBAT copper at J10 pin 1
+    c.two('C19', 0.75, -2.1, 'L', 'B')
+    c.gnd('C19', '2', 0.8, 0.0, w=0.25, d=0.45, drill=0.2)
     for pin in ('1', '4', '6'):
         px, py = c.rel('U4', pin)
         c.T('GND', [(px, py), (px, py * 0.6), (px * 0.5, py * 0.3)], 0.2, Bk)
     c.V('GND', 0.0, 0.0, 0.45, 0.2)                       # in the exposed pad
-    for pin, net, vy in (('5', 'GAUGE_INT', -1.9), ('7', 'I2C_B_SCL', -1.9), ('8', 'I2C_B_SDA', -2.5)):
+    for pin, net, vy in (('5', 'GAUGE_INT', 1.9), ('7', 'I2C_B_SCL', 1.9), ('8', 'I2C_B_SDA', 2.5)):
         px, py = c.rel('U4', pin)
         c.T(net, [(px, py), (px, vy)], 0.15, Bk)
         c.V(net, px, vy, 0.45, 0.2)
-    c.two('R16', -0.75, -3.0, 'D', 'B')                   # ALRT pull-up; the router brings +3V3
-    c.T('GAUGE_INT', [(-0.75, -1.9), ('R16', '1')], 0.15, Bk)
+    px, _ = c.rel('U4', '5')
+    c.two('R16', px + 1.5, 1.9, 'L', 'B')                # ALRT pull-up; the router brings +3V3
+    c.T('GAUGE_INT', [(px, 1.9), ('R16', '1')], 0.15, Bk)
     return c
 
 
@@ -287,14 +309,14 @@ def offset(pts, d):
     return out
 
 
-def dsi(B, W=0.1, GAP=0.12):
+def dsi(B, W=0.1, GAP=0.15):
     """The three MIPI DSI pairs (clock, lane 0, lane 1) from the module connector J1B to the panel connector J4, as
     edge-coupled pairs on the component side straight over the In1 ground plane.
 
     J1B has the pairs in the order D0, D1, CLK; J4 wants D1, CLK, D0.  D0 stays on the outside of both bends; the
     clock pair changes places with D1 by dropping to the display side for 2 mm right at J1B.  P is always the left
     track in the direction of travel, so what it gains on the first bend it loses on the second.
-    Width and gap are the estimates in carrier_pcb.CLASSES: TODO(verify) against the fab's stack-up calculator.
+    Width and gap: 100 ohm by impedance.py for 3313 prepreg (see carrier_pcb.CLASSES).
     """
     d = (W + GAP) / 2
     c = 0.5                                               # chamfer
@@ -340,7 +362,7 @@ def usb(B, W=0.12, GAP=0.12):
     J2 has D+ on A6/B6 and D- on A7/B7, interleaved.  D+ is joined by a loop in front of the pads; D- by two vias and
     1 mm of track on the display side.  The pair runs through U2 (in at pins 6/4, out at pins 1/3: no stub), then
     under the module to the J1B fan-out vias.  The DNP adapter-detection links R21/R22 sit directly on the pair's
-    vias at J2.  Width and gap are the estimates in carrier_pcb.CLASSES: TODO(verify) with the fab's calculator.
+    vias at J2.  Width and gap come from carrier_pcb.CLASSES (calculated with impedance.py for the 3313 stack-up).
     """
     c = Cell(B, 0, 0)
     d = (W + GAP) / 2
@@ -405,3 +427,87 @@ def sd_links(B, W=0.1):
         tx, ty = B.via_xy(net, B.pad_xy(ref, pin))
         k = abs(lane - ty)
         B.track(net, [(vx, vy), (vx, lane - 0.3), (vx - 0.3, lane), (22.0 + k, lane), (22.0, ty), (tx, ty)], W, pcbnew.B_Cu)
+
+
+def touch(B):
+    """Touch connector J5 (display side, left strip).  It is fenced in: In2 and the display side around it are
+    VSYS_LIM copper and the module side above it carries the backlight.  Its five signals therefore leave by hand:
+    from each pad toward the board edge, down past the connector's ground pad, and back under the connector
+    through the 1.8 mm gap kept in the VSYS_LIM strap (carrier_pcb, y 50.1-51.9), ending just west of the strap
+    where the router takes over on open board.  Innermost column and top row belong to the lowest pad."""
+    lanes = (('7', 70.0, 50.45, 0.1), ('6', 70.25, 50.7, 0.1), ('5', 70.5, 50.95, 0.1), ('4', 70.75, 51.2, 0.1),
+             ('3', 71.05, 51.5, 0.15))
+    for k, (pad, x, y, w) in enumerate(lanes):
+        px, py = B.pad_xy('J5', pad)
+        net = B.fps['J5'].FindPadByNumber(pad).GetNetname()
+        ye = 49.65 + 0.65 * k                      # west of the strap the five fan out to 0.65 mm pitch, so that the
+        xb = 63.9 - 0.3 * (2 - abs(k - 2))        # the outer ones turn first
+        B.track(net, [(px, py), (x, py), (x, y), (xb, y), (xb - abs(ye - y), ye), (62.3, ye)], w, Bk)   # router can reach each end
+    # ground: pad 8 and the two hold-down pads are cut off from the pour by these tracks and by the strap
+    px, py = B.pad_xy('J5', '8')
+    B.track('GND', [(px, py), (px - 0.2, py + 0.9)], 0.2, Bk)
+    B.via('GND', px - 0.2, py + 0.9, 0.45, 0.2)
+    for mp in B.fps['J5'].Pads():
+        if mp.GetNumber() == 'MP':
+            mx, my = pcbnew.ToMM(mp.GetPosition().x), pcbnew.ToMM(mp.GetPosition().y)
+            if my < 46:        # upper one: L3's pads are on the other side of the board here; the via goes between them
+                B.via('GND', mx + 0.3, my, 0.45, 0.2)
+            else:
+                B.track('GND', [(mx, my), (mx - 1.0, my)], 0.2, Bk)
+                B.via('GND', mx - 1.0, my, 0.45, 0.2)
+
+
+def backlight(B, ox, oy):
+    """TPS61169 LED driver (U6), laid out like the other switchers.  U6 is turned so that SW, GND and FB face the
+    inductor below it and VIN and CTRL face up:
+
+        C43 (input)   R43 (CTRL pull-down)
+        VIN   CTRL
+        [  U6   ]
+        SW  GND  FB -- R42 (current sense) -- GND
+        |
+        L3 (SW pad on the left)        D4 stands left of that pad, C42 (output) below D4
+
+    VIN and the inductor's other pad take VSYS_LIM from the In2 area through their own vias; every ground return
+    is a via into the In1 plane next to the part.  LED_A and LED_K go on to the panel connector by the router."""
+    c = Cell(B, ox, oy)
+    for rot in (0, 90, 180, 270):
+        c.P('U6', 0, 0, rot)
+        x, y = c.rel('U6', '1')
+        if x < -0.3 and y > 0.3:
+            break
+    else:
+        raise RuntimeError('U6')
+    c.P('L3', 0.5, 4.2, 0)
+    if c.rel('L3', '2')[0] > 0:
+        c.P('L3', 0.5, 4.2, 180)
+    lx, ly = c.rel('L3', '2')
+    c.T('BL_SW', [('U6', '1'), (lx + 0.35, ly - 1.5)], 0.3)
+    c.two('D4', lx - 2.1, ly - 0.6, 'D')                       # anode (pad 2) up, level with the top of L3's SW pad
+    dx, dy = c.rel('D4', '2')
+    c.T('BL_SW', [(lx, dy), (dx, dy)], 0.4)
+    c.two('C42', lx - 2.1, ly + 3.0, 'U')                      # output capacitor right under the diode
+    c.T('LED_A', [('D4', '1'), ('C42', '1')], 0.4)
+    c.gnd('C42', '2', 0.0, 0.9, w=0.4)
+    vx, vy = c.rel('L3', '1')
+    for d in (-0.9, 0.3):                                      # inductor supply: two vias into the In2 area
+        c.T('VSYS_LIM', [(vx, vy + d), (vx + 1.15, vy + d)], 0.4)
+        c.V('VSYS_LIM', vx + 1.15, vy + d)
+    gx, gy = c.rel('U6', '2')
+    c.T('GND', [(gx, gy), (gx, gy + 0.8)], 0.25)
+    c.V('GND', gx, gy + 0.8, 0.45, 0.2)
+    fx, fy = c.rel('U6', '3')
+    c.two('R42', fx + 1.8, fy, 'L')
+    c.T('LED_K', [('U6', '3'), ('R42', '1')], 0.2)
+    c.gnd('R42', '2', 0.7, 0.0, w=0.2, d=0.45, drill=0.2)
+    px, py = c.rel('U6', '5')
+    c.two('C43', px + 0.48, py - 1.25, 'L')
+    c.T('VSYS_LIM', [('U6', '5'), ('C43', '1')], 0.25)
+    c.T('VSYS_LIM', [('C43', '1'), (px - 0.85, py - 1.25)], 0.25)
+    c.V('VSYS_LIM', px - 0.85, py - 1.25, 0.45, 0.2)
+    c.gnd('C43', '2', 0.75, 0.0, w=0.2, d=0.45, drill=0.2)
+    qx, qy = c.rel('U6', '4')
+    c.two('R43', qx + 1.8, qy, 'L')
+    c.T('BL_PWM', [('U6', '4'), ('R43', '1')], 0.15)
+    c.gnd('R43', '2', 0.7, 0.0, w=0.2, d=0.45, drill=0.2)
+    return c

@@ -88,217 +88,13 @@
 	(net 8 "GND_8")
 	(footprint "hackerslide:FPC_Fingers_1x08_P0.5mm_FH34"
 		(layer "F.Cu")
-		(uuid "adb033ac-b220-4601-b1ca-24cdb33d3691")
-		(at 0 0)
-		(descr "Flex cable contact end for Hirose FH34SRJ-8S-0.5SH: 8 fingers, 0.5 mm pitch, 1.5 mm uncovered, 0.225 mm PI stiffener on the back (0.07 mm flex -> 0.3 mm). Source: Hirose FH34 catalogue p.5.")
-		(property "Reference" "P1"
-			(at 0 -1.2 0)
-			(layer "F.SilkS")
-			(uuid "def4c1d9-c6f5-416b-b3b9-04622197c7ef")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(property "Value" "to carrier J9"
-			(at 0 6.2 0)
-			(layer "F.Fab")
-			(uuid "46a26177-0e2b-4d88-b23e-54194ee82c80")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bd903910-0353-4790-8d8e-3b811ada0912")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "98da672b-05a7-4474-9867-3cea93e14bb4")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/7ae34f9a-f915-5b95-9002-7eba74c84694/de096fe4-d2ff-5d39-a1f2-f03e0fece3ac")
-		(sheetname "flex")
-		(sheetfile "flex.kicad_sch")
-		(attr smd exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
-		(fp_line
-			(start -2.25 0)
-			(end 2.25 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "Cmts.User")
-			(uuid "a3ec18fa-c63c-4375-81dd-b1980cecd059")
-		)
-		(fp_line
-			(start -2.25 4)
-			(end -2.25 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "Cmts.User")
-			(uuid "b3b8bf1e-38d9-4781-8e21-5a912aa14de8")
-		)
-		(fp_line
-			(start 2.25 0)
-			(end 2.25 4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "Cmts.User")
-			(uuid "def51b5b-a789-4b92-b58b-7e715a995014")
-		)
-		(fp_line
-			(start 2.25 4)
-			(end -2.25 4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "Cmts.User")
-			(uuid "40d22a98-9cdd-452d-9217-c6ee204be2e2")
-		)
-		(fp_line
-			(start -2.25 0)
-			(end 2.25 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "28526b32-b778-47c2-b06f-7313458e6601")
-		)
-		(fp_line
-			(start -2.25 4)
-			(end -2.25 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "98f5a473-52cd-4357-a5f6-02cd277da98c")
-		)
-		(fp_line
-			(start 2.25 0)
-			(end 2.25 4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "8d31e48b-0053-4ce9-a3ed-cd8e9c92e509")
-		)
-		(fp_line
-			(start 2.25 4)
-			(end -2.25 4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "8eab44e9-d08b-444b-95b0-458cc6a73584")
-		)
-		(fp_text user "PI stiffener 0.225 on the back, 0..4 mm"
-			(at 0 5 0)
-			(layer "Cmts.User")
-			(uuid "0a1caabc-c5ce-4848-8e2f-a22599b1fbf2")
-			(effects
-				(font
-					(size 0.4 0.4)
-					(thickness 0.06)
-				)
-			)
-		)
-		(pad "1" smd rect
-			(at -1.75 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 1 "GND_1")
-			(uuid "3beee4cd-9dc8-4b0d-88ae-20267706d161")
-		)
-		(pad "2" smd rect
-			(at -1.25 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 2 "+3V3_2")
-			(uuid "a161e311-859c-4345-a0e4-125e89c2e1ba")
-		)
-		(pad "3" smd rect
-			(at -0.75 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 3 "I2C_B_SDA")
-			(uuid "227a967a-264c-4792-bd59-17450bc5ca80")
-		)
-		(pad "4" smd rect
-			(at -0.25 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 4 "KB_INT_N")
-			(uuid "171bcf7e-c190-4a3a-8056-bb0ace5473d1")
-		)
-		(pad "5" smd rect
-			(at 0.25 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 5 "KB_RST_N")
-			(uuid "0659b97a-7844-4c85-bff4-5f5e37260361")
-		)
-		(pad "6" smd rect
-			(at 0.75 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 6 "I2C_B_SCL")
-			(uuid "7a01b9e5-4be0-46f3-9b27-5dda384883d3")
-		)
-		(pad "7" smd rect
-			(at 1.25 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 7 "+3V3_7")
-			(uuid "379fa70b-f885-47ec-914c-dfe67c403843")
-		)
-		(pad "8" smd rect
-			(at 1.75 1)
-			(size 0.3 1.6)
-			(layers "F.Cu" "F.Mask")
-			(net 8 "GND_8")
-			(uuid "64fb6036-9ec1-4bf0-89a2-6d88c4a228bd")
-		)
-		(embedded_fonts no)
-	)
-	(footprint "hackerslide:FPC_Fingers_1x08_P0.5mm_FH34"
-		(layer "F.Cu")
-		(uuid "e3e1f501-949c-434c-b07b-b0dc38742360")
+		(uuid "0a06f251-e9b4-4b97-a6b9-56b02635eb9f")
 		(at 0 79 180)
 		(descr "Flex cable contact end for Hirose FH34SRJ-8S-0.5SH: 8 fingers, 0.5 mm pitch, 1.5 mm uncovered, 0.225 mm PI stiffener on the back (0.07 mm flex -> 0.3 mm). Source: Hirose FH34 catalogue p.5.")
 		(property "Reference" "P2"
 			(at 0 -1.2 180)
 			(layer "F.SilkS")
-			(uuid "734cf25c-80b9-4d83-a1f9-1abfb0175e85")
+			(uuid "0c198360-a1ec-4159-b741-79e1323f1590")
 			(effects
 				(font
 					(size 0.8 0.8)
@@ -309,7 +105,7 @@
 		(property "Value" "to keyboard J1"
 			(at 0 6.2 180)
 			(layer "F.Fab")
-			(uuid "7bd3e4e8-ae35-49b3-99bb-1f0258908550")
+			(uuid "44c9093d-87b4-46f4-951c-d845819e7cb9")
 			(effects
 				(font
 					(size 0.8 0.8)
@@ -321,7 +117,7 @@
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ee4e9fe3-f700-4c82-bd88-ae842d822bf9")
+			(uuid "46bef25d-add7-4473-8856-a229b6dcba5b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -333,7 +129,7 @@
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6eab8aa4-f481-4c60-ba34-6d9033b79992")
+			(uuid "3eb26819-9f3e-44e7-b751-3fa2d7941575")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -353,7 +149,7 @@
 				(type solid)
 			)
 			(layer "Cmts.User")
-			(uuid "64fcfe9c-3a8b-4419-9268-1b7e3449fadb")
+			(uuid "255502d0-5631-4710-9d8d-3154111210cf")
 		)
 		(fp_line
 			(start 2.25 0)
@@ -363,7 +159,7 @@
 				(type solid)
 			)
 			(layer "Cmts.User")
-			(uuid "a35556c4-f165-40c4-a058-064f83eec3b0")
+			(uuid "d450cf7b-faac-402b-bccf-2d24805a78b6")
 		)
 		(fp_line
 			(start -2.25 4)
@@ -373,7 +169,7 @@
 				(type solid)
 			)
 			(layer "Cmts.User")
-			(uuid "15b22371-edc6-467c-a4a2-042ffb069084")
+			(uuid "67918715-3930-43a7-8c2c-32a6c04d5a43")
 		)
 		(fp_line
 			(start -2.25 0)
@@ -383,7 +179,7 @@
 				(type solid)
 			)
 			(layer "Cmts.User")
-			(uuid "84fd6f21-63a2-49e1-b584-c9e81cecb2f4")
+			(uuid "c27f3d63-b3cc-4ed8-acb5-08dcaf3b191f")
 		)
 		(fp_line
 			(start 2.25 4)
@@ -393,7 +189,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "da183978-2ff0-42e8-9813-79a867d48aed")
+			(uuid "81a6df7b-b76a-41d4-b7b2-ccd3ba7714ca")
 		)
 		(fp_line
 			(start 2.25 0)
@@ -403,7 +199,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "de56e450-3990-4625-b80a-2c0855106904")
+			(uuid "640ce4ab-5fc5-4d48-8158-621b87eb5fed")
 		)
 		(fp_line
 			(start -2.25 4)
@@ -413,7 +209,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "6ff288e6-83f0-4082-9d29-e43a30ca5408")
+			(uuid "b2aac378-b6af-4ef2-b91e-e97e19691468")
 		)
 		(fp_line
 			(start -2.25 0)
@@ -423,12 +219,12 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "f54963be-aa4c-4816-937a-4adbecdeb16c")
+			(uuid "cbdf3ff0-96b8-430e-ae95-d4ae63e70a1b")
 		)
 		(fp_text user "PI stiffener 0.225 on the back, 0..4 mm"
 			(at 0 5 180)
 			(layer "Cmts.User")
-			(uuid "291352a9-144c-40c4-994d-c27be0382f8a")
+			(uuid "274ddecc-58b0-453f-8061-b0d9c1d04e39")
 			(effects
 				(font
 					(size 0.4 0.4)
@@ -441,109 +237,262 @@
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 8 "GND_8")
-			(uuid "cf4a7760-c97d-472d-897f-cbe44a309ecd")
+			(uuid "1b46d74b-697a-4ef4-bfe3-235b2a5eaa0e")
 		)
 		(pad "2" smd rect
 			(at -1.25 1 180)
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 7 "+3V3_7")
-			(uuid "e70ed8e3-3a53-44c8-a40b-6eb3f2f89b22")
+			(uuid "6f98b8d0-19ab-430e-9109-99dfc0c4b707")
 		)
 		(pad "3" smd rect
 			(at -0.75 1 180)
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 6 "I2C_B_SCL")
-			(uuid "b91bbacb-1589-428a-9f88-a89554a7404d")
+			(uuid "0ae77610-cf97-4ac7-b5cf-6345477d8d3a")
 		)
 		(pad "4" smd rect
 			(at -0.25 1 180)
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 5 "KB_RST_N")
-			(uuid "d42d1af9-1c0c-4fb9-82fc-abd57d443888")
+			(uuid "5a05cab6-5d54-41fc-b0d8-2c398b546c05")
 		)
 		(pad "5" smd rect
 			(at 0.25 1 180)
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 4 "KB_INT_N")
-			(uuid "d95cd300-27e7-40dd-ad9c-5388ea90b08c")
+			(uuid "d9e15c0f-4577-4092-93f2-93d4a79705c5")
 		)
 		(pad "6" smd rect
 			(at 0.75 1 180)
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 3 "I2C_B_SDA")
-			(uuid "ce2752fc-8a61-41b3-b04f-b7d4ea40a959")
+			(uuid "3c0c2253-ff4d-41f9-8752-3be9aa7d14d3")
 		)
 		(pad "7" smd rect
 			(at 1.25 1 180)
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 2 "+3V3_2")
-			(uuid "7583e19e-3939-4184-b2ad-3999f5901aed")
+			(uuid "5eb1611b-aba8-464c-88a3-a54d0ce5ad37")
 		)
 		(pad "8" smd rect
 			(at 1.75 1 180)
 			(size 0.3 1.6)
 			(layers "F.Cu" "F.Mask")
 			(net 1 "GND_1")
-			(uuid "fc4f8f96-5be0-4346-ab56-90088e999bed")
+			(uuid "3a8116cd-af93-4c32-a75f-61acd3fb32e1")
 		)
 		(embedded_fonts no)
 	)
-	(gr_line
-		(start -2.049999 0)
-		(end 2.049999 0)
-		(stroke
-			(width 0.05)
-			(type default)
+	(footprint "hackerslide:FPC_Fingers_1x08_P0.5mm_FH34"
+		(layer "F.Cu")
+		(uuid "26e42894-14de-4cab-a80e-9d956fe1a4de")
+		(at 0 0)
+		(descr "Flex cable contact end for Hirose FH34SRJ-8S-0.5SH: 8 fingers, 0.5 mm pitch, 1.5 mm uncovered, 0.225 mm PI stiffener on the back (0.07 mm flex -> 0.3 mm). Source: Hirose FH34 catalogue p.5.")
+		(property "Reference" "P1"
+			(at 0 -1.2 0)
+			(layer "F.SilkS")
+			(uuid "823ac440-50ef-461b-a71c-c97a64734b83")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.12)
+				)
+			)
 		)
-		(layer "Edge.Cuts")
-		(uuid "39fcb6a1-e4d2-4e51-aefd-d9ec741d4e58")
-	)
-	(gr_arc
-		(start -2.25 0.2)
-		(mid -2.191421 0.058578)
-		(end -2.049999 -0.000001)
-		(stroke
-			(width 0.05)
-			(type default)
+		(property "Value" "to carrier J9"
+			(at 0 6.2 0)
+			(layer "F.Fab")
+			(uuid "68fc477b-70b5-40b5-9a68-3246d0e52d81")
+			(effects
+				(font
+					(size 0.8 0.8)
+					(thickness 0.12)
+				)
+			)
 		)
-		(layer "Edge.Cuts")
-		(uuid "441a2162-d6da-4a3c-8016-0910b28f14a3")
-	)
-	(gr_line
-		(start -2.25 78.8)
-		(end -2.25 0.2)
-		(stroke
-			(width 0.05)
-			(type default)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cc6c6708-f5df-4daa-981b-dcb881188e52")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
 		)
-		(layer "Edge.Cuts")
-		(uuid "575adc66-3619-4506-9c81-dcd7cfe2c721")
-	)
-	(gr_line
-		(start 2.25 0.2)
-		(end 2.25 78.8)
-		(stroke
-			(width 0.05)
-			(type default)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f5c31c03-b9c7-4210-960c-45368db1b411")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
 		)
-		(layer "Edge.Cuts")
-		(uuid "601ce382-23c5-4dc4-9e0b-85813d05b071")
-	)
-	(gr_line
-		(start 2.049999 79)
-		(end -2.049999 79)
-		(stroke
-			(width 0.05)
-			(type default)
+		(path "/7ae34f9a-f915-5b95-9002-7eba74c84694/de096fe4-d2ff-5d39-a1f2-f03e0fece3ac")
+		(sheetname "flex")
+		(sheetfile "flex.kicad_sch")
+		(attr smd exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
+		(fp_line
+			(start -2.25 0)
+			(end 2.25 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "Cmts.User")
+			(uuid "a249945a-2d74-4296-8411-a9272a595f7b")
 		)
-		(layer "Edge.Cuts")
-		(uuid "63218fb6-5877-4ec0-a1c0-874d0e6b9efa")
+		(fp_line
+			(start -2.25 4)
+			(end -2.25 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "Cmts.User")
+			(uuid "8c9707d0-1194-4ce3-afcc-9b33bb29f5cc")
+		)
+		(fp_line
+			(start 2.25 0)
+			(end 2.25 4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "Cmts.User")
+			(uuid "11d46a6b-1f5c-41c7-9b18-98904813f0c1")
+		)
+		(fp_line
+			(start 2.25 4)
+			(end -2.25 4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "Cmts.User")
+			(uuid "6036be8f-d967-456a-aa15-f3c95b16ee49")
+		)
+		(fp_line
+			(start -2.25 0)
+			(end 2.25 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "efc8cff8-8623-4d51-9728-e5fca0e4d42f")
+		)
+		(fp_line
+			(start -2.25 4)
+			(end -2.25 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "850ae4f7-038f-40cf-9993-566aed5a6a2f")
+		)
+		(fp_line
+			(start 2.25 0)
+			(end 2.25 4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "76694333-9638-42ac-8fec-e327af1e13d9")
+		)
+		(fp_line
+			(start 2.25 4)
+			(end -2.25 4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "b804b79b-568b-4397-b9f1-dd9a2c6df460")
+		)
+		(fp_text user "PI stiffener 0.225 on the back, 0..4 mm"
+			(at 0 5 0)
+			(layer "Cmts.User")
+			(uuid "5445be79-6880-4084-864e-e6a6834118ef")
+			(effects
+				(font
+					(size 0.4 0.4)
+					(thickness 0.06)
+				)
+			)
+		)
+		(pad "1" smd rect
+			(at -1.75 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 1 "GND_1")
+			(uuid "7e70001b-5136-469d-91ed-c35492375353")
+		)
+		(pad "2" smd rect
+			(at -1.25 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 2 "+3V3_2")
+			(uuid "27ea02e1-bc8c-4df4-9c4c-1e07dcc0aaff")
+		)
+		(pad "3" smd rect
+			(at -0.75 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 3 "I2C_B_SDA")
+			(uuid "b8d20ffc-e8b9-4b7f-aead-a4cc374fb59a")
+		)
+		(pad "4" smd rect
+			(at -0.25 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 4 "KB_INT_N")
+			(uuid "ea5a0450-0a20-4115-9ce0-02572455266d")
+		)
+		(pad "5" smd rect
+			(at 0.25 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 5 "KB_RST_N")
+			(uuid "a8388fe9-6f3a-4449-87d5-46859b902185")
+		)
+		(pad "6" smd rect
+			(at 0.75 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 6 "I2C_B_SCL")
+			(uuid "320b04f1-e2d0-4e25-9686-69d5445c8176")
+		)
+		(pad "7" smd rect
+			(at 1.25 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 7 "+3V3_7")
+			(uuid "6153c33a-3cca-4f86-ae42-d1138b4340ca")
+		)
+		(pad "8" smd rect
+			(at 1.75 1)
+			(size 0.3 1.6)
+			(layers "F.Cu" "F.Mask")
+			(net 8 "GND_8")
+			(uuid "c5aae3a8-f2f3-4433-a9a1-be4ac2383870")
+		)
+		(embedded_fonts no)
 	)
 	(gr_arc
 		(start -2.049999 79)
@@ -554,18 +503,18 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "9b30522a-3134-4fab-ac5f-3b6535daa1bc")
+		(uuid "164a0882-3bcc-4e21-a7db-fae2e1e53867")
 	)
 	(gr_arc
-		(start 2.049999 0)
-		(mid 2.19142 0.058579)
-		(end 2.249999 0.2)
+		(start -2.25 0.2)
+		(mid -2.191421 0.058578)
+		(end -2.049999 -0.000001)
 		(stroke
 			(width 0.05)
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "d2ef82ee-0dab-4568-911b-4cd4286fbd02")
+		(uuid "2b546247-9df1-4365-9aa1-f763a4875f84")
 	)
 	(gr_arc
 		(start 2.25 78.8)
@@ -576,12 +525,63 @@
 			(type default)
 		)
 		(layer "Edge.Cuts")
-		(uuid "e76dd280-d1a4-4236-8ba9-cd8e4dbbc40d")
+		(uuid "4dd44587-809b-471d-8d57-e4f2af8324ed")
+	)
+	(gr_line
+		(start 2.049999 79)
+		(end -2.049999 79)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "87026184-46f1-45b6-8d41-dc3137070f24")
+	)
+	(gr_line
+		(start -2.25 78.8)
+		(end -2.25 0.2)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "9b73a7a5-627c-4527-a76f-57cbd4c5855b")
+	)
+	(gr_line
+		(start -2.049999 0)
+		(end 2.049999 0)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "b4ee90ee-80c8-4a04-8046-0da46749c095")
+	)
+	(gr_arc
+		(start 2.049999 0)
+		(mid 2.19142 0.058579)
+		(end 2.249999 0.2)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "c84223f9-2383-4275-ab6c-e6bb908b6833")
+	)
+	(gr_line
+		(start 2.25 0.2)
+		(end 2.25 78.8)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "ed3fb53c-26e0-494c-a910-049669b32fa3")
 	)
 	(gr_text "CARRIER J9"
 		(at 0 7.5 90)
 		(layer "F.SilkS")
-		(uuid "e0fd3ae2-09b1-422f-9a6e-c46de13b8cd2")
+		(uuid "015eb169-c3c2-497c-a940-a4deac1cd3a1")
 		(effects
 			(font
 				(size 0.6 0.6)
@@ -592,7 +592,7 @@
 	(gr_text "KEYBOARD J1"
 		(at 0 71 90)
 		(layer "F.SilkS")
-		(uuid "ff7963f0-b37b-4c4c-9c9c-bcf202337990")
+		(uuid "5ba06319-8d66-4437-9c57-aab4149228be")
 		(effects
 			(font
 				(size 0.6 0.6)
@@ -603,7 +603,7 @@
 	(gr_text "Moving section: no vias, pads, stiffener or silkscreen between y = 12 and y = 67."
 		(at 10 39.5 90)
 		(layer "Cmts.User")
-		(uuid "17f162ab-9b03-4a9b-9fba-082aa4b73c37")
+		(uuid "742607aa-2ebe-420d-91b6-07db2d5036a7")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -614,7 +614,7 @@
 	(gr_text "1-layer flex 0.07 mm, 18 um Cu, ENIG. PI stiffener 0.225 mm on the BACK of both ends (4 mm)."
 		(at 8 39.5 90)
 		(layer "Cmts.User")
-		(uuid "de554329-830a-449f-b8b7-f43adcf616b8")
+		(uuid "d1a6a046-3adb-4504-9e28-f17f912afa9d")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -628,7 +628,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 1)
-		(uuid "13e721c9-2126-4290-93b5-558735695b5c")
+		(uuid "d67883fa-562f-4a46-8c02-2babb5035689")
 	)
 	(segment
 		(start -1.25 1)
@@ -636,7 +636,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 2)
-		(uuid "56253272-4588-411e-9d25-e857234b8655")
+		(uuid "11448e84-3e86-4e22-b9f5-924b9f64d133")
 	)
 	(segment
 		(start -0.75 1)
@@ -644,7 +644,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 3)
-		(uuid "d5f27ee4-0f2c-42c0-9ad7-c2ce34376544")
+		(uuid "1dee997d-18f0-4525-a693-691987847028")
 	)
 	(segment
 		(start -0.25 1)
@@ -652,7 +652,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 4)
-		(uuid "ecb2987e-2ff5-42a1-919b-f2448bee2310")
+		(uuid "f01da00e-2dff-498b-92a3-697f740e50cb")
 	)
 	(segment
 		(start 0.25 1)
@@ -660,7 +660,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 5)
-		(uuid "fbdb4987-1ab4-4d39-b25d-a93e530953e1")
+		(uuid "0f27f074-6984-43c4-92f2-9ddda93b7075")
 	)
 	(segment
 		(start 0.75 1)
@@ -668,7 +668,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 6)
-		(uuid "6dc11d84-49ef-49a5-aaf5-3ad18217f3b6")
+		(uuid "51f95036-51e1-4c2f-be4b-4b0badf2978f")
 	)
 	(segment
 		(start 1.25 1)
@@ -676,7 +676,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 7)
-		(uuid "9cd30686-4df9-4a36-8b21-5cd98b263da7")
+		(uuid "13557cc9-5c93-4d19-ac9e-cabd9e4a67c6")
 	)
 	(segment
 		(start 1.75 1)
@@ -684,7 +684,7 @@
 		(width 0.3)
 		(layer "F.Cu")
 		(net 8)
-		(uuid "8bd3e3b3-d3e2-4cae-82ab-f01e4dd278a0")
+		(uuid "70cb3d5f-22a2-4323-a263-41fe9cad6b79")
 	)
 	(embedded_fonts no)
 )
