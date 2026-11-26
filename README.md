@@ -3,6 +3,13 @@
 A pocketable Linux handheld in the spirit of the Nokia N810: landscape screen, slide-out QWERTY keyboard with a
 D-pad, an off-the-shelf CM4-format compute module on a custom carrier board. Open hardware.
 
+> **Direction change, 2026-11-27.** `main` is turning from a Linux handheld into a **hack pad**: the same slider
+> body and thumb keyboard around a powerful microcontroller instead of a Linux module, built as a radio and hardware
+> multi-tool (sub-GHz, NFC, software-defined radio as far as is reasonable), with its own firmware, MicroPython, and
+> music and audiobook playback. See [decisions/0009](docs/decisions/0009-hack-pad.md). The Linux handheld described
+> below is complete as a design and lives on the branch [`linux-handheld`](https://github.com/ruapotato/hackerslide/tree/linux-handheld);
+> everything below this note still describes it until the new design replaces it.
+
 **Status: rev 0.1 is designed and checked as far as it can be without parts. Nothing has been built or tested:
 the first boards are the test.**
 
