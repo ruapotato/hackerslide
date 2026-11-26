@@ -69,6 +69,11 @@ set by the Linux-class processor.
   backend for x86_64; LLVM will not run on the device. So the plan is a native backend for this chip in the Adder
   compiler, so that the compiler itself runs under HackOS. An assessment (structure, size, memory, effort) is
   being written with milestone 2. This is also a reason to fit 128 MB.
+- **On-device scripting is the Hamnix shell (David, 2026-11-27).** `hamsh` has variables, globs and control flow,
+  and is the everyday way to write and change things on the device. Compiling Adder on the device becomes a later
+  extra, not a requirement: without LLVM the compiler's own backend produces code David puts at about five times
+  slower, so releases are built on a PC. The shell needs rework where it relies on `fork`
+  ([os-audit-hamnix.md](../os-audit-hamnix.md)).
 
 - **Brain: reopened, 2026-11-27.** NXP's documents, read and cross-checked (`hardware/hackpad/data/`), show
   three things that the earlier choice missed: the RT1172 has **one** core, not two (only the RT1173/1175/1176
