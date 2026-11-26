@@ -71,3 +71,22 @@ emission limits. Unlicensed transmitting is allowed in specific bands only: 260-
 902-928 MHz, 2.4 GHz, 13.56 MHz, with limits on power. Wider transmitting needs an amateur licence, in amateur
 bands only. The Flipper Zero is certified and limits its transmit frequencies by region; the firmware here should
 do the same.
+
+## Software-defined radio from JLCPCB's own stock (searched 2026-11-26)
+
+David prefers every part to come from the assembler's shelf. The AT86RF215 chosen above has no stock there in any
+version, and neither does any other wideband radio chip, TV-tuner chip or wideband demodulator. What can be built:
+
+| Block | Parts (JLCPCB stock) | Covers | Width | Send | Cost |
+|---|---|---|---|---|---|
+| A. Semtech SX1255 | SX1255 (178), a 32 MHz reference | 400-510 MHz | up to 1 MHz | yes, about 3 mW | about $8 |
+| C. Shortwave detector | Si5351A clock (7,031), bus switch 74CBTLV3253 (11,354), OPA1612 (18,292), PCM1808 converter (45,283) | 0.1-30 MHz, weaker to about 50 MHz | 96-160 kHz | not planned | $5-10 |
+| B. Converter in front of the SX1255 (optional) | LMX2572 synthesizer (1,393), LTC5567 mixer (2,393), amplifier, switches, filters | about 300 MHz-4 GHz | up to 1 MHz | bench only | $60-70 |
+
+The shortwave detector is the classic design used in several open ham radios; the T41 project runs one on the
+same chip family as this board's brain. Block B is a frequency shifter: it moves a chosen slice of spectrum into
+the SX1255's range.
+
+Not possible from that shelf: more than 1 MHz at once; clean sending outside 400-510 MHz; anything above 4 GHz;
+gap-free cover between about 50 and 300 MHz; image-free reception above about 1.9 GHz without more filters.
+The whole plan rests on one listing of 178 SX1255s.
