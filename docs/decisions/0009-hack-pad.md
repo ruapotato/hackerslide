@@ -83,6 +83,12 @@ set by the Linux-class processor.
   RT117x. David to choose among: RT1172 A silicon from JLCPCB; RT1176 B silicon from DigiKey (516); or the older
   RT1062 (600 MHz, the Teensy 4 chip, 1,269 at JLCPCB, current silicon).
 
+- **Sourcing widened (David, 2026-11-27):** parts may come from DigiKey as well as JLCPCB's shelf, as long as
+  JLCPCB can order them itself and fit them, so that nothing has to be shipped by hand.
+- **Brain decided: the RT1176** in its current ("B") silicon: 800 MHz or 1 GHz main core plus the 400 MHz second
+  core. Exact part number to be picked from DigiKey's stock. This also reopens the SDR chip, since the wider
+  radio chips are stocked at DigiKey: being re-examined.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
