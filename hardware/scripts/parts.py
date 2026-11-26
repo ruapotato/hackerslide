@@ -29,6 +29,7 @@ CAP = {
     '4.7u': ('C23733', 'CL05A475MP5NRNC', C0402), '10u': ('C19702', 'CL10A106KP8NNNC', C0603),
     '22u': ('C45783', 'CL21A226MAQNNNE', C0805),
     '22p': ('C1555', '0402CG220J500NT', C0402), '100p': ('C1546', '0402CG101J500NT', C0402),
+    '4.7u/25V': ('C69335', 'CL10A475KA8NQNC', C0603),    # e-paper drive rails (25 V rating asked by the panel maker)
     '4.7u/0603': ('C19666', 'CL10A475KO8NNNC', C0603),      # where DC bias matters (REGN)
     '2.2u': ('C12530', 'CL05A225MQ5NSNC', C0402),
     '2.2u/50V': ('C307528', 'CL21A225KBFNNNE', C0805),      # backlight output

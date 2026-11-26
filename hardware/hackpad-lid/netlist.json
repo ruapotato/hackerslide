@@ -1,0 +1,641 @@
+{
+ "name": "hackpad-lid",
+ "components": [
+  {
+   "ref": "J1",
+   "value": "FH34SRJ-20S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "a927e57c-11b2-5332-84a6-f845a78436e8",
+   "fields": {
+    "LCSC": "C2802370",
+    "MPN": "FH34SRJ-20S-0.5SH(50)",
+    "Manufacturer": "Hirose",
+    "Description": "to the main board through the slider"
+   },
+   "pads": {
+    "1": "GND",
+    "2": "+3V3",
+    "3": "GND",
+    "4": "EPD_SCK",
+    "5": "GND",
+    "6": "EPD_MOSI",
+    "7": "EPD_CS_N",
+    "8": "EPD_DC",
+    "9": "EPD_RST_N",
+    "10": "EPD_BUSY",
+    "11": "GND",
+    "12": "I2C_U_SCL",
+    "13": "I2C_U_SDA",
+    "14": "TOUCH_INT",
+    "15": "TOUCH_RST_N",
+    "16": "GND",
+    "17": "FL_C_A",
+    "18": "FL_C_K",
+    "19": "FL_W_K",
+    "20": "FL_W_A",
+    "MP": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "J2",
+   "value": "FH34SRJ-24S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-24S-0.5SH_1x24-1MP_P0.50mm_Horizontal",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "8b63b0f8-ace5-531c-be80-77b13694975b",
+   "fields": {
+    "LCSC": "C324726",
+    "MPN": "FH34SRJ-24S-0.5SH(50)",
+    "Manufacturer": "Hirose",
+    "Description": "e-paper panel, 24 contacts"
+   },
+   "pads": {
+    "2": "GDR",
+    "3": "RESE",
+    "5": "VSH2",
+    "8": "GND",
+    "9": "EPD_BUSY",
+    "10": "EPD_RST_N",
+    "11": "EPD_DC",
+    "12": "EPD_CS_N",
+    "13": "EPD_SCK",
+    "14": "EPD_MOSI",
+    "15": "+3V3",
+    "16": "+3V3",
+    "17": "GND",
+    "18": "EPD_VDD",
+    "20": "VSH1",
+    "21": "PREVGH",
+    "22": "VSL",
+    "23": "PREVGL",
+    "24": "VCOM",
+    "MP": "GND"
+   },
+   "in_bom": true,
+   "nc": {
+    "1": "unconnected-(J2-Pin_1-Pad1)",
+    "4": "unconnected-(J2-Pin_4-Pad4)",
+    "6": "unconnected-(J2-Pin_6-Pad6)",
+    "7": "unconnected-(J2-Pin_7-Pad7)",
+    "19": "unconnected-(J2-Pin_19-Pad19)"
+   }
+  },
+  {
+   "ref": "J3",
+   "value": "FH34SRJ-6S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-6S-0.5SH_1x06-1MP_P0.50mm_Horizontal",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "d689f916-c17a-5ed4-ab28-8d89ad135094",
+   "fields": {
+    "LCSC": "C224194",
+    "MPN": "FH34SRJ-6S-0.5SH(50)",
+    "Manufacturer": "Hirose",
+    "Description": "touch panel (FT6336U)"
+   },
+   "pads": {
+    "1": "GND",
+    "2": "+3V3",
+    "3": "TOUCH_RST_N",
+    "4": "TOUCH_INT",
+    "5": "I2C_U_SDA",
+    "6": "I2C_U_SCL",
+    "MP": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "J4",
+   "value": "FH34SRJ-6S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-6S-0.5SH_1x06-1MP_P0.50mm_Horizontal",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "d966fe8b-4505-538b-adc9-8c0d993f7bb1",
+   "fields": {
+    "LCSC": "C224194",
+    "MPN": "FH34SRJ-6S-0.5SH(50)",
+    "Manufacturer": "Hirose",
+    "Description": "front light: 1 cool +, 2 cool -, 5 warm +, 6 warm -"
+   },
+   "pads": {
+    "1": "FL_C_A",
+    "2": "FL_C_K",
+    "5": "FL_W_A",
+    "6": "FL_W_K",
+    "MP": "GND"
+   },
+   "in_bom": true,
+   "nc": {
+    "3": "unconnected-(J4-Pin_3-Pad3)",
+    "4": "unconnected-(J4-Pin_4-Pad4)"
+   }
+  },
+  {
+   "ref": "L1",
+   "value": "47uH",
+   "footprint": "Inductor_SMD:L_Taiyo-Yuden_NR-30xx",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "c7ea9f62-0e4c-5230-a909-17626a2520af",
+   "fields": {
+    "LCSC": "C83435",
+    "MPN": "SWPA3015S470MT",
+    "Manufacturer": "Sunlord",
+    "Description": "47 uH, 350 mA, 3 x 3 x 1.5 mm (the reference names NR3015)"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "EPD_SW"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "Q1",
+   "value": "SI1308EDL",
+   "footprint": "Package_TO_SOT_SMD:SOT-323_SC-70",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "6e91296d-6a73-5a3e-8676-b0ae1a8c2ddc",
+   "fields": {
+    "LCSC": "C469327",
+    "MPN": "SI1308EDL-T1-GE3",
+    "Manufacturer": "Vishay",
+    "Description": "the reference circuit's transistor. CHECK pin order 1 G, 2 S, 3 D"
+   },
+   "pads": {
+    "1": "GDR",
+    "2": "RESE",
+    "3": "EPD_SW"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R1",
+   "value": "1M",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "80cd2b65-0868-5432-94ee-5f561434b546",
+   "fields": {
+    "LCSC": "C26083",
+    "MPN": "0402WGF1004TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "GDR",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R2",
+   "value": "2.2",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "ea4ce9af-93c6-5a65-84d1-928d3fe5d49b",
+   "fields": {
+    "LCSC": "C22939",
+    "MPN": "0603WAF220KT5E",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "current sense, 1 %"
+   },
+   "pads": {
+    "1": "RESE",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D1",
+   "value": "MBR0530",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "6115a0bf-c38a-56c7-985c-35e5e2773247",
+   "fields": {
+    "LCSC": "C82046",
+    "MPN": "MBR0530T1G",
+    "Manufacturer": "onsemi"
+   },
+   "pads": {
+    "1": "EPD_CP",
+    "2": "PREVGL"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D2",
+   "value": "MBR0530",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "cb78b3e5-9e62-5359-bf0b-40aa0933b34b",
+   "fields": {
+    "LCSC": "C82046",
+    "MPN": "MBR0530T1G",
+    "Manufacturer": "onsemi"
+   },
+   "pads": {
+    "1": "GND",
+    "2": "EPD_CP"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D3",
+   "value": "MBR0530",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "7ff1ca39-1481-517e-9bf6-ed1948b72a7f",
+   "fields": {
+    "LCSC": "C82046",
+    "MPN": "MBR0530T1G",
+    "Manufacturer": "onsemi"
+   },
+   "pads": {
+    "1": "PREVGH",
+    "2": "EPD_SW"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C2",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "e8abacf2-bcf5-5d5e-989a-a00fb2fbb8a5",
+   "fields": {
+    "LCSC": "C69335",
+    "MPN": "CL10A475KA8NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "VSH2",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C3",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "3aeac433-c69d-5a00-a6a5-98fbb2db5145",
+   "fields": {
+    "LCSC": "C69335",
+    "MPN": "CL10A475KA8NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "EPD_SW",
+    "2": "EPD_CP"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C4",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "d52d1ed5-83f1-5c7f-a126-c5702c711e33",
+   "fields": {
+    "LCSC": "C69335",
+    "MPN": "CL10A475KA8NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C5",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "2259d6ea-5990-5127-80af-660f58dacfd0",
+   "fields": {
+    "LCSC": "C69335",
+    "MPN": "CL10A475KA8NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "PREVGH",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C6",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "ffb46f2f-ab39-59a7-82f0-3b68149ea152",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C7",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "0e280779-ff15-586c-8bb0-5b1005810740",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "EPD_VDD",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C9",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "a7c0260a-9dbc-52bb-852c-424623eedd1a",
+   "fields": {
+    "LCSC": "C69335",
+    "MPN": "CL10A475KA8NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "VSH1",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C10",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "389a8332-dfb7-5424-b0ba-0bdaa9e842cc",
+   "fields": {
+    "LCSC": "C69335",
+    "MPN": "CL10A475KA8NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "VSL",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C11",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "29061e6b-226f-5d0e-9a3f-7a0f1ac12496",
+   "fields": {
+    "LCSC": "C69335",
+    "MPN": "CL10A475KA8NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "PREVGL",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C12",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "1b130b83-16dd-5b7d-89cb-3c8bc2fa5c72",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "VCOM",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C13",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "0e633845-ace0-51e3-bcfa-a0d56cf01d2f",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "TP1",
+   "value": "PREVGH",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "025da7eb-25e1-559b-927c-169c82a4379c",
+   "fields": {},
+   "pads": {
+    "1": "PREVGH"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP2",
+   "value": "PREVGL",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "180efe45-bb47-5b4c-9fca-cd65ed9dc777",
+   "fields": {},
+   "pads": {
+    "1": "PREVGL"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP3",
+   "value": "VCOM",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "f9c1d57f-eb38-56fa-8a87-fb367aca0d07",
+   "fields": {},
+   "pads": {
+    "1": "VCOM"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP4",
+   "value": "VSH1",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "4f6874ba-c975-53b9-bb01-ebc0660363ed",
+   "fields": {},
+   "pads": {
+    "1": "VSH1"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP5",
+   "value": "VSL",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "a7c4390e-982b-5499-bf44-0ac8ab59ba6e",
+   "fields": {},
+   "pads": {
+    "1": "VSL"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP6",
+   "value": "+3V3",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "85695acc-75ca-508b-b994-d8f9eecac2bd",
+   "fields": {},
+   "pads": {
+    "1": "+3V3"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP7",
+   "value": "GND",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "panel",
+   "sheet_uuid": "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+   "sheetfile": "panel.kicad_sch",
+   "sym_uuid": "079a0988-cf86-551e-8451-9156cfda3ce7",
+   "fields": {},
+   "pads": {
+    "1": "GND"
+   },
+   "in_bom": false,
+   "nc": {}
+  }
+ ]
+}

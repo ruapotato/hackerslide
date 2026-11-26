@@ -4772,7 +4772,7 @@
   },
   {
    "ref": "R70",
-   "value": "10k",
+   "value": "100k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "keyboard",
@@ -4780,10 +4780,10 @@
    "sheetfile": "keyboard.kicad_sch",
    "sym_uuid": "26201af4-a5c1-55c5-b088-fc865db33285",
    "fields": {
-    "LCSC": "C25744",
-    "MPN": "0402WGF1002TCE",
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "open drain to a 1.8 V wake pad"
+    "Description": "open drain to a 1.8 V wake pad; the SNVS supply gives 1 mA at most"
    },
    "pads": {
     "1": "KB_INT_N",
@@ -4895,6 +4895,422 @@
     "2": "GND"
    },
    "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "J2",
+   "value": "FH34SRJ-20S-0.5SH",
+   "footprint": "hackerslide:Hirose_FH34SRJ-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "72dcc208-5e35-53af-9c0a-eb83af123c6e",
+   "fields": {
+    "LCSC": "C2802370",
+    "MPN": "FH34SRJ-20S-0.5SH(50)",
+    "Manufacturer": "Hirose",
+    "Description": "to the lid board through the slider"
+   },
+   "pads": {
+    "1": "GND",
+    "2": "+3V3",
+    "3": "GND",
+    "4": "EPD_SCK",
+    "5": "GND",
+    "6": "EPD_MOSI",
+    "7": "EPD_CS_N",
+    "8": "EPD_DC",
+    "9": "EPD_RST_N",
+    "10": "EPD_BUSY",
+    "11": "GND",
+    "12": "I2C_U_SCL",
+    "13": "I2C_U_SDA",
+    "14": "TOUCH_INT",
+    "15": "TOUCH_RST_N",
+    "16": "GND",
+    "17": "FL_C_A",
+    "18": "FL_C_K",
+    "19": "FL_W_K",
+    "20": "FL_W_A",
+    "MP": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R80",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "2a99f593-0d17-53bd-927d-433dd59725a2",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "defined level with the lid unplugged"
+   },
+   "pads": {
+    "1": "EPD_BUSY",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R81",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "0a6c5751-159c-5a42-8cd2-db60cd9313d2",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "TOUCH_INT",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R82",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "0bdd038f-fc6b-5bc4-b72b-50310a1eb1fd",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "the SNVS supply gives 1 mA at most: weak pull-ups only"
+   },
+   "pads": {
+    "1": "TOUCH_INT_N",
+    "2": "VDD_SNVS_ANA"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "Q2",
+   "value": "DMG1012T",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "1a13a784-27b0-53bf-96fb-f109263f878c",
+   "fields": {
+    "LCSC": "C20512",
+    "MPN": "DMG1012T-7",
+    "Manufacturer": "Diodes Incorporated",
+    "Description": "threshold 1 V max. CHECK pin order 1 G, 2 S, 3 D"
+   },
+   "pads": {
+    "1": "VDD_SNVS_ANA",
+    "2": "TOUCH_INT_N",
+    "3": "TOUCH_INT"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R83",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "7a19193a-c5de-5035-b9cb-410a85196976",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "TOUCH_RST_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U7",
+   "value": "LM3630ATME",
+   "footprint": "hackerslide:Texas_DSBGA-12_YFQ_1.42x1.94mm_Layout3x4_P0.4mm",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "102ce7c1-102b-5547-be01-f24be7440070",
+   "fields": {
+    "LCSC": "C1880284",
+    "MPN": "LM3630ATME",
+    "Manufacturer": "Texas Instruments",
+    "Description": "only about 100 in stock at JLCPCB on 2026-11-26: confirm before ordering"
+   },
+   "pads": {
+    "C3": "+3V3",
+    "B1": "FL_EN",
+    "C1": "GND",
+    "C2": "GND",
+    "A1": "I2C_U_SDA",
+    "A2": "I2C_U_SCL",
+    "B2": "FL_INT_N",
+    "B3": "GND",
+    "A3": "FL_SW",
+    "D1": "FL_VOUT",
+    "D3": "FL_C_K",
+    "D2": "FL_W_K"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "L2",
+   "value": "10uH",
+   "footprint": "Inductor_SMD:L_Taiyo-Yuden_NR-30xx",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "b2992d9a-3c80-513b-b34d-24db48fe0f82",
+   "fields": {
+    "LCSC": "C45403",
+    "MPN": "SWPA3015S100MT",
+    "Manufacturer": "Sunlord",
+    "Description": "10 uH, 770 mA, 3 x 3 x 1.5 mm"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "FL_SW"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D2",
+   "value": "MBR0530",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "890f9980-8efe-58e9-92f2-ac64fc746b53",
+   "fields": {
+    "LCSC": "C82046",
+    "MPN": "MBR0530T1G",
+    "Manufacturer": "onsemi"
+   },
+   "pads": {
+    "1": "FL_VOUT",
+    "2": "FL_SW"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R84",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "79d87148-b41e-54f6-9472-b4276b0209cb",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "FL_VOUT",
+    "2": "FL_C_A"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R85",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "eb5cc97f-f47e-5116-b99b-a7dd8fa6dafc",
+   "fields": {
+    "LCSC": "C17168",
+    "MPN": "0402WGF0000TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "FL_VOUT",
+    "2": "FL_W_A"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R86",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "5558885c-04bd-58cf-b637-b4f308e3c0a2",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "front light off until the firmware enables it"
+   },
+   "pads": {
+    "1": "FL_EN",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R87",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "38842270-8b40-518b-8dcb-8f17acc9fb96",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "FL_INT_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C140",
+   "value": "2.2u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "d634e0c8-2322-59a9-a729-182b99aa383a",
+   "fields": {
+    "LCSC": "C12530",
+    "MPN": "CL05A225MQ5NSNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C141",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "bcd852c9-a795-5300-869a-568177912d6e",
+   "fields": {
+    "LCSC": "C15849",
+    "MPN": "CL10A105KB8NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "FL_VOUT",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "TP20",
+   "value": "FL_VOUT",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "e641230b-f3bc-55d4-aa7e-43b34b188e16",
+   "fields": {},
+   "pads": {
+    "1": "FL_VOUT"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP21",
+   "value": "FL_EN",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "81446bcf-f008-5332-a1d2-c336eb9a3675",
+   "fields": {},
+   "pads": {
+    "1": "FL_EN"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP22",
+   "value": "TOUCH_RST_N",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "59fe16ca-469e-5030-97ef-145dd6a7d277",
+   "fields": {},
+   "pads": {
+    "1": "TOUCH_RST_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP23",
+   "value": "FL_INT_N",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "display",
+   "sheet_uuid": "cf0011e7-01f4-57bc-ac71-c0cb93b30d18",
+   "sheetfile": "display.kicad_sch",
+   "sym_uuid": "b1d72c1c-6caf-5814-9727-3fe90cff3d85",
+   "fields": {},
+   "pads": {
+    "1": "FL_INT_N"
+   },
+   "in_bom": false,
    "nc": {}
   },
   {
@@ -5093,7 +5509,14 @@
     "F16": "FSPI_D3",
     "D11": "I2C_U_SCL",
     "E11": "I2C_U_SDA",
-    "P10": "KB_INT_N"
+    "P10": "KB_INT_N",
+    "L17": "EPD_SCK",
+    "K17": "EPD_MOSI",
+    "M17": "EPD_CS_N",
+    "J17": "EPD_DC",
+    "J16": "EPD_RST_N",
+    "G17": "EPD_BUSY",
+    "L9": "TOUCH_INT_N"
    },
    "in_bom": true,
    "nc": {
@@ -5141,14 +5564,8 @@
     "J12": "unconnected-(U1-GPIO_AD_23-PadJ12)",
     "L14": "unconnected-(U1-GPIO_AD_26-PadL14)",
     "N16": "unconnected-(U1-GPIO_AD_27-PadN16)",
-    "L17": "unconnected-(U1-GPIO_AD_28-PadL17)",
-    "M17": "unconnected-(U1-GPIO_AD_29-PadM17)",
-    "K17": "unconnected-(U1-GPIO_AD_30-PadK17)",
-    "J17": "unconnected-(U1-GPIO_AD_31-PadJ17)",
     "K16": "unconnected-(U1-GPIO_AD_32-PadK16)",
     "H17": "unconnected-(U1-GPIO_AD_33-PadH17)",
-    "J16": "unconnected-(U1-GPIO_AD_34-PadJ16)",
-    "G17": "unconnected-(U1-GPIO_AD_35-PadG17)",
     "E13": "unconnected-(U1-GPIO_DISP_B1_00-PadE13)",
     "D13": "unconnected-(U1-GPIO_DISP_B1_01-PadD13)",
     "E10": "unconnected-(U1-GPIO_DISP_B1_04-PadE10)",
@@ -5175,7 +5592,6 @@
     "T5": "unconnected-(U1-GPIO_LPSR_11-PadT5)",
     "U5": "unconnected-(U1-GPIO_LPSR_12-PadU5)",
     "R10": "unconnected-(U1-GPIO_SNVS_00-PadR10)",
-    "L9": "unconnected-(U1-GPIO_SNVS_02-PadL9)",
     "M10": "unconnected-(U1-GPIO_SNVS_03-PadM10)",
     "N10": "unconnected-(U1-GPIO_SNVS_04-PadN10)",
     "P9": "unconnected-(U1-GPIO_SNVS_05-PadP9)",

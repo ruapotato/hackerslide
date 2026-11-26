@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "filename": "hackpad-lid.kicad_pro",
+    "version": 3
+  },
+  "sheets": [
+    [
+      "4827d5d2-a269-5653-9b77-e2bfb33898d5",
+      "Root"
+    ],
+    [
+      "0e3e4254-c9e9-559b-86f7-05c3d7296781",
+      "panel"
+    ]
+  ]
+}

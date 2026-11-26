@@ -185,6 +185,14 @@ def symbols():
         descr='TI TCA8418 I2C keypad scanner, 8x10 matrix, address 0x34 (mainline Linux: tca8418_keypad)',
         footprint='Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm',
         datasheet='https://www.ti.com/lit/ds/symlink/tca8418.pdf'))
+    # LM3630A (TI SNVS974B, pin functions table p.3)
+    out.append(box_symbol('LM3630A',
+        [('C3', 'IN', PI), ('B1', 'HWEN', I), ('C1', 'PWM', I), ('C2', 'SEL', I), None, ('A1', 'SDA', B), ('A2', 'SCL', I),
+         ('B2', '~{INTN}', 'open_collector'), ('B3', 'GND', PI)],
+        [('A3', 'SW', P), ('D1', 'OVP', P), None, ('D3', 'ILED1', P), ('D2', 'ILED2', P)],
+        descr='TI LM3630A two-string LED boost driver, I2C address 0x36 (SEL low) or 0x38',
+        footprint='hackerslide:Texas_DSBGA-12_YFQ_1.42x1.94mm_Layout3x4_P0.4mm',
+        datasheet='https://www.ti.com/lit/ds/symlink/lm3630a.pdf'))
     # MAX17048 (Maxim 19-6171 Rev 7, TDFN pin table)
     out.append(box_symbol('MAX17048',
         [('2', 'CELL', P), ('3', 'VDD', PI), ('1', 'CTG', P), ('4', 'GND', PI), ('9', 'EP', P)],
@@ -308,6 +316,21 @@ def fh34(n):
                          body, ref_y=-1.6, val_y=5.0)
 
 
+def dsbga12_yfq():
+    # TI YFQ0012 (LM3630A data sheet SNVS974B, mechanical data): 12 balls, 3 x 4, 0.4 mm pitch, body 1.94 x 1.42 mm max.
+    # Columns 1..3 along X, rows A..D along Y, A1 at top left seen from above.  CHECK the orientation against the TI
+    # drawing before layout: only the pitch, count and body size were read from the data sheet text.
+    name = 'Texas_DSBGA-12_YFQ_1.42x1.94mm_Layout3x4_P0.4mm'
+    body = ''
+    for r, row in enumerate('ABCD'):
+        for c in range(3):
+            body += (f'\t(pad "{row}{c + 1}" smd circle (at {(c - 1) * 0.4:.2f} {(r - 1.5) * 0.4:.2f}) (size 0.23 0.23) '
+                     f'(layers "F.Cu" "F.Paste" "F.Mask") (uuid "{uid(name, row, c)}"))\n')
+    body += rect('F.Fab', -0.71, -0.97, 0.71, 0.97, w=0.1, tag=name)
+    body += rect('F.CrtYd', -0.96, -1.22, 0.96, 1.22, tag=name)
+    return name, fp_text(name, 'TI DSBGA-12 (YFQ), 0.4 mm pitch, for LM3630A', body, ref_y=-2, val_y=2)
+
+
 def pj342():
     # SHOU HAN PJ-342 drawing (LCSC C668606), "PCB terminal dimension, TOP VIEW": jack opening at -X.
     # x measured from the body front face (the 2 mm collar sticks out to x = -2); body 12 x 6.4 x 4.5 mm.
@@ -398,7 +421,7 @@ def m2_hole():
 def main():
     os.makedirs(FP, exist_ok=True)
     open(os.path.join(LIB, 'hackerslide.kicad_sym'), 'w').write(symbols())
-    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8), fpc_fingers, contact_pad):
+    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8), lambda: fh34(24), lambda: fh34(6), dsbga12_yfq, fpc_fingers, contact_pad):
         name, text = f()
         open(os.path.join(FP, name + '.kicad_mod'), 'w').write(text)
 

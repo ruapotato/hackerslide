@@ -16,6 +16,7 @@ import os
 import re
 import sys
 
+import hackpad_lid_design as LID
 import hackpad_pins as PINS
 import hp_layout as HP
 from kigen import Design
@@ -30,7 +31,8 @@ for _r in BALLS:
 
 # parts these sheets need that the catalogue did not have (JLCPCB codes; stock is re-read by bom/tools/make_bom.py)
 RES.update({'30k': ('C25776', '0402WGF3002TCE'), '10k': RES['10k']})
-CAP.update({'220n': ('C16772', 'CL05B224KO5NNNC', CAP['100n'][2]), '4.7p': ('C1569', '0402CG4R7C500NT', CAP['100n'][2]),
+CAP.update({'1u/50V': ('C15849', 'CL10A105KB8NNNC', 'Capacitor_SMD:C_0603_1608Metric'),
+            '220n': ('C16772', 'CL05B224KO5NNNC', CAP['100n'][2]), '4.7p': ('C1569', '0402CG4R7C500NT', CAP['100n'][2]),
             '22u/0603': ('C59461', 'CL10A226MQ8NRNC', 'Capacitor_SMD:C_0603_1608Metric')})
 
 U = {}          # ball -> net, filled by the helpers below; one dict so that a ball can only be claimed once
@@ -261,10 +263,46 @@ def build():
             R(kb, f'R{rr}', '100k', f'KCOL{c}', '+3V3'); rr += 1
     kb.add('U6', 'hackerslide', 'TCA8418RTW', 'TCA8418RTWR', 'Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm', nets,
            fields=fields('C138713', 'TCA8418RTWR', 'Texas Instruments'))
-    R(kb, 'R70', '10k', 'KB_INT_N', 'VDD_SNVS_ANA', note='open drain to a 1.8 V wake pad')
+    R(kb, 'R70', '100k', 'KB_INT_N', 'VDD_SNVS_ANA', note='open drain to a 1.8 V wake pad; the SNVS supply gives 1 mA at most')
     R(kb, 'R71', '10k', 'KB_RST_N', '+3V3')
     R(kb, 'R72', '2.2k', 'I2C_U_SCL', '+3V3'); R(kb, 'R73', '2.2k', 'I2C_U_SDA', '+3V3')
     C(kb, 'C130', '100n', '+3V3'); C(kb, 'C131', '1u', '+3V3')
+
+    # ------------------------------------------------------------------------------------------ display link
+    dp = d.sheet('display', 'Display link: e-paper, touch, front light', paper='A3', notes=[
+        'The e-paper drive circuit is on the lid board (hackpad_lid_design.py). J2 is the 20-way cable to it through the',
+        '    slider; pin k here is pin k on the lid board.',
+        'E-paper on LPSPI1 (write only).',
+        'Touch interrupt: the FT6336U drives 3.3 V levels, the wake pad is 1.8 V. Q2 passes only the low level (gate at the',
+        '    1.8 V SNVS supply); R82 pulls the pad side up to that supply.',
+        'Front light: LM3630A, two strings set independently over I2C (cool on ILED1, warm on ILED2), so no timer pad is',
+        '    needed. Address 0x36 on the I2C_U bus. The panel specification gives no string current or voltage: its adapter',
+        '    board feeds the strings from 15 V through resistors. START LOW (a few mA) AND MEASURE; set the 16 V limit in the',
+        '    chip before turning the strings on (its power-on limit is 24 V; C141 is rated 50 V for that reason).',
+        'FL_EN and TOUCH_RST_N will come from a port expander (later sheet).'])
+    for net in ('EPD_SCK', 'EPD_MOSI', 'EPD_CS_N', 'EPD_DC', 'EPD_RST_N', 'EPD_BUSY', 'TOUCH_INT_N'):
+        use(net)
+    LID.link_connector(dp, 'J2', 'to the lid board through the slider')
+    R(dp, 'R80', '100k', 'EPD_BUSY', 'GND', note='defined level with the lid unplugged')
+    R(dp, 'R81', '10k', 'TOUCH_INT', '+3V3')
+    R(dp, 'R82', '100k', 'TOUCH_INT_N', 'VDD_SNVS_ANA', note='the SNVS supply gives 1 mA at most: weak pull-ups only')
+    dp.add('Q2', 'Transistor_FET', '2N7002', 'DMG1012T', 'Package_TO_SOT_SMD:SOT-523', {'1': 'VDD_SNVS_ANA', '2': 'TOUCH_INT_N', '3': 'TOUCH_INT'},
+           fields=fields('C20512', 'DMG1012T-7', 'Diodes Incorporated', Description='threshold 1 V max. CHECK pin order 1 G, 2 S, 3 D'))
+    R(dp, 'R83', '10k', 'TOUCH_RST_N', '+3V3')
+    dp.add('U7', 'hackerslide', 'LM3630A', 'LM3630ATME', 'hackerslide:Texas_DSBGA-12_YFQ_1.42x1.94mm_Layout3x4_P0.4mm',
+           {'C3': '+3V3', 'B1': 'FL_EN', 'C1': 'GND', 'C2': 'GND', 'A1': 'I2C_U_SDA', 'A2': 'I2C_U_SCL', 'B2': 'FL_INT_N', 'B3': 'GND',
+            'A3': 'FL_SW', 'D1': 'FL_VOUT', 'D3': 'FL_C_K', 'D2': 'FL_W_K'},
+           fields=fields('C1880284', 'LM3630ATME', 'Texas Instruments', Description='only about 100 in stock at JLCPCB on 2026-11-26: confirm before ordering'))
+    dp.add('L2', 'Device', 'L', '10uH', 'Inductor_SMD:L_Taiyo-Yuden_NR-30xx', {'1': '+3V3', '2': 'FL_SW'},
+           fields=fields('C45403', 'SWPA3015S100MT', 'Sunlord', Description='10 uH, 770 mA, 3 x 3 x 1.5 mm'))
+    dp.add('D2', 'Device', 'D_Schottky', 'MBR0530', 'Diode_SMD:D_SOD-123', {'1': 'FL_VOUT', '2': 'FL_SW'},
+           fields=fields('C82046', 'MBR0530T1G', 'onsemi'))
+    R(dp, 'R84', '0', 'FL_VOUT', 'FL_C_A'); R(dp, 'R85', '0', 'FL_VOUT', 'FL_W_A')
+    R(dp, 'R86', '100k', 'FL_EN', 'GND', note='front light off until the firmware enables it')
+    R(dp, 'R87', '100k', 'FL_INT_N', '+3V3')
+    C(dp, 'C140', '2.2u', '+3V3'); C(dp, 'C141', '1u/50V', 'FL_VOUT')
+    for i, net in enumerate(('FL_VOUT', 'FL_EN', 'TOUCH_RST_N', 'FL_INT_N')):
+        TP(dp, f'TP{20 + i}', net)
 
     # the brain itself goes on the first sheet, with every ball claimed above
     p.add('U1', 'hackerslide', 'MIMXRT117x_BGA289', 'MIMXRT1176', 'Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm', dict(U),
