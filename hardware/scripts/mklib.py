@@ -201,6 +201,12 @@ def symbols():
         [('2', 'VDD', PI), ('4', '~{MR}', I), ('5', 'CT', P), ('3', 'GND', PI)], [('1', '~{RESET}', 'open_collector')],
         descr='TI TPS3840 open-drain voltage supervisor with manual reset and delay capacitor',
         footprint='Package_TO_SOT_SMD:SOT-23-5', datasheet='https://www.ti.com/lit/ds/symlink/tps3840.pdf'))
+    # TPS63802 (TI, DLA package): 1 EN, 2 MODE, 3 AGND, 4 FB, 5 PG, 6 VOUT, 7 L2, 8 GND, 9 L1, 10 VIN
+    out.append(box_symbol('TPS63802',
+        [('10', 'VIN', PI), ('1', 'EN', I), ('2', 'MODE', I), None, ('3', 'AGND', PI), ('8', 'GND', PI)],
+        [('9', 'L1', P), ('7', 'L2', P), None, ('6', 'VOUT', PO), ('4', 'FB', I), ('5', 'PG', 'open_collector')],
+        descr='TI TPS63802 2 A buck-boost converter, 11 uA quiescent',
+        footprint='hackerslide:Texas_DLA0010A_VSON-HR-10_3x2mm', datasheet='https://www.ti.com/lit/ds/symlink/tps63802.pdf'))
     # LM3630A (TI SNVS974B, pin functions table p.3)
     out.append(box_symbol('LM3630A',
         [('C3', 'IN', PI), ('B1', 'HWEN', I), ('C1', 'PWM', I), ('C2', 'SEL', I), None, ('A1', 'SDA', B), ('A2', 'SCL', I),
@@ -347,6 +353,22 @@ def dsbga12_yfq():
     return name, fp_text(name, 'TI DSBGA-12 (YFQ), 0.4 mm pitch, for LM3630A', body, ref_y=-2, val_y=2)
 
 
+def dla0010a():
+    # TI DLA0010A (TPS63802 data sheet, land pattern example 4223750/D): pads 1-5 0.6 x 0.25 at x = -0.9; pads 10, 9, 7, 6
+    # 0.9 x 0.25 at x = +0.75; pad 8 1.3 x 0.25 at x = +0.55; 0.5 mm pitch, pad 1 and pad 10 at the top.  Body 3 x 2 mm.
+    name = 'Texas_DLA0010A_VSON-HR-10_3x2mm'
+    body = ''
+    for i in range(5):
+        y = -1.0 + 0.5 * i
+        body += f'\t(pad "{i + 1}" smd roundrect (at -0.9 {y}) (size 0.6 0.25) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2) (uuid "{uid(name, i + 1)}"))\n'
+        n = 10 - i
+        x, w = (0.55, 1.3) if n == 8 else (0.75, 0.9)
+        body += f'\t(pad "{n}" smd roundrect (at {x} {y}) (size {w} 0.25) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2) (uuid "{uid(name, n)}"))\n'
+    body += rect('F.Fab', -1.5, -1.0, 1.5, 1.0, w=0.1, tag=name)
+    body += rect('F.CrtYd', -1.75, -1.4, 1.75, 1.4, tag=name)
+    return name, fp_text(name, 'TI DLA0010A VSON-HR-10, 3 x 2 mm, 1 mm high, for TPS63802', body, ref_y=-2.2, val_y=2.2)
+
+
 def pj342():
     # SHOU HAN PJ-342 drawing (LCSC C668606), "PCB terminal dimension, TOP VIEW": jack opening at -X.
     # x measured from the body front face (the 2 mm collar sticks out to x = -2); body 12 x 6.4 x 4.5 mm.
@@ -437,7 +459,7 @@ def m2_hole():
 def main():
     os.makedirs(FP, exist_ok=True)
     open(os.path.join(LIB, 'hackerslide.kicad_sym'), 'w').write(symbols())
-    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8), lambda: fh34(24), lambda: fh34(6), dsbga12_yfq, fpc_fingers, contact_pad):
+    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8), lambda: fh34(24), lambda: fh34(6), dsbga12_yfq, dla0010a, fpc_fingers, contact_pad):
         name, text = f()
         open(os.path.join(FP, name + '.kicad_mod'), 'w').write(text)
 

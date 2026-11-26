@@ -20,7 +20,7 @@ import hackpad_lid_design as LID
 import hackpad_pins as PINS
 import hp_layout as HP
 from kigen import Design
-from parts import C, CAP, R, RES, TP, fields
+from parts import C, CAP, R, RES, SCHOTTKY, TP, fields
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, '..', 'hackpad', 'data')
@@ -330,6 +330,94 @@ def build():
     C(dp, 'C140', '2.2u', '+3V3'); C(dp, 'C141', '1u/50V', 'FL_VOUT')
     for i, net in enumerate(('FL_VOUT', 'FL_EN', 'TOUCH_RST_N', 'FL_INT_N')):
         TP(dp, f'TP{20 + i}', net)
+
+    # ------------------------------------------------------------------------------------------ power input
+    pw = d.sheet('power', 'USB-C, charger, battery, fuel gauge, 3.3 V', paper='A2', notes=[
+        'Carried over from the Linux design (same chips, same values) unless a line says otherwise.',
+        'USB-C: device only, 5.1k on CC1/CC2. The charger never sees D+/D- (R203/R204 not fitted), so the input stays at 5 V',
+        '    and the ILIM resistor caps it at about 0.755 A. A USB-C controller for power-delivery tricks is a later sheet.',
+        'USB data goes to the brain\'s USB1 port, the one its built-in loader uses. USB1_VBUS must never exceed 5.6 V.',
+        'Cell: GlobTek BL1950P4071611S1PCPT, 1950 mAh. Its plug is Molex Micro-Latch 2.00 mm (51065-0400): pins 1-2 red +,',
+        '    3-4 black -. Header J4 mates with it; MEASURE the plug before first use. Header height not verified.',
+        '    The charger resets to 2.05 A charge current; the input cap keeps the cell under about 1.25 A whatever the',
+        '    register says. CHECK the pack\'s maximum charge current and set the register lower in firmware.',
+        'U15 (eFuse, 1.86 A typical) limits everything fed from VSYS_LIM, as before: under the pack\'s 3.9 A rating and the',
+        '    header\'s 2 A per contact.',
+        '3.3 V: TPS63802 buck-boost from VSYS_LIM, TI reference values (0.47 uH, 511k / 91k = 3.31 V). The brain\'s PMIC_ON_REQ',
+        '    (1.8 V logic, high = on) enables it; the always-on 3.0 V supply U12 keeps that pin alive. PG is a test pad.',
+        'Power key SW3: to the brain\'s ONOFF pin and to the charger\'s /QON (ship-mode exit), each through a Schottky.',
+        'Charger and gauge interrupts are open drain, pulled up to the 1.8 V SNVS supply, on wake pads.',
+        'The USB-C socket is still the 3.26 mm one of the Linux design; the lower HRO TYPE-C-31-M-14 replaces it once its',
+        '    drawing is turned into a footprint.'])
+    pad('USB1_DP', 'USB_DP'); pad('USB1_DN', 'USB_DM'); pad('USB1_VBUS', 'VBUS')
+    for net in ('I2C_P_SCL', 'I2C_P_SDA', 'CHG_INT_N', 'GAUGE_ALRT_N'):
+        use(net)
+    pw.add('J3', 'Connector', 'USB_C_Receptacle_USB2.0_16P', 'TYPE-C-31-M-12', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12',
+           {'A4': 'VBUS', 'A9': 'VBUS', 'B4': 'VBUS', 'B9': 'VBUS', 'A1': 'GND', 'A12': 'GND', 'B1': 'GND', 'B12': 'GND',
+            'S1': 'GND', 'A5': 'CC1', 'B5': 'CC2', 'A6': 'USB_DP', 'B6': 'USB_DP', 'A7': 'USB_DM', 'B7': 'USB_DM'},
+           fields=fields('C165948', 'TYPE-C-31-M-12', 'Korean Hroparts'))
+    R(pw, 'R200', '5.1k', 'CC1', 'GND'); R(pw, 'R201', '5.1k', 'CC2', 'GND')
+    pw.add('U17', 'Power_Protection', 'USBLC6-2SC6', 'USBLC6-2SC6', 'Package_TO_SOT_SMD:SOT-23-6',
+           {'1': 'USB_DP', '6': 'USB_DP', '3': 'USB_DM', '4': 'USB_DM', '5': 'ESD_BIAS', '2': 'GND'},
+           fields=fields('C7519', 'USBLC6-2SC6', 'STMicroelectronics'))
+    C(pw, 'C200', '100n', 'ESD_BIAS'); C(pw, 'C201', '1u', 'VBUS')
+    pw.add('D200', 'Device', 'D_Zener', 'SMF6.0A', 'Diode_SMD:D_SOD-123F', {'1': 'VBUS', '2': 'GND'},
+           fields=fields('C123790', 'SMF6.0A', 'MDD', Description='VBUS TVS, 6 V stand-off'))
+    R(pw, 'R203', '0', 'USB_DP', 'CHG_DP', dnp=True); R(pw, 'R204', '0', 'USB_DM', 'CHG_DM', dnp=True)
+    R(pw, 'R205', '15k', 'CHG_DP', 'GND'); R(pw, 'R206', '15k', 'CHG_DM', 'GND')
+    pw.add('U13', 'Battery_Management', 'BQ25895RTW', 'BQ25895RTWR',
+           'Package_DFN_QFN:Texas_RTW_WQFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm_ThermalVias',
+           {'1': 'VBUS', '2': 'CHG_DP', '3': 'CHG_DM', '10': 'CHG_ILIM', '4': 'CHG_STAT', '6': 'I2C_P_SDA', '5': 'I2C_P_SCL',
+            '7': 'CHG_INT_N', '8': 'GND', '9': 'GND', '12': 'CHG_QON_N', '17': 'GND', '18': 'GND', '25': 'GND', '23': 'PMID',
+            '19': 'CHG_SW', '20': 'CHG_SW', '21': 'CHG_BTST', '15': 'VSYS', '16': 'VSYS', '13': 'VBAT', '14': 'VBAT', '22': 'REGN',
+            '11': 'CHG_TS'}, fields=fields('C80200', 'BQ25895RTWR', 'Texas Instruments'))
+    C(pw, 'C202', '22u', 'PMID'); C(pw, 'C203', '22u', 'PMID')
+    pw.add('C204', 'Device', 'C', '47n', 'Capacitor_SMD:C_0402_1005Metric', {'1': 'CHG_BTST', '2': 'CHG_SW'},
+           fields=fields('C307434', 'CL05B473KO5NNNC', 'Samsung'))
+    C(pw, 'C205', '4.7u/0603', 'REGN')
+    pw.add('L4', 'Device', 'L', '2.2uH', 'Inductor_SMD:L_Sunlord_MWSA0402S', {'1': 'CHG_SW', '2': 'VSYS'},
+           fields=fields('C408335', 'MWSA0402S-2R2MT', 'Sunlord', Description='saturation 4.0 A, 58 mohm, 2.0 mm high'))
+    C(pw, 'C206', '22u', 'VSYS'); C(pw, 'C207', '22u', 'VSYS'); C(pw, 'C208', '10u', 'VBAT')
+    R(pw, 'R207', '470', 'CHG_ILIM', 'GND', note='input limit 355/470 = 0.755 A typical')
+    R(pw, 'R208', '100k', 'CHG_INT_N', 'VDD_SNVS_ANA')
+    pw.add('R209', 'Device', 'R', '5.23k', 'Resistor_SMD:R_0402_1005Metric', {'1': 'REGN', '2': 'CHG_TS'},
+           fields=fields('C25907', '0402WGF5231TCE', 'UNI-ROYAL'))
+    pw.add('R210', 'Device', 'R', '30.1k', 'Resistor_SMD:R_0402_1005Metric', {'1': 'CHG_TS', '2': 'GND'},
+           fields=fields('C29402', '0402WGF3012TCE', 'UNI-ROYAL'))
+    pw.add('TH1', 'Device', 'Thermistor_NTC', '10k B3380', 'Resistor_SMD:R_0402_1005Metric', {'1': 'CHG_TS', '2': 'GND'},
+           fields=fields('C77131', 'NCP15XH103F03RC', 'Murata', Description='on the board next to the battery'))
+    R(pw, 'R211', '2.2k', 'VSYS', 'CHG_LED_A')
+    pw.add('D201', 'Device', 'LED', 'red', 'LED_SMD:LED_0603_1608Metric', {'2': 'CHG_LED_A', '1': 'CHG_STAT'},
+           fields=fields('C2286', 'KT-0603R', 'Hubei KENTO', Description='charging'))
+    pw.add('J4', 'Connector', 'Conn_01x04_Pin', 'BATT', 'Connector_Molex:Molex_Micro-Latch_53254-0470_1x04_P2.00mm_Horizontal',
+           {'1': 'VBAT', '2': 'VBAT', '3': 'GND', '4': 'GND'},
+           fields=fields('C293629', '532540470', 'Molex', Description='mates with the pack\'s Molex 51065-0400 plug: 1-2 +, 3-4 -'))
+    pw.add('U14', 'hackerslide', 'MAX17048', 'MAX17048G+T10', 'Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm',
+           {'1': 'GND', '2': 'VBAT', '3': 'VBAT', '4': 'GND', '5': 'GAUGE_ALRT_N', '6': 'GND', '7': 'I2C_P_SCL', '8': 'I2C_P_SDA', '9': 'GND'},
+           fields=fields('C2682616', 'MAX17048G+T10', 'Analog Devices / Maxim', Description='fuel gauge, address 0x36'))
+    C(pw, 'C209', '100n', 'VBAT'); R(pw, 'R212', '100k', 'GAUGE_ALRT_N', 'VDD_SNVS_ANA')
+    R(pw, 'R213', '2.2k', 'I2C_P_SCL', '+3V3'); R(pw, 'R214', '2.2k', 'I2C_P_SDA', '+3V3')
+    pw.add('U15', 'hackerslide', 'TPS2595DSG', 'TPS259531DSGR', 'Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm',
+           {'3': 'VSYS', '4': 'VSYS', '2': 'FUSE_EN', '7': 'BATT_ILIM', '5': 'VSYS_LIM', '6': 'BATT_OC_N', '8': 'GND', '9': 'GND'},
+           fields=fields('C2155674', 'TPS259531DSGR', 'Texas Instruments', Description='eFuse, auto-retry'))
+    R(pw, 'R215', '1.1k', 'BATT_ILIM', 'GND', note='limit 1.86 A typical (about 1.73-1.99 A)')
+    R(pw, 'R216', '10k', 'BATT_OC_N', '+3V3'); R(pw, 'R217', '10M', 'VSYS', 'FUSE_EN'); C(pw, 'C210', '100n', 'VSYS')
+    pw.add('U16', 'hackerslide', 'TPS63802', 'TPS63802DLAR', 'hackerslide:Texas_DLA0010A_VSON-HR-10_3x2mm',
+           {'10': 'VSYS_LIM', '1': 'PMIC_ON_REQ', '2': 'GND', '3': 'GND', '8': 'GND', '9': 'BB_L1', '7': 'BB_L2', '6': '+3V3',
+            '4': 'BB_FB', '5': 'BB_PG'}, fields=fields('C2845237', 'TPS63802DLAR', 'Texas Instruments', Description='3.3 V, 2 A, 11 uA idle'))
+    pw.add('L5', 'Device', 'L', '0.47uH', 'Inductor_SMD:L_Murata_DFE201610P', {'1': 'BB_L1', '2': 'BB_L2'},
+           fields=fields('C668312', 'DFE201612E-R47M=P2', 'Murata', Description='0.47 uH, 26 mohm, 2.0 x 1.6 x 1.2 mm (TI table 10-2). CHECK the footprint'))
+    pw.add('R218', 'Device', 'R', '511k', 'Resistor_SMD:R_0402_1005Metric', {'1': '+3V3', '2': 'BB_FB'},
+           fields=fields('C64042', '0402WGF5113TCE', 'UNI-ROYAL'))
+    pw.add('R219', 'Device', 'R', '91k', 'Resistor_SMD:R_0402_1005Metric', {'1': 'BB_FB', '2': 'GND'},
+           fields=fields('C4147', '0402WGF9102TCE', 'UNI-ROYAL'))
+    R(pw, 'R220', '100k', 'BB_PG', '+3V3'); R(pw, 'R221', '100k', 'PMIC_ON_REQ', 'GND', note='the enable must not float')
+    C(pw, 'C211', '10u', 'VSYS_LIM'); C(pw, 'C212', '22u/0603', '+3V3'); C(pw, 'C213', '22u/0603', '+3V3')
+    pw.add('SW3', 'Switch', 'SW_Push', 'PWR', 'Button_Switch_SMD:SW_SPST_EVQP7C', {'1': 'PWR_SW_N', '2': 'GND'},
+           fields=fields('C388883', 'EVQP7C01P', 'Panasonic', Description='side-actuated power key'))
+    SCHOTTKY(pw, 'D202', 'CHG_QON_N', 'PWR_SW_N', note='/QON'); SCHOTTKY(pw, 'D203', 'ONOFF', 'PWR_SW_N', note='brain ONOFF (internal pull-up)')
+    for i, net in enumerate(('VBUS', 'VSYS', 'VBAT', 'VSYS_LIM', 'BB_PG', 'REGN', 'CHG_TS', 'CHG_QON_N', 'BATT_OC_N')):
+        TP(pw, f'TP{30 + i}', net)
 
     # the brain itself goes on the first sheet, with every ball claimed above
     p.add('U1', 'hackerslide', 'MIMXRT117x_BGA289', 'MIMXRT1176', 'Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm', dict(U),
