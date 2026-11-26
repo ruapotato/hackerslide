@@ -29,6 +29,11 @@ set by the Linux-class processor.
   made chips for. Named so far: CO2, and sound below and above hearing as well as within it. A sensor survey
   under the same stock rule is under way.
 
+- **Brain: NXP i.MX RT1176** (David: "probably fine"), with as much RAM as is practical. The chip's memory
+  controller takes SDRAM up to 1024 Mbit per chip select (NXP reference manual rev 2 correction); NXP's own
+  evaluation board carries 64 MB as two W9825G6KH, and MicroPython's port for that board already uses the 64 MB
+  as its heap (`MICROPY_HW_SDRAM_SIZE = 0x4000000`). Plan: 64 MB, the same arrangement, so the port carries over.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
