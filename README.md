@@ -50,7 +50,7 @@ Start with [`docs/audit-status.md`](docs/audit-status.md), then [`docs/open-ques
 [risks](docs/risks.md) · [roadmap](docs/roadmap.md) · [audit](docs/audit-2026-11-24.md) ·
 [footprint review](docs/footprint-review.md) · [pre-fab review](docs/review-2026-11-25.md) · [test points](docs/test-points.md) ·
 [device tree](docs/device-tree.md) · [routing status](docs/routing-status.md) · [BOM](bom/bom.csv) · [purchasing](bom/purchasing.md) ·
-[fab orders](bom/fab-orders.md) · [ordering guide](bom/ordering-guide.md) · [printing](docs/printing.md)
+[fab orders](bom/fab-orders.md) · [thinner brain](docs/thinner-brain.md) · [ordering guide](bom/ordering-guide.md) · [printing](docs/printing.md)
 
 ## Regenerating everything
 
