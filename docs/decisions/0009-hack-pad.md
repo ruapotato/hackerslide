@@ -57,8 +57,8 @@ set by the Linux-class processor.
 
 - **Battery (David, 2026-11-27):** the GlobTek BL1950P4071611S1PCPT (1950 mAh, 4.5 x 61.5 x 76.5 mm, 3.9 A, 317
   at DigiKey) is acceptable as long as it fits the final dimensions.
-- **Repositories:** HackOS and the Adder fork go under David's own account (`ruapotato`), public, AGPL-3.0, not the HamnixOS
-  organisation.
+- **Repositories:** HackOS and the Adder fork go under David's own account (`ruapotato`), public, not the HamnixOS
+  organisation. HackOS is AGPL-3.0; the Adder fork keeps Adder's GPL-3.0-or-later.
 
 ## What carries over from the Linux design
 
