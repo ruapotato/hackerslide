@@ -96,6 +96,12 @@ set by the Linux-class processor.
   Not yet verified: that the controller runs the 1.8 V mobile type, that several selects share the bus cleanly (no
   NXP board does it), the bus speed with four or six chips, and the standby current of each chip.
 
+- **Display stays e-paper (David, 2026-11-27),** after comparing it with the original colour panel: the colour
+  panel would allow a desktop but costs about 5 mm of thickness and most of the battery life. The brain's 2D
+  graphics unit and display interface stay unused for now.
+- **Memory: similar to the N810, 128 MB, or 256 MB if that is the easier build (David, 2026-11-27).** This replaces
+  the "as much as possible" goal above. The chip type and bank arrangement follow from the datasheet checks.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
