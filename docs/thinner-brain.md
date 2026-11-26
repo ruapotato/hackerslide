@@ -15,8 +15,8 @@ Today the module stands 4.5 mm above the carrier. It does not set the thickness 
 | Rev 0.1 as it is | 19.35 mm |
 | Clear the five capacitors under the display tail's parts | 18.65 mm |
 | Plus a brain of 3 mm or less, a mid-mount jack and a low battery connector | about 17.2 mm: the 7.4 mm battery then sets it |
-| Plus a battery of 5 mm (a lower-power brain needs less capacity) | about 15 mm (estimate) |
-| Plus the 0.75 mm AMOLED in place of the 4.25 mm panel | about 12 mm (estimate) |
+| Plus a battery of about 6 mm (a lower-power brain needs less capacity) | about 15.8 mm (estimate): the USB-C socket, 3.3 mm tall, then sets the cavity |
+| Plus the 0.75 mm AMOLED in place of the 4.25 mm panel | about 12.5 mm (estimate) |
 
 So the brain matters most through **power**: a brain that draws a third of the power lets the battery, which is the
 thickest single part, shrink.
