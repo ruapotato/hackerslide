@@ -20,6 +20,15 @@ set by the Linux-class processor.
 - MP3 music and audiobook playback from the card.
 - A thin, low-power display is to be considered, e-ink among them.
 
+## Added by David, 2026-11-27 (later the same day)
+
+- **Display: e-paper.** The slow refresh is accepted. A waterfall can be drawn as partial updates, column by
+  column from the left, with one full clear when it reaches the right edge.
+- **Firmware: written from scratch**, by us. Not a concern.
+- **Scope grows from radio tool to "tricorder":** as many kinds of sensing as there are well-stocked, currently
+  made chips for. Named so far: CO2, and sound below and above hearing as well as within it. A sensor survey
+  under the same stock rule is under way.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
