@@ -35,6 +35,10 @@ Shift Fn Z  X  C  V  [ Space ] B  N  M  .
 
 Fn-layer legends are printed on the top plate. Both are proposals.
 
+Every switch's reference on the board's silkscreen is followed by its key in brackets, for example `SW14 (Q)`
+(`hardware/scripts/key_labels.py`). With the bare board on the bench, shorting a switch's pads tells you which key
+the scanner should report. The Fn-layer characters are on the top plate.
+
 ## Scanner
 
 TI TCA8418 over I2C (address 0x34, mainline `tca8418_keypad`). No firmware. The chip has 8 rows and 10 columns, so

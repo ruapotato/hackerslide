@@ -6,11 +6,14 @@ D-pad, an off-the-shelf CM4-format compute module on a custom carrier board. Ope
 **Status: rev 0.1 is designed and checked as far as it can be without parts. Nothing has been built or tested:
 the first boards are the test.**
 
-![closed](mechanical/renders/closed.png)
-![open](mechanical/renders/open.png)
-![size against the N810 and the Librem 5](mechanical/renders/compare_stack.png)
+![closed](docs/img/renders/hero.jpg)
+![open](docs/img/renders/open.jpg)
+![pulled apart](docs/img/renders/exploded.jpg)
+![carrier board, module side](docs/img/renders/carrier.jpg)
 
-Dark: HackerSlide 810, 128 x 74 x 20.05 mm. Orange: Nokia N810, 14 mm. Blue: Librem 5, 15 mm.
+**These are renders.** The enclosure, the boards and their parts are drawn from the design files; the compute
+module, the battery pack, the keycap legends and what the screen shows are drawn for the picture. 128 x 74 x
+20.05 mm; a Nokia N810 is 14 mm thick ([comparison](mechanical/renders/compare_stack.png)).
 
 ## What it is
 
@@ -30,8 +33,10 @@ Dark: HackerSlide 810, 128 x 74 x 20.05 mm. Orange: Nokia N810, 14 mm. Blue: Lib
 | Carrier board | Schematic audited and revised; **fully routed**, no DRC errors. Power blocks, USB and DSI pairs laid by hand in the generator, the rest by the repository's grid router. Checked by scripts and by independent AI reviewers ([review](docs/review-2026-11-25.md)), not by a person; not built |
 | Keyboard board | **Fully routed**, no DRC errors. Checked the same way; not built |
 | Top plate, keyboard flex cable | Complete |
-| Enclosure | Parametric fit-mule model, collision-checked |
-| Fabrication files | Generated on demand by `hardware/scripts/fab_outputs.sh` and verified against the board files by `gerber_check.py`; not committed, not sent anywhere |
+| Enclosure | Parametric model, collision-checked, with rails, travel stop, hooks and button caps; print files and assembly steps in [printing](docs/printing.md). Not printed |
+| Fabrication files | Generated on demand and verified against the board files by `gerber_check.py`; `order_files.py` packs them the way JLCPCB's order page takes them ([ordering guide](bom/ordering-guide.md)). Not committed, not sent anywhere |
+| Cost | First prototype, working or not, about $820-1,200, an estimate from published fees with no quote ([purchasing](bom/purchasing.md)) |
+| Battery | **Open:** the pack the design was drawn for is end-of-life ([open questions](docs/open-questions.md)) |
 | Bring-up | Serial console, test pads on every rail, status lamps: [bring-up plan](docs/bring-up-plan.md), [test points](docs/test-points.md), [device-tree requirements](docs/device-tree.md) |
 
 Start with [`docs/audit-status.md`](docs/audit-status.md), then [`docs/open-questions.md`](docs/open-questions.md).
@@ -45,7 +50,7 @@ Start with [`docs/audit-status.md`](docs/audit-status.md), then [`docs/open-ques
 [risks](docs/risks.md) · [roadmap](docs/roadmap.md) · [audit](docs/audit-2026-11-24.md) ·
 [footprint review](docs/footprint-review.md) · [pre-fab review](docs/review-2026-11-25.md) · [test points](docs/test-points.md) ·
 [device tree](docs/device-tree.md) · [routing status](docs/routing-status.md) · [BOM](bom/bom.csv) · [purchasing](bom/purchasing.md) ·
-[fab orders](bom/fab-orders.md)
+[fab orders](bom/fab-orders.md) · [ordering guide](bom/ordering-guide.md) · [printing](docs/printing.md)
 
 ## Regenerating everything
 
@@ -60,6 +65,8 @@ hardware/scripts/fab_outputs.sh hardware/carrier carrier /tmp/fab   # Gerbers, d
 cd mechanical/src && ../../.venv/bin/python hackerslide.py  # enclosure, collision check
 python3 render.py ..                                        # renders
 python3 ../../bom/tools/make_bom.py                         # BOM with current JLCPCB prices
+python3 ../../hardware/scripts/order_files.py               # order/: Gerber zips, BOM and placement files for JLCPCB
+../render/assets.sh && ../render/render_all.sh OUT_DIR      # Blender stills and clips (see mechanical/render/scene.py)
 ```
 
 ## How to help

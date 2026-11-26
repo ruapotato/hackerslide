@@ -220,6 +220,9 @@ def build(variant, bdir, do_route=False):
             B.fanout(ref, lengths=(1.2, 2.2), only=('KB_RST_N', '+3V3', 'I2C_B_SDA', 'I2C_B_SCL', 'KB_INT_N', 'ROW6_NC', 'ROW7_NC') if ref == 'U1' else None)
     left = B.unplaced()
     assert not left, left
+    if variant == 'alps':            # key names beside the switch references, for bring-up
+        import key_labels
+        key_labels.add(B.b, variant)
     B.text('HackerSlide 810 keyboard ' + ('Alps SKSW' if variant == 'alps' else 'Keystone 5135 domes') + ' rev 0.1  CERN-OHL-S-2.0',
            KL.BOARD_W / 2, -20.0, pcbnew.F_SilkS, 1.0)
     pts = [(0, top), (KL.BOARD_W, top), (KL.BOARD_W, KL.BOARD_H), (0, KL.BOARD_H)]

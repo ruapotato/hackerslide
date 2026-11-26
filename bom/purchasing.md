@@ -42,7 +42,9 @@ from JLCPCB's assembly price page (updated 2026-10-22). Five boards each, all fi
 
 Assembling two carriers instead of five saves about $50 of parts; the fixed fees stay.
 
-## One working prototype, and one after that
+## The first prototype, and one after that
+
+"Prototype" here means the first one assembled. Whether it works is what building it finds out.
 
 | Item | Cost |
 |---|---|
@@ -54,7 +56,7 @@ Assembling two carriers instead of five saves about $50 of parts; the fixed fees
 | Card, magnets, screws and inserts, thermal pad | *estimate* $20-35 |
 | Enclosure prints | about $2 of filament |
 | USB-serial adapter or debug probe | *estimate* $10-15 |
-| **First prototype** | ***estimate* $820-1,200** |
+| **First prototype (it may not work)** | ***estimate* $820-1,200** |
 | Each further unit from the same five board sets | *estimate* $210-260 |
 
 **For the whole effort**, plan on more than one round. A second carrier order costs about as much as the first

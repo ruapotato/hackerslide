@@ -266,7 +266,7 @@ class Device:
             'tray': mat('tray', (0.06, 0.064, 0.072), 0.45, coat=0.1),
             'cap': mat('cap', (0.62, 0.63, 0.65), 0.38),
             'legend': mat('legend', (0.03, 0.03, 0.035), 0.6),
-            'glass': mat('glass', (0.008, 0.008, 0.01), 0.06, coat=1.0),
+            'glass': mat('glass', (0.008, 0.008, 0.01), 0.22, coat=0.25),
             'foil': mat('foil', (0.72, 0.73, 0.75), 0.38, metal=1.0),
             'kapton': mat('kapton', (0.75, 0.45, 0.05), 0.35),
             'label': mat('label', (0.08, 0.09, 0.11), 0.5),
@@ -308,7 +308,8 @@ class Device:
         P = C.PANEL
         dbox('panel_body', px, py, C.Z_PANEL_BOTTOM, px + P['w'], py + P['h'], C.Z_PANEL_TOP, self.M['glass'], self.g['panel'], bevel=0.15)
         ax, ay = px + (P['w'] - P['aa_w']) / 2 - 1.5, py + (P['h'] - P['aa_h']) / 2      # active area sits toward the left
-        scr = image_mat('screen', os.path.join(ASSETS, 'screen.png'), emit=1.6, rough=0.08)
+        scr = image_mat('screen', os.path.join(ASSETS, 'screen.png'), emit=1.8, rough=0.45)
+        scr.node_tree.nodes['Principled BSDF'].inputs['Specular IOR Level'].default_value = 0.12     # anti-glare panel
         bpy.ops.mesh.primitive_plane_add(size=1)
         o = bpy.context.active_object
         o.name = 'screen'
