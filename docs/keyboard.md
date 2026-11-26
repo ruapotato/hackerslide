@@ -39,6 +39,21 @@ Every switch's reference on the board's silkscreen is followed by its key in bra
 (`hardware/scripts/key_labels.py`). With the bare board on the bench, shorting a switch's pads tells you which key
 the scanner should report. The Fn-layer characters are on the top plate.
 
+## Next layout (decided by David 2026-11-27, not yet on the boards)
+
+![next layout](img/keyboard-layout-proposal.png)
+
+- Three letter rows of eleven keys and a bottom row as on the Nokia N810: Fn, Shift, Chr, a three-wide space bar,
+  `,` `.`, Ctrl, Shift. No number row: digits are Fn + the top row. Key pitch 9.3 x 7.25 mm.
+- Fn layer as on the N810, with `'`, `` ` `` and `|` where it had the three currency signs; `[` `]` on Fn + `,` `.`
+  (`{` `}` with Shift as well); Chr held is Alt. Shift + `;` `,` `.` give `:` `<` `>`.
+- Left end: Esc and Tab, a capacitive touchpad drawn on the board (Azoteq IQS7211E, I2C, mainline driver
+  `iqs7211.c`; about 20 x 16 mm under a solid 1.5-2 mm overlay) and left and right click below it. The D-pad goes.
+  No joystick, trackball or optical sensor was found that fits the 2.6 mm above the board and is in stock.
+- The touchpad needs a second interrupt line to the carrier, so the cable grows from 8 to 9 or 10 ways.
+
+The boards in the repository still carry the layout below.
+
 ## Scanner
 
 TI TCA8418 over I2C (address 0x34, mainline `tca8418_keypad`). No firmware. The chip has 8 rows and 10 columns, so
