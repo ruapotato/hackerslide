@@ -70,6 +70,14 @@ set by the Linux-class processor.
   compiler, so that the compiler itself runs under HackOS. An assessment (structure, size, memory, effort) is
   being written with milestone 2. This is also a reason to fit 128 MB.
 
+- **Brain: reopened, 2026-11-27.** NXP's documents, read and cross-checked (`hardware/hackpad/data/`), show
+  three things that the earlier choice missed: the RT1172 has **one** core, not two (only the RT1173/1175/1176
+  carry the 400 MHz second core); the version JLCPCB stocks (CVM8A) is the "A" silicon, which NXP marks not
+  recommended for new designs, and an erratum on it needs three of its pin banks at 1.8 V; and NXP's own board
+  feeds part of the chip from a separate 1.8 V supply and boots from 1.8 V flash. JLCPCB has no "B" silicon of any
+  RT117x. David to choose among: RT1172 A silicon from JLCPCB; RT1176 B silicon from DigiKey (516); or the older
+  RT1062 (600 MHz, the Teensy 4 chip, 1,269 at JLCPCB, current silicon).
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
