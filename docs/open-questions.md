@@ -27,34 +27,51 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 11. **Cellular.** Wi-Fi only for now. Band 71 later: which modem?
 12. **The underside.** The keyboard PCB is the bottom of the device. Leave it as bare board with artwork, or cover it?
 
-## To verify (collected `TODO(verify)` items)
+## Settled without parts (2026-11-25)
 
-| Item | Where | How |
-|---|---|---|
-| Core3566 pin 99 behaviour | `carrier_design.py` | Measure on a module |
-| Module mated height (datasheet text is copied from the CM4's) | `config.py` MODULE | Calipers |
-| DSI and USB impedance geometry | `carrier_pcb.py` | Fab calculator, once a stack-up is chosen |
-| PJ-342 pole assignment | `mklib.py`, audio sheet | Sample and a multimeter |
-| Panel tail fold, contact face, pin 1 | display sheet | A real panel |
-| J10 polarity against the cell | power sheet | Look at the cell's pigtail |
-| MAX17048 land pattern | power sheet | Maxim 90-0065 |
-| Keystone Mini land pattern | `mklib.py` | Ask Keystone |
-| 1N4148W4 height | `keyboard_design.py` | BORN datasheet |
-| Keyboard cable pin order through the real path | `keyboard_link` sheet | Fit mule |
-| Does the Core3566 GPIO bank follow pin 78; SD with eMMC | pin matrix | Measure |
-| ES8316 interrupt pin behaviour | audio sheet | Driver source and a scope |
-| Whether JLCPCB's flex uses rolled-annealed copper | `fab-orders.md` | Their order form |
+| Item | Outcome |
+|---|---|
+| Stack-up and pair geometry | JLCPCB JLC04101H-3313. DSI 0.10 / 0.15 mm = 100 ohm, USB 0.12 / 0.12 mm = 89 ohm, by field solution (`hardware/scripts/impedance.py`) |
+| Module height, SoC position | From LuckFox's 3D model: 4.50 mm mated, SoC lid 3.6 mm. The cavity leaves 1.0 mm over the module; the thermal pad is 1.9 mm |
+| Module sockets and spacers against the module | LuckFox's model laid over the board: within 0.04 mm |
+| MAX17048, JST SH, Molex 5268, Wuerth spacer land patterns | Match their drawings ([footprint-review.md](footprint-review.md)) |
+| 1N4148W4 height | 0.55 mm max; the real limit under a pressed keycap is 0.77 mm |
+| Panel and touch pin order | Match the Focus LCDs specification |
+| Battery never drawn beyond its rating | eFuse at 3.0 A against a 5.6 A rating; charge capped at 1.25 A in hardware against 1.4 A |
+| Current in the power copper | `hardware/scripts/power_paths.py`: see [carrier-board.md](carrier-board.md) |
+| Crosstalk between auto-routed signals | `hardware/scripts/coupling.py`: see [carrier-board.md](carrier-board.md) |
+| Device-tree requirements | Collected in [device-tree.md](device-tree.md) |
+| Fabrication files show what the board files show | `hardware/scripts/gerber_check.py`, an independent Gerber reader |
 
-## Open design items
+## Still open: design
 
 | Item | Blocks |
 |---|---|
 | Confirm the BAK pack can be bought (Farnell 2401855) and at what price | Purchasing |
-| Measure the module's peak against the 1.7 A limiter; fit a 4 A eFuse if needed | Carrier rev 0.2 |
-| Choose the PCB stack-up and calculate DSI/USB geometry | Carrier routing |
+| Keystone Mini dome land pattern | Only the dome keyboard variant, which is not part of rev 0.1 |
+| Whether JLCPCB's flex uses rolled-annealed copper | Flex life; cycle-test the cable |
 | Top-plate retention lips, button caps, snap hooks on the cell side | Fit mule |
 
 ## Decisions that are David's
 
 Body thickness targets; any change to the decision records; licences; spending. The AMOLED step needs him to ask
 DisplayModule for the SD5207 start-up sequence.
+
+## Only a real part can settle these
+
+None of them stops the first boards from being made: the "If it goes the wrong way" column is what the board
+already provides. See [review-2026-11-25.md](review-2026-11-25.md) for where each came from, and
+[bring-up-plan.md](bring-up-plan.md) for the bench steps.
+
+| Question | How to settle it | If it goes the wrong way |
+|---|---|---|
+| Battery plug polarity. The documents agree: the pack datasheet shows red, yellow (thermistor), black with red at Molex circuit 1, and J10 is wired that way. What a document cannot show is whether the pack that arrives was assembled to its drawing | Voltmeter on the loose pack connector before the first plug-in | Move the crimp contacts in the plug housing before it is ever plugged in. This is the one check that must not be skipped: reversed, the pack destroys the charger |
+| Do the pack's leads turn within 2.6 mm of its end, and does the plug fit the space kept for it over the top strip? | Fit check with the real pack | The leads are re-dressed or shortened; the header itself has room for the mated plug |
+| Pack thermistor beta (TH1 value assumes 3380) | Resistance at 25 and 45 degC | The charge temperature window shifts by a few degrees; the divider resistors at TS are changed to suit |
+| PJ-342: four poles as its circuit diagram says, or three as its outline drawing suggests? | Continuity with a TRRS plug in a sample jack | Headphones work either way; the microphone needs four poles. Straps R60-R63 select the sleeve terminal |
+| Core3566 pin 99: enable input, output, or unconnected? Does RUN_PG restart a powered-off module? | Measurements listed in the review, on any carrier | The power button also reaches a GPIO (pin 41) and the charger's /QON; fit C90, R91, D9 for a hard power cycle |
+| Core3566 I/O voltage on pins 21, 51, 55, 80, 82 (the SoC's PMU I/O bank): 3.3 V or 1.8 V? | Idle voltage on pin 80 or 55. If 1.8 V: R40/R41, the debug UART level and D2 are wrong | Measure before the module goes on this carrier. At 1.8 V: refit R40/R41 to +1V8 by wire, use a 1.8 V serial adapter, leave D2 out |
+| Core3566 SD pins with eMMC fitted; USB device mode without a VBUS-detect pin | On a stock carrier | The no-eMMC module is the one specified; USB device mode can take VBUS presence from the charger |
+| BQ25895 "USB100" 2-minute timer with a dead battery and no module | Bench: does charging continue past a few minutes | Plug in with the module fitted, or with a pack that is not flat |
+| Core3566 heights (SoC lid, tallest inductor) and SoC position: taken from LuckFox's STEP model | Calipers | 1.0 mm of air over the module in the model; the thermal pad thickness follows the measured gap |
+| Display tail reach to J4 (nominally 0.7 mm of slack) and tail thickness | Fit check with the real panel | J4 can be re-placed in the generator (one coordinate) for a second revision; 1.6 mm is free under a tail |

@@ -8,8 +8,8 @@ bring-up phase 1 is to replace this table with measurements from a module on a s
 | Stage | Datasheet facts |
 |---|---|
 | Battery | BAK LP-454965-2P-3M pack: 2800 mAh minimum, 3000 typical, 3.7 V nominal (about 10.4 Wh at minimum capacity), 1.4 A max charge, 5.6 A max continuous discharge, protection trips at 12-16 A, 10k thermistor lead |
-| Charger BQ25895 | Input capped at about 1.18 A by R12; input resets to 500 mA at each plug-in; charge current resets to 2.048 A |
-| Discharge limiter TPS2553 | 1.61 / 1.70 / 1.80 A to the boost and the backlight |
+| Charger BQ25895 | Input capped at 0.68 / 0.755 / 0.83 A by R12 (470 ohm); input resets to 500 mA at each plug-in; charge current resets to 2.048 A |
+| Battery fuse TPS259571 (U13) | About 3.0 A to the boost and the backlight (RILM 680 ohm); 34 mohm |
 | Boost TPS61230 | 5.02 V; on above 3.31 V, off below 3.01 V at its input; about 2.3 A available at 3.0 V in |
 | Module | Needs 4.75-5.25 V; supplies 3.3 V and 1.8 V, 600 mA each |
 
@@ -39,33 +39,42 @@ For reference, the N810 ran about 4 hours of active use on 5.5 Wh, which is abou
 
 The battery must not be asked for more than its rating: 5.6 A discharging, 1.4 A charging.
 
-**Charging.** The charger's input resets to 500 mA at every plug-in (its adapter detection is disconnected), so
-the pack sees about 0.6 A until Linux sets `ti,charge-current`, which must be **1.4 A or less**; from then on the
-charger regulates that current itself. R12 also caps the input at about 1.18 A (the 0.6 A is an estimate; the caps
-are datasheet values).
+**Charging.** Two limits, one of them independent of software:
 
-**Discharging.** U13, a TPS2553 current-limited switch, sits between the charger's system rail and everything it
-feeds (the 5 V boost and the backlight). With R66 = 15 kohm its limit is 1.61 A minimum, 1.70 A typical, 1.80 A
-maximum (TI datasheet SLVS841), less than a third of the pack's rating. The pack's own protection trips at
-12-16 A, which is a safety cut-out, not a limit to design to.
+- Hardware: R12 (470 ohm) caps the charger's input at 0.83 A maximum. Even with the charge-current register at its
+  reset value of 2.048 A, the pack then gets at most about 0.83 A x 5 V x 0.9 / 3.0 V = 1.25 A, under its 1.4 A
+  rating. This holds as long as the ILIM pin is enabled, which is the charger's reset state and what
+  `ti,use-ilim-pin` keeps in the device tree. (With the earlier 300 ohm the pack could have seen about 1.8 A if
+  software raised the input limit and left the charge current at its default: found by the schematic review.)
+- Software: `ti,charge-current` of 1.4 A or less.
 
-What happens at the limit: the limited rail sags, the boost's under-voltage divider switches the 5 V rail off at
-3.0 V, and the module loses power. U13's FAULT output (module pin 58, `BATT_OC_N`) goes low while it is limiting.
-So it is a backstop: software should keep the device below it. Costs: the switch drops about 0.14-0.24 V at
-1.7 A (85-135 mohm) and gets hot while limiting.
+The price is charging speed: about 0.9 A into the pack at 3.7 V, so roughly 3.5 hours from empty.
 
-What the limiter allows (estimate, 90 % boost efficiency, 0.6 W for the backlight):
+**Discharging.** U13, a TPS259571 eFuse (David 2026-11-25, replacing the 1.7 A TPS2553), sits between the charger's
+system rail and everything it feeds (the 5 V boost and the backlight). RILM = 680 ohm sets the limit to about
+3.0 A (TI SLVSE57: 487 ohm gives 3.87-4.42 A, 1780 ohm 1.09-1.24 A; about 2020 / R). That is just over half the
+pack's 5.6 A rating, and it is also the rating of the battery connector with the pack's 22 AWG leads (Molex 5268:
+3.0 A), which is why it is not set higher. The pack's own protection trips at 12-16 A, which is a safety cut-out,
+not a limit to design to.
 
-| Voltage at the limiter | Power through it at 1.7 A | Left for the module at 5 V |
+What happens at the limit: the fuse regulates the current, the limited rail sags, the boost's under-voltage
+divider switches the 5 V rail off at 3.0 V, and the module loses power. If the fuse overheats it switches off and
+retries; its FLT output (module pin 58, `BATT_OC_N`) is low meanwhile. It drops about 0.1 V at 3 A.
+
+What it allows (estimate, 90 % boost efficiency, 0.6 W for the backlight):
+
+| Voltage at the fuse | Power through it at 3.0 A | Left for the module at 5 V |
 |---|---|---|
-| 3.1 V | 5.3 W | about 4.2 W, 0.84 A |
-| 3.7 V (nominal) | 6.3 W | about 5.1 W, 1.0 A |
-| 4.2 V (full) | 7.1 W | about 5.9 W, 1.2 A |
+| 3.1 V | 9.3 W | about 7.8 W, 1.6 A |
+| 3.7 V (nominal) | 11.1 W | about 9.4 W, 1.9 A |
+| 4.2 V (full) | 12.6 W | about 10.8 W, 2.0 A (the boost's own limit) |
 
-So the module can draw roughly **4-6 W** on battery, where the brief expects 2-3 W under load. 1.7 A is the highest
-setting the TPS2553 has; the pack itself would allow three times that. If measurements show the module needs
-more, replace U13 with an eFuse that goes to about 4 A (for example TPS2595, in stock at JLCPCB as `C2155775`,
-not yet evaluated).
+So the module can draw roughly **8-10 W** on battery, where the brief expects 2-3 W under load.
+
+**Hard power-cycle option.** The fuse's enable pin has an unfitted network (C90, R91, D9): fitted, holding the
+power button for about 3 s cuts the limited rail, and with it the module's 5 V, for about 6-8 s. It exists because
+the Core3566 may have no way to be woken after `poweroff` (pin 99 looks like an output); see
+[open-questions.md](open-questions.md). Values are a starting point for the bench.
 
 With USB power connected the charger supplies the system rail, and U13 limits the system to the same current.
 

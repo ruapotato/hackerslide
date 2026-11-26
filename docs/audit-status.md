@@ -14,10 +14,10 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 | Licence | **CERN-OHL-S-2.0** for `hardware/` and `mechanical/`, AGPL-3.0 for the rest |
 | Body | Carrier cut out around the battery; **the keyboard PCB is the tray floor** ("thin keyboard") |
 | Battery | **BAK LP-454965-2P-3M** pack, for its 5.6 A rating, accepting about 1.4 mm more thickness; the battery must never be drawn beyond its rating |
-| Routing | Done by the agent (no human layout); every board stays DRAFT until reviewed |
+| Routing | Done by the agent (no human layout) |
+| Review (2026-11-25) | No review by a person is planned: the boards are checked by scripts and independent AI reviewers, then built and tested. They are to be made as easy to debug as possible (serial console, test pads, lamps) |
 | USB | One USB-C port for rev 0.1 (a second host port was considered and dropped) |
 | Keyboard cable | Our own flex circuit from the PCB fab, with spring-pin landing pads on the keyboard as an experiment |
-| Routing | Autoroute plus hand clean-up, marked DRAFT |
 
 ## State of the design
 
@@ -26,9 +26,9 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 | Carrier, 71.6 x 66 mm, 4 layers | Schematic revised, ERC clean. **Fully routed: 0 open, no DRC errors.** Charger, limiter, gauge, boost, USB-C corner, USB pair and DSI pairs are laid by hand in `carrier_cells.py`; the rest by the grid router with a DRC-driven repair loop. Pair geometry is an estimate until the stack-up is fixed. About fifty small parts are on the display side. Not reviewed by a person |
 | Keyboard, 125 x 69 mm, 2 layers, 1.0 mm | Schematic revised, ERC clean. **Fully routed: 186 of 186, no DRC errors** (key matrix and scanner fan-in by script, the rest by the grid router) |
 | Top plate | ERC/DRC clean |
-| Keyboard flex cable, 4.5 x 73 mm, 1-layer 0.07 mm flex | New (`hardware/keyboard-flex`). ERC/DRC clean, fully routed (eight straight traces) |
+| Keyboard flex cable, 4.5 x 79 mm, 1-layer 0.07 mm flex | New (`hardware/keyboard-flex`). ERC/DRC clean, fully routed (eight straight traces) |
 | Dome (Keystone) keyboard variant, `hardware/keyboard-5135` | Generated and placed, ERC/DRC clean, **not routed**. Lands are non-standard and unverified: do not order |
-| Enclosure | **20.05 mm** closed, 107.9 mm open. Collision check passes closed and open |
+| Enclosure | **20.05 mm** closed, 109.9 mm open. Collision check passes closed and open |
 | Battery | BAK LP-454965-2P-3M: 2800 mAh min, 9.5 x 50 x 68 mm max, 5.6 A max discharge, 1.4 A max charge, NTC. Farnell stock and price unconfirmed |
 
 Thickness stack (mm): keyboard 3.6 (PCB 1.0, plate stand-off 1.5, plate 0.8, rim 0.3), slide gap 0.4, back floor 1.2,
@@ -45,37 +45,37 @@ The exact list of what is still unrouted is in [routing-status.md](routing-statu
 |---|---|---|
 | P1 | Fixed | Charger D+/D- disconnected by default (R21/R22 DNP, 15k pull-downs): no HVDCP request, input resets to 500 mA. U2 pin 5 off VBUS; 15 V TVS D5 on VBUS |
 | P2 | Fixed | L2 is MWSA0402S-1R0MT (`C408332`) |
-| P3 | Open (software) | R12 = 300 ohm caps input at about 1.18 A. The device tree must set `ti,use-ilim-pin` |
+| P3 | Fixed | R12 = 470 ohm caps the input at 0.83 A at most, in hardware. `ti,use-ilim-pin` keeps it so: [device-tree.md](device-tree.md) |
 | P4 | Fixed | C15, C16, C21 are 22 uF |
 | P5 | Fixed | EN/HYS divider 1M / 560k / 51k: boost on above 3.31 V, off below 3.01 V |
 | P6 | Fixed | Three diodes isolate /QON, module pin 99 and a GPIO power key |
-| P7 | Mitigated | The cell allows 1.5 A; the charger resets to 2.048 A. With the 500 mA input default the cell sees about 0.6 A until Linux sets `ti,charge-current` (estimate). Open: the device tree |
+| P7 | Fixed | The pack allows 1.4 A; the charger resets to 2.048 A, but the 0.83 A input cap leaves at most about 1.25 A for the pack with no software. `ti,charge-current` is in [device-tree.md](device-tree.md) |
 | P8 | Fixed | 402k / 100k, feed-forward pad C26 |
-| P9 | Open (software) | Ship mode needs userspace i2c or a driver patch |
+| P9 | Open (software, not needed for bring-up) | Ship mode needs userspace i2c or a driver patch |
 | P10-P13 | Fixed | Pull-up, capacitor sizes, part fields, NSR0240H |
-| P14 | Partly | Keyed 3-pin connector J10 (Molex 5268) for the BAK pack, with its thermistor wired to the charger. Open: which housing position is red must be checked against J10 |
-| P15 | Open (software) | Backlight PWM period 5-100 kHz in the device tree |
+| P14 | Partly | Keyed 3-pin connector J10 (Molex 5268) for the BAK pack, with its thermistor wired to the charger. The pack and Molex drawings put red on pin 1 as drawn (re-read 2026-11-25: the pack drawing shows the same view of the plug as the Molex 5264 catalogue, red at circuit 1); the board is marked +, T, - and the bring-up plan starts with a meter on the loose plug |
+| P15 | Documented | Backlight PWM period: [device-tree.md](device-tree.md) |
 | P16 | Fixed | Test points added. CC lines reach only resistors, so they carry no ESD part |
 
 **Required by David (2026-11-24): the battery must never be drawn beyond its rating.** The BAK pack allows 5.6 A
-discharge and 1.4 A charge. Discharging is limited by U13 (TPS2553, 1.7 A typical, 1.8 A maximum) feeding the
-boost and the backlight; charging by the charger's 500 mA input default and then its own regulation
-(`ti,charge-current` 1.4 A or less). The limiter leaves the module about 4-6 W on battery. See [power-budget.md](power-budget.md).
+discharge and 1.4 A charge. Discharging is limited by U13 (TPS259571 eFuse, about 3.0 A) feeding the
+boost and the backlight; charging by the charger's input cap (R12, 0.83 A maximum, so at most about 1.25 A into the pack) and by
+`ti,charge-current` (1.4 A or less). The fuse leaves the module about 8-10 W on battery. See [power-budget.md](power-budget.md).
 
 ### Module
 
 | ID | Status | What was done |
 |---|---|---|
-| M1 | Mitigated | Pin 99 gets 1k in series and the button also drives GPIO pin 41. Open: measure pin 99 on a real Core3566 |
+| M1 | Mitigated | Pin 99 gets 1k in series and the button also drives GPIO pin 41, so the board works whatever pin 99 turns out to be. If a powered-off module cannot be woken, the unfitted parts C90, R91, D9 turn a long press into a hard power cycle |
 | M2 | Fixed | Card-detect pull-up to 1.8 V |
 | M3 | Fixed | Hub and mux removed; the module's USB goes straight to USB-C |
-| M4 | Open (docs) | ArmSoM stuffing variant is noted on the schematic; `compute-pin-matrix.md` is still to write |
-| M5 | Open (docs) | Decision record still to write |
+| M4 | Fixed | Stuffing variants are in [compute-pin-matrix.md](compute-pin-matrix.md) |
+| M5 | Closed | The CB2 is listed as not supported in the pin matrix |
 | M6 | Fixed | No-copper rule area between the DF40 pad rows |
 | M7 | Fixed | 4.7k I2C pull-ups |
-| M8 | Open (software) | UHS disabled in the device tree |
+| M8 | Documented | UHS disabled: [device-tree.md](device-tree.md) |
 | M9, M10 | Fixed | 220 ohm reset resistor; 1 uF on pin 78 |
-| M11 | Open (measurement) | Module height: measure a real module |
+| M11 | Mitigated | Heights taken from LuckFox's own 3D model: 4.50 mm mated, SoC lid at 3.6 mm, which leaves 1.0 mm over the module. Calipers when one is in hand |
 
 The module is turned 180 degrees in the carrier frame compared with the audited placement, so that its power, SD,
 I2S and UART pins face the wider bottom strip. It is a pure rotation; the socket geometry is unchanged.
@@ -98,7 +98,7 @@ I2S and UART pins face the wider bottom strip. It is a pure rotation; the socket
 | ID | Status | What was done |
 |---|---|---|
 | K1 | Mitigated | Nub 0.3 mm. Cap guidance still to prototype |
-| K2 | Open (fab note) | Goes into `bom/fab-orders.md` |
+| K2 | Fixed | In `bom/fab-orders.md` |
 | K3 | Fixed | Both Space switches share one matrix position |
 | K4 | Open (David) | Lighter switch versions are a feel decision |
 | K5 | Fixed | No parts under the board at all |
@@ -116,7 +116,7 @@ removed; the plate is held by four spacers in the D-pad zone. The other three ed
 | E1 | Fixed | Carrier edge 0.3 mm from the wall; connector mouths 0.3-0.6 mm behind the outer face |
 | E2 | Fixed | One tray magnet per side, two body magnets |
 | E3 | Mitigated | 6 x 1 mm body and 6 x 2 mm tray magnets as parameters. Open: tune on the fit mule |
-| E4 | Mitigated | Thermal gap is now a derived 0.42 mm. Open: `docs/thermal.md`, and measurement |
+| E4 | Mitigated | Thermal gap derived from the module's real height: 1.9 mm, filled by a soft pad ([thermal.md](thermal.md)). Open: measurement |
 | E5 | Mitigated | The cable is our own 0.07 mm flex circuit. Slot, floor channel and loop lane are modelled; loop radius 1.9 mm, inside JLCPCB's guidance for repeated bending (10-15 x thickness). Stock FFC is rated for 5-10 mm and is for the fit mule only. Open: cycle-test the flex; the fab gives no life rating. Six landing pads on the keyboard allow a spring-pin experiment as the fallback |
 | E6 | Fixed | Panel connectors on the display side where the folded tails land. Open: confirm on a real panel |
 | E7 | Fixed | SMT spacers |
@@ -128,5 +128,5 @@ New: the panel's folded tails carry components up to 1.5 mm high, which the earl
 
 ## Needs real parts to confirm
 
-Module height and pin 99; PJ-342 pole assignment; panel tail fold and pin order; keyboard cable path; battery
-connector polarity; diode height (0.5 mm) under the keycaps; MAX17048 land pattern.
+See the last table of [open-questions.md](open-questions.md): each item has a bench step in
+[bring-up-plan.md](bring-up-plan.md), and none of them stops the first boards from being made.

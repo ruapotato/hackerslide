@@ -9,15 +9,22 @@ and when the keyboard is closed the tray covers the back shell, which is where t
 
 ## Heat path
 
-SoC package, on the module side facing the back shell -> thermal pad or copper shim, 0.42 mm (`THERMAL_GAP`) ->
+SoC package, on the module side facing the back shell -> **1.9 mm** to the back-shell floor (`THERMAL_GAP`) ->
 back shell floor, 1.2 mm -> 0.4 mm air gap -> keyboard tray. The module's other side faces the carrier.
+
+The 1.9 mm comes from LuckFox's own 3D model of the module (SoC lid 3.6 mm above the carrier, cavity 5.5 mm); an
+earlier figure of 0.42 mm used the module height in the datasheet text, which is the CM4's. A 2 mm silicone pad at
+3 W/mK over the 15 x 15 mm package is about 3 K/W, so 6-9 K across the pad at 2-3 W: acceptable, but a copper or
+aluminium block (a 1.5 mm shim plus a 0.5 mm pad) would cut that to about 1 K/W. The tallest part on that side of
+the module is an inductor 0.9 mm higher than the SoC, 19 mm away, so a flat spreader plate must be stepped or stay
+within about 15 mm of the SoC centre. **Measure the real module before cutting anything.**
 The cell is beside the module, not under it; its nearest edge is about 9 mm from the module outline.
 
 ## Rough numbers
 
 | Quantity | Value | Basis |
 |---|---|---|
-| Outer surface, closed | about 265 cm2 | 2 x 128 x 72 + perimeter x 20.05 mm |
+| Outer surface, closed | about 271 cm2 | 2 x 128 x 74 + perimeter x 20.05 mm |
 | Natural convection plus radiation | about 10 W/m2K | Rule of thumb for a small hand-held object in still air |
 | Average surface rise at 2.5 W, heat spread evenly | about 10 K | 2.5 / (10 x 0.026) |
 | Average surface rise at 1.5 W | about 6 K | |

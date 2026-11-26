@@ -22,7 +22,10 @@ Total: about $1,300-2,300 (estimate; the earlier handoff said $1,300-2,200).
 
 ## Before any fab order
 
-1. Routing is complete on both boards ([routing-status.md](routing-status.md)). Fix the stack-up and recalculate the
-   DSI and USB pair geometry for it.
-2. Human review: [carrier-board.md](carrier-board.md) checklist and [footprint-review.md](footprint-review.md).
-3. Gerbers and assembly files.
+1. Routing is complete on both boards ([routing-status.md](routing-status.md)); the pair geometry is calculated for
+   JLCPCB's JLC04101H-3313 stack-up, which therefore has to be the one ordered.
+2. Review: done by scripts and independent AI reviewers, not by a person ([review-2026-11-25.md](review-2026-11-25.md)).
+   What is left can only be settled with parts in hand; each such item has a bench step in
+   [bring-up-plan.md](bring-up-plan.md). The first boards are prototypes: expect a second revision.
+3. Order a few of each connector and the pack first, lay them on a 1:1 print, and measure the pack plug's polarity.
+4. Gerbers and assembly files: `fab_outputs.sh`, then `gerber_check.py`.

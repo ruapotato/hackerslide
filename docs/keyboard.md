@@ -1,6 +1,6 @@
 # Keyboard
 
-**DRAFT - NEEDS HUMAN REVIEW. Fully routed, no DRC errors.**
+**Rev 0.1, fully routed, no DRC errors. Not built.**
 The key matrix and the scanner's row and column fan-in are routed by `keyboard_pcb.route_matrix` (the column bus
 vias are in the order of the scanner's pins, so nothing crosses); the D-pad, cable, power and ground by `gridroute.py`.
 
@@ -17,7 +17,8 @@ vias are in the order of the scanner's pins, so nothing crosses); the D-pad, cab
 | Tray rim | 0.3 mm | Keycap tops are flush with it |
 
 Total 3.6 mm. Parts under the plate may be 1.0 mm high; the diodes sit under the keycap flanges, which ride
-0.9 mm above the board, so they must be 0.5 mm or lower.
+0.9 mm above the board and come down to 0.77 mm when a key is pressed. The diodes are 0.55 mm at most (BORN
+datasheet), which leaves 0.22 mm.
 
 ## Layout
 
@@ -54,7 +55,7 @@ Software notes: the device-tree keymap uses the chip's rows and columns, not the
 
 ## Cable to the carrier
 
-Our own flex circuit, [`hardware/keyboard-flex`](../hardware/keyboard-flex): one layer, 0.07 mm, 4.5 x 73 mm, eight
+Our own flex circuit, [`hardware/keyboard-flex`](../hardware/keyboard-flex): one layer, 0.07 mm, 4.5 x 79 mm, eight
 straight traces. It leaves carrier J9 toward the device's bottom edge, turns down through a slot in the back shell,
 runs back under the body in a channel, makes a rolling loop of 1.9 mm radius in the tray's upper half, and enters
 keyboard J1. Pin k of J9 is pin k of J1. Power and ground are mirror-symmetric, so a reversed cable cannot short

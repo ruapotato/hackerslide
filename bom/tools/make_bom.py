@@ -41,7 +41,7 @@ OFF_BOARD = [
     ('M2 heat-set insert 3.2 x 3 mm + M2 screw', '', '', 2, None, '', '', 'estimate', 'body screws'),
     ('M2.5 x 4 screw (module to spacers)', '', '', 4, None, '', '', 'estimate', ''),
     ('M1.6 x 3 screw (top plate)', '', '', 4, None, '', '', 'estimate', ''),
-    ('Thermal pad / copper shim 14 x 14 x 0.4 mm', '', '', 1, None, '', '', 'estimate', 'thickness follows config.THERMAL_GAP'),
+    ('Thermal pad 14 x 14 x 2.0 mm (soft, compresses to the 1.9 mm gap)', '', '', 1, None, '', '', 'estimate', 'thickness follows config.THERMAL_GAP'),
     ('Cover/keycaps/enclosure prints', '', '', 1, None, '', '', 'estimate', 'FDM for the fit mule'),
 ]
 

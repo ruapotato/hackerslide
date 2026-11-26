@@ -1,7 +1,9 @@
 # Fab order sheets (JLCPCB)
 
-**Do not order yet.** Both boards are fully routed and pass DRC, but the layout has not been reviewed by a person,
-the pair geometry is not checked against a stack-up, and no Gerbers exist. These sheets
+**Ordering is David's decision; nothing has been ordered or quoted.** Both boards are fully routed and pass DRC.
+They were checked by scripts and by independent AI reviewers, not by a person
+([review](../docs/review-2026-11-25.md)); the first boards are prototypes. Fabrication files are made by
+`hardware/scripts/fab_outputs.sh` and compared with the board files by `gerber_check.py`. These sheets
 record what each order needs, so they can be checked now. Capabilities quoted are from
 [JLCPCB's capability pages](https://jlcpcb.com/capabilities/pcb-capabilities) and
 [flex capabilities](https://jlcpcb.com/capabilities/flex-pcb-capabilities), read 2026-11-24.
@@ -13,13 +15,14 @@ record what each order needs, so they can be checked now. Capabilities quoted ar
 | Size | 71.6 x 66.0 mm, 3 mm corner radius, no slots | |
 | Layers | 4 | DSI and USB pairs over a solid ground plane |
 | Thickness | 1.0 mm | Sets the enclosure stack |
-| Stack-up | Impedance-controlled stack-up, *to be chosen* | The DSI (100 ohm) and USB (90 ohm) widths in `carrier_pcb.py` are placeholders: `TODO(verify)` with JLCPCB's impedance calculator before routing |
+| Stack-up | **JLC04101H-3313** (impedance control: yes). Prepreg 3313, 0.0994 mm, between the outer layers and the planes | The pairs are drawn for it: DSI 0.10 mm tracks / 0.15 mm gap = 100 ohm, USB 0.12 / 0.12 = 89 ohm (`hardware/scripts/impedance.py`). The default 7628 stack-up would give 107 and 97 ohm: usable, but not what was designed |
 | Copper | 1 oz outer, 0.5 oz inner | |
 | Min track / space | 0.09 / 0.09 mm in the rules; 0.1 mm used | The 0.4 mm-pitch DF40 sockets need 0.1 mm work |
 | Min via | 0.45 mm pad, 0.2 mm drill | |
 | Finish | ENIG | 0.4 mm-pitch sockets and QFNs |
-| Assembly | Both sides: everything on the F side, J4 and J5 (and three test points) on the B side | |
-| Not fitted by the fab | J3 (solder pads), DNP resistors listed in the BOM | |
+| Assembly | Both sides. Display side: J4, J5, the battery fuse U13, the gauge U4 and about sixty small parts | Two-sided assembly is needed |
+| Not fitted by the fab | The parts marked DNP in the BOM (module-variant straps, the hard power-off option C90, R91, D9) | |
+| Through-hole | J10, the battery header, is the only through-hole part: ask for it to be fitted (hand-soldering service), so nothing is left to solder at home | |
 | Special parts | Two DF40C-100DS sockets: ask for X-ray or careful inspection. H1-H4 are SMT spacers | |
 
 ## 2. Keyboard (`hardware/keyboard`)
@@ -46,7 +49,7 @@ The 0.6 mm Fn legends are below JLCPCB's recommended silkscreen height and may p
 | Setting | Value | Why |
 |---|---|---|
 | Type | Flexible PCB, 1 layer | Thinnest and most bend-tolerant |
-| Size | 4.5 x 73 mm | Under 20 x 20 mm is "best panelised" per JLCPCB; this is long but narrow, ask for a panel |
+| Size | 4.5 x 79 mm | Under 20 x 20 mm is "best panelised" per JLCPCB; this is long but narrow, ask for a panel |
 | Thickness | 0.07 mm (25 um polyimide) | Loop radius 1.9 mm is 27 x thickness; JLCPCB advises >= 10-15 x for repeated bending |
 | Copper | 18 um (0.5 oz) | The thinnest offered on single-sided flex |
 | Copper type | Ask for rolled-annealed if offered | JLCPCB's page does not say which is standard |
@@ -59,6 +62,6 @@ JLCPCB gives no flex-life figure. Cycle-test the cable on the fit mule before re
 
 ## Order of work
 
-1. Route the keyboard and carrier; human review of both.
+1. Both boards are routed and checked ([review](../docs/review-2026-11-25.md)).
 2. Board renders and Gerbers, drill, position and BOM files in JLCPCB format.
 3. Order the keyboard, top plate and flex first (cheap, and they exercise the slider), then the carrier.
