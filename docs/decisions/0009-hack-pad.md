@@ -102,6 +102,18 @@ set by the Linux-class processor.
 - **Memory: similar to the N810, 128 MB, or 256 MB if that is the easier build (David, 2026-11-27).** This replaces
   the "as much as possible" goal above. The chip type and bank arrangement follow from the datasheet checks.
 
+- **Brain part number: MIMXRT1176AVM8B** (DigiKey, read 2026-11-26: 506 in stock, $26.83, Active): current "B"
+  silicon, 800 MHz main core plus the 400 MHz second core, automotive temperature grade. The 1 GHz version has no
+  stock anywhere (expected August 2027) and the industrial 800 MHz one has 5 pieces. To confirm before ordering:
+  the automotive data sheet, which could not be downloaded.
+- **SDR radio, now that DigiKey is allowed: Microchip AT86RF215-ZU** (DigiKey 5,390, $7.61) **with a small FPGA**
+  (Lattice ICE40LP1K-QN84, DigiKey 182, $6.71; the part the open CaribouLite design uses for the same job). The
+  radio's sample port is a 128 Mb/s differential link that no microcontroller pin can take, so the FPGA turns it
+  into a byte-wide bus for the brain's camera port. Covers 389.5-510, 779-1020 and 2400-2483.5 MHz, receive and
+  send up to +14 dBm, up to 2 MHz wide, two bands at once, and it has packet modems built in. The wide-range
+  converter stays, but in front of this chip's 2.4 GHz port, which removes the ghost-signal limit above 1.9 GHz;
+  the shortwave detector stays as it was. The SX1255 is dropped. Risk: only 182 of that FPGA, with a 40-week lead.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn

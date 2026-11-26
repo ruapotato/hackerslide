@@ -16,8 +16,8 @@ them. Target thickness about 13.3 mm (arithmetic, not a model).
 
 | Block | Parts | Talks to the brain over | Notes and checks |
 |---|---|---|---|
-| Brain | NXP MIMXRT1172CVM8A (800 MHz + 400 MHz cores), 289-ball BGA | | Check from the datasheet that the 1172 has every interface used below |
-| Memory | 2 x W9825G6KH (64 MB), as on NXP's evaluation board; positions for 128 MB | memory bus | Check the 128 MB wiring against the reference manual |
+| Brain | NXP MIMXRT1176AVM8B (800 MHz + 400 MHz cores), 289-ball BGA, from DigiKey | | Ball map and interfaces verified in `hardware/hackpad/data/` |
+| Memory | 128 MB fitted, positions for 256 MB; chip type being settled from the datasheets | memory bus | First bank as on NXP's evaluation board |
 | Program storage | W25Q128JV flash | FlexSPI | Boot configuration pins as on the evaluation board |
 | Card | microSD socket (as on the Linux carrier) | SD interface | |
 | USB | USB-C: charging, and the brain's high-speed port | USB | Second high-speed port to an internal header |
@@ -35,9 +35,9 @@ them. Target thickness about 13.3 mm (arithmetic, not a model).
 | 2.4 GHz packets | Si24R1 | SPI | |
 | Position | ATGM336H | UART | |
 | Broadcast receiver | Skyworks Si4732 | I2C, I2S | Long, medium, short wave and FM |
-| **SDR A** | Semtech SX1255, 32 MHz reference | I2S (samples), SPI | 400-510 MHz, 1 MHz wide, receive and send |
-| **SDR C** | Si5351A, 74CBTLV3253, OPA1612, PCM1808 | I2S, I2C | 0.1-30 MHz receive |
-| **SDR B** | LMX2572 synthesizer, LTC5567 and ADEX-10L mixers, amplifier, SKY13414 and BGS12 switches, filter bank | SPI, control pins | Shifts 10 MHz-4 GHz into SDR A's range. Fitted (David left this to stock: every part is stocked). Drawn so that it can be left off the board without affecting A |
+| **SDR radio** | Microchip AT86RF215-ZU, Lattice ICE40LP1K-QN84 FPGA, 26 MHz reference | camera port (samples, through the FPGA), SPI (control and FPGA loading) | 389.5-510, 779-1020, 2400-2483.5 MHz; 2 MHz wide; receive and send; built-in packet modems. Check: FPGA input levels against the radio's two output levels; a second FPGA part as a fallback |
+| **SDR converter** | RFFC5072, or LMX2572 synthesizer with LTC5567 mixer; two fixed filters, amplifier, switches | SPI, control pins | Shifts about 30 MHz-6 GHz to the radio's 2.4 GHz port. Can be left off the board |
+| **SDR shortwave** | Si5351A, 74CBTLV3253, OPA1612, PCM1808 | I2S, I2C | 0.1-30 MHz receive |
 | Sensors, core set | STCC4 + SHT40, SGP41, BMP581, AS7341, OPT4001, VL53L1X, MLX90632, LSM6DSV16X, MMC5983MA, TMAG5273, LMH2110, RV-3032 clock | I2C (two buses), ADC | One switched supply for the power-hungry ones |
 | Sensors, added | BGT60LTR11AIP radar, AD8232 heart trace, BME690, MiCS-5524, VL53L5CX | SPI, I2C, ADC | All stocked at JLCPCB |
 | Bench tools | INA237 power monitor, FUSB302B USB-C sniffer, 8-bit protected probe port (SN74AXC8T245), MCP4728 outputs, MAX31856 thermocouple, CAN and RS-485 drivers | I2C, SPI, pins | On an expansion header along one edge |
