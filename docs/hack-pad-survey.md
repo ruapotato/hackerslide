@@ -47,6 +47,9 @@ single-sideband, pagers and similar narrow signals, capture and replay of a few 
 
 The 4.4" Sharp panel is 75 mm tall and does not fit a 74 mm body.
 
+**Chosen since (2026-11-27):** the same panel with touch and a front light, GDEY0426T82-FT01C, 1.98 mm, $33.68,
+94 in stock at Good Display's store. See [decisions/0009](decisions/0009-hack-pad.md).
+
 ## A starting point to react to
 
 - **Brain:** i.MX RT1176 with 32 MB SDRAM, and an ESP32-C6 module beside it for Wi-Fi, Bluetooth and Thread.

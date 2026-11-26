@@ -48,6 +48,13 @@ set by the Linux-class processor.
 - **Pointing (David, 2026-11-27):** the display's touch panel, and a D-pad with a centre key on the keyboard.
   The touchpad and its chip are dropped.
 
+- **Display part:** Good Display **GDEY0426T82-FT01C**: 4.26" e-paper, 800 x 480, with capacitive touch (FT6336U,
+  I2C) and a front light (7 LEDs). 105.33 x 62.37 x 1.98 mm; display on a 24-pin 0.5 mm cable (SSD1677, SPI),
+  touch and front light on 6-pin cables. Good Display's store, read by David on 2026-11-27: $33.68 list ($27.62 on
+  sale), **94 in stock**, add to cart. Specification, drawing, FT6336U datasheet and sample code are published.
+  To settle from the specification before drawing: the front light's supply. The page gives "series, <= 15 V,
+  <= 15 mA" in its table and "2.8-3.3 V" in a safety note.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
