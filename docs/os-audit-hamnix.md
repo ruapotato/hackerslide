@@ -59,3 +59,19 @@ read, rename, list and delete test in the emulator, as a scratch experiment.
 
 Cost of Adder's 64-bit values on this 32-bit chip, measured: about 1.3 to 1.8 times the code size of equivalent C in
 ordinary code, 3 times in call-heavy stubs, and pointers in structures take 8 bytes. Affordable with 64 MB.
+
+## Milestone 2 result (2026-11-26, emulator only)
+
+Pushed to `ruapotato/hackos` (main) and `ruapotato/adder` (branch `cortex-m7`). `make test` passes from a clean build.
+
+- Kernel: preemptive threads, mutexes with priority inheritance, semaphores, condition variables, message queues,
+  31 system calls (Hamnix's numbers where shared), memory-protection guards, a heap, faults that end only the
+  faulting thread, Hamnix's tmpfs running unmodified under a new descriptor layer, an interactive console monitor.
+- Compiler: void results, read-only string literals, size options, and `extern "C"` in both directions.
+- C alongside Adder is proven with Sensirion's unmodified SHT4x driver (BSD-3-Clause) called from Adder.
+- Size: 81 KB of kernel code at -O2, 48 KB optimised for size.
+- Limits: no program loader or processes yet; user threads are not isolated from each other; every non-empty tmpfs
+  file costs at least 128 KB (Hamnix's chunk size); `fs/vfs.ad` was not portable and was replaced.
+- On-device compiling: judged feasible; a Thumb-2 back end is estimated at 4,000-5,500 lines and self-compiling
+  needs roughly 25-45 MB of RAM. An estimate, not a test.
+- Proposed milestone 3: processes, loader and exec, pipes, hamsh over the serial console, then FAT.
