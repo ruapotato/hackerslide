@@ -52,7 +52,7 @@ def build():
         'P7: the charger resets to 2.048 A charge current and the pack allows 1.4 A. With the 500 mA input default',
         '    the pack sees about 0.6 A until Linux sets "ti,charge-current" (1.4 A or less).',
         'Cell: BAK LP-454965-2P-3M pack, 2800 mAh min, 5.6 A max discharge, 1.4 A max charge, 10k NTC (David 2026-11-24).',
-        'REQUIRED (David 2026-11-24): never draw the cell above its rating (5.6 A). U13, a TPS259571 eFuse with RILM 680R,',
+        'REQUIRED (David 2026-11-24): never draw the cell above its rating (5.6 A). U13, a TPS259531 eFuse with RILM 680R,',
         '    limits everything fed from VSYS_LIM (the 5 V boost and the backlight) to about 3.0 A (David 2026-11-25: fuse',
         '    instead of the 1.7 A TPS2553). 3.0 A is also the rating of the battery connector with 22 AWG leads.',
         '    When it limits, VSYS_LIM sags, the boost under-voltage divider turns the 5 V rail off, and FLT tells the module.',
@@ -131,11 +131,12 @@ def build():
     C(p, 'C19', '100n', 'VBAT')
     R(p, 'R16', '10k', 'GAUGE_INT', '+3V3')
     # battery discharge limiter: everything downstream of the charger's SYS rail except the charge LED
-    p.add('U13', 'hackerslide', 'TPS2595DSG', 'TPS259571DSGR', 'Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm',
+    p.add('U13', 'hackerslide', 'TPS2595DSG', 'TPS259531DSGR', 'Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm',
           {'3': 'VSYS', '4': 'VSYS', '2': 'FUSE_EN', '7': 'BATT_ILIM', '5': 'VSYS_LIM', '6': 'BATT_OC_N', '8': 'GND', '9': 'GND'},
-          fields=fields('C471038', 'TPS259571DSGR', 'Texas Instruments',
-                        Description='eFuse, no output clamp, auto-retry (the -521 has a 3.8 V clamp: not usable on a Li-ion rail). '
-                                    'Alternative reel: C2155692. dVdt (pin 1) open = fastest turn-on'))
+          fields=fields('C2155674', 'TPS259531DSGR', 'Texas Instruments',
+                        Description='eFuse, auto-retry; its output clamp is at 5.5-5.9 V, never reached on a rail of 4.4 V at most '
+                                    '(the -521 clamps at 3.8 V: not usable). Same chip without a clamp: TPS259571DSGR C471038, '
+                                    'chosen against on stock (118 on 2026-11-26). dVdt (pin 1) open = fastest turn-on'))
     R(p, 'R66', '680', 'BATT_ILIM', 'GND', note='current limit about 2020 / 680 = 3.0 A typ (TI SLVSE57 eq. 6 and the table: 487R 4.17 A, 1780R 1.17 A)')
     R(p, 'R67', '10k', 'BATT_OC_N', '+3V3', note='FLT, low while the fuse is in thermal shutdown')
     R(p, 'R90', '10M', 'VSYS', 'FUSE_EN', note='enable: on whenever VSYS is present (threshold 1.2 V, pin leakage 0.1 uA)')

@@ -2,14 +2,19 @@
 
 Phases follow the build series. Each phase lists what to measure and what would stop the next one.
 
-## Phase 1: boot a module on a stock IO board (before any custom board is ordered)
+## Phase 1: boot a module on a stock IO board (optional)
+
+**This phase can be skipped** (David 2026-11-26: no extra board to buy). Nothing on the carrier waits for it any more: the
+module's I/O voltage is settled from LuckFox's device tree, and the carrier works whatever pin 99 turns out to be (see
+[open-questions.md](open-questions.md)). Without an IO board, every row below is done on our own carrier in phase 5,
+through the debug UART socket J8 and the test points; the cost is that software and hardware are then debugged together.
 
 | Do | Measure / record | Why |
 |---|---|---|
 | Boot Debian/Mobian on the Core3566 on a CM4 IO board | Which kernel, what works | No mainline device tree exists for this module |
 | Power at the 5 V input | Idle (screen off and on), browsing, peak, suspend | Replaces every estimate in [power-budget.md](power-budget.md). The battery fuse allows about 3.0 A from the pack, which is roughly 2 A at 5 V |
 | Suspend and resume | Does it suspend on mainline, and at what power | "All day" depends on it |
-| Module pin 99 | Voltage, and what a 1k pull to ground does | The power button depends on it |
+| Module pin 99 (only if a stock carrier is at hand; otherwise on our carrier in phase 4) | Voltage, and what a 1k pull to ground does | LuckFox does not document it. Our power button also reaches a GPIO and the charger, so this is not a reason to buy a carrier |
 | Module height | Calipers: carrier surface to the tallest part, on the 1.5 mm stack | Sets the cavity and the thermal gap |
 | SoC temperature | Idle, browsing, 10 minutes of full load, bare | Baseline for [thermal.md](thermal.md) |
 | Panel on DSI | Write the ST7701 panel entry from Focus's init file; get an image; touch through `goodix` | The largest software unknown on the current design |

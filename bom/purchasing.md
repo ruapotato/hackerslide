@@ -19,7 +19,8 @@ stock, with `python3 bom/tools/make_bom.py`.
 | Stock 8-way 0.5 mm FFC, about 80 mm | for the fit mule only | 1 | *estimate* $1-3 | | Not for long-term use: see `docs/keyboard.md` |
 | Filament | PLA or PETG | | *estimate* $5-20 per set of prints | | Front shell, back shell, tray frame, keycaps |
 
-Development tools, bought once: a CM4 IO board for first boot and power measurement (*estimate* $35-45), a
+Development tools, bought once: optionally a CM4 IO board for first boot and power measurement (*estimate* $35-45; not
+needed, see phase 1 of `docs/bring-up-plan.md`), a
 3.3 V USB-serial adapter or Raspberry Pi Debug Probe for the console, a USB power meter.
 
 ## What the fab makes (JLCPCB, see [`fab-orders.md`](fab-orders.md))

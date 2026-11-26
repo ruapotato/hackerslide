@@ -153,7 +153,7 @@ def charger(B, ox, oy):
     c.gnd('R29', '2', 0.0, -0.8, w=0.25, d=0.45, drill=0.2)
     c.P('TP3', -2.5, -7.5, 0, 'B')                        # VBAT, inside the VBAT copper
 
-    # ---- battery fuse U13 (TPS259571, 2 x 2 mm) on the display side, straight under the VSYS vias --------------
+    # ---- battery fuse U13 (TPS259531, 2 x 2 mm) on the display side, straight under the VSYS vias --------------
     # turned so that IN (pins 3, 4) faces the vias and OUT (pin 5) faces the In2 VSYS_LIM area:
     #   top row    dVdt  EN  IN  IN        bottom row    GND  ILM  FLT  OUT
     c.P('U13', 3.8, 10.3, 270, 'B')

@@ -3,7 +3,8 @@
 What the kernel has to be told about this carrier, collected from the schematic notes so that none of it is
 found by accident during bring-up. Pin numbers are CM4 connector pins; the SoC GPIO behind each pin comes from the
 module vendor's own device tree (LuckFox publishes no mainline one for the Core3566, see
-[compute-pin-matrix.md](compute-pin-matrix.md)). Nothing here has run on hardware.
+[compute-pin-matrix.md](compute-pin-matrix.md); the vendor tree is `rk3566-luckfox-core3566.dts`, carried in Armbian's
+`linux-rockchip` branch `rk-6.1-rkr5.1`: PMIC RK809 at 0x20 on I2C0, PMUIO2 on its fixed 3.3 V LDO6). Nothing here has run on hardware.
 
 ## Things that protect hardware: get these right first
 
@@ -35,7 +36,7 @@ module vendor's own device tree (LuckFox publishes no mainline one for the Core3
 | Volume keys | `gpio-keys` | | pins 38, 39, active low | Pulled up on the carrier |
 | Power key | `gpio-keys`, `KEY_POWER`, wake-up source | | pin 41, active low | The same button also reaches the charger's /QON (12-18 s: battery disconnect) |
 | Slider | `gpio-keys`, `SW_KEYPAD_SLIDE` | | pin 47, low = closed | Hall switch on the carrier, magnet in the tray |
-| Activity LED | `gpio-leds` | | pin 21, active low | |
+| Activity LED | `gpio-leds` | | pin 21 (Core3566: GPIO0_C5), active low | LuckFox's own device tree says active high, for its carrier; on ours the LED hangs from 3.3 V, so low = lit |
 | Console | `stdout-path` | UART on pins 55 / 51 | | Core3566: UART2, 1,500,000 baud |
 | USB | `dr_mode = "peripheral"` (or `otg` with ID on pin 101) | | | The carrier does not supply VBUS, so host mode needs a powered hub; VBUS presence can be taken from the charger (`usb-phy` / extcon) |
 

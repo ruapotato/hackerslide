@@ -58,7 +58,7 @@ The exact list of what is still unrouted is in [routing-status.md](routing-statu
 | P16 | Fixed | Test points added. CC lines reach only resistors, so they carry no ESD part |
 
 **Required by David (2026-11-24): the battery must never be drawn beyond its rating.** The BAK pack allows 5.6 A
-discharge and 1.4 A charge. Discharging is limited by U13 (TPS259571 eFuse, about 3.0 A) feeding the
+discharge and 1.4 A charge. Discharging is limited by U13 (TPS259531 eFuse, about 3.0 A) feeding the
 boost and the backlight; charging by the charger's input cap (R12, 0.83 A maximum, so at most about 1.25 A into the pack) and by
 `ti,charge-current` (1.4 A or less). The fuse leaves the module about 8-10 W on battery. See [power-budget.md](power-budget.md).
 

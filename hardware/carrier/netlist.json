@@ -744,7 +744,7 @@
   },
   {
    "ref": "U13",
-   "value": "TPS259571DSGR",
+   "value": "TPS259531DSGR",
    "footprint": "Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm",
    "dnp": false,
    "sheet": "power",
@@ -752,10 +752,10 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "97aa0e90-dded-5788-a49d-98de1cafcccf",
    "fields": {
-    "LCSC": "C471038",
-    "MPN": "TPS259571DSGR",
+    "LCSC": "C2155674",
+    "MPN": "TPS259531DSGR",
     "Manufacturer": "Texas Instruments",
-    "Description": "eFuse, no output clamp, auto-retry (the -521 has a 3.8 V clamp: not usable on a Li-ion rail). Alternative reel: C2155692. dVdt (pin 1) open = fastest turn-on"
+    "Description": "eFuse, auto-retry; its output clamp is at 5.5-5.9 V, never reached on a rail of 4.4 V at most (the -521 clamps at 3.8 V: not usable). Same chip without a clamp: TPS259571DSGR C471038, chosen against on stock (118 on 2026-11-26). dVdt (pin 1) open = fastest turn-on"
    },
    "pads": {
     "3": "VSYS",

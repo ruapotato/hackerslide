@@ -5,7 +5,7 @@ Phases tied to the build series. Costs are estimates; nothing has been quoted or
 | Phase | Episode | Work | Exit test | Estimate |
 |---|---|---|---|---|
 | 0 | 1 | This repository: audited design, draft boards, enclosure model | Community review | - |
-| 1 | 2 | Boot the module on a stock IO board; measure power, suspend, heat; light the panel | [bring-up-plan.md](bring-up-plan.md) phase 1 | $180-250: module $84, IO board, panel $77, tools |
+| 1 | 2 | Optional: boot the module on a stock IO board; measure power, suspend, heat; light the panel | [bring-up-plan.md](bring-up-plan.md) phase 1 | $180-250: module $84, IO board, panel $77, tools |
 | 2 | 3-4 | Fit mule and slider: prints, magnets, cycling rig | Slider survives the cycle test | $40-80 |
 | 3 | 5-6 | Keyboard, top plate and flex cable, two revisions | Every key works; feel chosen | $150-250 |
 | 4 | 7-9 | Carrier, two revisions, including a second module | Boots, charges, plays audio, suspends in the shell | $500-1,000 |

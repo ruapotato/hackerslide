@@ -1,7 +1,7 @@
 # Power budget
 
 **Every figure here is an estimate unless it says "datasheet".** Nothing has been measured. The first job of
-bring-up phase 1 is to replace this table with measurements from a module on a stock IO board.
+bring-up is to replace this table with measurements from a module, on a stock IO board or on the carrier itself.
 
 ## Supply chain
 
@@ -9,7 +9,7 @@ bring-up phase 1 is to replace this table with measurements from a module on a s
 |---|---|
 | Battery | BAK LP-454965-2P-3M pack: 2800 mAh minimum, 3000 typical, 3.7 V nominal (about 10.4 Wh at minimum capacity), 1.4 A max charge, 5.6 A max continuous discharge, protection trips at 12-16 A, 10k thermistor lead |
 | Charger BQ25895 | Input capped at 0.68 / 0.755 / 0.83 A by R12 (470 ohm); input resets to 500 mA at each plug-in; charge current resets to 2.048 A |
-| Battery fuse TPS259571 (U13) | About 3.0 A to the boost and the backlight (RILM 680 ohm); 34 mohm |
+| Battery fuse TPS259531 (U13) | About 3.0 A to the boost and the backlight (RILM 680 ohm); 34 mohm |
 | Boost TPS61230 | 5.02 V; on above 3.31 V, off below 3.01 V at its input; about 2.3 A available at 3.0 V in |
 | Module | Needs 4.75-5.25 V; supplies 3.3 V and 1.8 V, 600 mA each |
 
@@ -50,7 +50,7 @@ The battery must not be asked for more than its rating: 5.6 A discharging, 1.4 A
 
 The price is charging speed: about 0.9 A into the pack at 3.7 V, so roughly 3.5 hours from empty.
 
-**Discharging.** U13, a TPS259571 eFuse (David 2026-11-25, replacing the 1.7 A TPS2553), sits between the charger's
+**Discharging.** U13, a TPS259531 eFuse (David 2026-11-25, replacing the 1.7 A TPS2553; the -531 variant since 2026-11-26 for stock: same chip as the -571 plus an output clamp at 5.5-5.9 V that a 4.4 V rail never reaches), sits between the charger's
 system rail and everything it feeds (the 5 V boost and the backlight). RILM = 680 ohm sets the limit to about
 3.0 A (TI SLVSE57: 487 ohm gives 3.87-4.42 A, 1780 ohm 1.09-1.24 A; about 2020 / R). That is just over half the
 pack's 5.6 A rating, and it is also the rating of the battery connector with the pack's 22 AWG leads (Molex 5268:

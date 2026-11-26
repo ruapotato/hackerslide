@@ -45077,7 +45077,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "TPS259571DSGR"
+		(property "Value" "TPS259531DSGR"
 			(at 0.01 -2.14 90)
 			(layer "B.Fab")
 			(uuid "355467af-b1db-4931-8ed5-a9918dfdaebf")
@@ -45103,7 +45103,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "eFuse, no output clamp, auto-retry (the -521 has a 3.8 V clamp: not usable on a Li-ion rail). Alternative reel: C2155692. dVdt (pin 1) open = fastest turn-on"
+		(property "Description" "eFuse, auto-retry; its output clamp is at 5.5-5.9 V, never reached on a rail of 4.4 V at most (the -521 clamps at 3.8 V: not usable). Same chip without a clamp: TPS259531DSGR C471038, chosen against on stock (118 on 2026-11-26). dVdt (pin 1) open = fastest turn-on"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -45117,7 +45117,7 @@
 				(justify mirror)
 			)
 		)
-		(property "LCSC" "C471038"
+		(property "LCSC" "C2155674"
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)
@@ -45130,7 +45130,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "TPS259571DSGR"
+		(property "MPN" "TPS259531DSGR"
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)

@@ -138,7 +138,8 @@ Each item has a step in [bring-up-plan.md](bring-up-plan.md) and a fallback in t
 [open-questions.md](open-questions.md).
 
 - **Battery plug polarity**, with a meter on the loose plug, before anything else. The board is marked +, T, -.
-- Core3566 pin 99 and the I/O voltage of module pins 55 and 80 (must be 3.3 V): measured on a stock carrier first.
+- Core3566 pin 99: what the power button does after `poweroff` (not documented by LuckFox; the board works either way).
+- Console TX on TP34 idles at 3.3 V (expected from LuckFox's device tree; confirms the I/O voltage of pins 21, 51, 55, 80, 82).
 - The fuse limit (R66 = 680 ohm, about 3.0 A) and that the module runs inside it.
 - Panel tail fold, reach and thickness against J4/J5; pack lead dress against the plug space.
 - PJ-342 sleeve terminal; straps R60-R63.
