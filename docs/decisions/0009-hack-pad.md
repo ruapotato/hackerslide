@@ -45,6 +45,9 @@ set by the Linux-class processor.
 - **Name (David, 2026-11-27):** the operating system is **HackOS**. It gets its own repository, and the Adder
   compiler work for this chip gets its own repository too, separate from the existing Adder and Hamnix ones.
 
+- **Pointing (David, 2026-11-27):** the display's touch panel, and a D-pad with a centre key on the keyboard.
+  The touchpad and its chip are dropped.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn

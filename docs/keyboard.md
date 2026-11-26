@@ -47,10 +47,10 @@ the scanner should report. The Fn-layer characters are on the top plate.
   `,` `.`, Ctrl, Shift. No number row: digits are Fn + the top row. Key pitch 9.3 x 7.25 mm.
 - Fn layer as on the N810, with `'`, `` ` `` and `|` where it had the three currency signs; `[` `]` on Fn + `,` `.`
   (`{` `}` with Shift as well); Chr held is Alt. Shift + `;` `,` `.` give `:` `<` `>`.
-- Left end: Esc and Tab, a capacitive touchpad drawn on the board (Azoteq IQS7211E, I2C, mainline driver
-  `iqs7211.c`; about 20 x 16 mm under a solid 1.5-2 mm overlay) and left and right click below it. The D-pad goes.
-  No joystick, trackball or optical sensor was found that fits the 2.6 mm above the board and is in stock.
-- The touchpad needs a second interrupt line to the carrier, so the cable grows from 8 to 9 or 10 ways.
+- Left end (David, 2026-11-27, for the hack pad): Esc and Tab above a D-pad of five flat switches: up, down, left,
+  right and centre. No touchpad and no click buttons: the e-paper screen has touch, and a cursor is of little use
+  on a display that redraws every 0.4 s. No trackball is in stock anywhere that was searched, and the analog
+  thumbsticks that are stand 10-17 mm tall.
 
 The boards in the repository still carry the layout below.
 
