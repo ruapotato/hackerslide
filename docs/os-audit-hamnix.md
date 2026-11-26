@@ -46,3 +46,16 @@ on the evaluation board with the card and a display. Radios, sensors and the int
 
 Adder treats every value and pointer as 64 bits. On a 32-bit chip that works, but pointers take twice the memory
 and calls are slower. Start that way and measure; a true 32-bit mode is weeks of compiler work.
+
+## Milestone 1 reached (2026-11-27)
+
+HackOS lives at https://github.com/ruapotato/hackos (AGPL-3.0) and needs the `cortex-m7` branch of
+https://github.com/ruapotato/adder (GPL-3.0-or-later, a fork of HamnixOS/adder). One command builds the compiler and
+the image and runs them on QEMU's Cortex-M7 machine: 44 checks pass (start-up, serial output, a timer interrupt and
+a system-call handler written in Adder, double-precision and 64-bit arithmetic, register access, fault reporting).
+Emulator only; nothing has touched the i.MX RT1170. Found on the way: Adder's `volatile` read 8 bytes where 4 were
+asked for, now fixed on the LLVM path; and Hamnix's RAM file system compiled unchanged and passed a create, write,
+read, rename, list and delete test in the emulator, as a scratch experiment.
+
+Cost of Adder's 64-bit values on this 32-bit chip, measured: about 1.3 to 1.8 times the code size of equivalent C in
+ordinary code, 3 times in call-heavy stubs, and pointers in structures take 8 bytes. Affordable with 64 MB.
