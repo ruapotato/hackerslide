@@ -347,6 +347,71 @@ def set_project_rules(pro_path, rules, classes, patterns, sheets=None, title=Non
     json.dump(d, open(pro_path, 'w'), indent=2)
 
 
+def save_scripted(board_path):
+    """record what the generator put on the board (gr_io.Scripted): call after save(), before the first routing pass"""
+    subprocess.run(['python3', os.path.join(HERE, 'gr_io.py'), 'save_scripted', board_path], check=True)
+
+
+def finish_routing(board, route_args, clearances, rounds=10):
+    """Close the loop with KiCad's own check, after the plain gridroute passes.
+
+    Each round: run the design-rule check; take up the routed segments and vias it objects to; route what is open,
+    allowing the router to take up its earlier work (--reroute).  The clearance alternates between the given values.
+    When a round changes nothing, everything routed within 1.5 mm (then 3, 4.5 ...) of the open ends is taken up and
+    those connections are routed first.  Ends when the check is quiet or the rounds are used up.  Then a tidy pass
+    removes unused vias and dead ends, undone per net if it would open a connection.
+    """
+    import json
+    import re
+    import shutil
+    import tempfile
+    gr_io = os.path.join(HERE, 'gr_io.py')
+    bdir, name = os.path.dirname(board), os.path.basename(board)[:-len('.kicad_pcb')]
+
+    def check():
+        drc = os.path.join(tempfile.mkdtemp(), 'drc.json')
+        subprocess.run(['kicad-cli', 'pcb', 'drc', '--format', 'json', '-o', drc, board], check=True, capture_output=True)
+        d = json.load(open(drc))
+        return drc, d, (sum(v['severity'] == 'error' for v in d['violations']), len(d['unconnected_items']))
+    nets = lambda d: sorted({m.group(1) for u in d['unconnected_items'] for it in u['items']
+                             for m in [re.search(r'\[(.*?)\]', it['description'])] if m})
+    last, stuck = None, 0
+    for i in range(rounds):
+        drc, d, state = check()
+        print('repair round', i, 'errors, open:', state, flush=True)
+        if state == (0, 0):
+            break
+        stuck = stuck + 1 if state == last else 0
+        last = state
+        subprocess.run(['python3', gr_io, 'ripdrc', board, drc], check=True)
+        extra = []
+        if stuck:
+            subprocess.run(['python3', gr_io, 'ripnear', board, drc, str(1.5 * stuck)], check=True)
+            extra = ['--first', ','.join(nets(d))]
+        subprocess.run([os.path.join(HERE, 'gridroute.sh'), bdir, name] + route_args +
+                       ['--clearance', str(clearances[i % len(clearances)]), '--reroute'] + extra, check=True)
+    skip = set()                                   # nets where removing a "dangling" item opened a connection
+    for i in range(6):
+        drc, d, state = check()
+        n = sum(v['type'] in ('via_dangling', 'track_dangling') and not any(f'[{s_}]' in v['items'][0]['description'] for s_ in skip)
+                for v in d['violations'])
+        if not n:
+            break
+        shutil.copy(board, board + '.pretidy')
+        subprocess.run(['python3', gr_io, 'tidy', board, drc, ','.join(sorted(skip))], check=True)
+        _, d2, state2 = check()
+        if state2[1] > state[1] or state2[0] > state[0]:
+            opened = set(nets(d2))
+            shutil.copy(board + '.pretidy', board)
+            print('tidy: undone for', sorted(opened), flush=True)
+            if not opened or opened <= skip:
+                break
+            skip |= opened
+    if os.path.exists(board + '.pretidy'):
+        os.remove(board + '.pretidy')
+    return check()[2]
+
+
 def route(board_path, passes=20, timeout=3600, jar=None):
     """Export DSN, run Freerouting headless, import the SES back. Returns Freerouting's log tail."""
     jar = jar or os.environ['FREEROUTING_JAR']   # path to freerouting-2.1.0.jar (2.1.0 runs on Java 21)

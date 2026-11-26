@@ -14,8 +14,6 @@ import sys
 import pcbnew
 
 MM = pcbnew.ToMM
-ROUTER_WIDTHS = (0.13, 0.1)                       # what gridroute lays on the carrier; scripted tracks use other widths
-PROTECT = ('DSI_*', 'USB_D?', 'SD_D0', 'SD_D2')     # scripted at a router width: never taken up again
 ERR = pcbnew.FromMM(0.005)
 
 
@@ -52,7 +50,13 @@ def export(board_path, drc_path, out_path):
                 holes.append({'x': MM(pad.GetPosition().x), 'y': MM(pad.GetPosition().y),
                               'd': MM(max(pad.GetDrillSize().x, pad.GetDrillSize().y)),
                               'net': pad.GetNetname() if pad.GetAttribute() == pcbnew.PAD_ATTRIB_PTH else ''})
-    padpos = {(p.GetPosition().x // 1000, p.GetPosition().y // 1000) for fp in b.GetFootprints() for p in fp.Pads()}
+    sc = Scripted(board_path, b)
+    power = {}
+    for code, net in b.GetNetsByNetcode().items():
+        try:
+            power[net.GetNetname()] = b.GetDesignSettings().m_NetSettings.GetEffectiveNetClass(net.GetNetname()).GetName()
+        except Exception:
+            pass
     for t in b.GetTracks():
         n_before = len(items)
         if t.Type() == pcbnew.PCB_VIA_T:
@@ -60,12 +64,11 @@ def export(board_path, drc_path, out_path):
             holes.append({'x': MM(t.GetPosition().x), 'y': MM(t.GetPosition().y), 'd': MM(t.GetDrillValue()), 'net': t.GetNetname()})
         else:
             add(t, t.GetNetname(), [t.GetLayer()], 'track')
-            # a segment the router itself laid in an earlier pass may be taken up again (gridroute --reroute)
-            w = MM(t.GetWidth())
-            if (min(abs(w - r) for r in ROUTER_WIDTHS) < 0.001 and not any(fnmatch.fnmatch(t.GetNetname(), p) for p in PROTECT)
-                    and not any((q.x // 1000, q.y // 1000) in padpos for q in (t.GetStart(), t.GetEnd()))):
+            # a segment the router itself laid in an earlier pass may be taken up again (gridroute --reroute);
+            # the wide power class is left alone
+            if sc.routed(t) and power.get(t.GetNetname()) != 'Power':
                 for it in items[n_before:]:
-                    it['rip'] = {'seg': [MM(t.GetStart().x), MM(t.GetStart().y), MM(t.GetEnd().x), MM(t.GetEnd().y)], 'w': w}
+                    it['rip'] = {'seg': [MM(t.GetStart().x), MM(t.GetStart().y), MM(t.GetEnd().x), MM(t.GetEnd().y)], 'w': MM(t.GetWidth())}
     for z in b.Zones():
         if z.GetIsRuleArea() and (z.GetDoNotAllowTracks() or z.GetDoNotAllowVias()):
             for p in polys(z.Outline()):
@@ -168,109 +171,136 @@ def rip(board_path, width, *nets):
     print(f'removed {len(gone)} track segments')
 
 
-def ripdrc(board_path, drc_path, widths='0.13,0.1', protect='DSI_*,USB_D?'):
-    """Delete the routed track segments that the design-rule check objects to (clearance, short, hole clearance,
-    rule area), so that the next gridroute pass lays them again.  Only segments of the router's widths are touched,
-    never a segment that starts on a pad (a fan-out stub) and never a protected net (the scripted pairs)."""
-    import fnmatch
+class Scripted:
+    """What the generator itself put on the board (scripted.json next to it, written by pcbgen.save_scripted before
+    the first routing pass).  Everything else is the router's and may be taken up again."""
+    def __init__(self, board_path, b):
+        p = os.path.join(os.path.dirname(os.path.abspath(board_path)), 'scripted.json')
+        self.ok = os.path.exists(p)
+        d = json.load(open(p)) if self.ok else {'vias': [], 'segs': []}
+        self.vias = {tuple(v) for v in d['vias']}
+        self.segs = {tuple(s_) for s_ in d['segs']}
+        self.b = b
+
+    def key(self, t):
+        if t.Type() == pcbnew.PCB_VIA_T:
+            return (round(MM(t.GetPosition().x), 3), round(MM(t.GetPosition().y), 3))
+        return (t.GetNetname(), self.b.GetLayerName(t.GetLayer()), round(MM(t.GetStart().x), 3), round(MM(t.GetStart().y), 3),
+                round(MM(t.GetEnd().x), 3), round(MM(t.GetEnd().y), 3))
+
+    def routed(self, t):
+        """True for a track segment or via that the router made"""
+        if not self.ok:
+            return False
+        return self.key(t) not in (self.vias if t.Type() == pcbnew.PCB_VIA_T else self.segs)
+
+
+def save_scripted(board_path):
     b = pcbnew.LoadBoard(board_path)
-    ws = [pcbnew.FromMM(float(w)) for w in widths.split(',')]
-    pads = {(p.GetPosition().x // 1000, p.GetPosition().y // 1000) for fp in b.GetFootprints() for p in fp.Pads()}
-    lid = {b.GetLayerName(l): l for l in b.GetEnabledLayers().CuStack()}
-    sv = os.path.join(os.path.dirname(board_path), 'scripted-vias.json')
-    keep_vias = json.load(open(sv)) if os.path.exists(sv) else None
-    gone = []
-    for v in json.load(open(drc_path))['violations']:
-        if v['severity'] != 'error' or v['type'] not in ('clearance', 'shorting_items', 'hole_clearance', 'items_not_allowed', 'tracks_crossing'):
-            continue
-        for it in v['items']:
-            mv = re.match(r'Via \[(.*?)\]', it['description'])
-            if mv and keep_vias is not None:
-                # a via the router placed: none of its net's scripted tracks (any width the router does not use) ends on it
-                for t in b.GetTracks():
-                    if (t.Type() == pcbnew.PCB_VIA_T and t.GetNetname() == mv.group(1)
-                            and abs(MM(t.GetPosition().x) - it['pos']['x']) < 1e-3 and abs(MM(t.GetPosition().y) - it['pos']['y']) < 1e-3):
-                        scripted = [round(MM(t.GetPosition().x), 3), round(MM(t.GetPosition().y), 3)] in keep_vias
-                        if not scripted:
-                            gone.append(t)
-                        break
-                continue
-            m = re.match(r'Track \[(.*?)\] on (\S+?), length ([\d.]+)', it['description'])
-            if not m or any(fnmatch.fnmatch(m.group(1), p) for p in protect.split(',')):
-                continue
-            x, y = pcbnew.FromMM(it['pos']['x']), pcbnew.FromMM(it['pos']['y'])
-            best = None
-            for t in b.GetTracks():
-                if (t.Type() == pcbnew.PCB_VIA_T or t.GetNetname() != m.group(1) or t.GetLayer() != lid.get(m.group(2))
-                        or not any(abs(t.GetWidth() - w) < 100 for w in ws) or abs(MM(t.GetLength()) - float(m.group(3))) > 0.002):
-                    continue
-                if any((q.x // 1000, q.y // 1000) in pads for q in (t.GetStart(), t.GetEnd())):
-                    continue
-                dd = min(abs(q.x - x) + abs(q.y - y) for q in (t.GetStart(), t.GetEnd(), t.GetCenter()))
-                if best is None or dd < best[0]:
-                    best = (dd, t)
-            if best and best[0] < pcbnew.FromMM(0.05):
-                gone.append(best[1])
+    sc = Scripted(board_path, b)
+    json.dump({'vias': sorted(sc.key(t) for t in b.GetTracks() if t.Type() == pcbnew.PCB_VIA_T),
+               'segs': sorted(sc.key(t) for t in b.GetTracks() if t.Type() != pcbnew.PCB_VIA_T)},
+              open(os.path.join(os.path.dirname(os.path.abspath(board_path)), 'scripted.json'), 'w'))
+
+
+def _finish(b, board_path, gone, what):
     seen = set()
     for t in gone:
-        k = (t.GetStart().x, t.GetStart().y, t.GetEnd().x, t.GetEnd().y, t.GetLayer())
+        k = (t.Type(), t.GetStart().x, t.GetStart().y, t.GetEnd().x, t.GetEnd().y, t.GetLayer())
         if k not in seen:
             seen.add(k)
             b.Remove(t)
     pcbnew.ZONE_FILLER(b).Fill(b.Zones())
     pcbnew.SaveBoard(board_path, b)
-    print(f'ripdrc: removed {len(seen)} track segments', flush=True)
+    print(f'{what}: removed {len(seen)} routed segments and vias', flush=True)
     os._exit(0)          # pcbnew 9.0.2 crashes on interpreter exit after Remove()
 
 
-def tidy(board_path, drc_path, skip=''):
-    """Remove what the check calls dangling: vias used on one layer only (escape vias whose route stayed on the pad's
-    layer, vias left behind by rip-ups) and routed segments that end in nothing.  Scripted tracks stay."""
-    b = pcbnew.LoadBoard(board_path)
-    padpos = {(p.GetPosition().x // 1000, p.GetPosition().y // 1000) for fp in b.GetFootprints() for p in fp.Pads()}
-    vias, segs = {}, []
+def _find(b, sc, it):
+    """the routed track segment or via that a DRC item describes, or None"""
+    d = it['description']
+    x, y = it['pos']['x'], it['pos']['y']
+    mv = re.match(r'Via \[(.*?)\]', d)
+    if mv:
+        for t in b.GetTracks():
+            if (t.Type() == pcbnew.PCB_VIA_T and t.GetNetname() == mv.group(1)
+                    and abs(MM(t.GetPosition().x) - x) < 1e-3 and abs(MM(t.GetPosition().y) - y) < 1e-3):
+                return t if sc.routed(t) else None
+        return None
+    m = re.match(r'Track \[(.*?)\] on (\S+?), length ([\d.]+)', d)
+    if not m:
+        return None
+    best = None
     for t in b.GetTracks():
-        if t.Type() == pcbnew.PCB_VIA_T:
-            vias[(t.GetNetname(), round(MM(t.GetPosition().x), 3), round(MM(t.GetPosition().y), 3))] = t
-        else:
-            segs.append(t)
+        if (t.Type() == pcbnew.PCB_VIA_T or t.GetNetname() != m.group(1) or b.GetLayerName(t.GetLayer()) != m.group(2)
+                or abs(MM(t.GetLength()) - float(m.group(3))) > 0.002 or not sc.routed(t)):
+            continue
+        dd = min(abs(MM(q.x) - x) + abs(MM(q.y) - y) for q in (t.GetStart(), t.GetEnd(), t.GetCenter()))
+        if best is None or dd < best[0]:
+            best = (dd, t)
+    return best[1] if best and best[0] < 0.05 else None
+
+
+def ripdrc(board_path, drc_path):
+    """Delete the routed segments and vias that the design-rule check objects to (clearance, short, hole clearance,
+    rule area), so that the next gridroute pass lays them again.  Scripted copper is never touched."""
+    b = pcbnew.LoadBoard(board_path)
+    sc = Scripted(board_path, b)
+    gone = []
+    for v in json.load(open(drc_path))['violations']:
+        if v['severity'] == 'error' and v['type'] in ('clearance', 'shorting_items', 'hole_clearance', 'items_not_allowed', 'tracks_crossing'):
+            gone += [t for t in (_find(b, sc, it) for it in v['items']) if t is not None]
+    _finish(b, board_path, gone, 'ripdrc')
+
+
+def ripnear(board_path, drc_path, radius):
+    """Delete every routed segment and via within `radius` mm of the ends of the connections that are still open: the
+    next pass routes those connections first and then puts the neighbours back (regional rip-up)."""
+    b = pcbnew.LoadBoard(board_path)
+    sc = Scripted(board_path, b)
+    r = float(radius)
+    pts = [(it['pos']['x'], it['pos']['y']) for u in json.load(open(drc_path))['unconnected_items'] for it in u['items']
+           if not it['description'].startswith('Zone')]
+
+    def dist(px, py, t):
+        ax, ay, bx, by = MM(t.GetStart().x), MM(t.GetStart().y), MM(t.GetEnd().x), MM(t.GetEnd().y)
+        vx, vy = bx - ax, by - ay
+        L = vx * vx + vy * vy
+        k = 0 if L == 0 else max(0.0, min(1.0, ((px - ax) * vx + (py - ay) * vy) / L))
+        return ((px - ax - k * vx) ** 2 + (py - ay - k * vy) ** 2) ** 0.5
+    gone = [t for t in b.GetTracks() if sc.routed(t) and any(dist(px, py, t) < r for px, py in pts)]
+    _finish(b, board_path, gone, f'ripnear {r} mm')
+
+
+def tidy(board_path, drc_path, skip=''):
+    """Remove what the check calls dangling, if the router made it: vias used on one layer only and segments that end
+    in nothing.  Scripted escape vias that turned out unused are removed too; scripted tracks stay."""
+    b = pcbnew.LoadBoard(board_path)
+    sc = Scripted(board_path, b)
     gone = []
     for v in json.load(open(drc_path))['violations']:
         it = v['items'][0]
         m = re.search(r'\[(.*?)\]', it['description'])
-        if m and m.group(1) in skip.split(','):
+        if not m or m.group(1) in skip.split(',') or v['type'] not in ('via_dangling', 'track_dangling'):
             continue
-        if v['type'] == 'via_dangling' and m:
-            t = vias.pop((m.group(1), round(it['pos']['x'], 3), round(it['pos']['y'], 3)), None)
+        if v['type'] == 'via_dangling':
+            for t in b.GetTracks():
+                if (t.Type() == pcbnew.PCB_VIA_T and t.GetNetname() == m.group(1)
+                        and abs(MM(t.GetPosition().x) - it['pos']['x']) < 1e-3 and abs(MM(t.GetPosition().y) - it['pos']['y']) < 1e-3):
+                    gone.append(t)
+                    break
+        else:
+            t = _find(b, sc, it)
             if t is not None:
                 gone.append(t)
-        elif v['type'] == 'track_dangling' and m:
-            lm = re.match(r'Track \[(.*?)\] on (\S+?), length ([\d.]+)', it['description'])
-            for t in segs:
-                w = MM(t.GetWidth())
-                if (lm and t.GetNetname() == lm.group(1) and b.GetLayerName(t.GetLayer()) == lm.group(2)
-                        and abs(MM(t.GetLength()) - float(lm.group(3))) < 0.002 and min(abs(w - r) for r in ROUTER_WIDTHS) < 0.001
-                        and not any(fnmatch.fnmatch(t.GetNetname(), p) for p in PROTECT)
-                        and not any((q.x // 1000, q.y // 1000) in padpos for q in (t.GetStart(), t.GetEnd()))
-                        and min(abs(MM(q.x) - it['pos']['x']) + abs(MM(q.y) - it['pos']['y']) for q in (t.GetStart(), t.GetEnd(), t.GetCenter())) < 0.05):
-                    gone.append(t); segs.remove(t)
-                    break
-    for t in gone:
-        b.Remove(t)
-    pcbnew.ZONE_FILLER(b).Fill(b.Zones())
-    pcbnew.SaveBoard(board_path, b)
-    print(f'tidy: removed {len(gone)} dangling vias and segments', flush=True)
-    os._exit(0)
+    _finish(b, board_path, gone, 'tidy')
 
 
 if __name__ == '__main__':
-    if sys.argv[1] == 'tidy':
-        tidy(*sys.argv[2:])
-    elif sys.argv[1] == 'ripdrc':
-        ripdrc(*sys.argv[2:])
-    elif sys.argv[1] == 'rip':
-        rip(*sys.argv[2:])
-    elif sys.argv[1] == 'export':
+    cmd = sys.argv[1]
+    if cmd in ('tidy', 'ripdrc', 'ripnear', 'rip', 'save_scripted'):
+        globals()[cmd](*sys.argv[2:])
+    elif cmd == 'export':
         export(*sys.argv[2:5])
     else:
         import_(*sys.argv[2:4])

@@ -21,6 +21,7 @@ RES = {
     '5.1': ('C25128', '0402WGF510KTCE'), '300': ('C25102', '0402WGF3000TCE'), '33': ('C25105', '0402WGF330JTCE'), '220': ('C25091', '0402WGF2200TCE'),
     '15k': ('C25756', '0402WGF1502TCE'), '20k': ('C25765', '0402WGF2002TCE'), '47k': ('C25792', '0402WGF4702TCE'), '51k': ('C25794', '0402WGF5102TCE'),
     '402k': ('C25785', '0402WGF4023TCE'), '560k': ('C132339', '0402WGF5603TCE'),
+    '680': ('C25130', '0402WGF6800TCE'), '10M': ('C26082', '0402WGF1005TCE'),     # 2026-11-25
 }
 CAP = {
     '15p': ('C1548', '0402CG150J500NT', C0402), '22n': ('C1532', '0402B223K500NT', C0402),
@@ -29,6 +30,7 @@ CAP = {
     '22u': ('C45783', 'CL21A226MAQNNNE', C0805),
     '22p': ('C1555', '0402CG220J500NT', C0402), '100p': ('C1546', '0402CG101J500NT', C0402),
     '4.7u/0603': ('C19666', 'CL10A475KO8NNNC', C0603),      # where DC bias matters (REGN)
+    '2.2u': ('C12530', 'CL05A225MQ5NSNC', C0402),
     '2.2u/50V': ('C307528', 'CL21A225KBFNNNE', C0805),      # backlight output
 }
 
@@ -65,6 +67,7 @@ def TVS(sheet, ref, net, note=''):
                      fields=fields('C84374', 'PESD5V0S1BL,315', 'Nexperia', Description=note or 'ESD, bidirectional'))
 
 
-def SCHOTTKY(sheet, ref, anode, cathode, note=''):
-    return sheet.add(ref, 'Device', 'D_Schottky', '1N5819WS', 'Diode_SMD:D_SOD-323', {'1': cathode, '2': anode},
-                     fields=fields('C191023', '1N5819WS', 'Hottech', Description=note))
+def SCHOTTKY(sheet, ref, anode, cathode, note='', dnp=False):
+    # Small-signal Schottky: a 1 A part (1N5819WS, used first) leaks far too much for the 200k pull-up on /QON.
+    return sheet.add(ref, 'Device', 'D_Schottky', 'BAT54WS', 'Diode_SMD:D_SOD-323', {'1': cathode, '2': anode},
+                     fields=fields('C124205', 'BAT54WS-7-F', 'Diodes Incorporated', Description=note), dnp=dnp)

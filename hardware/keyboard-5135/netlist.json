@@ -37,7 +37,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -82,7 +82,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -127,7 +127,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -172,7 +172,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -217,7 +217,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -262,7 +262,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -307,7 +307,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -352,7 +352,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -397,7 +397,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -442,7 +442,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW0",
@@ -487,7 +487,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_0",
@@ -532,7 +532,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_4",
@@ -577,7 +577,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -622,7 +622,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -667,7 +667,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -712,7 +712,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -757,7 +757,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -802,7 +802,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -847,7 +847,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -892,7 +892,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -937,7 +937,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -982,7 +982,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW1",
@@ -1027,7 +1027,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_1",
@@ -1072,7 +1072,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_5",
@@ -1117,7 +1117,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1162,7 +1162,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1207,7 +1207,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1252,7 +1252,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1297,7 +1297,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1342,7 +1342,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1387,7 +1387,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1432,7 +1432,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1477,7 +1477,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1522,7 +1522,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW2",
@@ -1567,7 +1567,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_2",
@@ -1612,7 +1612,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_6",
@@ -1657,7 +1657,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -1702,7 +1702,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -1747,7 +1747,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -1792,7 +1792,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -1837,7 +1837,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -1882,7 +1882,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -1927,7 +1927,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -1972,7 +1972,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -2017,7 +2017,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -2062,7 +2062,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "ROW3",
@@ -2107,7 +2107,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_3",
@@ -2152,7 +2152,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K4_7",
@@ -2197,7 +2197,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K5_0",
@@ -2242,7 +2242,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K5_1",
@@ -2287,7 +2287,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K5_2",
@@ -2332,7 +2332,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K5_3",
@@ -2377,7 +2377,7 @@
     "LCSC": "C42432416",
     "MPN": "1N4148W4",
     "Manufacturer": "BORN",
-    "Description": "DFN1006-2, sits under the keycap flange: TODO(verify) height <= 0.5 mm in the BORN datasheet"
+    "Description": "DFN1006-2, 0.55 mm max (BORN datasheet 2022-01): sits under the keycap flange, which comes down to 0.77 mm when pressed"
    },
    "pads": {
     "2": "K5_4",

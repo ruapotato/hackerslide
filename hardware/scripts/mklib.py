@@ -96,7 +96,7 @@ def symbols():
          ('15', 'CPTOP', P), ('16', 'CPBOT', P), ('13', 'CPVSSP', P), ('18', 'CPGNDREF', P), None,
          ('5', 'DGND', PI), ('23', 'AGND', PI), ('17', 'CPGND', PI), ('33', 'EP', P)],
         descr='Everest ES8316 low-power audio codec with headphone driver (mainline Linux: snd-soc-es8316)',
-        footprint='Package_DFN_QFN:QFN-32-1EP_4x4mm_P0.4mm_EP2.9x2.9mm',
+        footprint='Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm',
         datasheet='https://www.lcsc.com/datasheet/lcsc_datasheet_1811151643_Everest-semi-Everest-Semiconductor-ES8316_C365735.pdf'))
     # TPS61169 (TI SNVSA40B, Table 4-1)
     out.append(box_symbol('TPS61169', [('5', 'VIN', PI), ('4', 'CTRL', I)], [('1', 'SW', P), ('3', 'FB', I), ('2', 'GND', PI)],
@@ -123,6 +123,12 @@ def symbols():
                           [('6', 'OUT', PO), ('4', '~{FAULT}', 'open_collector')],
                           descr='TI TPS2553 adjustable current-limited power switch, 75 mA - 1.7 A, 85 mOhm, auto-retry',
                           footprint='Package_TO_SOT_SMD:SOT-23-6', datasheet='https://www.ti.com/lit/ds/symlink/tps2553.pdf'))
+    # TPS2595x0/1 (TI SLVSE57, DSG pin table: 1 dVdt, 2 EN/UVLO, 3-4 IN, 5 OUT, 6 FLT, 7 ILM, 8 GND, pad GND)
+    out.append(box_symbol('TPS2595DSG', [('3', 'IN', PI), ('4', 'IN', PI), ('2', 'EN/UVLO', I), ('1', 'dVdt', P), ('7', 'ILM', P),
+                                         ('8', 'GND', PI), ('9', 'PAD', PI)],
+                          [('5', 'OUT', PO), ('6', '~{FLT}', 'open_collector')],
+                          descr='TI TPS2595 eFuse, 2.7-18 V, 34 mOhm, adjustable 0.5-4 A current limit',
+                          footprint='Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm', datasheet='https://www.ti.com/lit/ds/symlink/tps2595.pdf'))
     # SHOU HAN PJ-342 3.5 mm 4-pole jack with two switches (terminal numbers from the SHOU HAN drawing).
     # Pole assignment is INFERRED from contact depth in the drawing: TODO(verify) with a sample.
     out.append(box_symbol('PJ-342',
@@ -204,7 +210,9 @@ def dome5135():
 def fh34(n):
     # Hirose FH34SRJ-nS-0.5SH(50): 1.0 mm high, back-flip, top AND bottom contact.  Land pattern from the Hirose
     # FH34 catalogue p.5 ("Recommended PCB mounting pattern", FH34SRJ): signal lands 0.3 x 0.8 on 0.5 pitch,
-    # two hold-down lands 0.4 x 0.8 centred 3.3 mm in front of the signal row, E/F from the table.
+    # two hold-down lands 0.4 x 0.8, E/F from the table.  The 3.3 +-0.05 dimension runs from the OUTER edge of the
+    # signal lands to the OUTER edge of the hold-down lands (the stencil drawing beside it shows the same), so their
+    # centres are 3.3 - 0.8 = 2.5 mm apart.  (Rev 0.1 first had 3.3 centre to centre: found by the footprint review.)
     # Drawn as in the catalogue view: signal row at the top, FPC opening toward +Y, contact No.1 at +X.
     B = 0.5 * (n - 1)
     E, F = B + 1.6, B + 2.4
@@ -214,10 +222,10 @@ def fh34(n):
         x = B / 2 - 0.5 * (k - 1)
         body += f'\t(pad "{k}" smd rect (at {x:.3f} 0) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "{uid(name, k)}"))\n'
     for i, x in enumerate((-(E + F) / 4, (E + F) / 4)):
-        body += f'\t(pad "MP" smd rect (at {x:.3f} 3.3) (size 0.4 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "{uid(name, "mp", i)}"))\n'
+        body += f'\t(pad "MP" smd rect (at {x:.3f} 2.5) (size 0.4 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (uuid "{uid(name, "mp", i)}"))\n'
     A = B + 2.5                                   # product length (catalogue Fig.1)
-    body += rect('F.Fab', -A / 2, -0.15, A / 2, 3.25, w=0.1, tag=name)
-    body += rect('F.CrtYd', -F / 2 - 0.3, -0.75, F / 2 + 0.3, 4.05, tag=name)
+    body += rect('F.Fab', -A / 2, -0.76, A / 2, 3.07, w=0.1, tag=name)      # connector outline, 3.8 deep (catalogue p.5)
+    body += rect('F.CrtYd', -F / 2 - 0.3, -1.0, F / 2 + 0.3, 3.4, tag=name)
     body += rect('F.SilkS', -A / 2 - 0.1, 0.75, A / 2 + 0.1, 2.6, w=0.12, tag=name + 's')
     body += f'\t(fp_circle (center {B / 2 + 0.9:.3f} -0.5) (end {B / 2 + 1.0:.3f} -0.5) (stroke (width 0.2) (type solid)) (fill none) (layer "F.SilkS") (uuid "{uid(name, "p1")}"))\n'
     body += f'\t(fp_text user "FPC" (at 0 3.6 0) (layer "F.Fab") (uuid "{uid(name, "t")}") (effects (font (size 0.5 0.5) (thickness 0.08))))\n'
@@ -235,6 +243,10 @@ def pj342():
     name = 'Jack_3.5mm_SHOUHAN_PJ-342'
     body = ''
     for num, x0, y in (('2', 2.2, -3.6), ('3', 9.5, -3.6), ('4', 11.5, -3.6), ('5', 2.2, 3.6), ('6', 5.5, 3.6), ('7', 11.0, 3.6)):
+        if num == '4':                       # the drawing gives this one land as 1.5 x 2.6, reaching 2.0 from the centre line
+            body += (f'\t(pad "4" smd rect (at {x0 + 0.75:.2f} -3.30) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask") '
+                     f'(uuid "{uid(name, num)}"))\n')
+            continue
         body += (f'\t(pad "{num}" smd rect (at {x0 + 0.75:.2f} {y:.2f}) (size 1.5 2.0) (layers "F.Cu" "F.Paste" "F.Mask") '
                  f'(uuid "{uid(name, num)}"))\n')
     for i, x in enumerate((2.4, 9.4)):

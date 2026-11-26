@@ -4,7 +4,7 @@ The board is the floor of the keyboard tray and the bottom skin of the device (D
 on the top (F) side and the bottom stays bare.  It covers the whole tray: the key area is y = 0..31, and the board
 continues to y = -38 under the part of the tray that stays below the body (FPC connector, room for the cable loop).
 The top plate sits 1.5 mm above the board on four SMT spacers; parts under it are at most 1.0 mm high, and the
-diodes (0.5 mm) sit under the keycap flanges, which ride 0.9 mm above the board.
+diodes (0.55 mm max) sit under the keycap flanges, which ride 0.9 mm above the board (0.77 mm pressed).
 """
 import math
 import os
@@ -13,7 +13,7 @@ import sys
 import pcbnew
 
 import kbd_layout as KL
-from pcbgen import Board, route, set_project_rules
+from pcbgen import Board, route, set_project_rules, finish_routing, save_scripted
 
 TOP_PLATE_HOLES = KL.PLATE_HOLES
 
@@ -220,7 +220,7 @@ def build(variant, bdir, do_route=False):
             B.fanout(ref, lengths=(1.2, 2.2), only=('KB_RST_N', '+3V3', 'I2C_B_SDA', 'I2C_B_SCL', 'KB_INT_N', 'ROW6_NC', 'ROW7_NC') if ref == 'U1' else None)
     left = B.unplaced()
     assert not left, left
-    B.text('HackerSlide 810 keyboard ' + ('Alps SKSW' if variant == 'alps' else 'Keystone 5135 domes') + ' rev 0.1 DRAFT  CERN-OHL-S-2.0',
+    B.text('HackerSlide 810 keyboard ' + ('Alps SKSW' if variant == 'alps' else 'Keystone 5135 domes') + ' rev 0.1  CERN-OHL-S-2.0',
            KL.BOARD_W / 2, -20.0, pcbnew.F_SilkS, 1.0)
     pts = [(0, top), (KL.BOARD_W, top), (KL.BOARD_W, KL.BOARD_H), (0, KL.BOARD_H)]
     if not do_route:
@@ -233,12 +233,14 @@ def build(variant, bdir, do_route=False):
         '(version 1)\n(rule "wuerth_spacer_ring"\n  (condition "A.memberOfFootprint(\'H?\') && B.memberOfFootprint(\'H?\')")\n'
         '  (constraint hole_clearance (min 0mm)))\n')
     if do_route:
+        save_scripted(path)
         # The scripted matrix and fan-outs are in; gridroute.py finishes the rest.  Ground is routed as ordinary
         # tracks first (on two layers the pours get cut into pieces by the signals), and the pours go on last.
         import subprocess
         gr = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gridroute.sh')
         for extra in (['--width', '0.2'], ['--width', '0.15'], ['--width', '0.13', '--clearance', '0.17']):
             subprocess.run([gr, os.path.abspath(bdir), name, '--pour', '', '--power-width', '0.2'] + extra, check=True)
+        finish_routing(os.path.abspath(path), ['--pour', '', '--width', '0.15', '--power-width', '0.2'], (0.2, 0.17))
         b = pcbnew.LoadBoard(path)
         for layer in (pcbnew.B_Cu, pcbnew.F_Cu):
             z = pcbnew.ZONE(b)
