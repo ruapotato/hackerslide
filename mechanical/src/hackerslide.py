@@ -87,11 +87,11 @@ def keyboard_stack(dy=0.0):
     w, h = C.KBD_PCB['w'], C.KBD_PCB['h']
     z = C.TRAY_FLOOR + C.KBD_PCB['under_gap']
     s = {}
-    s['kbd_pcb'] = box(kx, ky - C.KBD_PCB['top_ext'] + dy, z, kx + w, ky + h + dy, z + C.KBD_PCB['t'])   # = tray floor
+    s['kbd_pcb'] = rbox(kx, ky - C.KBD_PCB['top_ext'] + dy, z, kx + w, ky + h + dy, z + C.KBD_PCB['t'], 1.5)   # = tray floor; corners as on the board
     z += C.KBD_PCB['t'] + C.SWITCH_H + C.KEYCAP['nub_h']      # keycap flange underside (the nub reaches the switch)
     zf = z + C.KEYCAP['flange_t']
     zp0 = zf + 0.1
-    s['top_plate'] = box(kx, ky + dy, zp0, kx + w, ky + h + dy, zp0 + C.PLATE_T)
+    s['top_plate'] = rbox(kx, ky + dy, zp0, kx + w, ky + h + dy, zp0 + C.PLATE_T, 1.5)
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'hardware', 'scripts'))
     import kbd_layout as KL
     c = KL.CAP
@@ -210,7 +210,7 @@ def tray(dy=0.0):
     zt = C.Z_TRAY_TOP
     zp = C.TRAY_FLOOR + C.KBD_PCB['t']             # top face of the keyboard PCB
     s = rbox(0, 0, 0, C.BODY_W, C.BODY_H, zt, C.CORNER_R).faces('<Z').edges().fillet(C.EDGE_R).translate((0, -dy, 0))
-    s = s.cut(rbox(C.WALL, C.WALL + dy, -0.01, C.BODY_W - C.WALL, C.BODY_H - C.WALL + dy, zt + 0.01, 1.0))
+    s = s.cut(rbox(C.TRAY_LEFT, C.WALL + dy, -0.01, C.BODY_W - C.WALL, C.BODY_H - C.WALL + dy, zt + 0.01, 1.0))   # left wall up to the PCB
     # side rails: walls rising beside the back-shell tub, with an inward lip into its groove
     zr1 = C.Z_BODY_BOTTOM + C.BACK_TUB_H - 0.3
     gz = C.Z_BODY_BOTTOM + 0.7 + C.RAIL['clear']
@@ -225,15 +225,15 @@ def tray(dy=0.0):
         d = m['d'] + 2.4
         post = cyl(x, y + dy, zp, zt - 0.1, d)
         if rib == 'x':
-            xw = C.WALL if x < C.BODY_W / 2 else C.BODY_W - C.WALL
+            xw = C.TRAY_LEFT if x < C.BODY_W / 2 else C.BODY_W - C.WALL
             post = post.union(box(min(x, xw), y + dy - d / 2, zp, max(x, xw), y + dy + d / 2, zt - 0.1))
         else:
             post = post.union(box(x - d / 2, C.WALL + dy - 0.01, zp, x + d / 2, y + dy, zt - 0.1))
         s = s.union(post).cut(cyl(x, y + dy, zt - 0.1 - m['t'], zt, m['d'] + 2 * m['clear']))
     # rim over the top plate's edge on the left, right and user sides: the plate goes in from below with the keyboard
     ky, yb, L, t = C.KBD_XY[1] + dy, C.BODY_H - C.WALL + dy, C.PLATE_LIP, C.PLATE_RIM
-    for (x0, y0, x1, y1) in ((C.WALL - 0.01, ky, C.WALL + L, yb), (C.BODY_W - C.WALL - L, ky, C.BODY_W - C.WALL + 0.01, yb),
-                             (C.WALL, yb - L, C.BODY_W - C.WALL, yb + 0.01)):
+    for (x0, y0, x1, y1) in ((C.TRAY_LEFT - 0.01, ky, C.TRAY_LEFT + L, yb), (C.BODY_W - C.WALL - L, ky, C.BODY_W - C.WALL + 0.01, yb),
+                             (C.TRAY_LEFT, yb - L, C.BODY_W - C.WALL, yb + 0.01)):
         s = s.union(box(x0, y0, zt - t, x1, y1, zt))
     # travel stop: tab on a spring arm along the top wall, in the gap above the PCB's top edge (config.STOP)
     st = C.STOP

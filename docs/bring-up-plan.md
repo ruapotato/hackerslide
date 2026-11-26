@@ -12,7 +12,7 @@ through the debug UART socket J8 and the test points; the cost is that software 
 | Do | Measure / record | Why |
 |---|---|---|
 | Boot Debian/Mobian on the Core3566 on a CM4 IO board | Which kernel, what works | No mainline device tree exists for this module |
-| Power at the 5 V input | Idle (screen off and on), browsing, peak, suspend | Replaces every estimate in [power-budget.md](power-budget.md). The battery fuse allows about 3.0 A from the pack, which is roughly 2 A at 5 V |
+| Power at the 5 V input | Idle (screen off and on), browsing, peak, suspend | Replaces every estimate in [power-budget.md](power-budget.md). The battery fuse allows about 1.86 A from the pack, which is roughly 1.1 A at 5 V: **the peak is the number that matters** |
 | Suspend and resume | Does it suspend on mainline, and at what power | "All day" depends on it |
 | Module pin 99 (only if a stock carrier is at hand; otherwise on our carrier in phase 4) | Voltage, and what a 1k pull to ground does | LuckFox does not document it. Our power button also reaches a GPIO and the charger, so this is not a reason to buy a carrier |
 | Module height | Calipers: carrier surface to the tallest part, on the 1.5 mm stack | Sets the cavity and the thermal gap |
@@ -67,7 +67,7 @@ The board can be powered with no pack (USB only) and with no module, so each blo
 | 2 | USB power, no pack, no module | VSYS about 3.65 V; VSYS_LIM the same; +5V 5.0 V at TP4; D13 lit; BOOST_PG high |
 | 3 | Load +5V at TP4 in steps up to 0.5 A | Stays within 4.75-5.25 V. (On USB alone the input limit of 0.5-0.83 A is what gives way first) |
 | 4 | Connect the pack | D1 lit; pack current below 1.4 A; TP8 between 30 and 74 % of TP7 |
-| 5 | With the pack: load +5V up to 2 A, then find the fuse limit with a load on VSYS_LIM (TP17) | +5V holds; the fuse limits near 3.0 A (2.6-3.4 A) and BATT_OC_N goes low; it retries by itself |
+| 5 | With the pack: load +5V up to 1 A, then find the fuse limit with a load on VSYS_LIM (TP17) | +5V holds; the fuse limits near 1.86 A (1.7-2.0 A) and BATT_OC_N goes low; it retries by itself |
 | 6 | Unplug USB | +5V stays up from the pack; the boost turns off near 3.0 V at VSYS |
 | 7 | Hold the power button 12-18 s on battery | VSYS drops for about half a second (charger reset) |
 | 8 | I2C scan at TP36/TP37 (needs 3.3 V on TP11 from a bench supply through 100 ohm, since there is no module) | 0x6A charger, 0x36 gauge, 0x10 codec |

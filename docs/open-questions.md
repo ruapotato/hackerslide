@@ -4,7 +4,7 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 
 ## For the community
 
-1. **Thin or long-lasting?** Rev 0.1 is 20.05 mm with a 2800 mAh pack that can deliver 5.6 A. A thin AMOLED and a
+1. **Thin or long-lasting?** Rev 0.1 is 19.35 mm with a 2800 mAh pack limited to 2 A. A thin AMOLED and a
    thinner cell could reach about 14.5 mm with about 1850 mAh. Which would you carry?
 2. **Which screen?** The 4.0" Focus panel has a mainline-ready controller but is thick (4.25 mm). The 4.39"
    AMOLED is 0.75 mm but needs two new drivers and an extra power chip. Do you know a thin 4" DSI panel that is
@@ -19,9 +19,9 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 7. **How should a slider last?** Printed rails or metal? Is a 1.9 mm rolling loop in a 0.07 mm flex enough, or
    would you use sliding spring contacts and no cable at all?
 8. **Heat.** How should a sealed handheld shed 2-3 W when the keyboard covers its back?
-9. **Battery.** Cells of this size are mostly rated for 0.6-1 times their capacity; we use a 9.5 mm two-cell BAK
-   pack to get 5.6 A. Do you know a thinner 50 x 68 mm cell with a datasheet rated for 4 A or more, or a maker who
-   sells custom packs in small numbers?
+9. **Battery.** Rev 0.1 uses the Jauch LP675365JU (2800 mAh, 7.4 x 54 x 68 mm, 2 A, no thermistor, bare leads),
+   the only pack found in stock at a US distributor with a current datasheet. Do you know a pack of about this size
+   with a thermistor, a plug and 3 A or more that can be bought in ones?
 10. **USB.** One sink-only USB-C port. Is a host port (for a mouse or a drive) worth the hub, the power switch and
     the board space?
 11. **Cellular.** Wi-Fi only for now. Band 71 later: which modem?
@@ -37,7 +37,7 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 | MAX17048, JST SH, Molex 5268, Wuerth spacer land patterns | Match their drawings ([footprint-review.md](footprint-review.md)) |
 | 1N4148W4 height | 0.55 mm max; the real limit under a pressed keycap is 0.77 mm |
 | Panel and touch pin order | Match the Focus LCDs specification |
-| Battery never drawn beyond its rating | eFuse at 3.0 A against a 5.6 A rating; charge capped at 1.25 A in hardware against 1.4 A |
+| Battery never drawn beyond its rating | eFuse at 1.86 A typ (1.99 A at the top of its tolerance) against a 2 A rating; charge capped at 1.25 A in hardware against 2 A |
 | Current in the power copper | `hardware/scripts/power_paths.py`: see [carrier-board.md](carrier-board.md) |
 | Crosstalk between auto-routed signals | `hardware/scripts/coupling.py`: see [carrier-board.md](carrier-board.md) |
 | Device-tree requirements | Collected in [device-tree.md](device-tree.md) |
@@ -47,7 +47,7 @@ Phrased so they can be put to viewers. Decisions already taken are in [decisions
 
 | Item | Blocks |
 |---|---|
-| Confirm the BAK pack can be bought (Farnell 2401855) and at what price | Purchasing |
+| Battery: decided 2026-11-27, Jauch LP675365JU from DigiKey ([purchasing](../bom/purchasing.md)) | - |
 | Keystone Mini dome land pattern | Only the dome keyboard variant, which is not part of rev 0.1 |
 | Whether JLCPCB's flex uses rolled-annealed copper | Flex life; cycle-test the cable |
 | Top-plate retention lips, button caps, snap hooks on the cell side | Fit mule |
@@ -65,10 +65,9 @@ already provides. See [review-2026-11-25.md](review-2026-11-25.md) for where eac
 
 | Question | How to settle it | If it goes the wrong way |
 |---|---|---|
-| **Which battery.** The BAK LP-454965-2P-3M is end-of-life and has no US source (searched 2026-11-26: Farnell UK about 20 left, export by phone only; Octopart shows no stock elsewhere). US alternatives are BatterySpace LP-804765 (2500 mAh, 5 A, 8.3 x 47.5 x 67 mm, no thermistor, $20.13, https://www.batteryspace.com/Polymer-Li-Ion-Battery-3.7V-2500mAh-9.25Wh-2C-rate---UN38.3-Passed.aspx) and CU-J484 (2000 mAh, 4 A, 10k thermistor B 3435, 7 x 50-51 x 68 mm, https://www.batteryspace.com/custom-polymer-li-ion-battery-3-7v-2000mah-7-4-wh-4a-rate-with-10k-thermistor.aspx); both fit the bay's length and thickness, both come with bare leads and no pack datasheet | David's decision. Then measure the delivered pack: size, lead length, and the protection's trip current | Bay and thermistor divider follow the pack: `BATTERY` in `mechanical/src/config.py`; TH1 assumes B 3380. Without a thermistor lead: 10k across J10 T and -, and no temperature cut-off |
-| Battery plug polarity. The documents agree: the pack datasheet shows red, yellow (thermistor), black with red at Molex circuit 1, and J10 is wired that way. What a document cannot show is whether the pack that arrives was assembled to its drawing | Voltmeter on the loose pack connector before the first plug-in | Move the crimp contacts in the plug housing before it is ever plugged in. This is the one check that must not be skipped: reversed, the pack destroys the charger |
-| Do the pack's leads turn within 2.6 mm of its end, and does the plug fit the space kept for it over the top strip? | Fit check with the real pack | The leads are re-dressed or shortened; the header itself has room for the mated plug |
-| Pack thermistor beta (TH1 value assumes 3380) | Resistance at 25 and 45 degC | The charge temperature window shifts by a few degrees; the divider resistors at TS are changed to suit |
+| Battery plug polarity. The pack has bare leads (red +, black -, Jauch drawing) and you crimp the plug: red must end up at circuit 1, which is the pin marked + on the board | Voltmeter on the finished plug before the first plug-in | Move the crimp contacts in the housing. This is the one check that must not be skipped: reversed, the pack destroys the charger |
+| Do the pack's two leads, which leave the middle of its top edge, reach J10 tidily (70 mm long, about 35 mm needed)? | Fit check with the real pack | Shorten the leads before crimping |
+| Does the on-board thermistor TH1 follow the pack's temperature closely enough? It sits on the carrier's edge beside the battery bay, not on the cell | Thermocouple on the pack while charging | Tape a leaded 10k thermistor to the pack and wire it to J10 pins 2 and 3 (then fit R68, remove TH1) |
 | PJ-342: four poles as its circuit diagram says, or three as its outline drawing suggests? | Continuity with a TRRS plug in a sample jack | Headphones work either way; the microphone needs four poles. Straps R60-R63 select the sleeve terminal |
 | Core3566 pin 99: enable input, output, or unconnected? Can a powered-off module be started again with 5 V still present? Documents do not say (searched 2026-11-26): LuckFox publishes no module schematic, and its datasheet calls the pin both an "enable signal for external high voltage BUCK" and, in text copied from the Raspberry Pi datasheet, an input that powers the module down. The PMIC is an RK809, which starts when its PWRON pin is held low for 0.5 s; whether pin 99 is that pin is not stated. One lead not followed: a thread "Core3566 schematic" on forums.luckfox.com (the forum refuses automated readers) | On this carrier, in bring-up phase 4: voltage at R26 (the pin-99 side), then the power button after `poweroff`. No stock carrier is needed | The board works whichever it is: the power button also reaches a GPIO (pin 41) and the charger's /QON; fit C90, R91, D9 for a hard power cycle |
 | Core3566 I/O voltage on pins 21, 51, 55, 80, 82 (SoC bank PMUIO2: GPIO0_C5, UART2, I2C1). **Settled from LuckFox's device tree: 3.3 V on this carrier.** The vendor file sets `pmuio2-supply = <&vcc3v3_pmu>` (RK809 LDO6, fixed 3.3 V); an older commented-out line in the same file names the GPIO_VREF net instead, which this carrier ties to 3.3 V, so both readings give 3.3 V. The module has no pull-ups on pins 80/82; R40/R41 go to the module's own 3.3 V output, so nothing is back-fed when it is off | A meter on TP34 (console TX idles high) confirms it at first power-up | At 1.8 V: refit R40/R41 to +1V8 by wire, use a 1.8 V serial adapter, leave D2 out |

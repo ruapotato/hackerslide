@@ -11,7 +11,7 @@ module vendor's own device tree (LuckFox publishes no mainline one for the Core3
 | Node | Property | Value | Why |
 |---|---|---|---|
 | Charger `ti,bq25895` at 0x6A on I2C B | `ti,use-ilim-pin` | present | R12 (470 ohm) caps the input current at 0.83 A. With that cap the pack gets at most about 1.25 A even at the charger's reset charge current, with no software at all. Without the property the driver switches the cap off |
-| | `ti,charge-current` | 1250000 (uA) or less | Pack limit 1.4 A |
+| | `ti,charge-current` | 1250000 (uA) or less | Pack limit 2 A; Jauch's standard charge is 0.2 C (560 mA), so 600000 is gentler on it |
 | | `ti,battery-regulation-voltage` | 4200000 | |
 | | `ti,termination-current`, `ti,precharge-current` | 128000, 256000 | Pack: 2800 mAh |
 | | `ti,minimum-sys-voltage` | 3500000 | Boost turns off below 3.0 V at VSYS |

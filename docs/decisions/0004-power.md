@@ -34,3 +34,14 @@ less) and enable the input-limit pin. See [power-budget.md](../power-budget.md).
 ## What would change this
 
 Measured module current; a better cell; a decision to add a host port.
+
+## Change, 2026-11-27: battery
+
+The BAK LP-454965-2P-3M went end-of-life with no US source. Two searches (distributors; makers and retailers) found
+no pack in production, orderable in ones in the USA, that fits 50 x 68 x 9.8 mm at 3 A. David chose the **Jauch
+LP675365JU** (DigiKey, "Active", datasheet rev 1.3 of 12/2024): 2800 mAh min, 7.4 x 54 x 68 mm, 2 A, no thermistor,
+two bare leads.
+
+Consequences: body 131.5 mm wide and 19.35 mm thick (was 128 and 20.05); fuse resistor R66 1.1 kohm for 1.86 A
+typical (was 680 ohm, 3.0 A); the carrier's thermistor TH1 fitted and link R68 left out; the leads are crimped into
+a Molex 5264 housing for the unchanged J10. No copper changed on the carrier.

@@ -45,7 +45,7 @@ flowchart LR
 | Back shell floor | 1.2 | 5.2 |
 | Bay: the battery pack, 9.5 + 0.3 for swelling. Beside it: module 5.08 + thermal gap 0.42 = cavity 5.5; carrier 1.0; 3.3 behind the panel (1.9 needed for its folded tails) | 9.8 | 15.0 |
 | Panel | 4.25 | 19.25 |
-| Bezel lip | 0.8 | 20.05 |
+| Bezel lip | 0.8 | 19.35 |
 
 All numbers are in `mechanical/src/config.py`; the model prints them into `mechanical/collision-report.json`.
 

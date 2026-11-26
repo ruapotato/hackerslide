@@ -24,7 +24,7 @@ How to print and assemble them: [printing.md](printing.md).
 
 ## Results (`mechanical/collision-report.json`)
 
-20.05 mm closed, 109.9 mm open, 35.9 mm travel. No collisions closed or open, with envelopes for the panel and
+131.5 x 74 x 19.35 mm closed, 109.9 mm open, 35.9 mm travel (David 2026-11-27: 3.5 mm wider on the battery side for the Jauch pack, which is 2.1 mm thinner than the pack before it). No collisions closed or open, with envelopes for the panel and
 its folded tails, the carrier and its tallest parts, the module, the cell and the keyboard stack.
 
 Size comparison renders: `renders/compare_stack.png` and `compare.png` (N810 128 x 72 x 14 mm; Librem 5

@@ -7,9 +7,9 @@ bring-up is to replace this table with measurements from a module, on a stock IO
 
 | Stage | Datasheet facts |
 |---|---|
-| Battery | BAK LP-454965-2P-3M pack: 2800 mAh minimum, 3000 typical, 3.7 V nominal (about 10.4 Wh at minimum capacity), 1.4 A max charge, 5.6 A max continuous discharge, protection trips at 12-16 A, 10k thermistor lead |
+| Battery | Jauch LP675365JU pack: 2800 mAh minimum, 3000 typical, 3.7 V nominal (about 10.4 Wh at minimum capacity), 2 A max charge and discharge (lead-limited), protection trip 4.2-9 A, no thermistor |
 | Charger BQ25895 | Input capped at 0.68 / 0.755 / 0.83 A by R12 (470 ohm); input resets to 500 mA at each plug-in; charge current resets to 2.048 A |
-| Battery fuse TPS259531 (U13) | About 3.0 A to the boost and the backlight (RILM 680 ohm); 34 mohm |
+| Battery fuse TPS259531 (U13) | 1.86 A typical to the boost and the backlight (RILM 1.1 kohm); 34 mohm |
 | Boost TPS61230 | 5.02 V; on above 3.31 V, off below 3.01 V at its input; about 2.3 A available at 3.0 V in |
 | Module | Needs 4.75-5.25 V; supplies 3.3 V and 1.8 V, 600 mA each |
 
@@ -37,7 +37,7 @@ For reference, the N810 ran about 4 hours of active use on 5.5 Wh, which is abou
 
 ## Keeping the cell inside its rating (requirement, David 2026-11-24)
 
-The battery must not be asked for more than its rating: 5.6 A discharging, 1.4 A charging.
+The battery must not be asked for more than its rating: 2 A discharging, 2 A charging (Jauch LP675365JU; both limited by its 26 AWG leads).
 
 **Charging.** Two limits, one of them independent of software:
 
@@ -51,25 +51,26 @@ The battery must not be asked for more than its rating: 5.6 A discharging, 1.4 A
 The price is charging speed: about 0.9 A into the pack at 3.7 V, so roughly 3.5 hours from empty.
 
 **Discharging.** U13, a TPS259531 eFuse (David 2026-11-25, replacing the 1.7 A TPS2553; the -531 variant since 2026-11-26 for stock: same chip as the -571 plus an output clamp at 5.5-5.9 V that a 4.4 V rail never reaches), sits between the charger's
-system rail and everything it feeds (the 5 V boost and the backlight). RILM = 680 ohm sets the limit to about
-3.0 A (TI SLVSE57: 487 ohm gives 3.87-4.42 A, 1780 ohm 1.09-1.24 A; about 2020 / R). That is just over half the
-pack's 5.6 A rating, and it is also the rating of the battery connector with the pack's 22 AWG leads (Molex 5268:
-3.0 A), which is why it is not set higher. The pack's own protection trips at 12-16 A, which is a safety cut-out,
-not a limit to design to.
+system rail and everything it feeds (the 5 V boost and the backlight). RILM = 1.1 kohm sets the limit to 1.86 A
+typical (TI SLVSE57 equation 4: 2000 / R + 0.04; the table's two points, 487 ohm 3.87-4.42 A and 1780 ohm
+1.09-1.24 A, give about +-7 %, so 1.73-1.99 A). That keeps the draw under the pack's 2 A rating at the top of the
+tolerance. The pack's own protection trips at 4.2-9 A, which is a safety cut-out, not a limit to design to.
 
 What happens at the limit: the fuse regulates the current, the limited rail sags, the boost's under-voltage
 divider switches the 5 V rail off at 3.0 V, and the module loses power. If the fuse overheats it switches off and
-retries; its FLT output (module pin 58, `BATT_OC_N`) is low meanwhile. It drops about 0.1 V at 3 A.
+retries; its FLT output (module pin 58, `BATT_OC_N`) is low meanwhile. It drops about 0.07 V at 1.86 A.
 
 What it allows (estimate, 90 % boost efficiency, 0.6 W for the backlight):
 
-| Voltage at the fuse | Power through it at 3.0 A | Left for the module at 5 V |
+| Voltage at the fuse | Power through it at 1.86 A | Left for the module at 5 V |
 |---|---|---|
-| 3.1 V | 9.3 W | about 7.8 W, 1.6 A |
-| 3.7 V (nominal) | 11.1 W | about 9.4 W, 1.9 A |
-| 4.2 V (full) | 12.6 W | about 10.8 W, 2.0 A (the boost's own limit) |
+| 3.1 V | 5.8 W | about 4.6 W, 0.9 A |
+| 3.7 V (nominal) | 6.9 W | about 5.6 W, 1.1 A |
+| 4.2 V (full) | 7.8 W | about 6.5 W, 1.3 A |
 
-So the module can draw roughly **8-10 W** on battery, where the brief expects 2-3 W under load.
+So the module can draw roughly **4.5-6.5 W** on battery, where the brief expects 2-3 W under load. That is about
+twice the expected load, not the four times the earlier 3 A setting gave: **the module's real peak, above all
+while booting on a nearly empty pack, is the first thing to measure.**
 
 **Hard power-cycle option.** The fuse's enable pin has an unfitted network (C90, R91, D9): fitted, holding the
 power button for about 3 s cuts the limited rail, and with it the module's 5 V, for about 6-8 s. It exists because

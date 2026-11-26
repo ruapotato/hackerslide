@@ -8,7 +8,8 @@ Sources are noted per value: [ds] = datasheet/vendor page linked in docs/, [dec]
 """
 
 # ---------------------------------------------------------------- body / tray footprint
-BODY_W = 128.0            # [dec] N810 footprint 128 x 72
+BODY_W = 131.5            # [dec] David 2026-11-27: 3.5 mm wider than the N810's 128, on the battery side, for the 54 mm Jauch pack
+SHIFT_X = BODY_W - 128.0  # the panel, carrier and keyboard keep their places relative to the right edge
 BODY_H = 74.0            # [dec] David 2026-11-25: 2 mm longer than the N810's 72, for the battery leads (see BATT_XY)
 CORNER_R = 6.0            # [est] plan-view corner radius
 WALL = 1.4                # [dec] FDM walls 1.2-1.6
@@ -34,12 +35,19 @@ PANEL = dict(w=98.10, h=58.26, t=4.25, aa_w=86.40, aa_h=51.84, lens_w=97.70, len
              tft_tail=(47.75, 30.33), # [ds] folded display tail: contact end from the FPC edge, centre from the long edge
              ctp_tail=(56.5, 15.4))   # [est] touch tail: 57.7 flat minus the fold; centre scaled off the drawing
 CARRIER = dict(w=71.6, h=66.0, t=1.0, r=3.0)                         # hardware/scripts/carrier_pcb.py
-# Battery: BAK LP-454965-2P-3M (Farnell 2401855), chosen by David 2026-11-24: factory 1S2P pack, 2800 mAh min /
-# 3000 typ, 5.6 A max continuous discharge, 1.4 A max charge, protection trip 12-16 A, 10k NTC lead.
-# [ds] MAX 9.5 x 50 x 68 mm (BAK datasheet, pack drawing); leads 60 mm from one corner of a 50 mm edge.
-BATTERY = dict(w=50.0, h=68.0, t=9.5, swell=0.3)
+# Battery: Jauch LP675365JU (DigiKey, Jauch no. 246522), chosen by David 2026-11-27 after the BAK pack went end-of-life:
+# 1S1P with protection, 2800 mAh min / 3000 typ, 2 A max discharge and charge (limited by its 26 AWG leads), no
+# thermistor.  [ds] rev 1.3 (12/2024): max 54.0 x 68.0 mm, 6.9 mm thick as delivered and 7.4 mm after cycling; two
+# 70 mm leads leave the middle of one 54 mm edge.
+BATTERY = dict(w=54.0, h=68.0, t=7.4, swell=0.3)
 BATTERY_LAYOUT = 'cutout'  # the carrier does not cover the cell (David, 2026-11-24)
-PANEL_GAP_MIN = 1.9        # carrier display side -> panel back: room for the folded panel tails and J4/J5 (1.0 mm)
+# Carrier display side -> panel back.  The folded display tail carries parts (PANEL['tail_bulge']) in a strip
+# 15 mm deep along the panel's FPC edge; in carrier KiCad coordinates that strip is TAIL_ZONE_KICAD.  The tallest
+# carrier part under it is C80 (0603, 0.9 mm), so the gap is 0.9 + 1.7.  Clearing that strip of parts on a later
+# board would allow 1.9 mm (flat tail over J4/J5, 1.0 mm) and a device 0.7 mm thinner.
+TAIL_ZONE_KICAD = (12.25, 6.9, 29.25, 59.1)
+B_SIDE_UNDER_TAIL = 0.9    # [ds] C80; checked against the board by hardware/scripts/fit_check.py
+PANEL_GAP_MIN = max(1.9, B_SIDE_UNDER_TAIL + PANEL['tail_bulge'])
 CAVITY_MIN = 5.5           # carrier component side -> back shell: module 5.08 + thermal interface; jack 4.5; L3 3.0
 
 # ---------------------------------------------------------------- keyboard stack ([dec] 102 x 29 + D-pad)
@@ -84,12 +92,9 @@ THERMAL_GAP = CAVITY - MODULE['soc_top'] if BATTERY_LAYOUT == 'cutout' else 0.3 
 assert THERMAL_GAP >= 0.2, THERMAL_GAP            # filled by a pad or copper shim of this thickness (audit E4)
 Z_CARRIER_F = Z_BACK_IN + CAVITY                  # carrier F side (faces down)
 Z_CARRIER_B = Z_CARRIER_F + CARRIER['t']
-# Display side of the carrier: since the board was routed it carries parts.  The tallest are the SOD-323 diode D9
-# (1.1 mm max, only fitted for the hard power-cycle option) and the cable connectors J4/J5 (1.0 mm); the battery
-# fuse U13 (WSON), the gauge U4 and C17 are 0.8 mm.  Even with the component area of a folded panel tail lying
-# right over the tallest one, it must fit.
-B_SIDE_MAX = 1.1           # [ds] tallest display-side part
-assert B_SIDE_MAX + PANEL['tail_bulge'] <= PANEL_GAP + 1e-9, (B_SIDE_MAX, PANEL['tail_bulge'], PANEL_GAP)
+B_SIDE_MAX = 1.1           # [ds] tallest display-side part anywhere (D9, only fitted for the hard power-cycle option)
+TAIL_FLAT = 0.3            # [est] a flat stretch of panel tail lying over a part outside the component strip
+assert B_SIDE_MAX + TAIL_FLAT <= PANEL_GAP + 1e-9 and B_SIDE_UNDER_TAIL + PANEL['tail_bulge'] <= PANEL_GAP + 1e-9, PANEL_GAP
 Z_PANEL_BOTTOM = Z_CARRIER_B + PANEL_GAP
 Z_PANEL_TOP = Z_PANEL_BOTTOM + PANEL['t']
 BEZEL_LIP = 0.8                                   # [est] front-shell roof over the lens edge (holds the panel)
@@ -102,7 +107,7 @@ TRAVEL = KBD_PCB['h'] + KEY_CLEARANCE + WALL      # expose the keyboard PCB + cl
 OPEN_H = BODY_H + TRAVEL
 
 # plan positions (device top view, mm from body top-left)
-PANEL_XY = ((BODY_W - PANEL['w']) / 2, 6.87)     # y from the top edge: where it was in the 72 mm body, so the folded
+PANEL_XY = ((128.0 - PANEL['w']) / 2 + SHIFT_X, 6.87)     # y from the top edge: where it was in the 72 mm body, so the folded
 #                                                  tails still land on J4/J5; the extra 2 mm is below the panel
 # The carrier's port edge sits 0.3 mm from the inner wall on the device right, so the USB-C, jack and microSD
 # mouths reach the wall (audit E1).  The carrier is mounted F-side down, so its KiCad view is mirrored in X:
@@ -115,6 +120,7 @@ MODULE_ROT180 = True          # module turned 180 deg in the carrier frame (carr
 # top strip to the plug.
 BATT_LEAD_GAP = 2.6
 BATT_XY = (RAIL_INSET + TUB_SIDE + 0.25, WALL + BATT_LEAD_GAP)             # cell bay, device left
+assert BATT_XY[0] + BATTERY['w'] + 0.25 <= CARRIER_XY[0], (BATT_XY, CARRIER_XY)
 assert BATT_XY[1] + BATTERY['h'] <= BODY_H - WALL - 0.5, BATT_XY
 # Battery header J10 (Molex 5268-03A right-angle, 4.9 mm high) and the mated 5264 plug with the bend of its leads,
 # in carrier KiCad coordinates (carrier_pcb.J10_POS, PLUG): x0, y0, x1, y1
@@ -122,7 +128,8 @@ BATT_HEADER_KICAD = (62.85, 2.65, 70.85, 12.55)
 BATT_PLUG_KICAD = (53.0, 3.6, 62.85, 11.6)       # [est] housing about 4.5 mm proud of the shroud + 5 mm for the bend
 BATT_CONN_H = 4.9                                # [ds] Molex 5268-NA catalogue drawing
 assert BATT_CONN_H <= CAVITY - 0.3, (BATT_CONN_H, CAVITY)
-KBD_XY = ((BODY_W - KBD_PCB['w']) / 2, BODY_H - WALL - KBD_PCB['h'])   # keyboard PCB in the tray
+KBD_XY = ((128.0 - KBD_PCB['w']) / 2 + SHIFT_X, BODY_H - WALL - KBD_PCB['h'])   # keyboard PCB in the tray: under carrier J9
+TRAY_LEFT = KBD_XY[0] - 0.1   # the tray's left wall is thicker, up to the keyboard PCB's edge
 # carrier features, KiCad coords (keep in step with hardware/scripts/carrier_pcb.py)
 SCREW_KICAD = ((3.8, 20.0), (3.8, 46.0))          # HS1 / HS2: the shell bosses clamp the carrier here
 HALL_KICAD = (41.0, 2.1)                          # U10

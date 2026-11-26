@@ -362,16 +362,19 @@ class Device:
         dbox('cell', bx, by + 4, z0, bx + B['w'], by + B['h'], z0 + B['t'], M['foil'], g, bevel=1.2)
         dbox('cell_pcm', bx + 1, by, z0 + 1.5, bx + B['w'] - 1, by + 4.5, z0 + B['t'] - 1.5, M['kapton'], g, bevel=0.5)
         dbox('cell_label', bx + 6, by + 16, z0 + B['t'] - 0.02, bx + B['w'] - 6, by + 52, z0 + B['t'] + 0.03, M['label'], g)
-        t = text('cell_text', 'Li-ion 3.7 V\n2800 mAh 1S2P', bx + B['w'] / 2, BH - (by + 34), z0 + B['t'] + 0.05, 3.2, M['white'], g)
+        t = text('cell_text', 'Li-ion 3.7 V\n2800 mAh', bx + B['w'] / 2, BH - (by + 34), z0 + B['t'] + 0.05, 3.2, M['white'], g)
         t.rotation_euler = (0, 0, math.pi / 2)
         (xa, ya), (xb, yb) = C.carrier_to_device(*C.BATT_PLUG_KICAD[:2]), C.carrier_to_device(*C.BATT_PLUG_KICAD[2:])
         px0, px1, py0, py1 = min(xa, xb), max(xa, xb), min(ya, yb), max(ya, yb)
         zc = C.Z_CARRIER_F
         dbox('plug', px1 - 5.0, py0 + 0.3, zc - 4.6, px1, py1 - 0.3, zc - 0.6, M['white'], g, bevel=0.2)
-        for k, m in enumerate(('red', 'yellow', 'blackwire')):
-            yw = py0 + 1.5 + 2.5 * k
-            tube('lead_' + m, [(bx + B['w'] - 6 - 3 * k, BH - (by + 1.0), z0 + 5), (bx + B['w'] + 1, BH - (by - 0.6 + 0.4 * k), z0 + 4.5),
-                               (px1 - 8, BH - (yw - 0.5), zc - 2.8), (px1 - 5.0, BH - yw, zc - 2.6)], 0.42, M[m], g)
+        # two leads from the middle of the pack's top edge (Jauch drawing) to circuits 1 and 3 of the plug
+        for k, (m, pin) in enumerate((('red', 0), ('blackwire', 2))):
+            yw = py0 + 1.5 + 2.5 * pin
+            x0 = bx + B['w'] / 2 + 3 - 6 * k
+            tube('lead_' + m, [(x0, BH - (by + 1.0), z0 + 3.5), (x0 + 6, BH - (by - 1.4 + 0.5 * k), z0 + 3.2),
+                               (px1 - 12, BH - (by - 1.2 + 0.5 * k), zc - 2.9), (px1 - 7, BH - (yw - 0.3), zc - 2.7),
+                               (px1 - 5.0, BH - yw, zc - 2.6)], 0.33, M[m], g)
 
     def keys(self):
         M, g = self.M, self.g['caps']
@@ -471,8 +474,9 @@ class Device:
     def n810(self):
         """A plain block the size of a Nokia N810 (128 x 72 x 14 mm), for scale, beside the device."""
         g = self.g['n810']
-        o = cube('n810_block', 140, 1, 0, 268, 73, 14, self.M['ghost'], g, bevel=3.0)
-        t = text('n810_text', 'Nokia N810\n128 x 72 x 14 mm', 204, 37, 14.05, 7, self.M['legend'], g)
+        x0 = C.BODY_W + 12
+        o = cube('n810_block', x0, 1, 0, x0 + 128, 73, 14, self.M['ghost'], g, bevel=3.0)
+        t = text('n810_text', 'Nokia N810\n128 x 72 x 14 mm', x0 + 64, 37, 14.05, 7, self.M['legend'], g)
         return o
 
 
@@ -578,17 +582,17 @@ def lerp(a, b, t):
 
 # shot(u) with u = 0..1 -> dict(slide, explode, target, az, el, dist, hide, floor_z)
 def s_hero(u):
-    return dict(slide=0, explode=0, target=(64, 37, 10), az=lerp(-35, 35, ease(u)), el=lerp(34, 26, ease(u)), dist=430)
+    return dict(slide=0, explode=0, target=(C.BODY_W / 2, 37, 10), az=lerp(-35, 35, ease(u)), el=lerp(34, 26, ease(u)), dist=430)
 
 
 def s_open(u):
-    return dict(slide=ease((u - 0.15) / 0.5), explode=0, target=(64, lerp(37, 20, ease(u)), 8), az=lerp(-22, -8, ease(u)),
+    return dict(slide=ease((u - 0.15) / 0.5), explode=0, target=(C.BODY_W / 2, lerp(37, 20, ease(u)), 8), az=lerp(-22, -8, ease(u)),
                 el=lerp(30, 40, ease(u)), dist=lerp(430, 470, ease(u)))
 
 
 def s_explode(u):
     e = ease((u - 0.1) / 0.55)
-    return dict(slide=1, explode=e, target=(64, 20, lerp(8, 12, e)), az=lerp(-8, 40, ease(u)), el=lerp(40, 14, e),
+    return dict(slide=1, explode=e, target=(C.BODY_W / 2, 20, lerp(8, 12, e)), az=lerp(-8, 40, ease(u)), el=lerp(40, 14, e),
                 dist=lerp(470, 640, e))
 
 
@@ -597,40 +601,40 @@ BOARD = ('carrier',)
 
 def s_board(u):
     """The carrier alone, component side up, turning."""
-    return dict(slide=0, explode=0, only=BOARD, flip=True, target=(90, 39, 2), az=lerp(120, 235, ease(u)), el=lerp(48, 32, ease(u)),
+    return dict(slide=0, explode=0, only=BOARD, flip=True, target=(C.CARRIER_XY[0] + 35.8, 39, 2), az=lerp(120, 235, ease(u)), el=lerp(48, 32, ease(u)),
                 dist=330, floor_z=-1.2)
 
 
 def s_board_b(u):
     """The carrier's display side."""
-    return dict(slide=0, explode=0, only=BOARD, target=(90, 39, C.Z_CARRIER_B), az=lerp(30, -40, ease(u)), el=lerp(55, 40, ease(u)),
+    return dict(slide=0, explode=0, only=BOARD, target=(C.CARRIER_XY[0] + 35.8, 39, C.Z_CARRIER_B), az=lerp(30, -40, ease(u)), el=lerp(55, 40, ease(u)),
                 dist=330, floor_z=C.Z_CARRIER_F - 5.2)
 
 
 def s_module(u):
     """The compute module coming down onto its two sockets."""
     return dict(slide=0, explode=0, only=('carrier', 'module'), flip=True, module_lift=28 * (1 - ease((u - 0.15) / 0.55)),
-                target=(90, 39, 4), az=lerp(150, 195, ease(u)), el=lerp(30, 42, ease(u)), dist=360, floor_z=-1.2)
+                target=(C.CARRIER_XY[0] + 35.8, 39, 4), az=lerp(150, 195, ease(u)), el=lerp(30, 42, ease(u)), dist=360, floor_z=-1.2)
 
 
 def s_keyboard(u):
     """The keyboard board with its switches, alone."""
-    return dict(slide=0, explode=0, only=('kbd',), target=(64, 36, 1), az=lerp(-25, 25, ease(u)), el=lerp(50, 38, ease(u)), dist=400,
+    return dict(slide=0, explode=0, only=('kbd',), target=(C.BODY_W / 2, 36, 1), az=lerp(-25, 25, ease(u)), el=lerp(50, 38, ease(u)), dist=400,
                 floor_z=-0.05)
 
 
 def s_compare(u):
     """Closed, beside a block the size of an N810."""
-    return dict(slide=0, explode=0, only=None, show_n810=True, target=(134, 37, 8), az=lerp(-25, 0, ease(u)), el=lerp(32, 12, ease(u)),
+    return dict(slide=0, explode=0, only=None, show_n810=True, target=(C.BODY_W + 6, 37, 8), az=lerp(-25, 0, ease(u)), el=lerp(32, 12, ease(u)),
                 dist=lerp(700, 640, ease(u)))
 
 
 def s_keys(u):
-    return dict(slide=1, explode=0, target=(lerp(40, 88, ease(u)), -14, 3), az=lerp(-18, 12, ease(u)), el=38, dist=210, lens=85)
+    return dict(slide=1, explode=0, target=(lerp(40, 88, ease(u)) + C.SHIFT_X, -14, 3), az=lerp(-18, 12, ease(u)), el=38, dist=210, lens=85)
 
 
 def s_ports(u):
-    return dict(slide=0, explode=0, target=(128, 37, 10), az=lerp(60, 100, ease(u)), el=lerp(16, 8, ease(u)), dist=230, lens=85)
+    return dict(slide=0, explode=0, target=(C.BODY_W, 37, 10), az=lerp(60, 100, ease(u)), el=lerp(16, 8, ease(u)), dist=230, lens=85)
 
 
 SHOTS = {'hero': (s_hero, 180), 'open': (s_open, 150), 'explode': (s_explode, 240), 'keys': (s_keys, 120),

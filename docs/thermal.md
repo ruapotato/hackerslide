@@ -24,7 +24,7 @@ The cell is beside the module, not under it; its nearest edge is about 9 mm from
 
 | Quantity | Value | Basis |
 |---|---|---|
-| Outer surface, closed | about 271 cm2 | 2 x 128 x 74 + perimeter x 20.05 mm |
+| Outer surface, closed | about 274 cm2 | 2 x 131.5 x 74 + perimeter x 19.35 mm |
 | Natural convection plus radiation | about 10 W/m2K | Rule of thumb for a small hand-held object in still air |
 | Average surface rise at 2.5 W, heat spread evenly | about 10 K | 2.5 / (10 x 0.026) |
 | Average surface rise at 1.5 W | about 6 K | |

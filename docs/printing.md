@@ -11,9 +11,9 @@ Regenerate the files with `python mechanical/src/hackerslide.py` (CadQuery). The
 
 | File | Qty | Size (mm) | Plastic | Lay it on the bed | Supports |
 |---|---|---|---|---|---|
-| `front_shell.stl` | 1 | 128 x 74 x 13.1 | 10.2 cm3 | Screen side down | Port and button openings bridge on their own; the three hook ledges inside the left wall overhang 1 mm |
-| `back_shell.stl` | 1 | 125.1 x 74 x 6.7 | 11.7 cm3 | Outside (floor) down | None. The two channels and the magnet pockets in the underside are 0.7-1.0 mm deep: bridges |
-| `keyboard_tray.stl` | 1 | 128 x 74 x 6.7 | 2.9 cm3 | **Upside down**, top rim on the bed | None. The 0.3 mm rim that holds the top plate is then the first layer |
+| `front_shell.stl` | 1 | 131.5 x 74 x 12.4 | 10.2 cm3 | Screen side down | Port and button openings bridge on their own; the three hook ledges inside the left wall overhang 1 mm |
+| `back_shell.stl` | 1 | 128.6 x 74 x 6.7 | 11.7 cm3 | Outside (floor) down | None. The two channels and the magnet pockets in the underside are 0.7-1.0 mm deep: bridges |
+| `keyboard_tray.stl` | 1 | 131.5 x 74 x 6.7 | 2.9 cm3 | **Upside down**, top rim on the bed | None. The 0.3 mm rim that holds the top plate is then the first layer |
 | `small_parts_plate.stl` | 1 | 112 x 72 x 3.6 | 4.2 cm3 | As exported | None. 50 keycaps (46 used), the 2u Space, 6 D-pad caps (5 used), 4 button caps (3 used), tops down |
 
 `keycap_1u.stl`, `keycap_space_2u.stl`, `keycap_dpad.stl` and `button_cap.stl` are the single parts, for reprints.
@@ -54,8 +54,9 @@ Magnet poles: the tray magnet must attract both body magnets on its side. Check 
    with its tails folded back.
 4. **Carrier.** Module onto the carrier (four screws, thermal pad on the SoC). Plug both panel tails into J4 and J5,
    then lower the carrier, module side up, onto the bosses.
-5. **Battery.** Meter on the loose plug first ([bring-up-plan.md](bring-up-plan.md)). Pack into its bay beside the
-   carrier, leads across the top, plug into J10.
+5. **Battery.** Crimp the pack's two leads into the Molex 5264 housing (red in circuit 1, black in circuit 3), then
+   put a meter on the plug ([bring-up-plan.md](bring-up-plan.md)). Pack into its bay beside the carrier, label up,
+   leads across the top, plug into J10. The bay is 1.4 mm deeper than the pack: a strip of foam on top keeps it still.
 6. **Back shell.** Four magnets into the floor. Feed the keyboard cable from J9 through the slot. Hook the shell's
    three hooks over the ledges on the battery side, swing it shut, two screws on the carrier side.
 7. **Slide the tray on** from the user edge. The keyboard's connector J1 is under the body in both the open and

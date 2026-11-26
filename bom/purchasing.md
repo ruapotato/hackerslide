@@ -10,7 +10,7 @@ stock, with `python3 bom/tools/make_bom.py`.
 |---|---|---|---|---|---|
 | Compute module | LuckFox Core3566, 2 GB, Wi-Fi, no eMMC (`Core3566102000`) | 1 | $83.99 | [luckfox.com](https://www.luckfox.com/EN-Core3566) | In stock. Every eMMC SKU was out of stock, so it boots from microSD. 4 GB + Wi-Fi is $102.99 |
 | Display | Focus LCDs E40RB-I-MW430-CB | 1 | $77.20 | [focuslcds.com](https://focuslcds.com/product/e40rb-i-mw430-cb/) | 10 in stock. Thin supply: buy a spare |
-| Battery | BAK LP-454965-2P-3M, 2800 mAh min / 3000 typ, with protection and NTC | 1 | *not verified*: about EUR 24 seen at a reseller | [Farnell 2401855](https://uk.farnell.com/bak/lp-454965-2p-3m/battery-lithium-ion-3-7v-3000mah/dp/2401855) | Confirm stock and price by hand. Check which connector position is red (+) against carrier J10 before plugging in. Lithium cells usually ship by ground only |
+| Battery | Jauch LP675365JU+PCM+2 WIRES 70MM, 2800 mAh min / 3000 typ, with protection, no thermistor | 1 | $17.93 (read 2026-11-26) | [DigiKey](https://www.digikey.com/en/products/filter/batteries-rechargeable-secondary/91?keywords=LP675365JU) | 678 in stock, "Active". Ground shipping only. Two bare 26 AWG leads |
 | Top-plate spacers | Wurth 9774015633R, M1.6, 1.5 mm | 4 | $1.46 (JLC list price, 0 in stock) | DigiKey or Mouser, not checked | Hand soldered onto the keyboard board |
 | microSD card | any A1/A2 card | 1 | *estimate* $8-12 | | |
 | Magnets | N52 discs: 6 x 1 mm (4), 6 x 2 mm (2), 5 x 2 mm (1) | 7 | *estimate* $5-10 for assorted packs | | Sizes are parameters to tune on the fit mule |
@@ -31,7 +31,7 @@ from JLCPCB's assembly price page (updated 2026-10-22). Five boards each, all fi
 
 | Order | Published fees and parts | Board price (*guess*) | Estimate |
 |---|---|---|---|
-| Carrier, Standard assembly, both sides | $255: set-up $51.12, stencils $16.42, loading 61 part types x $1.53 = $93.33, 3,820 joints $6.11, hand-soldered header $3.83, parts 5 x $16.63 = $83.15, small fees $0.95 | $40-100 (4 layers, ENIG, 1.0 mm, impedance stack-up) | **$300-400** |
+| Carrier, Standard assembly, both sides | $258: set-up $51.12, stencils $16.42, loading 63 part types x $1.53 = $96.39, 3,830 joints $6.13, hand-soldered header $3.83, parts 5 x $16.65 = $83.25, small fees $0.95 | $40-100 (4 layers, ENIG, 1.0 mm, impedance stack-up) | **$300-400** |
 | Keyboard, one side | $82 on Economic (set-up $8.18, stencil $1.53, 5 extended types x $3.07, 2,085 joints $3.34, parts 5 x $10.63 = $53.15); $105 on Standard | $15-40, plus JLCPCB's "keyboard design" charge of about $18 if they apply it | **$100-165** |
 | Top plate, bare | | $5-30 | **$5-30** |
 | Keyboard cable, flex with stiffeners | | $25 is the published starting price | **$25-60** |
@@ -51,7 +51,7 @@ Assembling two carriers instead of five saves about $50 of parts; the fixed fees
 | Five sets of boards, delivered (above) | *estimate* $600-950 |
 | Module | $84 (read 2026-11-26) |
 | Display | $77 (read 2026-11-26; 10 in stock) |
-| Battery | $20-37 plus shipping; see the battery note below |
+| Battery, plug housing and crimp terminals | $20 plus shipping |
 | Top-plate spacers, 4 | $4 plus shipping (DigiKey, $1.02 each, read 2026-11-26) |
 | Card, magnets, screws and inserts, thermal pad | *estimate* $20-35 |
 | Enclosure prints | about $2 of filament |
@@ -64,18 +64,29 @@ Assembling two carriers instead of five saves about $50 of parts; the fixed fees
 keyboard round and a spare panel, the total comes to roughly ***$2,000-3,000***. That figure is a plan, not a
 measurement: it assumes the first boards mostly work.
 
-## Battery note (decision open)
+## Battery (decided 2026-11-27)
 
-The BAK LP-454965-2P-3M the enclosure and J10 were drawn for is marked no longer manufactured. Farnell UK showed
-about 20 left at GBP 33.93 (search snippet, undated) and exports only after a phone call; no US listing was found.
-Alternatives found in single quantity in the USA, both from BatterySpace, both build-to-order in about a week,
-both with bare leads (the Molex 5264 plug would have to be crimped on):
+**Jauch LP675365JU** from DigiKey. The BAK LP-454965-2P-3M the design was first drawn for went end-of-life with
+no US source. What the change costs and gives:
 
-| Pack | Size (mm) | Capacity | Discharge / charge limit | Thermistor | Price |
-|---|---|---|---|---|---|
-| LP-804765 | 8.3 x 47.5 x 67 | 2500 mAh | 5 A / 2.5 A | none | $20.13 |
-| CU-J484 (open-wire option) | 7.0 x 50 x 68; the cell's own sheet allows 51 wide | 2000 mAh | 4 A / 2.45 A | 10k, B 3435 | $25-37 |
+| | BAK (before) | Jauch (now) |
+|---|---|---|
+| Capacity | 2800 mAh min | 2800 mAh min |
+| Discharge limit | 5.6 A | 2 A, set by its leads |
+| Size | 9.5 x 50 x 68 mm | 7.4 x 54 x 68 mm after cycling |
+| Thermistor | 10k in the pack | none: the carrier's own (TH1) is fitted |
+| Leads | plug fitted | two bare 26 AWG leads |
+| Device | 128 x 74 x 20.05 mm | 131.5 x 74 x 19.35 mm |
+| Fuse | 3.0 A | 1.86 A typ (R66 = 1.1 kohm) |
 
-Neither has a full pack datasheet. Without a thermistor, a 10k resistor across J10's T and - pins makes the
-charger believe it is always 25 degC, which gives up the temperature cut-off. Details and sources:
-[docs/open-questions.md](../docs/open-questions.md).
+Also needed, from DigiKey or Mouser: one Molex 5264 3-way housing (50-37-5033) and two 5263 crimp terminals
+(08-70-1040, for 22-28 AWG), and a crimp tool. Nothing is soldered. Red goes in circuit 1, black in circuit 3,
+circuit 2 stays empty; circuit 1 is the pin marked + on the board. *Part numbers from Molex's catalogue, not yet
+checked for stock.*
+
+Jauch's datasheet (rev 1.3, 12/2024) says UL 1642 yes, UN 38.3 no, IEC 62133-2 no. That does not matter for a
+prototype on a bench; it would for anything shipped to someone else.
+
+Other packs looked at on 2026-11-26, and why not: Adafruit 328 (1.5 A), BatterySpace LP-804765 (5 A, fits the old
+bay, but no datasheet and no evidence it is a current product), BatterySpace CU-J484 (has a thermistor; same
+problem).

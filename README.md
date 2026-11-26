@@ -12,8 +12,8 @@ the first boards are the test.**
 ![carrier board, module side](docs/img/renders/carrier.jpg)
 
 **These are renders.** The enclosure, the boards and their parts are drawn from the design files; the compute
-module, the battery pack, the keycap legends and what the screen shows are drawn for the picture. 128 x 74 x
-20.05 mm; a Nokia N810 is 14 mm thick ([comparison](mechanical/renders/compare_stack.png)).
+module, the battery pack, the keycap legends and what the screen shows are drawn for the picture. 131.5 x 74 x
+19.35 mm; a Nokia N810 is 14 mm thick ([comparison](mechanical/renders/compare_stack.png)).
 
 ## What it is
 
@@ -36,7 +36,7 @@ module, the battery pack, the keycap legends and what the screen shows are drawn
 | Enclosure | Parametric model, collision-checked, with rails, travel stop, hooks and button caps; print files and assembly steps in [printing](docs/printing.md). Not printed |
 | Fabrication files | Generated on demand and verified against the board files by `gerber_check.py`; `order_files.py` packs them the way JLCPCB's order page takes them ([ordering guide](bom/ordering-guide.md)). Not committed, not sent anywhere |
 | Cost | First prototype, working or not, about $820-1,200, an estimate from published fees with no quote ([purchasing](bom/purchasing.md)) |
-| Battery | **Open:** the pack the design was drawn for is end-of-life ([open questions](docs/open-questions.md)) |
+| Battery | Jauch LP675365JU, 2800 mAh, in stock at DigiKey. It is rated 2 A, so the fuse is set to 1.86 A; it has no thermistor, so the carrier's own is fitted ([purchasing](bom/purchasing.md)) |
 | Bring-up | Serial console, test pads on every rail, status lamps: [bring-up plan](docs/bring-up-plan.md), [test points](docs/test-points.md), [device-tree requirements](docs/device-tree.md) |
 
 Start with [`docs/audit-status.md`](docs/audit-status.md), then [`docs/open-questions.md`](docs/open-questions.md).

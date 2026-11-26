@@ -82,7 +82,7 @@ rows there the pins walled each other in.
 | Path | Layer | Current | Widest single passage at the neck | All passages together | IPC-2221 rise for that total, if it were long |
 |---|---|---|---|---|---|
 | USB-C to charger (input limit 0.83 A max, R12) | In2.Cu | 0.83 A | 1.50 mm near (65, 13) | 1.5 mm | 9 K |
-| battery connector to charger (fuse limit 3.0 A typ) | B.Cu | 3.2 A | 1.55 mm near (63, 16) | 1.6 mm | 9 K |
+| battery connector to charger (fuse limit now 1.86 A typ; row computed at the earlier 3.0 A setting) | B.Cu | 3.2 A | 1.55 mm near (63, 16) | 1.6 mm | 9 K |
 | battery fuse to 5 V boost | In2.Cu | 3.2 A | 2.01 mm near (69, 37) | 3.8 mm | 41 K |
 | the same, parallel path on the display side along the bottom strip | B.Cu | 3.2 A | 2.55 mm | 2.6 mm | 4 K |
 | boost to module pins 77-87 | B.Cu | 2.0 A | 1.00 mm near (43, 53) | 1.0 mm | 7 K |
@@ -140,7 +140,7 @@ Each item has a step in [bring-up-plan.md](bring-up-plan.md) and a fallback in t
 - **Battery plug polarity**, with a meter on the loose plug, before anything else. The board is marked +, T, -.
 - Core3566 pin 99: what the power button does after `poweroff` (not documented by LuckFox; the board works either way).
 - Console TX on TP34 idles at 3.3 V (expected from LuckFox's device tree; confirms the I/O voltage of pins 21, 51, 55, 80, 82).
-- The fuse limit (R66 = 680 ohm, about 3.0 A) and that the module runs inside it.
+- The fuse limit (R66 = 1.1 kohm, about 1.86 A) and that the module runs inside it.
 - Panel tail fold, reach and thickness against J4/J5; pack lead dress against the plug space.
 - PJ-342 sleeve terminal; straps R60-R63.
 - Device tree: [device-tree.md](device-tree.md).

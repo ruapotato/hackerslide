@@ -10753,7 +10753,7 @@
 				)
 			)
 		)
-		(property "Description" "P14: battery connector for the BAK LP-454965-2P-3M pack (Molex 5264 housing: red +, yellow NTC, black -). The pack drawing and the Molex 5264 catalogue show the plug in the same view with red at circuit 1 = pin 1 here. Still put a meter on the loose plug before the first use: reversed, the pack destroys the charger"
+		(property "Description" "P14: battery connector. The Jauch LP675365JU pack has two bare 26 AWG leads: crimp them into a Molex 5264 3-way housing (5263 terminals), red + at circuit 1 = pin 1 here, black - at circuit 3, circuit 2 empty. Put a meter on the plug before the first use: reversed, the pack destroys the charger"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -33269,7 +33269,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "680"
+		(property "Value" "1.1k"
 			(at 0 -1.17 90)
 			(layer "B.Fab")
 			(uuid "d64c2b89-4db4-42f2-b1d2-0115c9647246")
@@ -33294,7 +33294,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "current limit about 2020 / 680 = 3.0 A typ (TI SLVSE57 eq. 6 and the table: 487R 4.17 A, 1780R 1.17 A)"
+		(property "Description" "current limit 2000 / 1100 + 0.04 = 1.86 A typ, about 1.73-1.99 A (TI SLVSE57 eq. 4; table: 487R 4.17 A, 1780R 1.17 A, +-7 %): under the 2 A rating of the Jauch pack"
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
@@ -33307,7 +33307,7 @@
 				(justify mirror)
 			)
 		)
-		(property "LCSC" "C25130"
+		(property "LCSC" "C25860"
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)
@@ -33320,7 +33320,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "0402WGF6800TCE"
+		(property "MPN" "0402WGF1101TCE"
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)
@@ -40218,7 +40218,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "DNP: only for a 2-wire cell without its own thermistor (then remove R68)"
+		(property "Description" "Fitted: the Jauch pack has no thermistor, so this one on the board edge beside the battery bay stands in for it (R68 is then left out)"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -40273,7 +40273,7 @@
 		(path "/f8820d10-e1a5-5fdf-a73b-5c3164f47d62/0ca7479d-1b79-5e7f-98ba-1f891e101db3")
 		(sheetname "power")
 		(sheetfile "power.kicad_sch")
-		(attr smd exclude_from_pos_files dnp)
+		(attr smd exclude_from_pos_files)
 		(fp_line
 			(start -0.153641 -0.38)
 			(end 0.153641 -0.38)
@@ -46564,7 +46564,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "pack thermistor (10k) to the charger TS divider. Remove if TH1 is fitted"
+		(property "Description" "DNP: only for a pack with its own 10k thermistor on pin 2 (then leave TH1 out)"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -46619,7 +46619,7 @@
 		(path "/f8820d10-e1a5-5fdf-a73b-5c3164f47d62/a4ededc4-a51d-52de-84ef-0c59eb5ba9a4")
 		(sheetname "power")
 		(sheetfile "power.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -0.153641 0.38)
 			(end 0.153641 0.38)

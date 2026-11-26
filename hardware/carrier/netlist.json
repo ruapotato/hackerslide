@@ -565,7 +565,7 @@
    "ref": "TH1",
    "value": "10k B3380",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
-   "dnp": true,
+   "dnp": false,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
@@ -574,7 +574,7 @@
     "LCSC": "C77131",
     "MPN": "NCP15XH103F03RC",
     "Manufacturer": "Murata",
-    "Description": "DNP: only for a 2-wire cell without its own thermistor (then remove R68)"
+    "Description": "Fitted: the Jauch pack has no thermistor, so this one on the board edge beside the battery bay stands in for it (R68 is then left out)"
    },
    "pads": {
     "1": "CHG_TS",
@@ -639,7 +639,7 @@
     "LCSC": "C185225",
     "MPN": "22057035",
     "Manufacturer": "Molex",
-    "Description": "P14: battery connector for the BAK LP-454965-2P-3M pack (Molex 5264 housing: red +, yellow NTC, black -). The pack drawing and the Molex 5264 catalogue show the plug in the same view with red at circuit 1 = pin 1 here. Still put a meter on the loose plug before the first use: reversed, the pack destroys the charger"
+    "Description": "P14: battery connector. The Jauch LP675365JU pack has two bare 26 AWG leads: crimp them into a Molex 5264 3-way housing (5263 terminals), red + at circuit 1 = pin 1 here, black - at circuit 3, circuit 2 empty. Put a meter on the plug before the first use: reversed, the pack destroys the charger"
    },
    "pads": {
     "1": "VBAT",
@@ -653,7 +653,7 @@
    "ref": "R68",
    "value": "0",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
-   "dnp": false,
+   "dnp": true,
    "sheet": "power",
    "sheet_uuid": "f8820d10-e1a5-5fdf-a73b-5c3164f47d62",
    "sheetfile": "power.kicad_sch",
@@ -662,7 +662,7 @@
     "LCSC": "C17168",
     "MPN": "0402WGF0000TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "pack thermistor (10k) to the charger TS divider. Remove if TH1 is fitted"
+    "Description": "DNP: only for a pack with its own 10k thermistor on pin 2 (then leave TH1 out)"
    },
    "pads": {
     "1": "BATT_NTC",
@@ -774,7 +774,7 @@
   },
   {
    "ref": "R66",
-   "value": "680",
+   "value": "1.1k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
    "dnp": false,
    "sheet": "power",
@@ -782,10 +782,10 @@
    "sheetfile": "power.kicad_sch",
    "sym_uuid": "2aa6a2b8-20a9-5761-b6f5-07a41a3fbd41",
    "fields": {
-    "LCSC": "C25130",
-    "MPN": "0402WGF6800TCE",
+    "LCSC": "C25860",
+    "MPN": "0402WGF1101TCE",
     "Manufacturer": "UNI-ROYAL",
-    "Description": "current limit about 2020 / 680 = 3.0 A typ (TI SLVSE57 eq. 6 and the table: 487R 4.17 A, 1780R 1.17 A)"
+    "Description": "current limit 2000 / 1100 + 0.04 = 1.86 A typ, about 1.73-1.99 A (TI SLVSE57 eq. 4; table: 487R 4.17 A, 1780R 1.17 A, +-7 %): under the 2 A rating of the Jauch pack"
    },
    "pads": {
     "1": "BATT_ILIM",

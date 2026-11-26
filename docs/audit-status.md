@@ -13,7 +13,7 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 | Fuel gauge | **MAX17048** approved |
 | Licence | **CERN-OHL-S-2.0** for `hardware/` and `mechanical/`, AGPL-3.0 for the rest |
 | Body | Carrier cut out around the battery; **the keyboard PCB is the tray floor** ("thin keyboard") |
-| Battery | **BAK LP-454965-2P-3M** pack, for its 5.6 A rating, accepting about 1.4 mm more thickness; the battery must never be drawn beyond its rating |
+| Battery | **Jauch LP675365JU** (David, 2026-11-27), after the BAK LP-454965-2P-3M went end-of-life: 2800 mAh min, 2 A, no thermistor. The battery must never be drawn beyond its rating: the fuse is set to 1.86 A typ |
 | Routing | Done by the agent (no human layout) |
 | Review (2026-11-25) | No review by a person is planned: the boards are checked by scripts and independent AI reviewers, then built and tested. They are to be made as easy to debug as possible (serial console, test pads, lamps) |
 | USB | One USB-C port for rev 0.1 (a second host port was considered and dropped) |
@@ -28,8 +28,8 @@ Status of every finding in [audit-2026-11-24.md](audit-2026-11-24.md), plus the 
 | Top plate | ERC/DRC clean |
 | Keyboard flex cable, 4.5 x 79 mm, 1-layer 0.07 mm flex | New (`hardware/keyboard-flex`). ERC/DRC clean, fully routed (eight straight traces) |
 | Dome (Keystone) keyboard variant, `hardware/keyboard-5135` | Generated and placed, ERC/DRC clean, **not routed**. Lands are non-standard and unverified: do not order |
-| Enclosure | **20.05 mm** closed, 109.9 mm open. Collision check passes closed and open |
-| Battery | BAK LP-454965-2P-3M: 2800 mAh min, 9.5 x 50 x 68 mm max, 5.6 A max discharge, 1.4 A max charge, NTC. Farnell stock and price unconfirmed |
+| Enclosure | **131.5 x 74 x 19.35 mm** closed, 109.9 mm open. Collision check passes closed and open |
+| Battery | Jauch LP675365JU: 2800 mAh min, 7.4 x 54 x 68 mm max, 2 A max discharge and charge (lead-limited), protection trips at 4.2-9 A, no thermistor. DigiKey: 678 in stock, $17.93, "Active" (read 2026-11-26) |
 
 Thickness stack (mm): keyboard 3.6 (PCB 1.0, plate stand-off 1.5, plate 0.8, rim 0.3), slide gap 0.4, back floor 1.2,
 battery bay 9.8 (beside it: cavity 5.5, carrier 1.0, 3.3 behind the panel), panel 4.25, bezel lip 0.8.
@@ -53,14 +53,14 @@ The exact list of what is still unrouted is in [routing-status.md](routing-statu
 | P8 | Fixed | 402k / 100k, feed-forward pad C26 |
 | P9 | Open (software, not needed for bring-up) | Ship mode needs userspace i2c or a driver patch |
 | P10-P13 | Fixed | Pull-up, capacitor sizes, part fields, NSR0240H |
-| P14 | Partly | Keyed 3-pin connector J10 (Molex 5268) for the BAK pack, with its thermistor wired to the charger. The pack and Molex drawings put red on pin 1 as drawn (re-read 2026-11-25: the pack drawing shows the same view of the plug as the Molex 5264 catalogue, red at circuit 1); the board is marked +, T, - and the bring-up plan starts with a meter on the loose plug |
+| P14 | Changed | J10 (Molex 5268, 3 pins) stays. The Jauch pack has two bare leads: they are crimped into a Molex 5264 housing, red at circuit 1, black at circuit 3. The on-board thermistor TH1 is fitted and the pack-thermistor link R68 left out. Meter on the plug before first use |
 | P15 | Documented | Backlight PWM period: [device-tree.md](device-tree.md) |
 | P16 | Fixed | Test points added. CC lines reach only resistors, so they carry no ESD part |
 
-**Required by David (2026-11-24): the battery must never be drawn beyond its rating.** The BAK pack allows 5.6 A
-discharge and 1.4 A charge. Discharging is limited by U13 (TPS259531 eFuse, about 3.0 A) feeding the
-boost and the backlight; charging by the charger's input cap (R12, 0.83 A maximum, so at most about 1.25 A into the pack) and by
-`ti,charge-current` (1.4 A or less). The fuse leaves the module about 8-10 W on battery. See [power-budget.md](power-budget.md).
+**Required by David (2026-11-24): the battery must never be drawn beyond its rating.** The Jauch pack allows 2 A
+discharging and 2 A charging (both limited by its 26 AWG leads). Discharging is limited by U13 (TPS259531 eFuse,
+R66 = 1.1 kohm: 1.86 A typical, about 1.73-1.99 A) feeding the boost and the backlight; charging by the charger's
+input cap, which keeps the pack under 1.25 A whatever software does.
 
 ### Module
 

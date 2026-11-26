@@ -6,7 +6,8 @@ Three rules, each a row of the table it prints:
   module side   every part fits in the cavity between the board and the back shell
   under module  nothing but the two sockets and the four spacers stands under the module (0.4 mm of air there),
                 and nothing stands where the battery plug lies
-  display side  every part fits behind the panel even where a folded panel tail lies over it
+  display side  every part fits behind the panel: under the folded display tail's component strip (config
+                TAIL_ZONE_KICAD) with that strip's 1.7 mm on top, elsewhere with a flat tail (0.3 mm) on top
 Heights are datasheet maxima by package; a package missing from the table is an error, not a pass.
 """
 import os
@@ -39,17 +40,23 @@ def height(fp):
 
 def main(path):
     b = pcbnew.LoadBoard(path)
-    cavity, behind = cfg.CAVITY, cfg.PANEL_GAP - cfg.PANEL['tail_bulge']
+    cavity = cfg.CAVITY
+    zx0, zy0, zx1, zy1 = cfg.TAIL_ZONE_KICAD
+    under_strip, elsewhere = cfg.PANEL_GAP - cfg.PANEL['tail_bulge'], cfg.PANEL_GAP - cfg.TAIL_FLAT
     mx0, my0, mx1, my1 = cp.MODULE
     px0, py0, px1, py1 = cp.PLUG
     tall_f, tall_b, under, plug = [], [], [], []
-    top_f = top_b = ('', 0.0)
+    top_f = top_b = top_s = ('', 0.0)
     for f in b.GetFootprints():
         ref, h = f.GetReference(), height(f)
         x, y = T(f.GetPosition().x), T(f.GetPosition().y)
         if f.IsFlipped():
+            bb = f.GetBoundingBox(False, False)
+            in_strip = T(bb.GetRight()) > zx0 and T(bb.GetLeft()) < zx1 and T(bb.GetBottom()) > zy0 and T(bb.GetTop()) < zy1
+            if in_strip:
+                top_s = max(top_s, (ref, h), key=lambda t: t[1])
             top_b = max(top_b, (ref, h), key=lambda t: t[1])
-            if h > behind:
+            if h > (under_strip if in_strip else elsewhere) + 1e-9:
                 tall_b.append(ref)
             continue
         top_f = max(top_f, (ref, h), key=lambda t: t[1])
@@ -62,7 +69,8 @@ def main(path):
     rows = [('module side', f'tallest {top_f[0]} {top_f[1]:.2f} mm in a {cavity:.2f} mm cavity', tall_f),
             ('under the module', 'parts other than the sockets and spacers', under),
             ('battery plug', f'parts in x {px0}-{px1}, y {py0}-{py1}', plug),
-            ('display side', f'tallest {top_b[0]} {top_b[1]:.2f} mm; {behind:.2f} mm free under a folded panel tail '
+            ('display side', f'under the display tail\'s parts: tallest {top_s[0]} {top_s[1]:.2f} mm, {under_strip:.2f} mm free; '
+                             f'elsewhere: tallest {top_b[0]} {top_b[1]:.2f} mm, {elsewhere:.2f} mm free '
                              f'({cfg.PANEL_GAP:.2f} mm gap)', tall_b)]
     print('| Rule | Found | Verdict |')
     print('|---|---|---|')

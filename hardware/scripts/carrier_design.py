@@ -49,12 +49,13 @@ def build():
         '    D5 is a 6 V stand-off TVS (clamps near 10 V, under the charger VBUS limit of 22 V): if R21/R22 are ever',
         '    fitted for 9-12 V input it must be changed with them.',
         'P3: ILIM 470R caps the input at 0.68/0.755/0.83 A, with "ti,use-ilim-pin" in the device tree (the reset state).',
-        'P7: the charger resets to 2.048 A charge current and the pack allows 1.4 A. With the 500 mA input default',
-        '    the pack sees about 0.6 A until Linux sets "ti,charge-current" (1.4 A or less).',
-        'Cell: BAK LP-454965-2P-3M pack, 2800 mAh min, 5.6 A max discharge, 1.4 A max charge, 10k NTC (David 2026-11-24).',
-        'REQUIRED (David 2026-11-24): never draw the cell above its rating (5.6 A). U13, a TPS259531 eFuse with RILM 680R,',
-        '    limits everything fed from VSYS_LIM (the 5 V boost and the backlight) to about 3.0 A (David 2026-11-25: fuse',
-        '    instead of the 1.7 A TPS2553). 3.0 A is also the rating of the battery connector with 22 AWG leads.',
+        'P7: the charger resets to 2.048 A charge current and the pack allows 2 A. The input cap keeps the pack',
+        '    under 1.25 A whatever the register says; Linux should set "ti,charge-current" lower still (0.2 C = 560 mA).',
+        'Cell: Jauch LP675365JU pack (David 2026-11-27, after the BAK pack went end-of-life): 2800 mAh min, 2 A max',
+        '    discharge and charge (limited by its 26 AWG leads), protection trip 4.2-9 A, no thermistor: TH1 on the board.',
+        'REQUIRED (David 2026-11-24): never draw the cell above its rating (2 A). U13, a TPS259531 eFuse with RILM 1.1k,',
+        '    limits everything fed from VSYS_LIM (the 5 V boost and the backlight) to 1.86 A typical, 1.99 A at the top',
+        '    of its tolerance.',
         '    When it limits, VSYS_LIM sags, the boost under-voltage divider turns the 5 V rail off, and FLT tells the module.',
         'Hard power-cycle option (David 2026-11-25), all DNP: with C90, R91 and D9 fitted, holding the power button pulls',
         '    FUSE_EN down through 1M; after about 3 s (1.2 x R91 x C90) it passes 1.1 V and U13 cuts VSYS_LIM, so the module',
@@ -111,18 +112,18 @@ def build():
           fields=fields('C29402', '0402WGF3012TCE', 'UNI-ROYAL', Description='TS divider RT2'))
     p.add('TH1', 'Device', 'Thermistor_NTC', '10k B3380', 'Resistor_SMD:R_0402_1005Metric', {'1': 'CHG_TS', '2': 'GND'},
           fields=fields('C77131', 'NCP15XH103F03RC', 'Murata',
-                        Description='DNP: only for a 2-wire cell without its own thermistor (then remove R68)'), dnp=True)
+                        Description='Fitted: the Jauch pack has no thermistor, so this one on the board edge beside the battery bay stands in for it (R68 is then left out)'))
     R(p, 'R15', '2.2k', 'VSYS', 'CHG_LED_A')
     p.add('D1', 'Device', 'LED', 'red', 'LED_SMD:LED_0603_1608Metric', {'2': 'CHG_LED_A', '1': 'CHG_STAT'},
           fields=fields('C2286', 'KT-0603R', 'Hubei KENTO', Description='charging indicator (STAT low = charging)'))
     # battery + gauge
     p.add('J10', 'Connector', 'Conn_01x03_Pin', 'BATT', 'Connector_Molex:Molex_SPOX_5268-03A_1x03_P2.50mm_Horizontal',
           {'1': 'VBAT', '2': 'BATT_NTC', '3': 'GND'},
-          fields=fields('C185225', '22057035', 'Molex', Description='P14: battery connector for the BAK LP-454965-2P-3M pack '
-                        '(Molex 5264 housing: red +, yellow NTC, black -). The pack drawing and the Molex 5264 catalogue show '
-                        'the plug in the same view with red at circuit 1 = pin 1 here. Still put a meter on the loose '
+          fields=fields('C185225', '22057035', 'Molex', Description='P14: battery connector. The Jauch LP675365JU pack has two bare '
+                        '26 AWG leads: crimp them into a Molex 5264 3-way housing (5263 terminals), red + at circuit 1 = pin 1 here, '
+                        'black - at circuit 3, circuit 2 empty. Put a meter on the '
                         'plug before the first use: reversed, the pack destroys the charger'))
-    R(p, 'R68', '0', 'BATT_NTC', 'CHG_TS', note='pack thermistor (10k) to the charger TS divider. Remove if TH1 is fitted')
+    R(p, 'R68', '0', 'BATT_NTC', 'CHG_TS', dnp=True, note='DNP: only for a pack with its own 10k thermistor on pin 2 (then leave TH1 out)')
     p.add('U4', 'hackerslide', 'MAX17048', 'MAX17048G+T10', 'Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm',
           {'1': 'GND', '2': 'VBAT', '3': 'VBAT', '4': 'GND', '5': 'GAUGE_INT', '6': 'GND', '7': 'I2C_B_SCL',
            '8': 'I2C_B_SDA', '9': 'GND'},
@@ -137,7 +138,7 @@ def build():
                         Description='eFuse, auto-retry; its output clamp is at 5.5-5.9 V, never reached on a rail of 4.4 V at most '
                                     '(the -521 clamps at 3.8 V: not usable). Same chip without a clamp: TPS259571DSGR C471038, '
                                     'chosen against on stock (118 on 2026-11-26). dVdt (pin 1) open = fastest turn-on'))
-    R(p, 'R66', '680', 'BATT_ILIM', 'GND', note='current limit about 2020 / 680 = 3.0 A typ (TI SLVSE57 eq. 6 and the table: 487R 4.17 A, 1780R 1.17 A)')
+    R(p, 'R66', '1.1k', 'BATT_ILIM', 'GND', note='current limit 2000 / 1100 + 0.04 = 1.86 A typ, about 1.73-1.99 A (TI SLVSE57 eq. 4; table: 487R 4.17 A, 1780R 1.17 A, +-7 %): under the 2 A rating of the Jauch pack')
     R(p, 'R67', '10k', 'BATT_OC_N', '+3V3', note='FLT, low while the fuse is in thermal shutdown')
     R(p, 'R90', '10M', 'VSYS', 'FUSE_EN', note='enable: on whenever VSYS is present (threshold 1.2 V, pin leakage 0.1 uA)')
     C(p, 'C90', '2.2u', 'FUSE_EN', dnp=True)               # hard power-cycle option, see the sheet notes
