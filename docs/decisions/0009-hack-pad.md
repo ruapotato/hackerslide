@@ -55,6 +55,11 @@ set by the Linux-class processor.
   To settle from the specification before drawing: the front light's supply. The page gives "series, <= 15 V,
   <= 15 mA" in its table and "2.8-3.3 V" in a safety note.
 
+- **Battery (David, 2026-11-27):** the GlobTek BL1950P4071611S1PCPT (1950 mAh, 4.5 x 61.5 x 76.5 mm, 3.9 A, 317
+  at DigiKey) is acceptable as long as it fits the final dimensions.
+- **Repositories:** HackOS and the Adder fork go under David's own account (`ruapotato`), not the HamnixOS
+  organisation.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
