@@ -42,6 +42,9 @@ set by the Linux-class processor.
   they fit and reimplementing where needed ([os-audit-hamnix.md](../os-audit-hamnix.md)). Work starts in an
   emulator (QEMU's Cortex-M7 machine). An NXP evaluation board for bring-up is approved in principle; David buys it.
 
+- **Name (David, 2026-11-27):** the operating system is **HackOS**. It gets its own repository, and the Adder
+  compiler work for this chip gets its own repository too, separate from the existing Adder and Hamnix ones.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
