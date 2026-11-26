@@ -60,6 +60,13 @@ set by the Linux-class processor.
 - **Repositories:** HackOS and the Adder fork go under David's own account (`ruapotato`), public, not the HamnixOS
   organisation. HackOS is AGPL-3.0; the Adder fork keeps Adder's GPL-3.0-or-later.
 
+- **Languages (David, 2026-11-27):** HackOS is a mix of Adder and C. Adder for the kernel core, file systems,
+  shell and tools; C for the chip makers' drivers and third-party stacks linked in. This needs Adder to call C
+  functions directly, which is being added to the compiler fork.
+- **MicroPython dropped (David, 2026-11-27):** Adder is already Python-like, so MicroPython adds little. Open
+  question this leaves: Adder is compiled on a PC, so how programs get written or changed on the device itself
+  is not yet decided.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
