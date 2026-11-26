@@ -114,6 +114,22 @@ set by the Linux-class processor.
   converter stays, but in front of this chip's 2.4 GHz port, which removes the ghost-signal limit above 1.9 GHz;
   the shortwave detector stays as it was. The SX1255 is dropped. Risk: only 182 of that FPGA, with a 40-week lead.
 
+- **Memory route (2026-11-26, from the datasheet study):** two Winbond W989D6DBGX6I (1.8 V low-power type, 64 MB
+  each) give 128 MB on the first select; unfitted positions for two more give 256 MB. Chosen over four of the
+  3.3 V chips NXP uses because those cannot reach 256 MB, take seven times the board area and draw about nine
+  times the sleep current. The price: NXP has no board with this chip type, the chip asks for one start-up
+  command NXP's driver does not send, and both memory pad banks run at 1.8 V. To be tried on the evaluation board
+  before the board is ordered; the fallback is the 3.3 V chips at 128 MB.
+- **Supporting parts (same study, all read from maker datasheets, all in JLCPCB stock):** 3.3 V converter
+  TPS63802; 1.8 V step-down TLV62568 plus quiet 1.8 V LDO TPS7A2018; always-on 3.0 V TPS7A0230 for the clock;
+  reset supervisor TPS3840DL30; crystals NDK NX3225GA 24 MHz and Epson FC-135; flash in the 0.8 mm WSON package;
+  USB-C socket HRO TYPE-C-31-M-14 (sunk into the board edge, about 1.8 mm above it).
+- **Battery plug correction:** the GlobTek pack's plug is Molex Micro-Latch 2.00 mm (51065-0400), not PicoBlade.
+  Mating header 53254-0470 (right-angle, through-hole, JLCPCB 928); its height is not verified yet.
+- **Headphone jack: no 4-pole socket under 3.0 mm was found in stock.** Lowest in JLCPCB stock is XKB PJ-3255A at
+  4.15 mm in an edge notch; 3-pole sunk types exist. Open: accept about 4.2 mm at that spot, or a 3-pole jack
+  (no headset microphone), or audio over USB-C only.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn

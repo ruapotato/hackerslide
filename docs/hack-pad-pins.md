@@ -31,10 +31,10 @@ unverified assumptions are listed at the top of that script. Slow control lines 
 | LPSR_09 | P5 | LPSPI6_PCS0 | RF_CS_CC1101_N | CC1101 select |
 | DISP_B2_12 | B6 | GPIO | RF_CS_LR1121_N | LR1121 select |
 | DISP_B2_13 | A5 | GPIO | RF_CS_NRF_N | Si24R1 select |
-| EMC_B2_20 | R3 | GPIO | RF_CS_TC_N | MAX31856 thermocouple select (same bus) |
+| EMC_B2_20 | R3 | GPIO | SDR_FPGA_DONE | FPGA loaded (1.8 V pad). The thermocouple chip select moved to a port expander |
 | AD_13 | L12 | GPIO | RF_CS_WIFI_N | ESP32-C6 select |
-| EMC_B2_19 | U2 | QTIMER3_TIMER2 | CC1101_GDO0 | raw sub-GHz data, timed by a counter |
-| EMC_B2_18 | N3 | QTIMER3_TIMER1 | GPS_PPS | GPS second pulse, timed by a counter |
+| EMC_B2_19 | U2 | QTIMER3_TIMER2 | CC1101_GDO0 | raw sub-GHz data, timed by a counter (1.8 V pad: through a divider) |
+| EMC_B2_18 | N3 | QTIMER3_TIMER1 | GPS_PPS | GPS second pulse, timed by a counter (1.8 V pad: through a divider) |
 | DISP_B2_10 | D9 | LPUART2_TX | GPS_RXD | to the GPS module |
 | DISP_B2_11 | A6 | LPUART2_RX | GPS_TXD | from the GPS module |
 | DISP_B1_00 | E13 | QTIMER1_TIMER0 | IR_TX | infrared send |

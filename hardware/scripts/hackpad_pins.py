@@ -52,10 +52,10 @@ a('LPSR_12', 'LPSPI6_SDI', 'RF_MISO', 'radio SPI')
 a('LPSR_09', 'LPSPI6_PCS0', 'RF_CS_CC1101_N', 'CC1101 select')
 a('DISP_B2_12', 'GPIO', 'RF_CS_LR1121_N', 'LR1121 select')
 a('DISP_B2_13', 'GPIO', 'RF_CS_NRF_N', 'Si24R1 select')
-a('EMC_B2_20', 'GPIO', 'RF_CS_TC_N', 'MAX31856 thermocouple select (same bus)')
+a('EMC_B2_20', 'GPIO', 'SDR_FPGA_DONE', 'FPGA loaded (1.8 V pad). The thermocouple chip select moved to a port expander')
 a('AD_13', 'GPIO', 'RF_CS_WIFI_N', 'ESP32-C6 select')
-a('EMC_B2_19', 'QTIMER3_TIMER2', 'CC1101_GDO0', 'raw sub-GHz data, timed by a counter')
-a('EMC_B2_18', 'QTIMER3_TIMER1', 'GPS_PPS', 'GPS second pulse, timed by a counter')
+a('EMC_B2_19', 'QTIMER3_TIMER2', 'CC1101_GDO0', 'raw sub-GHz data, timed by a counter (1.8 V pad: through a divider)')
+a('EMC_B2_18', 'QTIMER3_TIMER1', 'GPS_PPS', 'GPS second pulse, timed by a counter (1.8 V pad: through a divider)')
 a('DISP_B2_10', 'LPUART2_TX', 'GPS_RXD', 'to the GPS module')
 a('DISP_B2_11', 'LPUART2_RX', 'GPS_TXD', 'from the GPS module')
 a('DISP_B1_00', 'QTIMER1_TIMER0', 'IR_TX', 'infrared send')
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     seen = check()
     import hackpad_design as h
     h.build()
-    clash = [p for p in seen if ROWS[p]['ball'] in h.U and p not in SHARED]
+    clash = [p for p in seen if h.U.get(ROWS[p]['ball'], seen[p]) != seen[p]]
     assert not clash, clash
     free = [p for p, r in ROWS.items() if r['ball'] not in h.U and p not in seen and p not in RESERVED]
     print(len(P), 'pads planned;', len(free), 'free:', ' '.join(free))

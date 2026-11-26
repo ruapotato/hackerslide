@@ -4,16 +4,17 @@
   {
    "ref": "L1",
    "value": "4.7uH",
-   "footprint": "Inductor_SMD:L_Taiyo-Yuden_MD-2020",
+   "footprint": "Inductor_SMD:L_Taiyo-Yuden_NR-40xx",
    "dnp": false,
    "sheet": "mcu_power",
    "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
    "sheetfile": "mcu_power.kicad_sch",
    "sym_uuid": "59fbef58-93d5-5d7c-9144-784ecad99f74",
    "fields": {
-    "LCSC": "",
-    "MPN": "TBD",
-    "Description": "4.7 uH, saturation > 1.5 A (HDUG; EVKB L15 is 1.9 A, 91 mohm). PART TO BE CHOSEN: the data sheet says 1 A typ, the guide > 1.5 A"
+    "LCSC": "C92961",
+    "MPN": "NRS4018T4R7MDGJ",
+    "Manufacturer": "Taiyo Yuden",
+    "Description": "4.7 uH, saturation 2.0 A, 70 mohm, 4 x 4 x 1.8 mm (NXP asks > 1.5 A)"
    },
    "pads": {
     "1": "DCDC_LP",
@@ -109,28 +110,6 @@
    "nc": {}
   },
   {
-   "ref": "R3",
-   "value": "0",
-   "footprint": "Resistor_SMD:R_0402_1005Metric",
-   "dnp": false,
-   "sheet": "mcu_power",
-   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
-   "sheetfile": "mcu_power.kicad_sch",
-   "sym_uuid": "b95dbdee-7199-51b9-aecc-98b5a5d08bf3",
-   "fields": {
-    "LCSC": "C17168",
-    "MPN": "0402WGF0000TCE",
-    "Manufacturer": "UNI-ROYAL",
-    "Description": "strap; see the TODO on this sheet"
-   },
-   "pads": {
-    "1": "+3V3",
-    "2": "VDD_SNVS_IN"
-   },
-   "in_bom": true,
-   "nc": {}
-  },
-  {
    "ref": "R4",
    "value": "10k",
    "footprint": "Resistor_SMD:R_0402_1005Metric",
@@ -188,7 +167,7 @@
     "Description": "120 ohm at 100 MHz, as the beads on the EVKB"
    },
    "pads": {
-    "1": "+1V8",
+    "1": "+1V8_LDO",
     "2": "+1V8A"
    },
    "in_bom": true,
@@ -232,7 +211,7 @@
     "Description": "120 ohm at 100 MHz, as the beads on the EVKB"
    },
    "pads": {
-    "1": "+1V8",
+    "1": "+1V8_LDO",
     "2": "+1V8_USB"
    },
    "in_bom": true,
@@ -262,39 +241,106 @@
   },
   {
    "ref": "U2",
-   "value": "AMS1117-1.8",
-   "footprint": "Package_TO_SOT_SMD:SOT-223-3_TabPin2",
+   "value": "TLV62568DBVR",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
    "dnp": false,
    "sheet": "mcu_power",
    "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
    "sheetfile": "mcu_power.kicad_sch",
    "sym_uuid": "cec58e3c-1286-5df8-8b05-6880471a14bc",
    "fields": {
-    "LCSC": "C347220",
-    "MPN": "AMS1117-1.8",
-    "Manufacturer": "UMW",
-    "Description": "1.8 V for the analogue, USB and flash supplies: the EVKB's part (U1). A lower-dropout, lower-idle-current LDO should replace it before layout"
+    "LCSC": "C163219",
+    "MPN": "TLV62568DBVR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "1.8 V, 1 A step-down for the memory, its pad banks and the flash"
    },
    "pads": {
-    "3": "+3V3",
-    "2": "+1V8",
-    "1": "GND"
+    "1": "+3V3",
+    "2": "GND",
+    "3": "SW_1V8",
+    "4": "+3V3",
+    "5": "FB_1V8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "L3",
+   "value": "2.2uH",
+   "footprint": "Inductor_SMD:L_Murata_DFE201610P",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "c08df34c-da39-5286-be56-176395fb7751",
+   "fields": {
+    "LCSC": "C337893",
+    "MPN": "DFE201612E-2R2M=P2",
+    "Manufacturer": "Murata",
+    "Description": "2.2 uH, 1.8 A, 2.0 x 1.6 x 1.2 mm. CHECK the footprint against the Murata land pattern"
+   },
+   "pads": {
+    "1": "SW_1V8",
+    "2": "+1V8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R6",
+   "value": "200k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "ef8e53b8-8e56-5456-811a-ba9b3945a9b0",
+   "fields": {
+    "LCSC": "C25764",
+    "MPN": "0402WGF2003TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "0.6 V x (1 + 200k/100k) = 1.8 V"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "FB_1V8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R7",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "b03ce540-c4fb-5fa6-abf1-7a41da1196d2",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "FB_1V8",
+    "2": "GND"
    },
    "in_bom": true,
    "nc": {}
   },
   {
    "ref": "C3",
-   "value": "10u",
-   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
    "dnp": false,
    "sheet": "mcu_power",
    "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
    "sheetfile": "mcu_power.kicad_sch",
    "sym_uuid": "b478084d-69da-52c3-a1f5-ed8d94b5dca4",
    "fields": {
-    "LCSC": "C19702",
-    "MPN": "CL10A106KP8NNNC",
+    "LCSC": "C23733",
+    "MPN": "CL05A475MP5NRNC",
     "Manufacturer": "Samsung"
    },
    "pads": {
@@ -306,20 +352,135 @@
   },
   {
    "ref": "C4",
-   "value": "22u",
-   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "value": "10u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
    "dnp": false,
    "sheet": "mcu_power",
    "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
    "sheetfile": "mcu_power.kicad_sch",
    "sym_uuid": "5d2202b5-8717-56fa-b9e8-1768f850d73f",
    "fields": {
-    "LCSC": "C45783",
-    "MPN": "CL21A226MAQNNNE",
+    "LCSC": "C19702",
+    "MPN": "CL10A106KP8NNNC",
     "Manufacturer": "Samsung"
    },
    "pads": {
     "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U11",
+   "value": "TPS7A2018",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "54f102af-d661-5f11-8e1f-af2543628d81",
+   "fields": {
+    "LCSC": "C963430",
+    "MPN": "TPS7A2018PDBVR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "quiet 1.8 V, 300 mA, for the analogue and USB supplies (6.5 uA idle)"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND",
+    "3": "+3V3",
+    "5": "+1V8_LDO"
+   },
+   "in_bom": true,
+   "nc": {
+    "4": "unconnected-(U11-NC-Pad4)"
+   }
+  },
+  {
+   "ref": "C5",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "086a325c-2c9e-589e-9810-c77a5cac11e4",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C6",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "22e08cc7-c531-526c-bf14-cccdd4a1dde9",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8_LDO",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U12",
+   "value": "TPS7A0230",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "c44c30ca-e5bb-5713-a777-5a1365da4a65",
+   "fields": {
+    "LCSC": "C3747031",
+    "MPN": "TPS7A0230PDBVR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "3.0 V always on from the battery rail (25 nA idle): keeps the clock running"
+   },
+   "pads": {
+    "1": "VSYS",
+    "2": "GND",
+    "3": "VSYS",
+    "5": "VDD_SNVS_IN"
+   },
+   "in_bom": true,
+   "nc": {
+    "4": "unconnected-(U12-NC-Pad4)"
+   }
+  },
+  {
+   "ref": "C7",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "mcu_power",
+   "sheet_uuid": "f641e566-e94c-5fb4-b275-81d0730bba19",
+   "sheetfile": "mcu_power.kicad_sch",
+   "sym_uuid": "f6ac0991-0e98-5bdf-9ed3-7d2bde3bbd84",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "VSYS",
     "2": "GND"
    },
    "in_bom": true,
@@ -1075,7 +1236,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -1096,7 +1257,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -1117,7 +1278,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -1138,7 +1299,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -1259,9 +1420,10 @@
    "sheetfile": "mcu_core.kicad_sch",
    "sym_uuid": "1dc94dbe-3753-560e-bd65-cc9a95ed7182",
    "fields": {
-    "LCSC": "",
-    "MPN": "TBD",
-    "Description": "24 MHz, CL 8 pF, ESR <= 60 ohm, +-20 ppm (EVKB Y4). PART TO BE CHOSEN"
+    "LCSC": "C156248",
+    "MPN": "NX3225GA-24MHZ-STD-CRG-2",
+    "Manufacturer": "NDK",
+    "Description": "24 MHz, CL 8 pF, ESR 50 ohm max, +-20 ppm"
    },
    "pads": {
     "1": "XTAL24_I",
@@ -1324,9 +1486,10 @@
    "sheetfile": "mcu_core.kicad_sch",
    "sym_uuid": "56957fa8-c724-5522-a7ea-f3774b8e24ec",
    "fields": {
-    "LCSC": "",
-    "MPN": "TBD",
-    "Description": "32.768 kHz, ESR < 100 kohm (EVKB Y5). PART TO BE CHOSEN"
+    "LCSC": "C48615",
+    "MPN": "Q13FC13500002",
+    "Manufacturer": "Epson",
+    "Description": "FC-135, 32.768 kHz, CL 7 pF, ESR 70 kohm max"
    },
    "pads": {
     "1": "XTAL32_I",
@@ -1337,16 +1500,16 @@
   },
   {
    "ref": "C82",
-   "value": "15p",
+   "value": "10p",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": true,
+   "dnp": false,
    "sheet": "mcu_core",
    "sheet_uuid": "90f83582-cb97-5f89-a2f0-4bb2830e34ad",
    "sheetfile": "mcu_core.kicad_sch",
    "sym_uuid": "70cae39c-c604-533b-8673-6fb08b8e2afb",
    "fields": {
-    "LCSC": "C1548",
-    "MPN": "0402CG150J500NT",
+    "LCSC": "C1545",
+    "MPN": "0402CG100J500NT",
     "Manufacturer": "FH"
    },
    "pads": {
@@ -1358,16 +1521,16 @@
   },
   {
    "ref": "C83",
-   "value": "15p",
+   "value": "10p",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": true,
+   "dnp": false,
    "sheet": "mcu_core",
    "sheet_uuid": "90f83582-cb97-5f89-a2f0-4bb2830e34ad",
    "sheetfile": "mcu_core.kicad_sch",
    "sym_uuid": "430c2fc6-fd24-5dd4-ae76-72d4cfd204ec",
    "fields": {
-    "LCSC": "C1548",
-    "MPN": "0402CG150J500NT",
+    "LCSC": "C1545",
+    "MPN": "0402CG100J500NT",
     "Manufacturer": "FH"
    },
    "pads": {
@@ -1399,6 +1562,73 @@
    "nc": {}
   },
   {
+   "ref": "U10",
+   "value": "TPS3840DL30",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "dnp": false,
+   "sheet": "mcu_core",
+   "sheet_uuid": "90f83582-cb97-5f89-a2f0-4bb2830e34ad",
+   "sheetfile": "mcu_core.kicad_sch",
+   "sym_uuid": "5682e184-f794-51aa-840d-87edabb5576d",
+   "fields": {
+    "LCSC": "C2862542",
+    "MPN": "TPS3840DL30DBVR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "holds POR_B low below 3.0 V on +3V3, open drain, 300 nA"
+   },
+   "pads": {
+    "1": "POR_B",
+    "2": "+3V3",
+    "3": "GND",
+    "4": "RESET_BTN_N",
+    "5": "POR_CT"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C86",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "mcu_core",
+   "sheet_uuid": "90f83582-cb97-5f89-a2f0-4bb2830e34ad",
+   "sheetfile": "mcu_core.kicad_sch",
+   "sym_uuid": "f5b61ccc-9ac8-5dcf-829a-7866329653ef",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "POR_CT",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C87",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "mcu_core",
+   "sheet_uuid": "90f83582-cb97-5f89-a2f0-4bb2830e34ad",
+   "sheetfile": "mcu_core.kicad_sch",
+   "sym_uuid": "f4ce2478-d13d-5f4e-adc5-5d2183952ba4",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
    "ref": "SW2",
    "value": "RESET",
    "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
@@ -1410,10 +1640,11 @@
    "fields": {
     "LCSC": "C255576",
     "MPN": "SKSWCFE010",
-    "Manufacturer": "Alps Alpine"
+    "Manufacturer": "Alps Alpine",
+    "Description": "on the supervisor's manual-reset input (internal pull-up)"
    },
    "pads": {
-    "1": "POR_B",
+    "1": "RESET_BTN_N",
     "2": "GND"
    },
    "in_bom": true,
@@ -2060,78 +2291,76 @@
   },
   {
    "ref": "U3",
-   "value": "W9825G6KH-6",
-   "footprint": "Package_SO:TSOP-II-54_22.2x10.16mm_P0.8mm",
+   "value": "W989D6DBGX6I",
+   "footprint": "Package_BGA:Alliance_TFBGA-54_8x8mm_Layout9x9_P0.8mm",
    "dnp": false,
    "sheet": "memory",
    "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
    "sheetfile": "memory.kicad_sch",
    "sym_uuid": "5a97dfb7-bede-509e-8e91-f6f96a744204",
    "fields": {
-    "LCSC": "C62246",
-    "MPN": "W9825G6KH-6",
+    "LCSC": "C2641243",
+    "MPN": "W989D6DBGX6I",
     "Manufacturer": "Winbond",
-    "Description": "256 Mbit SDRAM (EVKB U13; the EVKB fits the -5I grade)"
+    "Description": "512 Mbit low-power SDRAM, 1.8 V, 8 x 9 x 1.0 mm. The footprint is the 8 x 8 mm one with the same ball pattern: widen its outline before layout"
    },
    "pads": {
-    "2": "SEMC_D0",
-    "4": "SEMC_D1",
-    "5": "SEMC_D2",
-    "7": "SEMC_D3",
-    "8": "SEMC_D4",
-    "10": "SEMC_D5",
-    "11": "SEMC_D6",
-    "13": "SEMC_D7",
-    "42": "SEMC_D8",
-    "44": "SEMC_D9",
-    "45": "SEMC_D10",
-    "47": "SEMC_D11",
-    "48": "SEMC_D12",
-    "50": "SEMC_D13",
-    "51": "SEMC_D14",
-    "53": "SEMC_D15",
-    "23": "SEMC_A0",
-    "24": "SEMC_A1",
-    "25": "SEMC_A2",
-    "26": "SEMC_A3",
-    "29": "SEMC_A4",
-    "30": "SEMC_A5",
-    "31": "SEMC_A6",
-    "32": "SEMC_A7",
-    "33": "SEMC_A8",
-    "34": "SEMC_A9",
-    "22": "SEMC_A10",
-    "35": "SEMC_A11",
-    "36": "SEMC_A12",
-    "20": "SEMC_BA0",
-    "21": "SEMC_BA1",
-    "38": "SEMC_CLK",
-    "16": "SEMC_WE",
-    "17": "SEMC_CAS",
-    "18": "SEMC_RAS",
-    "15": "SEMC_DM0",
-    "39": "SEMC_DM1",
-    "37": "SEMC_CKE",
-    "19": "SEMC_CS0",
-    "1": "+3V3",
-    "14": "+3V3",
-    "27": "+3V3",
-    "3": "+3V3",
-    "9": "+3V3",
-    "43": "+3V3",
-    "49": "+3V3",
-    "28": "GND",
-    "41": "GND",
-    "54": "GND",
-    "6": "GND",
-    "12": "GND",
-    "46": "GND",
-    "52": "GND"
+    "H7": "SEMC_A0",
+    "H8": "SEMC_A1",
+    "J8": "SEMC_A2",
+    "J7": "SEMC_A3",
+    "J3": "SEMC_A4",
+    "J2": "SEMC_A5",
+    "H3": "SEMC_A6",
+    "H2": "SEMC_A7",
+    "H1": "SEMC_A8",
+    "G3": "SEMC_A9",
+    "H9": "SEMC_A10",
+    "G2": "SEMC_A11",
+    "G1": "SEMC_A12",
+    "A8": "SEMC_D0",
+    "B9": "SEMC_D1",
+    "B8": "SEMC_D2",
+    "C9": "SEMC_D3",
+    "C8": "SEMC_D4",
+    "D9": "SEMC_D5",
+    "D8": "SEMC_D6",
+    "E9": "SEMC_D7",
+    "E1": "SEMC_D8",
+    "D2": "SEMC_D9",
+    "D1": "SEMC_D10",
+    "C2": "SEMC_D11",
+    "C1": "SEMC_D12",
+    "B2": "SEMC_D13",
+    "B1": "SEMC_D14",
+    "A2": "SEMC_D15",
+    "G7": "SEMC_BA0",
+    "G8": "SEMC_BA1",
+    "F2": "SEMC_CLK",
+    "F3": "SEMC_CKE",
+    "F8": "SEMC_RAS",
+    "F7": "SEMC_CAS",
+    "F9": "SEMC_WE",
+    "E8": "SEMC_DM0",
+    "F1": "SEMC_DM1",
+    "G9": "SEMC_CS0",
+    "A9": "+1V8",
+    "E7": "+1V8",
+    "J9": "+1V8",
+    "A7": "+1V8",
+    "B3": "+1V8",
+    "C7": "+1V8",
+    "D3": "+1V8",
+    "A1": "GND",
+    "E3": "GND",
+    "J1": "GND",
+    "A3": "GND",
+    "B7": "GND",
+    "C3": "GND",
+    "D7": "GND"
    },
    "in_bom": true,
-   "nc": {
-    "40": "unconnected-(U3-NC-Pad40)"
-   }
+   "nc": {}
   },
   {
    "ref": "C100",
@@ -2148,7 +2377,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2169,7 +2398,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2190,7 +2419,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2211,7 +2440,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2232,7 +2461,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2253,7 +2482,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2274,7 +2503,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2282,78 +2511,139 @@
   },
   {
    "ref": "U4",
-   "value": "W9825G6KH-6",
-   "footprint": "Package_SO:TSOP-II-54_22.2x10.16mm_P0.8mm",
+   "value": "W989D6DBGX6I",
+   "footprint": "Package_BGA:Alliance_TFBGA-54_8x8mm_Layout9x9_P0.8mm",
    "dnp": false,
    "sheet": "memory",
    "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
    "sheetfile": "memory.kicad_sch",
    "sym_uuid": "88ec8b25-c0af-5856-a23c-fa00d4f1e93f",
    "fields": {
-    "LCSC": "C62246",
-    "MPN": "W9825G6KH-6",
+    "LCSC": "C2641243",
+    "MPN": "W989D6DBGX6I",
     "Manufacturer": "Winbond",
-    "Description": "256 Mbit SDRAM (EVKB U25; the EVKB fits the -5I grade)"
+    "Description": "512 Mbit low-power SDRAM, 1.8 V, 8 x 9 x 1.0 mm. The footprint is the 8 x 8 mm one with the same ball pattern: widen its outline before layout"
    },
    "pads": {
-    "23": "SEMC_A0",
-    "24": "SEMC_A1",
-    "25": "SEMC_A2",
-    "26": "SEMC_A3",
-    "29": "SEMC_A4",
-    "30": "SEMC_A5",
-    "31": "SEMC_A6",
-    "32": "SEMC_A7",
-    "33": "SEMC_A8",
-    "34": "SEMC_A9",
-    "22": "SEMC_A10",
-    "35": "SEMC_A11",
-    "36": "SEMC_A12",
-    "20": "SEMC_BA0",
-    "21": "SEMC_BA1",
-    "38": "SEMC_CLK",
-    "16": "SEMC_WE",
-    "17": "SEMC_CAS",
-    "18": "SEMC_RAS",
-    "2": "SEMC_D16",
-    "4": "SEMC_D17",
-    "5": "SEMC_D18",
-    "7": "SEMC_D19",
-    "8": "SEMC_D20",
-    "10": "SEMC_D21",
-    "11": "SEMC_D22",
-    "13": "SEMC_D23",
-    "42": "SEMC_D24",
-    "44": "SEMC_D25",
-    "45": "SEMC_D26",
-    "47": "SEMC_D27",
-    "48": "SEMC_D28",
-    "50": "SEMC_D29",
-    "51": "SEMC_D30",
-    "53": "SEMC_D31",
-    "15": "SEMC_DM2",
-    "39": "SEMC_DM3",
-    "37": "SEMC_CKE",
-    "19": "SEMC_CS0",
-    "1": "+3V3",
-    "14": "+3V3",
-    "27": "+3V3",
-    "3": "+3V3",
-    "9": "+3V3",
-    "43": "+3V3",
-    "49": "+3V3",
-    "28": "GND",
-    "41": "GND",
-    "54": "GND",
-    "6": "GND",
-    "12": "GND",
-    "46": "GND",
-    "52": "GND"
+    "H7": "SEMC_A0",
+    "H8": "SEMC_A1",
+    "J8": "SEMC_A2",
+    "J7": "SEMC_A3",
+    "J3": "SEMC_A4",
+    "J2": "SEMC_A5",
+    "H3": "SEMC_A6",
+    "H2": "SEMC_A7",
+    "H1": "SEMC_A8",
+    "G3": "SEMC_A9",
+    "H9": "SEMC_A10",
+    "G2": "SEMC_A11",
+    "G1": "SEMC_A12",
+    "A8": "SEMC_D16",
+    "B9": "SEMC_D17",
+    "B8": "SEMC_D18",
+    "C9": "SEMC_D19",
+    "C8": "SEMC_D20",
+    "D9": "SEMC_D21",
+    "D8": "SEMC_D22",
+    "E9": "SEMC_D23",
+    "E1": "SEMC_D24",
+    "D2": "SEMC_D25",
+    "D1": "SEMC_D26",
+    "C2": "SEMC_D27",
+    "C1": "SEMC_D28",
+    "B2": "SEMC_D29",
+    "B1": "SEMC_D30",
+    "A2": "SEMC_D31",
+    "G7": "SEMC_BA0",
+    "G8": "SEMC_BA1",
+    "F2": "SEMC_CLK",
+    "F3": "SEMC_CKE",
+    "F8": "SEMC_RAS",
+    "F7": "SEMC_CAS",
+    "F9": "SEMC_WE",
+    "E8": "SEMC_DM2",
+    "F1": "SEMC_DM3",
+    "G9": "SEMC_CS0",
+    "A9": "+1V8",
+    "E7": "+1V8",
+    "J9": "+1V8",
+    "A7": "+1V8",
+    "B3": "+1V8",
+    "C7": "+1V8",
+    "D3": "+1V8",
+    "A1": "GND",
+    "E3": "GND",
+    "J1": "GND",
+    "A3": "GND",
+    "B7": "GND",
+    "C3": "GND",
+    "D7": "GND"
    },
    "in_bom": true,
-   "nc": {
-    "40": "unconnected-(U4-NC-Pad40)"
-   }
+   "nc": {}
+  },
+  {
+   "ref": "C107",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "e073f702-8220-57c4-ad23-0a1538f46d20",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C108",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "c18b210a-1880-5b46-8082-01cd88efc7c1",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C109",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "6c966453-f6c9-5d5d-b3c5-a2a4ed7ca955",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
   },
   {
    "ref": "C110",
@@ -2370,7 +2660,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2391,7 +2681,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2412,7 +2702,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2433,8 +2723,81 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U8",
+   "value": "W989D6DBGX6I",
+   "footprint": "Package_BGA:Alliance_TFBGA-54_8x8mm_Layout9x9_P0.8mm",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "136b536d-d323-5d2f-bc7d-56e12e675cf3",
+   "fields": {
+    "LCSC": "C2641243",
+    "MPN": "W989D6DBGX6I",
+    "Manufacturer": "Winbond",
+    "Description": "512 Mbit low-power SDRAM, 1.8 V, 8 x 9 x 1.0 mm. The footprint is the 8 x 8 mm one with the same ball pattern: widen its outline before layout"
+   },
+   "pads": {
+    "H7": "SEMC_A0",
+    "H8": "SEMC_A1",
+    "J8": "SEMC_A2",
+    "J7": "SEMC_A3",
+    "J3": "SEMC_A4",
+    "J2": "SEMC_A5",
+    "H3": "SEMC_A6",
+    "H2": "SEMC_A7",
+    "H1": "SEMC_A8",
+    "G3": "SEMC_A9",
+    "H9": "SEMC_A10",
+    "G2": "SEMC_A11",
+    "G1": "SEMC_A12",
+    "A8": "SEMC_D0",
+    "B9": "SEMC_D1",
+    "B8": "SEMC_D2",
+    "C9": "SEMC_D3",
+    "C8": "SEMC_D4",
+    "D9": "SEMC_D5",
+    "D8": "SEMC_D6",
+    "E9": "SEMC_D7",
+    "E1": "SEMC_D8",
+    "D2": "SEMC_D9",
+    "D1": "SEMC_D10",
+    "C2": "SEMC_D11",
+    "C1": "SEMC_D12",
+    "B2": "SEMC_D13",
+    "B1": "SEMC_D14",
+    "A2": "SEMC_D15",
+    "G7": "SEMC_BA0",
+    "G8": "SEMC_BA1",
+    "F2": "SEMC_CLK",
+    "F3": "SEMC_CKE",
+    "F8": "SEMC_RAS",
+    "F7": "SEMC_CAS",
+    "F9": "SEMC_WE",
+    "E8": "SEMC_DM0",
+    "F1": "SEMC_DM1",
+    "G9": "SEMC_CSX0",
+    "A9": "+1V8",
+    "E7": "+1V8",
+    "J9": "+1V8",
+    "A7": "+1V8",
+    "B3": "+1V8",
+    "C7": "+1V8",
+    "D3": "+1V8",
+    "A1": "GND",
+    "E3": "GND",
+    "J1": "GND",
+    "A3": "GND",
+    "B7": "GND",
+    "C3": "GND",
+    "D7": "GND"
    },
    "in_bom": true,
    "nc": {}
@@ -2443,7 +2806,7 @@
    "ref": "C114",
    "value": "100n",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
+   "dnp": true,
    "sheet": "memory",
    "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
    "sheetfile": "memory.kicad_sch",
@@ -2454,7 +2817,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2464,7 +2827,7 @@
    "ref": "C115",
    "value": "100n",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
+   "dnp": true,
    "sheet": "memory",
    "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
    "sheetfile": "memory.kicad_sch",
@@ -2475,7 +2838,7 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
@@ -2485,7 +2848,7 @@
    "ref": "C116",
    "value": "100n",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
-   "dnp": false,
+   "dnp": true,
    "sheet": "memory",
    "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
    "sheetfile": "memory.kicad_sch",
@@ -2496,26 +2859,373 @@
     "Manufacturer": "Samsung"
    },
    "pads": {
-    "1": "+3V3",
+    "1": "+1V8",
     "2": "GND"
    },
    "in_bom": true,
    "nc": {}
   },
   {
+   "ref": "C117",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "ac253791-d3d4-54ae-82d9-9ed39b038224",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C118",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "ca192b32-9b6e-513b-8cdf-d31b91c50094",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C119",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "c918463e-013c-551a-bb6b-46ba960e660a",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C120",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "22b46539-fc7b-5628-9e75-937cf022840a",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U9",
+   "value": "W989D6DBGX6I",
+   "footprint": "Package_BGA:Alliance_TFBGA-54_8x8mm_Layout9x9_P0.8mm",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "55314470-176d-5cae-8afa-7d0b45c94853",
+   "fields": {
+    "LCSC": "C2641243",
+    "MPN": "W989D6DBGX6I",
+    "Manufacturer": "Winbond",
+    "Description": "512 Mbit low-power SDRAM, 1.8 V, 8 x 9 x 1.0 mm. The footprint is the 8 x 8 mm one with the same ball pattern: widen its outline before layout"
+   },
+   "pads": {
+    "H7": "SEMC_A0",
+    "H8": "SEMC_A1",
+    "J8": "SEMC_A2",
+    "J7": "SEMC_A3",
+    "J3": "SEMC_A4",
+    "J2": "SEMC_A5",
+    "H3": "SEMC_A6",
+    "H2": "SEMC_A7",
+    "H1": "SEMC_A8",
+    "G3": "SEMC_A9",
+    "H9": "SEMC_A10",
+    "G2": "SEMC_A11",
+    "G1": "SEMC_A12",
+    "A8": "SEMC_D16",
+    "B9": "SEMC_D17",
+    "B8": "SEMC_D18",
+    "C9": "SEMC_D19",
+    "C8": "SEMC_D20",
+    "D9": "SEMC_D21",
+    "D8": "SEMC_D22",
+    "E9": "SEMC_D23",
+    "E1": "SEMC_D24",
+    "D2": "SEMC_D25",
+    "D1": "SEMC_D26",
+    "C2": "SEMC_D27",
+    "C1": "SEMC_D28",
+    "B2": "SEMC_D29",
+    "B1": "SEMC_D30",
+    "A2": "SEMC_D31",
+    "G7": "SEMC_BA0",
+    "G8": "SEMC_BA1",
+    "F2": "SEMC_CLK",
+    "F3": "SEMC_CKE",
+    "F8": "SEMC_RAS",
+    "F7": "SEMC_CAS",
+    "F9": "SEMC_WE",
+    "E8": "SEMC_DM2",
+    "F1": "SEMC_DM3",
+    "G9": "SEMC_CSX0",
+    "A9": "+1V8",
+    "E7": "+1V8",
+    "J9": "+1V8",
+    "A7": "+1V8",
+    "B3": "+1V8",
+    "C7": "+1V8",
+    "D3": "+1V8",
+    "A1": "GND",
+    "E3": "GND",
+    "J1": "GND",
+    "A3": "GND",
+    "B7": "GND",
+    "C3": "GND",
+    "D7": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C121",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "d4e83785-378b-5146-8304-3f2c9f9eb66b",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C122",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "1e2c5e7e-44cc-5191-8560-28fd075f60f9",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C123",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "e552662a-9a62-5b4f-a57e-eeb8bc64e240",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C124",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "d352d969-827e-5853-8ad4-e402bf537746",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C125",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "4566ab7d-6000-5594-a107-804cbd114837",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C126",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "2f8243c0-23ca-5500-924c-dbfcec07408f",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C127",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": true,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "5dbd315b-0a3c-510e-b7ee-78c82f63f136",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R51",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "4efe9bbe-4012-5564-a4a8-885d47de916b",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "SEMC_CS0",
+    "2": "+1V8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R52",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "384aeb3b-7e32-58c6-8053-2bbee0d30f20",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "second bank deselected when not fitted or not set up"
+   },
+   "pads": {
+    "1": "SEMC_CSX0",
+    "2": "+1V8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
    "ref": "U5",
-   "value": "W25Q128JWSIQ",
-   "footprint": "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm",
+   "value": "W25Q128JWPIQ",
+   "footprint": "Package_SON:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4.3mm",
    "dnp": false,
    "sheet": "memory",
    "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
    "sheetfile": "memory.kicad_sch",
    "sym_uuid": "fbdf5671-2ff2-5760-a7be-8688890ad709",
    "fields": {
-    "LCSC": "C7150045",
-    "MPN": "W25Q128JWSIQ",
+    "LCSC": "C2689660",
+    "MPN": "W25Q128JWPIQ",
     "Manufacturer": "Winbond",
-    "Description": "128 Mbit QSPI NOR, 1.8 V (the JW type), boot device"
+    "Description": "128 Mbit QSPI NOR, 1.8 V, 0.8 mm high. IQ type: quad mode is fixed on. The centre pad is left unconnected"
    },
    "pads": {
     "4": "GND",
@@ -2553,17 +3263,38 @@
    "nc": {}
   },
   {
-   "ref": "C120",
+   "ref": "C160",
    "value": "100n",
    "footprint": "Capacitor_SMD:C_0402_1005Metric",
    "dnp": false,
    "sheet": "memory",
    "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
    "sheetfile": "memory.kicad_sch",
-   "sym_uuid": "22b46539-fc7b-5628-9e75-937cf022840a",
+   "sym_uuid": "7e92ec0b-fbe8-5144-b11f-935b48471b17",
    "fields": {
     "LCSC": "C1525",
     "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+1V8",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C161",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "memory",
+   "sheet_uuid": "6cf9473a-7525-5f6e-8c3e-b708db028554",
+   "sheetfile": "memory.kicad_sch",
+   "sym_uuid": "8471360d-9bef-5b31-9536-4fda30403ebd",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
     "Manufacturer": "Samsung"
    },
    "pads": {
@@ -5329,15 +6060,15 @@
     "Description": "i.MX RT1176, B silicon. Exact part number (grade, 800 MHz or 1 GHz) to be chosen from stock; the ball map is the same for all"
    },
    "pads": {
+    "F6": "+1V8",
+    "F7": "+1V8",
+    "G6": "+1V8",
+    "H6": "+1V8",
+    "J6": "+1V8",
     "M5": "+3V3",
     "N5": "+3V3",
     "L5": "+3V3",
     "R12": "+3V3",
-    "F6": "+3V3",
-    "F7": "+3V3",
-    "G6": "+3V3",
-    "H6": "+3V3",
-    "J6": "+3V3",
     "M12": "+3V3",
     "P7": "+3V3",
     "D12": "+3V3",
@@ -5444,6 +6175,19 @@
     "U6": "JTAG_MOD",
     "L13": "UART_DBG_TX",
     "M15": "UART_DBG_RX",
+    "A3": "SEMC_A0",
+    "A2": "SEMC_A1",
+    "C2": "SEMC_A2",
+    "C5": "SEMC_A3",
+    "D5": "SEMC_A4",
+    "B1": "SEMC_A5",
+    "C1": "SEMC_A6",
+    "D3": "SEMC_A7",
+    "B3": "SEMC_A8",
+    "B4": "SEMC_A9",
+    "B2": "SEMC_A10",
+    "C4": "SEMC_A11",
+    "C3": "SEMC_A12",
     "F3": "SEMC_D0",
     "F2": "SEMC_D1",
     "G4": "SEMC_D2",
@@ -5460,27 +6204,16 @@
     "F1": "SEMC_D13",
     "G1": "SEMC_D14",
     "H1": "SEMC_D15",
-    "A3": "SEMC_A0",
-    "A2": "SEMC_A1",
-    "C2": "SEMC_A2",
-    "C5": "SEMC_A3",
-    "D5": "SEMC_A4",
-    "B1": "SEMC_A5",
-    "C1": "SEMC_A6",
-    "D3": "SEMC_A7",
-    "B3": "SEMC_A8",
-    "B4": "SEMC_A9",
-    "B2": "SEMC_A10",
-    "C4": "SEMC_A11",
-    "C3": "SEMC_A12",
     "G2": "SEMC_BA0",
     "H2": "SEMC_BA1",
     "J3": "SEMC_CLK",
-    "E5": "SEMC_WE",
-    "J5": "SEMC_CAS",
+    "G5": "SEMC_CKE",
     "J4": "SEMC_RAS",
+    "J5": "SEMC_CAS",
+    "E5": "SEMC_WE",
     "F5": "SEMC_DM0",
     "J1": "SEMC_DM1",
+    "E6": "SEMC_CS0",
     "K2": "SEMC_D16",
     "K4": "SEMC_D17",
     "K3": "SEMC_D18",
@@ -5499,8 +6232,7 @@
     "P2": "SEMC_D31",
     "P1": "SEMC_DM2",
     "T2": "SEMC_DM3",
-    "G5": "SEMC_CKE",
-    "E6": "SEMC_CS0",
+    "L1": "SEMC_CSX0",
     "F17": "FSPI_CS",
     "G14": "FSPI_CLK",
     "F15": "FSPI_D0",
@@ -5522,7 +6254,6 @@
    "nc": {
     "J2": "unconnected-(U1-GPIO_EMC_B1_39-PadJ2)",
     "K1": "unconnected-(U1-GPIO_EMC_B1_40-PadK1)",
-    "L1": "unconnected-(U1-GPIO_EMC_B1_41-PadL1)",
     "N3": "unconnected-(U1-GPIO_EMC_B2_18-PadN3)",
     "U2": "unconnected-(U1-GPIO_EMC_B2_19-PadU2)",
     "R3": "unconnected-(U1-GPIO_EMC_B2_20-PadR3)",

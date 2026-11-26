@@ -6,6 +6,7 @@
   (lib (name "Diode")(type "KiCad")(uri "${KICAD9_SYMBOL_DIR}/Diode.kicad_sym")(options "")(descr ""))
   (lib (name "Memory_Flash")(type "KiCad")(uri "${KICAD9_SYMBOL_DIR}/Memory_Flash.kicad_sym")(options "")(descr ""))
   (lib (name "Regulator_Linear")(type "KiCad")(uri "${KICAD9_SYMBOL_DIR}/Regulator_Linear.kicad_sym")(options "")(descr ""))
+  (lib (name "Regulator_Switching")(type "KiCad")(uri "${KICAD9_SYMBOL_DIR}/Regulator_Switching.kicad_sym")(options "")(descr ""))
   (lib (name "Switch")(type "KiCad")(uri "${KICAD9_SYMBOL_DIR}/Switch.kicad_sym")(options "")(descr ""))
   (lib (name "Transistor_FET")(type "KiCad")(uri "${KICAD9_SYMBOL_DIR}/Transistor_FET.kicad_sym")(options "")(descr ""))
   (lib (name "hackerslide")(type "KiCad")(uri "${KIPRJMOD}/../lib/hackerslide.kicad_sym")(options "")(descr ""))

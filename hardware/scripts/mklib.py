@@ -185,6 +185,22 @@ def symbols():
         descr='TI TCA8418 I2C keypad scanner, 8x10 matrix, address 0x34 (mainline Linux: tca8418_keypad)',
         footprint='Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm',
         datasheet='https://www.ti.com/lit/ds/symlink/tca8418.pdf'))
+    # Winbond W989D6DB (data sheet A01-002, ball map p.5): 512 Mbit low-power SDR SDRAM, 54 balls, columns 1-3 and 7-9
+    dq = ['A8', 'B9', 'B8', 'C9', 'C8', 'D9', 'D8', 'E9', 'E1', 'D2', 'D1', 'C2', 'C1', 'B2', 'B1', 'A2']
+    ad = ['H7', 'H8', 'J8', 'J7', 'J3', 'J2', 'H3', 'H2', 'H1', 'G3', 'H9', 'G2', 'G1']
+    out.append(box_symbol('W989D6DB',
+        [(b, f'A{i}', I) for i, b in enumerate(ad)] + [None, ('G7', 'BA0', I), ('G8', 'BA1', I), None, ('F2', 'CLK', I), ('F3', 'CKE', I),
+         ('G9', '~{CS}', I), ('F8', '~{RAS}', I), ('F7', '~{CAS}', I), ('F9', '~{WE}', I), ('E8', 'LDQM', I), ('F1', 'UDQM', I)],
+        [(b, f'DQ{i}', B) for i, b in enumerate(dq)] + [None] + [(b, 'VDD', PI) for b in ('A9', 'E7', 'J9')]
+        + [(b, 'VDDQ', PI) for b in ('A7', 'B3', 'C7', 'D3')] + [(b, 'VSS', PI) for b in ('A1', 'E3', 'J1')]
+        + [(b, 'VSSQ', PI) for b in ('A3', 'B7', 'C3', 'D7')],
+        descr='Winbond W989D6DB 512 Mbit (32M x 16) low-power SDR SDRAM, 1.8 V, VFBGA-54 8 x 9 mm (ball E2 not connected)',
+        footprint='Package_BGA:Alliance_TFBGA-54_8x8mm_Layout9x9_P0.8mm', datasheet='~'))
+    # TPS3840 (TI, DBV): 1 RESET, 2 VDD, 3 GND, 4 MR, 5 CT
+    out.append(box_symbol('TPS3840DL',
+        [('2', 'VDD', PI), ('4', '~{MR}', I), ('5', 'CT', P), ('3', 'GND', PI)], [('1', '~{RESET}', 'open_collector')],
+        descr='TI TPS3840 open-drain voltage supervisor with manual reset and delay capacitor',
+        footprint='Package_TO_SOT_SMD:SOT-23-5', datasheet='https://www.ti.com/lit/ds/symlink/tps3840.pdf'))
     # LM3630A (TI SNVS974B, pin functions table p.3)
     out.append(box_symbol('LM3630A',
         [('C3', 'IN', PI), ('B1', 'HWEN', I), ('C1', 'PWM', I), ('C2', 'SEL', I), None, ('A1', 'SDA', B), ('A2', 'SCL', I),
