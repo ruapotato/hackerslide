@@ -89,6 +89,13 @@ set by the Linux-class processor.
   core. Exact part number to be picked from DigiKey's stock. This also reopens the SDR chip, since the wider
   radio chips are stocked at DigiKey: being re-examined.
 
+- **Memory: as much as the chip supports and the board fits (David, 2026-11-27).** What the data says
+  (`hardware/hackpad/data/sdram.md`): three chip selects are usable for SDRAM on B silicon (CS0, and CSX0 or RDY
+  as the others); each takes two 16-bit chips; with 512 Mbit chips that is 128 MB per select, 384 MB in all.
+  Stocked at JLCPCB: W9825G6KH (256 Mbit, 3.3 V, 7,705) and W989D6DBGX6I (512 Mbit, 1.8 V mobile type, 10,792).
+  Not yet verified: that the controller runs the 1.8 V mobile type, that several selects share the bus cleanly (no
+  NXP board does it), the bus speed with four or six chips, and the standby current of each chip.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
