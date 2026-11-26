@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "filename": "hackpad.kicad_pro",
+    "version": 3
+  },
+  "sheets": [
+    [
+      "cded560f-d6ef-5c44-b173-b5eaf18e9374",
+      "Root"
+    ],
+    [
+      "f641e566-e94c-5fb4-b275-81d0730bba19",
+      "mcu_power"
+    ],
+    [
+      "90f83582-cb97-5f89-a2f0-4bb2830e34ad",
+      "mcu_core"
+    ],
+    [
+      "6cf9473a-7525-5f6e-8c3e-b708db028554",
+      "memory"
+    ]
+  ]
+}

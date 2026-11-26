@@ -59,6 +59,79 @@ def box_symbol(name, left, right, ref='U', descr='', footprint='', datasheet='~'
             f'\t\t(symbol {quote(name + "_1_1")}\n' + '\n'.join(pins) + '\n\t\t)\n\t)\n')
 
 
+def multi_symbol(name, units, ref='U', descr='', footprint='', datasheet='~'):
+    """A symbol in several units.  units: [(left, right)], each a list of (number, name, etype) or None for a gap."""
+    out = [f'\t(symbol {quote(name)} (pin_names (offset 1.016)) (exclude_from_sim no) (in_bom yes) (on_board yes)\n'
+           f'\t\t(property "Reference" {quote(ref)} (at 0 2.54 0) (effects (font (size 1.27 1.27))))\n'
+           f'\t\t(property "Value" {quote(name)} (at 0 0 0) (effects (font (size 1.27 1.27))))\n'
+           f'\t\t(property "Footprint" {quote(footprint)} (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))\n'
+           f'\t\t(property "Datasheet" {quote(datasheet)} (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))\n'
+           f'\t\t(property "Description" {quote(descr)} (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))\n']
+    for u, (left, right) in enumerate(units, 1):
+        n = max(len(left), len(right))
+        h = (n + 1) * 2.54
+        maxname = max([len(q[1]) for q in left + right if q] + [4])
+        w = max(10.16, round((maxname * 1.27 * 2 + 5.08) / 2.54) * 2.54)
+        x0, y0 = -w / 2, h / 2
+        pins = []
+        for side, x, ang in ((left, x0 - 2.54, 0), (right, -x0 + 2.54, 180)):
+            for i, q in enumerate(side):
+                if q:
+                    pins.append(f'\t\t\t(pin {q[2]} line (at {x:.2f} {y0 - 2.54 * (i + 1):.2f} {ang}) (length 2.54) '
+                                f'(name {quote(q[1])} (effects (font (size 1.016 1.016)))) '
+                                f'(number {quote(q[0])} (effects (font (size 1.016 1.016)))))')
+        out.append(f'\t\t(symbol {quote(f"{name}_{u}_1")}\n\t\t\t(rectangle (start {x0:.2f} {y0:.2f}) (end {-x0:.2f} {-y0:.2f}) '
+                   f'(stroke (width 0.254) (type default)) (fill (type background)))\n' + '\n'.join(pins) + '\n\t\t)\n')
+    out.append('\t)\n')
+    return ''.join(out)
+
+
+def rt117x_symbol():
+    """NXP i.MX RT117x, 289-ball BGA, from the cross-checked ball map in hardware/hackpad/data/ballmap.csv
+    (data sheet IMXRT1170BIEC rev 1, table 115/116; one ball table for every RT117x part)."""
+    import csv
+    rows = list(csv.DictReader(open(os.path.join(HERE, '..', 'hackpad', 'data', 'ballmap.csv'))))
+    assert len(rows) == 289 and len({r['ball'] for r in rows}) == 289
+    key = lambda r: (r['name'].rstrip('0123456789'), int('0' + ''.join(c for c in r['name'][-2:] if c.isdigit())), r['ball'])
+    pw = sorted((r for r in rows if r['kind'] == 'power'), key=key)
+    gnd = sorted((r for r in rows if r['kind'] == 'ground'), key=key)
+    ana = sorted((r for r in rows if r['kind'].startswith('analog')), key=key)
+    gp = lambda *pre: sorted((r for r in rows if r['kind'] == 'gpio' and r['name'].startswith(pre)), key=key)
+    used = set()
+
+    def pins(rs, et):
+        used.update(r['ball'] for r in rs)
+        return [(r['ball'], r['name'], et) for r in rs]
+    snvs = [r for r in rows if r['kind'] == 'gpio' and r['io_supply_group'] == 'NVCC_SNVS']
+    units = [(pins(pw, 'power_in'), pins(gnd, 'power_in')),
+             (pins(gp('GPIO_EMC_B1'), 'bidirectional'), []),
+             (pins(gp('GPIO_EMC_B2'), 'bidirectional'), pins(gp('GPIO_SD_B1', 'GPIO_SD_B2'), 'bidirectional')),
+             (pins(gp('GPIO_AD'), 'bidirectional'), []),
+             (pins(gp('GPIO_DISP_B1', 'GPIO_DISP_B2'), 'bidirectional'), pins(gp('GPIO_LPSR'), 'bidirectional')),
+             (pins(sorted(snvs, key=key), 'bidirectional'), pins(ana, 'passive'))]
+    assert len(used) == 289, len(used)
+    return multi_symbol('MIMXRT117x_BGA289', units, descr='NXP i.MX RT1171-RT1176, 289 MAPBGA 14 x 14 mm, 0.8 mm pitch',
+                        footprint='Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm')
+
+
+def w9825_symbol():
+    """Winbond W9825G6KH, 256 Mbit SDRAM, TSOP-II 54.  Pin numbers as KiCad's W9812G6KH (same JEDEC pin-out) with A12 on
+    pin 36, cross-checked against the NXP MIMXRT1170-EVKB wiring in hardware/hackpad/data/sdram.csv."""
+    P, I, B = 'power_in', 'input', 'bidirectional'
+    names = {1: 'VDD', 14: 'VDD', 27: 'VDD', 3: 'VDDQ', 9: 'VDDQ', 43: 'VDDQ', 49: 'VDDQ', 28: 'VSS', 41: 'VSS', 54: 'VSS',
+             6: 'VSSQ', 12: 'VSSQ', 46: 'VSSQ', 52: 'VSSQ', 15: 'LDQM', 39: 'UDQM', 16: '~{WE}', 17: '~{CAS}', 18: '~{RAS}',
+             19: '~{CS}', 20: 'BS0', 21: 'BS1', 22: 'A10/AP', 23: 'A0', 24: 'A1', 25: 'A2', 26: 'A3', 29: 'A4', 30: 'A5',
+             31: 'A6', 32: 'A7', 33: 'A8', 34: 'A9', 35: 'A11', 36: 'A12', 37: 'CKE', 38: 'CLK', 40: 'NC'}
+    for i, n in enumerate((2, 4, 5, 7, 8, 10, 11, 13, 42, 44, 45, 47, 48, 50, 51, 53)):
+        names[n] = f'DQ{i}'
+    assert sorted(names) == list(range(1, 55))
+    t = lambda n: P if names[n].startswith('V') else ('no_connect' if names[n] == 'NC' else (B if names[n].startswith('DQ') and names[n][2:].isdigit() else I))
+    left = [(str(n), names[n], t(n)) for n in sorted(names) if not names[n].startswith(('DQ', 'V', 'NC')) or names[n] in ('LDQM', 'UDQM')]
+    right = [(str(n), names[n], t(n)) for n in sorted(names, key=lambda n: (names[n].startswith('V'), n)) if n not in {int(q[0]) for q in left}]
+    return box_symbol('W9825G6KH', left, right, descr='256 Mbit SDRAM, 16-bit, 3.3 V',
+                      footprint='Package_SO:TSOP-II-54_22.2x10.16mm_P0.8mm')
+
+
 def cm4_type(n, name):
     if name == 'GND':
         return 'power_in'
@@ -85,6 +158,7 @@ def cm4_symbol(sym, first):
 
 def symbols():
     out = [cm4_symbol('CM4_Conn_A_1-100', 1), cm4_symbol('CM4_Conn_B_101-200', 101)]
+    out += [rt117x_symbol(), w9825_symbol()]
     P, B, I, O, PI, PO, NC = 'passive', 'bidirectional', 'input', 'output', 'power_in', 'power_out', 'no_connect'
     # ES8316 (Everest datasheet rev 6.0, pin table section 2)
     out.append(box_symbol('ES8316', [
