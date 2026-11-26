@@ -2574,6 +2574,2330 @@
    "nc": {}
   },
   {
+   "ref": "SW11",
+   "value": "Q",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d96816fa-af68-530a-95fc-7827a81d2706",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Q\" row 0 column 0"
+   },
+   "pads": {
+    "1": "KCOL0",
+    "2": "K0_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D11",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "adb58371-3f71-564d-81f8-1855be552b47",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW12",
+   "value": "W",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "46d4fb8b-ab2e-5eb1-9169-3af6276d3468",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"W\" row 0 column 1"
+   },
+   "pads": {
+    "1": "KCOL1",
+    "2": "K0_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D12",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "1c347865-bd21-5150-9bed-9bda048af21e",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW13",
+   "value": "E",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "08ed8c42-3538-55ba-9ed0-9b58377bac89",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"E\" row 0 column 2"
+   },
+   "pads": {
+    "1": "KCOL2",
+    "2": "K0_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D13",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "80ee5064-8703-5dc2-bc37-4c5b44a9fed7",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW14",
+   "value": "R",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "dac0b469-a5e9-56ba-a453-5416e1848667",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"R\" row 0 column 3"
+   },
+   "pads": {
+    "1": "KCOL3",
+    "2": "K0_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D14",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "5d1a9ba5-a303-548f-9d46-d843a58c2957",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW15",
+   "value": "T",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "2c05d9c7-04c8-5893-ac0d-74d5943889ce",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"T\" row 0 column 4"
+   },
+   "pads": {
+    "1": "KCOL4",
+    "2": "K0_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D15",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "98651145-30d6-5bbe-816d-55e344f7bf14",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW16",
+   "value": "Y",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d21a37bc-738a-565c-ae68-6292d78a999a",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Y\" row 0 column 5"
+   },
+   "pads": {
+    "1": "KCOL5",
+    "2": "K0_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D16",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "5e637d78-fd9c-5913-aa5d-41d4f3db71b0",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW17",
+   "value": "U",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "c1528475-9331-5ef2-b23a-22b567a7399e",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"U\" row 0 column 6"
+   },
+   "pads": {
+    "1": "KCOL6",
+    "2": "K0_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D17",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "8eee6bb2-f235-5c25-b67a-aaf950a68b3e",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW18",
+   "value": "I",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "b62aeb22-edef-5bfe-9684-018453125f44",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"I\" row 0 column 7"
+   },
+   "pads": {
+    "1": "KCOL7",
+    "2": "K0_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D18",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "45acfcdb-c2ae-5f29-959f-228dc064252d",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW19",
+   "value": "O",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "0ac8646e-5450-54f8-bff3-c97d5d4e2f77",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"O\" row 0 column 8"
+   },
+   "pads": {
+    "1": "KCOL8",
+    "2": "K0_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D19",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "61e7d702-09aa-5361-87ce-7a9e016bdaa7",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW20",
+   "value": "P",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "7f785582-8848-5a0d-84fc-a0b5acc80d09",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"P\" row 0 column 9"
+   },
+   "pads": {
+    "1": "KCOL9",
+    "2": "K0_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D20",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "e99d5400-75b0-5fb8-a250-393d86f92ee6",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW0",
+    "1": "K0_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW21",
+   "value": "Bksp",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "3bf3f156-08da-5618-bd1c-d166293f608a",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Bksp\" row 3 column 8"
+   },
+   "pads": {
+    "1": "KCOL8",
+    "2": "K3_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D21",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "e9f4c3a1-7e16-5d5d-8c4c-f848e612668f",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW22",
+   "value": "A",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "5874e97e-e9c3-5318-b166-541790176099",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"A\" row 1 column 0"
+   },
+   "pads": {
+    "1": "KCOL0",
+    "2": "K1_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D22",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "e5b25e9b-74e0-5788-81df-006f3451d25c",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW23",
+   "value": "S",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "716445a1-8637-5127-9aea-5a3b0c3cfcfc",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"S\" row 1 column 1"
+   },
+   "pads": {
+    "1": "KCOL1",
+    "2": "K1_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D23",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "78ac272a-b333-5223-b9bf-00167bc6870d",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW24",
+   "value": "D",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "fde57a2b-fede-554d-802e-6e611216a8e4",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"D\" row 1 column 2"
+   },
+   "pads": {
+    "1": "KCOL2",
+    "2": "K1_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D24",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "ef351d28-3273-53de-9886-44cd14d3628c",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW25",
+   "value": "F",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "ed158f1c-590f-5fb2-a533-290058670892",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"F\" row 1 column 3"
+   },
+   "pads": {
+    "1": "KCOL3",
+    "2": "K1_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D25",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "bf60bf4e-283a-5f7b-818c-055a0e8aa8bd",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW26",
+   "value": "G",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "43ad83ab-df41-5218-b90c-e3fda792a19d",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"G\" row 1 column 4"
+   },
+   "pads": {
+    "1": "KCOL4",
+    "2": "K1_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D26",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "487bdf18-757b-5983-8f09-395642ec6d86",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW27",
+   "value": "H",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "926e6ce0-2cab-5a86-92fe-ce9b7c81b673",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"H\" row 1 column 5"
+   },
+   "pads": {
+    "1": "KCOL5",
+    "2": "K1_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D27",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "5afc80e5-5d8b-5ca2-b6ed-e9e8d2a1f5ca",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW28",
+   "value": "J",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "ad421bf1-9e9b-5be9-b016-a143c07b67fa",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"J\" row 1 column 6"
+   },
+   "pads": {
+    "1": "KCOL6",
+    "2": "K1_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D28",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d8f607d8-77ca-5b6e-9278-c7ce276d28e1",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW29",
+   "value": "K",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d100b9fb-dd7b-5395-97af-7ebcd125eaf0",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"K\" row 1 column 7"
+   },
+   "pads": {
+    "1": "KCOL7",
+    "2": "K1_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D29",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "16882c0c-d0c4-51a2-857b-60b2b51b8616",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW30",
+   "value": "L",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "9d66f562-cad1-54e5-bb4c-99793a1ca5b8",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"L\" row 1 column 8"
+   },
+   "pads": {
+    "1": "KCOL8",
+    "2": "K1_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D30",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "4e8ebe98-1520-5b23-8470-7898ba5934e0",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW31",
+   "value": ",",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "9133f43d-f223-509b-b0ad-6ba52707a24e",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \",\" row 1 column 9"
+   },
+   "pads": {
+    "1": "KCOL9",
+    "2": "K1_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D31",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "038276ff-9ab3-5a78-a79a-d103c8796740",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW1",
+    "1": "K1_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW32",
+   "value": "Enter",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "57a4d9f3-7a77-5932-9f4e-e3c54865f0d7",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Enter\" row 3 column 9"
+   },
+   "pads": {
+    "1": "KCOL9",
+    "2": "K3_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D32",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "ad7e0694-0939-504d-8706-ff456a8c61e3",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW33",
+   "value": "Z",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "024dd1f8-0c05-58ff-9d3c-e5c57dd4656f",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Z\" row 2 column 0"
+   },
+   "pads": {
+    "1": "KCOL0",
+    "2": "K2_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D33",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "2983af0d-0c99-5d01-abbe-72c0ee71f321",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW34",
+   "value": "X",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "9f704f7b-72b9-58fd-904c-d7fba1f5a51d",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"X\" row 2 column 1"
+   },
+   "pads": {
+    "1": "KCOL1",
+    "2": "K2_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D34",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "28dd6665-76f0-509a-9ccf-a4fe659fb064",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW35",
+   "value": "C",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "96d748d4-ee74-5acf-9dfe-5879c4a9bd08",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"C\" row 2 column 2"
+   },
+   "pads": {
+    "1": "KCOL2",
+    "2": "K2_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D35",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "955eaa96-74cf-573f-92a3-a3e4e34527dd",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW36",
+   "value": "V",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "c42ae47c-c2a6-5de6-8072-47e6a532cc5c",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"V\" row 2 column 3"
+   },
+   "pads": {
+    "1": "KCOL3",
+    "2": "K2_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D36",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d98c9963-96e3-5b2c-ab28-4b972f4a4ff4",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW37",
+   "value": "B",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d43c2cab-29f1-51e5-9d0f-c56fd5060a19",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"B\" row 2 column 4"
+   },
+   "pads": {
+    "1": "KCOL4",
+    "2": "K2_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D37",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "5b073e45-ab54-505f-bcd7-04bcf9fca1e1",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW38",
+   "value": "N",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "7f6a65e1-0c2f-5e2a-a707-8a856a7e4976",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"N\" row 2 column 5"
+   },
+   "pads": {
+    "1": "KCOL5",
+    "2": "K2_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D38",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "269ec68e-613e-5ff9-912c-6d399dae5a3a",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW39",
+   "value": "M",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "3ab583c6-0d28-5432-8734-83b80f1356e4",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"M\" row 2 column 6"
+   },
+   "pads": {
+    "1": "KCOL6",
+    "2": "K2_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D39",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "db0e648f-9263-5430-a3b9-af50f9c92cfc",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW40",
+   "value": ";",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "b6f0e1e7-46df-504a-999e-7adc35d107e7",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \";\" row 2 column 7"
+   },
+   "pads": {
+    "1": "KCOL7",
+    "2": "K2_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D40",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "9c371c97-c01c-56e7-8408-ded965b248c1",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW41",
+   "value": "-",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "cf95ecb0-9c89-51a3-8647-aa78847538f7",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"-\" row 2 column 8"
+   },
+   "pads": {
+    "1": "KCOL8",
+    "2": "K2_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D41",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "dd845a85-b707-5cab-929f-08d097fb97a4",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_8"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW42",
+   "value": "+",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "a499daea-286d-5907-ae0b-2e8f35d77607",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"+\" row 2 column 9"
+   },
+   "pads": {
+    "1": "KCOL9",
+    "2": "K2_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D42",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "04f5896b-b00a-5486-9010-763a276cc858",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW2",
+    "1": "K2_9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW43",
+   "value": "Fn",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "02c56fee-fc09-5b87-bf85-4bd28ff50def",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Fn\" row 3 column 0"
+   },
+   "pads": {
+    "1": "KCOL0",
+    "2": "K3_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D43",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "0bddb7ff-f669-5573-92d9-6b6b41bfd1ec",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW44",
+   "value": "ShiftL",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "e3b920c0-c184-5091-ad28-5d6135d6039c",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"ShiftL\" row 3 column 1"
+   },
+   "pads": {
+    "1": "KCOL1",
+    "2": "K3_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D44",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "ea96edf1-ac78-5467-aa15-956bb50e893a",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW45",
+   "value": "Chr",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "1b9cfc27-8e95-583c-8d0e-c52f199e496c",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Chr\" row 3 column 2"
+   },
+   "pads": {
+    "1": "KCOL2",
+    "2": "K3_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D45",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "419379f9-96b4-5f51-ac77-02462828a546",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW46",
+   "value": "Space",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "aa7af829-f3a5-51d6-a733-51bdfbccebd8",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Space\" row 3 column 3"
+   },
+   "pads": {
+    "1": "KCOL3",
+    "2": "K3_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW47",
+   "value": "Space",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "7ff31564-7df5-54ba-b71e-1114289a0e9e",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Space\" row 3 column 3"
+   },
+   "pads": {
+    "1": "KCOL3",
+    "2": "K3_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D47",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "703526d1-fafb-52e7-b3e9-e7c30ab915e2",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW48",
+   "value": ",<",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "c42bd04a-90da-5c9c-a6e4-c156f2d19dd9",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \",<\" row 3 column 4"
+   },
+   "pads": {
+    "1": "KCOL4",
+    "2": "K3_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D48",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "03dd9503-9d2b-5c2b-a265-182fc94f6f80",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW49",
+   "value": ".>",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "7c809c98-608b-537f-ae6a-7ba28aea0c1b",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \".>\" row 3 column 5"
+   },
+   "pads": {
+    "1": "KCOL5",
+    "2": "K3_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D49",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "90ff2c9a-38ba-5a9b-8f14-1f92b9f11611",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW50",
+   "value": "Ctrl",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "210497d8-e190-5885-aa2d-fd754e9b98d0",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Ctrl\" row 3 column 6"
+   },
+   "pads": {
+    "1": "KCOL6",
+    "2": "K3_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D50",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d4931a0a-c3e4-51c5-8605-4520a4a8a711",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW51",
+   "value": "ShiftR",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "4cdbca9c-adae-5c3f-8626-8e326b7b310d",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"ShiftR\" row 3 column 7"
+   },
+   "pads": {
+    "1": "KCOL7",
+    "2": "K3_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D51",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "55fd5e7f-a2f2-5235-8107-5af16b4c5117",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW3",
+    "1": "K3_7"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW52",
+   "value": "Esc",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "f2328dc4-9216-502d-9229-b5f737fd6687",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Esc\" row 4 column 0"
+   },
+   "pads": {
+    "1": "KCOL0",
+    "2": "K4_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D52",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "079e5d9d-9fb6-556a-babc-42758ebbfe8c",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW4",
+    "1": "K4_0"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW53",
+   "value": "Tab",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "644ff7f3-f6be-5c36-b44a-61d62a2dc27c",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Tab\" row 4 column 1"
+   },
+   "pads": {
+    "1": "KCOL1",
+    "2": "K4_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D53",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "ec774bcb-dc45-5c71-bae4-1e8d76fb7893",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW4",
+    "1": "K4_1"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW54",
+   "value": "Up",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "bb4600e5-dca1-5fe6-97fc-b3f7cd717059",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Up\" row 4 column 2"
+   },
+   "pads": {
+    "1": "KCOL2",
+    "2": "K4_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D54",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "16fd68dd-326a-5cc3-94fe-92eb4178c9ad",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW4",
+    "1": "K4_2"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW55",
+   "value": "Down",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "29e8d631-7a22-5d27-b7c2-3b6afce80a79",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Down\" row 4 column 3"
+   },
+   "pads": {
+    "1": "KCOL3",
+    "2": "K4_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D55",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "5b9506db-bdb3-55cb-b54a-337e33b36775",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW4",
+    "1": "K4_3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW56",
+   "value": "Left",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "14529904-e699-5d28-9459-753463d409f9",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Left\" row 4 column 4"
+   },
+   "pads": {
+    "1": "KCOL4",
+    "2": "K4_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D56",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "7cfee619-ac55-5e24-b8bb-0734636aa919",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW4",
+    "1": "K4_4"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW57",
+   "value": "Right",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "29deb9fa-58e4-5c98-a7ae-7f65b1df4e72",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"Right\" row 4 column 5"
+   },
+   "pads": {
+    "1": "KCOL5",
+    "2": "K4_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D57",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "71c5a270-5c04-5f1c-be7c-dca3af714a72",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW4",
+    "1": "K4_5"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "SW58",
+   "value": "OK",
+   "footprint": "hackerslide:SW_Alps_SKSWCFE010_3x2mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "36df02f1-a95b-5dec-8ab6-82985da2c58c",
+   "fields": {
+    "LCSC": "C255576",
+    "MPN": "SKSWCFE010",
+    "Manufacturer": "Alps Alpine",
+    "Description": "key \"OK\" row 4 column 6"
+   },
+   "pads": {
+    "1": "KCOL6",
+    "2": "K4_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "D58",
+   "value": "1N4148W4",
+   "footprint": "Diode_SMD:D_SOD-882",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "d396bcd6-bbb5-54d3-97bb-381e4796db08",
+   "fields": {
+    "LCSC": "C42432416",
+    "MPN": "1N4148W4",
+    "Manufacturer": "BORN",
+    "Description": "DFN1006-2, 0.55 mm high: fits under the keycap flange"
+   },
+   "pads": {
+    "2": "KROW4",
+    "1": "K4_6"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R60",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "25b5b779-663a-586a-99a9-d2b8fb6546dd",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "KROW5",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R61",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "6702c5fb-61d7-5d19-98af-2a75b76e4cbe",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "KROW6",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R62",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "b09cd8b8-dcea-5cc5-adaa-00a10f311fba",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "KROW7",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U6",
+   "value": "TCA8418RTWR",
+   "footprint": "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "ffdfe07a-076d-5aa4-aaf6-768dd26f1d00",
+   "fields": {
+    "LCSC": "C138713",
+    "MPN": "TCA8418RTWR",
+    "Manufacturer": "Texas Instruments"
+   },
+   "pads": {
+    "22": "I2C_U_SDA",
+    "23": "I2C_U_SCL",
+    "24": "KB_INT_N",
+    "20": "KB_RST_N",
+    "21": "+3V3",
+    "19": "GND",
+    "25": "GND",
+    "8": "KROW0",
+    "7": "KROW1",
+    "6": "KROW2",
+    "5": "KROW3",
+    "4": "KROW4",
+    "3": "KROW5",
+    "2": "KROW6",
+    "1": "KROW7",
+    "9": "KCOL0",
+    "10": "KCOL1",
+    "11": "KCOL2",
+    "12": "KCOL3",
+    "13": "KCOL4",
+    "14": "KCOL5",
+    "15": "KCOL6",
+    "16": "KCOL7",
+    "17": "KCOL8",
+    "18": "KCOL9"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R70",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "26201af4-a5c1-55c5-b088-fc865db33285",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL",
+    "Description": "open drain to a 1.8 V wake pad"
+   },
+   "pads": {
+    "1": "KB_INT_N",
+    "2": "VDD_SNVS_ANA"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R71",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "60a9ba61-a134-52f4-840e-c0ce58a7ae5f",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "KB_RST_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R72",
+   "value": "2.2k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "476adc95-a63b-5cca-b8c7-6219c01727d3",
+   "fields": {
+    "LCSC": "C25879",
+    "MPN": "0402WGF2201TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "I2C_U_SCL",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R73",
+   "value": "2.2k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "0eb157ea-015d-5897-a1c5-5df83fbe3e28",
+   "fields": {
+    "LCSC": "C25879",
+    "MPN": "0402WGF2201TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "I2C_U_SDA",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C130",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "3e22c395-f4e7-5802-8ea0-6bb8939b9d3f",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C131",
+   "value": "1u",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "keyboard",
+   "sheet_uuid": "64cecc36-6900-5645-8579-df9788d0df22",
+   "sheetfile": "keyboard.kicad_sch",
+   "sym_uuid": "339ea89e-3ef4-5bf0-b45c-46ae751c53dd",
+   "fields": {
+    "LCSC": "C52923",
+    "MPN": "CL05A105KA5NQNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
    "ref": "U1",
    "value": "MIMXRT1176",
    "footprint": "Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm",
@@ -2766,7 +5090,10 @@
     "F15": "FSPI_D0",
     "H15": "FSPI_D1",
     "H14": "FSPI_D2",
-    "F16": "FSPI_D3"
+    "F16": "FSPI_D3",
+    "D11": "I2C_U_SCL",
+    "E11": "I2C_U_SDA",
+    "P10": "KB_INT_N"
    },
    "in_bom": true,
    "nc": {
@@ -2824,8 +5151,6 @@
     "G17": "unconnected-(U1-GPIO_AD_35-PadG17)",
     "E13": "unconnected-(U1-GPIO_DISP_B1_00-PadE13)",
     "D13": "unconnected-(U1-GPIO_DISP_B1_01-PadD13)",
-    "D11": "unconnected-(U1-GPIO_DISP_B1_02-PadD11)",
-    "E11": "unconnected-(U1-GPIO_DISP_B1_03-PadE11)",
     "E10": "unconnected-(U1-GPIO_DISP_B1_04-PadE10)",
     "C11": "unconnected-(U1-GPIO_DISP_B1_05-PadC11)",
     "C6": "unconnected-(U1-GPIO_DISP_B2_06-PadC6)",
@@ -2850,7 +5175,6 @@
     "T5": "unconnected-(U1-GPIO_LPSR_11-PadT5)",
     "U5": "unconnected-(U1-GPIO_LPSR_12-PadU5)",
     "R10": "unconnected-(U1-GPIO_SNVS_00-PadR10)",
-    "P10": "unconnected-(U1-GPIO_SNVS_01-PadP10)",
     "L9": "unconnected-(U1-GPIO_SNVS_02-PadL9)",
     "M10": "unconnected-(U1-GPIO_SNVS_03-PadM10)",
     "N10": "unconnected-(U1-GPIO_SNVS_04-PadN10)",

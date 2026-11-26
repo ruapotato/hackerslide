@@ -16,6 +16,8 @@ import os
 import re
 import sys
 
+import hackpad_pins as PINS
+import hp_layout as HP
 from kigen import Design
 from parts import C, CAP, R, RES, TP, fields
 
@@ -39,6 +41,12 @@ def pad(name, net):
     for b in BY_NAME[name]:
         assert b not in U, (name, b, U[b], net)
         U[b] = net
+
+
+def use(net):
+    """Claim the pad that hackpad_pins.py plans for `net`."""
+    (padname,) = [p for p, fn, n, u in PINS.P if n == net]
+    pad(padname, net)
 
 
 def bead(sheet, ref, a, b):
@@ -216,6 +224,47 @@ def build():
           fields=fields('C7150045', 'W25Q128JWSIQ', 'Winbond', Description='128 Mbit QSPI NOR, 1.8 V (the JW type), boot device'))
     R(m, 'R50', '10k', 'FSPI_CS', '+1V8', note='EVKB R165')
     C(m, 'C120', '100n', '+1V8')
+
+    # ------------------------------------------------------------------------------------------ keyboard
+    kb = d.sheet('keyboard', 'Keyboard: 47 keys on a TCA8418 scanner', paper='A2', notes=[
+        'Layout and matrix positions come from hp_layout.py (N810-style rows, Esc, Tab, four arrows and OK).',
+        'Each key: switch in series with a diode, anode toward the row; the scanner drives columns low and reads rows.',
+        '    Both Space switches share one matrix position and one diode.',
+        'Scanner at 3.3 V on the I2C_U bus, address 0x34. Its interrupt is open drain and goes to a 1.8 V wake pad of the',
+        '    brain, pulled up to the SNVS supply. Reset comes from a port expander (later sheet); pulled up here.',
+        'Unused scanner rows and columns are tied to +3V3 through 100k as the TI data sheet asks.'])
+    mat = HP.matrix()
+    nrow = max(r for r, c in mat.values()) + 1
+    ncol = max(c for r, c in mat.values()) + 1
+    assert nrow <= 8 and ncol <= 10
+    n = 0
+    for key in HP.keys():
+        r, c = mat[key['name']]
+        node = f'K{r}_{c}'
+        for j, _xy in enumerate(key['switches']):
+            n += 1
+            kb.add(f'SW{10 + n}', 'hackerslide', 'KeySwitch', key['name'], 'hackerslide:SW_Alps_SKSWCFE010_3x2mm',
+                   {'1': f'KCOL{c}', '2': node},
+                   fields=fields('C255576', 'SKSWCFE010', 'Alps Alpine', Description=f'key "{key["name"]}" row {r} column {c}'))
+        kb.add(f'D{10 + n}', 'Diode', '1N4148WS', '1N4148W4', 'Diode_SMD:D_SOD-882', {'2': f'KROW{r}', '1': node},
+               fields=fields('C42432416', '1N4148W4', 'BORN', Description='DFN1006-2, 0.55 mm high: fits under the keycap flange'))
+    use('I2C_U_SCL'); use('I2C_U_SDA'); use('KB_INT_N')
+    nets = {'22': 'I2C_U_SDA', '23': 'I2C_U_SCL', '24': 'KB_INT_N', '20': 'KB_RST_N', '21': '+3V3', '19': 'GND', '25': 'GND'}
+    rr = 60
+    for r in range(8):
+        nets[str(8 - r)] = f'KROW{r}'
+        if r >= nrow:
+            R(kb, f'R{rr}', '100k', f'KROW{r}', '+3V3'); rr += 1
+    for c in range(10):
+        nets[str(9 + c)] = f'KCOL{c}'
+        if c >= ncol:
+            R(kb, f'R{rr}', '100k', f'KCOL{c}', '+3V3'); rr += 1
+    kb.add('U6', 'hackerslide', 'TCA8418RTW', 'TCA8418RTWR', 'Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm', nets,
+           fields=fields('C138713', 'TCA8418RTWR', 'Texas Instruments'))
+    R(kb, 'R70', '10k', 'KB_INT_N', 'VDD_SNVS_ANA', note='open drain to a 1.8 V wake pad')
+    R(kb, 'R71', '10k', 'KB_RST_N', '+3V3')
+    R(kb, 'R72', '2.2k', 'I2C_U_SCL', '+3V3'); R(kb, 'R73', '2.2k', 'I2C_U_SDA', '+3V3')
+    C(kb, 'C130', '100n', '+3V3'); C(kb, 'C131', '1u', '+3V3')
 
     # the brain itself goes on the first sheet, with every ball claimed above
     p.add('U1', 'hackerslide', 'MIMXRT117x_BGA289', 'MIMXRT1176', 'Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm', dict(U),
