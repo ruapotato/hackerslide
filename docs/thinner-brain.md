@@ -1,8 +1,9 @@
 # A thinner, cooler brain: what exists (researched 2026-11-26)
 
 David asked whether something thinner and lower-power than the CM4-format module could bring the device closer to
-an N810 (14 mm), accepting speed only somewhat above the original's 400 MHz and 128 MB. **Nothing here is decided
-and rev 0.1 is unchanged.** Heights are from datasheets or drawings unless marked; several prices came from search
+an N810 (14 mm), accepting speed only somewhat above the original's 400 MHz and 128 MB. **Decision (David,
+2026-11-27): keep the current CM4-format module.** Every alternative found was quote-only, out of stock or without
+confirmed stock, and he will not design around a part he cannot simply order. Heights are from datasheets or drawings unless marked; several prices came from search
 snippets because distributor pages blocked reading, and are marked.
 
 ## What a thinner brain is worth in this enclosure
