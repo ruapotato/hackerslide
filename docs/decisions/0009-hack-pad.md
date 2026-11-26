@@ -64,8 +64,11 @@ set by the Linux-class processor.
   shell and tools; C for the chip makers' drivers and third-party stacks linked in. This needs Adder to call C
   functions directly, which is being added to the compiler fork.
 - **MicroPython dropped (David, 2026-11-27):** Adder is already Python-like, so MicroPython adds little. Open
-  question this leaves: Adder is compiled on a PC, so how programs get written or changed on the device itself
-  is not yet decided.
+  question this left: Adder is compiled on a PC, so how are programs written or changed on the device itself?
+- **On-device building is a requirement (David, 2026-11-27).** Adder is self-hosted and has its own native
+  backend for x86_64; LLVM will not run on the device. So the plan is a native backend for this chip in the Adder
+  compiler, so that the compiler itself runs under HackOS. An assessment (structure, size, memory, effort) is
+  being written with milestone 2. This is also a reason to fit 128 MB.
 
 ## What carries over from the Linux design
 
