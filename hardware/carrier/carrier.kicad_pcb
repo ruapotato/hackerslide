@@ -1587,7 +1587,7 @@
 			(uuid "fe8ee47e-dcc1-4a07-b41f-a24bd78516ae")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Mounting_Wuerth.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2100,7 +2100,7 @@
 			(uuid "403b8cfe-72b0-4a57-95e6-1b05427999e9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Mounting_Wuerth.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4140,7 +4140,7 @@
 			(uuid "c5179207-6307-41b4-b664-7016a6b6282a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_SPST_EVQP7C.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_SPST_EVQP7C.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7277,7 +7277,7 @@
 			(uuid "66280573-ee18-4bdd-9d9b-813d9258eaef")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Mounting_Wuerth.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11005,7 +11005,7 @@
 			(uuid "31280776-3e39-42dd-97be-c2f522bfff6b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_SPOX_5268-03A_1x03_P2.50mm_Horizontal.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Molex_SPOX_5268-03A_1x03_P2.50mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12636,7 +12636,7 @@
 			(uuid "f23a5ed8-0c53-441d-9627-064ce3543f05")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13182,7 +13182,7 @@
 			(uuid "e2f13211-e189-4de1-9319-f4da5344d37e")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13990,7 +13990,7 @@
 			(uuid "f40643e7-f21f-49dc-a691-f5dcb116e997")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_SPST_EVQP7C.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_SPST_EVQP7C.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14334,7 +14334,7 @@
 			(uuid "e928aef1-fc23-4fa5-8f6d-320c7f98d3b6")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_SPST_EVQP7C.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_SPST_EVQP7C.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -16957,6 +16957,17 @@
 			(uuid "22513e5a-46e2-45a3-93e4-fed7f626ce88")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:Hirose_DF40C-100DS-0.4V_2x50_P0.4mm"
 		(layer "F.Cu")
@@ -17841,6 +17852,17 @@
 			(uuid "befe7c2b-8d89-499b-b980-394bdbddaaf8")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Hirose_DF40C-100DS-0.4V_2x50_P0.4mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Connector_Card:microSD_HC_Molex_104031-0811"
 		(layer "F.Cu")
@@ -18342,7 +18364,7 @@
 			(uuid "1bb25ba5-84ef-4a45-b465-3c5b65daa3d9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_Card.3dshapes/microSD_HC_Molex_104031-0811.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/microSD_HC_Molex_104031-0811.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -19359,7 +19381,7 @@
 			(uuid "8ba10b69-6859-4e0c-90bc-f13baa416871")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Mounting_Wuerth.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -21507,7 +21529,7 @@
 			(uuid "b16ce3f2-90f9-4753-8ac3-f002f5e8a8ad")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_SPST_EVQP7C.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_SPST_EVQP7C.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -21851,7 +21873,7 @@
 			(uuid "b2ed21c2-9675-42dd-b29f-5d0306bbf027")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_SPST_EVQP7C.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_SPST_EVQP7C.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -30492,6 +30514,17 @@
 			(uuid "d88b6bc7-82d2-461c-a6dc-b5b5b083a190")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Hirose_DF40C-100DS-0.4V_2x50_P0.4mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -31127,7 +31160,7 @@
 			(uuid "b7359571-572b-45ee-b078-57117f44744a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_USB.3dshapes/USB_C_Receptacle_HRO_TYPE-C-31-M-12.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/USB_C_Receptacle_HRO_TYPE-C-31-M-12.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -31719,6 +31752,17 @@
 			(uuid "df444f7d-205d-4f7b-a190-18be01733ecc")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Jack_3.5mm_SHOUHAN_PJ-342.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "F.Cu")
@@ -32955,7 +32999,7 @@
 			(uuid "14cd0371-7600-4840-8e64-ffc79ce5de0a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -37215,6 +37259,17 @@
 			(uuid "7d2f75ab-39af-41ef-8333-e2f91e7b07ed")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Hirose_FH34SRJ-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
@@ -38458,6 +38513,17 @@
 			(uuid "61700152-5fc6-48ff-89fb-038512a38f5a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")

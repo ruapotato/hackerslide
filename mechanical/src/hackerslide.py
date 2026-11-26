@@ -121,7 +121,7 @@ def keyboard_stack(dy=0.0):
 def front_shell():
     z0 = C.Z_BODY_BOTTOM + C.BACK_TUB_H
     z1 = C.Z_BODY_TOP
-    s = rbox(0, 0, z0, C.BODY_W, C.BODY_H, z1, C.CORNER_R)
+    s = rbox(0, 0, z0, C.BODY_W, C.BODY_H, z1, C.CORNER_R).faces('>Z').edges().fillet(C.EDGE_R)
     s = s.cut(rbox(C.WALL, C.WALL, z0 - 0.01, C.BODY_W - C.WALL, C.BODY_H - C.WALL, z1 - C.BEZEL_LIP, C.CORNER_R - C.WALL))
     px, py = C.PANEL_XY
     s = s.cut(box(px - 0.2, py - 0.2, C.Z_PANEL_BOTTOM - 0.5, px + C.PANEL['w'] + 0.2, py + C.PANEL['h'] + 0.2, C.Z_PANEL_TOP))
@@ -132,6 +132,10 @@ def front_shell():
     for (x, y) in C.SCREW_XY:
         boss = cyl(x, y, C.Z_CARRIER_B, z1 - C.BEZEL_LIP, C.BOSS_D)
         s = s.union(boss).cut(cyl(x, y, C.Z_CARRIER_B - 0.01, C.Z_CARRIER_B + C.SCREWS['insert_l'] + 0.5, C.SCREWS['insert_d']))
+    # ledges inside the left wall: the back shell's hooks sit on them (config.HOOKS)
+    hk = C.HOOKS
+    for y in hk['ys']:
+        s = s.union(box(C.WALL - 0.01, y - hk['length'] / 2 - 0.5, z0, C.WALL + hk['reach'], y + hk['length'] / 2 + 0.5, z0 + hk['ledge_h']))
     # side openings on the device right edge (audit E1: the connector mouths are 0.3-0.6 mm behind the outer face,
     # so an opening only needs to pass the metal plug, with 0.3 mm play)
     zc = C.Z_CARRIER_F
@@ -160,7 +164,7 @@ def back_shell():
     z1 = z0 + C.BACK_TUB_H
     xi = C.RAIL_INSET
     s = rbox(xi, 0, z0, C.BODY_W - xi, C.BODY_H, z1, C.CORNER_R - xi)
-    s = s.cut(rbox(xi + C.WALL, C.WALL, C.Z_BACK_IN, C.BODY_W - xi - C.WALL, C.BODY_H - C.WALL, z1 + 0.01,
+    s = s.cut(rbox(xi + C.TUB_SIDE, C.WALL, C.Z_BACK_IN, C.BODY_W - xi - C.TUB_SIDE, C.BODY_H - C.WALL, z1 + 0.01,
                    0.8))        # nearly square inside corners: the 50 x 68 mm battery pack fills the bay end to end
     # screw bosses: from the floor up to the carrier's component side (clamp), screw from outside
     for (x, y) in C.SCREW_XY:
@@ -178,6 +182,20 @@ def back_shell():
     s = s.cut(box(C.KBD_FPC_X - f['w'] / 2, f['y'] - f['l'] / 2, z0 - 0.5, C.KBD_FPC_X + f['w'] / 2, f['y'] + f['l'] / 2, C.Z_BACK_IN + 0.5))
     # channel in the underside of the floor for the cable run and its rolling loop (0.4 mm of floor remains)
     s = s.cut(box(C.KBD_FPC_X - f['w'] / 2, C.FPC_LOOP_Y_OPEN_TRAY - 1.0, z0 - 0.01, C.KBD_FPC_X + f['w'] / 2, f['y'], z0 + C.FPC['channel']))
+    # hooks on the battery side: an upright on the wall top with a barb that reaches over the front shell's ledge
+    hk = C.HOOKS
+    xu = C.WALL + hk['reach'] + hk['play']               # upright's outer face, clear of the ledge
+    for y in hk['ys']:
+        y0, y1 = y - hk['length'] / 2, y + hk['length'] / 2
+        s = s.union(box(xu, y0, z1 - 0.01, xi + C.TUB_SIDE, y1, z1 + hk['hook_h']))
+        s = s.union(box(xu - hk['reach'] + 0.2, y0, z1 + hk['ledge_h'] + hk['play'], xu + 0.01, y1, z1 + hk['hook_h']))
+    # travel stop: blind channel under the floor for the tray's tab, and a lead-in ramp on the user edge
+    st = C.STOP
+    s = s.cut(box(st['x'] - st['chan_w'] / 2, st['y0'] - 0.3, z0 - 0.01, st['x'] + st['chan_w'] / 2,
+                  st['y1'] + C.TRAVEL + 0.1, z0 + st['chan_d']))
+    ramp = (cq.Workplane('YZ').workplane(offset=st['x'] - st['chan_w'] / 2)
+            .polyline([(-0.5, z0 - 0.01), (-0.5, z0 + st['chan_d']), (2.5, z0 - 0.01)]).close().extrude(st['chan_w']))
+    s = s.cut(ramp)
     # rail grooves on the left/right outer faces (the tray lips run in these); cut last so bosses cannot fill them
     gz = z0 + 0.7
     gh = 0.8 + 2 * C.RAIL['clear']
@@ -191,7 +209,7 @@ def tray(dy=0.0):
     bottom and is glued into the frame.  dy = slide offset in device-plan y."""
     zt = C.Z_TRAY_TOP
     zp = C.TRAY_FLOOR + C.KBD_PCB['t']             # top face of the keyboard PCB
-    s = rbox(0, dy, 0, C.BODY_W, C.BODY_H + dy, zt, C.CORNER_R)
+    s = rbox(0, 0, 0, C.BODY_W, C.BODY_H, zt, C.CORNER_R).faces('<Z').edges().fillet(C.EDGE_R).translate((0, -dy, 0))
     s = s.cut(rbox(C.WALL, C.WALL + dy, -0.01, C.BODY_W - C.WALL, C.BODY_H - C.WALL + dy, zt + 0.01, 1.0))
     # side rails: walls rising beside the back-shell tub, with an inward lip into its groove
     zr1 = C.Z_BODY_BOTTOM + C.BACK_TUB_H - 0.3
@@ -212,9 +230,40 @@ def tray(dy=0.0):
         else:
             post = post.union(box(x - d / 2, C.WALL + dy - 0.01, zp, x + d / 2, y + dy, zt - 0.1))
         s = s.union(post).cut(cyl(x, y + dy, zt - 0.1 - m['t'], zt, m['d'] + 2 * m['clear']))
+    # rim over the top plate's edge on the left, right and user sides: the plate goes in from below with the keyboard
+    ky, yb, L, t = C.KBD_XY[1] + dy, C.BODY_H - C.WALL + dy, C.PLATE_LIP, C.PLATE_RIM
+    for (x0, y0, x1, y1) in ((C.WALL - 0.01, ky, C.WALL + L, yb), (C.BODY_W - C.WALL - L, ky, C.BODY_W - C.WALL + 0.01, yb),
+                             (C.WALL, yb - L, C.BODY_W - C.WALL, yb + 0.01)):
+        s = s.union(box(x0, y0, zt - t, x1, y1, zt))
+    # travel stop: tab on a spring arm along the top wall, in the gap above the PCB's top edge (config.STOP)
+    st = C.STOP
+    xa = st['x'] + st['tab_w'] / 2 - st['arm_len'] - 3.0
+    s = s.union(box(xa, C.WALL + dy - 0.01, 0, xa + 3.0, st['y1'] + dy, zt - 0.1))                         # anchor block
+    s = s.union(box(xa + 2.99, st['y0'] + dy, zt - 0.1 - st['arm_t'], st['x'] + st['tab_w'] / 2, st['y1'] + dy, zt - 0.1))
+    s = s.union(box(st['x'] - st['tab_w'] / 2, st['y0'] + dy, zt - 0.11, st['x'] + st['tab_w'] / 2, st['y1'] + dy,
+                    C.Z_BODY_BOTTOM + st['rise']))
     # The keyboard cable makes its rolling loop above the PCB in the tray's upper half, in the lane
     # x = KBD_FPC_X +/- 4 mm, which is kept free of posts (see docs/enclosure.md).
     return s
+
+
+def button_cap():
+    """One printed cap for the power / volume switches, at the origin: +y is outward through the wall."""
+    b = C.BUTTON_CAP
+    stem = cq.Workplane('XY').box(b['w'], C.WALL + b['proud'] + 0.1, b['h'], centered=(True, False, True)).edges('|Y').fillet(0.3)
+    stem = stem.translate((0, -0.1, 0))
+    fl = cq.Workplane('XY').box(b['w'] + 2 * b['flange'], b['flange_t'], b['h'] + 0.65, centered=(True, False, True))
+    return stem.union(fl.translate((0, -0.1 - b['flange_t'], -0.2)))
+
+
+def button_caps():
+    zc = C.Z_CARRIER_F
+    u = None
+    for kx in C.BUTTON_KICAD_X:
+        xx, _ = carrier_to_device(kx, 0)
+        cap = button_cap().translate((xx, C.BODY_H - C.WALL, zc - 1.05))      # opening is zc-2.0 .. zc-0.1
+        u = cap if u is None else u.union(cap)
+    return u
 
 
 def magnets(dy_tray=0.0):
@@ -252,10 +301,31 @@ def keycap(kind='key'):
     return k.union(cq.Workplane('XY').circle(0.6).extrude(-C.KEYCAP['nub_h']))
 
 
+def small_parts_plate():
+    """Every keycap and button cap for one device on one print plate, top faces down: 46 keys and 4 spares, the
+    2u Space, 5 D-pad caps and 1 spare, 3 button caps and 1 spare."""
+    h = KEYCAP_H = C.KEYCAP['flange_t'] + 1.2
+    items = [('key', 50, 10.0, 9.0), ('space', 1, 19.0, 9.0), ('dpad', 6, 8.0, 8.0)]
+    plate, y = None, 0.0
+    for kind, n, px, py in items:
+        cap = keycap(kind).rotate((0, 0, 0), (1, 0, 0), 180).translate((0, 0, h))      # flat top on the bed
+        per_row = max(1, int(118 // px))
+        for i in range(n):
+            c = cap.translate(((i % per_row) * px, -(y + (i // per_row) * py), 0))
+            plate = c if plate is None else plate.union(c)
+        y += ((n - 1) // per_row + 1) * py + 2
+    b = C.BUTTON_CAP
+    for i in range(4):                                   # button caps lie on their flange face
+        c = button_cap().rotate((0, 0, 0), (1, 0, 0), 90).translate((i * 9.0, -y, C.WALL + b['proud']))
+        plate = plate.union(c)
+    return plate
+
+
 # --------------------------------------------------------------------------------------------- assembly
 def assembly(open_=False):
     dy = C.TRAVEL if open_ else 0.0   # open: the tray moves toward the user by TRAVEL (plan +y)
-    parts = {'front_shell': front_shell(), 'back_shell': back_shell(), 'tray': tray(dy), 'magnets': magnets(dy)}
+    parts = {'front_shell': front_shell(), 'back_shell': back_shell(), 'tray': tray(dy), 'magnets': magnets(dy),
+             'button_caps': button_caps()}
     parts.update(envelopes())
     parts.update(keyboard_stack(dy))
     return parts
@@ -299,7 +369,8 @@ def main():
         report['collisions_open'] = collisions(opened)
     # printable / machinable parts
     printable = {'front_shell': closed['front_shell'], 'back_shell': closed['back_shell'], 'keyboard_tray': tray(0.0),
-                 'keycap_1u': keycap('key'), 'keycap_space_2u': keycap('space'), 'keycap_dpad': keycap('dpad')}
+                 'keycap_1u': keycap('key'), 'keycap_space_2u': keycap('space'), 'keycap_dpad': keycap('dpad'),
+                 'button_cap': button_cap(), 'small_parts_plate': small_parts_plate()}
     for n, p in printable.items():
         cq.exporters.export(p, os.path.join(out, 'stl', n + '.stl'), tolerance=0.02, angularTolerance=0.1)
         cq.exporters.export(p, os.path.join(out, 'step', n + '.step'))

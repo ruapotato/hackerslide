@@ -26,6 +26,10 @@ python3 topplate_design.py ../keyboard-topplate --pcb
 python3 keyboard_design.py dome ../keyboard-5135
 python3 keyboard_pcb.py dome ../keyboard-5135
 python3 flex_design.py ../keyboard-flex
+# 3D models for the footprints KiCad's library has none for (pictures only; needs the venv's CadQuery)
+V=${VENV:-../../.venv}
+if [ -x "$V/bin/python" ]; then "$V/bin/python" models3d.py >/dev/null 2>&1; fi
+python3 attach_models.py ../keyboard/keyboard.kicad_pcb ../carrier/carrier.kicad_pcb
 for b in keyboard:keyboard carrier:carrier keyboard-topplate:keyboard-topplate keyboard-flex:keyboard-flex keyboard-5135:keyboard-5135; do
   echo "== ${b%%:*}"; ./check.sh ../${b%%:*} ${b##*:} "$OUT"
 done

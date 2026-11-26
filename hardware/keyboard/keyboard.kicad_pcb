@@ -988,6 +988,17 @@
 			(uuid "75a4bd03-c94e-45d8-9331-b3fd0f1a611b")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -2582,6 +2593,17 @@
 			(uuid "0a8def4c-5aae-4058-b97d-b111d33e7965")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -2769,6 +2791,17 @@
 			(uuid "e4bf9ce1-5b6a-407a-b938-b4dc8732dabb")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -4344,6 +4377,17 @@
 			(uuid "bb2297fa-b8c0-4e21-a25f-327a3b67f9fd")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "F.Cu")
@@ -4631,6 +4675,17 @@
 			(uuid "f49b76f0-89fd-4faf-af41-45c460493fec")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -4818,6 +4873,17 @@
 			(uuid "c06e20c8-8c71-4969-a26c-22bbea7e616d")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "F.Cu")
@@ -5105,6 +5171,17 @@
 			(uuid "bb8a8b1b-2ba9-4130-b1fd-5eacf2887723")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -5292,6 +5369,17 @@
 			(uuid "584a54fe-6a4a-441d-a084-a5a315d0068e")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -5801,6 +5889,17 @@
 			(uuid "be2caf93-b4bc-4493-8aef-427e80d872ee")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -5988,6 +6087,17 @@
 			(uuid "f147182d-152e-457d-8fa7-a9d88b7196b7")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -6175,6 +6285,17 @@
 			(uuid "ca456f3b-c4ea-4f62-84cb-eb6e0cacbb4a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -6362,6 +6483,17 @@
 			(uuid "bd1d2653-6d6d-4121-be5d-da9ef8734416")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -6549,6 +6681,17 @@
 			(uuid "52056f66-5ed6-40bd-806e-a789bc11ad53")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -6736,6 +6879,17 @@
 			(uuid "bbfb1e36-d0b0-4630-8502-f3e5a4123f34")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -6923,6 +7077,17 @@
 			(uuid "10ea8755-3ffe-459e-861d-7ceda7bed8dd")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -7432,6 +7597,17 @@
 			(uuid "82bae1c5-6ded-4ae6-a05a-326c0b550e0a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -7619,6 +7795,17 @@
 			(uuid "a0a22925-0465-4b2b-954c-fe479ce2cca8")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -7806,6 +7993,17 @@
 			(uuid "0c97d385-f625-46fb-ba34-faec8bf7f88b")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -8315,6 +8513,17 @@
 			(uuid "dfbc7270-021e-4660-8c88-e6c9fd8947f0")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -9146,6 +9355,17 @@
 			(uuid "59a5c8dc-95e2-4703-92fc-c42f3b6a61ee")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -9977,6 +10197,17 @@
 			(uuid "ad748e88-177c-4ae7-8898-4be660475841")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -10486,6 +10717,17 @@
 			(uuid "2c675cce-bd65-4526-bede-b8fa719054b0")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -10673,6 +10915,17 @@
 			(uuid "24a2ba76-1f2c-4141-8832-74d6a03d9f5f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -10860,6 +11113,17 @@
 			(uuid "c691e84c-d21d-42e4-bcb7-0c0a7060ab15")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -12464,7 +12728,7 @@
 			(uuid "9688983d-b914-45a4-9481-5067d1e00716")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm.step"
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12767,6 +13031,17 @@
 			(uuid "fa682934-d2f4-435a-8c8b-00b85bec6fb0")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -13613,6 +13888,17 @@
 			(uuid "414f5094-b3eb-41d0-809f-5bec4b716c49")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:ContactPad_2x4mm"
 		(layer "F.Cu")
@@ -13905,6 +14191,17 @@
 			(uuid "9c42e942-0c36-4508-9245-24b979c90d3c")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -15058,6 +15355,17 @@
 			(uuid "4d360a11-efc4-4811-9ddf-fb750458f366")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -15567,6 +15875,17 @@
 			(uuid "2665f40d-13cf-4acf-81d2-cc955e955244")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -16076,6 +16395,17 @@
 			(uuid "dd3960fe-b93d-4014-984b-21f27c778bbf")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -16585,6 +16915,17 @@
 			(uuid "2e66d04d-606b-4c9e-88de-0d72c0b1adef")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "F.Cu")
@@ -17122,6 +17463,17 @@
 			(uuid "210ce4f9-8331-4de0-81dd-ad9ea772d676")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/Hirose_FH34SRJ-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:ContactPad_2x4mm"
 		(layer "F.Cu")
@@ -18058,6 +18410,17 @@
 			(uuid "31679b7d-5c93-4666-8601-f53464a53fb4")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -18567,6 +18930,17 @@
 			(uuid "eb3b00ac-ffb4-41cd-8c8b-021349818105")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Mounting_Wuerth:Mounting_Wuerth_WA-SMSI-M1.6_H1.5mm_9774015633"
 		(layer "F.Cu")
@@ -19195,6 +19569,17 @@
 			(uuid "668b85f5-21bc-460e-9899-3bad431ff7de")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -19382,6 +19767,17 @@
 			(uuid "58ec7568-7ed8-4a0e-ad2f-8ed8f874c229")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -21089,6 +21485,17 @@
 			(uuid "6d83ff29-f9f3-4bbc-ad70-f2731cdca276")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "F.Cu")
@@ -21508,6 +21915,17 @@
 			(uuid "72c31316-23dc-40a1-8f87-afd6efe49caa")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "F.Cu")
@@ -22439,6 +22857,17 @@
 			(uuid "841fa062-5d37-4143-bfa5-c4121380e572")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -22626,6 +23055,17 @@
 			(uuid "4d17ac33-cec6-4a7a-964d-83147531da5a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -22813,6 +23253,17 @@
 			(uuid "6048adff-7b0b-4114-9001-829267ce621c")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -23763,6 +24214,17 @@
 			(uuid "5e990ee0-03c6-4ec4-9df5-fb9fcb87d112")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -24272,6 +24734,17 @@
 			(uuid "f89b6d7e-b135-420f-acf4-9f5b63144025")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -24459,6 +24932,17 @@
 			(uuid "665a2449-1cc3-49f5-9e7e-9fb3c87ed8fe")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -24646,6 +25130,17 @@
 			(uuid "3b647452-8c5b-41f8-8dc8-d5f33c53721a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -27528,6 +28023,17 @@
 			(uuid "719adfdf-212f-4ab6-8ed5-ffe890c706a8")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -28037,6 +28543,17 @@
 			(uuid "35f34bb0-4e05-4c97-9077-54b758a32f5a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
 		(layer "F.Cu")
@@ -28456,6 +28973,17 @@
 			(uuid "eb9c3e25-6110-47e9-950c-cadca183273f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Package_SON:USON-10_2.5x1.0mm_P0.5mm"
 		(layer "F.Cu")
@@ -29068,6 +29596,17 @@
 			(uuid "1b481182-4077-4b71-863f-4be0acf7decb")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -29914,6 +30453,17 @@
 			(uuid "80efc5e1-c730-4e9c-9ec4-d41f21a0d0ab")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -30101,6 +30651,17 @@
 			(uuid "fccec00d-47fd-430b-baaf-693a429d7a34")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "hackerslide:SW_Alps_SKSWCFE010_3x2mm"
 		(layer "F.Cu")
@@ -30288,6 +30849,17 @@
 			(uuid "84b9aa31-5c46-4f27-8ff0-fbc155021d97")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -31441,6 +32013,17 @@
 			(uuid "73403521-5a8b-4e84-897d-76f233f85cdc")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")
@@ -31950,6 +32533,17 @@
 			(uuid "8005e6eb-4a9c-458c-8607-9a36171fd50c")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../lib/hackerslide.3dshapes/SW_Alps_SKSWCFE010_3x2mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Diode_SMD:D_SOD-882"
 		(layer "F.Cu")

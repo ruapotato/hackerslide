@@ -10,3 +10,7 @@ _autosave-*
 hs_err_pid*.log
 freerouting.json
 mechanical/renders/scene/
+order/
+hardware/lib/hackerslide.3dshapes/
+mechanical/stl/small_parts_plate.stl
+mechanical/step/small_parts_plate.step

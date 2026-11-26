@@ -51,7 +51,8 @@ PLATE_T = 0.8                                                    # top-plate PCB
 KEY_CLEARANCE = 3.5        # [dec] 3-4 mm between top key row and the screen-side body edge when open
 
 # ---------------------------------------------------------------- slider
-RAIL = dict(w=2.0, h=2.4, clear=0.25, lip=1.0)   # [est] rails on the left/right sides, running in Y
+RAIL = dict(w=1.2, h=2.4, clear=0.25, lip=0.8)   # [est] rails on the left/right sides, running in Y
+TUB_SIDE = 2.2            # back-shell side wall: thick enough to keep 1.15 mm of plastic behind the rail groove
 SLIDE_GAP = 0.4                                  # [est] air gap between body underside and tray top
 # Detents (no spring).  Sizes are parameters to tune on the fit mule (audit E3: 3 x 1 mm was probably too weak).
 MAGNET_BODY = dict(d=6.0, t=1.0, clear=0.1)      # [est] N52 discs pressed into the back-shell floor from outside
@@ -113,7 +114,7 @@ MODULE_ROT180 = True          # module turned 180 deg in the carrier frame (carr
 # which leaves 2.6 mm above it for the leads to turn toward the carrier; they run in the cavity under the carrier's
 # top strip to the plug.
 BATT_LEAD_GAP = 2.6
-BATT_XY = (RAIL_INSET + WALL + 0.25, WALL + BATT_LEAD_GAP)             # cell bay, device left
+BATT_XY = (RAIL_INSET + TUB_SIDE + 0.25, WALL + BATT_LEAD_GAP)             # cell bay, device left
 assert BATT_XY[1] + BATTERY['h'] <= BODY_H - WALL - 0.5, BATT_XY
 # Battery header J10 (Molex 5268-03A right-angle, 4.9 mm high) and the mated 5264 plug with the bend of its leads,
 # in carrier KiCad coordinates (carrier_pcb.J10_POS, PLUG): x0, y0, x1, y1
@@ -170,3 +171,15 @@ MODULE_XY = carrier_to_device(MODULE_KICAD[0] + MODULE['w'], MODULE_KICAD[1])   
 _soc = carrier_to_device(*MODULE['soc_kicad'])
 SOC_XY = (_soc[0] - MODULE_XY[0], _soc[1] - MODULE_XY[1])                         # SoC centre in the module outline (device view)
 SECTION_X = MODULE_XY[0] + SOC_XY[0]              # render cross-section plane: through the (estimated) SoC position
+
+# ---------------------------------------------------------------- what holds it together (2026-11-27)
+# Travel stop: a tab on a spring arm along the tray's top wall runs in a blind channel under the back-shell floor.
+# The channel's two ends are the closed and the open stop; a ramp on the body's user edge lets the tab snap in when
+# the tray is slid on.  To take the tray off, pull the arm down from below (it lies in the gap above the PCB edge).
+STOP = dict(x=40.0, tab_w=4.4, chan_w=5.0, chan_d=0.7, rise=0.55, y0=1.7, y1=3.4, arm_len=18.0, arm_t=1.2)
+# Back shell to front shell on the battery side: three rigid hooks on the back shell catch ledges inside the front
+# shell's left wall (hook it in, swing it shut, two screws on the carrier side).
+HOOKS = dict(ys=(14.0, 37.0, 60.0), length=8.0, reach=1.0, ledge_h=1.0, hook_h=2.2, play=0.2)
+PLATE_LIP = 0.8            # tray rim over the top plate's edge (left, right and user side); the rim is PLATE_RIM thick
+BUTTON_CAP = dict(w=4.0, h=1.5, proud=0.4, flange=0.8, flange_t=0.95)   # printed caps for power / volume
+EDGE_R = 0.6               # rounding of the outer top and bottom edges

@@ -60,6 +60,8 @@ The 0.6 mm Fn legends are below JLCPCB's recommended silkscreen height and may p
 
 JLCPCB gives no flex-life figure. Cycle-test the cable on the fit mule before relying on it.
 
+Step-by-step upload instructions and the cautions to put in the order remark: [ordering-guide.md](ordering-guide.md).
+
 ## Order of work
 
 1. Both boards are routed and checked ([review](../docs/review-2026-11-25.md)).

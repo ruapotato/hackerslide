@@ -16,8 +16,11 @@ python3 render.py ..                      # PNG renders under a private Xvfb dis
 |---|---|
 | Front shell | Holds the panel under a bezel lip; side openings for USB-C, jack, microSD; screw bosses that stand on the carrier |
 | Back shell | Removable. Floor with detent magnet pockets, the cable slot and channel; bosses that clamp the carrier from below; rail grooves on its sides |
-| Tray frame | Printed frame with the rails and three magnet posts. It has no floor: the keyboard PCB closes it |
+| Tray frame | Printed frame with the rails, three magnet posts, the travel-stop arm and a rim that holds the top plate. It has no floor: the keyboard PCB closes it |
 | Keycaps | 1u, 2u Space, D-pad |
+| Button caps | Three, for power and volume: a stem through the top wall with a flange inside |
+
+How to print and assemble them: [printing.md](printing.md).
 
 ## Results (`mechanical/collision-report.json`)
 
@@ -29,7 +32,11 @@ Size comparison renders: `renders/compare_stack.png` and `compare.png` (N810 128
 
 ## Slider
 
-- Rails: lips on the tray frame's side walls run in grooves on the back shell. 0.25 mm clearance, estimate.
+- Rails: 0.8 mm lips on the tray frame's 1.2 mm side walls run in grooves on the back shell, whose side walls are
+  2.2 mm thick so that 1.15 mm of plastic stays behind each groove. 0.25 mm clearance, estimate.
+- Travel stop: a tab on a spring arm along the tray's top wall runs in a blind channel under the back-shell floor.
+  The channel's ends stop the tray closed and open, so it cannot slide off; a ramp on the body's user edge lets
+  the tab snap in when the tray is first slid on.
 - Detents: one 6 x 2 mm magnet per side in the tray, two 6 x 1 mm magnets per side in the back-shell floor, 35.9 mm
   apart. The tray magnet sits over one when closed and the other when open; nothing in between. Sizes are
   parameters. Whether they hold the tray is unknown until the fit mule.
@@ -41,12 +48,18 @@ Size comparison renders: `renders/compare_stack.png` and `compare.png` (N810 128
 See [thermal.md](thermal.md). The model draws a pad from the SoC to the back-shell floor, 0.42 mm thick with the
 datasheet module height.
 
+## What holds it together
+
+- Carrier side: two M2 screws through the back shell and the carrier into heat-set inserts in the front shell.
+- Battery side: three rigid hooks on the back shell catch ledges inside the front shell's left wall. Hook, swing
+  shut, screw.
+- Top plate: four screws into spacers in the D-pad zone, and the tray's rim over its other three edges.
+- Keyboard board: glued into the tray frame; it bears on the three magnet posts.
+
 ## Open items
 
-- Only two body screws, on the carrier side. The cell side needs snap hooks.
-- Top-plate retention lips on the tray frame.
-- Button caps for power and volume (the switch plungers are 1.6 mm inside the wall).
-- Cover or film for the keyboard PCB underside, if wanted.
-- A light pipe or window for the two LEDs.
+- Everything in [printing.md](printing.md)'s check table: none of these fits has been printed.
+- Cover or film for the keyboard PCB underside, if wanted. The 2 mm gap above the board's top edge is open.
+- A light pipe or window for the charge, activity and 5 V LEDs. The shell hides them.
 - Antenna position for the module's U.FL lead; matters once the shell is aluminium.
-- Print rules from the brief still apply: 1.2-1.6 mm walls, heat-set inserts, removable back.
+- Keycap legends (the renders show them; the printed caps are blank).
