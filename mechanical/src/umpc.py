@@ -34,10 +34,14 @@ KBD_PCB_T = 0.8
 CELL = dict(w=34.0, h=62.0, t=6.0, inset=6.0)                # one 603562-size cell per side (6.0 x 34 x 62 mm, about 1,500 mAh
                                                              # each: ESTIMATE, cell not chosen); with the two slide sticks
                                                              # there is room for 6 mm under the 12.7 mm top (5 mm cells: 503562)
-CONTROLS = 'sticks'                                          # 'sticks': two slide thumbsticks (David, 2026-11-27, to stay thin);
+CONTROLS = 'padball'                                         # 'padball': slide stick left, round 35 mm trackpad right used as a
+                                                             # 'virtual trackball' (momentum + haptic, as the Steam Controller);
+                                                             # 'sticks': two slide thumbsticks (David, 2026-11-27, to stay thin);
                                                              # 'ball': trackball + slide stick; 'fallback': D-pad + touchpad
 TRACKBALL = dict(w=25.0, h=22.0, t=9.5, ball=8.0, protrude=1.0)   # Pimoroni PIM447 breakout: 25 x 22 x 9.5 mm (retailer
                                                              # data); ball size and how far it stands out: ESTIMATES
+PADBALL = dict(d=35.0, t=2.5)                                # Cirque GlidePoint TM035035 class round trackpad (35 mm; thickness
+                                                             # an ESTIMATE), set 0.5 mm below the frame like a dish
 SLIDEPAD = dict(base=19.0, t=4.0, cap=15.0, cap_t=1.6)       # SparkFun COM-09426, PSP-1000-style slide stick: ALL ESTIMATES
 BACK, WALL, FRONT = 1.2, 1.6, 0.8                            # [est] printed back; front frame over the screen border
 THERMAL_MIN = 0.5                                            # [est] thinnest pad from the SoC lid to an aluminium plate in the back
@@ -111,6 +115,14 @@ def controls(front):
     zone_top = H - WALL - 3.5 - KEY['rows'] * KEY['pitch_y'] - 2.0
     dx, dy = WALL + 3.0 + KEY['cols'] * KEY['pitch_x'] / 2, (WALL + zone_top) / 2
     tx, ty = W - WALL - 3.0 - KEY['cols'] * KEY['pitch_x'] / 2, dy
+    if CONTROLS == 'padball':
+        front, solid, hole = slide_stick(front, dx, dy)
+        r = PADBALL['d'] / 2
+        z0 = Z_KBD + KBD_PCB_T                                      # module sits on the keyboard board
+        assert T - 0.5 - z0 >= 1.6, 'trackpad module needs at least 1.6 mm'
+        pad = cq.Workplane('XY').circle(r).extrude(T - 0.5 - z0).translate((tx, ty, z0))
+        front = front.cut(cq.Workplane('XY').circle(r + 0.3).extrude(3).translate((tx, ty, Z_FRONT - 1)))
+        return front, solid.union(pad), [hole]
     if CONTROLS == 'sticks':
         parts_, holes = None, []
         for x in (dx, tx):

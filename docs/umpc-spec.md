@@ -82,3 +82,17 @@ one is a gamepad stick or arrow keys. Without the trackball the device is **160.
 (`CONTROLS = 'sticks'` in the model), and the space under the sticks allows 6 mm cells instead of 5 mm: about
 3,000 mAh / 11 Wh in total (estimate, cells to choose), so roughly 5.5-7.5 h of light use and 3.5-4.5 h under
 load (rough). The trackball option remains in the model (`'ball'`, 15.0 mm) and in the table above.
+
+## Pointer, revised again (David, 2026-11-27): a "virtual trackball"
+
+The phone-style trackball (PIM447) is small (ball about 8 mm, estimate) and 9.5 mm deep. Options looked at:
+
+- **Virtual trackball (modelled, `CONTROLS = 'padball'`):** a 35 mm round capacitive trackpad (Cirque GlidePoint
+  TM035035 class, I2C or SPI; sold by Mouser, stock and thickness to confirm) set like a shallow dish, plus
+  momentum in the input microcontroller's firmware (a flick keeps the pointer rolling and slows down, like the Steam
+  Controller's trackball mode) and a haptic motor for a "rolling" tick: TI DRV2605L driver (JLCPCB 491) and an LRA
+  motor (MD-LRA371-H20, JLCPCB 5,017). No thickness cost: the device stays **12.7 mm**.
+- **A real, larger ball done properly:** a 12-13 mm ball on three support bearings over a low-power optical mouse
+  sensor (PixArt PMW3610 class, as in wireless DIY trackballs; JLCPCB 0, other distributors to check). Depth about
+  16-17 mm at that spot, so a local bump on the back under the ball; the cell on that side must be shortened.
+- The PIM447 stays the simplest option at 15.0 mm overall.
