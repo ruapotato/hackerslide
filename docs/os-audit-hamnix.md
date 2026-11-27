@@ -93,3 +93,13 @@ Pushed to `ruapotato/hackos` and `ruapotato/adder` (`cortex-m7`). `make test` pa
 - Proposed milestone 4: drivers for the real chip. This QEMU has no i.MX RT model, so keyboard and e-paper stacks
   would be developed on emulated devices, vendor drivers against register models, and the boot header and clock
   setup on host-side checkers, until an evaluation board is on the bench.
+
+## Teensy 4.1 target (2026-11-26, not run on hardware)
+
+Pushed to `ruapotato/hackos`. `make BOARD=teensy41` builds a .hex for the Teensy loader that boots to the same shell
+(console on Serial1, pins 0/1, 115200; LED blinks once running). Drivers for the serial port, GPIO, pin mux, clocks,
+I2C, SPI and the SD card, written against NXP's register definitions; the SD driver passes against QEMU's own SD
+model, the others against register models written from the reference manual; the boot header, every register
+constant and every pin setting are checked by script. The checks found and fixed two kernel bugs that would have
+stopped the board. Fits the Teensy's 1 MB of RAM for one shell and four-program pipelines; a second shell needs
+PSRAM. Bring-up checklist: `docs/boards/teensy41.md` in the hackos repo. Every hardware-facing part is untested.
