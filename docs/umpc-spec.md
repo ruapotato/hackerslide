@@ -1,6 +1,6 @@
-# HackerSlide UMPC: specification draft (2026-11-27)
+# HackBrain (UMPC): specification draft (2026-11-27)
 
-**Status: concept, nothing ordered or drawn as a schematic.** A WiBrain B1-style handheld PC: a landscape screen in
+**Status: concept, nothing ordered or drawn as a schematic.** Branch `hackbrain` (name: David, 2026-11-27). A WiBrain B1-style handheld PC: a landscape screen in
 the middle, thumb keys at the top of each side, an analogue thumbstick at the bottom left and a trackball at the
 bottom right. Model: `mechanical/src/umpc.py` (`CONTROLS = 'ball'` or `'fallback'`); renders:
 `mechanical/render/umpc_scene.py`, stills in `~/Videos/hackerslide/concepts/umpc7_*`. Aim (David): good performance
