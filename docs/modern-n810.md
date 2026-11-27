@@ -242,3 +242,26 @@ frame and adhesive about 0.5 mm; a printed case adds about 1-1.5 mm.
   dollars (rough, from memory).
 - In the EU the maker likewise assesses the whole device under the Radio Equipment Directive, using the module's
   reports as input.
+
+## 11. Handset plus base station: long-range radio to a home "repeater" (David, 2026-11-26, first look)
+
+The cellular modem (or no modem at all) lives in a stationary base; the pocket device talks to it over a long-range
+licence-free radio in the 902-928 MHz band. Like a cordless phone, with miles instead of metres.
+
+| Link | Modules | Rate | Range (typical, depends on antennas) | Calls |
+|---|---|---|---|---|
+| Wi-Fi HaLow (802.11ah) | Morse Micro MM6108 modules: their own MF08251/MF08651 (FCC modular approval under Part 15.247, 24 dBm), Quectel FGH100M (FCC and CE), AzureWave AW-HM593; none at JLCPCB, stock elsewhere to check | about 0.15-15 Mbit/s | about 1 km in town, more with line of sight and a roof antenna at the base (to confirm) | ordinary VoIP quality; with a SIP provider number the base needs only internet, no modem |
+| LoRa | Ebyte E22-900M22S (JLCPCB 1,310, $7.37), Ai-Thinker Ra-01SH (2,960, $4.58), RAK3172 (336, $8.39); FCC status per module to check | about 0.3-20 kbit/s | 1-2 miles or more at low rates | walkie-talkie quality voice with the Codec2 codec; texts are easy; works with the Meshtastic ecosystem |
+
+The base can be off-the-shelf: a certified LTE router or the home internet connection, plus a HaLow access point
+or a LoRa node.
+
+**Why this is easier legally (general information, not legal advice):** the base is stationary, so a cellular
+modem in it stays within its "mobile, 20 cm" grant, or the base is a bought, already-certified router. The handset
+holds only a Part 15 radio module with modular approval; low-power, low-duty-cycle transmitters near the body can
+fall under the FCC's RF-exposure test exemptions (to confirm for the chosen power and distance). For a few units
+built for personal use and not sold, FCC Part 15.23 covers home-built Part 15 devices. Selling still needs Part 15
+authorization of the whole handset, but no carrier approval and likely no SAR testing, so far cheaper than a phone.
+
+A licensed alternative: amateur radio allows home-built transmitters without certification (with a ham licence),
+but forbids encryption and commercial use, so it does not suit everyday phone calls.
