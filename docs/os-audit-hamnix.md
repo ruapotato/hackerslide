@@ -75,3 +75,21 @@ Pushed to `ruapotato/hackos` (main) and `ruapotato/adder` (branch `cortex-m7`). 
 - On-device compiling: judged feasible; a Thumb-2 back end is estimated at 4,000-5,500 lines and self-compiling
   needs roughly 25-45 MB of RAM. An estimate, not a test.
 - Proposed milestone 3: processes, loader and exec, pipes, hamsh over the serial console, then FAT.
+
+## Milestone 3 result (2026-11-26, emulator only)
+
+Pushed to `ruapotato/hackos` and `ruapotato/adder` (`cortex-m7`). `make test` passes from a clean build.
+
+- HackOS boots to Hamnix's `hamsh` on the serial console as an unprivileged process and runs programs loaded from
+  files: `echo cat ls cp rm mkdir wc head grep`, pipelines, redirection, a script file.
+- Processes are position-independent ELF files, each in its own memory block that the protection unit fences off
+  from the kernel and from other processes (tested by faulting on purpose). `rfork` is implemented as vfork.
+- Hamnix's shell and FAT code are copied unmodified apart from one 41-line patch shrinking the shell's static
+  arenas; tmpfs now costs about 8 KB for a file's first byte instead of 131 KB (recorded 7-line patch).
+- FAT32 on a RAM disk mounted at `/sd`: read, create, append, truncate, remove, run a program from it.
+- Size: kernel code 128 KB at -O2, 76 KB optimised for size. Smallest process: 10 KB plus a 16 KB kernel stack.
+- Limits: a process's memory is fixed at start and is read/write/execute throughout; FAT is 8.3 names on write,
+  no mkdir or rename; the shell's namespace and job-control commands were not tried; nothing has run on hardware.
+- Proposed milestone 4: drivers for the real chip. This QEMU has no i.MX RT model, so keyboard and e-paper stacks
+  would be developed on emulated devices, vendor drivers against register models, and the boot header and clock
+  setup on host-side checkers, until an evaluation board is on the bench.
