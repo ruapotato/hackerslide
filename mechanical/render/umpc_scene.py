@@ -10,12 +10,14 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import scene as S  # noqa: E402
 
-MODEL = os.path.join(HERE, '..', 'umpc')
+MODEL = os.environ.get('UMPC_MODEL', os.path.join(HERE, '..', 'umpc'))   # also used for HackLite (mechanical/hacklite)
 SCREEN = os.environ.get('UMPC_SCREEN', '/var/tmp/hackerslide-agent/render/umpc/screen.png')
 ST = json.load(open(os.path.join(MODEL, 'stack.json')))
 
 
 def load(name, m):
+    if not os.path.exists(os.path.join(MODEL, 'scene', f'closed_{name}.stl')):
+        return None
     before = set(bpy.data.objects)
     bpy.ops.wm.stl_import(filepath=os.path.join(MODEL, 'scene', f'closed_{name}.stl'))
     o = (set(bpy.data.objects) - before).pop()
@@ -36,13 +38,13 @@ def main():
              carrier=S.mat('u_carrier', (0.03, 0.22, 0.10), 0.35), module=S.mat('u_mod', (0.08, 0.2, 0.45), 0.35),
              thermal=S.mat('u_pad', (0.85, 0.45, 0.2), 0.6), panel=S.mat('u_panel', (0.02, 0.02, 0.025), 0.15),
              shoulders=S.mat('u_sh', (0.08, 0.08, 0.09), 0.4))
-    objs = {n: load(n, m) for n, m in M.items()}
+    objs = {n: o for n, o in ((n, load(n, m)) for n, m in M.items()) if o}
     x, y, z, w, h = ST['screen']
     bpy.ops.mesh.primitive_plane_add(size=1, location=(x + w / 2, y + h / 2, z + 0.02))
     scr = bpy.context.active_object
     scr.scale = (w, h, 1)
     bpy.ops.object.transform_apply(scale=True)
-    scr.data.materials.append(S.image_mat('u_screen', SCREEN, emit=1.6, rough=0.15))
+    scr.data.materials.append(S.image_mat('u_screen', SCREEN, emit=float(os.environ.get('SCREEN_EMIT', '1.6')), rough=float(os.environ.get('SCREEN_ROUGH', '0.15'))))
     objs['screen'] = scr
     leg = S.mat('u_leg', (0.9, 0.9, 0.88), 0.6)
     legs = []
@@ -51,6 +53,7 @@ def main():
             legs.append(S.text('l' + k['side'] + str(k['r']) + str(k['c']), k['label'], k['x'], k['y'], ST['z_keytop'] + 0.02,
                                3.0 if len(k['label']) == 1 else 1.9, leg))
     E = dict(ST['explode'], screen=ST['explode']['panel'])
+    E.setdefault('thermal', 0); E.setdefault('carrier', 0); E.setdefault('shoulders', 0)
     for n, o in objs.items():
         o.location.z += E.get(n, 0) * ex
     for o in legs:
@@ -59,6 +62,8 @@ def main():
     fl = bpy.data.objects.get('floor')
     fl.location.z = -0.05 - 1.0 * ex
     S.aim(cam, (ST['w'] / 2, ST['h'] / 2, 6 + 25 * ex), az, el, dist, 70)
+    if os.environ.get('NO_FLOOR_SHIFT'):
+        pass
     bpy.context.scene.render.filepath = out
     bpy.ops.render.render(write_still=True)
 
