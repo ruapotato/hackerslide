@@ -455,6 +455,43 @@ def build():
     for i, net in enumerate(('AUD_LRCK', 'AUD_BCLK', 'AUD_DAC', 'HP_DET')):
         TP(au, f'TP{40 + i}', net)
 
+    # ------------------------------------------------------------------------------------------ card and port expanders
+    io = d.sheet('card_io', 'microSD card and port expanders', paper='A3', notes=[
+        'microSD on USDHC1 (3.3 V signalling only; the pad bank NVCC_SD1 is fixed at 3.3 V). Card detect is a switch to ground',
+        '    on a 1.8 V wake pad, pulled up to the SNVS supply. Socket and protection as in the Linux design.',
+        'Port expanders: two TCA6416A on the I2C_P bus (0x20 and 0x21) carry the slow control lines the brain has no pads',
+        '    for. Their interrupt outputs are open drain and share one wake pad. Ports are inputs after reset, so every line',
+        '    that must have a level before the firmware runs has its own pull resistor on its own sheet.',
+        'IOX_A bits so far: 0 keyboard reset, 1 touch reset, 2 front-light enable, 3 front-light fault, 4 battery limiter',
+        '    fault, 5 3.3 V good, 6 codec interrupt. The rest, and all of IOX_B, wait for the radio and sensor sheets.'])
+    for net in ('SD_CMD', 'SD_CLK', 'SD_D0', 'SD_D1', 'SD_D2', 'SD_D3', 'SD_CD_N', 'IOX_INT_N'):
+        use(net)
+    io.add('J6', 'Connector', 'Micro_SD_Card_Det2', 'microSD', 'Connector_Card:microSD_HC_Molex_104031-0811',
+           {'1': 'SD_D2', '2': 'SD_D3', '3': 'SD_CMD', '4': '+3V3', '5': 'SD_CLK', '6': 'GND', '7': 'SD_D0', '8': 'SD_D1',
+            '9': 'SD_CD_N', '10': 'GND', '11': 'GND'}, fields=fields('C585350', '1040310811', 'Molex'))
+    for i, net in enumerate(('SD_CMD', 'SD_D0', 'SD_D1', 'SD_D2', 'SD_D3')):
+        R(io, f'R{250 + i}', '47k', net, '+3V3')
+    R(io, 'R255', '100k', 'SD_CD_N', 'VDD_SNVS_ANA')
+    C(io, 'C250', '10u', '+3V3'); C(io, 'C251', '100n', '+3V3')
+    for ref, nets in (('U21', ('SD_CLK', 'SD_CMD', 'SD_D0', 'SD_D1')), ('U22', ('SD_D2', 'SD_D3', 'SD_CD_N', None))):
+        pins = {'3': 'GND', '8': 'GND'}
+        for pin, net in zip(('1', '2', '4', '5'), nets):
+            if net:
+                pins[pin] = net
+        io.add(ref, 'Power_Protection', 'TPD4E05U06DQA', 'TPD4E05U06DQAR', 'Package_SON:USON-10_2.5x1.0mm_P0.5mm', pins,
+               fields=fields('C138714', 'TPD4E05U06DQAR', 'Texas Instruments', Description='card ESD protection'))
+    IOX_A = ['KB_RST_N', 'TOUCH_RST_N', 'FL_EN', 'FL_INT_N', 'BATT_OC_N', 'BB_PG', 'CODEC_IRQ']
+    for ref, addr, bits in (('U19', 'GND', IOX_A), ('U20', '+3V3', [])):
+        nets = {'23': '+3V3', '21': '+3V3', '19': 'I2C_P_SCL', '20': 'I2C_P_SDA', '22': 'IOX_INT_N', '24': 'IOX_RST_N', '18': addr,
+                '9': 'GND', '25': 'GND'}
+        for i, net in enumerate(bits):
+            nets[str(1 + i) if i < 8 else str(2 + i)] = net
+        io.add(ref, 'hackerslide', 'TCA6416ARTW', 'TCA6416ARTWR', 'Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm', nets,
+               fields=fields('C182336', 'TCA6416ARTWR', 'Texas Instruments', Description='port expander, address ' + ('0x20' if addr == 'GND' else '0x21')))
+    R(io, 'R256', '100k', 'IOX_INT_N', 'VDD_SNVS_ANA'); R(io, 'R257', '10k', 'IOX_RST_N', '+3V3')
+    C(io, 'C252', '100n', '+3V3'); C(io, 'C253', '100n', '+3V3')
+    TP(io, 'TP50', 'IOX_INT_N'); TP(io, 'TP51', 'IOX_RST_N')
+
     # the brain itself goes on the first sheet, with every ball claimed above
     p.add('U1', 'hackerslide', 'MIMXRT117x_BGA289', 'MIMXRT1176', 'Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm', dict(U),
           fields=fields('', 'MIMXRT1176xVMxB', 'NXP', Description='i.MX RT1176, B silicon. Exact part number (grade, 800 MHz or 1 GHz) '

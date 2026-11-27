@@ -7953,6 +7953,474 @@
    "nc": {}
   },
   {
+   "ref": "J6",
+   "value": "microSD",
+   "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "6dd08b26-42b1-5317-a741-b11377364843",
+   "fields": {
+    "LCSC": "C585350",
+    "MPN": "1040310811",
+    "Manufacturer": "Molex"
+   },
+   "pads": {
+    "1": "SD_D2",
+    "2": "SD_D3",
+    "3": "SD_CMD",
+    "4": "+3V3",
+    "5": "SD_CLK",
+    "6": "GND",
+    "7": "SD_D0",
+    "8": "SD_D1",
+    "9": "SD_CD_N",
+    "10": "GND",
+    "11": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R250",
+   "value": "47k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "03efbee4-200c-5645-b60b-c792ee770522",
+   "fields": {
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "SD_CMD",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R251",
+   "value": "47k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "35aa292d-f666-54d2-a896-60279457c36e",
+   "fields": {
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "SD_D0",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R252",
+   "value": "47k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "7c595c46-37ef-5c37-9e91-856ce70a26d6",
+   "fields": {
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "SD_D1",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R253",
+   "value": "47k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "d80ab767-7ce1-5680-9cb7-ca44e1cf9938",
+   "fields": {
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "SD_D2",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R254",
+   "value": "47k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "d5619fc5-bd84-56dc-bb6b-e3ae47e0543c",
+   "fields": {
+    "LCSC": "C25792",
+    "MPN": "0402WGF4702TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "SD_D3",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R255",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "2044e772-3dbf-5c21-a560-b0e755d06d9b",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "SD_CD_N",
+    "2": "VDD_SNVS_ANA"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C250",
+   "value": "10u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "1ae3ac80-0687-5592-b2da-f6e86bc5c668",
+   "fields": {
+    "LCSC": "C19702",
+    "MPN": "CL10A106KP8NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C251",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "46e217ee-5c52-5049-88a7-3a64d8162906",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "U21",
+   "value": "TPD4E05U06DQAR",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "c4ea4453-2af2-5add-84de-fe6aafcf4441",
+   "fields": {
+    "LCSC": "C138714",
+    "MPN": "TPD4E05U06DQAR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "card ESD protection"
+   },
+   "pads": {
+    "3": "GND",
+    "8": "GND",
+    "1": "SD_CLK",
+    "2": "SD_CMD",
+    "4": "SD_D0",
+    "5": "SD_D1"
+   },
+   "in_bom": true,
+   "nc": {
+    "10": "unconnected-(U21-NC-Pad10)",
+    "9": "unconnected-(U21-NC-Pad9)",
+    "7": "unconnected-(U21-NC-Pad7)",
+    "6": "unconnected-(U21-NC-Pad6)"
+   }
+  },
+  {
+   "ref": "U22",
+   "value": "TPD4E05U06DQAR",
+   "footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "19e72b9c-9c10-5502-a6ff-b8492557b192",
+   "fields": {
+    "LCSC": "C138714",
+    "MPN": "TPD4E05U06DQAR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "card ESD protection"
+   },
+   "pads": {
+    "3": "GND",
+    "8": "GND",
+    "1": "SD_D2",
+    "2": "SD_D3",
+    "4": "SD_CD_N"
+   },
+   "in_bom": true,
+   "nc": {
+    "10": "unconnected-(U22-NC-Pad10)",
+    "9": "unconnected-(U22-NC-Pad9)",
+    "7": "unconnected-(U22-NC-Pad7)",
+    "5": "unconnected-(U22-D2--Pad5)",
+    "6": "unconnected-(U22-NC-Pad6)"
+   }
+  },
+  {
+   "ref": "U19",
+   "value": "TCA6416ARTWR",
+   "footprint": "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "96fd6158-f06f-508b-afc7-c4d978b80e5b",
+   "fields": {
+    "LCSC": "C182336",
+    "MPN": "TCA6416ARTWR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "port expander, address 0x20"
+   },
+   "pads": {
+    "23": "+3V3",
+    "21": "+3V3",
+    "19": "I2C_P_SCL",
+    "20": "I2C_P_SDA",
+    "22": "IOX_INT_N",
+    "24": "IOX_RST_N",
+    "18": "GND",
+    "9": "GND",
+    "25": "GND",
+    "1": "KB_RST_N",
+    "2": "TOUCH_RST_N",
+    "3": "FL_EN",
+    "4": "FL_INT_N",
+    "5": "BATT_OC_N",
+    "6": "BB_PG",
+    "7": "CODEC_IRQ"
+   },
+   "in_bom": true,
+   "nc": {
+    "8": "unconnected-(U19-P07-Pad8)",
+    "10": "unconnected-(U19-P10-Pad10)",
+    "11": "unconnected-(U19-P11-Pad11)",
+    "12": "unconnected-(U19-P12-Pad12)",
+    "13": "unconnected-(U19-P13-Pad13)",
+    "14": "unconnected-(U19-P14-Pad14)",
+    "15": "unconnected-(U19-P15-Pad15)",
+    "16": "unconnected-(U19-P16-Pad16)",
+    "17": "unconnected-(U19-P17-Pad17)"
+   }
+  },
+  {
+   "ref": "U20",
+   "value": "TCA6416ARTWR",
+   "footprint": "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "805b687d-7cbe-5281-aa9f-a3e8e88d15b2",
+   "fields": {
+    "LCSC": "C182336",
+    "MPN": "TCA6416ARTWR",
+    "Manufacturer": "Texas Instruments",
+    "Description": "port expander, address 0x21"
+   },
+   "pads": {
+    "23": "+3V3",
+    "21": "+3V3",
+    "19": "I2C_P_SCL",
+    "20": "I2C_P_SDA",
+    "22": "IOX_INT_N",
+    "24": "IOX_RST_N",
+    "18": "+3V3",
+    "9": "GND",
+    "25": "GND"
+   },
+   "in_bom": true,
+   "nc": {
+    "1": "unconnected-(U20-P00-Pad1)",
+    "2": "unconnected-(U20-P01-Pad2)",
+    "3": "unconnected-(U20-P02-Pad3)",
+    "4": "unconnected-(U20-P03-Pad4)",
+    "5": "unconnected-(U20-P04-Pad5)",
+    "6": "unconnected-(U20-P05-Pad6)",
+    "7": "unconnected-(U20-P06-Pad7)",
+    "8": "unconnected-(U20-P07-Pad8)",
+    "10": "unconnected-(U20-P10-Pad10)",
+    "11": "unconnected-(U20-P11-Pad11)",
+    "12": "unconnected-(U20-P12-Pad12)",
+    "13": "unconnected-(U20-P13-Pad13)",
+    "14": "unconnected-(U20-P14-Pad14)",
+    "15": "unconnected-(U20-P15-Pad15)",
+    "16": "unconnected-(U20-P16-Pad16)",
+    "17": "unconnected-(U20-P17-Pad17)"
+   }
+  },
+  {
+   "ref": "R256",
+   "value": "100k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "4375354a-eadc-5d4f-9c90-f1a11c694ac4",
+   "fields": {
+    "LCSC": "C25741",
+    "MPN": "0402WGF1003TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "IOX_INT_N",
+    "2": "VDD_SNVS_ANA"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "R257",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "0f0c562e-2ea2-5177-b66a-7b64ddcb7761",
+   "fields": {
+    "LCSC": "C25744",
+    "MPN": "0402WGF1002TCE",
+    "Manufacturer": "UNI-ROYAL"
+   },
+   "pads": {
+    "1": "IOX_RST_N",
+    "2": "+3V3"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C252",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "94e3e4f5-a71e-5c35-972c-1ab7f8ffea23",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "C253",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "921de59a-37f5-5669-a5ca-1f7d52bac1ae",
+   "fields": {
+    "LCSC": "C1525",
+    "MPN": "CL05B104KO5NNNC",
+    "Manufacturer": "Samsung"
+   },
+   "pads": {
+    "1": "+3V3",
+    "2": "GND"
+   },
+   "in_bom": true,
+   "nc": {}
+  },
+  {
+   "ref": "TP50",
+   "value": "IOX_INT_N",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "8ab5490c-1331-5a01-833b-cb905b49eb10",
+   "fields": {},
+   "pads": {
+    "1": "IOX_INT_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
+   "ref": "TP51",
+   "value": "IOX_RST_N",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "dnp": false,
+   "sheet": "card_io",
+   "sheet_uuid": "7c49f1bd-36f2-501f-9ad5-1aed884a01f3",
+   "sheetfile": "card_io.kicad_sch",
+   "sym_uuid": "8d49a508-d5a6-5105-b542-74e31075bd3c",
+   "fields": {},
+   "pads": {
+    "1": "IOX_RST_N"
+   },
+   "in_bom": false,
+   "nc": {}
+  },
+  {
    "ref": "U1",
    "value": "MIMXRT1176",
    "footprint": "Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm",
@@ -8167,7 +8635,15 @@
     "D6": "AUD_DAC",
     "C6": "AUD_ADC",
     "B5": "AUD_BCLK",
-    "D8": "AUD_LRCK"
+    "D8": "AUD_LRCK",
+    "B16": "SD_CMD",
+    "D15": "SD_CLK",
+    "C15": "SD_D0",
+    "B17": "SD_D1",
+    "B15": "SD_D2",
+    "A16": "SD_D3",
+    "N9": "SD_CD_N",
+    "R10": "IOX_INT_N"
    },
    "in_bom": true,
    "nc": {
@@ -8176,12 +8652,6 @@
     "N3": "unconnected-(U1-GPIO_EMC_B2_18-PadN3)",
     "U2": "unconnected-(U1-GPIO_EMC_B2_19-PadU2)",
     "R3": "unconnected-(U1-GPIO_EMC_B2_20-PadR3)",
-    "B16": "unconnected-(U1-GPIO_SD_B1_00-PadB16)",
-    "D15": "unconnected-(U1-GPIO_SD_B1_01-PadD15)",
-    "C15": "unconnected-(U1-GPIO_SD_B1_02-PadC15)",
-    "B17": "unconnected-(U1-GPIO_SD_B1_03-PadB17)",
-    "B15": "unconnected-(U1-GPIO_SD_B1_04-PadB15)",
-    "A16": "unconnected-(U1-GPIO_SD_B1_05-PadA16)",
     "J15": "unconnected-(U1-GPIO_SD_B2_00-PadJ15)",
     "J14": "unconnected-(U1-GPIO_SD_B2_01-PadJ14)",
     "H13": "unconnected-(U1-GPIO_SD_B2_02-PadH13)",
@@ -8235,11 +8705,9 @@
     "R5": "unconnected-(U1-GPIO_LPSR_10-PadR5)",
     "T5": "unconnected-(U1-GPIO_LPSR_11-PadT5)",
     "U5": "unconnected-(U1-GPIO_LPSR_12-PadU5)",
-    "R10": "unconnected-(U1-GPIO_SNVS_00-PadR10)",
     "P9": "unconnected-(U1-GPIO_SNVS_05-PadP9)",
     "M9": "unconnected-(U1-GPIO_SNVS_06-PadM9)",
     "R9": "unconnected-(U1-GPIO_SNVS_07-PadR9)",
-    "N9": "unconnected-(U1-GPIO_SNVS_08-PadN9)",
     "R11": "unconnected-(U1-GPIO_SNVS_09-PadR11)",
     "T9": "unconnected-(U1-PMIC_STBY_REQ-PadT9)",
     "T15": "unconnected-(U1-CLK1_N-PadT15)",

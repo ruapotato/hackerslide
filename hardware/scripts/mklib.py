@@ -211,6 +211,13 @@ def symbols():
     out.append(box_symbol('PJ-3528S', [('3', 'A', P), ('2', 'B', P), ('1', 'S', P)], [('5', 'SW1', P), ('4', 'SW2', P)], ref='J',
         descr='XKB PJ-3528S 3.5 mm 3-pole jack with an isolated detect switch (terminals 4-5)',
         footprint='hackerslide:Jack_3.5mm_XKB_PJ-3528S_EdgeNotch', datasheet='~'))
+    # TCA6416A (TI SCPS194F table 5-1, RTW column)
+    out.append(box_symbol('TCA6416ARTW',
+        [('23', 'VCCI', PI), ('21', 'VCCP', PI), None, ('19', 'SCL', I), ('20', 'SDA', B), ('22', '~{INT}', 'open_collector'),
+         ('24', '~{RESET}', I), ('18', 'ADDR', I), None, ('9', 'GND', PI), ('25', 'EP', P)],
+        [(str(1 + i), f'P0{i}', B) for i in range(8)] + [None] + [(str(10 + i), f'P1{i}', B) for i in range(8)],
+        descr='TI TCA6416A 16-bit I2C port expander with interrupt, address 0x20 (ADDR low) or 0x21',
+        footprint='Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm', datasheet='https://www.ti.com/lit/ds/symlink/tca6416a.pdf'))
     # LM3630A (TI SNVS974B, pin functions table p.3)
     out.append(box_symbol('LM3630A',
         [('C3', 'IN', PI), ('B1', 'HWEN', I), ('C1', 'PWM', I), ('C2', 'SEL', I), None, ('A1', 'SDA', B), ('A2', 'SCL', I),

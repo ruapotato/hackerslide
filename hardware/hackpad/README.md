@@ -15,7 +15,9 @@ Drawn so far:
 
 - audio out: ES8316 codec and a 3-pole headphone jack sunk into the board edge.
 
-Still to draw: card, port expanders, radios, SDR, sensors, bench tools.
+- microSD card and two I2C port expanders for the slow control lines.
+
+Still to draw: radios, SDR, sensors, bench tools.
 
 Open before any order (also marked in the sheets): the memory type is not proven on this controller; the front-light
 string current is not in the panel specification; several pin orders and footprints carry CHECK notes; the pin plan
