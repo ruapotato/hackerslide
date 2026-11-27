@@ -1,13 +1,14 @@
-"""HackLite: small pocketable HackOS device (CadQuery concept model).  python hacklite.py [--out DIR]
+"""HackLite: small HackOS handheld, keys LEFT and RIGHT of a small e-ink screen (CadQuery concept model).
 
-Portrait-ish: e-ink screen on top, a split thumb keyboard below whose width sets the device width, a 5-way nav switch
-between the keyboard halves (the touch screen does the pointing).  Parts (research of 2026-11-27,
-docs/research/plugin-mcu-and-eink-2026-11-27.md and lipo-cells-2026-11-27.md):
-  brain   PJRC Teensy 4.1 (NXP i.MX RT1062, 600 MHz Cortex-M7, HackOS target exists), 61 x 17.8 mm, mounted under the
-          main board with its pins cut short: about 4.5 mm stack (ESTIMATE)
-  screen  Good Display GDEY031T10-T21, 3.1" 320 x 240 e-ink with capacitive touch: outline 73.8 x 53.2 mm, 1.53 mm thick
-  cell    Adafruit #328 (PKCELL LP785060, 2500 mAh, 9.25 Wh): datasheet maximum 62.5 x 50.5 x 8.1 mm, under the screen
-X width, Y height (top edge at Y = H), Z thickness (back at Z = 0), screen up.
+  python hacklite.py [--layout bar29|side31] [--out DIR]
+
+Two layouts (David, 2026-11-27: keys beside the screen like the HackBrain, not below it):
+  bar29   Good Display GDEY029T71H, 2.9" 384 x 168 e-ink (no touch; outline 79.98 x 35.57 mm): a slim bar
+  side31  Good Display GDEY031T10-T21, 3.1" 320 x 240 e-ink with touch (outline 73.8 x 53.2 x 1.53 mm)
+Brain: SparkFun MicroMod Teensy Processor (NXP i.MX RT1062, the HackOS Teensy target; 22 x 22 mm card in an M.2
+socket, about 6 mm above the board), under the left keys.  Cell under the screen (see CELLS).  Research:
+docs/research/plugin-mcu-and-eink-2026-11-27.md and lipo-cells-2026-11-27.md.  Active areas: ESTIMATES.
+X width, Y height, Z thickness (back at Z = 0), screen up.
 """
 import argparse
 import json
@@ -16,28 +17,16 @@ import os
 import cadquery as cq
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PANEL = dict(w=73.8, h=53.2, t=1.53, aa_w=62.0, aa_h=46.5)   # active area: ESTIMATE until the drawing is read
-CELL = dict(w=62.5, h=50.5, t=8.1)
-TEENSY = dict(w=61.0, h=17.8, t=4.5)
+PANELS = {'bar29': dict(w=79.98, h=35.57, t=1.2, aa_w=67.0, aa_h=29.2),
+          'side31': dict(w=73.8, h=53.2, t=1.53, aa_w=62.0, aa_h=46.5)}
+CELLS = {'bar29': dict(name='Jauch LP503759JU, 1350 mAh, 5.0 Wh', w=62.0, h=38.0, t=5.8),
+         'side31': dict(name='Adafruit #328, 2500 mAh, 9.25 Wh', w=62.5, h=50.5, t=8.1)}
+MODULE = dict(w=22.0, h=22.0, t=6.0)
 KEY = dict(pitch_x=7.0, pitch_y=7.0, cap_w=6.3, cap_h=6.2, cols=5, rows=4)
-SWITCH_H, NUB, FLANGE, CAP_TOP = 0.6, 0.3, 0.5, 1.2
-KEYSTACK = SWITCH_H + NUB + FLANGE + CAP_TOP
-BOARD_T = 0.8
-BACK, WALL, FRONT, GAP = 1.2, 1.6, 0.4, 0.3
-CENTRE_GAP = 12.0                                            # between the keyboard halves: the nav switch
-R = 8.0
-HALF = KEY['cols'] * KEY['pitch_x']
-W = 2 * HALF + CENTRE_GAP + 2 * (WALL + 2.5)
-KEYS_Y0 = WALL + 3.0                                         # bottom of the key field
-SCREEN_Y0 = KEYS_Y0 + KEY['rows'] * KEY['pitch_y'] + 3.0
-H = SCREEN_Y0 + PANEL['h'] + 3.0 + WALL
-# one main board across the device: cell under the screen half, Teensy under the keyboard half
-Z_BOARD = BACK + max(CELL['t'] + GAP, TEENSY['t'] + 0.2)
-Z_PANEL = Z_BOARD + BOARD_T + GAP
-T = max(Z_PANEL + PANEL['t'] + FRONT, Z_BOARD + BOARD_T + KEYSTACK)
-Z_PANEL = T - FRONT - PANEL['t']
-Z_FRONT = T - FRONT
-CX = W / 2
+KEYSTACK = 0.6 + 0.3 + 0.5 + 1.2
+BOARD_T, BACK, WALL, FRONT, GAP = 0.8, 1.2, 1.6, 0.4, 0.3
+LEGENDS = {'L': [['Esc', '1', '2', '3', '4'], ['Q', 'W', 'E', 'R', 'T'], ['A', 'S', 'D', 'F', 'G'], ['Shift', 'Z', 'X', 'C', 'V']],
+           'R': [['5', '6', '7', '8', 'Del'], ['Y', 'U', 'I', 'O', 'P'], ['H', 'J', 'K', 'L', 'Ent'], ['B', 'N', 'M', 'Spc', 'Fn']]}
 
 
 def rbox(x0, y0, z0, x1, y1, z1, r=0.0):
@@ -46,67 +35,63 @@ def rbox(x0, y0, z0, x1, y1, z1, r=0.0):
     return b.edges('|Z').fillet(r) if r > 0.05 else b
 
 
-LEGENDS = {'L': [['Esc', '1', '2', '3', '4'], ['Q', 'W', 'E', 'R', 'T'], ['A', 'S', 'D', 'F', 'G'], ['Shift', 'Z', 'X', 'C', 'V']],
-           'R': [['5', '6', '7', '8', 'Del'], ['Y', 'U', 'I', 'O', 'P'], ['H', 'J', 'K', 'L', 'Ent'], ['B', 'N', 'M', 'Spc', 'Fn']]}
-
-
-def keys():
-    out = []
-    for side, x0 in (('L', CX - CENTRE_GAP / 2 - HALF), ('R', CX + CENTRE_GAP / 2)):
+def build(layout):
+    P, C = PANELS[layout], CELLS[layout]
+    half = KEY['cols'] * KEY['pitch_x'] + 3.0
+    W = 2 * (half + WALL + 1.5) + P['w'] + 2.0
+    H = max(P['h'], C['h'], KEY['rows'] * KEY['pitch_y']) + 2 * WALL + 5.0
+    R = min(10.0, H / 2 - 1)
+    CX, CY = W / 2, H / 2
+    z_board = BACK + max(C['t'] + GAP, MODULE['t'] + 0.2)
+    T = max(z_board + BOARD_T + GAP + P['t'] + FRONT, z_board + BOARD_T + KEYSTACK)
+    z_front = T - FRONT
+    z_panel = z_front - P['t']
+    outline = lambda z0, z1, i=0.0: rbox(i, i, z0, W - i, H - i, z1, R - i)
+    shell = outline(0, z_front).cut(outline(BACK, T + 1, WALL))
+    front = outline(z_front, T)
+    ax0, ay0 = CX - P['aa_w'] / 2, CY - P['aa_h'] / 2
+    front = front.cut(rbox(ax0 - 0.5, ay0 - 0.5, z_front - 1, ax0 + P['aa_w'] + 0.5, ay0 + P['aa_h'] + 0.5, T + 1, 1.0))
+    keys, caps = [], None
+    for side, x0 in (('L', WALL + 2.5), ('R', W - WALL - 2.5 - KEY['cols'] * KEY['pitch_x'])):
         for r in range(KEY['rows']):
             for c in range(KEY['cols']):
-                out.append((side, r, c, x0 + (c + 0.5) * KEY['pitch_x'], KEYS_Y0 + (KEY['rows'] - r - 0.5) * KEY['pitch_y']))
-    return out
-
-
-def parts():
-    outline = lambda z0, z1, inset=0.0: rbox(inset, inset, z0, W - inset, H - inset, z1, R - inset)
-    shell = outline(0, Z_FRONT).cut(outline(BACK, T + 1, WALL))
-    front = outline(Z_FRONT, T)
-    px0, py0 = CX - PANEL['w'] / 2, SCREEN_Y0
-    ax0, ay0 = CX - PANEL['aa_w'] / 2, py0 + (PANEL['h'] - PANEL['aa_h']) / 2
-    front = front.cut(rbox(ax0 - 0.5, ay0 - 0.5, Z_FRONT - 1, ax0 + PANEL['aa_w'] + 0.5, ay0 + PANEL['aa_h'] + 0.5, T + 1, 1.0))
-    caps = None
-    for side, r, c, x, y in keys():
-        cap = rbox(x - KEY['cap_w'] / 2, y - KEY['cap_h'] / 2, Z_BOARD + BOARD_T + SWITCH_H + NUB, x + KEY['cap_w'] / 2, y + KEY['cap_h'] / 2, T, 1.2)
-        caps = cap if caps is None else caps.union(cap)
-        front = front.cut(rbox(x - KEY['cap_w'] / 2 - 0.3, y - KEY['cap_h'] / 2 - 0.3, Z_FRONT - 1, x + KEY['cap_w'] / 2 + 0.3, y + KEY['cap_h'] / 2 + 0.3, T + 1, 1.4))
-    ny = KEYS_Y0 + KEY['rows'] * KEY['pitch_y'] / 2                        # 5-way nav switch between the halves
-    nav = cq.Workplane('XY').circle(4.5).extrude(T + 0.6 - (Z_BOARD + BOARD_T)).translate((CX, ny, Z_BOARD + BOARD_T))
-    front = front.cut(cq.Workplane('XY').circle(5.0).extrude(3).translate((CX, ny, Z_FRONT - 1)))
-    board = rbox(WALL + 0.3, WALL + 0.3, Z_BOARD, W - WALL - 0.3, H - WALL - 0.3, Z_BOARD + BOARD_T, R - WALL - 0.3)
-    cell = rbox(CX - CELL['w'] / 2, py0 + (PANEL['h'] - CELL['h']) / 2, BACK, CX + CELL['w'] / 2, py0 + (PANEL['h'] + CELL['h']) / 2, BACK + CELL['t'], 2.0)
-    teensy = rbox(CX - TEENSY['w'] / 2, KEYS_Y0 + 2, Z_BOARD - TEENSY['t'], CX + TEENSY['w'] / 2, KEYS_Y0 + 2 + TEENSY['h'], Z_BOARD, 0.5)
-    panel = rbox(px0, py0, Z_PANEL, px0 + PANEL['w'], py0 + PANEL['h'], Z_PANEL + PANEL['t'], 0.8)
-    screen = (ax0, ay0, Z_PANEL + PANEL['t'], PANEL['aa_w'], PANEL['aa_h'])
-    return dict(shell=shell, front=front, keycaps=caps, stick=nav, kbd_pcb=board, cells=cell, module=teensy, panel=panel), screen
+                x, y = x0 + (c + 0.5) * KEY['pitch_x'], CY + (KEY['rows'] / 2 - r - 0.5) * KEY['pitch_y']
+                keys.append(dict(side=side, r=r, c=c, x=x, y=y, label=LEGENDS[side][r][c]))
+                cap = rbox(x - KEY['cap_w'] / 2, y - KEY['cap_h'] / 2, z_board + BOARD_T + 0.9, x + KEY['cap_w'] / 2, y + KEY['cap_h'] / 2, T, 1.2)
+                caps = cap if caps is None else caps.union(cap)
+                front = front.cut(rbox(x - KEY['cap_w'] / 2 - 0.3, y - KEY['cap_h'] / 2 - 0.3, z_front - 1, x + KEY['cap_w'] / 2 + 0.3, y + KEY['cap_h'] / 2 + 0.3, T + 1, 1.4))
+    board = rbox(WALL + 0.3, WALL + 0.3, z_board, W - WALL - 0.3, H - WALL - 0.3, z_board + BOARD_T, R - WALL - 0.3)
+    cell = rbox(CX - C['w'] / 2, CY - C['h'] / 2, BACK, CX + C['w'] / 2, CY + C['h'] / 2, BACK + C['t'], 2.0)
+    mx = WALL + 2.5 + KEY['cols'] * KEY['pitch_x'] / 2
+    module = rbox(mx - MODULE['w'] / 2, CY - MODULE['h'] / 2, z_board - MODULE['t'], mx + MODULE['w'] / 2, CY + MODULE['h'] / 2, z_board, 0.5)
+    panel = rbox(CX - P['w'] / 2, CY - P['h'] / 2, z_panel, CX + P['w'] / 2, CY + P['h'] / 2, z_panel + P['t'], 0.8)
+    d = dict(shell=shell, front=front, keycaps=caps, kbd_pcb=board, cells=cell, module=module, panel=panel)
+    return d, dict(w=W, h=H, t=T, z_keytop=T, screen=(ax0, ay0, z_panel + P['t'], P['aa_w'], P['aa_h']), keys=keys,
+                   cell=C['name'], explode=dict(shell=0, cells=8, module=8, kbd_pcb=18, panel=26, keycaps=30, front=38))
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--out', default=os.path.join(HERE, '..', 'hacklite'))
-    out = ap.parse_args().out
+    ap.add_argument('--layout', default='bar29', choices=sorted(PANELS))
+    ap.add_argument('--out', default=None)
+    a = ap.parse_args()
+    out = a.out or os.path.join(HERE, '..', 'hacklite', a.layout)
     os.makedirs(os.path.join(out, 'scene'), exist_ok=True)
-    d, screen = parts()
+    d, info = build(a.layout)
     names, bad = list(d), []
-    for i, a in enumerate(names):
-        for b in names[i + 1:]:
-            if {a, b} in ({'stick', 'front'},):
-                continue
+    for i, x in enumerate(names):
+        for y in names[i + 1:]:
             try:
-                v = d[a].intersect(d[b]).val().Volume()
+                v = d[x].intersect(d[y]).val().Volume()
             except Exception:
                 v = 0.0
             if v > 0.01:
-                bad.append((a, b, round(v, 2)))
-    print('collisions:', bad or 'none')
+                bad.append((x, y, round(v, 2)))
+    print(a.layout, 'collisions:', bad or 'none')
     for n, p in d.items():
         cq.exporters.export(p, os.path.join(out, 'scene', f'closed_{n}.stl'), tolerance=0.02, angularTolerance=0.1)
-    ks = [dict(side=s, r=r, c=c, x=x, y=y, label=LEGENDS[s][r][c]) for s, r, c, x, y in keys()]
-    json.dump(dict(w=W, h=H, t=T, z_keytop=T, screen=screen, keys=ks,
-                   explode=dict(shell=0, cells=10, module=10, kbd_pcb=22, panel=32, keycaps=36, stick=36, front=46)),
-              open(os.path.join(out, 'stack.json'), 'w'), indent=1)
-    print(f'HackLite {W:.1f} x {H:.1f} x {T:.2f} mm')
+    json.dump(info, open(os.path.join(out, 'stack.json'), 'w'), indent=1)
+    print(f"HackLite {a.layout}: {info['w']:.1f} x {info['h']:.1f} x {info['t']:.2f} mm; cell {info['cell']}")
 
 
 if __name__ == '__main__':
