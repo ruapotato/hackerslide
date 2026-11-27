@@ -44,3 +44,19 @@ is the main line. The key fields now fill the full height beside the screen: 5 r
 Size now **159.4 x 59.4 x 13.0 mm** (bar29 for comparison: 165.6 x 44.2 x 10.8 mm).
 Keys: left Esc 1-4 / Q-T / A-G / Z-B / Shift Ctrl Alt Tab Space; right 5-8 Del / Y-P / H-L Enter / N M , . / /
 Space Sym - Fn Shift.
+
+## Shrinking the whole device (David, 2026-11-27)
+
+What sets each dimension, and the smallest each can go:
+
+- **Height (59.4 mm)** is set by the 3.1" screen (53.2 mm) plus walls; the 2500 mAh cell (50.5 mm) fits under it.
+  Smaller only with a smaller screen.
+- **Width** is two key fields plus the screen (73.8 mm). Key pitch across: 7.6 mm gives 159.4 mm; **6.5 mm gives
+  148.4 mm; 6.0 mm (phone/BlackBerry key size) gives 143.4 mm** (`hacklite.py --layout side31 --pitch 6.0`,
+  rendered). Below about 6 mm the keys get hard to hit with thumbs.
+- **Thickness (13.0 mm)** is set by the 8.1 mm cell. The thinner Jauch LP503759JU (5.8 mm, 5.0 Wh) gives about
+  10.8 mm at about half the battery life.
+
+Smallest with this screen: about **143 x 59 x 11-13 mm** depending on the cell. Going smaller overall means a
+smaller screen (for example a 2.13" panel, about 129 x 40 mm with a much smaller cell and only a few lines of text:
+estimate, panel not checked).

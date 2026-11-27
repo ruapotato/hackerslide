@@ -81,8 +81,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--layout', default='bar29', choices=sorted(PANELS))
     ap.add_argument('--out', default=None)
+    ap.add_argument('--pitch', type=float, default=KEY['pitch_x'], help='key pitch across, mm (7.6 default; 6.0 = phone-keyboard size)')
     a = ap.parse_args()
-    out = a.out or os.path.join(HERE, '..', 'hacklite', a.layout)
+    KEY['pitch_x'] = a.pitch
+    out = a.out or os.path.join(HERE, '..', 'hacklite', a.layout + ('' if a.pitch == 7.6 else f'_p{a.pitch:g}'))
     os.makedirs(os.path.join(out, 'scene'), exist_ok=True)
     d, info = build(a.layout)
     names, bad = list(d), []
