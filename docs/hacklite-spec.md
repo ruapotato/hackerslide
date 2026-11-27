@@ -30,3 +30,6 @@ five save about 14 mm (the number row then moves to Fn).
 HackOS power-management work.
 
 **Risks:** Teensy boards are single-source (SparkFun); no front light at these e-ink sizes; the 2.9" panel has no touch.
+
+**No joystick or other pointer (David, 2026-11-27).** Both layouts have none. Navigation is by keys (arrow keys
+on Fn + I/J/K/L or similar, chosen in HackOS's keymap) and, on the 3.1" layout, by touch on the screen.
