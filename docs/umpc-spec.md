@@ -96,3 +96,13 @@ The phone-style trackball (PIM447) is small (ball about 8 mm, estimate) and 9.5 
   sensor (PixArt PMW3610 class, as in wireless DIY trackballs; JLCPCB 0, other distributors to check). Depth about
   16-17 mm at that spot, so a local bump on the back under the ball; the cell on that side must be shortened.
 - The PIM447 stays the simplest option at 15.0 mm overall.
+
+### Virtual trackball: part chosen (2026-11-27)
+
+David likes the virtual ball if it is in stock. Cirque GlidePoint 35 mm round trackpads at Mouser (aggregator
+snapshots, to recheck before ordering): **TM035035-2024-003, curved overlay** (119 in stock, 215 on order, about
+$9.62) is the first choice, since the dished surface feels more like a ball; **TM035035-2024-002, flat overlay**
+(211 in stock, about $9.63) is the fallback. 40 mm versions exist (TM040040-2024-30x) but do not fit the 35 mm
+space under the right keys. Interface I2C or SPI to the input microcontroller, which adds the momentum; the haptic
+tick comes from a DRV2605L driver and an LRA motor (both JLCPCB stock). Brain stays the Core3566, 4 GB version, for
+performance (David: "keep the power").
