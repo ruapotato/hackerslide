@@ -1,0 +1,166 @@
+{
+ "part": "LMH2110",
+ "mpn": "LMH2110TMX/NOPB",
+ "maker": "Texas Instruments",
+ "lcsc": "C129356",
+ "stock": 2974,
+ "price": 1.4959,
+ "package": "DSBGA-6 (YFQ) 1.27 x 0.87 mm, 0.4 mm pitch",
+ "height_mm": 0.6,
+ "height_note": "[mem] about 0.6; drawing not transcribed",
+ "kicad_symbol": null,
+ "kicad_footprint": "Package_BGA:Texas_DSBGA-6_0.855x1.255mm_Layout2x3_P0.4mm_LevelB (candidate: body is 0.87 x 1.27; check ball map orientation A1..C2)",
+ "pins": [
+  {
+   "pin": "A1",
+   "name": "VDD",
+   "net": "+3V3_BENCH"
+  },
+  {
+   "pin": "A2",
+   "name": "OUT",
+   "net": "RFDET_OUT"
+  },
+  {
+   "pin": "B1",
+   "name": "RFIN",
+   "net": "RF tap"
+  },
+  {
+   "pin": "B2",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "C1",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "C2",
+   "name": "EN",
+   "net": "RFDET_EN_DIV"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "supply decoupling [mem value]",
+   "value": "100n + 100p",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(A1)",
+    "GND"
+   ],
+   "page": "p1 typical circuit"
+  },
+  {
+   "role": "tap attenuator R1 from a 50 ohm line: A_dB = 20 log(1 + R1/50)",
+   "value": "1.5k = 30 dB (as several series resistors, e.g. 3 x 499)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RF line",
+    "RFIN(B1)"
+   ],
+   "page": "p27-28 eq 16/17"
+  },
+  {
+   "role": "DC block ahead of RFIN if the tapped node carries DC [mem]",
+   "value": "100p",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "tap",
+    "RFIN(B1)"
+   ],
+   "page": "-"
+  },
+  {
+   "role": "output filter RS, also the top of the ADC divider",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "OUT(A2)",
+    "AIN_RFPWR"
+   ],
+   "page": "p28 fig 55 (filter); divider is this design's"
+  },
+  {
+   "role": "ADC divider bottom: 0.75 x",
+   "value": "30k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AIN_RFPWR",
+    "GND"
+   ],
+   "page": "needed: output reaches about 2.0-2.4 V (p6, p27 fig 52) and the ADC reference is 1.8 V"
+  },
+  {
+   "role": "output filter CS (f = 1/(2 pi R C), R = 10k||30k = 7.5k: 210 Hz)",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AIN_RFPWR",
+    "GND"
+   ],
+   "page": "p28 eq 18"
+  },
+  {
+   "role": "EN divider top (EN must stay below 3 V; ds suggests 1 k series at least)",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RFDET_EN (expander, 3.3 V)",
+    "EN(C2)"
+   ],
+   "page": "p3, p20"
+  },
+  {
+   "role": "EN divider bottom: 2.27 V at the pin",
+   "value": "22k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "EN(C2)",
+    "GND"
+   ],
+   "page": "p3: EN < 2.5 V for low input current; > 1.1 V = on (p20)"
+  }
+ ],
+ "supplies": {
+  "VDD": "2.7-5 V",
+  "I_active_mA": 3.7,
+  "I_active_max_mA": 5.5,
+  "I_shutdown_uA": 3.7,
+  "page": "p4-5"
+ },
+ "logic": "EN: high > 1.1 V, low < 0.6 V; keep <= 2.5 V (text says not above 3 V, table says abs max 3.6 V). Never high while VDD is off (p20).",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "AIN_RFPWR (AD_06)"
+  ],
+  "expander": [
+   "RFDET_EN"
+  ],
+  "strap": []
+ },
+ "placement": [
+  "Right at the RF tap, on the RF board area, ground balls straight to the plane; output trace leaves away from the RF line.",
+  "R1 as a chain of 0402 resistors to cut its parasitic capacitance (p28)."
+ ],
+ "notes": [
+  "Input 50 ohm, 50 MHz-8 GHz, -40..+5 dBm at the pin (abs max +12 dBm, p4). Direct from a coupler it needs no parts (p27). With R1 = 1.5k the range at the tapped line is about -10..+35 dBm; pick R1 for the source.",
+  "Output vs the 1.8 V ADC: typ maximum 1.96 V at 50 MHz, 1.58 V at 900 MHz, 1.5 V at 1.9 GHz, 1.52 V at 3.5 GHz, 1.34 V at 5.8 GHz (p6-8); fig 52's axis runs to 2.4 V. Slope about 44 mV/dB [from intercept and Vmax]. With the 0.75 divider full scale lands at about 1.5-1.8 V.",
+  "Output goes high-impedance in shutdown, which keeps the filter capacitor charged (p20)."
+ ],
+ "unverified": [
+  "Decoupling values, DC block, package height, footprint match."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

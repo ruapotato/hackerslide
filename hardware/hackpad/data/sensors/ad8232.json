@@ -1,0 +1,425 @@
+{
+ "part": "AD8232",
+ "mpn": "AD8232ACPZ-R7",
+ "maker": "Analog Devices",
+ "lcsc": "C43216",
+ "stock": 1689,
+ "price": 6.7149,
+ "package": "LFCSP-20 4 x 4 mm, 0.5 mm pitch, exposed pad",
+ "height_mm": 0.75,
+ "height_note": "0.75 nom, 0.80 max (CP-20 outline p27)",
+ "kicad_symbol": null,
+ "kicad_footprint": "Package_CSP:LFCSP-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm (exposed pad 2.50 sq nominal, 2.35-2.65, outline p27)",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "HPDRIVE",
+   "net": "C 0.33u to HPSENSE"
+  },
+  {
+   "pin": "2",
+   "name": "+IN",
+   "net": "LA electrode via 180k"
+  },
+  {
+   "pin": "3",
+   "name": "-IN",
+   "net": "RA electrode via 180k"
+  },
+  {
+   "pin": "4",
+   "name": "RLDFB",
+   "net": "1n to RLD; RL electrode side of 360k"
+  },
+  {
+   "pin": "5",
+   "name": "RLD",
+   "net": "RL electrode via 360k"
+  },
+  {
+   "pin": "6",
+   "name": "SW",
+   "net": "second high-pass node"
+  },
+  {
+   "pin": "7",
+   "name": "OPAMP+",
+   "net": "low-pass filter"
+  },
+  {
+   "pin": "8",
+   "name": "REFOUT",
+   "net": "virtual ground (VS/2 with the divider below)"
+  },
+  {
+   "pin": "9",
+   "name": "OPAMP-",
+   "net": "gain network"
+  },
+  {
+   "pin": "10",
+   "name": "OUT",
+   "net": "ECG_OUT -> divider -> AIN_ECG"
+  },
+  {
+   "pin": "11",
+   "name": "LOD-",
+   "net": "ECG_LOD_N_RA (expander input)"
+  },
+  {
+   "pin": "12",
+   "name": "LOD+",
+   "net": "ECG_LOD_LA (expander input)"
+  },
+  {
+   "pin": "13",
+   "name": "SDN",
+   "net": "ECG_SDN (expander output; low = shutdown)"
+  },
+  {
+   "pin": "14",
+   "name": "AC/DC",
+   "net": "ECG_ACDC (expander output) or strap"
+  },
+  {
+   "pin": "15",
+   "name": "FR",
+   "net": "+VS (fast restore on)"
+  },
+  {
+   "pin": "16",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "17",
+   "name": "+VS",
+   "net": "+3V3A"
+  },
+  {
+   "pin": "18",
+   "name": "REFIN",
+   "net": "10M/10M divider of +VS, 0.1u"
+  },
+  {
+   "pin": "19",
+   "name": "IAOUT",
+   "net": "in-amp output"
+  },
+  {
+   "pin": "20",
+   "name": "HPSENSE",
+   "net": "high-pass sense"
+  },
+  {
+   "pin": "EP",
+   "name": "exposed pad",
+   "net": "GND or open (p6)"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "bypass",
+   "value": "0.1u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "+VS(17)",
+    "GND(16)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "reference divider top",
+   "value": "10M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "+VS",
+    "REFIN(18)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "reference divider bottom",
+   "value": "10M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "REFIN(18)",
+    "GND"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "reference filter",
+   "value": "0.1u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "REFIN(18)",
+    "GND"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "input protection / patient current limit, LA",
+   "value": "180k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "LA electrode",
+    "+IN(2)"
+   ],
+   "page": "p25 fig 66; p19: keep any electrode current under 10 uA"
+  },
+  {
+   "role": "input protection / patient current limit, RA",
+   "value": "180k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RA electrode",
+    "-IN(3)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "dc lead-off bias, LA side",
+   "value": "10M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "+VS",
+    "LA electrode node"
+   ],
+   "page": "p25 fig 66 (also p18 fig 50)"
+  },
+  {
+   "role": "dc lead-off bias, RA side",
+   "value": "10M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "LA/RA electrode nodes (second 10M in fig 66)",
+    "see unverified"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "right-leg drive current limit",
+   "value": "360k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RLD(5)",
+    "RL electrode"
+   ],
+   "page": "p25 fig 66; p23: VS / 10 uA"
+  },
+  {
+   "role": "RLD loop compensation",
+   "value": "1n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RLDFB(4)",
+    "RLD(5)"
+   ],
+   "page": "p25 fig 66; p23"
+  },
+  {
+   "role": "first high-pass (0.5 Hz with the next part)",
+   "value": "0.33u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "HPDRIVE(1)",
+    "HPSENSE(20)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "first high-pass resistor",
+   "value": "10M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "HPSENSE(20)",
+    "IAOUT(19)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "second high-pass capacitor",
+   "value": "0.33u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "IAOUT(19) side",
+    "SW(6) node"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "second high-pass resistors",
+   "value": "1.4M + 10M (as drawn)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "second HP node",
+    "REFOUT(8)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "Sallen-Key low-pass R1 (40 Hz)",
+   "value": "1M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SW(6) node",
+    "LP mid node"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "Sallen-Key low-pass R2",
+   "value": "1M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "LP mid node",
+    "OPAMP+(7)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "Sallen-Key low-pass C to reference",
+   "value": "10n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "OPAMP+(7)",
+    "REFOUT(8)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "Sallen-Key low-pass feedback C",
+   "value": "1.5n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "LP mid node",
+    "OUT(10)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "op-amp gain 11: to reference",
+   "value": "100k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "OPAMP-(9)",
+    "REFOUT(8)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "op-amp gain 11: feedback",
+   "value": "1M",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "OPAMP-(9)",
+    "OUT(10)"
+   ],
+   "page": "p25 fig 66"
+  },
+  {
+   "role": "output divider into the 1.8 V ADC, top [this design]",
+   "value": "100k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "OUT(10)",
+    "AIN_ECG"
+   ],
+   "page": "p3: OUT swings 0.1 V..VS-0.1 V into >=50k"
+  },
+  {
+   "role": "output divider bottom [this design]",
+   "value": "100k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AIN_ECG",
+    "GND"
+   ],
+   "page": "-"
+  },
+  {
+   "role": "ADC anti-alias / charge reservoir [this design]",
+   "value": "10n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AIN_ECG",
+    "GND"
+   ],
+   "page": "-"
+  },
+  {
+   "role": "fast restore enable",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "FR(15)",
+    "+VS"
+   ],
+   "page": "p25 fig 66"
+  }
+ ],
+ "supplies": {
+  "VS": "2.0-3.5 V (3.3 V from a quiet analog rail, +3V3A)",
+  "I_active_uA": "170 typ / 230 max",
+  "I_shutdown_nA": "40 typ / 500 max",
+  "page": "p1, p4"
+ },
+ "logic": "SDN: VIH 2.1 V / VIL 0.5 V (table p4 prints the two labels swapped); AC/DC and FR: switching threshold 1.24-1.35 V; LOD+/LOD- push-pull to VS (VOH 2.95 V at VS = 3 V). All compatible with 3.3 V port-expander pins.",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "AIN_ECG (AD_07, ADC1_CH0B) through the 2:1 divider"
+  ],
+  "expander": [
+   "ECG_SDN (output)",
+   "ECG_LOD_LA = LOD+ (input)",
+   "ECG_LOD_RA = LOD- (input, dc lead-off mode only)",
+   "ECG_ACDC (output: low = dc lead-off with 3 electrodes, high = ac lead-off with 2 electrodes)"
+  ],
+  "strap": [
+   "FR -> +VS",
+   "EP -> GND"
+  ]
+ },
+ "placement": [
+  "Electrodes: two metal pads on the case where both thumbs or hands rest (LA, RA) give a 2-electrode configuration with ac lead-off (p19 fig 51; RLD then biases the inputs, p17). A third electrode (RL) improves mains rejection: a third pad, or a small dedicated 3-pin connector.",
+  "The bench header's eight lines go through the SN74AXC8T245 shifter and are digital: electrodes CANNOT use them. Electrodes through the header need three extra analogue pins wired straight to the 180k/360k resistors.",
+  "Input traces symmetrical and length-matched, safety and bias resistors placed identically for both inputs (p20); keep the 10M nodes short and away from the e-paper and converter switching nodes.",
+  "Medical-safety note (p25): demonstration circuit only. Use only while running from the battery, never while USB is connected to a mains charger."
+ ],
+ "notes": [
+  "Configuration: Fig 66 'cardiac monitor' (p25): 0.5 Hz two-pole high-pass, 40 Hz two-pole low-pass, gain 100 x 11 = 1100, third electrode driven. Fig 67 shows about 61 dB pass band.",
+  "Output into the 1.8 V ADC: REFOUT = VS/2 = 1.65 V and OUT can reach VS-0.1 V when the inputs saturate (lead-off), so OUT is halved: 0.05-1.6 V at the pin, centred at 0.83 V. Never above 1.65 V even with +VS at 3.3 V.",
+  "Safety resistors: datasheet rule is VS / 10 uA (p19, p23); at 3.3 V that is 330k for one resistor. The fig 66 values (180k + 180k in the LA-RA path, 360k on RL) meet it for the series path [interpretation]."
+ ],
+ "unverified": [
+  "Exact wiring of the second 10M lead-off resistor and of the 1.4M/10M second high-pass in fig 66: read from the drawing at 150 dpi; check against ADI's evaluation-board schematic before layout.",
+  "No KiCad symbol: build one from Table 3 (p6), pin numbers above are from that table."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

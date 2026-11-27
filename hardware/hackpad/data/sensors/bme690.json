@@ -1,0 +1,144 @@
+{
+ "part": "BME690",
+ "mpn": "BME690 (Bosch 0 273 017 048)",
+ "maker": "Bosch Sensortec",
+ "lcsc": "C42431867",
+ "stock": 1531,
+ "price": 9.9193,
+ "package": "LGA-8 metal lid 3.0 x 3.0 mm, 0.8 mm pitch",
+ "height_mm": 0.93,
+ "kicad_symbol": "Sensor:BME680 (pins 1 GND, 2 CSB, 3 SDI, 4 SCK, 5 SDO, 6 VDDIO, 7 GND, 8 VDD: CONFIRMED identical to BME690 table 26 p52)",
+ "kicad_footprint": "Package_LGA:Bosch_LGA-8_3x3mm_P0.8mm_ClockwisePinNumbering (clockwise numbering in top view matches p52; land pattern p54: 0.6 x 0.4 pads [check against the footprint])",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "2",
+   "name": "CSB",
+   "net": "VDDIO (I2C mode)"
+  },
+  {
+   "pin": "3",
+   "name": "SDI",
+   "net": "I2C_S18_SDA (1.8 V segment)"
+  },
+  {
+   "pin": "4",
+   "name": "SCK",
+   "net": "I2C_S18_SCL"
+  },
+  {
+   "pin": "5",
+   "name": "SDO",
+   "net": "GND (address 0x76)"
+  },
+  {
+   "pin": "6",
+   "name": "VDDIO",
+   "net": "+1V8"
+  },
+  {
+   "pin": "7",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "8",
+   "name": "VDD",
+   "net": "+1V8"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "VDD bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(8)",
+    "GND"
+   ],
+   "page": "p53 C1/C2"
+  },
+  {
+   "role": "VDDIO bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDDIO(6)",
+    "GND"
+   ],
+   "page": "p53"
+  },
+  {
+   "role": "I2C mode select",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CSB(2)",
+    "VDDIO"
+   ],
+   "page": "p53: direct connection required"
+  },
+  {
+   "role": "address",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDO(5)",
+    "GND"
+   ],
+   "page": "p46: must not float"
+  }
+ ],
+ "supplies": {
+  "VDD": "1.71-3.6 V, ripple <= 50 mVpp; optimised for 1.8 V (p7 note 1)",
+  "VDDIO": "1.2-3.6 V",
+  "I_sleep_uA": "0.11 typ / 0.14 max",
+  "I_standby_uA": 0.22,
+  "I_THP_1Hz_uA": 4.2,
+  "I_gas_ULP_avg_mA": 0.05,
+  "I_gas_LP_avg_mA": 0.5,
+  "I_gas_scan_avg_mA": 3.1,
+  "I_heater_continuous_mA": "12 typ / 13 max",
+  "I_peak_mA": "17 typ / 18 max (first ms of heater on)",
+  "page": "p3, p7, p8, p31"
+ },
+ "logic": "Interface pins limited to VDDIO + 0.3 V (p15). Run at 1.8 V: sits on the 1.8 V I2C segment behind the PCA9306 with the AS7341 and LSM6DSV16X. (At VDDIO = 3.3 V it would also work on I2C_S directly; 1.8 V is chosen because the heater and ASIC are optimised for it.)",
+ "i2c_addr": {
+  "bus": "I2C_S (1.8 V segment)",
+  "addr": [
+   "0x76"
+  ],
+  "select": "SDO: GND 0x76, VDDIO 0x77; must not float (p46)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [],
+  "strap": [
+   "CSB->VDDIO",
+   "SDO->GND"
+  ]
+ },
+ "placement": [
+  "Shared gas vent; vent hole in the lid needs air exchange, about 1 m/s air-flow for the stated response time (p12).",
+  "Its hot plate reaches 320 C (p8): keep it a few mm from the SHT40/STCC4 so it does not bias their temperature, and away from the SGP41's air path. Do not place both MOX parts (BME690, MiCS-5524) right next to each other.",
+  "Minimum solder height 50 um after reflow (p56); no board wash over the vent [mem: Bosch handling note]."
+ ],
+ "notes": [
+  "Chosen over the BME688 (3,913 in stock, $11.50): the 690 is in stock above 300, cheaper and lower power in ULP/LP modes (p3).",
+  "Duplicates pressure, humidity and temperature already measured by the BMP581 and SHT40; it is here for the gas scan (BSEC library, closed binary).",
+  "No interrupt pin: polled."
+ ],
+ "unverified": [
+  "Land pattern dimensions vs the KiCad Bosch footprint.",
+  "BSEC library licence and availability for Cortex-M7 [mem]."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

@@ -1,0 +1,213 @@
+{
+ "part": "MAX31856",
+ "mpn": "MAX31856MUD+T",
+ "maker": "Analog Devices (Maxim)",
+ "lcsc": "C2653162",
+ "stock": 11350,
+ "price": 3.8934,
+ "package": "TSSOP-14 4.4 x 5.0 mm",
+ "height_mm": 1.1,
+ "height_note": "TSSOP 1.1-1.2 max [mem]",
+ "kicad_symbol": "Sensor_Temperature:MAX31856",
+ "kicad_symbol_check": "all 14 pins match ds p10 (1 AGND, 2 BIAS, 3 T-, 4 T+, 5 AVDD, 6 DNC, 7 DRDY, 8 DVDD, 9 CS, 10 SCK, 11 SDO, 12 SDI, 13 FAULT, 14 DGND)",
+ "kicad_footprint": "Package_SO:TSSOP-14_4.4x5mm_P0.65mm",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "AGND",
+   "net": "GND"
+  },
+  {
+   "pin": "2",
+   "name": "BIAS",
+   "net": "TC_N (tied to T-)"
+  },
+  {
+   "pin": "3",
+   "name": "T-",
+   "net": "TC_N"
+  },
+  {
+   "pin": "4",
+   "name": "T+",
+   "net": "TC_P"
+  },
+  {
+   "pin": "5",
+   "name": "AVDD",
+   "net": "+3V3"
+  },
+  {
+   "pin": "6",
+   "name": "DNC",
+   "net": "open"
+  },
+  {
+   "pin": "7",
+   "name": "DRDY",
+   "net": "TC_DRDY_N (optional)"
+  },
+  {
+   "pin": "8",
+   "name": "DVDD",
+   "net": "+3V3"
+  },
+  {
+   "pin": "9",
+   "name": "CS",
+   "net": "TC_CS_N (expander)"
+  },
+  {
+   "pin": "10",
+   "name": "SCK",
+   "net": "RF_SCK"
+  },
+  {
+   "pin": "11",
+   "name": "SDO",
+   "net": "RF_MISO"
+  },
+  {
+   "pin": "12",
+   "name": "SDI",
+   "net": "RF_MOSI"
+  },
+  {
+   "pin": "13",
+   "name": "FAULT",
+   "net": "TC_FAULT_N (optional)"
+  },
+  {
+   "pin": "14",
+   "name": "DGND",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "bias to the negative input",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "BIAS(2)",
+    "T-(3)"
+   ],
+   "page": "p1 circuit"
+  },
+  {
+   "role": "common-mode filter",
+   "value": "10n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "T-(3)",
+    "GND"
+   ],
+   "page": "p1"
+  },
+  {
+   "role": "common-mode filter",
+   "value": "10n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "T+(4)",
+    "GND"
+   ],
+   "page": "p1"
+  },
+  {
+   "role": "differential filter",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "T+(4)",
+    "T-(3)"
+   ],
+   "page": "p1"
+  },
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AVDD(5)",
+    "AGND"
+   ],
+   "page": "p1, p10"
+  },
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "DVDD(8)",
+    "DGND"
+   ],
+   "page": "p1, p10"
+  },
+  {
+   "role": "optional series resistors / ferrite in each lead for RF pick-up (keep them equal; bias current 5.5 nA max)",
+   "value": "100 ohm x2 [this design]",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "contacts",
+    "T+ / T-"
+   ],
+   "page": "p11: 'additional filtering and/or protection components may be added'; p3"
+  },
+  {
+   "role": "CS pull-up so the chip stays deselected while the expander is unconfigured",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CS(9)",
+    "+3V3"
+   ],
+   "page": "-"
+  }
+ ],
+ "supplies": {
+  "AVDD=DVDD": "3.0-3.6 V, within 100 mV of each other",
+  "I_standby_uA": 5.25,
+  "I_standby_max_uA": 10,
+  "I_convert_mA": 1.2,
+  "I_convert_max_mA": 2,
+  "page": "p2"
+ },
+ "logic": "3.3 V SPI, clock polarity either way (modes 1 and 3; p6)",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "RF_SCK / RF_MOSI / RF_MISO (shared LPSPI6)"
+  ],
+  "expander": [
+   "TC_CS_N",
+   "TC_DRDY_N (optional)",
+   "TC_FAULT_N (optional)"
+  ],
+  "strap": [
+   "DNC open"
+  ]
+ },
+ "placement": [
+  "The cold junction is measured by the chip itself: put it within a few millimetres of the thermocouple contacts, on the same copper, away from heat and draughts, with no heat-producing part nearby (p12).",
+  "Connector: no miniature thermocouple socket was found in JLCPCB's library (searched 'PCC-SMP', 'thermocouple connector'). Use two plated pads/a 2-pin position on the bench header edge; a K-type mini plug adapter can be a pigtail. Copper pads add an error only if the two pads sit at different temperatures: keep them close together and symmetric."
+ ],
+ "notes": [
+  "Inputs survive +-45 V (p1-2); open-circuit and over/under-voltage faults are detected on chip.",
+  "CONFLICT to settle: the pin plan gives the chip select to a port expander but names no SPI bus. Proposed: the radio SPI (LPSPI6, 3.3 V pads). The memory/SDR SPI is on 1.8 V pads and the e-paper SPI has no data-in pad. A select line on an I2C expander costs two I2C writes per transfer (fine at a few readings per second) and the radio drivers must not use the bus in between.",
+  "It must stay powered whenever that SPI bus is active (an unpowered chip would load MISO/MOSI): always-on 3.3 V, 5 uA standby."
+ ],
+ "unverified": [
+  "Whether SDO is high-impedance with CS high (expected for a shared bus; not found on the pages read).",
+  "Series-resistor values."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

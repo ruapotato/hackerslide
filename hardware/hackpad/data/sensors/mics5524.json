@@ -1,0 +1,155 @@
+{
+ "part": "MiCS-5524",
+ "mpn": "MICS-5524",
+ "maker": "SGX Sensortech (Amphenol)",
+ "lcsc": "C3659348",
+ "stock": 1780,
+ "price": 6.4481,
+ "package": "SMD 10 pads, 5 x 7 mm, 1.27 mm pitch",
+ "height_mm": 1.55,
+ "kicad_symbol": "Sensor_Gas:MiCS-5524 (pins C Rh1, D Rs1, F Rh2, G Rs2, others NC: CONFIRMED against the pin table p4)",
+ "kicad_footprint": "Sensor:Sensortech_MiCS_5x7mm_P1.25mm (data sheet gives 1.27 mm pitch 4 x 1.27 = 5.08: check the KiCad pitch)",
+ "pins": [
+  {
+   "pin": "A",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "B",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "C",
+   "name": "Rh1",
+   "net": "heater low side -> GND (heater fed from the switch)"
+  },
+  {
+   "pin": "D",
+   "name": "Rs1",
+   "net": "AIN_GAS node / RLOAD to GND"
+  },
+  {
+   "pin": "E",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "F",
+   "name": "Rh2",
+   "net": "+3V3_HTR via 30 ohm"
+  },
+  {
+   "pin": "G",
+   "name": "Rs2",
+   "net": "+1V8A (sense supply = ADC reference rail)"
+  },
+  {
+   "pin": "H",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "J",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "K",
+   "name": "NC",
+   "net": ""
+  }
+ ],
+ "circuit": [
+  {
+   "role": "heater switch: load switch from +3V3, ON from the expander [this design]",
+   "value": "TPS22919DCKR",
+   "part": "TPS22919DCKR",
+   "lcsc": "C2149796",
+   "between": [
+    "+3V3 -> IN(1); VOUT(6) -> heater resistor",
+    "ON(3) = GAS_HTR_EN"
+   ],
+   "page": "TPS22919 p3"
+  },
+  {
+   "role": "heater series resistor for 3.3 V (data sheet uses 82 ohm from 5 V, p3) [this design]",
+   "value": "30 ohm 1 % 0603",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "switched +3V3_HTR",
+    "Rh2(F)"
+   ],
+   "page": "p3: VH 2.4 V, 32 mA, RH 66-82 ohm, PH max 88 mW"
+  },
+  {
+   "role": "load resistor (sense)",
+   "value": "47k [this design; data sheet minimum 820 ohm]",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "Rs1(D)",
+    "GND"
+   ],
+   "page": "p3: RLOAD >= 820 ohm"
+  },
+  {
+   "role": "sense supply",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "Rs2(G)",
+    "+1V8A (ADC reference rail)"
+   ],
+   "page": "p3 measurement circuit uses 5 V; this design uses the 1.8 V ADC reference so the reading is ratiometric and can never exceed the ADC range"
+  },
+  {
+   "role": "ADC filter",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "Rs1(D) = AIN_GAS",
+    "GND"
+   ],
+   "page": "-"
+  }
+ ],
+ "supplies": {
+  "heater": "32 mA, 76 mW (71-81) at VH 2.4 V; abs max 88 mW (p3)",
+  "sense_layer": "max 8 mW (p3); here < 0.02 mW",
+  "Vsupply_spec": "4.9-5.1 V with the 82 ohm resistor (p3); this design uses 3.3 V with 30 ohm",
+  "heater_3V3_check": "30 ohm: nominal VH = 3.3*74/104 = 2.35 V, 74 mW; worst case 3.4 V and RH 66 ohm: 2.34 V, 83 mW (< 88). 27 ohm would reach 88 mW at the corners.",
+  "I_off": "switch shutdown 2 nA typ (TPS22919 p5)"
+ },
+ "logic": "Analogue only. AIN_GAS = 1.8 V * RLOAD / (RLOAD + Rs). Rs in clean air 100k-1.5M (p2) -> 0.05-0.58 V; Rs falls in reducing gas (S60 = 1.2-50 at 60 ppm CO) -> towards 1.8 V.",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "AIN_GAS (AD_08, ADC1_CH1A)"
+  ],
+  "expander": [
+   "GAS_HTR_EN (heater load switch)"
+  ],
+  "strap": []
+ },
+ "placement": [
+  "Gas vent, but its own corner: the heater runs at 76 mW continuously; keep it away from the SHT40/STCC4 and SGP41/BME690 (heat and its own outgassing) and from the battery.",
+  "SGX: sensor must sit behind a filter (membrane) protecting it from water and dust (p2). Keep away from silicone adhesives/vapours (poisoning, p2).",
+  "Reflow in neutral atmosphere without flux vapours (p2): fit in the last reflow pass."
+ ],
+ "notes": [
+  "The heater is the dominant load of the whole sensor set when on (about 106 mW from 3.3 V including the resistor): switch it, and let firmware run it in bursts (warm-up time [mem]: minutes for a stable baseline).",
+  "Heater (C-F) and sensing layer (D-G) are separate pins (p4); the data sheet ties F and G to the same 5 V. Feeding them from different rails (3.3 V heater, 1.8 V sense) assumes the two are isolated on the die [interpretation].",
+  "Not selective: reacts to CO, ethanol, hydrogen, ammonia, methane (p1)."
+ ],
+ "unverified": [
+  "Electrical isolation between heater and sense layer.",
+  "KiCad footprint pitch 1.25 vs drawing 1.27 mm.",
+  "Warm-up and conditioning times (not in the 5-page data sheet)."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

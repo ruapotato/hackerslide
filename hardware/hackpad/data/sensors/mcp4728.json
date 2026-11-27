@@ -1,0 +1,159 @@
+{
+ "part": "MCP4728",
+ "mpn": "MCP4728T-E/UN",
+ "maker": "Microchip",
+ "lcsc": "C478093",
+ "stock": 13555,
+ "price": 2.6333,
+ "package": "MSOP-10 3 x 3 mm",
+ "height_mm": 1.1,
+ "kicad_symbol": "Analog_DAC:MCP4728",
+ "kicad_symbol_check": "pins 1 VDD, 2 SCL, 3 SDA, 4 LDAC, 5 RDY/BSY, 6-9 VOUTA-D, 10 VSS: 4-7 confirmed on ds p2, the rest by the package figure order",
+ "kicad_footprint": "Package_SO:MSOP-10_3x3mm_P0.5mm",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "VDD",
+   "net": "+3V3A (quiet 3.3 V)"
+  },
+  {
+   "pin": "2",
+   "name": "SCL",
+   "net": "I2C_U_SCL"
+  },
+  {
+   "pin": "3",
+   "name": "SDA",
+   "net": "I2C_U_SDA"
+  },
+  {
+   "pin": "4",
+   "name": "LDAC",
+   "net": "GND (or DAC_LDAC_N on an expander)"
+  },
+  {
+   "pin": "5",
+   "name": "RDY/BSY",
+   "net": "NC"
+  },
+  {
+   "pin": "6",
+   "name": "VOUTA",
+   "net": "DAC_A"
+  },
+  {
+   "pin": "7",
+   "name": "VOUTB",
+   "net": "DAC_B"
+  },
+  {
+   "pin": "8",
+   "name": "VOUTC",
+   "net": "DAC_C"
+  },
+  {
+   "pin": "9",
+   "name": "VOUTD",
+   "net": "DAC_D"
+  },
+  {
+   "pin": "10",
+   "name": "VSS",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(1)",
+    "VSS"
+   ],
+   "page": "p21"
+  },
+  {
+   "role": "bulk (tantalum in the ds; ceramic is fine)",
+   "value": "10u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(1)",
+    "VSS"
+   ],
+   "page": "p21"
+  },
+  {
+   "role": "output series resistor to the header, each channel [this design]",
+   "value": "100 x4",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VOUTx",
+    "HDR_DACx"
+   ],
+   "page": "p5: stable into 1 nF with 5 k load"
+  },
+  {
+   "role": "ESD array on the four outputs",
+   "value": "TPD4E05U06DQAR",
+   "part": "TPD4E05U06DQAR",
+   "lcsc": "C138714",
+   "between": [
+    "HDR_DACx",
+    "GND"
+   ],
+   "page": "-"
+  },
+  {
+   "role": "RDY/BSY pull-up, only if the pin is used",
+   "value": "100k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RDY/BSY(5)",
+    "VDD"
+   ],
+   "page": "p21-22"
+  }
+ ],
+ "supplies": {
+  "VDD": "2.7-5.5 V",
+  "I_active_uA": 800,
+  "I_active_max_uA": 1400,
+  "I_powerdown_ext_ref_nA": 40,
+  "I_powerdown_int_ref_uA": 45,
+  "page": "p3"
+ },
+ "logic": "SDA/SCL/LDAC thresholds 0.7/0.3 VDD (p6); 3.3 V bus direct",
+ "i2c_addr": {
+  "bus": "I2C_U (proposed)",
+  "addr": [
+   "0x60"
+  ],
+  "select": "1100 A2 A1 A0; the plain MCP4728 ships as 000 = 0x60; bits live in EEPROM and can be rewritten with a general-call command that uses the LDAC pin (p24, p30). Do not move it: 0x64 is the STCC4."
+ },
+ "lines": {
+  "brain": [],
+  "expander": [
+   "DAC_LDAC_N (optional: simultaneous update of the four outputs)"
+  ],
+  "strap": [
+   "LDAC->GND (outputs update at the end of each write)",
+   "RDY/BSY open"
+  ]
+ },
+ "placement": [
+  "Near the bench header; supply from the quiet 3.3 V branch because with VREF = VDD the supply IS the reference."
+ ],
+ "notes": [
+  "Reference for a 0-3.3 V source: select VREF = VDD per channel (full scale = VDD, 0.8 mV/LSB, accuracy and noise are those of the 3.3 V rail). The internal 2.048 V reference gives 0-2.048 V (gain 1) or 0-4.096 V clipped at VDD (gain 2): use it when accuracy matters more than range (p1, p5).",
+  "Buffering: each output already has a rail-to-rail amplifier, short-circuit proof (15 mA typ, 24 max) and stable into 1000 pF with 5 k (p5). No extra buffer is needed for a signal source into logic or scope inputs; add an op amp only for loads below about 1 k or cables over 1 nF.",
+  "Power-down per channel puts 1 k / 100 k / 500 k to ground on the output (p5). Power-down current is 40 nA only with the external (VDD) reference selected; with the internal reference left on it is 45 uA (p3): firmware should select VREF = VDD before sleeping.",
+  "General-call commands (reset, wake-up) also reach the Sensirion parts if they shared a bus: one more reason to keep the DAC on I2C_U."
+ ],
+ "unverified": [],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

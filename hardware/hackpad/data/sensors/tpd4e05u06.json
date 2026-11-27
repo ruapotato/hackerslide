@@ -1,0 +1,102 @@
+{
+ "part": "TPD4E05U06",
+ "mpn": "TPD4E05U06DQAR",
+ "maker": "Texas Instruments",
+ "lcsc": "C138714",
+ "stock": 29032,
+ "price": 0.0842,
+ "qty": 2,
+ "package": "USON-10 (DQA) 2.5 x 1.0 mm",
+ "height_mm": 0.55,
+ "height_note": "[mem] 0.5-0.55; drawing not transcribed",
+ "kicad_symbol": "Power_Protection:TPD4E05U06DQA",
+ "kicad_symbol_check": "pins 1, 2, 4, 5 = the four channels, 3 and 8 = GND, 6, 7, 9, 10 = NC: matches ds p4-5",
+ "kicad_footprint": "Package_SON:USON-10_2.5x1.0mm_P0.5mm",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "D1+",
+   "net": "HDRn"
+  },
+  {
+   "pin": "2",
+   "name": "D1-",
+   "net": "HDRn"
+  },
+  {
+   "pin": "3",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "D2+",
+   "net": "HDRn"
+  },
+  {
+   "pin": "5",
+   "name": "D2-",
+   "net": "HDRn"
+  },
+  {
+   "pin": "6",
+   "name": "NC",
+   "net": "straight-through copper to pin 5's trace"
+  },
+  {
+   "pin": "7",
+   "name": "NC",
+   "net": "as pin 6"
+  },
+  {
+   "pin": "8",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "9",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "10",
+   "name": "NC",
+   "net": ""
+  }
+ ],
+ "circuit": [
+  {
+   "role": "one array per four header lines, flow-through",
+   "value": "-",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "header pins",
+    "GND"
+   ],
+   "page": "p4-5"
+  }
+ ],
+ "supplies": {
+  "none": "passive clamp",
+  "leakage_nA": "0.01 typ, 10 max at 2.5 V",
+  "page": "p7"
+ },
+ "logic": "stand-off 5.5 V, breakdown >= 6.5 V, 0.5 pF per line (p1, p7): transparent for 0.65-3.6 V logic",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [],
+  "expander": [],
+  "strap": []
+ },
+ "placement": [
+  "Between the header and the level shifter, as close to the header as possible (p4 note)."
+ ],
+ "notes": [
+  "Clamps ESD only: it does not make the header 5 V or 12 V tolerant for DC. A continuous over-voltage is limited by the 47 ohm series resistors and the shifter's own ratings (4.2 V abs max)."
+ ],
+ "unverified": [
+  "Height."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

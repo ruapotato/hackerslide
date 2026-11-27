@@ -1,0 +1,114 @@
+{
+ "part": "MLX90632",
+ "mpn": "MLX90632SLD-DCB-000-RE",
+ "maker": "Melexis",
+ "lcsc": "C7541116",
+ "stock": 2345,
+ "price": 7.2386,
+ "package": "SFN 3 x 3 mm, 5 pads on one side + exposed pad",
+ "height_mm": 0.95,
+ "height_note": "0.90-1.00 (p45 table 17)",
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "p45 table 17, p46 fig 25",
+  "body": "3.0 x 3.0 (2.9-3.1)",
+  "pads": 5,
+  "pitch": 0.5,
+  "pad_size": "about 0.25 x 0.40 (package lead 0.18-0.30 wide, 0.35-0.45 long)",
+  "pad_row": "one edge, pins 1..5",
+  "exposed_pad": "2.10 x 2.55 on the footprint (package 2.0-2.2 x 2.4-2.6), 8 plated vias 0.2 mm at 0.5 pitch, tented or plugged",
+  "stencil": "max 100 um, pad openings 0.25 x 0.25"
+ },
+ "pins": [
+  {
+   "pin": "1",
+   "name": "SDA",
+   "net": "I2C_S_SDA"
+  },
+  {
+   "pin": "2",
+   "name": "VDD",
+   "net": "+3V3_SENS"
+  },
+  {
+   "pin": "3",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "SCL",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "5",
+   "name": "ADDR",
+   "net": "GND (0x3A)"
+  },
+  {
+   "pin": "EP",
+   "name": "exposed pad",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling C1, within 10 mm",
+   "value": "10n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(2)",
+    "GND"
+   ],
+   "page": "p47 fig 27"
+  },
+  {
+   "role": "bus pull-ups R1/R2 in Melexis' example",
+   "value": "1k (use the bus-wide value)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA/SCL",
+    "+3V3"
+   ],
+   "page": "p47 fig 27"
+  }
+ ],
+ "supplies": {
+  "VDD": "3.0-3.6 V",
+  "I_active_mA": 1.0,
+  "I_active_max_mA": 1.4,
+  "I_sleep_uA": 1.5,
+  "I_sleep_max_uA": 2.5,
+  "VDD_rise": "10-90 % within 20 ms (p9)",
+  "page": "p9"
+ },
+ "logic": "-000 option = 3.3 V I2C (VIH 0.7 VDD). The -100 option is the 1.8 V I2C version (3 in stock: not used). p5, p9",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x3A"
+  ],
+  "select": "ADDR pin sets bit 0 (GND 0x3A, VDD 0x3B); upper bits in EEPROM 0x24D5 (p21)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [],
+  "strap": [
+   "ADDR->GND"
+  ]
+ },
+ "placement": [
+  "Looks out through an OPEN hole (or a far-infrared window: thin HDPE or silicon [mem]; glass, acrylic and polycarbonate are opaque at 5-14 um). Field of view 50 deg (p1): the hole wall must stay outside the cone and the target must fill it (p2).",
+  "Away from heat and thermal gradients: not near the brain, charger, converters or the gas heater; even ground copper around it. Accuracy is specified in thermal equilibrium (p2).",
+  "Exposed pad to ground with the 8 vias (p46)."
+ ],
+ "notes": [
+  "DCB = medical accuracy grade: object range limited to -20..100 C (p2).",
+  "Sleep by register; 1.5 uA typ. No switched rail needed."
+ ],
+ "unverified": [],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

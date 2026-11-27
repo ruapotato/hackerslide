@@ -1,0 +1,106 @@
+{
+ "part": "TMAG5273",
+ "mpn": "TMAG5273B2QDBVR",
+ "maker": "Texas Instruments",
+ "lcsc": "C41935525",
+ "stock": 411,
+ "price": 1.3829,
+ "package": "SOT-23-6 (DBV)",
+ "height_mm": 1.45,
+ "height_note": "SOT-23 standard max 1.45 [mem]; not read from the drawing",
+ "kicad_symbol": null,
+ "kicad_footprint": "Package_TO_SOT_SMD:SOT-23-6",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "SCL",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "2",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "3",
+   "name": "GND (TEST)",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "VCC",
+   "net": "+3V3_SENS"
+  },
+  {
+   "pin": "5",
+   "name": "INT",
+   "net": "HALL_INT (optional) or GND"
+  },
+  {
+   "pin": "6",
+   "name": "SDA",
+   "net": "I2C_S_SDA"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling, >= 10 nF",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCC(4)",
+    "GND"
+   ],
+   "page": "p40"
+  },
+  {
+   "role": "TEST pin",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "pin 3",
+    "GND"
+   ],
+   "page": "p4, p40"
+  }
+ ],
+ "supplies": {
+  "VCC": "1.7-3.6 V; ramp faster than 3 V/ms or run one wake-and-sleep cycle after power-up (p5)",
+  "I_sleep_nA": 5,
+  "I_wake_sleep_uA": "about 1",
+  "I_standby_mA": 0.45,
+  "I_active_mA": 2.3,
+  "page": "p1, p6"
+ },
+ "logic": "3.3 V bus direct, up to 1 MHz",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x22"
+  ],
+  "select": "factory code: A 0x35, B 0x22, C 0x78, D 0x44; changeable by register (p16)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [
+   "HALL_INT (optional; if tied to GND instead set MASK_INTB=1, p4)"
+  ],
+  "strap": [
+   "TEST->GND"
+  ]
+ },
+ "placement": [
+  "A marked 'magnet probe' spot at a case edge, away from the slider magnets so they do not eat range (they only add a fixed offset: null it).",
+  "Its own field is nil, but do not put it next to the MMC5983MA just to share a spot: the magnets people bring to it will saturate the compass anyway."
+ ],
+ "notes": [
+  "Variant: x2 = +-133/+-266 mT (strong magnets), x1 = +-40/+-80 mT (p17). B2 is the stocked x2 code: 411 pieces. Alternatives in stock: D2 0x44 (352, would then need the OPT4001 kept off 0x44: it is), A1 0x35 x1 range (3,159, $3.57), C1 0x78 x1 range (1,000, $0.85).",
+  "0x22 is also the FUSB302B address, but that is on I2C_P: no clash. If both ever share a bus, reprogram this one (register) or fit the A/C/D code."
+ ],
+ "unverified": [
+  "Package height."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

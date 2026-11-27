@@ -1,0 +1,104 @@
+{
+ "part": "SHT40",
+ "mpn": "SHT40-AD1B-R2",
+ "maker": "Sensirion",
+ "lcsc": "C2909890",
+ "stock": 11973,
+ "price": 1.3093,
+ "package": "DFN-4 1.5 x 1.5 mm, open cavity",
+ "height_mm": 0.54,
+ "height_note": "0.54 +-0.05 (p12 fig 9)",
+ "kicad_symbol": "Sensor_Humidity:SHT4x",
+ "kicad_symbol_check": "pins 1 SDA, 2 SCL, 3 VDD, 4 VSS match ds p13",
+ "kicad_footprint": "Sensor_Humidity:Sensirion_DFN-4_1.5x1.5mm_P0.8mm_SHT4x_NoCentralPad",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "SDA",
+   "net": "STCC_SDA_C"
+  },
+  {
+   "pin": "2",
+   "name": "SCL",
+   "net": "STCC_SCL_C"
+  },
+  {
+   "pin": "3",
+   "name": "VDD",
+   "net": "+3V3_SENS"
+  },
+  {
+   "pin": "4",
+   "name": "VSS",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(3)",
+    "GND"
+   ],
+   "page": "STCC4 ds p6 fig 1"
+  },
+  {
+   "role": "to STCC4 controller port",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA(1)",
+    "STCC4 SDA_C(2)"
+   ],
+   "page": "STCC4 ds p6"
+  },
+  {
+   "role": "to STCC4 controller port",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SCL(2)",
+    "STCC4 SCL_C(8)"
+   ],
+   "page": "STCC4 ds p6"
+  }
+ ],
+ "supplies": {
+  "VDD": "1.08-3.6 V",
+  "I_idle_uA": 0.08,
+  "I_idle_max_uA": 1.0,
+  "I_measure_uA": 350,
+  "I_avg_1Hz_uA": 0.4,
+  "heater": "up to 200 mW pulses, not used",
+  "page": "p1, p7"
+ },
+ "logic": "VIH 0.7 VDD, VIL 0.3 VDD; runs at the STCC4's 3.3 V",
+ "i2c_addr": {
+  "bus": "STCC4 controller port (not a brain bus)",
+  "addr": [
+   "0x44"
+  ],
+  "select": "fixed by order code: -AD1B = 0x44, -BD1B = 0x45 (p15). The STCC4 needs 0x44."
+ },
+ "lines": {
+  "brain": [],
+  "expander": [],
+  "strap": []
+ },
+ "placement": [
+  "Opening centred on top; same vent as the STCC4, in the same air.",
+  "No copper under the part other than its pads; do not solder the centre pad (p12-13).",
+  "Away from heat sources; it sets the temperature reading of the whole device."
+ ],
+ "notes": [
+  "-R2 (2,500 reel) is the stocked code; -R3 C2848306 (11,404, $1.85) is the same part on a bigger reel.",
+  "If a second, brain-readable humidity sensor is ever wanted on I2C_S, 0x44 collides with nothing else there only if the OPT4001 is strapped away from 0x44 (it is: 0x45)."
+ ],
+ "unverified": [],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

@@ -1,0 +1,369 @@
+{
+ "part": "BGT60LTR11AIP",
+ "mpn": "BGT60LTR11AIPE6327XUMA2",
+ "maker": "Infineon",
+ "lcsc": "C3606906",
+ "stock": 4325,
+ "price": 8.6886,
+ "package": "PG-UF2BGA-42-1, antennas in package, 6.7 x 3.3 mm",
+ "height_mm": 0.56,
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "datasheet V2.6 p10 fig 4; reference-board guide p9 fig 5",
+  "body": "6.7 x 3.3 x 0.56 mm",
+  "note": "ball pitch and pad sizes were not transcribed (drawing only): take from Infineon's package page before layout; RX and TX antennas are on the top face"
+ },
+ "pins": [
+  {
+   "pin": "A1,N1,A3,B3,M3,N3,A4,B4,M4,N4,A6,N6",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "A2,B2",
+   "name": "VDDRF",
+   "net": "+1V5_RADAR"
+  },
+  {
+   "pin": "M2,N2",
+   "name": "VDDPLL",
+   "net": "+1V5_RADAR (filtered)"
+  },
+  {
+   "pin": "M6",
+   "name": "QS1",
+   "net": "open = autonomous pulsed mode"
+  },
+  {
+   "pin": "N5",
+   "name": "QS2",
+   "net": "22k to VDD / 12k to GND = threshold 136 (advance mode)"
+  },
+  {
+   "pin": "B1",
+   "name": "QS3",
+   "net": "22k to VDD / 3.9k to GND = hold 1 s"
+  },
+  {
+   "pin": "M1",
+   "name": "QS4",
+   "net": "open = 61.2 GHz"
+  },
+  {
+   "pin": "A5",
+   "name": "SPIRSTN",
+   "net": "10k to VDD"
+  },
+  {
+   "pin": "B5",
+   "name": "SPIDI",
+   "net": "10k to GND (PRT bit)"
+  },
+  {
+   "pin": "B6",
+   "name": "SPIDO",
+   "net": "NC"
+  },
+  {
+   "pin": "C6",
+   "name": "SPICLK",
+   "net": "10k to GND (PRT bit)"
+  },
+  {
+   "pin": "D6",
+   "name": "SPICS",
+   "net": "10k to VDD (must be high when SPI unused)"
+  },
+  {
+   "pin": "E6",
+   "name": "IFIAo",
+   "net": "5.6n to GND; 10n to IFIAi"
+  },
+  {
+   "pin": "F6",
+   "name": "IFIAox",
+   "net": "5.6n to GND; 10n to IFIAix"
+  },
+  {
+   "pin": "G6",
+   "name": "IFIAix",
+   "net": "10n from IFIAox"
+  },
+  {
+   "pin": "H6",
+   "name": "IFIAi",
+   "net": "10n from IFIAo"
+  },
+  {
+   "pin": "J6",
+   "name": "IFQAo",
+   "net": "5.6n to GND; 10n to IFQAi"
+  },
+  {
+   "pin": "K6",
+   "name": "IFQAox",
+   "net": "5.6n to GND; 10n to IFQAix"
+  },
+  {
+   "pin": "L6",
+   "name": "IFQAix",
+   "net": "10n from IFQAox"
+  },
+  {
+   "pin": "M5",
+   "name": "IFQAi",
+   "net": "10n from IFQAo"
+  },
+  {
+   "pin": "K1",
+   "name": "IFQ",
+   "net": "NC or AIN_SPARE (raw Doppler Q, optional)"
+  },
+  {
+   "pin": "L1",
+   "name": "IFI",
+   "net": "NC (or second ADC input)"
+  },
+  {
+   "pin": "C1",
+   "name": "Vtune",
+   "net": "leave floating (ref guide p14)"
+  },
+  {
+   "pin": "D1",
+   "name": "PDet",
+   "net": "direction -> SN74AXC2T45 A2"
+  },
+  {
+   "pin": "E1",
+   "name": "TDet",
+   "net": "motion, active low -> SN74AXC2T45 A1"
+  },
+  {
+   "pin": "F1",
+   "name": "Div_O",
+   "net": "NC"
+  },
+  {
+   "pin": "G1",
+   "name": "PLL_Trig",
+   "net": "10k to VDD (advance mode)"
+  },
+  {
+   "pin": "H1",
+   "name": "Xosc_Ao",
+   "net": "38.4 MHz crystal, 15p"
+  },
+  {
+   "pin": "J1",
+   "name": "Xosc_Ai",
+   "net": "38.4 MHz crystal, 12p"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "1.5 V LDO, enable = radar on/off (adjustable, 0.55 V reference)",
+   "value": "TLV75801PDBVR",
+   "part": "TLV75801PDBVR",
+   "lcsc": "C2877852",
+   "between": [
+    "IN(1) = +3V3, EN(3) = RADAR_EN",
+    "OUT(5) = +1V5_RADAR"
+   ],
+   "page": "TLV758 p3, p5"
+  },
+  {
+   "role": "LDO feedback divider for 1.507 V",
+   "value": "174k / 100k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "OUT-FB(4) / FB-GND",
+    "TLV75801"
+   ],
+   "page": "TLV758 p5: VFB 0.55 V"
+  },
+  {
+   "role": "input filter as on the Infineon board",
+   "value": "600 ohm ferrite + 2.2 ohm + 10u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "+3V3",
+    "LDO IN"
+   ],
+   "page": "ref guide p10 fig 6"
+  },
+  {
+   "role": "LDO output (Infineon board)",
+   "value": "22u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "+1V5_RADAR",
+    "GND"
+   ],
+   "page": "ref guide p10 fig 6"
+  },
+  {
+   "role": "crystal",
+   "value": "38.4 MHz, 2016, 10 pF load: TZ3398B (Infineon used JXS22 8 pF) [this design]",
+   "part": "TZ3398B",
+   "lcsc": "C498202",
+   "between": [
+    "Xosc_Ai(J1)",
+    "Xosc_Ao(H1)"
+   ],
+   "page": "ref guide p10 fig 7"
+  },
+  {
+   "role": "crystal load caps",
+   "value": "12p (Ai) / 15p (Ao)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "Xosc_Ai / Xosc_Ao",
+    "GND"
+   ],
+   "page": "ref guide p10 fig 7 (re-tune for the crystal actually fitted)"
+  },
+  {
+   "role": "hold capacitors x4 (5 us pulse)",
+   "value": "5.6n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "IFIAo, IFIAox, IFQAo, IFQAox",
+    "GND"
+   ],
+   "page": "ref guide p11 table 3"
+  },
+  {
+   "role": "high-pass capacitors x4 (4 Hz with internal 4 Mohm)",
+   "value": "10n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "IFxAo(x) -> IFxAi(x)",
+    "pairs"
+   ],
+   "page": "ref guide p11-12"
+  },
+  {
+   "role": "QS2 threshold divider",
+   "value": "22k / 12k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD-QS2 / QS2-GND",
+    "N5"
+   ],
+   "page": "ref guide p15 table 6"
+  },
+  {
+   "role": "QS3 hold-time divider",
+   "value": "22k / 3.9k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD-QS3 / QS3-GND",
+    "B1"
+   ],
+   "page": "ref guide p16 table 7"
+  },
+  {
+   "role": "advance mode",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "PLL_Trig(G1)",
+    "VDD"
+   ],
+   "page": "ref guide p13 fig 11 (R23)"
+  },
+  {
+   "role": "PRT 500 us straps",
+   "value": "10k x2",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SPICLK(C6), SPIDI(B5)",
+    "GND"
+   ],
+   "page": "ref guide p13 fig 11, p17 table 9"
+  },
+  {
+   "role": "SPI chip select held inactive",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SPICS(D6)",
+    "VDD"
+   ],
+   "page": "AN625 p6: main controller halts while CS is low"
+  },
+  {
+   "role": "1.5 V -> 3.3 V translator for TDet/PDet, direction fixed A->B",
+   "value": "SN74AXC2T45DCUR",
+   "part": "SN74AXC2T45DCUR",
+   "lcsc": "C1858360",
+   "between": [
+    "VCCA = +1V5_RADAR, A1 = TDet, A2 = PDet; DIR = VCCA",
+    "VCCB = +3V3, B1 = RADAR_TD_N, B2 = RADAR_PD"
+   ],
+   "page": "[this design; 0.65-3.6 V each side per JLCPCB listing]"
+  }
+ ],
+ "supplies": {
+  "VDD": "1.45-1.6 V ONLY (abs max 1.9 V; I/O abs max VDD + 0.3 V) (p3-4)",
+  "I_pulse_on_mA": 128,
+  "I_pulse_off_mA": 0.8,
+  "P_avg_mW": "2.3 (PRT 2000 us), 3.4 (1000), 5.6 (500), 10.3 (250); 5 us pulses (p4)",
+  "I_avg_3V3_mA": "about 3.7 at PRT 500 us (5.6 mW / 1.5 V, linear LDO) + LDO 25 uA",
+  "ramp": "supply ramp must be shorter than 400 us (AN625 p7)",
+  "off": "LDO EN low: 0 A to the radar"
+ },
+ "logic": "1.5 V I/O only. TDet (active low) and PDet are 1.5 V outputs: a 3.3 V port expander cannot read them (VIH 0.7 x 3.3 V), so a 2-bit translator raises them. Nothing else is connected in autonomous mode.",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [],
+  "expander": [
+   "RADAR_EN (output: LDO enable)",
+   "RADAR_TD_N (input via translator; the expander's INT can wake the brain on motion)",
+   "RADAR_PD (input via translator)"
+  ],
+  "strap": [
+   "QS1 open",
+   "QS2 22k/12k",
+   "QS3 22k/3.9k",
+   "QS4 open",
+   "PLL_Trig 10k->VDD",
+   "SPICS 10k->VDD",
+   "SPIRSTN 10k->VDD",
+   "SPICLK, SPIDI 10k->GND",
+   "SPIDO, Div_O, Vtune, IFI open"
+  ]
+ },
+ "placement": [
+  "Antennas radiate from the top face: no copper, battery, e-paper, metal frame or screws in the beam (+-50 deg H, +-70 deg E at -6 dB, p6). Put it at a board edge or end where only plastic covers it.",
+  "Radome (case plastic) distance and thickness [mem, Infineon radar radome guidance]: thickness about lambda/2 in the material (lambda0 = 4.9 mm at 61 GHz; about 1.4-1.5 mm for PC/ABS, er about 2.8-3) or as thin as possible (<0.3 mm); air gap from the package top to the radome about lambda0/2 = 2.4 mm (or a multiple). No paint with metal flakes over it.",
+  "Vtune pin floating with no trace attached (ref guide p14); short crystal traces; 4-layer board with solid ground under the package (ref guide p14).",
+  "Keep the 38.4 MHz crystal and the pulsed 128 mA supply away from the LMH2110 tap and the microphones."
+ ],
+ "notes": [
+  "Autonomous pulsed mode: no SPI, no firmware; settings fixed by straps. Advance mode (PLL_Trig high) unlocks 16 thresholds/holds via the resistor dividers and the PRT straps (ref guide p15-17).",
+  "SPI mode later: SPICS/SPICLK/SPIDI/SPIDO/SPIRSTN would need 1.5 V-level lines from the brain (another translator); kept as pads only.",
+  "IFI/IFQ (raw baseband around VDD/2, under 1.5 V) could go to the spare 1.8 V-reference ADC input (AIN_SPARE) for breathing/vibration experiments [suggestion]."
+ ],
+ "unverified": [
+  "Ball pitch / footprint (drawing only).",
+  "TDet/PDet output type (push-pull assumed; the reference board drives LEDs from them, p13).",
+  "Which side of the QS dividers goes to VDD (R11/R14 assumed to VDD from fig 11).",
+  "Pairing of hold/high-pass capacitors with the IF pins (fig 8-9 read as o<->i, ox<->ix).",
+  "Radome figures (from memory)."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

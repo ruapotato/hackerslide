@@ -1,0 +1,175 @@
+{
+ "part": "T5837",
+ "mpn": "MMICT5837-00-012",
+ "maker": "TDK InvenSense",
+ "lcsc": "C6909259",
+ "stock": 7158,
+ "price": 2.0981,
+ "qty": 2,
+ "package": "LGA_CAV 3.5 x 2.65 mm, bottom port",
+ "height_mm": 0.98,
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "p9 fig 3, p18 fig 18, p21",
+  "body": "3.5 x 2.65 x 0.98, tolerance +-0.15",
+  "pads": "7 lands: four signal pads 0.422 x 0.625 (pins 1 DATA, 2 SELECT, 6 CLK, 7 VDD), two small NC pads 0.30 x 0.30 (pins 4, 5), and pin 3 GND as a ring 1.625 outer / 1.025 inner dia around the sound port",
+  "spacing": "signal pads in a 2 x 2 group: 0.82 between columns, 1.675 between rows; ring centre 1.252 from the nearer signal column; NC pads 0.74 beyond the ring centre, 1.025 above and below the centre line (p18 fig 18)",
+  "port": "0.375 mm dia in the package; PCB hole 0.5-1.0 mm dia, no paste in it (p18)",
+  "kicad_near_miss": "Sensor_Audio:Knowles_LGA-5_3.5x2.65mm and InvenSense_ICS-43434-6_3.5x2.65mm share the body but not this pad set"
+ },
+ "pins": [
+  {
+   "pin": "1",
+   "name": "DATA",
+   "net": "MIC_DATA_1V8"
+  },
+  {
+   "pin": "2",
+   "name": "SELECT",
+   "net": "GND on the right mic, +1V8_MIC on the left mic"
+  },
+  {
+   "pin": "3",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "NC",
+   "net": "GND or float"
+  },
+  {
+   "pin": "5",
+   "name": "NC",
+   "net": "GND or float"
+  },
+  {
+   "pin": "6",
+   "name": "CLK",
+   "net": "MIC_CLK_1V8"
+  },
+  {
+   "pin": "7",
+   "name": "VDD",
+   "net": "+1V8_MIC"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling, one per microphone, X7R at pin 7",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(7)",
+    "GND"
+   ],
+   "page": "p9"
+  },
+  {
+   "role": "channel select, right",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SELECT(2) of mic A",
+    "GND"
+   ],
+   "page": "p9, p12 table 10"
+  },
+  {
+   "role": "channel select, left (same source as VDD)",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SELECT(2) of mic B",
+    "+1V8_MIC"
+   ],
+   "page": "p9, p12"
+  },
+  {
+   "role": "shared data line",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "DATA(1) mic A",
+    "DATA(1) mic B"
+   ],
+   "page": "p12 fig 12"
+  },
+  {
+   "role": "level shift 3.3 V brain pad -> 1.8 V clock",
+   "value": "SN74AVC2T245 ch1 (B->A)",
+   "part": "SN74AVC2T245RSWR",
+   "lcsc": "C128418",
+   "between": [
+    "PDM_CLK",
+    "MIC_CLK_1V8"
+   ],
+   "page": "needed: p4-5 VIH 0.65 VDD, VDD max 1.98 V",
+   "stock_note": "159,343 in stock, $0.34 (2026-11-26)"
+  },
+  {
+   "role": "level shift 1.8 V data -> 3.3 V brain pad",
+   "value": "SN74AVC2T245 ch2 (A->B)",
+   "part": "SN74AVC2T245RSWR",
+   "lcsc": "C128418",
+   "between": [
+    "MIC_DATA_1V8",
+    "PDM_DATA"
+   ],
+   "page": "needed: VOH is 0.7-1.0 x 1.8 V",
+   "stock_note": "159,343 in stock, $0.34 (2026-11-26)"
+  },
+  {
+   "role": "series damping at the clock source [mem: usual practice]",
+   "value": "33",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "shifter out",
+    "MIC_CLK_1V8"
+   ],
+   "page": "-"
+  }
+ ],
+ "supplies": {
+  "VDD": "1.65-1.98 V ONLY (p4)",
+  "I_sleep_uA_each": 9,
+  "I_low_power_uA_each": 120,
+  "I_high_quality_uA_each": 310,
+  "I_ultrasonic_uA_each": 500,
+  "page": "p1, p4-5"
+ },
+ "logic": "1.8 V only: CLK VIH 0.65 VDD / VIL 0.35 VDD, DATA VOH >= 0.7 VDD at 0.5 mA (p5). Mode is chosen by clock frequency alone: <200 kHz sleep, 400-800 kHz low power, 2.0-3.7 MHz high quality, 4.2-4.8 MHz ultrasonic (p6).",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "PDM_CLK (LPSR_00)",
+   "PDM_DATA (LPSR_01)"
+  ],
+  "expander": [],
+  "strap": [
+   "SELECT per microphone (sampled at power-up only)"
+  ]
+ },
+ "placement": [
+  "BOTTOM port: the sound enters through a hole in the PCB under the part; the microphone sits on the side of the board away from the case sound hole.",
+  "PCB hole 0.5-1.0 mm dia (not smaller than the 0.375 mm port); case hole and gasket in line with it; response does not depend on board thickness (p18-19).",
+  "For ultrasound keep the acoustic path short and wide: a long narrow case channel puts its own resonance in the 20-50 kHz range [mem]; TDK AN-1003 and AN-1124 cover this (p17).",
+  "Two microphones spaced as far apart as the case allows for direction finding; keep away from the converter inductors."
+ ],
+ "notes": [
+  "Ultrasonic range, read from fig 9 and fig 10 (p11), ultrasonic mode: response is +2 dB at 10 kHz, rises to a resonance peak of about +17 dB near 25-26 kHz, is back to about 0 dB from 35 to 46 kHz and is about -5 dB at 50 kHz (end of the plotted axis). SNR in 5 kHz bands re 80 dB SPL: about 67 dB at 22.5 kHz, 69 at 27.5, 68 at 32.5, 65 at 37.5, 58 at 42.5, 51 at 47.5, 39 at 52.5 kHz. So: usable to about 50 kHz with a calibration curve, falling off fast above 45 kHz.",
+  "Ultrasonic mode needs a 4.2-4.8 MHz clock; at 4.8 MHz and decimation 48 the PCM rate is 100 kHz (50 kHz bandwidth).",
+  "Sleep is entered by stopping the clock (<200 kHz): 9 uA each, 18 uA for the pair. A load switch on +1V8_MIC brings that to zero.",
+  "The data sheet's feature line says '27 Hz to >20 kHz'; low-frequency -3 dB point is 27 Hz (p4)."
+ ],
+ "unverified": [
+  "Absolute maximum on CLK/DATA was not found in the text; assumed VDD + 0.3 V as for other 1.8 V microphones."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

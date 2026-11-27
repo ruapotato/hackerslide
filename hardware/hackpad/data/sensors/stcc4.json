@@ -1,0 +1,155 @@
+{
+ "part": "STCC4",
+ "mpn": "STCC4-D-R3",
+ "maker": "Sensirion",
+ "lcsc": "C49191471",
+ "stock": 2573,
+ "price": 11.3169,
+ "package": "LGA-8 metal cap, 3.0 x 4.0 mm",
+ "height_mm": 1.17,
+ "height_note": "1.17 +-0.15 (ds p15 fig 3), max 1.32",
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "ds p15 fig 3/4",
+  "body": "3.0 x 4.0 +-0.15",
+  "pads": 8,
+  "pad_size": "0.85 x 0.85 (NSMD)",
+  "layout": "left column pins 1,2,3 (top to bottom) and right column pins 7,6,5 (top to bottom): columns 2.05 apart centre to centre, pitch 1.15; pin 8 top centre and pin 4 bottom centre, 3.05 apart centre to centre; pin 1 pad chamfered 0.26 x 45 deg. Top view, pin 1 top-left; numbering runs counter-clockwise.",
+  "note": "no copper pour needed under; membrane on top of the cap"
+ },
+ "pins": [
+  {
+   "pin": "1",
+   "name": "SCL",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "2",
+   "name": "SDA_C",
+   "net": "STCC_SDA_C (to SHT40 SDA only)"
+  },
+  {
+   "pin": "3",
+   "name": "ADDR",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "VSS",
+   "net": "GND"
+  },
+  {
+   "pin": "5",
+   "name": "SDA",
+   "net": "I2C_S_SDA"
+  },
+  {
+   "pin": "6",
+   "name": "VDDIO",
+   "net": "+3V3_SENS (I2C level select; <0.7 V also means VDD level)"
+  },
+  {
+   "pin": "7",
+   "name": "VDD",
+   "net": "+3V3_SENS"
+  },
+  {
+   "pin": "8",
+   "name": "SCL_C",
+   "net": "STCC_SCL_C (to SHT40 SCL only)"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(7)",
+    "GND"
+   ],
+   "page": "p6 fig 1"
+  },
+  {
+   "role": "SHT40 on controller port, no extra pull-ups (10k inside the STCC4)",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA_C(2)",
+    "SHT40 SDA(1)"
+   ],
+   "page": "p6"
+  },
+  {
+   "role": "SHT40 on controller port",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SCL_C(8)",
+    "SHT40 SCL(2)"
+   ],
+   "page": "p6"
+  },
+  {
+   "role": "I2C pull-ups Rp (bus-wide, once)",
+   "value": "2.2k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA/SCL",
+    "+3V3"
+   ],
+   "page": "p6 fig 1; value from bus capacitance"
+  }
+ ],
+ "supplies": {
+  "VDD": "2.7-5.5 V (3.3 typ)",
+  "ripple": "<=30 mV pp unloaded: Sensirion suggests an LDO if the rail is noisy (design-in guide p4)",
+  "I_sleep_uA": 1,
+  "I_idle_uA": 55,
+  "I_avg_continuous_uA": 950,
+  "I_avg_single_shot_10s_uA": 100,
+  "I_peak_mA": 4.2,
+  "page": "p4 table 3"
+ },
+ "logic": "I2C level = VDDIO pin (1.8 V..VDD), sampled at power-up; VDDIO < 0.7 V selects VDD. 3.3 V bus direct. Up to 1 MHz (p4-6)",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x64"
+  ],
+  "select": "ADDR pin 3: GND 0x64, VDD 0x65 (p5)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [],
+  "strap": [
+   "ADDR->GND (0x64)",
+   "VDDIO->+3V3_SENS"
+  ]
+ },
+ "placement": [
+  "Shared gas vent. At least 1 mm between the sensor membrane and the housing (design-in guide p3, guideline 5).",
+  "Vent as a grill of several small openings rather than one big hole; avoid direct breath/fan bursts (guide p3).",
+  "Far from heat (brain, charger, 3.3 V converter, e-paper front light); milled slots and narrow traces around it (guide p2).",
+  "SHT40 in the same local air as the STCC4 (guide p2/p4).",
+  "Membrane must not be touched, wetted or washed: no board wash after reflow; fit in the last reflow pass; not vapour phase (ds p16).",
+  "Operating conditions for the stated accuracy: 10-40 C, 20-80 %RH (ds p4)."
+ ],
+ "notes": [
+  "SHT4x hosting (ds p6, guide p4): the STCC4 has its own I2C controller pads SDA_C/SCL_C with 10k internal pull-ups; an SHT4x with address 0x44 ONLY is wired there and the STCC4 reads it itself for compensation. The SHT40 is then NOT on the brain's bus: T and RH come back in the STCC4's read_measurement data (conversion formulas ds p14).",
+  "Alternative: SHT4x on the brain's bus and the brain sends RH/T every 1 s with set_rht_compensation (ds p10). Not needed.",
+  "If SDA_C/SCL_C are unused they must go to floating pads (ds p5 note 8).",
+  "Pressure compensation: feed the BMP581 reading with set_pressure_compensation (ds p4, guide p4).",
+  "Sleep 1 uA by command (enter_sleep_mode 0x3650); wake = address + write + one 0x00 byte that is not acknowledged (ds p11). No switched rail needed.",
+  "JLCPCB lists no datasheet for C49191471; read from sensirion.com/resource/datasheet/STCC4 (D1 v1, June 2025)."
+ ],
+ "unverified": [
+  "Pin order on the left column (1,2,3 top to bottom) is read from the cropped pin drawing on p5 plus the chamfer on p15; check against the drawing when making the footprint."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

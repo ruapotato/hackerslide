@@ -1,0 +1,146 @@
+{
+ "part": "SGP41",
+ "mpn": "SGP41-D-R4",
+ "maker": "Sensirion",
+ "lcsc": "C3659325",
+ "stock": 2144,
+ "price": 9.0191,
+ "package": "DFN-6 2.44 x 2.44 mm with die pad",
+ "height_mm": 0.85,
+ "height_note": "0.85 +-0.1 (p18)",
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "p18 fig 17, p19 fig 18",
+  "body": "2.44 x 2.44 +-0.1",
+  "pads": 6,
+  "pitch": 0.8,
+  "pad_size": "0.55 x 0.4 land",
+  "row_span_outer": 2.3,
+  "exposed_pad": "1.25 x 1.7 land (stencil 1.05 x 1.5), 0.3 x 45 deg chamfer at pin 1",
+  "pin_order": "1,2,3 down the left side, 4,5,6 up the right side (transparent top view, p7)",
+  "opening": "0.8 mm dia on top, offset towards the bottom-right corner"
+ },
+ "pins": [
+  {
+   "pin": "1",
+   "name": "VDD",
+   "net": "SGP_VDD (after 4.7 ohm)"
+  },
+  {
+   "pin": "2",
+   "name": "VSS",
+   "net": "GND"
+  },
+  {
+   "pin": "3",
+   "name": "SDA",
+   "net": "I2C_S_SDA"
+  },
+  {
+   "pin": "4",
+   "name": "n/a",
+   "net": "GND"
+  },
+  {
+   "pin": "5",
+   "name": "VDDH",
+   "net": "+3V3_GAS"
+  },
+  {
+   "pin": "6",
+   "name": "SCL",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "EP",
+   "name": "die pad",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "VDD RC filter, series",
+   "value": "4.7 ohm",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "+3V3_GAS",
+    "VDD(1)"
+   ],
+   "page": "p8 fig 6"
+  },
+  {
+   "role": "VDD RC filter, capacitor",
+   "value": "1u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(1)",
+    "GND"
+   ],
+   "page": "p8 fig 6"
+  },
+  {
+   "role": "hotplate supply decoupling",
+   "value": "1u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDDH(5)",
+    "GND"
+   ],
+   "page": "p7, p8 fig 6"
+  },
+  {
+   "role": "I2C pull-ups (bus-wide)",
+   "value": "Rp e.g. 10k in ds; 2.2k on this bus",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA/SCL",
+    "+3V3"
+   ],
+   "page": "p7"
+  }
+ ],
+ "supplies": {
+  "VDD=VDDH": "1.7-3.6 V, one single supply (p5, p7)",
+  "I_idle_uA": 34,
+  "I_idle_max_uA": 105,
+  "I_measure_mA_3V3": 3.0,
+  "I_conditioning_mA_3V3": 4.2,
+  "note": "measurement 4.3 mA and conditioning 6.5 mA typ are given at 1.8 V; the 3.3 V figures (about 3.0 and 4.2 mA) are the second rows of the same table, whose numbers the text extraction dropped",
+  "page": "p5 table 2"
+ },
+ "logic": "I2C levels follow VDD (1.7-3.6 V); 3.3 V bus direct (p12)",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x59"
+  ],
+  "select": "fixed (p12)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [],
+  "strap": [
+   "pin 4 -> GND"
+  ]
+ },
+ "placement": [
+  "Shared gas vent; opening on top. Keep out of bright light (p8, 2.6).",
+  "Away from heat and from the MiCS-5524 heater and other outgassing parts (adhesives, fresh plastics).",
+  "No board wash or ultrasonic cleaning; fit in the last reflow pass (p19)."
+ ],
+ "notes": [
+  "Idle is 34 uA typ / 105 uA max: put it on the switched gas rail to reach a few uA asleep.",
+  "Sequence: 10 s conditioning command once after power-up, then measure every 1 s; turn_heater_off returns to idle (p9).",
+  "VOC/NOx index needs Sensirion's gas index algorithm (C source, BSD) fed with SHT40 RH/T: these arrive via the STCC4.",
+  "Superseded in REPORT.md: keep the SGP41 on the always-on +3V3_SENS rail (34 uA idle) unless it sits behind an enable-able I2C buffer; an unpowered part may clamp I2C_S. GAS_HTR_EN now switches only the MiCS-5524 heater."
+ ],
+ "unverified": [
+  "Exact 3.3 V supply-current numbers (see supplies.note): confirm on the datasheet page before budgeting to the mA."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

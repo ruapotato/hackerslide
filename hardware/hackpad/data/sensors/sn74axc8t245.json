@@ -1,0 +1,308 @@
+{
+ "part": "SN74AXC8T245",
+ "mpn": "SN74AXC8T245PWR",
+ "maker": "Texas Instruments",
+ "lcsc": "C882718",
+ "stock": 6877,
+ "price": 1.2651,
+ "package": "TSSOP-24 (PW) 4.4 x 7.8 mm",
+ "height_mm": 1.2,
+ "kicad_symbol": null,
+ "kicad_symbol_note": "74xx:SN74LVC8T245 exists with the same PW pin numbers [not compared pin by pin]; safer to define the symbol from the table below",
+ "kicad_footprint": "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "VCCA",
+   "net": "+3V3_BENCH"
+  },
+  {
+   "pin": "2",
+   "name": "DIR1",
+   "net": "BENCH_DIR1"
+  },
+  {
+   "pin": "3",
+   "name": "A1",
+   "net": "BENCH0"
+  },
+  {
+   "pin": "4",
+   "name": "A2",
+   "net": "BENCH2"
+  },
+  {
+   "pin": "5",
+   "name": "A3",
+   "net": "BENCH4"
+  },
+  {
+   "pin": "6",
+   "name": "A4",
+   "net": "BENCH6"
+  },
+  {
+   "pin": "7",
+   "name": "A5",
+   "net": "BENCH1"
+  },
+  {
+   "pin": "8",
+   "name": "A6",
+   "net": "BENCH3"
+  },
+  {
+   "pin": "9",
+   "name": "A7",
+   "net": "BENCH5"
+  },
+  {
+   "pin": "10",
+   "name": "A8",
+   "net": "BENCH7"
+  },
+  {
+   "pin": "11",
+   "name": "DIR2",
+   "net": "BENCH_DIR2"
+  },
+  {
+   "pin": "12",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "13",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "14",
+   "name": "B8",
+   "net": "HDR7"
+  },
+  {
+   "pin": "15",
+   "name": "B7",
+   "net": "HDR5"
+  },
+  {
+   "pin": "16",
+   "name": "B6",
+   "net": "HDR3"
+  },
+  {
+   "pin": "17",
+   "name": "B5",
+   "net": "HDR1"
+  },
+  {
+   "pin": "18",
+   "name": "B4",
+   "net": "HDR6"
+  },
+  {
+   "pin": "19",
+   "name": "B3",
+   "net": "HDR4"
+  },
+  {
+   "pin": "20",
+   "name": "B2",
+   "net": "HDR2"
+  },
+  {
+   "pin": "21",
+   "name": "B1",
+   "net": "HDR0"
+  },
+  {
+   "pin": "22",
+   "name": "OE",
+   "net": "BENCH_OE_N"
+  },
+  {
+   "pin": "23",
+   "name": "VCCB",
+   "net": "BENCH_VREF"
+  },
+  {
+   "pin": "24",
+   "name": "VCCB",
+   "net": "BENCH_VREF"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCCA(1)",
+    "GND"
+   ],
+   "page": "p24"
+  },
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCCB(23,24)",
+    "GND"
+   ],
+   "page": "p24"
+  },
+  {
+   "role": "OE pull-up so the header is high-impedance through power-up",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "OE(22)",
+    "+3V3_BENCH"
+   ],
+   "page": "p1 (pull OE to VCCA)"
+  },
+  {
+   "role": "DIR pull-downs: default B->A = header is input",
+   "value": "100k x2",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "DIR1(2), DIR2(11)",
+    "GND"
+   ],
+   "page": "p21: control inputs must not float"
+  },
+  {
+   "role": "series resistors on the header side [this design]",
+   "value": "47 x8",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "B1..B8",
+    "header pins"
+   ],
+   "page": "-"
+  },
+  {
+   "role": "ESD arrays at the header",
+   "value": "TPD4E05U06DQAR x2",
+   "part": "TPD4E05U06DQAR",
+   "lcsc": "C138714",
+   "between": [
+    "header pins",
+    "GND"
+   ],
+   "page": "TPD4E05U06 file"
+  },
+  {
+   "role": "BENCH_VREF source: adjustable LDO, 0.55 V reference",
+   "value": "TLV75801PDBVR",
+   "part": "TLV75801PDBVR",
+   "lcsc": "C2877852",
+   "between": [
+    "VSYS",
+    "BENCH_VREF"
+   ],
+   "page": "TLV758P ds p4-5"
+  },
+  {
+   "role": "LDO feedback top",
+   "value": "100k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "BENCH_VREF",
+    "FB"
+   ],
+   "page": "Vout = 0.55 x (1 + Rtop/Rbottom)"
+  },
+  {
+   "role": "LDO feedback bottom, fixed: 1.20 V",
+   "value": "84.5k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "FB",
+    "GND"
+   ],
+   "page": "computed"
+  },
+  {
+   "role": "LDO feedback, switched by BENCH_VSEL0 (expander pin driven low or left as input): 1.80 V",
+   "value": "91k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "FB",
+    "BENCH_VSEL0"
+   ],
+   "page": "computed"
+  },
+  {
+   "role": "LDO feedback, switched by BENCH_VSEL1: 2.50 V; both = 3.11 V",
+   "value": "42.2k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "FB",
+    "BENCH_VSEL1"
+   ],
+   "page": "computed"
+  },
+  {
+   "role": "LDO input/output capacitors [mem: 1 uF each]",
+   "value": "1u x2",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VSYS / BENCH_VREF",
+    "GND"
+   ],
+   "page": "not read"
+  }
+ ],
+ "supplies": {
+  "VCCA": "0.65-3.6 V (here 3.3)",
+  "VCCB": "0.65-3.6 V (here BENCH_VREF 1.2/1.8/2.5/3.1 V)",
+  "I_static_uA": "ICCA+ICCB about 18 typ, 38 max",
+  "I_one_rail_off_uA": "12 typ, 25 max on the live rail",
+  "page": "p6-7"
+ },
+ "logic": "A side and DIR1/DIR2/OE referenced to VCCA; B side to VCCB. Either rail at 0 V: all outputs high-impedance (Ioff, p1). 288 k pull-downs on every data pin; external pull-ups must be <= 30 k (p21).",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "BENCH0..BENCH7 (AD_00..05, AD_26, AD_27)"
+  ],
+  "expander": [
+   "BENCH_DIR1",
+   "BENCH_DIR2",
+   "BENCH_OE_N",
+   "BENCH_VREF_EN",
+   "BENCH_VSEL0",
+   "BENCH_VSEL1"
+  ],
+  "strap": []
+ },
+ "placement": [
+  "At the bench header; ESD arrays between header and shifter, closest to the header.",
+  "Header carries HDR0..7, BENCH_VREF, GND."
+ ],
+ "notes": [
+  "Two direction groups (p21 table 7-1): DIR1 sets bits 1-4, DIR2 sets bits 5-8; DIR high = A->B (brain drives the header), low = B->A; OE high = all off.",
+  "CONFLICT to settle: with BENCH0-3 in one group and BENCH4-7 in the other, UART TX on BENCH2 and RX on BENCH3 would need opposite directions inside one group. The pin table above therefore puts the EVEN lines (0,2,4,6) in group 1 and the ODD lines (1,3,5,7) in group 2: TX/clock/select on even lines, RX/MISO on odd lines.",
+  "LIMIT: this is a push-pull, direction-controlled part. Open-drain two-way lines (I2C, 1-Wire, SWDIO) cannot run through it. If the header should speak I2C or SWD, add a 2-bit auto-direction open-drain translator (TXS0102 or a second PCA9306) on two extra header pins.",
+  "VREF: 'both select lines active' gives 3.11 V, so no combination can exceed the 3.6 V limit. For a target-supplied reference the LDO must be off (BENCH_VREF_EN low) and the header then back-feeds its output: add a series Schottky or accept LDO-only.",
+  "JLCPCB's data sheet link is TI's Chinese edition (ZHCSHG0C)."
+ ],
+ "unverified": [
+  "LDO capacitors and its behaviour when back-fed.",
+  "Typical vs maximum static current rows (table columns partly merged in the text extraction, p7)."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

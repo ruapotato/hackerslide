@@ -1,0 +1,184 @@
+{
+ "part": "LSM6DSV16X",
+ "mpn": "LSM6DSV16XTR",
+ "maker": "STMicroelectronics",
+ "lcsc": "C5267406",
+ "stock": 17679,
+ "price": 2.8591,
+ "package": "LGA-14L 2.5 x 3.0 mm",
+ "height_mm": 0.83,
+ "height_note": "0.83 from the survey; ds package page not re-read",
+ "kicad_symbol": "Sensor_Motion:LSM6DSL",
+ "kicad_symbol_check": "LSM6DSL symbol has the same numbering as ds p11 table 2 (1 SDO/SA0, 2 SDx, 3 SCx, 4 INT1, 5 VDDIO, 6 GND, 7 GND, 8 VDD, 9 INT2, 12 CS, 13 SCL, 14 SDA). Its pins 10/11 are NC: on the LSM6DSV16X they are OCS_Aux/SDO_Aux, to be left unconnected in mode 1 (p47 note 1). No LSM6DSV16X symbol exists.",
+ "kicad_footprint": "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "SDO/SA0",
+   "net": "GND (0x6A)"
+  },
+  {
+   "pin": "2",
+   "name": "SDx/AH1/Qvar1",
+   "net": "QVAR1 electrode pad, or VDDIO/GND"
+  },
+  {
+   "pin": "3",
+   "name": "SCx/AH2/Qvar2",
+   "net": "QVAR2 electrode pad, or VDDIO/GND"
+  },
+  {
+   "pin": "4",
+   "name": "INT1",
+   "net": "IMU_INT_N (brain wake pad)"
+  },
+  {
+   "pin": "5",
+   "name": "Vdd_IO",
+   "net": "IMU supply"
+  },
+  {
+   "pin": "6",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "7",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "8",
+   "name": "Vdd",
+   "net": "IMU supply"
+  },
+  {
+   "pin": "9",
+   "name": "INT2",
+   "net": "NC"
+  },
+  {
+   "pin": "10",
+   "name": "OCS_Aux",
+   "net": "NC, soldered"
+  },
+  {
+   "pin": "11",
+   "name": "SDO_Aux",
+   "net": "NC, soldered"
+  },
+  {
+   "pin": "12",
+   "name": "CS",
+   "net": "Vdd_IO (I2C mode)"
+  },
+  {
+   "pin": "13",
+   "name": "SCL",
+   "net": "sensor bus SCL"
+  },
+  {
+   "pin": "14",
+   "name": "SDA",
+   "net": "sensor bus SDA"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling C1",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "Vdd(8)",
+    "GND"
+   ],
+   "page": "p47 fig 28"
+  },
+  {
+   "role": "decoupling C2",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "Vdd_IO(5)",
+    "GND"
+   ],
+   "page": "p47 fig 28"
+  },
+  {
+   "role": "I2C mode",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CS(12)",
+    "Vdd_IO"
+   ],
+   "page": "p47"
+  },
+  {
+   "role": "address",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDO/SA0(1)",
+    "GND"
+   ],
+   "page": "p22"
+  },
+  {
+   "role": "Qvar electrode series resistors (figure 29 shows 500 ohm; rest of the network not transcribed)",
+   "value": "500 ohm",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "electrode",
+    "pin 2 / pin 3"
+   ],
+   "page": "p47 fig 29"
+  }
+ ],
+ "supplies": {
+  "Vdd": "1.71-3.6 V",
+  "Vdd_IO": "1.08-3.6 V",
+  "I_power_down_uA": 2.6,
+  "I_accel_high_perf_uA": 190,
+  "I_combo_high_perf_mA": 0.65,
+  "page": "p14"
+ },
+ "logic": "levels follow Vdd_IO. INT1/INT2 are push-pull at Vdd_IO by default; open-drain and active-low are register options.",
+ "i2c_addr": {
+  "bus": "I2C_S (1.8 V segment recommended, see notes)",
+  "addr": [
+   "0x6A"
+  ],
+  "select": "SA0 pin: GND 0x6A, Vdd_IO 0x6B (p22)"
+ },
+ "lines": {
+  "brain": [
+   "IMU_INT_N (SNVS_07) from INT1"
+  ],
+  "expander": [],
+  "strap": [
+   "SA0->GND",
+   "CS->Vdd_IO",
+   "INT2 open",
+   "pins 10, 11 open"
+  ]
+ },
+ "placement": [
+  "Near the middle of the board, away from the keyboard dome area and the slider rails (shock), firmly supported; axes square to the board edges.",
+  "Qvar (electrostatic field): pins 2 and 3 go to two small copper electrode pads on an outer surface/edge of the case, as far apart as practical; works in I2C mode 1 only (p34)."
+ ],
+ "notes": [
+  "CONFLICT with the pin plan: IMU_INT_N is a 1.8 V wake pad and INT1 is a push-pull output at Vdd_IO. Recommended: run the IMU (Vdd and Vdd_IO) from 1.8 V and put it on the 1.8 V bus segment with the AS7341, so INT1 can never exceed 1.8 V; firmware then sets open-drain, active-low. This needs a 1.8 V rail that stays up in the sleep state motion should wake from. Fallback: 3.3 V supply, INT1 through a series Schottky diode (cathode to INT1) so it can only pull the pad low.",
+  "0x6A is also the BQ25895's address, but that one is on I2C_P: no clash."
+ ],
+ "unverified": [
+  "Qvar input network beyond the 500 ohm resistors (fig 29, p47).",
+  "Package height (not re-read in the data sheet)."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

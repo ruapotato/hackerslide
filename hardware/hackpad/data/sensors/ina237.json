@@ -1,0 +1,182 @@
+{
+ "part": "INA237",
+ "mpn": "INA237AIDGSR",
+ "maker": "Texas Instruments",
+ "lcsc": "C2864837",
+ "stock": 8086,
+ "price": 1.8134,
+ "package": "VSSOP-10 (DGS) 3 x 3 mm",
+ "height_mm": 1.1,
+ "kicad_symbol": "Sensor_Energy:INA237",
+ "kicad_symbol_check": "pins 1 A1, 2 A0, 3 ALERT, 4 SDA, 5 SCL, 6 VS, 7 GND, 8 VBUS, 9 IN-, 10 IN+ match ds p3",
+ "kicad_footprint": "Package_SO:VSSOP-10_3x3mm_P0.5mm",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "A1",
+   "net": "GND"
+  },
+  {
+   "pin": "2",
+   "name": "A0",
+   "net": "GND"
+  },
+  {
+   "pin": "3",
+   "name": "ALERT",
+   "net": "INA_ALERT_N (optional)"
+  },
+  {
+   "pin": "4",
+   "name": "SDA",
+   "net": "I2C_U_SDA"
+  },
+  {
+   "pin": "5",
+   "name": "SCL",
+   "net": "I2C_U_SCL"
+  },
+  {
+   "pin": "6",
+   "name": "VS",
+   "net": "+3V3"
+  },
+  {
+   "pin": "7",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "8",
+   "name": "VBUS",
+   "net": "PROBE_V (via 10 ohm)"
+  },
+  {
+   "pin": "9",
+   "name": "IN-",
+   "net": "shunt low side via 10 ohm"
+  },
+  {
+   "pin": "10",
+   "name": "IN+",
+   "net": "shunt high side via 10 ohm"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "shunt for +-3 A, ADCRANGE=1 (+-40.96 mV): full scale +-4.1 A, 1.25 uV/LSB = 125 uA, 90 mW at 3 A",
+   "value": "10 mohm 1 % 1 W 1206",
+   "part": "HoLR1206-1W-10mR-1%-75ppm",
+   "lcsc": "C601097",
+   "between": [
+    "PROBE_I+",
+    "PROBE_I-"
+   ],
+   "page": "p5 (ranges), p27-28"
+  },
+  {
+   "role": "input series resistors (protect against fast edges up to the 40 V differential rating; keep <= 100 ohm)",
+   "value": "10 ohm x2",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "shunt terminals",
+    "IN+(10) / IN-(9)"
+   ],
+   "page": "p30-31 fig 8-1"
+  },
+  {
+   "role": "differential filter capacitor",
+   "value": "100n (0.1-1 uF)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "IN+(10)",
+    "IN-(9)"
+   ],
+   "page": "p30-31"
+  },
+  {
+   "role": "bus-voltage sense series resistor [this design]",
+   "value": "10 ohm",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "PROBE_I- (load side)",
+    "VBUS(8)"
+   ],
+   "page": "-"
+  },
+  {
+   "role": "supply bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VS(6)",
+    "GND"
+   ],
+   "page": "p34"
+  },
+  {
+   "role": "ALERT pull-up if used",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "ALERT(3)",
+    "+3V3"
+   ],
+   "page": "p3: open drain"
+  },
+  {
+   "role": "clamp at the probe terminals to stay inside 85 V / -0.3 V: bidirectional TVS sized for the intended range [this design, part not chosen]",
+   "value": "TVS",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "PROBE_I+ / PROBE_I-",
+    "GND"
+   ],
+   "page": "p3 abs max"
+  }
+ ],
+ "supplies": {
+  "VS": "2.7-5.5 V",
+  "I_active_uA": 640,
+  "I_active_max_uA": 750,
+  "I_shutdown_uA": 2.8,
+  "I_shutdown_max_uA": 5,
+  "page": "p6"
+ },
+ "logic": "SDA/SCL tolerate 6 V whatever VS is (p3); 3.3 V bus direct",
+ "i2c_addr": {
+  "bus": "I2C_U (proposed; I2C_S also free of clashes)",
+  "addr": [
+   "0x40"
+  ],
+  "select": "A1/A0 each to GND, VS, SDA or SCL: 0x40-0x4F; GND/GND = 0x40 (p17 table 7-2)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [
+   "INA_ALERT_N (optional)"
+  ],
+  "strap": [
+   "A0, A1 -> GND"
+  ]
+ },
+ "placement": [
+  "Shunt next to the probe contacts with Kelvin connections; heavy copper for 3 A.",
+  "Probe contacts: I+ / I- (in-line) and the bus voltage is taken at I- (load side)."
+ ],
+ "notes": [
+  "Common-mode range -0.3..+85 V at IN+, IN- and VBUS (p4-5), differential abs max +-40 V (p3): high-side or low-side sensing both work; the limit is the NEGATIVE side (-0.3 V), so a reversed probe needs the clamp/series resistors.",
+  "Alternative: 50 mohm with ADCRANGE=0 (+-163.84 mV, +-3.28 A) gives 4x the signal but 0.45 W and 150 mV burden at 3 A.",
+  "JLCPCB's data sheet link is TI's Chinese edition (ZHCSMR6); numbers read from it."
+ ],
+ "unverified": [
+  "TVS choice for the probe."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

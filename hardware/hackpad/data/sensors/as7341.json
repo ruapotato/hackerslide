@@ -1,0 +1,129 @@
+{
+ "part": "AS7341",
+ "mpn": "AS7341-DLGM",
+ "maker": "ams OSRAM",
+ "lcsc": "C2649486",
+ "stock": 5012,
+ "price": 7.5151,
+ "package": "OLGA-8 2.0 x 3.1 mm",
+ "height_mm": 1.0,
+ "height_note": "1.0 from JLCPCB's listing and the survey; outline drawing ds p61 not transcribed",
+ "kicad_symbol": "Sensor_Optical:AS7341DLG",
+ "kicad_symbol_check": "pins 1 VDD, 2 SCL, 3 GND, 4 LDR, 5 PGND, 6 GPIO, 7 INT, 8 SDA match ds p6",
+ "kicad_footprint": "Package_LGA:AMS_OLGA-8_2x3.1mm_P0.8mm",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "VDD",
+   "net": "+1V8_OPT"
+  },
+  {
+   "pin": "2",
+   "name": "SCL",
+   "net": "I2C_S18_SCL"
+  },
+  {
+   "pin": "3",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "LDR",
+   "net": "NC (LED current sink, unused)"
+  },
+  {
+   "pin": "5",
+   "name": "PGND",
+   "net": "GND"
+  },
+  {
+   "pin": "6",
+   "name": "GPIO",
+   "net": "NC or test pad"
+  },
+  {
+   "pin": "7",
+   "name": "INT",
+   "net": "NC or test pad (open drain, 1.8 V)"
+  },
+  {
+   "pin": "8",
+   "name": "SDA",
+   "net": "I2C_S18_SDA"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling [mem: value not in the data sheet text]",
+   "value": "100n + 1u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(1)",
+    "GND"
+   ],
+   "page": "p4 block diagram shows the supply only"
+  },
+  {
+   "role": "1.8 V bus segment pull-ups (on the low side of the level shifter)",
+   "value": "2.2k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "I2C_S18_SDA / I2C_S18_SCL",
+    "+1V8"
+   ],
+   "page": "p6: pull-up to 1.8 V"
+  },
+  {
+   "role": "INT pull-up, only if INT is used",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "INT(7)",
+    "+1V8"
+   ],
+   "page": "p6"
+  }
+ ],
+ "supplies": {
+  "VDD": "1.7-2.0 V (abs max 2.2 V)",
+  "I_sleep_uA": 0.7,
+  "I_sleep_max_uA": 5,
+  "I_idle_uA": 35,
+  "I_active_uA": 210,
+  "page": "p7-8"
+ },
+ "logic": "1.8 V ONLY: VIH 1.26 V, VIL 0.54 V; INT is open drain to be pulled to 1.8 V (p6, p8). Needs the 1.8 V bus segment behind the level shifter.",
+ "i2c_addr": {
+  "bus": "I2C_S, 1.8 V segment behind PCA9306",
+  "addr": [
+   "0x39"
+  ],
+  "select": "fixed (p21)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [],
+  "strap": [
+   "LDR, GPIO, INT left open (INT cannot be read by a 3.3 V expander input: 1.8 V is below its 0.7 x 3.3 V threshold); poll over I2C"
+  ]
+ },
+ "placement": [
+  "Under the clear window, aperture facing out. ams asks for an achromatic bulk diffuser directly above the aperture (p60, 11.3); the test diffuser sits on the package surface (p15 note).",
+  "Not under the infrared-only window of the rangefinders; keep the VL53 emitters from shining into it (separate windows or a wall between).",
+  "Top side of the board, same window as the OPT4001."
+ ],
+ "notes": [
+  "Flicker detection uses the same chip (dedicated flicker channel); no extra pin.",
+  "The only I2C part in the set that needs 1.8 V bus levels."
+ ],
+ "unverified": [
+  "Absolute maximum on SCL/SDA/INT: the table row was cut in the text extraction (p7). Assumed NOT 3.3 V tolerant.",
+  "Decoupling values.",
+  "Package height and pad drawing (p59, p61) not transcribed: the KiCad footprint is named for this package."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

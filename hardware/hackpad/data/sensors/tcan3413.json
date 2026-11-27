@@ -1,0 +1,184 @@
+{
+ "part": "TCAN3413",
+ "mpn": "TCAN3413DRBR",
+ "maker": "Texas Instruments",
+ "lcsc": "C22445415",
+ "stock": 10464,
+ "price": 1.5728,
+ "package": "VSON-8 (DRB) 3 x 3 mm with thermal pad",
+ "height_mm": 1.0,
+ "kicad_symbol": null,
+ "kicad_symbol_note": "Interface_CAN_LIN:TCAN330 has pin 5 = SHDN and pin 8 = S: wrong for this part",
+ "kicad_footprint": "Package_SON:VSON-8-1EP_3x3mm_P0.65mm_EP1.65x2.4mm (TI DRB; check pad size against the drawing)",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "TXD",
+   "net": "CAN_TX"
+  },
+  {
+   "pin": "2",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "3",
+   "name": "VCC",
+   "net": "+3V3_BENCH"
+  },
+  {
+   "pin": "4",
+   "name": "RXD",
+   "net": "CAN_RX"
+  },
+  {
+   "pin": "5",
+   "name": "VIO",
+   "net": "+3V3_BENCH"
+  },
+  {
+   "pin": "6",
+   "name": "CANL",
+   "net": "CAN_L"
+  },
+  {
+   "pin": "7",
+   "name": "CANH",
+   "net": "CAN_H"
+  },
+  {
+   "pin": "8",
+   "name": "STB",
+   "net": "CAN_STB (expander)"
+  },
+  {
+   "pin": "EP",
+   "name": "thermal pad",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCC(3)",
+    "GND"
+   ],
+   "page": "[mem] standard; supply section p29 not read line by line"
+  },
+  {
+   "role": "bulk",
+   "value": "4.7u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCC(3)",
+    "GND"
+   ],
+   "page": "[mem]"
+  },
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VIO(5)",
+    "GND"
+   ],
+   "page": "[mem]"
+  },
+  {
+   "role": "split termination, half",
+   "value": "60.4 ohm",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CAN_H",
+    "CAN_TERM"
+   ],
+   "page": "p6 test condition names CSPLIT 4.7 nF"
+  },
+  {
+   "role": "split termination, half",
+   "value": "60.4 ohm",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CAN_TERM",
+    "CAN_L_SW"
+   ],
+   "page": "p6"
+  },
+  {
+   "role": "split capacitor",
+   "value": "4.7n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CAN_TERM",
+    "GND"
+   ],
+   "page": "p6"
+  },
+  {
+   "role": "termination switch: photo-MOS relay in series with the termination, LED from +3V3 through 330 ohm to an expander pin driven low",
+   "value": "AQY282SX (60 V, 0.5 A, about 0.85 ohm)",
+   "part": "AQY282SX",
+   "lcsc": "C250827",
+   "between": [
+    "CAN_L_SW",
+    "CAN_L"
+   ],
+   "page": "this design; relay data sheet not read"
+  },
+  {
+   "role": "bus ESD/TVS at the header",
+   "value": "PESD2CANFD24V-TR",
+   "part": "PESD2CANFD24V-TR",
+   "lcsc": "C552486",
+   "between": [
+    "CAN_H / CAN_L",
+    "GND"
+   ],
+   "page": "this design"
+  }
+ ],
+ "supplies": {
+  "VCC": "3.0-3.6 V",
+  "VIO": "1.7-3.6 V",
+  "I_recessive_mA": 7,
+  "I_dominant_mA": "42 typ (60 ohm), 55 max",
+  "I_standby_uA": "VCC 1 typ / 2 max, plus VIO 9 typ / 14 max",
+  "page": "p4-5"
+ },
+ "logic": "TXD/RXD/STB at VIO (3.3 V); logic inputs tolerate 6 V (p4). STB has an internal pull-up: unconnected = standby.",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "CAN_TX (DISP_B2_14)",
+   "CAN_RX (DISP_B2_15)"
+  ],
+  "expander": [
+   "CAN_STB (high = standby, low = normal)",
+   "CAN_TERM_EN"
+  ],
+  "strap": []
+ },
+ "placement": [
+  "At the bench header; CAN_H/CAN_L as a pair; thermal pad to ground with vias (p3)."
+ ],
+ "notes": [
+  "CAN FD to 8 Mbit/s. In standby it wakes on a bus pattern and signals it by pulling RXD low (p17-18): CAN_RX is not a wake pad, so wake-on-CAN would need a SNVS line.",
+  "Termination: simplest honest alternative to the relay is a 2-pin jumper position on the header that bridges in the 120 ohm."
+ ],
+ "unverified": [
+  "Decoupling values.",
+  "AQY282SX on-resistance and LED current (from the JLCPCB listing only).",
+  "Footprint pad dimensions."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

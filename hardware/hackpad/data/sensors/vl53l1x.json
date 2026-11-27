@@ -1,0 +1,175 @@
+{
+ "part": "VL53L1X",
+ "mpn": "VL53L1CXV0FY/1",
+ "maker": "STMicroelectronics",
+ "lcsc": "C190004",
+ "stock": 12307,
+ "price": 4.9474,
+ "package": "LGA-12 optical module 4.9 x 2.5 mm",
+ "height_mm": 1.56,
+ "kicad_symbol": "Sensor_Distance:VL53L1CXV0FY1",
+ "kicad_symbol_check": "12 pins match ds p5 table 2 (1 AVDDVCSEL, 2 AVSSVCSEL, 3 GND, 4 GND2, 5 XSHUT, 6 GND3, 7 GPIO1, 8 DNC, 9 SDA, 10 SCL, 11 AVDD, 12 GND4)",
+ "kicad_footprint": "Sensor_Distance:ST_VL53L1x",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "AVDDVCSEL",
+   "net": "+3V3_TOF"
+  },
+  {
+   "pin": "2",
+   "name": "AVSSVCSEL",
+   "net": "GND"
+  },
+  {
+   "pin": "3",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "GND2",
+   "net": "GND"
+  },
+  {
+   "pin": "5",
+   "name": "XSHUT",
+   "net": "TOF1_XSHUT (expander)"
+  },
+  {
+   "pin": "6",
+   "name": "GND3",
+   "net": "GND"
+  },
+  {
+   "pin": "7",
+   "name": "GPIO1",
+   "net": "TOF1_INT (expander, optional) or NC"
+  },
+  {
+   "pin": "8",
+   "name": "DNC",
+   "net": "leave floating"
+  },
+  {
+   "pin": "9",
+   "name": "SDA",
+   "net": "I2C_S_SDA"
+  },
+  {
+   "pin": "10",
+   "name": "SCL",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "11",
+   "name": "AVDD",
+   "net": "+3V3_TOF"
+  },
+  {
+   "pin": "12",
+   "name": "GND4",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "supply decoupling close to pins 1/2",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AVDDVCSEL(1)",
+    "AVSSVCSEL(2)"
+   ],
+   "page": "p6 fig 3 (values garbled in the text: [mem] 100 nF + 4.7 uF)"
+  },
+  {
+   "role": "supply bulk close to pins 1/2",
+   "value": "4.7u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AVDDVCSEL(1)",
+    "AVSSVCSEL(2)"
+   ],
+   "page": "p6 fig 3 [mem]"
+  },
+  {
+   "role": "XSHUT pull-up (pin must always be driven)",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "XSHUT(5)",
+    "+3V3_TOF"
+   ],
+   "page": "p6 notes"
+  },
+  {
+   "role": "GPIO1 pull-up if used",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "GPIO1(7)",
+    "+3V3_TOF"
+   ],
+   "page": "p6 notes"
+  },
+  {
+   "role": "bus pull-ups, fast mode",
+   "value": "<=90 pF: 3.6k; <=140 pF: 2.4k; <=270 pF: 1.2k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA/SCL",
+    "+3V3"
+   ],
+   "page": "p6 table 3"
+  }
+ ],
+ "supplies": {
+  "AVDD": "2.6-3.5 V (2.8 typ); 3.3 V is inside the range",
+  "I_hw_standby_uA": 5,
+  "I_sw_standby_uA": 6,
+  "I_ranging_avg_mA": 16,
+  "I_ranging_max_mA": 18,
+  "I_peak_mA": 40,
+  "P_1Hz_mW": "0.9-1.4",
+  "page": "p23-24"
+ },
+ "logic": "Default I/O mode is 1.8 V; '2V8 mode' (set by the driver at init) makes SDA/SCL/XSHUT/GPIO1 levels equal AVDD (p23 note 3). Pins rated to 3.6 V absolute (p23), VIH min 1.12 V in standard mode (p24). So: 3.3 V bus direct, firmware must select 2V8 mode.",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x29"
+  ],
+  "select": "default 0x52 as an 8-bit value = 0x29 (p4, p19); can be reprogrammed after each power-up (volatile). Left at 0x29; the VL53L5CX is the one moved."
+ },
+ "lines": {
+  "brain": [],
+  "expander": [
+   "TOF1_XSHUT",
+   "TOF1_INT (optional)",
+   "TOF_PWR_EN (rail switch shared with the VL53L5CX)"
+  ],
+  "strap": [
+   "pin 8 DNC floating"
+  ]
+ },
+ "placement": [
+  "Top side under an infrared-transmissive window (940 nm); a window that looks black is fine. Full field of view 27 deg (p1, p15).",
+  "Cover window as close to the module as possible with a small air gap [mem: under about 0.5 mm]; crosstalk and offset calibration are then required (p9).",
+  "No light path from the emitter to the AS7341/OPT4001 window. Keep the cone clear of the case edge."
+ ],
+ "notes": [
+  "Two rangefinders share 0x29: see the VL53L5CX file for the start-up order.",
+  "XSHUT high only when AVDD is on (p23 note 2): raise it after TOF_PWR_EN."
+ ],
+ "unverified": [
+  "Capacitor values on fig 3 (text extraction garbled).",
+  "Emitter/collector exclusion cone sizes and the maximum air gap (outline drawing p25 onward not transcribed)."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

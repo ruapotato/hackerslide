@@ -1,0 +1,187 @@
+{
+ "part": "MMC5983MA",
+ "mpn": "MMC5983MA",
+ "maker": "MEMSIC",
+ "lcsc": "C404329",
+ "stock": 2462,
+ "price": 1.977,
+ "package": "LGA-16 3.0 x 3.0 mm",
+ "height_mm": 1.0,
+ "height_note": "1.0 from the survey/listing; ds drawing not transcribed",
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "ds Rev A p10 (pin figure), land pattern page not transcribed",
+  "body": "3.0 x 3.0",
+  "pads": 16,
+  "layout": "4 per side: pins 1-4 left, 5-8 bottom, 9-12 right, 13-16 top (figure p10)",
+  "kicad_candidate": "Package_LGA:LGA-16_3x3mm_P0.5mm: check its pad order against the drawing before use"
+ },
+ "pins": [
+  {
+   "pin": "1",
+   "name": "SCL/SPI_SCK",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "2",
+   "name": "VDD",
+   "net": "+3V3_SENS"
+  },
+  {
+   "pin": "3",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "4",
+   "name": "SPI_CS",
+   "net": "VDDIO (I2C mode)"
+  },
+  {
+   "pin": "5",
+   "name": "SPI_SDO",
+   "net": "NC"
+  },
+  {
+   "pin": "6",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "7",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "8",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "9",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "10",
+   "name": "CAP",
+   "net": "MAG_CAP (10 uF to GND)"
+  },
+  {
+   "pin": "11",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "12",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "13",
+   "name": "VDDIO",
+   "net": "+3V3_SENS"
+  },
+  {
+   "pin": "14",
+   "name": "NC",
+   "net": ""
+  },
+  {
+   "pin": "15",
+   "name": "INT",
+   "net": "MAG_INT (optional) or NC"
+  },
+  {
+   "pin": "16",
+   "name": "SDA/SPI_SDI",
+   "net": "I2C_S_SDA"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "SET/RESET reservoir",
+   "value": "10u (low ESR)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CAP(10)",
+    "GND"
+   ],
+   "page": "p9 pin table"
+  },
+  {
+   "role": "supply decoupling",
+   "value": "1u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(2)",
+    "GND"
+   ],
+   "page": "p10 circuit"
+  },
+  {
+   "role": "I2C mode",
+   "value": "wire",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SPI_CS(4)",
+    "VDDIO(13)"
+   ],
+   "page": "p9"
+  },
+  {
+   "role": "bus pull-ups in MEMSIC's circuit",
+   "value": "2.7k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA/SCL",
+    "VDDIO"
+   ],
+   "page": "p10"
+  }
+ ],
+ "supplies": {
+  "VDD": "2.8-3.6 V",
+  "VDDIO": "2.8-3.6 V (p2)",
+  "I_power_down_uA": 1.0,
+  "I_measure_uA": "32 (BW=11) to 450 (BW=00), proportional to rate",
+  "page": "p2"
+ },
+ "logic": "3.3 V bus direct; fast mode 400 kHz",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x30"
+  ],
+  "select": "fixed 0110000 (p9, p17)"
+ },
+ "lines": {
+  "brain": [],
+  "expander": [
+   "MAG_INT (optional data-ready)"
+  ],
+  "strap": [
+   "SPI_CS->VDDIO",
+   "SPI_SDO open"
+  ]
+ },
+ "placement": [
+  "Full scale is +-8 gauss (0.8 mT): a slider magnet a few millimetres away saturates it. Put it at the far end of the board from the slider magnets, the lid hall magnet, the speaker and the UV-lamp/USB-C steel shells; aim for 25 mm or more from any magnet and check with a real magnet before fixing the position [distance is an estimate].",
+  "Not over or under battery nickel tabs, steel screws, shield cans, the microphone cans or high-current traces (charger, converter inductors: keep 10 mm).",
+  "Hard-iron offset changes with the slider position: calibrate both states and switch on LID_N. The SET/RESET pulse removes magnetisation after exposure (max 10,000 gauss, p2).",
+  "Same side and same axes as the LSM6DSV16X simplifies tilt compensation."
+ ],
+ "notes": [
+  "AEC-Q100; 18-bit; temperature output on chip."
+ ],
+ "unverified": [
+  "Land pattern dimensions and height.",
+  "The 25 mm distance."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

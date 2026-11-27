@@ -1,0 +1,145 @@
+{
+ "part": "THVD1420",
+ "mpn": "THVD1420DRLR",
+ "maker": "Texas Instruments",
+ "lcsc": "C3235555",
+ "stock": 36219,
+ "price": 0.9362,
+ "package": "SOT-5X3 (DRL) 8-pin, 1.6 x 2.1 mm",
+ "height_mm": 0.6,
+ "kicad_symbol": null,
+ "kicad_symbol_note": "Interface_UART:THVD1420D extends MAX481E (SOIC numbering: 1 RO, 2 RE, 3 DE, 4 DI, 5 GND, 6 A, 7 B, 8 VCC), which is the same numbering as the DRL package (ds p3); usable after checking the footprint field",
+ "kicad_footprint": "Package_TO_SOT_SMD:SOT-583-8",
+ "pins": [
+  {
+   "pin": "1",
+   "name": "R",
+   "net": "BENCH3 via 1 k"
+  },
+  {
+   "pin": "2",
+   "name": "RE (active low)",
+   "net": "RS485_RE_N (expander)"
+  },
+  {
+   "pin": "3",
+   "name": "DE",
+   "net": "BENCH4"
+  },
+  {
+   "pin": "4",
+   "name": "D",
+   "net": "BENCH2"
+  },
+  {
+   "pin": "5",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "6",
+   "name": "A",
+   "net": "RS485_A"
+  },
+  {
+   "pin": "7",
+   "name": "B",
+   "net": "RS485_B"
+  },
+  {
+   "pin": "8",
+   "name": "VCC",
+   "net": "+3V3_BENCH"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCC(8)",
+    "GND"
+   ],
+   "page": "p18 section 9"
+  },
+  {
+   "role": "R output isolation from the shared bench line [this design]",
+   "value": "1k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "R(1)",
+    "BENCH3"
+   ],
+   "page": "-"
+  },
+  {
+   "role": "surge protection as in TI's example: series 10 ohm pulse resistors",
+   "value": "10 ohm x2",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "A, B",
+    "header"
+   ],
+   "page": "p18 table 8-1"
+  },
+  {
+   "role": "surge protection: TVS",
+   "value": "SM712",
+   "part": "SM712.TCT",
+   "lcsc": "C12067",
+   "between": [
+    "RS485_A / RS485_B",
+    "GND"
+   ],
+   "page": "p18 table 8-1 (CDSOT23-SM712)"
+  },
+  {
+   "role": "termination 120 ohm, jumper position [this design]",
+   "value": "120",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RS485_A",
+    "RS485_B"
+   ],
+   "page": "-"
+  }
+ ],
+ "supplies": {
+  "VCC": "3-5.5 V",
+  "I_both_off_uA": 0.1,
+  "I_both_off_max_uA": 1,
+  "I_receiver_only_uA": 800,
+  "I_driver_and_receiver_uA": 1700,
+  "note": "figures are the VCC = 5.5 V rows, no load",
+  "page": "p6"
+ },
+ "logic": "RE has a 2 M pull-up, DE a 2 M pull-down (p3): unconnected = everything off. Bus pins +-12 kV IEC contact (p1).",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [
+   "BENCH2 (D)",
+   "BENCH3 (R)",
+   "BENCH4 (DE)"
+  ],
+  "expander": [
+   "RS485_RE_N"
+  ],
+  "strap": []
+ },
+ "placement": [
+  "At the bench header next to the CAN transceiver; A/B as a pair."
+ ],
+ "notes": [
+  "RE/DE tie: electrically it is the normal half-duplex hook-up (receiver off while driving, so no echo). HERE IT IS NOT FINE: with RE tied to DE the receiver is ON whenever BENCH4 is low, so R would drive BENCH3 all the time the port is used for anything else, fighting the level shifter. Keep DE on BENCH4 and give RE its own expander line (default high = receiver off). With RE high and DE low the chip is in shutdown at 0.1 uA.",
+  "While RS-485 is in use the level shifter must not drive BENCH3 towards the brain (set the odd group to A->B or OE off)."
+ ],
+ "unverified": [
+  "Behaviour of D/DE inputs when VCC is switched off while the brain drives them (needed if +3V3_BENCH is gated)."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

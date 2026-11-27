@@ -1,0 +1,103 @@
+{
+ "part": "UV LED 365 nm",
+ "mpn": "M3535N1UVS8U06-365nm",
+ "maker": "Silverlight",
+ "lcsc": "C2833503",
+ "stock": 1153,
+ "price": 1.1326,
+ "package": "3535 ceramic, 3 pads (anode, cathode, thermal)",
+ "height_mm": 2.85,
+ "height_note": "ds p3 gives 3.45 x 3.45 x 2.39/2.85 (two lens heights; which belongs to the M code is not stated)",
+ "kicad_symbol": "Device:LED (plus thermal pad)",
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "ds p3 (small drawing, not fully legible at the rendering used)",
+  "body": "3.45 x 3.45",
+  "pads": 3,
+  "kicad_near_miss": "LED_SMD:LED_Cree-XP-G (3.45 mm ceramic, 3 pads): compare pad widths with the drawing before use"
+ },
+ "pins": [
+  {
+   "pin": "A",
+   "name": "anode",
+   "net": "VSYS via series resistor"
+  },
+  {
+   "pin": "K",
+   "name": "cathode",
+   "net": "UV_K (switch to GND)"
+  },
+  {
+   "pin": "T",
+   "name": "thermal pad",
+   "net": "isolated copper or GND per the drawing"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "series resistor from VSYS: about 6 mA at 3.5 V, 15 mA at 3.8 V, 27 mA at 4.2 V, 33 mA at 4.4 V (Vf about 3.3 V at these currents)",
+   "value": "33 ohm 0603 (36 mW max)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VSYS",
+    "anode"
+   ],
+   "page": "p4 (Vf 3.2-4.0 V at 700 mA), p5 curve (about 3.2 V at 10 mA, 3.4 V at 100 mA)"
+  },
+  {
+   "role": "low-side switch",
+   "value": "AO3400A",
+   "part": "AO3400A",
+   "lcsc": "C20917",
+   "between": [
+    "cathode",
+    "GND"
+   ],
+   "page": "this design"
+  },
+  {
+   "role": "gate pull-down",
+   "value": "100k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "UV_EN",
+    "GND"
+   ],
+   "page": "-"
+  }
+ ],
+ "supplies": {
+  "source": "VSYS (battery rail); the 3.3 V rail is below the forward voltage",
+  "I_on_mA": "6-33 with 33 ohm",
+  "I_off": "0 (10 uA max reverse leakage at 5 V is not applied)",
+  "rated": "700 mA typ / 1000 mA peak, about 1.8 W optical at 700 mA: this board uses about 3 % of that",
+  "page": "p4-5"
+ },
+ "logic": "UV_EN from a 3.3 V expander pin to the MOSFET gate",
+ "i2c_addr": null,
+ "lines": {
+  "brain": [],
+  "expander": [
+   "UV_EN"
+  ],
+  "strap": []
+ },
+ "placement": [
+  "Open hole (or fused-silica/acrylic UV-grade window); polycarbonate blocks 365 nm [mem]. Beam 60 deg per the data sheet (JLCPCB's listing says 120 deg for the M code): the hole wall must clear it.",
+  "It is the tallest part of the set (2.4-2.85 mm): check the 4.8 mm cavity at its spot.",
+  "Point it away from the user, on the far edge; not next to the AS7341 window if fluorescence is to be measured without direct light."
+ ],
+ "notes": [
+  "SAFETY (estimate, not from the data sheet): from the curve the output is roughly 2 mW per mA at low current, so 30 mA gives about 60 mW into a 60 deg cone = about 7 W/m2 at 10 cm and 28 W/m2 at 5 cm. The usual UVA limit for unprotected eyes is 10 W/m2 for long exposure (10 kJ/m2 per day). So: default 33 ohm, a firmware time-out, a visible 'UV on' indicator, and never a brighter setting without a hold-to-light key.",
+  "Brightness follows the battery voltage (4:1 over the discharge). If constant output is wanted, replace the resistor with a boost-type LED driver; none was selected.",
+  "Second source: G3535N1UVS8U06 365NM, C2915611, 327 in stock."
+ ],
+ "unverified": [
+  "Pad drawing and which lens height applies.",
+  "Optical power at low current (read off a small graph).",
+  "Beam angle (data sheet 60 deg vs listing 120 deg)."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

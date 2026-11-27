@@ -1,0 +1,178 @@
+{
+ "part": "FUSB302B",
+ "mpn": "FUSB302BMPX",
+ "maker": "onsemi",
+ "lcsc": "C132291",
+ "stock": 41965,
+ "price": 0.8085,
+ "package": "WQFN-14 (MLP) 2.5 x 2.5 mm",
+ "height_mm": 0.8,
+ "height_note": "[mem] 0.8 max; drawing page not transcribed",
+ "kicad_symbol": "Interface_USB:FUSB302BMPX",
+ "kicad_symbol_check": "pins match ds p4 fig 5 (bottom view) and the pin map: 1 CC2, 2 VBUS, 3 VDD, 4 VDD, 5 INT_N, 6 SCL, 7 SDA, 8 GND, 9 GND, 10 CC1, 11 CC1, 12 VCONN, 13 VCONN, 14 CC2, EP GND",
+ "kicad_footprint": "Package_DFN_QFN:WQFN-14-1EP_2.5x2.5mm_P0.5mm_EP1.45x1.45mm",
+ "pins": [
+  {
+   "pin": "1,14",
+   "name": "CC2",
+   "net": "USB_CC2"
+  },
+  {
+   "pin": "2",
+   "name": "VBUS",
+   "net": "VBUS"
+  },
+  {
+   "pin": "3,4",
+   "name": "VDD",
+   "net": "+3V3 (or VSYS: 2.7-5.5 V)"
+  },
+  {
+   "pin": "5",
+   "name": "INT_N",
+   "net": "USBC_INT_N"
+  },
+  {
+   "pin": "6",
+   "name": "SCL",
+   "net": "I2C_P_SCL"
+  },
+  {
+   "pin": "7",
+   "name": "SDA",
+   "net": "I2C_P_SDA"
+  },
+  {
+   "pin": "8,9,EP",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "10,11",
+   "name": "CC1",
+   "net": "USB_CC1"
+  },
+  {
+   "pin": "12,13",
+   "name": "VCONN",
+   "net": "see notes"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "CC receiver capacitance, each CC line, total 200-600 pF",
+   "value": "330p",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CC1 / CC2",
+    "GND"
+   ],
+   "page": "p35 table 31 (cRECV)"
+  },
+  {
+   "role": "VDD decoupling CVDD1",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD",
+    "GND"
+   ],
+   "page": "p35"
+  },
+  {
+   "role": "VDD decoupling CVDD2",
+   "value": "1u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD",
+    "GND"
+   ],
+   "page": "p35"
+  },
+  {
+   "role": "VCONN decoupling (only if VCONN is fed)",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCONN",
+    "GND"
+   ],
+   "page": "p35"
+  },
+  {
+   "role": "VCONN bulk (only if VCONN is fed)",
+   "value": "10u min",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VCONN",
+    "GND"
+   ],
+   "page": "p35"
+  },
+  {
+   "role": "INT_N pull-up 1-4.7 k in the reference; here the existing SNVS pull-up arrangement",
+   "value": "existing",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "INT_N(5)",
+    "VDD_SNVS_ANA"
+   ],
+   "page": "p35"
+  },
+  {
+   "role": "REMOVE the two 5.1k CC pull-downs at the receptacle",
+   "value": "-",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "CC1 / CC2",
+    "GND"
+   ],
+   "page": "p2, p16"
+  }
+ ],
+ "supplies": {
+  "VDD": "2.7-5.5 V",
+  "VBUS_pin": "4-21 V, abs max 28 V (p14)",
+  "I_disabled_uA": 0.37,
+  "I_disabled_max_uA": 5,
+  "I_toggle_uA": 25,
+  "I_pd_standby_uA": 40,
+  "page": "p14, p17"
+ },
+ "logic": "open-drain SDA and INT_N. Block diagram shows pull-ups from 1.71 V to VDD (p3); the reference table lists 1.8 V typ for the pull-up rail (p35). 3.3 V I2C_P with VDD = 3.3 V is inside 'up to VDD'.",
+ "i2c_addr": {
+  "bus": "I2C_P",
+  "addr": [
+   "0x22"
+  ],
+  "select": "by order code: FUSB302BMPX/BUCX 0x22, B01MPX 0x23 (543 in stock), B10MPX 0x24 (28), B11MPX 0x25 (6) (p20 table 4)"
+ },
+ "lines": {
+  "brain": [
+   "USBC_INT_N (SNVS_05)"
+  ],
+  "expander": [],
+  "strap": []
+ },
+ "placement": [
+  "Next to the USB-C receptacle, CC traces short; the 330 pF capacitors at the chip."
+ ],
+ "notes": [
+  "Dead battery: with no power applied the chip itself presents the sink pull-downs (Rd 5.1k, 4.6-5.6k; clamp voltage 2.18 V max) on both CC pins (p2 feature list, p16). The external 5.1k resistors must go, otherwise the two in parallel give 2.55k and the source reads a wrong termination.",
+  "VCONN: only needed to power cable electronics when acting as a source. For a sink/sniffer leave the VCONN pins unpowered; if dual-role is wanted later feed them 2.7-5.5 V (5 V for the standard) with the two capacitors. Switch limit 560 mA (p14).",
+  "It hears only its own port's CC line (all packets on it once attached); it is not an in-line sniffer for two other devices.",
+  "If it negotiates more than 5 V, VBUS rises for everything on that net: cap requests at what the BQ25895 input stage accepts."
+ ],
+ "unverified": [
+  "How to terminate unused VCONN pins (float or GND): not stated on the pages read.",
+  "Package height."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

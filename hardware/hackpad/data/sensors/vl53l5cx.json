@@ -1,0 +1,260 @@
+{
+ "part": "VL53L5CX",
+ "mpn": "VL53L5CXV0GC/1",
+ "maker": "STMicroelectronics",
+ "lcsc": "C3178303",
+ "stock": 2523,
+ "price": 7.1977,
+ "package": "LGA-16 optical module + thermal pad, 6.4 x 3.0 mm",
+ "height_mm": 1.5,
+ "height_note": "1.500 +-0.050 (outline p24); liner on the cap during reflow, removed before the cover window is fitted (p29)",
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "DS13754 rev 8 p24-26 (fig 21-24)",
+  "body": "6.400 x 3.030 +-0.030",
+  "pads": "A1-A7, C1-C7 on two long rows, B1/B7 at the ends, B4 = thermal pad (must go to ground plane, p6)",
+  "optics": "Rx aperture centre 1.250 from the right end (fig 21); emitter on the opposite side; mechanical-to-optical centre offset 0.100",
+  "todo": "pad sizes and pitch are on fig 22 (p25) and were not transcribed; KiCad has ST_VL53L1x and ST_VL53L0X only: draw a new footprint"
+ },
+ "pins": [
+  {
+   "pin": "A1",
+   "name": "I2C_RST",
+   "net": "47k to GND (strap)"
+  },
+  {
+   "pin": "A2",
+   "name": "RSVD4",
+   "net": "GND"
+  },
+  {
+   "pin": "A3",
+   "name": "INT",
+   "net": "TOF2_INT (expander, optional) + 47k to IOVDD"
+  },
+  {
+   "pin": "A4",
+   "name": "IOVDD",
+   "net": "+3V3_TOF"
+  },
+  {
+   "pin": "A5",
+   "name": "LPn",
+   "net": "TOF2_LPN (expander) + 47k to IOVDD"
+  },
+  {
+   "pin": "A6",
+   "name": "RSVD1",
+   "net": "GND"
+  },
+  {
+   "pin": "A7",
+   "name": "RSVD2",
+   "net": "GND"
+  },
+  {
+   "pin": "B1",
+   "name": "AVDD",
+   "net": "+3V3_TOF"
+  },
+  {
+   "pin": "B4",
+   "name": "THERMALPAD",
+   "net": "GND"
+  },
+  {
+   "pin": "B7",
+   "name": "AVDD",
+   "net": "+3V3_TOF"
+  },
+  {
+   "pin": "C1",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "C2",
+   "name": "RSVD6",
+   "net": "47k to IOVDD"
+  },
+  {
+   "pin": "C3",
+   "name": "SDA",
+   "net": "I2C_S_SDA"
+  },
+  {
+   "pin": "C4",
+   "name": "SCL",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "C5",
+   "name": "RSVD5",
+   "net": "NC (do not connect)"
+  },
+  {
+   "pin": "C6",
+   "name": "RSVD3",
+   "net": "GND"
+  },
+  {
+   "pin": "C7",
+   "name": "GND",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "AVDD bulk",
+   "value": "4.7u 6.3 V",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AVDD(B1,B7)",
+    "GND"
+   ],
+   "page": "p7 fig 5"
+  },
+  {
+   "role": "AVDD bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "AVDD(B1,B7)",
+    "GND"
+   ],
+   "page": "p7 fig 5"
+  },
+  {
+   "role": "IOVDD bulk",
+   "value": "4.7u",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "IOVDD(A4)",
+    "GND"
+   ],
+   "page": "p7 fig 5"
+  },
+  {
+   "role": "IOVDD bypass",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "IOVDD(A4)",
+    "GND"
+   ],
+   "page": "p7 fig 5"
+  },
+  {
+   "role": "LPn pull-up",
+   "value": "47k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "LPn(A5)",
+    "IOVDD"
+   ],
+   "page": "p6, p7"
+  },
+  {
+   "role": "INT pull-up",
+   "value": "47k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "INT(A3)",
+    "IOVDD"
+   ],
+   "page": "p6"
+  },
+  {
+   "role": "GPIO (RSVD6) pull-up",
+   "value": "47k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "RSVD6(C2)",
+    "IOVDD"
+   ],
+   "page": "p6"
+  },
+  {
+   "role": "I2C_RST pull-down",
+   "value": "47k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "I2C_RST(A1)",
+    "GND"
+   ],
+   "page": "p6"
+  },
+  {
+   "role": "I2C pull-ups (fig 5 shows 2.2k; on the shared I2C_S bus there is one pair for the whole bus, not one per part)",
+   "value": "2.2k x2",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "SDA(C3), SCL(C4)",
+    "IOVDD"
+   ],
+   "page": "p6-7"
+  }
+ ],
+ "supplies": {
+  "AVDD": "2.8 or 3.3 V (3.0-3.6 V in the 3.3 V configuration)",
+  "IOVDD": "1.8, 2.8 or 3.3 V (3.0-3.6 V here)",
+  "page": "p15 table 10",
+  "I_LP_idle_uA": "AVDD 45 typ / 300 max + IOVDD 0.1 / 1",
+  "I_HP_idle_mA": "AVDD 1.3 + IOVDD 2.8",
+  "I_ranging_mA": "AVDD 45 typ / 50 max + IOVDD 50 typ / 80 max (about 95 mA total); peaks +10 mA on each",
+  "P_autonomous_4x4_1Hz_mW": "4.5 at 3V3/3V3 (2.8 at 2V8/1V8)",
+  "page_current": "p16 tables 12-14",
+  "sequencing": "IOVDD on at the same time as or after AVDD, off before or with AVDD; avoid IOVDD powered with AVDD off (p9). One rail for both satisfies this."
+ },
+ "logic": "IOVDD = 3.3 V: SCL/SDA/LPn/INT/I2C_RST abs max 3.6 V (p15); I2C pads use 1.8 V thresholds at every IOVDD (VIH 1.13 V, p17), so 3.3 V I2C_S works directly. All digital inputs must be driven to IOVDD level (p6).",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x29 at power-up (8-bit 0x52, p11)",
+   "proposed 0x2B after start-up"
+  ],
+  "select": "no address pin. The address is changed in RAM by the ULD driver after every power-up [mem: vl53l5cx_set_i2c_address, UM2884]. Same default as the VL53L1X: hold the VL53L1X in XSHUT (low) while the VL53L5CX boots and is moved, then release XSHUT. LPn exists to do the same between several VL53L5CX (p6)."
+ },
+ "lines": {
+  "brain": [],
+  "expander": [
+   "TOF2_LPN (output; also selects the low-power idle with I2C off)",
+   "TOF2_INT (input, optional: data ready / autonomous threshold)",
+   "TOF_PWR_EN (shared rail switch with the VL53L1X)"
+  ],
+  "strap": [
+   "I2C_RST -> 47k -> GND",
+   "RSVD6 -> 47k -> IOVDD",
+   "RSVD1-4,6 -> GND (A2, A6, A7, C6)",
+   "RSVD5 (C5) open"
+  ]
+ },
+ "placement": [
+  "Top side under the same infrared-transmissive (940 nm) window strip as the VL53L1X but with its own aperture: the window opening must be at least the collector exclusion cone, 55.5 x 61 deg (82 deg diagonal), wider than the 45 x 45 deg (63 deg diagonal) detection volume (p3 table 2).",
+  "Cover-glass crosstalk is handled by the histogram processing beyond 60 cm (p2); closer than that a cover needs crosstalk calibration (AN5657 [not read]).",
+  "Thermal pad soldered to a ground plane with vias: up to about 0.3 W while ranging (p16 table 13).",
+  "Keep the emitter away from the colour/brightness window (AS7341, OPT4001): wall or separate window.",
+  "Class 1 laser: no lens or optics that concentrate the beam (p27)."
+ ],
+ "notes": [
+  "Firmware: the ULD driver uploads about 84 KB of firmware over I2C at every power-up [mem]; at the 400 kHz limit set by other parts on I2C_S (MMC5983MA) that takes a few seconds.",
+  "Rather than a rail switch, the 45 uA LP idle (I2C off via LPn) could be used; the rail switch is worth it because LP idle can reach 300 uA (p16).",
+  "If the rail is switched while I2C_S stays live, the unpowered module's I2C pins must not load the bus: not stated in the data sheet (see REPORT, switched-rail parts)."
+ ],
+ "unverified": [
+  "Footprint pad dimensions (fig 22, p25) not transcribed.",
+  "Address-change procedure and firmware size are from memory of ST's UM2884, not read in this session.",
+  "Behaviour of SDA/SCL when AVDD/IOVDD are off."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}

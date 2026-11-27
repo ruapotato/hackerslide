@@ -1,0 +1,117 @@
+{
+ "part": "OPT4001",
+ "mpn": "OPT4001DNPRQ1",
+ "maker": "Texas Instruments",
+ "lcsc": "C20199903",
+ "stock": 2660,
+ "price": 2.0441,
+ "package": "USON-6 (DNP) 2.0 x 2.0 mm with thermal pad",
+ "height_mm": 0.65,
+ "height_note": "2 x 2 x 0.65 (OPT4001-Q1 ds p1)",
+ "kicad_symbol": null,
+ "kicad_footprint": null,
+ "footprint_drawing": {
+  "source": "OPT4001-Q1 ds SBOSA93E p53-57 (outline and land pattern; not transcribed)",
+  "body": "2.0 x 2.0 x 0.65",
+  "pads": "6 + thermal pad",
+  "note": "near miss to check against p54: Package_SON:WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm. Thermal pad must be soldered (p56 note 3)."
+ },
+ "pins": [
+  {
+   "pin": "1",
+   "name": "VDD",
+   "net": "+3V3_SENS"
+  },
+  {
+   "pin": "2",
+   "name": "ADDR",
+   "net": "+3V3_SENS (0x45)"
+  },
+  {
+   "pin": "3",
+   "name": "GND",
+   "net": "GND"
+  },
+  {
+   "pin": "4",
+   "name": "SCL",
+   "net": "I2C_S_SCL"
+  },
+  {
+   "pin": "5",
+   "name": "INT",
+   "net": "ALS_INT (expander, optional)"
+  },
+  {
+   "pin": "6",
+   "name": "SDA",
+   "net": "I2C_S_SDA"
+  },
+  {
+   "pin": "EP",
+   "name": "thermal pad",
+   "net": "GND"
+  }
+ ],
+ "circuit": [
+  {
+   "role": "decoupling",
+   "value": "100n",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "VDD(1)",
+    "GND"
+   ],
+   "page": "[mem] typical; application section p37+ not read line by line"
+  },
+  {
+   "role": "INT pull-up if used",
+   "value": "10k",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "INT(5)",
+    "+3V3"
+   ],
+   "page": "p4"
+  }
+ ],
+ "supplies": {
+  "VDD": "1.6-3.6 V",
+  "I_standby_uA_dark": 1.6,
+  "I_standby_uA_full_scale": 2,
+  "I_active_uA": 30,
+  "page": "p6"
+ },
+ "logic": "I2C and INT pins 5.5 V tolerant, pull-ups 1.6-5.5 V (p4, p6-7). 3.3 V bus direct.",
+ "i2c_addr": {
+  "bus": "I2C_S",
+  "addr": [
+   "0x45"
+  ],
+  "select": "ADDR pin: GND 0x44, VDD 0x45, SDA 0x46, SCL 0x47 (p22). 0x45 chosen to keep 0x44 free."
+ },
+ "lines": {
+  "brain": [],
+  "expander": [
+   "ALS_INT (optional)"
+  ],
+  "strap": [
+   "ADDR->VDD"
+  ]
+ },
+ "placement": [
+  "Under the clear window. Angular response 120 deg full width at half maximum for the USON package (p6): window radius = sensor radius + gap x tan(60 deg) for the full response, so keep the gap small.",
+  "TI notes it also works under visibly dark, infrared-transmissive glass (p12-13); here a clear window is shared with the AS7341."
+ ],
+ "notes": [
+  "The stocked code is the automotive OPT4001-Q1 in the USON (DNP) package: use the OPT4001-Q1 data sheet, not the OPT4001 one (which only covers PicoStar and SOT-5X3).",
+  "Non-automotive OPT4001DTSR (SOT-5X3) has 112 in stock, OPT4001YMNR 0: do not use."
+ ],
+ "unverified": [
+  "Land pattern dimensions and thermal pad size (p53-57).",
+  "Decoupling value."
+ ],
+ "stock_read": "2026-11-26, JLCPCB parts API"
+}
