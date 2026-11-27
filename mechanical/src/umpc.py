@@ -31,9 +31,11 @@ CARRIER_T = 1.0
 KEY = dict(pitch_x=7.0, pitch_y=7.0, cap_w=6.3, cap_h=6.2, cols=5, rows=4)
 SWITCH_H, NUB, FLANGE, CAP_TOP = 0.6, 0.3, 0.5, 1.2           # as the keyboards of the earlier designs
 KBD_PCB_T = 0.8
-CELL = dict(w=34.0, h=62.0, t=5.0, inset=6.0)                # one 503562-size cell per side (5.0 x 34 x 62 mm, about
-                                                             # 1,200 mAh, e.g. Adafruit #258 / PKCELL LP503562: TO VERIFY)
-CONTROLS = 'ball'                                            # 'ball': trackball + slide thumbstick; 'fallback': D-pad + touchpad
+CELL = dict(w=34.0, h=62.0, t=6.0, inset=6.0)                # one 603562-size cell per side (6.0 x 34 x 62 mm, about 1,500 mAh
+                                                             # each: ESTIMATE, cell not chosen); with the two slide sticks
+                                                             # there is room for 6 mm under the 12.7 mm top (5 mm cells: 503562)
+CONTROLS = 'sticks'                                          # 'sticks': two slide thumbsticks (David, 2026-11-27, to stay thin);
+                                                             # 'ball': trackball + slide stick; 'fallback': D-pad + touchpad
 TRACKBALL = dict(w=25.0, h=22.0, t=9.5, ball=8.0, protrude=1.0)   # Pimoroni PIM447 breakout: 25 x 22 x 9.5 mm (retailer
                                                              # data); ball size and how far it stands out: ESTIMATES
 SLIDEPAD = dict(base=19.0, t=4.0, cap=15.0, cap_t=1.6)       # SparkFun COM-09426, PSP-1000-style slide stick: ALL ESTIMATES
@@ -90,12 +92,32 @@ LEGENDS = {'L': [['Esc', '1', '2', '3', '4'], ['Q', 'W', 'E', 'R', 'T'], ['A', '
 
 
 
+def slide_stick(front, x, y):
+    """A PSP-style slide stick: body just under the front frame (through a hole in the keyboard board), round cap
+    moving in an opening.  Dimensions: SLIDEPAD, all estimates until a datasheet or sample is measured."""
+    s = SLIDEPAD
+    z0 = Z_FRONT - 0.1 - s['t']
+    body = rbox(x - s['base'] / 2, y - s['base'] / 2, z0, x + s['base'] / 2, y + s['base'] / 2, z0 + s['t'], 1.5)
+    stem = cq.Workplane('XY').circle(3.0).extrude(T - 0.2 - (z0 + s['t'])).translate((x, y, z0 + s['t']))
+    cap = cq.Workplane('XY').circle(s['cap'] / 2).extrude(s['cap_t']).translate((x, y, T - 0.2)).edges('>Z').fillet(0.6)
+    front = front.cut(cq.Workplane('XY').circle(s['cap'] / 2 + 2.5).extrude(3).translate((x, y, Z_FRONT - 1)))
+    hole = rbox(x - s['base'] / 2 - 0.3, y - s['base'] / 2 - 0.3, Z_KBD - 1, x + s['base'] / 2 + 0.3, y + s['base'] / 2 + 0.3, Z_KBD + KBD_PCB_T + 1, 1.5)
+    return front, body.union(stem).union(cap), hole
+
+
 def controls(front):
     """Bottom-left and bottom-right controls; returns the front frame with its openings, the control solids, and the
     holes they need through the keyboard board."""
     zone_top = H - WALL - 3.5 - KEY['rows'] * KEY['pitch_y'] - 2.0
     dx, dy = WALL + 3.0 + KEY['cols'] * KEY['pitch_x'] / 2, (WALL + zone_top) / 2
     tx, ty = W - WALL - 3.0 - KEY['cols'] * KEY['pitch_x'] / 2, dy
+    if CONTROLS == 'sticks':
+        parts_, holes = None, []
+        for x in (dx, tx):
+            front, solid, hole = slide_stick(front, x, dy)
+            parts_ = solid if parts_ is None else parts_.union(solid)
+            holes.append(hole)
+        return front, parts_, holes
     if CONTROLS == 'ball':
         # left: PSP-style slide stick standing on the keyboard board, its cap moving in a round opening
         s = SLIDEPAD

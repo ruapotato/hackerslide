@@ -1,6 +1,7 @@
 # HackBrain (UMPC): specification draft (2026-11-27)
 
-**Status: concept, nothing ordered or drawn as a schematic.** Branch `hackbrain` (name: David, 2026-11-27). A WiBrain B1-style handheld PC: a landscape screen in
+**Status: concept, nothing ordered or drawn as a schematic.** Revised 2026-11-27: two slide thumbsticks instead of
+thumbstick + trackball, so the device stays thin (David); see "Controls" below. Branch `hackbrain` (name: David, 2026-11-27). A WiBrain B1-style handheld PC: a landscape screen in
 the middle, thumb keys at the top of each side, an analogue thumbstick at the bottom left and a trackball at the
 bottom right. Model: `mechanical/src/umpc.py` (`CONTROLS = 'ball'` or `'fallback'`); renders:
 `mechanical/render/umpc_scene.py`, stills in `~/Videos/hackerslide/concepts/umpc7_*`. Aim (David): good performance
@@ -72,3 +73,12 @@ as copper on the keyboard board with an Azoteq controller. Device 12.7 mm thick.
 Close to the Linux handheld: parts per unit about $230-290 (module $84-103, screen $21-40, two cells, trackball
 about $15-20, stick about $4-7, boards and small parts); first prototype about $850-1,250 delivered; whole effort
 about $2,000-3,000.
+
+## Controls, revised (David, 2026-11-27): two slide thumbsticks
+
+Two PSP-1000-style slide sticks (SparkFun COM-09426), bottom left and bottom right; the right one drives the
+pointer (the input microcontroller turns it into mouse movement, with the shoulder buttons as clicks), the left
+one is a gamepad stick or arrow keys. Without the trackball the device is **160.0 x 72.0 x 12.7 mm**
+(`CONTROLS = 'sticks'` in the model), and the space under the sticks allows 6 mm cells instead of 5 mm: about
+3,000 mAh / 11 Wh in total (estimate, cells to choose), so roughly 5.5-7.5 h of light use and 3.5-4.5 h under
+load (rough). The trackball option remains in the model (`'ball'`, 15.0 mm) and in the table above.
