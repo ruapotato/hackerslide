@@ -33,3 +33,14 @@ HackOS power-management work.
 
 **No joystick or other pointer (David, 2026-11-27).** Both layouts have none. Navigation is by keys (arrow keys
 on Fn + I/J/K/L or similar, chosen in HackOS's keymap) and, on the 3.1" layout, by touch on the screen.
+
+
+## Chosen direction and tighter keys (David, 2026-11-27)
+
+"Last long", with less bezel around the keyboards: the **3.1" touch layout (side31)**, which has the bigger cell,
+is the main line. The key fields now fill the full height beside the screen: 5 rows x 5 columns per side,
+7.6 mm wide and about 10.4 mm tall per key position, 0.7 mm between caps, 1.2 mm from the key field to the wall and
+2 mm to the screen, one opening per key field in the front (no web between keys), corner radius 6 mm.
+Size now **159.4 x 59.4 x 13.0 mm** (bar29 for comparison: 165.6 x 44.2 x 10.8 mm).
+Keys: left Esc 1-4 / Q-T / A-G / Z-B / Shift Ctrl Alt Tab Space; right 5-8 Del / Y-P / H-L Enter / N M , . / /
+Space Sym - Fn Shift.

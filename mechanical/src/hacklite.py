@@ -22,11 +22,14 @@ PANELS = {'bar29': dict(w=79.98, h=35.57, t=1.2, aa_w=67.0, aa_h=29.2),
 CELLS = {'bar29': dict(name='Jauch LP503759JU, 1350 mAh, 5.0 Wh', w=62.0, h=38.0, t=5.8),
          'side31': dict(name='Adafruit #328, 2500 mAh, 9.25 Wh', w=62.5, h=50.5, t=8.1)}
 MODULE = dict(w=22.0, h=22.0, t=6.0)
-KEY = dict(pitch_x=7.0, pitch_y=7.0, cap_w=6.3, cap_h=6.2, cols=5, rows=4)
+KEY = dict(pitch_x=7.6, cols=5, rows=5, gap=0.7)                # keys fill the height beside the screen (David: less bezel);
+                                                             # pitch_y follows from the height, caps are pitch minus gap
 KEYSTACK = 0.6 + 0.3 + 0.5 + 1.2
 BOARD_T, BACK, WALL, FRONT, GAP = 0.8, 1.2, 1.6, 0.4, 0.3
-LEGENDS = {'L': [['Esc', '1', '2', '3', '4'], ['Q', 'W', 'E', 'R', 'T'], ['A', 'S', 'D', 'F', 'G'], ['Shift', 'Z', 'X', 'C', 'V']],
-           'R': [['5', '6', '7', '8', 'Del'], ['Y', 'U', 'I', 'O', 'P'], ['H', 'J', 'K', 'L', 'Ent'], ['B', 'N', 'M', 'Spc', 'Fn']]}
+LEGENDS = {'L': [['Esc', '1', '2', '3', '4'], ['Q', 'W', 'E', 'R', 'T'], ['A', 'S', 'D', 'F', 'G'], ['Z', 'X', 'C', 'V', 'B'],
+                 ['Shift', 'Ctrl', 'Alt', 'Tab', 'Spc']],
+           'R': [['5', '6', '7', '8', 'Del'], ['Y', 'U', 'I', 'O', 'P'], ['H', 'J', 'K', 'L', 'Ent'], ['N', 'M', ',', '.', '/'],
+                 ['Spc', 'Sym', '-', 'Fn', 'Shift']]}
 
 
 def rbox(x0, y0, z0, x1, y1, z1, r=0.0):
@@ -37,10 +40,12 @@ def rbox(x0, y0, z0, x1, y1, z1, r=0.0):
 
 def build(layout):
     P, C = PANELS[layout], CELLS[layout]
-    half = KEY['cols'] * KEY['pitch_x'] + 3.0
-    W = 2 * (half + WALL + 1.5) + P['w'] + 2.0
-    H = max(P['h'], C['h'], KEY['rows'] * KEY['pitch_y']) + 2 * WALL + 5.0
-    R = min(10.0, H / 2 - 1)
+    half = KEY['cols'] * KEY['pitch_x']
+    EDGE, SCREEN_GAP = 1.2, 2.0                              # key field to the wall, and to the screen
+    W = 2 * (WALL + EDGE + half + SCREEN_GAP) + P['w']
+    H = max(P['h'], C['h']) + 2 * WALL + 3.0
+    pitch_y = (H - 2 * WALL - 2 * EDGE) / KEY['rows']
+    R = min(6.0, H / 2 - 1)
     CX, CY = W / 2, H / 2
     z_board = BACK + max(C['t'] + GAP, MODULE['t'] + 0.2)
     T = max(z_board + BOARD_T + GAP + P['t'] + FRONT, z_board + BOARD_T + KEYSTACK)
@@ -52,17 +57,19 @@ def build(layout):
     ax0, ay0 = CX - P['aa_w'] / 2, CY - P['aa_h'] / 2
     front = front.cut(rbox(ax0 - 0.5, ay0 - 0.5, z_front - 1, ax0 + P['aa_w'] + 0.5, ay0 + P['aa_h'] + 0.5, T + 1, 1.0))
     keys, caps = [], None
-    for side, x0 in (('L', WALL + 2.5), ('R', W - WALL - 2.5 - KEY['cols'] * KEY['pitch_x'])):
+    cw, ch = KEY['pitch_x'] - KEY['gap'], pitch_y - KEY['gap']
+    for side, x0 in (('L', WALL + EDGE), ('R', W - WALL - EDGE - half)):
         for r in range(KEY['rows']):
             for c in range(KEY['cols']):
-                x, y = x0 + (c + 0.5) * KEY['pitch_x'], CY + (KEY['rows'] / 2 - r - 0.5) * KEY['pitch_y']
+                x, y = x0 + (c + 0.5) * KEY['pitch_x'], CY + (KEY['rows'] / 2 - r - 0.5) * pitch_y
                 keys.append(dict(side=side, r=r, c=c, x=x, y=y, label=LEGENDS[side][r][c]))
-                cap = rbox(x - KEY['cap_w'] / 2, y - KEY['cap_h'] / 2, z_board + BOARD_T + 0.9, x + KEY['cap_w'] / 2, y + KEY['cap_h'] / 2, T, 1.2)
+                cap = rbox(x - cw / 2, y - ch / 2, z_board + BOARD_T + 0.9, x + cw / 2, y + ch / 2, T, 1.2)
                 caps = cap if caps is None else caps.union(cap)
-                front = front.cut(rbox(x - KEY['cap_w'] / 2 - 0.3, y - KEY['cap_h'] / 2 - 0.3, z_front - 1, x + KEY['cap_w'] / 2 + 0.3, y + KEY['cap_h'] / 2 + 0.3, T + 1, 1.4))
+    for side, x0 in (('L', WALL + EDGE), ('R', W - WALL - EDGE - half)):       # one opening per key field: no web between keys
+        front = front.cut(rbox(x0 - 0.3, CY - KEY['rows'] * pitch_y / 2 - 0.3, z_front - 1, x0 + half + 0.3, CY + KEY['rows'] * pitch_y / 2 + 0.3, T + 1, 2.0))
     board = rbox(WALL + 0.3, WALL + 0.3, z_board, W - WALL - 0.3, H - WALL - 0.3, z_board + BOARD_T, R - WALL - 0.3)
     cell = rbox(CX - C['w'] / 2, CY - C['h'] / 2, BACK, CX + C['w'] / 2, CY + C['h'] / 2, BACK + C['t'], 2.0)
-    mx = WALL + 2.5 + KEY['cols'] * KEY['pitch_x'] / 2
+    mx = WALL + EDGE + half / 2
     module = rbox(mx - MODULE['w'] / 2, CY - MODULE['h'] / 2, z_board - MODULE['t'], mx + MODULE['w'] / 2, CY + MODULE['h'] / 2, z_board, 0.5)
     panel = rbox(CX - P['w'] / 2, CY - P['h'] / 2, z_panel, CX + P['w'] / 2, CY + P['h'] / 2, z_panel + P['t'], 0.8)
     d = dict(shell=shell, front=front, keycaps=caps, kbd_pcb=board, cells=cell, module=module, panel=panel)
