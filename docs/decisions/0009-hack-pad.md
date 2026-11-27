@@ -133,6 +133,18 @@ set by the Linux-class processor.
 - **Headphone jack: 3-pole, sunk into the board, audio out only (David, 2026-11-26).** No headset microphone
   input; the built-in microphones cover recording.
 
+- **David leans toward the hack pad (2026-11-26).** The video still shows both devices and asks the community;
+  the Linux handheld stays complete on its branch.
+- **Mechanical concept model (Claude's working assumptions, 2026-11-26, for David to confirm; body thickness is
+  his decision):** N810 footprint 128 x 72 mm; battery lying under the main board with only parts up to 1.5 mm
+  over it and taller parts (up to 2.4 mm) in the 48 mm strip beside it, which is what makes everything fit;
+  the display half holds the e-paper panel and a 0.5 mm strip board for its drive circuit beside it. Result:
+  **15.4 mm** (keyboard half 11.6, display half 3.4, gap 0.4), from `mechanical/src/hackpad.py`; the stack is
+  in `docs/hack-pad-stack.md`. Earlier "13.3 mm" was arithmetic with the battery beside the parts, which does
+  not fit (`docs/hack-pad-area.md`).
+- **Development board:** David will probably buy a Teensy 4.1 (RT1062, same peripheral family) and keep HackOS
+  work on the emulator until then; the NXP EVKB is out of stock nearly everywhere (Amazon about $500).
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn
