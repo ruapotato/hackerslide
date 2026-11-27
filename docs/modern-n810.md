@@ -48,6 +48,31 @@ compute module was estimated at 3-4 hours of browsing.
 code for this family (from memory: to confirm). It runs a normal 32-bit ARM distribution, so Debian with apt is
 possible. 256 MB is too little for a modern Firefox or Chromium; a light browser would work.
 
+## 2b. If a GPU and 1 GB are wanted (David, 2026-11-26)
+
+- **The i.MX 6ULL tops out at 512 MB in practice:** its memory bus is 16 bits wide, so one chip sets the size; a
+  4 Gbit chip (512 MB) is in stock (Samsung K4B4G1646E-BYMA, 1,909 and 1,145, $12-18), an 8 Gbit one (1 GB) is not
+  (Micron MT41K512M16HA, 7 at $75). No GPU.
+- **A separate GPU chip is not practical.** No small GPU chips are sold on their own; the SPI graphics coprocessors
+  (Bridgetek FT812/FT813) are out of stock and are 2D engines that Linux applications cannot use as a GPU.
+- **The one chip with a GPU, 1 GB+ and stock: NXP i.MX 8M Mini Quad, MIMX8MM6DVTLZAA** (JLCPCB 859, $22.02):
+  4 x Cortex-A53 at 1.8 GHz plus a Cortex-M4, 3D GPU (OpenGL ES 2.0 class) and a 2D GPU, MIPI DSI for LCD panels,
+  hardware video decoding, 32-bit memory bus taking LPDDR4, DDR4 or DDR3L (data sheet IMX8MMCEC rev 2). 1 GB = two
+  4 Gbit DDR3L chips (about $25-35); LPDDR4 is about $100 a chip with thin stock. Package: 486 balls at **0.5 mm
+  pitch**, so a denser, probably 8-layer board. Mainline Linux supports it well, including the GPU through the
+  open etnaviv driver (from memory: to confirm).
+- **Its power, measured by NXP** (AN12410 rev 0, NXP's board with LPDDR4, NXP's 4.14 kernel): suspend 9.0 mW;
+  idle 617 mW with the memory at full speed, 139 mW with the memory clock lowered; audio playback 266-673 mW;
+  video about 1.1 W; GPU benchmarks 1.1-1.5 W; CPU benchmarks 1.6-1.8 W. About 7 times the i.MX 6ULL at idle and
+  4-5 times at full load, but no heat problem in a pocket, and well under the compute module of the first Linux
+  design.
+- **Other chips with a GPU:** i.MX 8M Nano with GPU (0-21 in stock), STM32MP157 (41-60), Allwinner H616 (303,
+  Mali GPU, thin documentation and weak sleep support), Allwinner A133/R818 (PowerVR GPU without a dependable open
+  driver), Rockchip RK3326/PX30 (none in stock).
+- **What it means for the device:** a GPU helps an LCD; with e-paper it adds little. So the choice is really
+  e-paper + i.MX 6ULL (512 MB, longest battery, easier board) or LCD + i.MX 8M Mini (GPU, 1 GB, about 2.3 mm
+  thicker, roughly 8-13 hours of use by Claude's arithmetic, harder board, about $200-400 more per prototype).
+
 ## 3. What the board would carry
 
 | Block | Plan | Status |
