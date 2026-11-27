@@ -20,7 +20,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # ------------------------------------------------------------------------------------------- dimensions (mm)
 # Focus LCDs E40RB-I-MW430-CB, the Linux handheld's 4.0" 480 x 800 IPS with capacitive touch, used landscape:
 # outline, active area and thickness from its data sheet (mechanical/src/config.py on branch linux-handheld)
-PANEL = dict(w=98.10, h=58.26, t=4.25, aa_w=86.40, aa_h=51.84)
+PANEL_4IN = dict(w=98.10, h=58.26, t=4.25, aa_w=86.40, aa_h=51.84)
+# Squarer option (David, 2026-11-27): a 3.5" 640 x 480 (4:3) IPS panel with capacitive touch.  Outline of BuyDisplay
+# ER-TFT035-7 (76.84 x 63.84 x 3.2 mm, from its product page); active area and the touch panel's extra thickness are
+# ESTIMATES.  The Newhaven NHD-3.5-640480EF-MSXP-CTP (MIPI DSI, touch, DigiKey) is the same class.
+PANEL_35IN = dict(w=76.84, h=63.84, t=3.2 + 1.0, aa_w=70.08, aa_h=52.56)
+PANEL = PANEL_35IN
 MODULE = dict(w=55.0, h=40.0, mated=4.50, soc_top=3.60)      # LuckFox Core3566 (measured, see above)
 CARRIER_T = 1.0
 KEY = dict(pitch_x=7.0, pitch_y=7.0, cap_w=6.3, cap_h=6.2, cols=5, rows=4)

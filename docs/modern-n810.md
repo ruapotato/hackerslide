@@ -395,3 +395,11 @@ a 5-way D-pad at the bottom left and a touchpad at the bottom right; shoulder bu
 - Touchpad: electrodes drawn as copper on the keyboard board under a 0.5 mm overlay, read by an Azoteq trackpad
   controller (IQS7211E or IQS550; JLCPCB 0 in stock, DigiKey to check). An optical "ball-like" sensor (PixArt
   PAT9125) is also 0 at JLCPCB.
+
+### 13d. Squarer screen (David, 2026-11-27)
+
+A 3.5" 640 x 480 (4:3) IPS panel with capacitive touch brings the sides in: **160.0 x 72.0 x 12.7 mm** (from 181.3
+wide). Candidates: BuyDisplay ER-TFT035-7 (NV3052C, SPI + RGB, optional touch; outline 76.84 x 63.84 x 3.2 mm
+without touch; US$20.87) and Newhaven NHD-3.5-640480EF-MSXP-CTP (MIPI DSI, touch; DigiKey). The touch panel's
+thickness and the active area in the model are estimates until a datasheet is read. Trade: about 18 % less screen
+area than the 4" 800 x 480 panel and VGA resolution, the resolution of many classic UMPCs.
