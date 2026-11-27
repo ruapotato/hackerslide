@@ -183,3 +183,27 @@ Bluetooth a few hours.
 microdisplay (0.5-1") with a beam splitter or prism and a lens, as a clip-on module for existing glasses, driven by
 a microcontroller over Bluetooth. Hard parts: the optics (focus distance, eye box, alignment), brightness outdoors,
 weight balance; to be researched before any estimate.
+
+## 9. The pocket player with a cellular modem (David, 2026-11-26, first look)
+
+JLCPCB stock read 2026-11-26. US use needs LTE on bands 2, 4/66, 12/13 and, for T-Mobile, 71; each module's band
+list still has to be read from its data sheet.
+
+| Module | Type | Size | Stock, price | For | Against |
+|---|---|---|---|---|---|
+| SIMCom SIM7080G | LTE-M / NB-IoT | 17.6 x 15.7 mm | 2,559, $19.04 | microamps when idle (power-saving mode), small, cheap data plans; slow downloads are fine for audiobooks overnight | about 0.3-1 Mbit/s, no voice calls, slow to reach |
+| Quectel EG912U (GL) | LTE Cat 1 | 29 x 25 mm | 280, $16.68 | about 10 Mbit/s, SMS, voice possible; listed idle 1.5 mA | under 300 in stock; US bands to check |
+| SIMCom A7670 (SA/G) | LTE Cat 1 | 24 x 24 mm | 76-122, $7-12 | cheap, small | thin stock; US bands to check |
+| Quectel EG25-G | LTE Cat 4 | 32 x 29 mm | 31, $40-66 | the PinePhone's modem: proven under mainline Linux with ModemManager, voice and GNSS | price, size; JLCPCB stock thin (DigiKey not checked) |
+
+Wiring: the i.MX 6ULL's second USB port to the modem (Linux drivers and ModemManager are mainline for these
+families), a nano-SIM socket (JLCPCB 1,780 at $0.26; no eSIM chip in stock), the modem's audio port to the codec
+for calls, an LTE antenna (and the modem's GNSS, which most of these include). Supply straight from the battery
+rail with large capacitors: transmit bursts draw several hundred milliamps to about 2 A. A 2.4 mm module fits beside
+the battery under the board; the footprint grows to roughly 105-110 x 60 mm or the battery shrinks.
+
+Cost on battery life (rough): a registered Cat 1 modem idling at 1.5-3 mA about doubles standby draw, so standby
+falls from 2-3 weeks to about 1 week on 1,000 mAh; LTE-M in power-saving mode costs almost nothing. Carrier notes:
+a personal prototype with a certified module generally works on T-Mobile; AT&T and Verizon are stricter about
+unknown devices, and voice over LTE depends on the carrier enabling it. Selling one would need FCC and carrier
+approval.
