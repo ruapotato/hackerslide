@@ -265,3 +265,29 @@ authorization of the whole handset, but no carrier approval and likely no SAR te
 
 A licensed alternative: amateur radio allows home-built transmitters without certification (with a ham licence),
 but forbids encryption and commercial use, so it does not suit everyday phone calls.
+
+### 11b. HaLow + SIP, worked through (2026-11-26)
+
+David likes this one. What it takes, as far as checked:
+
+- **Handset radio:** Quectel FGH100M (Morse Micro MM6108, FCC and CE certified, up to 21 dBm, SDIO or SPI);
+  DigiKey listed 228-467 at about $20-21 (product page of 2026-01-20; recheck). Morse Micro's own MF08651 module has
+  modular approval under Part 15.247 at 24 dBm.
+- **Linux driver:** Morse Micro's `morse_driver` (GPL-2.0) is out of tree and expects Morse Micro's kernel patches
+  (their patched stable tree on GitHub); a DKMS package exists for the newer MM8108. Not in mainline. Workable, but
+  the kernel version follows Morse Micro's.
+- **i.MX 6ULL detail:** it has two SD/SDIO controllers; eMMC, microSD and an SDIO HaLow module would need three. So
+  HaLow over SPI (slower, ample for calls), or no eMMC (boot from microSD), or no microSD.
+- **Base:** off-the-shelf HaLow access points/routers: Morse Micro HaLowLink 2, $129, rated "up to 1 km"; Heltec
+  HT-H7608 V2, $79; ALFA HaLow-R, $120. Plugged into home internet.
+- **Phone service:** a SIP trunk provider gives a real number; the handset runs a SIP client (baresip or Linphone)
+  with the Opus codec (about 16-24 kbit/s, well within HaLow's slowest rates at range). Texts depend on the
+  provider's SMS support. A normal 2.4 GHz Wi-Fi radio as well would let the same SIP account work on any Wi-Fi.
+- **Audio hardware for calls:** microphone, earpiece and a small loudspeaker amplifier (MAX98357, JLCPCB 20,709) in
+  addition to the headphone output.
+- **Correction to section 11 on RF exposure:** the FCC exemption threshold at 915 MHz, computed from the formula of
+  47 CFR 1.1307(b)(3)(i)(B) as Claude recalls it (to verify against the eCFR text): about 8 mW at 0.5 cm, 23 mW at
+  1 cm, 41 mW at 1.5 cm, 87 mW at 2.5 cm (time-averaged). A HaLow radio at 21 dBm (126 mW) held to the ear during a
+  call, even at a 25 % transmit duty cycle (about 31 mW), is over the threshold at ear distance. So a handset sold
+  for use at the head would need SAR testing or a lower transmit power near the head (as phones do with a
+  proximity sensor) or headset-only calls. For a personal build this does not change anything (Part 15.23).
