@@ -1,0 +1,533 @@
+{
+ "block": "B",
+ "part": "LR1121IMLTRT",
+ "maker": "Semtech",
+ "lcsc": "C7498014",
+ "stock": 3439,
+ "price": "$4.3631 @1 (JLCPCB, read 2026-11-26)",
+ "package": "QFN-32 5x5 mm, 0.5 mm pitch, exposed pad 3.70 mm nom (ds p29)",
+ "height_mm": "1.00 max (0.80 min) (ds p29)",
+ "kicad_symbol": null,
+ "kicad_symbol_note": "none in /usr/share/kicad/symbols (only RF:SX1261IMLTRT/SX1262IMLTRT, 24-pin, different pinout). Use the pin table.",
+ "kicad_footprint": "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.7x3.7mm (exists; EP 3.7 matches D1/E1 nom 3.70, ds p29)",
+ "pins": [
+  {
+   "n": 0,
+   "name": "GND (EP)",
+   "dir": "-",
+   "connect": "ground, via-stitched"
+  },
+  {
+   "n": 1,
+   "name": "VR_PA",
+   "dir": "O",
+   "connect": "PA regulator output: feeds the HP/LP PA chokes; decouple (2.2 nF + 47..68 pF in both third-party designs)"
+  },
+  {
+   "n": 2,
+   "name": "VBAT_RF",
+   "dir": "I",
+   "connect": "+3V3 (1.8-3.7 V); 100 nF + ~56 pF"
+  },
+  {
+   "n": 3,
+   "name": "VTCXO",
+   "dir": "O",
+   "connect": "TCXO supply (1.6-3.3 V programmable, <=4 mA) with 100 nF (70-130 nF, ESR 0.1-1 ohm); leave open with a crystal"
+  },
+  {
+   "n": 4,
+   "name": "XTA",
+   "dir": "-",
+   "connect": "32 MHz crystal, or TCXO through 10 pF + 220 ohm"
+  },
+  {
+   "n": 5,
+   "name": "XTB",
+   "dir": "-",
+   "connect": "32 MHz crystal; open with TCXO"
+  },
+  {
+   "n": 6,
+   "name": "NRESET",
+   "dir": "I",
+   "connect": "active low, >100 us pulse; port expander"
+  },
+  {
+   "n": 7,
+   "name": "32k_P/DIO11",
+   "dir": "I/O",
+   "connect": "32.768 kHz crystal or external 32.768 kHz clock input (rise/fall <= 5 ns); NC if RC oscillator used"
+  },
+  {
+   "n": 8,
+   "name": "32k_N/DIO10",
+   "dir": "I/O",
+   "connect": "32.768 kHz crystal, or RFSW4, or NC"
+  },
+  {
+   "n": 9,
+   "name": "DIO9",
+   "dir": "I/O",
+   "connect": "IRQ to host"
+  },
+  {
+   "n": 10,
+   "name": "DIO8",
+   "dir": "I/O",
+   "connect": "RFSW3 (optional RF switch control)"
+  },
+  {
+   "n": 11,
+   "name": "DIO7",
+   "dir": "I/O",
+   "connect": "RFSW2"
+  },
+  {
+   "n": 12,
+   "name": "VREG",
+   "dir": "O",
+   "connect": "regulator output: 470 nF to GND; DC-DC inductor to pin 14"
+  },
+  {
+   "n": 13,
+   "name": "GND",
+   "dir": "-",
+   "connect": "ground"
+  },
+  {
+   "n": 14,
+   "name": "DCC_SW",
+   "dir": "-",
+   "connect": "DC-DC switch node: inductor to VREG (leave open for LDO-only)"
+  },
+  {
+   "n": 15,
+   "name": "VBAT",
+   "dir": "I",
+   "connect": "+3V3; 100 nF"
+  },
+  {
+   "n": 16,
+   "name": "DNC",
+   "dir": "-",
+   "connect": "do not connect"
+  },
+  {
+   "n": 17,
+   "name": "DNC",
+   "dir": "-",
+   "connect": "do not connect"
+  },
+  {
+   "n": 18,
+   "name": "DNC",
+   "dir": "-",
+   "connect": "do not connect"
+  },
+  {
+   "n": 19,
+   "name": "DIO6",
+   "dir": "I/O",
+   "connect": "RFSW1"
+  },
+  {
+   "n": 20,
+   "name": "DIO5",
+   "dir": "I/O",
+   "connect": "RFSW0"
+  },
+  {
+   "n": 21,
+   "name": "DIO4",
+   "dir": "O",
+   "connect": "SPI MISO (high-Z when NSS high)"
+  },
+  {
+   "n": 22,
+   "name": "DIO3",
+   "dir": "I",
+   "connect": "SPI MOSI"
+  },
+  {
+   "n": 23,
+   "name": "DIO2",
+   "dir": "I",
+   "connect": "SPI SCK"
+  },
+  {
+   "n": 24,
+   "name": "DIO1",
+   "dir": "I",
+   "connect": "SPI NSS"
+  },
+  {
+   "n": 25,
+   "name": "DIO0/BUSY",
+   "dir": "O",
+   "connect": "BUSY to host"
+  },
+  {
+   "n": 26,
+   "name": "RFIO_HF",
+   "dir": "I/O",
+   "connect": "1.9-2.5 GHz port, already 50 ohm; harmonic filter then antenna"
+  },
+  {
+   "n": 27,
+   "name": "DNC",
+   "dir": "-",
+   "connect": "do not connect"
+  },
+  {
+   "n": 28,
+   "name": "DNC",
+   "dir": "-",
+   "connect": "do not connect"
+  },
+  {
+   "n": 29,
+   "name": "RFI_N_LF0",
+   "dir": "I",
+   "connect": "sub-GHz differential LNA input"
+  },
+  {
+   "n": 30,
+   "name": "RFI_P_LF0",
+   "dir": "I",
+   "connect": "sub-GHz differential LNA input"
+  },
+  {
+   "n": 31,
+   "name": "RFO_LP_LF",
+   "dir": "O",
+   "connect": "low-power PA (+15 dBm); open if unused"
+  },
+  {
+   "n": 32,
+   "name": "RFO_HP_LF",
+   "dir": "O",
+   "connect": "high-power PA (+22 dBm); choke to VR_PA with 200 ohm in parallel"
+  }
+ ],
+ "pins_source": "LR1121 datasheet rev 2.0 (src/B_lr1121.pdf) p10-11 table 2-1, DIO functions p25 table 4-1",
+ "circuit": [
+  {
+   "ref-role": "C_VBAT_RF",
+   "value": "100 nF + 56 pF",
+   "part": "generic 0402",
+   "lcsc": null,
+   "between": [
+    "pin2 VBAT_RF",
+    "GND"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "C_VBAT",
+   "value": "100 nF",
+   "part": "generic 0402",
+   "lcsc": null,
+   "between": [
+    "pin15 VBAT",
+    "GND"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "C_VREG",
+   "value": "470 nF",
+   "part": "generic 0402",
+   "lcsc": null,
+   "between": [
+    "pin12 VREG",
+    "GND"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only); same value in OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only)"
+  },
+  {
+   "ref-role": "L_DCDC",
+   "value": "10 uH in OpenRX (TDK MLZ1608N100LT000); value not printed on the Waveshare sheet; Semtech value NOT READ (15 uH is the SX126x value [mem])",
+   "part": "MLZ1608N100LT000 (0603, 300 mA, 0.6 ohm)",
+   "lcsc": "C194437 (stock 10742)",
+   "between": [
+    "pin14 DCC_SW",
+    "pin12 VREG"
+   ],
+   "source": "OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only)"
+  },
+  {
+   "ref-role": "C_VR_PA",
+   "value": "2.2 nF + 68 pF (Waveshare) / 2.2 nF + 47 pF (OpenRX)",
+   "part": "generic C0G/X7R",
+   "lcsc": null,
+   "between": [
+    "pin1 VR_PA",
+    "GND"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only); OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only)"
+  },
+  {
+   "ref-role": "L_choke_HP",
+   "value": "47 nH (OpenRX, 868/915) / 68 nH (Waveshare) high-Q choke",
+   "part": "LQW15AN47NG00D",
+   "lcsc": "C22334 (stock 38113)",
+   "between": [
+    "pin32 RFO_HP_LF",
+    "pin1 VR_PA"
+   ],
+   "source": "LR1121 user manual v1.2 (src/B_um_lr1121.pdf) p85 (choke required); values OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only) / Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "R_choke_HP",
+   "value": "200 ohm",
+   "part": "generic 0402",
+   "lcsc": null,
+   "between": [
+    "pin32 RFO_HP_LF",
+    "pin1 VR_PA"
+   ],
+   "source": "LR1121 user manual v1.2 (src/B_um_lr1121.pdf) p85 ('best practice to place a 200 Ohm resistor in parallel to the HP PA choke')"
+  },
+  {
+   "ref-role": "Y_TCXO",
+   "value": "32 MHz TCXO, clipped sine <=1.2 Vpp (0.4-1.2), supply from VTCXO",
+   "part": "Epson X1G0054410305 (2016, 2.66-3.465 V, clipped sine) [fits VTCXO = 3.0 V]",
+   "lcsc": "C3007493 (stock 4091, $0.51)",
+   "between": [
+    "VCC: VTCXO via bead",
+    "OUT: 10 pF + 220 ohm to pin4 XTA"
+   ],
+   "source": "LR1121 user manual v1.2 (src/B_um_lr1121.pdf) p45 fig 6-2; ds p22 table 3-13"
+  },
+  {
+   "ref-role": "Y_TCXO_alt",
+   "value": "32 MHz TCXO 3.3 V clipped sine +-1.5 ppm (used by OpenRX, fed from +3V3 directly, VTCXO left open)",
+   "part": "YXC OW7EL89CENUYO3YLC-32M",
+   "lcsc": "C22381772 (stock 3490, $0.96)",
+   "between": [
+    "VCC +3V3",
+    "OUT: 10 pF (C7) + 220 ohm (R6) to pin4 XTA"
+   ],
+   "source": "OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only)"
+  },
+  {
+   "ref-role": "C_TCXO_dc",
+   "value": "10 pF DC-cut",
+   "part": "generic C0G",
+   "lcsc": null,
+   "between": [
+    "TCXO OUT",
+    "R_TCXO"
+   ],
+   "source": "LR1121 user manual v1.2 (src/B_um_lr1121.pdf) p45; ds p22 (ATCXO condition)"
+  },
+  {
+   "ref-role": "R_TCXO",
+   "value": "220 ohm",
+   "part": "generic",
+   "lcsc": null,
+   "between": [
+    "C_TCXO_dc",
+    "pin4 XTA"
+   ],
+   "source": "LR1121 user manual v1.2 (src/B_um_lr1121.pdf) p45"
+  },
+  {
+   "ref-role": "C_VTCXO",
+   "value": "100 nF X5R (70-130 nF, ESR 0.1-1 ohm)",
+   "part": "generic",
+   "lcsc": null,
+   "between": [
+    "pin3 VTCXO",
+    "GND"
+   ],
+   "source": "ds p22 table 3-13"
+  },
+  {
+   "ref-role": "FB_TCXO",
+   "value": "ferrite bead (Waveshare: BLM15PG100SN1D, with 1 nF on the VTCXO side and 100 nF at the TCXO)",
+   "part": "BLM15PG100SN1D",
+   "lcsc": "C85823 (stock 6648)",
+   "between": [
+    "pin3 VTCXO",
+    "TCXO VCC"
+   ],
+   "source": "LR1121 user manual v1.2 (src/B_um_lr1121.pdf) p45 fig 6-2 (bead shown); part from Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "Y_XTAL_option",
+   "value": "32 MHz crystal instead of TCXO: CL 10 pF (9.5-10.5), ESR <=60 ohm, C0 0.3-2 pF, +-10 ppm; no load capacitors (integrated); VTCXO open",
+   "part": "NDK NX2016SA-32M-EXS00A-CS06465 (10 pF, 60 ohm, +-10 ppm)",
+   "lcsc": "C1986260 (stock 45633, $0.42)",
+   "between": [
+    "pin4 XTA",
+    "pin5 XTB"
+   ],
+   "source": "ds p22 table 3-12; UM p44"
+  },
+  {
+   "ref-role": "Y_32k_option",
+   "value": "32.768 kHz crystal CL 9 pF, ESR 25-100 k (Waveshare fits 2012 crystal + 2 x 1.8 pF). Not needed for a transceiver host: RC oscillator is default; or feed 32.768 kHz clock into DIO11",
+   "part": "Epson X1A0000610008 (2012, 9 pF, 90 k)",
+   "lcsc": "C96341 (stock 11079)",
+   "between": [
+    "pin7 32k_P",
+    "pin8 32k_N"
+   ],
+   "source": "ds p22 table 3-14; UM p46; Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "SW_subGHz (Semtech EVK logic)",
+   "value": "SP3T (RX / TX_LP / TX_HP) driven by RFSW0=DIO5 and RFSW1=DIO6: standby 00, RX DIO5=1 DIO6=0, TX low-power DIO5=1 DIO6=1, TX high-power DIO5=0 DIO6=1, TX HF 00",
+   "part": "switch part number on the Semtech EVK NOT READ",
+   "lcsc": null,
+   "between": [
+    "DIO5,DIO6",
+    "switch control"
+   ],
+   "source": "Semtech SWSD003 smtc_shield_lr11xx_common.c lines 121-130 (Clear BSD), used by smtc_shield_lr1121mb1dis.c"
+  },
+  {
+   "ref-role": "SW_subGHz (OpenRX)",
+   "value": "SP3T SKY13373-460LF (0.1-6 GHz, VDD 2.5-4.8 V, 1.8 V-compatible controls): J1=TX_HP, J3=RX, J2=2.4 GHz FEM path, RFC -> 47 pF -> U.FL; V1=DIO7, V2=DIO8. Truth table (SKY13373 datasheet table 4): V1,V2 = 00 shutdown, 10 RFC-J2, 01 RFC-J1, 11 RFC-J3; logic 1 = 1.65-3.3 V",
+   "part": "SKY13373-460LF",
+   "lcsc": "C150853 (stock 18160, $0.76)",
+   "between": [
+    "DIO7->V1 pin4, DIO8->V2 pin5",
+    "RFC pin11 -> antenna"
+   ],
+   "source": "OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only)"
+  },
+  {
+   "ref-role": "SW_subGHz (Waveshare)",
+   "value": "SPDT PE4259 in complementary mode: DIO5 -> 100 ohm -> pin6 (VDD/V1), DIO6 -> 100 ohm -> pin4 (CTRL/V2), 1 nF to GND on each; V1=0,V2=1: RFC-RF1 (TX HP); V1=1,V2=0: RFC-RF2 (RX)",
+   "part": "PE4259-63 (pSemi)",
+   "lcsc": "C470892 (stock 12119, $1.19)",
+   "between": [
+    "pin5 RFC",
+    "LORA_ANT"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "Match_subGHz option 1: IPD (863-870 / 902-928 MHz only)",
+   "value": "Johanson 0900PC16J0042001E: pins 1 RFO_HP, 2 RFO_LP, 3 RFI_P, 4 RFI_N, 6 RX (50 ohm), 8 TX_LP, 9 TX_HP, 5/7/10 GND; replaces the whole discrete match + harmonic filter; 2.0x1.6x0.95 mm",
+   "part": "0900PC16J0042001E",
+   "lcsc": "C19842466 (stock 129: UNDER 300)",
+   "between": [
+    "LR1121 pins 29-32",
+    "RF switch"
+   ],
+   "source": "Johanson datasheet rev 1.1 p1-4 (src/B_ipd_0900PC16J.pdf: specs p1-2, pin table p3-4); Semtech AN1200.76 not readable"
+  },
+  {
+   "ref-role": "Match_subGHz option 2: discrete (third-party values, 410-510 MHz population by my arithmetic: 6.8 nH || 4.3 pF trap = 931 MHz = 2nd harmonic of 465 MHz)",
+   "value": "TX HP: pin32 -> 0R -> [68 nH choke || 200 R to VR_PA] -> (6.8 nH || 4.3 pF series) -> 15 pF shunt -> 22 nH series -> (NC shunt) -> 12 pF series -> 6.8 pF shunt -> switch RF1.  RX: switch RF2 -> 47 pF series -> node X; 1 pF shunt at X; 1.2 pF series X->pin30 RFI_P; 47 nH X->pin29 RFI_N; 56 nH between pins 30 and 29; 5.1 pF pin29->GND.  Antenna side: 4.3 pF shunt, 15 nH series, 4.3 pF shunt, ESD diode, connector",
+   "part": "0402 high-Q inductors (Murata LQW15 class), C0G capacitors",
+   "lcsc": null,
+   "between": [
+    "LR1121 pins 29-32",
+    "switch",
+    "antenna"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "HF path (Waveshare)",
+   "value": "pin26 RFIO_HF -> 1.3 pF shunt -> 3.6 nH series -> 1.6 pF shunt -> 3.6 nH series (parallel C NC) -> 0.7 pF shunt -> 33 pF series -> 2.4 GHz antenna connector, ESD diode",
+   "part": "0402 parts",
+   "lcsc": null,
+   "between": [
+    "pin26 RFIO_HF",
+    "2.4 GHz antenna"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only)"
+  },
+  {
+   "ref-role": "HF path (OpenRX)",
+   "value": "pin26 RFIO_HF -> Johanson 2450FM07D0034T filter -> (RFX2401C PA/LNA, not wanted here) -> SP3T",
+   "part": "2450FM07D0034T; in-stock alternative low-pass TDK DEA102700LT-6307A2 (2.4-2.7 GHz, 1.0x0.5 mm)",
+   "lcsc": "C2651081 (stock 0: OUT) ; alt C574024 (stock 3242)",
+   "between": [
+    "pin26",
+    "antenna"
+   ],
+   "source": "OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only); alternative is my suggestion, not from a reference design"
+  },
+  {
+   "ref-role": "R/C on RFSW lines",
+   "value": "100 ohm series + 1 nF to GND per control line (Waveshare); add 100 k pull-down because RFSW outputs are high-Z by default and in sleep",
+   "part": "generic",
+   "lcsc": null,
+   "between": [
+    "DIOx",
+    "switch control"
+   ],
+   "source": "Waveshare Core1121-XF schematic (src/B_core1121_sch.pdf p1; third-party, no licence stated, used as facts only); high-Z default: ds p25 4.5.2; pull-down is my addition (OpenRX fits 100 k on its two FEM lines)"
+  },
+  {
+   "ref-role": "J_ANT",
+   "value": "U.FL receptacle",
+   "part": "Hirose U.FL-R-SMT-1(80)",
+   "lcsc": "C88374 (stock 243683)",
+   "between": [
+    "RF",
+    "GND"
+   ],
+   "source": "OpenRX-Mono board file, commit d1b5373 (src/B_openrx/repo; CERN-OHL-S-2.0, cross-check only)"
+  }
+ ],
+ "supplies": {
+  "VBAT/VBAT_RF": "1.8-3.7 V (abs max 3.9 V) ds p12",
+  "sleep": "1.6 uA (no RTC), 1.85 uA with RC RTC; power-down 0.8 uA (ds p14)",
+  "standby": "STBY_RC 1.25 mA, STBY_XOSC 1.1 mA DC-DC (ds p14)",
+  "rx": "5.4-8.3 mA with DC-DC (sub-GHz LoRa 125 kHz 5.7 mA, boosted 7.8 mA; 2.4 GHz 6-8.3 mA) (ds p14)",
+  "tx": "sub-GHz HP +22 dBm 118 mA @868/915, 100 mA @434/490; LP +14/15 dBm 28/36 mA; 2.4 GHz +13 dBm 26 mA; S-band +13 dBm 28 mA (ds p15)",
+  "tcxo": "add TCXO current (1.5 mA nominal, regulator max 4 mA); VBAT must be >= VTCXO + 200 mV, so on a 3.3 V rail the highest usable setting is 3.0 V (RegTcxoTune 0x06) (UM p45, p47; ds p22)",
+  "regulator": "LDO by default; SetRegMode(1) enables DC-DC in STBY_XOSC/FS/RX/TX (UM p41). +22 dBm needs VR_PA ~3.1 V, i.e. VBAT >= 3.3 V (UM p89)"
+ },
+ "logic": {
+  "levels": "VIH 0.7*VBAT, VIL 0.3*VBAT, VOH 0.9*VBAT, VOL 0.1*VBAT at 2.5 mA (ds p23). I/O level follows VBAT: 1.8 V I/O only if the whole chip runs at 1.8 V (then no +22 dBm). With VBAT = 3.3 V a 1.8 V pad cannot drive it (VIH 2.31 V).",
+  "spi": "mode 0 (CPOL=0, CPHA=0), up to 16 MHz, NSS falling to first SCK >= 31.25 ns, MISO high-Z when NSS high (ds p23)",
+  "reset": "NRESET low > 100 us (ds p25). Boot with a TCXO fitted: POR calibrations are skipped; host must SetTcxoMode then re-run calibration (ds p8)",
+  "wake": "from sleep: NSS low >= 100 us, NSS high, wait BUSY low (ds p24). NSS falling edge is the wake source, so the chip select must idle high and must not glitch",
+  "busy": "DIO0 high = cannot accept a command; host must wait for BUSY low before every SPI transaction (ds p9, p24)",
+  "rfsw_defaults": "all RFSW outputs high-Z until SetDioAsRfSwitch (ds p25, UM p38)"
+ },
+ "to_brain": [
+  "SPI SCK/MOSI/MISO (shared radio SPI LPSPI6, 3.3 V)",
+  "NSS = RF_CS_LR1121_N (DISP_B2_12, planned)",
+  "BUSY (DIO0): should be a direct brain GPIO - it is polled before every command; NOT in the pin plan",
+  "IRQ (DIO9): direct brain GPIO preferred (packet timing); NOT in the pin plan"
+ ],
+ "to_expander": [
+  "NRESET (>100 us low pulse; fine on an expander)",
+  "IRQ (DIO9) may sit on an expander input with interrupt if a few ms of latency is acceptable",
+  "BUSY on an expander is workable only with slow command rates (an I2C read per SPI command)",
+  "RF switch controls need no host pins: DIO5/6/7/8/10 drive them"
+ ],
+ "antenna": {
+  "type": "two 50 ohm ports: sub-GHz (after switch + match) and 1.9-2.5 GHz (RFIO_HF, already 50 ohm, needs harmonic filter). Semtech's figure shows a separate 'LoRa ANT' and 'S-band/2.4 GHz ANT' (ds p27 fig 4-1)",
+  "sharing": "Sharing one connector with other transceivers is not described by Semtech. OpenRX-Mono (third-party) does put sub-GHz TX, sub-GHz RX and the 2.4 GHz path on one SP3T and one U.FL. Limits for a shared switch: max input 0 dBm on the sub-GHz path in operation, absolute max +10 dBm (ds p12)"
+ },
+ "notes": [
+  "Semtech's own reference design packages (LR1121DVK1TxKS/TGKS design-file ZIPs, LR1121MB2THDAS, AN1200.59, AN1200.76) sit behind a Salesforce viewer that needs a browser session: NOT downloaded. Component values above therefore come from two third-party boards and from the datasheet/user manual text.",
+  "The datasheet's own schematic (p27 fig 4-1) is a block-level drawing without values.",
+  "For 150-960 MHz 'hack' coverage no single match exists; Semtech only describes 868/915 and 434/490 populations (UM p95 'multi-band operation' gives PA settings for one matching network, not component values).",
+  "OpenRX-Mono is CERN-OHL-S-2.0 (strongly reciprocal): copying its schematic would bind this board to that licence; here it is used only to cross-check values and JLCPCB codes.",
+  "KiCad: Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical, Package_TO_SOT_SMD:SOT-363_SC-70-6 (PE4259), Crystal:Crystal_SMD_2016-4Pin_2.0x1.6mm, Crystal:Crystal_SMD_2012-2Pin_2.0x1.2mm exist. No standard footprint found for a 2016 TCXO (check the crystal 2016 pattern against the TCXO drawing) nor for SKY13373 QFN-12 2x2 P0.5 (LQFN-12-1EP_2x2mm_P0.5mm_EP0.7x0.7mm exists; check)."
+ ],
+ "pin_plan_conflicts": [
+  "BUSY, IRQ (DIO9) and NRESET have no pad or expander line in docs/hack-pad-pins.md; the plan's only free pad is STBY_REQ. At least BUSY wants a brain pad.",
+  "The chip select is a plain GPIO (DISP_B2_12): fine, but firmware must hold it low 100 us to wake the chip.",
+  "A 3.3 V TCXO cannot be powered from VTCXO on a 3.3 V rail (needs VBAT >= VTCXO + 0.2 V): use a part specified at <= 3.0 V, or feed the TCXO from +3V3 directly as OpenRX does (then it never switches off: about 1.5-2 mA in sleep unless its rail is switched)."
+ ],
+ "unverified": [
+  "All RF matching values (third-party boards; band of the Waveshare population is inferred by arithmetic, not stated)",
+  "DC-DC inductor value recommended by Semtech (10 uH is from OpenRX; 15 uH [mem])",
+  "RF switch part number on Semtech's EVK",
+  "Output swing of the suggested Epson TCXO against the 0.4-1.2 Vpp limit (its datasheet was not read)",
+  "DigiKey stock not checked"
+ ]
+}

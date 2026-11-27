@@ -1,0 +1,262 @@
+{
+ "block": "I",
+ "read_on": "2026-11-26",
+ "part": "receiver Everlight IRM-H638T/TR2 (38 kHz); learning receiver Vishay TSMP95000TR; emitter 2 x Vishay VSMB2943SLX01 (940 nm, side view); driver AO3400A",
+ "lcsc": "C91447; C20593617; C511094; C20917",
+ "stock": {
+  "IRM-H638T/TR2": 144803,
+  "TSMP95000TR": 1733,
+  "VSMB2943SLX01": 2890,
+  "AO3400A": 1330686
+ },
+ "price": {
+  "IRM-H638T/TR2": "$0.2549",
+  "TSMP95000TR": "$1.5204",
+  "VSMB2943SLX01": "$0.5254",
+  "AO3400A": "$0.0778 (basic part)"
+ },
+ "package": "IRM-H638T: SMD 4-pad dome, about 5.0 x 4.0 mm body; TSMP95000: Vishay 'Heimdall' 6.8 W x 3.0 H x 3.2 D mm; VSMB2943SLX01: 2.3 x 2.55 x 2.3 mm side-view; AO3400A SOT-23",
+ "height_mm": {
+  "IRM-H638T": "about 4.0 (drawing p6, small print: verify)",
+  "TSMP95000": 3.0,
+  "VSMB2943SLX01": 2.3
+ },
+ "kicad_symbol": "Interface_Optical:IRM-H6xxT (pins 1 GND, 2 GND, 3 OUT, 4 Vcc = datasheet p1/p6: match). TSMP95000: no symbol (Interface_Optical:TSMP58000 is a 3-pin part); pins 1,4 GND, 2 VS, 3 carrier OUT. LED: Device:LED / Device:D_Photo-type generic.",
+ "kicad_footprint": "OptoDevice:Everlight_IRM-H6xxT (exists). No Vishay Heimdall footprint and no VSMB2943SL footprint in /usr/share/kicad/footprints: both need drawing from the datasheets. Package_TO_SOT_SMD:SOT-23 for AO3400A.",
+ "pins": [
+  [
+   "IRM-H638T",
+   1,
+   "GND"
+  ],
+  [
+   "IRM-H638T",
+   2,
+   "GND"
+  ],
+  [
+   "IRM-H638T",
+   3,
+   "OUT (active low, VOH Vcc-0.4 at <=1 uA, VOL 0.5 V max at 2 mA)"
+  ],
+  [
+   "IRM-H638T",
+   4,
+   "Vcc 2.7-5.5 V"
+  ],
+  [
+   "TSMP95000",
+   1,
+   "GND"
+  ],
+  [
+   "TSMP95000",
+   2,
+   "VS 2.0-5.5 V"
+  ],
+  [
+   "TSMP95000",
+   3,
+   "carrier OUT (active low, reproduces the 30-60 kHz carrier)"
+  ],
+  [
+   "TSMP95000",
+   4,
+   "GND"
+  ]
+ ],
+ "circuit": [
+  {
+   "ref-role": "IRM-H638T supply filter R",
+   "value": "47-220 ohm (use 100 ohm)",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "+3V3",
+    "pin 4"
+   ],
+   "source": "src/I_irm_h638t_ws.pdf p2 (Everlight DMO-0000008 Rev 2)"
+  },
+  {
+   "ref-role": "IRM-H638T supply filter C",
+   "value": ">= 2.2 uF (use 4.7 uF), close to pins",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "pin 4",
+    "GND"
+   ],
+   "source": "same, p2"
+  },
+  {
+   "ref-role": "IRM-H638T output pull-up",
+   "value": ">= 10 k, optional",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "pin 3",
+    "Vcc"
+   ],
+   "source": "same, p2"
+  },
+  {
+   "ref-role": "IRM-H638T series resistor to the brain",
+   "value": "1 k (as in Kiisu V4b with TSOP75338)",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "pin 3",
+    "IR_RX"
+   ],
+   "source": "src/A_kiisu/kiisu_v4b_sch.pdf p9 (CERN-OHL-S-2.0)"
+  },
+  {
+   "ref-role": "TSMP95000 R1",
+   "value": "100 ohm",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "+3V3",
+    "pin 2"
+   ],
+   "source": "src/I_tsmp95000.pdf p2 (Vishay doc 82907 Rev 1.0)"
+  },
+  {
+   "ref-role": "TSMP95000 C1",
+   "value": "4.7 uF",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "pin 2",
+    "GND"
+   ],
+   "source": "same p2"
+  },
+  {
+   "ref-role": "TSMP95000 R2 pull-up",
+   "value": "4.7 k (recommended for faster edges and correct high level)",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "pin 3",
+    "VS"
+   ],
+   "source": "same p2"
+  },
+  {
+   "ref-role": "IR LEDs D1, D2",
+   "value": "940 nm, IF 100 mA DC max, IFM 200 mA (tp/T 0.5, 100 us), IFSM 1 A (100 us); VF 1.35 typ / 1.6 max at 100 mA; 20 mW/sr typ at 100 mA, +-25 deg",
+   "part": "Vishay VSMB2943SLX01 (side view); top-view sibling VSMB2943GX01",
+   "lcsc": "C511094 (2890); C6326591 (7495)",
+   "between": [
+    "+3V3 (anode)",
+    "series resistor"
+   ],
+   "source": "src/I_vsmb2943sl.pdf p1-2"
+  },
+  {
+   "ref-role": "LED series resistors, one per LED",
+   "value": "18 ohm 0805 (>= 1/8 W): (3.3-1.35)/18 = about 108 mA per LED peak, about 215 mA for two [my arithmetic]; 10 ohm gives about 190 mA per LED, inside IFM only at <= 50 % duty",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "LED cathode",
+    "FET drain"
+   ],
+   "source": "arithmetic from src/I_vsmb2943sl.pdf p2; one resistor per LED as in Kiisu p9"
+  },
+  {
+   "ref-role": "driver Q1",
+   "value": "N-MOSFET, 48 mohm at VGS 2.5 V (JLCPCB text), low side",
+   "part": "AO3400A",
+   "lcsc": "C20917 (1330686)",
+   "between": [
+    "drain: resistors",
+    "source: GND; gate: IR_TX"
+   ],
+   "source": "topology src/A_kiisu p9 (N-MOSFET low-side switch); FET datasheet not read"
+  },
+  {
+   "ref-role": "gate pull-down",
+   "value": "100 k-180 k (Kiisu fits 180 k) so the LEDs stay off while the brain pin floats at reset",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "gate",
+    "GND"
+   ],
+   "source": "src/A_kiisu p9"
+  },
+  {
+   "ref-role": "gate series resistor",
+   "value": "100 ohm [my addition]",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "IR_TX",
+    "gate"
+   ],
+   "source": "-"
+  },
+  {
+   "ref-role": "LED supply reservoir",
+   "value": "10 uF + 100 nF at the LED anodes [my addition]",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "+3V3",
+    "GND"
+   ],
+   "source": "-"
+  },
+  {
+   "ref-role": "receiver select (if only one IR_RX pin)",
+   "value": "2:1 switch choosing demodulated (IRM) or carrier (TSMP) output, select from an expander line",
+   "part": "SN74LVC1G3157DCKR",
+   "lcsc": "C38663 (96634)",
+   "between": [
+    "OUT of each receiver",
+    "IR_RX"
+   ],
+   "source": "my proposal; part datasheet not read"
+  }
+ ],
+ "supplies": {
+  "IRM-H638T": "2.7-5.5 V, 0.4 mA typ / 0.7 mA max no signal (Waveshare-hosted copy p3; Everlight series sheet V4 says 1.0/2.0 mA)",
+  "TSMP95000": "2.0-5.5 V, 0.35 mA typ (0.25-0.45) at 3.3 V (p3)",
+  "LEDs": "about 215 mA peak from +3V3 during marks (33 % carrier duty -> about 70 mA average inside a mark)",
+  "sleep": "neither receiver has an enable pin: switch their supply (load switch or expander-driven P-FET) to reach zero"
+ },
+ "logic": {
+  "IRM-H638T": "output swings to its Vcc (3.3 V); min burst 12 cycles, min gap 16 cycles (p1)",
+  "TSMP95000": "TTL/CMOS compatible, active low, VOSL <= 250 mV at 0.5 mA, output current max 5 mA; AC coupled 30-60 kHz (p1-3)",
+  "1V8": "both supplied at 3.3 V; outputs are 3.3 V -> use the 3.3 V timer pad as planned"
+ },
+ "to_brain": [
+  "IR_TX (QTIMER1_TIMER0, carrier/PWM) to the FET gate",
+  "IR_RX (QTIMER1_TIMER1, capture) from the selected receiver"
+ ],
+ "to_expander": [
+  "receiver select (demodulated / learning)",
+  "receiver supply enable"
+ ],
+ "antenna": null,
+ "notes": [
+  "Vishay TSOP parts are poorly stocked in SMD: TSOP75338 (as fitted in Kiisu V4b) 35-60 pieces per variant; TSOP75438WTT C7074088 2,464 at $2.22 (6.8 x 3.0 x 2.35 mm, 2.5-5.5 V) is the lower-profile stocked Vishay alternative; through-hole TSOP38238 C141632 has 75,471.",
+  "Learning: Vishay TSMP58000/TSMP77000/TSMP98000 have zero stock; TSMP95000TR (side-view taped) is the only stocked carrier-out part found. A bare photodiode option is Everlight PD15-22B/TR8 C161211 (16,525, 940 nm filtered) but it needs an amplifier/comparator and no circuit for that was read.",
+  "The IRM demodulates 38 kHz best; remotes at 36/40/56 kHz are received with reduced range (band-pass curve not transcribed). The TSMP95000 covers 30-60 kHz and returns the carrier itself, so the brain can measure the carrier frequency.",
+  "Window: both receivers and the LEDs are 940 nm; the TSMP/IRM packages are themselves IR filters."
+ ],
+ "pin_plan_conflicts": [
+  "One IR_RX pin but two receivers proposed: add a 2:1 select (expander line) or a second capture pin.",
+  "No enable lines planned for the receivers' supply (about 0.75 mA always-on otherwise)."
+ ],
+ "unverified": [
+  "IRM-H638T height (read from a small drawing)",
+  "IRM-H638T datasheet read from a third-party-hosted copy (files.waveshare.com) plus Everlight's own series sheet; JLCPCB's own copy would not download",
+  "AO3400A parameters from the JLCPCB listing text only",
+  "LED resistor values are arithmetic, not from a reference design",
+  "TSMP95000TR tape orientation ('side view taped') versus the wanted viewing direction",
+  "SN74LVC1G3157 datasheet not read"
+ ]
+}

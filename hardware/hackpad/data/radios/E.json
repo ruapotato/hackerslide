@@ -1,0 +1,336 @@
+{
+ "block": "E",
+ "part": "ESP32-C6-MINI-1-N4 (PCB antenna, 4 MB, -40..85 C)",
+ "lcsc": "C5736265",
+ "stock": 6026,
+ "price": 3.9933,
+ "variants_stock": {
+  "ESP32-C6-MINI-1-N4 C5736265": 6026,
+  "ESP32-C6-MINI-1-H4 C6553337 (105 C)": 1183,
+  "ESP32-C6-MINI-1-H8 C42403058 (8 MB)": 379,
+  "ESP32-C6-MINI-1U-H4 C20627095 (U.FL connector)": 3191,
+  "ESP32-C6-MINI-1U-N4 C7558096": 0
+ },
+ "package": "53-pad module 13.2 x 16.6 mm (MINI-1) / 13.2 x 12.5 mm (MINI-1U) (EDS p4)",
+ "height_mm": "2.4 +/- 0.15 (EDS p4, p41)",
+ "kicad_symbol": "RF_Module:ESP32-C6-MINI-1 (exists; all 53 pin numbers and names match EDS table 3-1 p10-11)",
+ "kicad_footprint": "RF_Module:ESP32-C6-MINI-1 (exists; no separate MINI-1U footprint in the library)",
+ "pins": [
+  {
+   "number": "1,2,11,14,36-53",
+   "name": "GND",
+   "dir": "power",
+   "connect": "GND (49-53 are the centre pads)"
+  },
+  {
+   "number": 3,
+   "name": "3V3",
+   "dir": "power",
+   "connect": "3.0-3.6 V, supply able to give 0.5 A"
+  },
+  {
+   "number": "4,7,21,32-35",
+   "name": "NC",
+   "dir": "-",
+   "connect": "leave open"
+  },
+  {
+   "number": 5,
+   "name": "IO2",
+   "dir": "io",
+   "connect": "GPIO2, FSPIQ = SPI slave MISO (ESP-Hosted default)"
+  },
+  {
+   "number": 6,
+   "name": "IO3",
+   "dir": "io",
+   "connect": "GPIO3: ESP-Hosted SPI Handshake (default)"
+  },
+  {
+   "number": 8,
+   "name": "EN",
+   "dir": "in",
+   "connect": "high = on, low = off; never floating; RC 10k/1u"
+  },
+  {
+   "number": 9,
+   "name": "IO4",
+   "dir": "io",
+   "connect": "GPIO4 MTMS (strap: SDIO edge) : ESP-Hosted SPI Data Ready (default); ESP-AT UART1 RTS"
+  },
+  {
+   "number": 10,
+   "name": "IO5",
+   "dir": "io",
+   "connect": "GPIO5 MTDI (strap: SDIO edge): ESP-AT UART1 CTS"
+  },
+  {
+   "number": 12,
+   "name": "IO0",
+   "dir": "io",
+   "connect": "GPIO0 / 32 kHz crystal P"
+  },
+  {
+   "number": 13,
+   "name": "IO1",
+   "dir": "io",
+   "connect": "GPIO1 / 32 kHz crystal N"
+  },
+  {
+   "number": 15,
+   "name": "IO6",
+   "dir": "io",
+   "connect": "GPIO6 FSPICLK = SPI slave clock (ESP-Hosted default); ESP-AT UART1 RX"
+  },
+  {
+   "number": 16,
+   "name": "IO7",
+   "dir": "io",
+   "connect": "GPIO7 FSPID = SPI slave MOSI (ESP-Hosted default); ESP-AT UART1 TX"
+  },
+  {
+   "number": 17,
+   "name": "IO12",
+   "dir": "io",
+   "connect": "USB D- (USB serial/JTAG)"
+  },
+  {
+   "number": 18,
+   "name": "IO13",
+   "dir": "io",
+   "connect": "USB D+"
+  },
+  {
+   "number": 19,
+   "name": "IO14",
+   "dir": "io",
+   "connect": "GPIO14"
+  },
+  {
+   "number": 20,
+   "name": "IO15",
+   "dir": "io",
+   "connect": "GPIO15 strap (JTAG source; ignored with default eFuses; no internal pull)"
+  },
+  {
+   "number": 22,
+   "name": "IO8",
+   "dir": "io",
+   "connect": "GPIO8 strap: must be 1 for download mode; ROM print control"
+  },
+  {
+   "number": 23,
+   "name": "IO9",
+   "dir": "io",
+   "connect": "GPIO9 strap: 1 = normal boot (weak internal pull-up), 0 = download"
+  },
+  {
+   "number": 24,
+   "name": "IO18",
+   "dir": "io",
+   "connect": "SDIO_CMD; ESP-AT SPI MOSI default"
+  },
+  {
+   "number": 25,
+   "name": "IO19",
+   "dir": "io",
+   "connect": "SDIO_CLK; ESP-AT SPI SCLK default"
+  },
+  {
+   "number": 26,
+   "name": "IO20",
+   "dir": "io",
+   "connect": "SDIO_DATA0; ESP-AT SPI MISO default; ESP-Hosted UART RX default"
+  },
+  {
+   "number": 27,
+   "name": "IO21",
+   "dir": "io",
+   "connect": "SDIO_DATA1; ESP-AT SPI handshake default; ESP-Hosted UART TX default"
+  },
+  {
+   "number": 28,
+   "name": "IO22",
+   "dir": "io",
+   "connect": "SDIO_DATA2"
+  },
+  {
+   "number": 29,
+   "name": "IO23",
+   "dir": "io",
+   "connect": "SDIO_DATA3; ESP-AT SPI CS default"
+  },
+  {
+   "number": 30,
+   "name": "RXD0",
+   "dir": "io",
+   "connect": "U0RXD GPIO17: ROM download / log"
+  },
+  {
+   "number": 31,
+   "name": "TXD0",
+   "dir": "io",
+   "connect": "U0TXD GPIO16: ROM download / log"
+  }
+ ],
+ "circuit": [
+  {
+   "ref-role": "C1 bulk",
+   "value": "22 uF",
+   "part": "generic 0603/0805 X5R",
+   "lcsc": "",
+   "between": [
+    "3V3(3)",
+    "GND"
+   ],
+   "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p40"
+  },
+  {
+   "ref-role": "C2 decoupling",
+   "value": "0.1 uF",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "3V3(3)",
+    "GND"
+   ],
+   "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p40"
+  },
+  {
+   "ref-role": "EN delay R",
+   "value": "10k",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "+3V3",
+    "EN(8)"
+   ],
+   "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p40-41 note"
+  },
+  {
+   "ref-role": "EN delay C",
+   "value": "1 uF",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "EN(8)",
+    "GND"
+   ],
+   "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p40-41 note"
+  },
+  {
+   "ref-role": "Boot strap GPIO9",
+   "value": "internal weak pull-up; add 10k pull-up + test pad/expander line to pull low for download",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "IO9(23)",
+    "+3V3"
+   ],
+   "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p12-13"
+  },
+  {
+   "ref-role": "Boot strap GPIO8",
+   "value": "pull-up 10k (must be high in download mode; do not hold low at reset)",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "IO8(22)",
+    "+3V3"
+   ],
+   "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p13"
+  },
+  {
+   "ref-role": "Programming access",
+   "value": "test pads on TXD0, RXD0, EN, IO9 (or USB D-/D+ on IO12/IO13)",
+   "part": "",
+   "lcsc": "",
+   "between": [
+    "",
+    ""
+   ],
+   "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p13 (joint download: USB-Serial-JTAG, UART, SDIO)"
+  },
+  {
+   "ref-role": "SDIO pull-ups (only if SDIO used)",
+   "value": "51k on CMD and DAT0-DAT3",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "IO18, IO20-IO23",
+    "+3V3"
+   ],
+   "source": "esp-hosted-mcu docs/getting-started-mcu.md section 1.1"
+  }
+ ],
+ "supplies": {
+  "voltage": "3.0-3.6 V, external supply >= 0.5 A (EDS p26)",
+  "tx_peak": "382 mA 802.11b 20.5 dBm; 316 mA 11g; 295 mA 11n HT20; 251 mA 11ax; BLE 309 mA at 19 dBm; 802.15.4 305 mA at 19 dBm (EDS p27)",
+  "rx": "78-82 mA Wi-Fi, 73 mA BLE/802.15.4 (EDS p27)",
+  "modem_sleep": "14-38 mA",
+  "light_sleep": "180 uA or 35 uA",
+  "deep_sleep": "7 uA",
+  "off_EN_low": "1 uA (EDS p28)"
+ },
+ "logic": {
+  "VIH": "0.75 x VDD",
+  "VIL": "0.25 x VDD",
+  "VOH": "0.8 x VDD",
+  "VOL": "0.1 x VDD",
+  "source": "ESP32-C6-MINI-1/1U datasheet v1.5 p26",
+  "can_run_1V8": "no: module I/O is on the 3.3 V supply",
+  "EN": "reset when below 0.25 x VDD for >= 50 us; rails stable >= 50 us before EN rises (EDS p15-16, p27)",
+  "strap_hold": "3 ms after EN high (EDS p13)",
+  "strap_defaults": "MTMS, MTDI, GPIO8, GPIO15 floating; GPIO9 weak pull-up (EDS p12)"
+ },
+ "firmware_transports": {
+  "esp-hosted-mcu (github.com/espressif/esp-hosted-mcu, main branch read 2026-11-26, Apache-2.0 LICENSE file present)": {
+   "supported_on_C6": "SDIO, SPI full-duplex, SPI half-duplex, UART (support table in docs/getting-started-mcu.md)",
+   "spi_full_duplex_default_pins_C6": "CLK GPIO6, MOSI GPIO7, MISO GPIO2, CS GPIO10, Handshake GPIO3, Data Ready GPIO4, reset = EN (docs/getting-started-mcu.md section 2.1; coprocessor/eh_cp_transport/Kconfig.cp.spi). GPIO10 is NOT brought out on the MINI-1 module: CS must be re-assigned in menuconfig (any free GPIO).",
+   "spi_details": "slave SPI mode 3 on C6 (Kconfig default); every transaction is a fixed 1600-byte full-duplex frame; Handshake and Data Ready are mandatory host interrupts; reset line to EN mandatory; start at 5-10 MHz",
+   "sdio_pins_C6": "fixed: CLK GPIO19, CMD GPIO18, D0 GPIO20, D1 GPIO21, D2 GPIO22, D3 GPIO23, reset EN; 51k pull-ups mandatory; up to 50 MHz",
+   "uart_default_pins_C6": "TX GPIO21, RX GPIO20, start 115200 baud; lowest throughput (not for > 1 Mbit/s)",
+   "spi_half_duplex_C6": "CLK 6, D0 7, D1 2, CS 10, Data Ready 11, D2 5, D3 4 (GPIO10/11 not on the module: re-assign)"
+  },
+  "esp-hosted Linux variants (esp-hosted-linux, formerly NG/FG)": "for Linux hosts (cfg80211 kernel driver); not applicable to the RT1176 running its own OS. Old esp_hosted_ng/fg doc paths now 404; repository README points to esp-hosted-linux and esp-hosted-mcu",
+  "esp-at (github.com/espressif/esp-at, master, Apache-2.0 LICENSE file present)": {
+   "uart_default": "UART1: GPIO6 RX, GPIO7 TX, GPIO5 CTS, GPIO4 RTS, 115200 baud; UART0 GPIO17 RX / GPIO16 TX for download and log (docs/en/Get_Started/Hardware_connection.rst, C6 4MB series incl. MINI)",
+   "spi_at": "needs a rebuild; C6 defaults SCLK GPIO19, MISO GPIO20, MOSI GPIO18, CS GPIO23, HANDSHAKE GPIO21 (How_to_implement_SPI_AT.rst); half-duplex slave; one handshake interrupt line",
+   "sdio_at": "needs a rebuild; same fixed SDIO pins GPIO18-23 (How_to_implement_SDIO_AT.rst)"
+  }
+ },
+ "to_brain": [
+  "RF_SCK/RF_MOSI/RF_MISO (LPSPI6) + RF_CS_WIFI_N",
+  "Handshake (interrupt input) - NOT in pin plan",
+  "Data Ready (interrupt input) - NOT in pin plan (ESP-Hosted only)"
+ ],
+ "to_expander": [
+  "WIFI_EN -> EN (reset/power-off, 1 uA when low)",
+  "WIFI_BOOT -> IO9 (download mode), optional"
+ ],
+ "antenna": {
+  "MINI-1": "on-board PCB antenna; no external parts; Wi-Fi/BLE/802.15.4 share it internally (EDS p3)",
+  "MINI-1U": "U.FL-type connector, 50 ohm external antenna; no keep-out needed (EDS p10)",
+  "placement": "antenna overhanging the board edge with the feed point nearest the edge; if it cannot overhang, cut away or keep copper-free the board under and on both sides of the antenna and do not put the module mid-board (Espressif hardware design guidelines, PCB layout page). Clearance figure is an image: about 15 mm each side [mem]"
+ },
+ "notes": [
+  "Pin plan gives the C6 one chip select on the shared radio SPI. Both SPI firmwares need at least one more direct interrupt line (ESP-AT: handshake; ESP-Hosted: handshake + data ready) plus EN. The pin list shows no free pad except STBY_REQ.",
+  "Shared bus: ESP-Hosted clocks 1600 bytes per transaction (1.3 ms at 10 MHz) in SPI mode 3 while the other radios use mode 0 and short frames; possible with per-device settings but it blocks CC1101/LR1121/Si24R1 register access meanwhile. Whether the C6 releases MISO when its CS is high was not confirmed.",
+  "Default ESP-Hosted CS (GPIO10) and SPI-HD Data Ready (GPIO11) do not exist on this module.",
+  "IO4/IO5 are SDIO-edge straps and IO8/IO9/IO15 boot straps: the host must not drive IO9 low or IO8 low during reset. Data Ready on IO4 idles low, harmless unless SDIO is used.",
+  "JLCPCB datasheet copy for C5736265 is the Chinese v0.6 pre-release; the English v1.5 from espressif.com was used."
+ ],
+ "unverified": [
+  "antenna clearance in mm [mem]",
+  "C6 SPI-slave MISO tri-state when deselected",
+  "maximum ESP-Hosted SPI clock on C6 through non-IO_MUX CS",
+  "R1 \"TBD\" beside C1 in the peripheral schematic (EDS p40) - not identified",
+  "which firmware the stocked modules ship with (ESP-AT is usual [mem])"
+ ],
+ "sources": [
+  "src/E_c6mini1_en.pdf (v1.5)",
+  "src/E_c6mini1.pdf (JLCPCB copy, Chinese v0.6)",
+  "src/E_gh/* (esp-hosted-mcu and esp-at docs)",
+  "src/E_html/pcb.html"
+ ]
+}

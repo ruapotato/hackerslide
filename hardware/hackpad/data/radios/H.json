@@ -1,0 +1,298 @@
+{
+ "block": "H",
+ "part": "SI4732-A10-GSR (tape and reel of Si4732-A10-GS)",
+ "maker": "Skyworks (Silicon Labs)",
+ "lcsc": "C2155558",
+ "stock": 226,
+ "price": "$2.7298 @1 (JLCPCB, read 2026-11-26)",
+ "stock_note": "UNDER 300. Other listings C1526102 and C7598921 (SI4732-A10-GS): stock 0. DigiKey stock not read.",
+ "package": "SOIC-16, 9.90 x 3.90 mm body, 6.00 mm over leads, 1.27 mm pitch (JEDEC MS-012 AC) (short ds p2)",
+ "height_mm": "1.75 max (short ds p2 table 1)",
+ "kicad_symbol": null,
+ "kicad_symbol_note": "none for Si4732. RF_AM_FM:Si4735-D60-GU is the 24-pin SSOP with a different pinout: do not reuse.",
+ "kicad_footprint": "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm (exists)",
+ "pins": [
+  {
+   "n": 1,
+   "name": "LOUT/DFS",
+   "dir": "O / I",
+   "connect": "left analog audio out (to codec line input through a coupling capacitor); becomes the frame-sync INPUT in digital audio mode"
+  },
+  {
+   "n": 2,
+   "name": "GPO3/DCLK",
+   "dir": "O / I",
+   "connect": "general output; bit-clock INPUT in digital audio mode; second crystal pin in crystal mode"
+  },
+  {
+   "n": 3,
+   "name": "GPO2/INTB",
+   "dir": "O",
+   "connect": "interrupt (seek/tune complete, RDS); internal pull-down while RST low; must be 0 at RST rising"
+  },
+  {
+   "n": 4,
+   "name": "GPO1",
+   "dir": "O",
+   "connect": "internal pull-up while RST low; must be 1 (left high-Z) at RST rising for 2-wire mode; leave open or test point"
+  },
+  {
+   "n": 5,
+   "name": "NC",
+   "dir": "-",
+   "connect": "leave floating"
+  },
+  {
+   "n": 6,
+   "name": "FMI",
+   "dir": "I",
+   "connect": "FM input (also 64-108 MHz whip); AC-coupled"
+  },
+  {
+   "n": 7,
+   "name": "RFGND",
+   "dir": "-",
+   "connect": "RF ground, to the ground plane at the chip"
+  },
+  {
+   "n": 8,
+   "name": "AMI",
+   "dir": "I",
+   "connect": "AM/LW/SW input through 0.47 uF"
+  },
+  {
+   "n": 9,
+   "name": "RST (active low)",
+   "dir": "I",
+   "connect": "reset; low during supply ramp"
+  },
+  {
+   "n": 10,
+   "name": "SENB",
+   "dir": "I",
+   "connect": "2-wire address select: 0 -> 0x11, 1 -> 0x63"
+  },
+  {
+   "n": 11,
+   "name": "SCLK",
+   "dir": "I",
+   "connect": "I2C clock"
+  },
+  {
+   "n": 12,
+   "name": "SDIO",
+   "dir": "I/O",
+   "connect": "I2C data"
+  },
+  {
+   "n": 13,
+   "name": "RCLK",
+   "dir": "I",
+   "connect": "32.768 kHz reference clock in (or crystal)"
+  },
+  {
+   "n": 14,
+   "name": "VDD",
+   "dir": "I",
+   "connect": "2.7-3.6 V single supply (internal LDO)"
+  },
+  {
+   "n": 15,
+   "name": "GND",
+   "dir": "-",
+   "connect": "ground"
+  },
+  {
+   "n": 16,
+   "name": "ROUT/DOUT",
+   "dir": "O",
+   "connect": "right analog audio out; digital audio data OUT in digital mode"
+  }
+ ],
+ "pins_source": "Si4732-A10 short data sheet, Skyworks 2021-09-13 (src/H_si4732_chipdip.pdf; the only public data sheet, 2 pages of content) p2 pin figure; functions from AN332 p14 and Si4730/31/34/35-D60 data sheet (src/H_si4735_d60.pdf) - same firmware as Si4732-A10 per AN332 p2 note 4; electrical values taken from it are marked [D60] p26-29",
+ "circuit": [
+  {
+   "ref-role": "C_VDD",
+   "value": "22 nF (VA bypass in the D60 BOM) + 100 nF close to the pin",
+   "part": "generic X7R",
+   "lcsc": null,
+   "between": [
+    "pin14 VDD",
+    "GND"
+   ],
+   "source": "[D60] p18-19 table 13 (C1 22 nF on VA, C4 100 nF on VD); Si4732 has one VDD pin - no Si4732-specific schematic is public"
+  },
+  {
+   "ref-role": "C_AMI",
+   "value": "0.47 uF AC coupling",
+   "part": "generic X7R",
+   "lcsc": null,
+   "between": [
+    "AM antenna",
+    "pin8 AMI"
+   ],
+   "source": "[D60] p19 (C3); AN383 antenna/layout guide (src/H_an383.pdf) p40"
+  },
+  {
+   "ref-role": "ANT_AM",
+   "value": "ferrite loop stick 180-450 uH (LW: 2800 uH); stray capacitance < 10 pF; no ground plane under it; e.g. Jiaxin SL4X30MW100T 4 x 30 mm (portable)",
+   "part": "no JLCPCB stocked ferrite rod found",
+   "lcsc": null,
+   "between": [
+    "pin8 AMI via C_AMI",
+    "pin7 RFGND"
+   ],
+   "source": "[D60] p14 table 9; AN383 antenna/layout guide (src/H_an383.pdf) p39-41"
+  },
+  {
+   "ref-role": "C_FMI (headphone-lead antenna)",
+   "value": "100 pF (100 pF-1 nF)",
+   "part": "generic C0G",
+   "lcsc": null,
+   "between": [
+    "headphone common/ground conductor",
+    "pin6 FMI"
+   ],
+   "source": "AN383 antenna/layout guide (src/H_an383.pdf) p19-20 (C4)"
+  },
+  {
+   "ref-role": "LMATCH",
+   "value": "270 nH, Q >= 15 at 100 MHz, shunt from the antenna node to ground",
+   "part": "Murata LQW18ANR27J00D",
+   "lcsc": "C98093 (stock 3266) ; LQW18ANR27G00D C98092 (stock 8627)",
+   "between": [
+    "antenna node",
+    "GND"
+   ],
+   "source": "AN383 antenna/layout guide (src/H_an383.pdf) p19-20 table 12"
+  },
+  {
+   "ref-role": "F1,F2 (and one per extra jack conductor)",
+   "value": "ferrite bead >= 2.5 k at 100 MHz, in series with each audio conductor between amplifier and jack",
+   "part": "Murata BLM18BD252SN1D",
+   "lcsc": "C77668 (stock 72295)",
+   "between": [
+    "headphone amp outputs",
+    "jack"
+   ],
+   "source": "AN383 antenna/layout guide (src/H_an383.pdf) p19-20"
+  },
+  {
+   "ref-role": "D_ESD",
+   "value": "ESD diodes <= 1 pF on exposed antenna nodes (CM1210/CM1213 in the note)",
+   "part": "e.g. LRC LESD8LL5.0T5G 0.5 pF SOD-882",
+   "lcsc": "C172423 (stock 52847)",
+   "between": [
+    "antenna node",
+    "GND"
+   ],
+   "source": "AN383 antenna/layout guide (src/H_an383.pdf) p19, p37, p47; substitute part is my choice"
+  },
+  {
+   "ref-role": "FM whip option",
+   "value": "56 nH series/matching inductor + 1 nF coupling to FMI (whip up to 56 cm, about 22 pF)",
+   "part": "Murata LQW18AN56NJ00D",
+   "lcsc": "C98080 (stock 10403)",
+   "between": [
+    "whip",
+    "pin6 FMI"
+   ],
+   "source": "AN383 antenna/layout guide (src/H_an383.pdf) p37-38 table 16"
+  },
+  {
+   "ref-role": "SW whip option",
+   "value": "whip -> 4.7 uH (Q >= 20 at 25 MHz, Coilcraft 1008CS-472) -> AMI node; ferrite antenna or 220 uH inductor from the node to ground; 33 pF AM trap; 0.47 uF to AMI; SPDT switch to disconnect the whip for AM; for FM on the same whip 18 pF to FMI + 180 nH",
+   "part": "Coilcraft 1008CS-472XGLC",
+   "lcsc": "C41062739 (stock 400)",
+   "between": [
+    "whip",
+    "pin8 AMI / pin6 FMI"
+   ],
+   "source": "AN383 antenna/layout guide (src/H_an383.pdf) p45-48 fig 29"
+  },
+  {
+   "ref-role": "C_audio",
+   "value": "AC coupling into the codec input (value set by the codec input impedance; chip needs load >= 10 k, <= 50 pF)",
+   "part": "generic",
+   "lcsc": null,
+   "between": [
+    "pin1 LOUT / pin16 ROUT",
+    "codec line inputs"
+   ],
+   "source": "[D60] p12-13 (load limits)"
+  },
+  {
+   "ref-role": "X1 (only if no external clock)",
+   "value": "32.768 kHz crystal, +-100 ppm (+-50 ppm for SW seek), ESR <= 50 k, CL 12 pF (7-22), 2 x 22 pF load capacitors, board capacitance <= 3.5 pF",
+   "part": "Epson Q13FC13500004 (12.5 pF, 70 k ESR: ABOVE the 50 k limit)",
+   "lcsc": "C32346 (stock 500271)",
+   "between": [
+    "pin13 RCLK",
+    "pin2 GPO3/DCLK"
+   ],
+   "source": "[D60] p15 table 10, p19 (C5, C6, X1); AN332 programming guide (src/H_an332.pdf) p15 (XOSCEN: crystal on RCLK and GPO3/DCLK)"
+  },
+  {
+   "ref-role": "digital audio option (not planned)",
+   "value": "DOUT 600 ohm series + 2-5 pF, DFS and DCLK 2 k series",
+   "part": "generic",
+   "lcsc": null,
+   "between": [
+    "pins 16, 1, 2",
+    "I2S master"
+   ],
+   "source": "[D60] p19 (R1-R3, C9)"
+  }
+ ],
+ "supplies": {
+  "VDD": "2.7-3.6 V single supply, -20 to 85 C; operates with degraded specs down to 2.0 V at 25 C (short ds p2)",
+  "current": "[D60 SSOP, VA+VD] FM analog out about 19.2 mA typ (21.9 max); AM analog out about 15.4 mA typ; power-down about 12.5 uA typ (25 max) with SCLK/RCLK inactive (D60 p5). No Si4732-specific figure is published.",
+  "powerup": "110 ms max from power-down (D60 p12-14)"
+ },
+ "logic": {
+  "levels": "[D60] VIH 0.7*VD, VIL 0.3*VD, VOH 0.8*VD at 500 uA; on Si4732 the I/O supply is VDD (one pin), so 3.3 V logic: VIH 2.31 V. Not 1.8 V capable in SOIC.",
+  "i2c": "2-wire mode, up to 400 kHz (D60 p7); 7-bit address 0x11 (0010001b) with SEN = 0, 0x63 (1100011b) with SEN = 1 (AN332 p124)",
+  "bus_select": "sampled at RST rising: GPO1 = 1 and GPO2 = 0 -> 2-wire (internal 1 M pull-up/down are active while RST is low, so leave both undriven); GPO1 driven 0 -> 3-wire (D60 p26 table 14)",
+  "reset": "RST low >= 100 us after all supplies are up when GPO1/GPO2 are high-Z; RST must be low before any supply ramps down and during ramp-up (flash-corruption warning); SCLK must be high at RST rising and stay high until the first START; no START within 300 ns before RST rising (D60 p6 table 3, p27)",
+  "clock": "RCLK input accepts 31.130 kHz-40 MHz with prescaler 1-4095 so that REFCLK = 31.130-34.406 kHz; tolerance +-100 ppm (+-50 ppm for 50 kHz FM seek and SW) (D60 p15). So a 32.768 kHz square wave from the brain or the RTC chip works; the crystal is optional. Crystal mode uses GPO3/DCLK as the second crystal pin and therefore excludes digital audio (AN332 p15: XOSCEN with OPMODE 00000101 = analog out).",
+  "audio": "analog out: FM 80 mVrms typ (72-90) [test condition in D60 p11-13], AM 60 mVrms typ (54-67) at 30 % modulation; load >= 10 k, <= 50 pF; single-ended, DC level not specified -> AC couple. Analog and digital audio share pins 1/16: one or the other, chosen in POWER_UP (AN332 p14-15). Digital: slave only (needs DCLK and DFS from the host), I2S/left-justified/DSP, 32/44.1/48 kHz, 8-24 bit (D60 p22). FM figure is at 22.5 kHz deviation (D60 p11-13 note 4): about 0.27 Vrms at full 75 kHz deviation (my arithmetic)."
+ },
+ "to_brain": [
+  "SCLK, SDIO on a brain I2C bus that does NOT carry the port expander driving RST (see conflicts)",
+  "RCLK: 32.768 kHz from the RTC chip's clock output or a brain timer pin (3.3 V swing), if no crystal is fitted"
+ ],
+ "to_expander": [
+  "RST (slow, but see the SCLK-high rule)",
+  "GPO2/INT (optional; polling STATUS also works)",
+  "SENB can be strapped (GND -> 0x11)",
+  "audio path switches, if any"
+ ],
+ "antenna": {
+  "FM": "headphone lead (1.1-1.45 m) on FMI through 100 pF with 270 nH to ground and 2.5 k beads in every other jack conductor; or a whip with 56 nH (AN383 p18-20, p37-38)",
+  "AM_LW": "ferrite loop 180-450 uH direct to AMI through 0.47 uF; air loop 10-20 uH through a 1:5 transformer (D60 p19; AN383 p39-44)",
+  "SW": "whip up to 56 cm into AMI through 4.7 uH; no external LNA in Skyworks' circuit (AN383 p45-48)",
+  "sharing": "FM and SW can share one whip (AN383 fig 29); sharing with other radios is not described. The 3-pole jack's ground conductor is the FM antenna in Skyworks' circuit, which means beads in the jack ground return too."
+ },
+ "notes": [
+  "It is the -A10: the only Si4732 revision; ordering code Si4732-A10-GS, 'R' suffix = reel (short ds p2).",
+  "The public Si4732 data sheet has no electrical tables and no application schematic; AN332 p2 says the A10 carries the same FM and AM/SW/LW firmware as Si4735-D60, so D60 tables and AN383 circuits are used and marked [D60].",
+  "AN383's own sections name Si473x QFN/SSOP parts, not the SOIC Si4732; the antenna circuits are pin-function based and carry over.",
+  "SDIO activity during seek/tune degrades reception when the internal crystal oscillator is used: use the seek/tune-complete interrupt instead of polling (D60 p25).",
+  "Level into the codec: 60-80 mVrms full-scale-ish audio needs roughly +20 dB of input gain at the ES8316 for a 1 Vrms-class ADC input (my arithmetic)."
+ ],
+ "pin_plan_conflicts": [
+  "Plan row says 'I2C, I2S'; the HF I2S pads (SAI4) are assigned to the PCM1808, so Si4732 digital audio has no pads. Analog LOUT/ROUT to the ES8316 input is consistent with that; in that case pins 1/16 are analog only.",
+  "No I2C bus is named for the Si4732 in docs/hack-pad-pins.md. If RST is on a port expander on I2C_P, put the Si4732 on I2C_U or I2C_S: an expander on the same bus changes its output while SCL is low at the acknowledge, which breaks 'SCLK high at RST rising'.",
+  "No pad is planned for RCLK: needs a 32.768 kHz source (RTC clock output) or its own crystal.",
+  "Reset line is not in the plan (expander line needed); INT optional."
+ ],
+ "unverified": [
+  "All electrical numbers are from the Si473x-D60 data sheet, not from a Si4732 document",
+  "SENB polarity on the Si4732 SOIC: AN332 p124 gives SEN=0 -> 0x11 generically; hobby reports of the opposite default exist [mem] - firmware should probe both addresses",
+  "Supply current of the SOIC part (D60 SSOP figures used)",
+  "Crystal: the stocked Epson 12.5 pF part has 70 k ESR against a 50 k limit - prefer the external clock",
+  "ES8316 input gain/impedance for 60-80 mVrms not checked here",
+  "DigiKey stock not read",
+  "No JLCPCB-stocked ferrite rod antenna found by keyword search"
+ ]
+}

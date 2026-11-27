@@ -1,0 +1,316 @@
+{
+ "block": "G",
+ "part": "ATGM336H-5N71 (maker's name ATGM336H-5N-71: GPS/QZSS + BDS + GLONASS)",
+ "maker": "Hangzhou ZhongKe Microelectronics (ZHONGKEWEI), AT6558 chip",
+ "lcsc": "C2940946",
+ "stock": 1905,
+ "price": "$3.3092 @1 (JLCPCB, read 2026-11-26)",
+ "variants_stocked": [
+  {
+   "part": "ATGM336H-5N71",
+   "lcsc": "C2940946",
+   "stock": 1905,
+   "price": 3.3092,
+   "systems": "GPS+BDS+GLONASS"
+  },
+  {
+   "part": "ATGM336H-5N31",
+   "lcsc": "C90770",
+   "stock": 626,
+   "price": 3.2388,
+   "systems": "GPS+BDS"
+  },
+  {
+   "part": "ATGM336H-5NR32 (different chip AT6558R; VCC 1.8-3.6 V; pins 16/17 are I2C SDA/SCL instead of UART1; same footprint)",
+   "lcsc": "C5117921",
+   "stock": 3576,
+   "price": 2.5449
+  },
+  {
+   "part": "ATGM336H-5NR32-G",
+   "lcsc": "C49233943",
+   "stock": 986,
+   "price": 1.9623
+  },
+  {
+   "part": "ATGM336H-6N-74",
+   "lcsc": "C5804601",
+   "stock": 2009,
+   "price": 3.0981
+  }
+ ],
+ "package": "LCC-18 castellated module 10.1 x 9.7 mm, pad pitch 1.1 mm (manual p6-7)",
+ "height_mm": "2.4 typ (2.2-2.6) (manual p6)",
+ "kicad_symbol": null,
+ "kicad_symbol_note": "none for ATGM336H. RF_GPS:MAX-M8Q (u-blox MAX) has the same outline but differs on pins 5 (EXTINT vs ON/OFF), 7 (VCC_IO vs reserved/float), 13, 15-18: do not reuse; draw from the pin table.",
+ "kicad_footprint": "RF_GPS:ublox_MAX (exists: 18 pads, pitch 1.1 mm, pad centres +-4.75 mm, pads 1.8 x 0.8 mm). Same 10.1 x 9.7 mm 18-pad outline as the manual's land pattern (p7: pitch 1.1, pad 0.8 high, 9.7 between pad rows); compare the pad length with the p7 drawing before use.",
+ "pins": [
+  {
+   "n": 1,
+   "name": "GND",
+   "dir": "-",
+   "connect": "ground"
+  },
+  {
+   "n": 2,
+   "name": "TXD0",
+   "dir": "O",
+   "connect": "main UART out -> GPS_TXD (brain LPUART2_RX, DISP_B2_11)"
+  },
+  {
+   "n": 3,
+   "name": "RXD0",
+   "dir": "I",
+   "connect": "main UART in <- GPS_RXD (brain LPUART2_TX, DISP_B2_10)"
+  },
+  {
+   "n": 4,
+   "name": "1PPS",
+   "dir": "O",
+   "connect": "second pulse, rising edge aligned to UTC -> divider -> GPS_PPS (EMC_B2_18, 1.8 V pad)"
+  },
+  {
+   "n": 5,
+   "name": "ON/OFF",
+   "dir": "I",
+   "connect": "module shutdown, active low -> port expander (or leave open if the rail is switched)"
+  },
+  {
+   "n": 6,
+   "name": "VBAT",
+   "dir": "I",
+   "connect": "RTC + SRAM backup 1.5-3.6 V, 10 uA: always-on 3.0 V rail"
+  },
+  {
+   "n": 7,
+   "name": "Reserved",
+   "dir": "-",
+   "connect": "float"
+  },
+  {
+   "n": 8,
+   "name": "VCC",
+   "dir": "I",
+   "connect": "2.7-3.6 V, 25 mA typ, 100 mA peak; 10 uF"
+  },
+  {
+   "n": 9,
+   "name": "nRESET",
+   "dir": "I",
+   "connect": "active low; float if unused, or port expander"
+  },
+  {
+   "n": 10,
+   "name": "GND",
+   "dir": "-",
+   "connect": "ground"
+  },
+  {
+   "n": 11,
+   "name": "RF_IN",
+   "dir": "I",
+   "connect": "50 ohm antenna input"
+  },
+  {
+   "n": 12,
+   "name": "GND",
+   "dir": "-",
+   "connect": "ground"
+  },
+  {
+   "n": 13,
+   "name": "Reserved",
+   "dir": "-",
+   "connect": "float"
+  },
+  {
+   "n": 14,
+   "name": "VCC_RF",
+   "dir": "O",
+   "connect": "3.3 V out for an active antenna (50 mA short-circuit limit, open detect below 2.5 mA); feeds RF_IN through 47 nH; unused with a passive antenna + own LNA"
+  },
+  {
+   "n": 15,
+   "name": "Reserved",
+   "dir": "-",
+   "connect": "float"
+  },
+  {
+   "n": 16,
+   "name": "RXD1",
+   "dir": "I",
+   "connect": "auxiliary UART in; leave open"
+  },
+  {
+   "n": 17,
+   "name": "TXD1",
+   "dir": "O",
+   "connect": "auxiliary UART out; leave open or test point"
+  },
+  {
+   "n": 18,
+   "name": "Reserved",
+   "dir": "-",
+   "connect": "float"
+  }
+ ],
+ "pins_source": "ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p7-8",
+ "circuit": [
+  {
+   "ref-role": "C1",
+   "value": "10 uF",
+   "part": "generic",
+   "lcsc": null,
+   "between": [
+    "pin8 VCC",
+    "GND"
+   ],
+   "source": "ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p11"
+  },
+  {
+   "ref-role": "backup",
+   "value": "3 V cell in the maker's drawing; here the always-on 3.0 V rail (1.5-3.6 V, 10 uA)",
+   "part": "-",
+   "lcsc": null,
+   "between": [
+    "pin6 VBAT",
+    "GND"
+   ],
+   "source": "ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p9, p11"
+  },
+  {
+   "ref-role": "L1 (active antenna option)",
+   "value": "47 nH bias feed",
+   "part": "generic 0402 inductor",
+   "lcsc": null,
+   "between": [
+    "pin14 VCC_RF",
+    "pin11 RF_IN"
+   ],
+   "source": "ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p11 section 2.7.1 (active antenna gain 15-30 dB recommended)"
+  },
+  {
+   "ref-role": "U_LNA (passive antenna option)",
+   "value": "AT2659 L1-band LNA: gain 21.5 dB, NF 0.8 dB, 4.3 mA, 1.4-3.6 V, SHDN high = on (logic high >= 1.1 V, low <= 0.4 V), 50 ohm output match inside; pins 1,2 GND, 3 RFIN, 4 VDD, 5 SHDN, 6 RFOUT",
+   "part": "AT2659 (DFN-6 1.5 x 1.0 x 0.78 mm)",
+   "lcsc": "C92450 (stock 89349, $0.11)",
+   "between": [
+    "pin6 RFOUT -> module pin11 RF_IN",
+    "pin3 RFIN <- antenna match"
+   ],
+   "source": "ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p11 section 2.7.2 ('with a passive antenna add an LNA stage'); AT2659 datasheet (src/G_at2659.pdf) p1-3"
+  },
+  {
+   "ref-role": "L_in",
+   "value": "6.8 nH input matching inductor, series into RFIN",
+   "part": "0402 high-Q (e.g. Murata LQW15AN6N8)",
+   "lcsc": null,
+   "between": [
+    "antenna side",
+    "AT2659 pin3 RFIN"
+   ],
+   "source": "AT2659 datasheet (src/G_at2659.pdf) p3 table 2; ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p11"
+  },
+  {
+   "ref-role": "C_in",
+   "value": "DC block: 470 pF (AT2659 datasheet) / 100 pF (module manual drawing)",
+   "part": "generic C0G",
+   "lcsc": null,
+   "between": [
+    "antenna",
+    "L_in"
+   ],
+   "source": "AT2659 datasheet (src/G_at2659.pdf) p3; ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p11"
+  },
+  {
+   "ref-role": "C_vdd_lna",
+   "value": "33 nF (AT2659 datasheet) / 0.1 uF (module manual)",
+   "part": "generic",
+   "lcsc": null,
+   "between": [
+    "AT2659 pin4 VDD",
+    "GND"
+   ],
+   "source": "AT2659 datasheet (src/G_at2659.pdf) p3; ATGM336H-5N user manual (src/G_atgm336h_5n71.pdf = JLCPCB copy for C2940946, Chinese) p11"
+  },
+  {
+   "ref-role": "FL_SAW (my addition, not in the maker's circuit)",
+   "value": "1575.42 MHz SAW filter ahead of the LNA, because this board has five transmitters; costs about 1.6 dB of noise figure",
+   "part": "Murata SAFFB1G56KB0F0AR1X",
+   "lcsc": "C91647 (stock 40406, $0.07)",
+   "between": [
+    "antenna",
+    "LNA input"
+   ],
+   "source": "engineering suggestion; SAW datasheet src/G_saw_saffb.pdf downloaded, not studied"
+  },
+  {
+   "ref-role": "ANT",
+   "value": "3.2 x 1.6 x 1.1 mm ceramic chip antenna, 1559-1606 MHz, gain 1/1.8/1.4 dBi min, efficiency >= 50/68/60 %, linear; ground cleared under it 4.00 x 4.25 mm; maker's test board 80 x 37 mm with the antenna at the centre of a long edge; shunt 2.2 pF on the feed in the maker's layout (tune on the real board)",
+   "part": "Pulse W3011",
+   "lcsc": "C6604735 (stock 417, $0.97)",
+   "between": [
+    "feed",
+    "matching -> SAW/LNA"
+   ],
+   "source": "Pulse W3011 datasheet (src/G_w3011.pdf) p1-2, p4-5, p9"
+  },
+  {
+   "ref-role": "ANT alternative",
+   "value": "10 x 3 x 1.47 mm chip antenna, 1575 MHz, 4.3 dBi peak (datasheet is one page with no layout guidance)",
+   "part": "Rainsun GPS1003",
+   "lcsc": "C239243 (stock 3743, $0.80)",
+   "between": [
+    "feed",
+    "-"
+   ],
+   "source": "src/G_gps1003.pdf p1"
+  }
+ ],
+ "supplies": {
+  "VCC": "2.7-3.6 V (3.3 typ); 25 mA typ / 30 mA max continuous at 3.3 V; peak 100 mA excluding antenna (manual p9)",
+  "VBAT": "1.5-3.6 V, 10 uA (manual p9)",
+  "sleep": "no standby figure in the manual: use ON/OFF (pin 5, active low) or switch the rail and keep VBAT for hot start",
+  "ripple": "use a low-ripple LDO, < 50 mVpp (manual p12)"
+ },
+ "logic": {
+  "levels": "VIL 0.2*VCC, VIH 0.7*VCC, VOL 0.4 V, VOH VCC-0.4 V at 12 mA (manual p9): 3.3 V logic at VCC = 3.3 V, not 1.8 V",
+  "uart": "4800-115200 baud, default 9600, 8N1, NMEA 0183 + maker's CASIC binary (manual p10)",
+  "pps": "1PPS rising edge aligned to UTC (manual p4); width/accuracy not given",
+  "update": "1 Hz default, up to 10 Hz",
+  "reset": "nRESET active low, float when unused (manual p8)"
+ },
+ "to_brain": [
+  "TXD0 -> GPS_TXD (DISP_B2_11 LPUART2_RX)",
+  "RXD0 <- GPS_RXD (DISP_B2_10 LPUART2_TX)",
+  "1PPS -> resistor divider 3.3 V to 1.8 V -> GPS_PPS (EMC_B2_18 QTIMER3_TIMER1)"
+ ],
+ "to_expander": [
+  "ON/OFF (pin 5)",
+  "nRESET (pin 9)",
+  "AT2659 SHDN (or tie to the module's switched supply)"
+ ],
+ "antenna": {
+  "type": "module accepts active (bias from VCC_RF via 47 nH, 15-30 dB gain) or passive antennas; for a passive antenna the maker asks for an external LNA (AT2659) although the -5N variants are listed with a front SAW and an LNA inside (manual p2 table)",
+  "feed": "50 ohm, antenna port close to RF_IN (manual p12)",
+  "sharing": "not described; keep GNSS on its own antenna",
+  "antenna_detect": "the module reports ANTENNA OPEN/SHORT/OK over NMEA $GPTXT; with a passive antenna it always reports OPEN (manual p12)"
+ },
+ "notes": [
+  "JLCPCB's datasheet for C2940946 is the family manual (ATGM336H-5N); sub-variant columns on p2 (read from the rendered page): -11 GPS, -21 BDS, -31 GPS+BDS, -51 GPS+GLONASS, -71 GPS+BDS+GLONASS; all have 2.7-3.6 V supply, UART0+UART1, flash, TCXO, antenna detect and over-current protection, front SAW, LNA.",
+  "KiCad footprint for the antenna exists: RF_Antenna:Pulse_W3011.",
+  "A 25 x 25 or 18 x 18 x 4 mm ceramic patch (Kinghelm KH-GPS252504-WY C962216 stock 109, KH-GPS181804-WY C962215 stock 78) would receive better but is 4 mm tall and under 300 in stock."
+ ],
+ "pin_plan_conflicts": [
+  "None on the UART and PPS pads. ON/OFF and nRESET are not in the plan (expander lines needed).",
+  "GPS_PPS divider: module VOH is VCC-0.4 = 2.9 V min, so the divider to the 1.8 V pad is required as the plan says."
+ ],
+ "unverified": [
+  "Pad length of RF_GPS:ublox_MAX against the manual's land pattern (p7 is a drawing; only pitch and outline compared)",
+  "Whether the internal SAW+LNA of the -71 is enough for the W3011 without AT2659 (maker recommends the external LNA; not tested)",
+  "1PPS pulse width and accuracy (not in the manual)",
+  "W3011 matching values on this board (maker shows only a shunt 2.2 pF on its 80 x 37 mm test board)",
+  "SAW filter pinout and KiCad footprint not checked; AT2659 footprint: no exact KiCad standard footprint checked (DFN-6 1.5 x 1.0 mm)",
+  "DigiKey not relevant (JLCPCB part)"
+ ]
+}

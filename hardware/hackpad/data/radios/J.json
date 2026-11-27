@@ -1,0 +1,1028 @@
+{
+ "block": "J: SDR (AT86RF215 + iCE40LP1K-QN84)",
+ "read": "2026-11-26",
+ "radio": {
+  "part": "AT86RF215-ZU (tray; -ZUR reel)",
+  "lcsc": "C610384 / C1526155",
+  "stock": 0,
+  "price": "JLCPCB lists $8.75 / $14.27 with zero stock; DigiKey-only, DigiKey page returned HTTP 403 (stock unreadable today)",
+  "package": "48-pin VQFN 7x7 mm, 0.5 mm pitch, exposed pad 5.6 mm (DS p186)",
+  "height_mm": 0.9,
+  "kicad_symbol": null,
+  "kicad_footprint": "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm (exists; EP 5.50-5.70 per DS p186)",
+  "pins": [
+   {
+    "n": 1,
+    "name": "FEA24",
+    "dir": "out",
+    "connect": "front-end control 2.4 GHz; NC or to RF switch (3.3 V logic)",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 2,
+    "name": "FEB24",
+    "dir": "out",
+    "connect": "as FEA24",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 3,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 4,
+    "name": "RFP24",
+    "dir": "rf",
+    "connect": "2.4 GHz balun balanced + via 1.8 pF",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 5,
+    "name": "RFN24",
+    "dir": "rf",
+    "connect": "2.4 GHz balun balanced - via 1.8 pF",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 6,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 7,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 8,
+    "name": "RFP09",
+    "dir": "rf",
+    "connect": "sub-GHz balun",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 9,
+    "name": "RFN09",
+    "dir": "rf",
+    "connect": "sub-GHz balun",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 10,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 11,
+    "name": "FEA09",
+    "dir": "out",
+    "connect": "front-end control sub-GHz",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 12,
+    "name": "FEB09",
+    "dir": "out",
+    "connect": "front-end control sub-GHz",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 13,
+    "name": "RSTN",
+    "dir": "in",
+    "connect": "active-low reset, >=625 ns; 100k pull-up to VDD + 4.7 nF on REB215; expander line (3.3 V)",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 14,
+    "name": "AVDD0",
+    "dir": "pwr-out",
+    "connect": "internal 1.8 V analog reg (sub-GHz): 1 uF to GND only",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 15,
+    "name": "EVDD",
+    "dir": "pwr",
+    "connect": "VDD (3.3 V), 100 nF",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 16,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 17,
+    "name": "TCXO",
+    "dir": "in",
+    "connect": "26 MHz clipped sine 0.6-1.6 Vpp from TCXO",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 18,
+    "name": "XTAL2",
+    "dir": "out",
+    "connect": "GND when TCXO used (datasheet); REB215/CaribouLite use 100k to GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 19,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 20,
+    "name": "DVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 21,
+    "name": "DEVDD",
+    "dir": "pwr",
+    "connect": "VDD, 100 nF",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 22,
+    "name": "CLKO",
+    "dir": "out",
+    "connect": "clock out (26 MHz default option); 220R+2.2pF if used, else NC and disable in RF_CLKO",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 23,
+    "name": "DVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 24,
+    "name": "DVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 25,
+    "name": "TXCLKN",
+    "dir": "lvds-in",
+    "connect": "from FPGA (emulated LVDS)",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 26,
+    "name": "TXCLKP",
+    "dir": "lvds-in",
+    "connect": "from FPGA",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 27,
+    "name": "TXDN",
+    "dir": "lvds-in",
+    "connect": "from FPGA",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 28,
+    "name": "TXDP",
+    "dir": "lvds-in",
+    "connect": "from FPGA",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 29,
+    "name": "DEVDD",
+    "dir": "pwr",
+    "connect": "VDD, 100 nF",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 30,
+    "name": "RXDN09",
+    "dir": "lvds-out",
+    "connect": "to FPGA bank 3, 100R across pair at FPGA",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 31,
+    "name": "RXDP09",
+    "dir": "lvds-out",
+    "connect": "to FPGA bank 3",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 32,
+    "name": "DVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 33,
+    "name": "RXCLKN",
+    "dir": "lvds-out",
+    "connect": "to FPGA bank 3, 100R across pair",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 34,
+    "name": "RXCLKP",
+    "dir": "lvds-out",
+    "connect": "to FPGA bank 3",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 35,
+    "name": "RXDN24",
+    "dir": "lvds-out",
+    "connect": "to FPGA bank 3, 100R across pair",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 36,
+    "name": "RXDP24",
+    "dir": "lvds-out",
+    "connect": "to FPGA bank 3",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 37,
+    "name": "DVDD",
+    "dir": "pwr-out",
+    "connect": "internal 1.8 V digital reg: 1 uF to GND only",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 38,
+    "name": "DVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 39,
+    "name": "DEVDD",
+    "dir": "pwr",
+    "connect": "VDD, 100 nF",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 40,
+    "name": "IRQ",
+    "dir": "out",
+    "connect": "interrupt, VDD-level push-pull (active polarity and pad drive set in RF_CFG, DS p19)",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 41,
+    "name": "SCLK",
+    "dir": "in",
+    "connect": "SPI clock, <=25 MHz",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 42,
+    "name": "SELN",
+    "dir": "in",
+    "connect": "SPI select, active low, no internal pull-up",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 43,
+    "name": "MOSI",
+    "dir": "in",
+    "connect": "SPI data in",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 44,
+    "name": "MISO",
+    "dir": "out",
+    "connect": "SPI data out (VDD level)",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 45,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 46,
+    "name": "EVDD",
+    "dir": "pwr",
+    "connect": "VDD, 100 nF",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 47,
+    "name": "AVDD1",
+    "dir": "pwr-out",
+    "connect": "internal 1.8 V analog reg (2.4 GHz): 1 uF to GND only",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 48,
+    "name": "AVSS",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "DS p8-9"
+   },
+   {
+    "n": 49,
+    "name": "PADDLE",
+    "dir": "gnd",
+    "connect": "AVSS/GND",
+    "source": "DS p8-9"
+   }
+  ],
+  "circuit": [
+   {
+    "ref-role": "C_VDD x5",
+    "value": "100n 16V X7R 0402 at each of pins 15,46 (EVDD) and 21,29,39 (DEVDD)",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "EVDD/DEVDD",
+     "GND"
+    ],
+    "source": "REB p3 (C13-C17); DS p11 Cdec"
+   },
+   {
+    "ref-role": "C_AVDD0",
+    "value": "1u 6.3V X5R 0402 (DS: Cdec 100 nF min/typ, 10 uF max)",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "14 AVDD0",
+     "GND"
+    ],
+    "source": "REB p3 C20; DS p188 Table 10-4, p75"
+   },
+   {
+    "ref-role": "C_AVDD1",
+    "value": "1u",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "47 AVDD1",
+     "GND"
+    ],
+    "source": "REB p3 C19"
+   },
+   {
+    "ref-role": "C_DVDD",
+    "value": "1u",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "37 DVDD",
+     "GND"
+    ],
+    "source": "REB p3 C18"
+   },
+   {
+    "ref-role": "VDD filter",
+    "value": "ferrite 220R@100MHz 0603 (Wurth 74279263) + 10u + 100n; CaribouLite: BLM15HD182SN1D + 4.7u + 10n",
+    "part": "BLM15HD182SN1D",
+    "lcsc": "C76888",
+    "between": [
+     "+3V3",
+     "VDD_SDR"
+    ],
+    "source": "REB p3 L2/C23/C11; CaribouLite p7 L1/C1/C32"
+   },
+   {
+    "ref-role": "TCXO",
+    "value": "26 MHz clipped sine, 0.6-1.6 Vpp at pin 17",
+    "part": "KDS 1XXD26000MAA (DSB211SDN)",
+    "lcsc": "C135223",
+    "between": [
+     "out pin3",
+     "via 1n to 17 TCXO"
+    ],
+    "source": "DS p68, p188; REB p3 XC1"
+   },
+   {
+    "ref-role": "C_TCXO series",
+    "value": "1n",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "TCXO out",
+     "17 TCXO"
+    ],
+    "source": "REB p3 C25; CaribouLite p7 C13. NOTE DS p68 says DC-coupled"
+   },
+   {
+    "ref-role": "R_TCXO load",
+    "value": "10k to GND",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "17 TCXO",
+     "GND"
+    ],
+    "source": "REB p3 R13 (not fitted on CaribouLite)"
+   },
+   {
+    "ref-role": "C_TCXO load",
+    "value": "10p to GND (TCXO load 10k//10p)",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "17 TCXO",
+     "GND"
+    ],
+    "source": "REB p3 C10 (CaribouLite C18 DNP)"
+   },
+   {
+    "ref-role": "R_XTAL2",
+    "value": "100k to GND (DS text: ground XTAL2)",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "18 XTAL2",
+     "GND"
+    ],
+    "source": "REB p3 R7; CaribouLite R2 102k; DS p10/p68"
+   },
+   {
+    "ref-role": "TCXO decoupling",
+    "value": "100n (+1n, 33p on CaribouLite) behind a ferrite",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "TCXO VCC",
+     "GND"
+    ],
+    "source": "REB p3 C9; CaribouLite p7 C15-C17, L2"
+   },
+   {
+    "ref-role": "R_RSTN / C_RSTN",
+    "value": "100k pull-up to VDD, 4.7n to GND",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "13 RSTN",
+     "VDD / GND"
+    ],
+    "source": "REB p3 R6, C6"
+   },
+   {
+    "ref-role": "CLKO filter",
+    "value": "220R series + 2.2p to GND (only if CLKO used; CaribouLite 470R + 2.2p)",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "22 CLKO",
+     "load"
+    ],
+    "source": "REB p3 R12/C24; DS p12"
+   },
+   {
+    "ref-role": "2.4 GHz: C2, C12",
+    "value": "1.8 pF NP0 series in each leg",
+    "part": "generic 0201/0402 NP0",
+    "lcsc": "",
+    "between": [
+     "4 RFP24 -> balun bal pin 4",
+     "5 RFN24 -> balun bal pin 3"
+    ],
+    "source": "REB p3 + BOM; CaribouLite p7 C12/C20"
+   },
+   {
+    "ref-role": "2.4 GHz: L3",
+    "value": "5.6 nH across the balun balanced pins (Johanson L-05B5N6SV6T 0201)",
+    "part": "5.6nH high-Q",
+    "lcsc": "",
+    "between": [
+     "balun pin 4",
+     "balun pin 3"
+    ],
+    "source": "REB p3 + BOM; CaribouLite p7 L3"
+   },
+   {
+    "ref-role": "2.4 GHz filter-balun B1",
+    "value": "Johanson 2450FB15A050E, 50 ohm : 50 ohm balanced, 0805 6-pin (1 unbal, 2 GND, 3/4 balanced, 5 GND, 6 NC)",
+    "part": "2450FB15A050E",
+    "lcsc": "C5244324 (stock 0) - DigiKey",
+    "between": [
+     "RFP24/RFN24 network",
+     "ANT24"
+    ],
+    "source": "REB p3 B1; user guide section 4.2.1; CaribouLite p7 U2"
+   },
+   {
+    "ref-role": "2.4 GHz: C3",
+    "value": "0.8 pF series on the single-ended side",
+    "part": "generic NP0",
+    "lcsc": "",
+    "between": [
+     "balun pin 1",
+     "50 ohm line"
+    ],
+    "source": "REB p3 C3; CaribouLite C19"
+   },
+   {
+    "ref-role": "2.4 GHz pi (DNP)",
+    "value": "0R series, 2x 1.2 pF shunt not fitted; 10k to GND at connector (ESD bleed)",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "line",
+     "SMA"
+    ],
+    "source": "REB p3 R4, C21, C4, R10"
+   },
+   {
+    "ref-role": "sub-GHz wideband balun L1 (ATREB215-XPRO, 400-1000 MHz)",
+    "value": "Murata DLW21SN900SQ2 common-mode choke used as balun: RFP09 -> winding 1 -> C8 15 pF -> line; RFN09 -> winding 2 -> C5 8.2 pF -> GND",
+    "part": "DLW21SN900SQ2L",
+    "lcsc": "C97856",
+    "between": [
+     "8 RFP09 / 9 RFN09",
+     "ANT09"
+    ],
+    "source": "REB p3 L1, C8, C5; user guide 4.2.1"
+   },
+   {
+    "ref-role": "sub-GHz filter-balun (ATREB215-XPRO-A, CaribouLite; 863-928 MHz only)",
+    "value": "Johanson 0896BM15E0025E, direct to RFP09/RFN09, 15 pF series on the single-ended side",
+    "part": "0896BM15E0025E",
+    "lcsc": "C3304914 (stock 0) - DigiKey",
+    "between": [
+     "8/9",
+     "ANT09"
+    ],
+    "source": "user guide 4.2.1; CaribouLite p7 U4, C22"
+   },
+   {
+    "ref-role": "sub-GHz pi (DNP)",
+    "value": "0R series, 2x 2.2 pF shunt not fitted, 10k to GND",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "line",
+     "SMA"
+    ],
+    "source": "REB p3 R9, C22, C7, R11"
+   },
+   {
+    "ref-role": "LVDS RX termination x3",
+    "value": "100R 1% across RXCLK, RXD09, RXD24 pairs, at the FPGA pins",
+    "part": "generic 0402",
+    "lcsc": "",
+    "between": [
+     "P",
+     "N"
+    ],
+    "source": "DS p22-23 (100 ohm line, terminate); CaribouLite p4 R13,R17,R18"
+   },
+   {
+    "ref-role": "LVDS TX emulation x2 pairs",
+    "value": "Lattice LVDS25E: Rs 150R in each leg + Rp 140R across (VCCIO 2.5 V); CaribouLite fits Rs 100R + Rp 162R. AT86RF215 input has the 100 ohm termination inside (Rin 80-125)",
+    "part": "generic 1%",
+    "lcsc": "",
+    "between": [
+     "FPGA pair",
+     "25/26 TXCLK, 27/28 TXD"
+    ],
+    "source": "iCE40 DS p21 Table 3-1; CaribouLite p4 R19-R24; DS p23, p206"
+   }
+  ],
+  "supplies": {
+   "VDD (EVDD=DEVDD, must be shorted)": "1.8-3.6 V, 3.0 typ (DS p187)",
+   "deep sleep": "30 nA",
+   "TRXOFF": "3 mA",
+   "RX sub-GHz": "28 mA",
+   "RX 2.4 GHz": "33 mA",
+   "TX sub-GHz": "64 mA @ max power",
+   "TX 2.4 GHz": "62 mA",
+   "note": "currents exclude the I/Q interface and the TCXO (1.5 mA) (DS p2, p203-204)",
+   "POR": "threshold 1.6 V rising; RSTN pulse >= 625 ns (DS p188)"
+  },
+  "logic": {
+   "VIH": "VDD-0.4 V min",
+   "VIL": "0.4 V max",
+   "VOH": "VDD-0.4",
+   "VOL": "0.4",
+   "source": "DS p187 Table 10-2",
+   "1v8_ok": "NO while VDD = 3.3 V: digital pins are referenced to VDD and EVDD/DEVDD must be the same rail. 1.8 V SPI needs VDD = 1.8 V (bottom of the range) or a level shifter",
+   "SPI": "mode 0 (MOSI sampled on rising SCLK, MISO changes on falling), MSB first, <= 25 MHz, SELN idle >= 50 ns (DS p16-18, p204-205)",
+   "abs max": "digital pins -0.3..4.0 V; analog pins 2.0 V; RF input +10 dBm (DS p187)",
+   "LVDS": "64 MHz DDR, 128 Mb/s. Driver: proprietary SLVDS Vos 150-300 mV / Vod 200 mV, or IEEE mode (IQIFC0.CMV1V2=1) Vos 1.2 V, Vod 200 mV typ at 2 mA; drive 1-4 mA (IQIFC0.DRV). Receiver: Rin 100 ohm, IEEE mode input 825-1575 mV, threshold +/-100 mV (DS p22-28, p205-207)"
+  },
+  "to_brain": [
+   "SCLK, MOSI, MISO, SELN (via 1.8<->3.3 V shifter, or on a 3.3 V SPI bus)",
+   "IRQ (direct, or through the FPGA) if the built-in packet modems are used"
+  ],
+  "to_expander": [
+   "RSTN (3.3 V expander)",
+   "IRQ if only I/Q mode is used (few interrupts)",
+   "TCXO enable / SDR rail enable"
+  ]
+ },
+ "fpga": {
+  "part": "ICE40LP1K-QN84",
+  "lcsc": "C6639984",
+  "stock": 0,
+  "price": "JLCPCB lists $7.58 with zero stock; DigiKey-only, stock unreadable (HTTP 403)",
+  "package": "84-pin dual-row QFN 7x7 mm, 0.5 mm pitch (DS1040 p3)",
+  "height_mm": null,
+  "kicad_symbol": null,
+  "kicad_footprint": null,
+  "pins": [
+   {
+    "n": "A7,A15,A28,B28",
+    "name": "VCC",
+    "dir": "pwr",
+    "connect": "1.2 V core (1.14-1.26 V)",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A37",
+    "name": "VPP_FAST",
+    "dir": "-",
+    "connect": "leave unconnected",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A36",
+    "name": "VPP_2V5",
+    "dir": "pwr",
+    "connect": "1.71-3.46 V when configured by SPI slave (2.30-3.46 for NVCM/master); tie to +2V5 or +3V3",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A24",
+    "name": "VCC_SPI",
+    "dir": "pwr",
+    "connect": "supply of the 4 SPI pins: 1.8 V (brain SD_B2 pads)",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A42",
+    "name": "VCCIO_0",
+    "dir": "pwr",
+    "connect": "bank 0 (top, 17 I/O): 3.3 V",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B25",
+    "name": "VCCIO_1",
+    "dir": "pwr",
+    "connect": "bank 1 (right, 17 I/O): 3.3 V",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A17",
+    "name": "VCCIO_2",
+    "dir": "pwr",
+    "connect": "bank 2 (bottom, 11 I/O + CDONE/CRESET_B): 1.8 V",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B6",
+    "name": "VCCIO_3",
+    "dir": "pwr",
+    "connect": "bank 3 (left, 18 I/O, the only bank with LVDS inputs): 2.5 V",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A6,A18,A30,B33,EP",
+    "name": "GND",
+    "dir": "gnd",
+    "connect": "GND",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A21",
+    "name": "CRESET_B",
+    "dir": "in",
+    "connect": "config reset, no internal pull-up: 10k to VCCIO_2 (1.8 V), driven open-drain",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B16",
+    "name": "CDONE",
+    "dir": "od-out",
+    "connect": "config done, weak pull-up to VCCIO_2; 10k to 1.8 V; to brain SDR_FPGA_DONE",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A22",
+    "name": "IOB_45_SDI",
+    "dir": "in",
+    "connect": "SPI data from brain (SDR_MOSI)",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B17",
+    "name": "IOB_44_SDO",
+    "dir": "out",
+    "connect": "SPI data to brain (SDR_MISO) - user pin after config; not driven during slave config",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A23",
+    "name": "IOB_46_SCK",
+    "dir": "in",
+    "connect": "SDR_SCK",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B18",
+    "name": "IOB_47_SS",
+    "dir": "in",
+    "connect": "SDR_CS_FPGA_N; must be LOW when CRESET_B rises; optional 10k pull-down",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B5/A8",
+    "name": "IOL_6A / IOL_6B_GBIN7",
+    "dir": "lvds-in pair",
+    "connect": "bank 3 pair with direct LVDS global clock input (GBUF7): best place for RXCLK (CaribouLite does NOT use it)",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B1/A2",
+    "name": "IOL_2A/IOL_2B",
+    "dir": "lvds-in pair",
+    "connect": "CaribouLite: RX24 P/N",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B2/A3",
+    "name": "IOL_3A/IOL_3B",
+    "dir": "lvds-in pair",
+    "connect": "CaribouLite: RXCLK (B2=N, A3=P)",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B3/A4",
+    "name": "IOL_4A/IOL_4B",
+    "dir": "lvds-in pair",
+    "connect": "CaribouLite: RX09 (B3=N, A4=P)",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B4/A5",
+    "name": "IOL_5A/IOL_5B",
+    "dir": "pair",
+    "connect": "CaribouLite: TX data out",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B7/A9",
+    "name": "IOL_7B / IOL_7A_GBIN6",
+    "dir": "pair",
+    "connect": "free pair",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "B8/A10",
+    "name": "IOL_9B/IOL_9A",
+    "dir": "pair",
+    "connect": "CaribouLite: TX clock out",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A1,A11,B9,A12",
+    "name": "IOL_1B,10B,11B,12B",
+    "dir": "io",
+    "connect": "bank 3 singles (2.5 V)",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A43,B32",
+    "name": "IOT_84_GBIN1, IOT_85_GBIN0",
+    "dir": "io",
+    "connect": "bank 0 global inputs",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A29,B22",
+    "name": "IOR_60_GBIN3, IOR_61_GBIN2",
+    "dir": "io",
+    "connect": "bank 1 global inputs",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   },
+   {
+    "n": "A14,B12",
+    "name": "IOB_35_GBIN5, IOB_36_GBIN4",
+    "dir": "io",
+    "connect": "bank 2 global inputs",
+    "source": "CaribouLite p4 symbol + icestorm chipdb (src/J_icestorm; out/J_qn84_icestorm.json); bank facts DS1040 p36"
+   }
+  ],
+  "circuit": [
+   {
+    "ref-role": "VCC decoupling",
+    "value": "4.7u + 10n + 100n + 100n on the 1.2 V pins",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "VCC",
+     "GND"
+    ],
+    "source": "CaribouLite p4 C66-C69"
+   },
+   {
+    "ref-role": "VCCIO / VCC_SPI / VPP_2V5 decoupling",
+    "value": "100n each",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "rail",
+     "GND"
+    ],
+    "source": "CaribouLite p4 C72-C74, C119, C120"
+   },
+   {
+    "ref-role": "R_CRESET",
+    "value": "10k pull-up to VCCIO_2",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "A21",
+     "VCCIO_2"
+    ],
+    "source": "TN1248 p14, p30; CaribouLite R14"
+   },
+   {
+    "ref-role": "R_CDONE",
+    "value": "10k pull-up to the brain pad's rail (= VCCIO_2 = 1.8 V here)",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "B16",
+     "+1V8"
+    ],
+    "source": "TN1248 p15, p30; CaribouLite R15"
+   },
+   {
+    "ref-role": "R_SS",
+    "value": "10k pull-DOWN to GND (forces SPI-slave mode at power-up); CaribouLite instead pulls SS and SCK up 10k to 3.3 V",
+    "part": "generic",
+    "lcsc": "",
+    "between": [
+     "B18",
+     "GND"
+    ],
+    "source": "TN1248 p30 (13.1)"
+   },
+   {
+    "ref-role": "1.2 V regulator",
+    "value": "TPS7A2012PDQNR (same family as the board's TPS7A2018), 300 mA, 1 uF in/out [mem: cap values]",
+    "part": "TPS7A2012PDQNR",
+    "lcsc": "C880336",
+    "between": [
+     "+1V8 or +3V3",
+     "VCC"
+    ],
+    "source": "JLCPCB listing; regulator datasheet not read"
+   },
+   {
+    "ref-role": "2.5 V regulator (bank 3 + VPP_2V5)",
+    "value": "ME6211C25M5G-N or TLV75525PDRVR",
+    "part": "ME6211C25M5G-N",
+    "lcsc": "C194395",
+    "between": [
+     "+3V3",
+     "+2V5_SDR"
+    ],
+    "source": "JLCPCB listing; datasheet not read"
+   }
+  ],
+  "supplies": {
+   "VCC": "1.14-1.26 V; static 100 uA typ, peak start-up 6.4 mA (DS1040 p14, p16-18)",
+   "VCCIO0-3 / VCC_SPI": "1.71-3.46 V",
+   "VPP_2V5": "1.71-3.46 V (slave SPI config)",
+   "VCCPLL": "no pin and NO PLL in QN84 (DS1040 p3 note 1, p36)",
+   "sequencing": "none required for slave SPI config, ramp 0.01-10 V/ms (DS1040 p15)",
+   "LVDS inputs": "bank 3 only; LVDS25 needs VCCIO_3 = 2.5 V: VCM 0.95-1.55 V, differential threshold 250/350/450 mV; subLVDS needs VCCIO_3 = 1.8 V: VCM 0.65-1.15 V, threshold 100/150/200 mV (DS1040 p12, p20)",
+   "QN84 bank 3": "18 I/O, 7 differential input pairs (DS1040 p36)"
+  },
+  "logic": {
+   "LVCMOS33": "VIL 0.8 / VIH 2.0",
+   "LVCMOS25": "0.7 / 1.7",
+   "LVCMOS18": "0.35/0.65 VCCIO",
+   "source": "DS1040 p19",
+   "config": "SPI slave: CRESET_B low >= 200 ns with SPI_SS low and SCK high; release CRESET_B; wait >= 1200 us; SS high, 8 dummy clocks, SS low; send whole image MSB first without a gap (data changes on SCK falling, sampled on rising; 1-25 MHz); >= 100 clocks, CDONE high; then >= 49 more clocks; the 4 SPI pins become user I/O (TN1248 p30-34)"
+  },
+  "to_brain": [
+   "SDR_SCK, SDR_MOSI, SDR_MISO, SDR_CS_FPGA_N (1.8 V, VCC_SPI bank)",
+   "SDR_FPGA_DONE (1.8 V, 10k pull-up)",
+   "SDR_CLK, SDR_FRAME, SDR_VALID, SDR_D0-7 (3.3 V, bank 0 or 1)"
+  ],
+  "to_expander": [
+   "CRESET_B (open-drain, pull-up to 1.8 V)"
+  ]
+ },
+ "tcxo": {
+  "part": "KDS 1XXD26000MAA (DSB211SDN, 26 MHz TCXO)",
+  "lcsc": "C135223",
+  "stock": 15578,
+  "price": 0.5843,
+  "package": "2.0x1.6 mm 4-pad",
+  "height_mm": "0.7+/-0.1 (series sheet p2)",
+  "kicad_footprint": "Crystal:Crystal_SMD_2016-4Pin_2.0x1.6mm (pad pattern; check against series sheet p2)",
+  "kicad_symbol": "generic 4-pin oscillator",
+  "pins": [
+   {
+    "n": 1,
+    "name": "GND (Vcont on VC-TCXO)"
+   },
+   {
+    "n": 2,
+    "name": "GND"
+   },
+   {
+    "n": 3,
+    "name": "Output"
+   },
+   {
+    "n": 4,
+    "name": "Vcc"
+   }
+  ],
+  "supplies": "1.68-3.5 V, 1.5 mA max at 26 MHz; output clipped sine 0.8 Vpp min into 10k//10pF; start-up 2 ms (src/J_tcxo_kds.pdf p1-2)",
+  "alternatives": [
+   "Epson TG-5006CG-12H 26.0000M3, C1998253, stock 1401, $0.43, 2.5x2.0 (datasheet copy has no text layer: not read)",
+   "Abracon ATX-12-F-26.000MHZ-F05-T used by CaribouLite: C5590921 stock 2"
+  ]
+ },
+ "cariboulite": {
+  "licence": "schematic sheets and root README: CC BY-SA 4.0; hardware/README.md says CC BY 4.0 (inconsistent - treat as BY-SA)",
+  "url": "github.com/cariboulabs/cariboulite, hardware/rev2",
+  "rails": "VCC 1.2 V; VCCIO_0, VCCIO_1, VCCIO_2, VCC_SPI 3.3 V; VCCIO_3 2.5 V; AT86RF215 VDD 3.3 V through BLM15HD182SN1D",
+  "lvds": {
+   "RXD24 P/N": "B1/A2 + 100R",
+   "RXCLK N/P": "B2/A3 + 100R",
+   "RXD09 N/P": "B3/A4 + 100R",
+   "TXD": "B4/A5, 100R series each + 162R across, polarity swapped at the radio (fixed in logic)",
+   "TXCLK": "A10/B8, same network"
+  },
+  "radio settings": "IQIFC0: 4 mA drive, 1.2 V IEEE common mode, skew 4.906 ns (software/libcariboulite/src/cariboulite_setup.c:321-329)",
+  "config": "CRESET_B A21, CDONE B16, SDI A22, SDO B17, SCK A23, SS B18; 10k pull-ups to 3.3 V on SS, SCK, CRESET, CDONE; loaded by the Raspberry Pi as SPI slave",
+  "clock": "125 MHz oscillator on GBIN3 (A29); RXCLK is not on a global-clock pin",
+  "baluns": "2450FB15A050E with 1.8p/1.8p/5.6n/0.8p; 0896BM15E0025E with 15p; TCXO ATX-12-F-26.000MHz through 1n, XTAL2 102k to GND"
+ },
+ "second_source": [
+  {
+   "part": "ICE40HX1K-VQ100",
+   "lcsc": "C1519043",
+   "stock": 26,
+   "differs": "same family, same tools and loading; bank 3 LVDS25 inputs (9 pairs, DS1040 p3); no PLL; 100-pin TQFP 14x14 mm body; static current 296 uA"
+  },
+  {
+   "part": "ICE40UP5K-SG48I",
+   "lcsc": "C2678152",
+   "stock": 133,
+   "differs": "QFN-48 7x7 single row (standard footprint), 5280 LUT, one PLL, same SPI-slave loading; only 3 banks / 39 I/O; differential inputs are 'comparators' needing +/-250 mV at VCCIO 2.5 V (UltraPlus DS p26, p35), pair positions and 64 MHz DDR timing not verified"
+  },
+  {
+   "part": "GW1NZ-LV1QN48C6/I5",
+   "lcsc": "C5799569",
+   "stock": 637,
+   "differs": "only FPGA of this size with stock >= 300 at JLCPCB; flash-based, 1.2 V core, QFN-48 6x6 0.4 mm; DS841 p13-14, p26 describe true LVDS only for GW1NZ-2 (not stocked): LVDS input on GW1NZ-1 NOT confirmed; different toolchain and loading (JTAG/flash)"
+  }
+ ],
+ "notes": [
+  "No stocked FPGA with confirmed LVDS inputs at JLCPCB: iCE40LP1K-QN84 stock 0; all iCE40 parts < 300.",
+  "QN84 is a dual-row QFN; no KiCad footprint or symbol; Lattice package drawing not downloaded.",
+  "No PLL in QN84: logic must run from RXCLK (64 MHz, present only while the I/Q interface is on), the radio's CLKO (26 MHz on a 3.3 V global input) or an added oscillator.",
+  "TXCLK must equal RXCLK frequency; derive it from RXCLK (DS p22-24).",
+  "Antenna: both RF ports are 50 ohm differential, one balun and one connector per band on both reference boards; no sharing with another radio is described. RF input absolute maximum +10 dBm (DS p187)."
+ ],
+ "unverified": [
+  "DigiKey stock/price for AT86RF215-ZU, ICE40LP1K-QN84, 2450FB15A050E, 0896BM15E0025E (403).",
+  "iCE40 LVDS25 'differential input threshold' 250-450 mV vs AT86RF215 IEEE-mode swing (200 mV typ at 2 mA, table only given for 2 mA): CaribouLite runs 4 mA and works, margin not computed from data.",
+  "KDS 1XXD26000MAA: JLCPCB's sheet is the DSA/DSB-SDN series sheet; maximum output swing and the exact option code not shown; AT86RF215 wants 0.6-1.6 Vpp.",
+  "Datasheet says TCXO DC-coupled and XTAL2 grounded; both reference boards AC-couple through 1 nF and use 100k on XTAL2.",
+  "Polarity naming A/B of bank-3 pairs (A = true) from CaribouLite notes, not from a Lattice pin list.",
+  "Regulator datasheets (TPS7A2012, ME6211) not read in this session.",
+  "DLW21SN900SQ2L height and RF loss as balun: only Atmel's use is the evidence.",
+  "A JLCPCB-stocked 2.4 GHz 50:50 balun: none verified (TDK HHM1517 C5159438 is marked not for new designs; Cyntec TBL-1411-245-LR C218848 impedance not read)."
+ ]
+}

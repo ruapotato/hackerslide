@@ -1,0 +1,505 @@
+{
+ "block": "C",
+ "part": "ST25R3916B-AQWT (VFQFPN32 5x5, wettable flanks); alternative ST25R3916B-AQET (UFQFPN32 5x5x0.55)",
+ "lcsc": "C5267436 (AQWT); C17315217 (AQET)",
+ "stock": {
+  "C5267436": 1417,
+  "C17315217": 803
+ },
+ "price": {
+  "C5267436": 5.9375,
+  "C17315217": 5.4531
+ },
+ "package": "VFQFPN32 5x5 mm, 0.5 mm pitch, exposed pad 3.5x3.5 (DS p156); AQET = UFQFPN32, same land",
+ "height_mm": {
+  "AQWT": "0.9 typ / 1.0 max (DS p156)",
+  "AQET": "0.55 typ / 0.6 max (DS p159)"
+ },
+ "kicad_symbol": null,
+ "kicad_symbol_note": "none in /usr/share/kicad/symbols (RF_NFC has only ST25R3911B, different pinout): draw from pins[]",
+ "kicad_footprint": "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm (AQWT) / Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm (AQET); both exist",
+ "pins": [
+  {
+   "number": 1,
+   "name": "VDD_IO",
+   "dir": "power",
+   "connect": "I/O supply 1.65-5.5 V: +3V3 (bus I2C_U is 3.3 V); 10n + 2.2u"
+  },
+  {
+   "number": 2,
+   "name": "TAD1",
+   "dir": "analog out",
+   "connect": "test output: test point, leave open (X-NUCLEO-NFC08A1 labels it CSO and brings it to TP)"
+  },
+  {
+   "number": 3,
+   "name": "VDD_D",
+   "dir": "regulator out",
+   "connect": "2.2u + 10n to GND; also the level I2C_EN is tied to"
+  },
+  {
+   "number": 4,
+   "name": "XTO",
+   "dir": "analog out",
+   "connect": "27.12 MHz crystal"
+  },
+  {
+   "number": 5,
+   "name": "XTI",
+   "dir": "analog in",
+   "connect": "27.12 MHz crystal"
+  },
+  {
+   "number": 6,
+   "name": "GND_D",
+   "dir": "power",
+   "connect": "GND"
+  },
+  {
+   "number": 7,
+   "name": "VDD_A",
+   "dir": "regulator out",
+   "connect": "2.2u + 10n to GND"
+  },
+  {
+   "number": 8,
+   "name": "VDD",
+   "dir": "power",
+   "connect": "main supply 2.4/2.6-5.5 V (3.3 V mode max 3.6 V): +3V3; 2.2u + 10n"
+  },
+  {
+   "number": 9,
+   "name": "VDD_RF",
+   "dir": "regulator out",
+   "connect": "2.2u + 10n to GND; feeds VDD_DR (pin 14)"
+  },
+  {
+   "number": 10,
+   "name": "VDD_TX",
+   "dir": "power",
+   "connect": "transmitter supply, same supply as VDD (difference max 0.2 V): 2.2u + 10n"
+  },
+  {
+   "number": 11,
+   "name": "VDD_AM",
+   "dir": "regulator out",
+   "connect": "2.2u + 22n to GND (22n needed for wave shaping)"
+  },
+  {
+   "number": 12,
+   "name": "GND_DR1",
+   "dir": "power",
+   "connect": "GND"
+  },
+  {
+   "number": 13,
+   "name": "RFO1",
+   "dir": "analog out",
+   "connect": "antenna driver: EMC filter inductor L1"
+  },
+  {
+   "number": 14,
+   "name": "VDD_DR",
+   "dir": "power",
+   "connect": "connect to VDD_RF (pin 9)"
+  },
+  {
+   "number": 15,
+   "name": "RFO2",
+   "dir": "analog out",
+   "connect": "antenna driver: EMC filter inductor L2"
+  },
+  {
+   "number": 16,
+   "name": "GND_DR2",
+   "dir": "power",
+   "connect": "GND"
+  },
+  {
+   "number": 17,
+   "name": "EXT_LM",
+   "dir": "analog out",
+   "connect": "gate of optional external load-modulation MOSFET; test point if unused"
+  },
+  {
+   "number": 18,
+   "name": "AAT_A",
+   "dir": "analog out",
+   "connect": "tuning voltage for series varicaps (automatic antenna tuning); open if unused"
+  },
+  {
+   "number": 19,
+   "name": "AAT_B",
+   "dir": "analog out",
+   "connect": "tuning voltage for parallel varicaps; open if unused"
+  },
+  {
+   "number": 20,
+   "name": "I2C_EN",
+   "dir": "digital in",
+   "connect": "to VDD_D (pin 3) = I2C; to GND = SPI. Provide both 0R positions"
+  },
+  {
+   "number": 21,
+   "name": "VSS",
+   "dir": "power",
+   "connect": "GND"
+  },
+  {
+   "number": 22,
+   "name": "RFI1",
+   "dir": "analog in",
+   "connect": "receiver input from capacitive divider"
+  },
+  {
+   "number": 23,
+   "name": "RFI2",
+   "dir": "analog in",
+   "connect": "receiver input from capacitive divider"
+  },
+  {
+   "number": 24,
+   "name": "AGDC",
+   "dir": "analog io",
+   "connect": "1u + 10n to GND"
+  },
+  {
+   "number": 25,
+   "name": "TAD2",
+   "dir": "analog io",
+   "connect": "test output: test point, leave open"
+  },
+  {
+   "number": 26,
+   "name": "GND_A",
+   "dir": "power",
+   "connect": "GND"
+  },
+  {
+   "number": 27,
+   "name": "IRQ",
+   "dir": "digital out",
+   "connect": "interrupt, ACTIVE HIGH push-pull at VDD_IO level"
+  },
+  {
+   "number": 28,
+   "name": "MCU_CLK",
+   "dir": "digital out",
+   "connect": "clock output: leave open (switch off in IO configuration register)"
+  },
+  {
+   "number": 29,
+   "name": "BSS",
+   "dir": "digital in",
+   "connect": "SPI select (active low). In I2C mode keep HIGH (needed high for transparent mode, DS p60): pull-up to VDD_IO"
+  },
+  {
+   "number": 30,
+   "name": "SCLK",
+   "dir": "digital in",
+   "connect": "SPI clock / I2C SCL"
+  },
+  {
+   "number": 31,
+   "name": "MOSI",
+   "dir": "digital in",
+   "connect": "SPI data in; I2C mode: tie to a defined level (unverified which)"
+  },
+  {
+   "number": 32,
+   "name": "MISO",
+   "dir": "digital out, tri-state",
+   "connect": "SPI data out / I2C SDA"
+  },
+  {
+   "number": 33,
+   "name": "EP",
+   "dir": "power",
+   "connect": "GND, thermal pad"
+  }
+ ],
+ "circuit": [
+  {
+   "ref-role": "C on VDD_IO",
+   "value": "10n X7R || (2.2u optional)",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "VDD_IO(1)",
+    "GND"
+   ],
+   "source": "UM3007 p9 (C208)"
+  },
+  {
+   "ref-role": "C on VDD_D",
+   "value": "2.2u X5R 6.3V || 10n X7R",
+   "part": "GRM155R60J225ME15D / generic (CL05A225MQ5NSNC C12530)",
+   "lcsc": "C12530",
+   "between": [
+    "VDD_D(3)",
+    "GND"
+   ],
+   "source": "DS p38; UM3007 p9,p11 (C209,C210)"
+  },
+  {
+   "ref-role": "C on VDD_A",
+   "value": "2.2u || 10n",
+   "part": "generic",
+   "lcsc": "C12530",
+   "between": [
+    "VDD_A(7)",
+    "GND"
+   ],
+   "source": "DS p38; UM3007 p9 (C211,C212)"
+  },
+  {
+   "ref-role": "C on VDD/VDD_TX",
+   "value": "2.2u || 10n",
+   "part": "generic",
+   "lcsc": "C12530",
+   "between": [
+    "VDD(8)+VDD_TX(10)",
+    "GND"
+   ],
+   "source": "UM3007 p9 (C215,C216; C217/C218 not fitted)"
+  },
+  {
+   "ref-role": "C on VDD_RF/VDD_DR",
+   "value": "2.2u || 10n",
+   "part": "generic",
+   "lcsc": "C12530",
+   "between": [
+    "VDD_RF(9)=VDD_DR(14)",
+    "GND"
+   ],
+   "source": "DS p38; UM3007 p9 (C204,C205)"
+  },
+  {
+   "ref-role": "C on VDD_AM",
+   "value": "2.2u || 22n (plus optional 100p-2.2n)",
+   "part": "generic",
+   "lcsc": "C12530",
+   "between": [
+    "VDD_AM(11)",
+    "GND"
+   ],
+   "source": "DS p13,p39; UM3007 p9 (C202,C207)"
+  },
+  {
+   "ref-role": "C on AGDC",
+   "value": "1u || 10n",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "AGDC(24)",
+    "GND"
+   ],
+   "source": "DS p38; UM3007 p9 (C200,C201)"
+  },
+  {
+   "ref-role": "Crystal",
+   "value": "27.12 MHz, CL 10 pF, 2.0x1.6 mm",
+   "part": "NDK NX2016SA-27.12MHZ-EXS00A-CS06346",
+   "lcsc": "C3008209 (stock 9065, $0.40)",
+   "between": [
+    "XTI(5)",
+    "XTO(4)"
+   ],
+   "source": "UM3007 p12 item 29"
+  },
+  {
+   "ref-role": "Crystal load caps x2",
+   "value": "10 pF C0G 1%",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "XTI / XTO",
+    "GND"
+   ],
+   "source": "UM3007 p9,p11 (C213,C214)"
+  },
+  {
+   "ref-role": "I2C_EN strap",
+   "value": "0R to VDD_D (I2C) / 0R to GND (SPI); board default SPI",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "I2C_EN(20)",
+    "VDD_D(3) or GND"
+   ],
+   "source": "DS p51,p57; UM3007 p9 (R204 not fitted, R205 0R)"
+  },
+  {
+   "ref-role": "EMC filter inductors L300,L301",
+   "value": "270 nH 5%, 0.22-0.29 ohm, 650 mA, SRF 260 MHz",
+   "part": "TDK MLJ1608WR27JT000",
+   "lcsc": "C2041707 (stock 10537)",
+   "between": [
+    "RFO1(13) / RFO2(15)",
+    "filter node 1 / 2"
+   ],
+   "source": "UM3007 p10,p12 item 17"
+  },
+  {
+   "ref-role": "EMC filter capacitors C305,C308",
+   "value": "680 pF C0G 2% 50 V",
+   "part": "GRM1885C1H681GA01D (C464441 stock 508) or generic C0G",
+   "lcsc": "C464441",
+   "between": [
+    "filter node 1 / 2",
+    "GND"
+   ],
+   "source": "UM3007 p10,p11 item 9"
+  },
+  {
+   "ref-role": "Series matching capacitors C303,C310",
+   "value": "100 pF C0G 1% 50 V (each in parallel with a varicap C302/C311 driven by AAT_A)",
+   "part": "generic C0G",
+   "lcsc": "",
+   "between": [
+    "filter node 1 / 2",
+    "antenna node 1 / 2"
+   ],
+   "source": "UM3007 p10,p11 item 8"
+  },
+  {
+   "ref-role": "Parallel matching capacitors C306,C309",
+   "value": "56 pF C0G 1% 50 V",
+   "part": "generic C0G",
+   "lcsc": "",
+   "between": [
+    "antenna node 1 / 2",
+    "GND"
+   ],
+   "source": "UM3007 p10,p11 item 10"
+  },
+  {
+   "ref-role": "Parallel tuning branch C315,C316 + varicap C314",
+   "value": "47 pF + LXRW0YV600-054 (30-60 pF) + 47 pF, varicap control from AAT_B; C317 47 pF with C304/C307 varicaps not fitted",
+   "part": "Murata LXRW0YV600-054",
+   "lcsc": "C2988749 (stock 14273, $0.88)",
+   "between": [
+    "antenna node 1",
+    "antenna node 2"
+   ],
+   "source": "UM3007 p10,p11 items 7,11"
+  },
+  {
+   "ref-role": "Damping resistors R300,R302",
+   "value": "2.4 ohm 1% 0603",
+   "part": "KOA RK73H1JTTD2R40F / generic",
+   "lcsc": "",
+   "between": [
+    "antenna node 1 / 2",
+    "antenna coil ends ANT2 / ANT1"
+   ],
+   "source": "UM3007 p10,p12 item 24"
+  },
+  {
+   "ref-role": "RX divider C301/C300 and C312/C313",
+   "value": "10 pF C0G 1% (series) and 180 pF C0G 2% (to GND)",
+   "part": "generic C0G",
+   "lcsc": "",
+   "between": [
+    "antenna node -> RFI1(22) / RFI2(23)",
+    "RFI -> GND"
+   ],
+   "source": "UM3007 p10,p11 items 5,6; AN5276 p13 (max 3 Vpp at RFI)"
+  },
+  {
+   "ref-role": "Antenna centre tap",
+   "value": "0R",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "coil centre tap (ANT_NFC06 pin 3)",
+    "GND"
+   ],
+   "source": "UM3007 p10 (R304)"
+  },
+  {
+   "ref-role": "External load modulation (optional)",
+   "value": "NX3008NBK + BAV70W + 100R + 47k gate pull-down",
+   "part": "Nexperia NX3008NBK,215 (C179399); BAV70W (C28064)",
+   "lcsc": "C179399; C28064",
+   "between": [
+    "ANT1/ANT2 via BAV70W cathode -> 100R -> drain",
+    "source GND, gate EXT_LM(17)"
+   ],
+   "source": "UM3007 p10,p12 items 15,20,25,26; AN5276 p10"
+  },
+  {
+   "ref-role": "Antenna",
+   "value": "PCB loop 47 x 34 mm, four turns (these values belong to it)",
+   "part": "etched",
+   "lcsc": "",
+   "between": [
+    "ANT1",
+    "ANT2"
+   ],
+   "source": "UM3007 p2"
+  }
+ ],
+ "reference_designs": {
+  "X-NUCLEO-NFC08A1 (UM3007 rev 3)": "47x34 mm 4-turn PCB antenna: L 270 nH, Cemc 680 pF, Cser 100 pF, Cpar 56 pF, damping 2R4, RX divider 10 pF / 180 pF, AAT varicaps LXRW0YV600-054",
+  "STEVAL-25R3916B reader board (UM3033 rev 1 p21, p26)": "L 270 nH, 680 pF, 47 pF, 220 pF, 82 pF, 2R2, RX divider 10 pF / 120 pF, varicaps LXRW0YV201-059; values read from the text layer only - which position each value sits in was NOT traced; antenna geometry not stated in UM3033",
+  "Flipper Zero NFC (ST25R3916 non-B, schematic print dated 2022-08-03, published for educational purposes only, no licence)": "antenna 1.37 uH: L 270 nH, Cemc 680 pF, Cser 100 pF, Cpar 62 pF, RX divider 10 pF / 100 pF, damping 0R, no AAT; VDD/VDD_TX at 5 V, VDD_IO 3.3 V; crystal Murata XRCGB27M120F3M00R0 (C576558, stock 10191) with 6 pF",
+  "design tools": "AN5276 rev 6 (antenna design; EMC filter cutoff 8-17 MHz and not 13-14 MHz, p12-13); ST25R antenna matching tool STSW-ST25R004 (p1, p26-28); AN5322 (automatic antenna tuning, DS p30); AN5592 (single-ended matching; not downloaded)"
+ },
+ "supplies": {
+  "VDD,VDD_TX": "2.6-5.5 V (-40..105 C), 2.4-5.5 V (-20..105 C); with sup3V bit set max 3.6 V (DS p144). Default after power-up is 5 V mode: firmware must set sup3V for a 3.3 V supply (DS p38)",
+  "VDD_IO": "1.65-5.5 V (DS p144)",
+  "power_down": "0.8 uA typ / 2.5 max at 25 C, 2 uA typ / 20 max at 85 C (DS p146)",
+  "wake_up_mode": "3.0 uA typ (DS p146)",
+  "ready": "4.5 mA typ / 7.5 max",
+  "all_active_no_field_load": "16 mA typ / 23 max (driver segments off)",
+  "transmit": "antenna current is set by the matching; internal VDD_RF regulator limits at 350 mA rms (DS p39). Budget the 3.3 V rail for this",
+  "por": "1.45 V typ (DS p146)"
+ },
+ "logic": {
+  "VIH": "0.8 x VDD_IO",
+  "VIL": "0.2 x VDD_IO",
+  "VOH": "0.9 x VDD_IO",
+  "VOL": "0.1 x VDD_IO",
+  "source": "DS p145",
+  "can_run_1V8": "yes: VDD_IO down to 1.65 V; set io_drv_lvl=1 below 3.3 V and for all I2C (DS p73, p145, p151)",
+  "interface_select": "pin I2C_EN: GND = SPI, VDD_D = I2C (DS p51, p57)",
+  "spi": "mode 1 (CPOL 0, CPHA 1), MSB first, up to 10 Mbit/s (DS p1, p51)",
+  "i2c": "address 50h (DS p56; drawn as 7 address bits, so 0x50 7-bit - confirm on the bench); standard 100 kHz, fast 400 kHz, fast-plus 1 MHz, high-speed 3.4 MHz (DS p56, p151); bus load max 100 pF in the table on p151",
+  "irq": "ACTIVE HIGH CMOS output at VDD_IO (DS p51, p57)",
+  "reset": "no reset pin; power-on reset, then direct command Set default (C0h/C1h) (DS p60)"
+ },
+ "to_brain": [
+  "I2C_U_SCL -> SCLK(30)",
+  "I2C_U_SDA -> MISO(32)",
+  "IRQ(27): needs a real interrupt-capable pad (see conflicts)"
+ ],
+ "to_expander": [
+  "nothing required; a load switch on VDD/VDD_TX is optional because power-down is about 1-2 uA"
+ ],
+ "antenna": "Printed loop, differential drive RFO1/RFO2 through EMC filter + matching; not a 50 ohm port and not shareable with other radios. Keep clear of battery/copper (AN5276 p20).",
+ "notes": [
+  "Architecture doc says SPI; the pin plan puts NFC on I2C_U with touch, keyboard and codec. I2C mode is real and selected by I2C_EN to VDD_D. Every FIFO byte then crosses a shared 400 kHz bus (512-byte FIFO).",
+  "Pin plan has NO pad for the NFC interrupt. IRQ is active-high push-pull; the wake pads are 1.8 V open-drain active-low, so it cannot be wired to one directly (needs an N-MOSFET inverter with pull-up, or VDD_IO = 1.8 V plus inverter, or an expander input).",
+  "I2C address 50h is the usual address of small EEPROMs: none may share I2C_U.",
+  "Pins 2 and 25 are test outputs TAD1/TAD2 on the B part (the older ST25R3916 had CSO/CSI there, and ST board schematics still use those labels).",
+  "Planned antenna is about 40 x 30 mm; ST values above are for 47 x 34 mm 4 turns, so treat every matching value as a starting point and keep all positions (series, parallel, damping, RX divider) populated-by-choice.",
+  "AAT varicaps are optional; without them fit fixed capacitors only (as Flipper does)."
+ ],
+ "unverified": [
+  "I2C 7-bit vs 8-bit reading of \"50h\" (no explicit statement; figures show 7 bits) ",
+  "what to do with MOSI and BSS in I2C mode beyond \"BSS high for transparent mode\" (DS p60)",
+  "STEVAL-25R3916B value positions and antenna geometry",
+  "IRQ timing tolerance through an I2C port expander [mem: ST RFAL expects a GPIO interrupt]",
+  "other I2C_U addresses (FT6336U 0x38, TCA8418 0x34, ES8316 0x10/0x11) are from memory [mem]",
+  "AN5592, AN5322 not read"
+ ],
+ "sources": [
+  "src/C_st25r3916b.pdf (DS13541 rev 8, JLCPCB copy)",
+  "src/C_try/um3007.pdf",
+  "src/C_try/um3033.pdf",
+  "src/C_try/an5276.pdf",
+  "src/C_try/nfc08a1_sch.pdf",
+  "src/D_flipper/fz_nfc.pdf"
+ ]
+}

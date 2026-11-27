@@ -1,0 +1,382 @@
+{
+ "block": "A",
+ "read_on": "2026-11-26",
+ "part": "CC1101RGPR (Texas Instruments)",
+ "lcsc": "C29953",
+ "stock": 16943,
+ "price": "$1.9623 @1 (JLCPCB, read 2026-11-26)",
+ "package": "QFN-20 (TI RGP) 4x4 mm, 0.5 mm pitch, exposed pad 2.40 x 2.40 mm (p101-102)",
+ "height_mm": 1.0,
+ "kicad_symbol": null,
+ "kicad_symbol_note": "No CC1101 symbol in /usr/share/kicad/symbols (only RF:CC1000, RF:CC1200). Draw from pins[] below.",
+ "kicad_footprint": "Package_DFN_QFN:Texas_RGP0020H_VQFN-20-1EP_4x4mm_P0.5mm_EP2.4x2.4mm (exists; EP 2.4 mm matches p102). Pad 21 = EP.",
+ "pins": [
+  [
+   1,
+   "SCLK",
+   "in",
+   "RF_SCK (3.3 V SPI)"
+  ],
+  [
+   2,
+   "SO (GDO1)",
+   "out, 3-state while CSn high (p61)",
+   "RF_MISO"
+  ],
+  [
+   3,
+   "GDO2",
+   "out",
+   "optional; default CHIP_RDYn. Not in pin plan: leave on test point or use as band-switch control as Flipper firmware does"
+  ],
+  [
+   4,
+   "DVDD",
+   "power",
+   "+3V3 (1.8-3.6 V), 100 nF"
+  ],
+  [
+   5,
+   "DCOUPL",
+   "power out 1.6-2.0 V",
+   "100 nF to GND only (C51), nothing else"
+  ],
+  [
+   6,
+   "GDO0 (ATEST)",
+   "in/out",
+   "CC1101_GDO0: async RX data OUT and async TX data IN; default CLK_XOSC/192 output at reset (p62)"
+  ],
+  [
+   7,
+   "CSn",
+   "in",
+   "RF_CS_CC1101_N"
+  ],
+  [
+   8,
+   "XOSC_Q1",
+   "analog",
+   "26 MHz crystal + load cap (or external clock in)"
+  ],
+  [
+   9,
+   "AVDD",
+   "power",
+   "+3V3 via bead, decoupled"
+  ],
+  [
+   10,
+   "XOSC_Q2",
+   "analog",
+   "crystal + load cap"
+  ],
+  [
+   11,
+   "AVDD",
+   "power",
+   "+3V3"
+  ],
+  [
+   12,
+   "RF_P",
+   "RF",
+   "balun"
+  ],
+  [
+   13,
+   "RF_N",
+   "RF",
+   "balun"
+  ],
+  [
+   14,
+   "AVDD",
+   "power",
+   "+3V3"
+  ],
+  [
+   15,
+   "AVDD",
+   "power",
+   "+3V3"
+  ],
+  [
+   16,
+   "GND",
+   "gnd",
+   "GND"
+  ],
+  [
+   17,
+   "RBIAS",
+   "analog",
+   "56 k 1% to GND"
+  ],
+  [
+   18,
+   "DGUARD",
+   "power",
+   "+3V3, decoupled"
+  ],
+  [
+   19,
+   "GND",
+   "gnd",
+   "GND"
+  ],
+  [
+   20,
+   "SI",
+   "in",
+   "RF_MOSI"
+  ],
+  [
+   21,
+   "EP",
+   "gnd",
+   "GND, 5 tented vias (p26)"
+  ]
+ ],
+ "circuit": [
+  {
+   "ref-role": "R171 bias",
+   "value": "56k 1% 0402",
+   "part": "generic (KOA RK73 in TI BOM)",
+   "lcsc": "",
+   "between": [
+    "17",
+    "GND"
+   ],
+   "source": "CC1101 datasheet SWRS061I (src/A_cc1101.pdf) p22,p26 Table 21"
+  },
+  {
+   "ref-role": "C51 DCOUPL",
+   "value": "100 nF 10% X5R 0402",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "5",
+    "GND"
+   ],
+   "source": "CC1101 datasheet SWRS061I (src/A_cc1101.pdf) p26"
+  },
+  {
+   "ref-role": "XTAL",
+   "value": "26.000 MHz, CL 10 pF, 3225, ESR<=100 ohm, total tolerance <=+-40 ppm (p18)",
+   "part": "NDK NX3225GA-26MHZ-EXS00A-CG01972 (TI names NX3225GA p26)",
+   "lcsc": "C485372 (7595); alt YXC X322526MMB4SI C15192 (32100, 10 pF, +-10 ppm)",
+   "between": [
+    "8",
+    "10"
+   ],
+   "source": "CC1101 datasheet SWRS061I (src/A_cc1101.pdf) p18,p26"
+  },
+  {
+   "ref-role": "C81, C101 crystal load",
+   "value": "datasheet lists 27 pF 5% NP0 each (p26); CC1101EM 434 rev 2.0.0 fits 12 pF + 15 pF. For a CL=10 pF crystal: C = 2*(CL-2.5 pF) = 15 pF each (formula p23)",
+   "part": "generic NP0",
+   "lcsc": "",
+   "between": [
+    "8-GND",
+    "10-GND"
+   ],
+   "source": "CC1101 datasheet SWRS061I (src/A_cc1101.pdf) p23,p26; src/A_ti/swrr046 schematic"
+  },
+  {
+   "ref-role": "decoupling 315/433 EM (CC1101EM 434MHz rev 2.0.0)",
+   "value": "C41 100 nF pin4; C181 220 pF pin18; C91 10 nF pin9; C111 220 pF pin11 (TI's 315 MHz BOM text says 10 nF); C141 10 nF pin14; C151 220 pF pin15; L1 bead 1k@100MHz 0402 + C1 1 uF 0805 at supply entry",
+   "part": "generic; bead Murata BLM15HG102SN1D",
+   "lcsc": "C76889 (230457)",
+   "between": [
+    "each pin",
+    "GND"
+   ],
+   "source": "src/A_ti/swrr046/CC1101EM_434MHz_SCHEMATIC_2_0_0.pdf (image, read from render)"
+  },
+  {
+   "ref-role": "decoupling 868/915 EM (CC1101EM 868_915MHz rev 3.0.0)",
+   "value": "100 nF X5R on each of pins 4,5,9,11,14,15,18; bead 1k@100MHz + 1 uF",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "each pin",
+    "GND"
+   ],
+   "source": "src/A_ti/swrr045 schematic (image)"
+  },
+  {
+   "ref-role": "RF network, TI CC1101EM 315/433 MHz (Fig. 10, Table 21) -- topology: C131 RF_N-GND; L131 RF_N to node X; C121 RF_P to node X; L121 RF_P to C124, C124 to GND; node X - L122 - node Y (C122 to GND) - L123 - node Z (C123 to GND) - C125 - 50 ohm",
+   "value": {
+    "315": {
+     "C121": "6.8p +-0.5p",
+     "C131": "6.8p +-0.5p",
+     "C122": "12p 5%",
+     "C123": "6.8p +-0.5p",
+     "C124": "220p 5%",
+     "C125": "220p 5%",
+     "L121": "33n 5%",
+     "L131": "33n 5%",
+     "L122": "18n 5%",
+     "L123": "33n 5%"
+    },
+    "433": {
+     "C121": "3.9p +-0.25p",
+     "C131": "3.9p +-0.25p",
+     "C122": "8.2p +-0.5p",
+     "C123": "5.6p +-0.5p",
+     "C124": "220p 5%",
+     "C125": "220p 5%",
+     "L121": "27n 5%",
+     "L131": "27n 5%",
+     "L122": "22n 5%",
+     "L123": "27n 5%"
+    }
+   },
+   "part": "caps Murata GRM1555C NP0 0402; inductors Murata LQG15HS (multilayer) 0402",
+   "lcsc": "LQG15HS27NJ02D C12669 (56206); LQG15HS33NJ02D C86062 (93673); LQG15HS22NJ02D C12670 (112545); LQG15HS18NJ02D C86060 (91820)",
+   "between": [
+    "12/13",
+    "ANT 50 ohm"
+   ],
+   "source": "CC1101 datasheet SWRS061I (src/A_cc1101.pdf) p25 Fig.10, p26 Table 21; reference design 'CC1101EM 315/433 MHz' (TI SWRR046)"
+  },
+  {
+   "ref-role": "RF network, TI CC1101EM 868/915 MHz (Fig. 11, Table 21) -- topology: L131 RF_N to node N; L121 RF_P to node P; C121 between node N and node P; C131 node N to GND; L122 node P to C124, C124 to GND; L132 node N to node X; C122 node P to node X; node X - L123 - node Y (C123 to GND) - L124 - C125 - 50 ohm; optional C126 in series with L125, that pair in parallel with C125",
+   "value": {
+    "868/915": {
+     "C121": "1.0p +-0.25p",
+     "C131": "1.5p +-0.25p",
+     "C122": "1.5p +-0.25p",
+     "C123": "3.3p +-0.25p",
+     "C124": "100p 5%",
+     "C125": "12p 5%",
+     "C126": "47p 5% (optional)",
+     "L121": "12n 5%",
+     "L131": "12n 5%",
+     "L122": "18n 5%",
+     "L132": "18n 5%",
+     "L123": "12n 5%",
+     "L124": "12n 5%",
+     "L125": "3.3n 5% (optional)"
+    }
+   },
+   "part": "inductors Murata LQW15A (wire-wound) 0402; caps Murata GRM1555C NP0",
+   "lcsc": "12 nH: LQW15AN12NG00D C86128 (34792) [the J-tolerance LQW15AN12NJ00D C82920 has stock 6]; 18 nH: LQW15AN18NJ00D C82917 (14016); 3.3 nH: LQW15AN3N3C10D C3223325 (56772)",
+   "between": [
+    "12/13",
+    "ANT 50 ohm"
+   ],
+   "source": "CC1101 datasheet SWRS061I (src/A_cc1101.pdf) p25 Fig.11, p26 Table 21; DN017 SWRA168 (src/A_ti/swra168.pdf); reference design 'CC1101EM 868/915 MHz' (TI SWRR045)",
+   "check": "topology read from the rendered figure src/A_cc1101_p25-025.png and cross-checked on src/A_ti/em868-1.png"
+  },
+  {
+   "ref-role": "multi-band option (open hardware, Kiisu V4b): DC blocks",
+   "value": "100 pF, one in series with RF_N (pin 13) and one with RF_P (pin 12)",
+   "part": "generic NP0",
+   "lcsc": "",
+   "between": [
+    "13 / 12",
+    "balun balanced pins 3 / 4"
+   ],
+   "source": "src/A_kiisu/kiisu_v4b_sch.pdf p3 (CERN-OHL-S-2.0)"
+  },
+  {
+   "ref-role": "multi-band option: wide-band balun U304",
+   "value": "'50 ohm:50 ohm Balun', 4 pins: 3,4 balanced, 1 unbalanced, 2 GND. Maker part number NOT printed in the Kiisu schematic",
+   "part": "candidate with the same pinout class: TDK ATB2012-50011-T000 (0805, 40-860 MHz per JLCPCB text) -- NOT verified against a datasheet",
+   "lcsc": "C92015 (1792); ATB2012-50011M (50-1200 MHz) C6862333 stock 235 (<300)",
+   "between": [
+    "CC1101 side",
+    "single-ended 50 ohm"
+   ],
+   "source": "src/A_kiisu p3; JLCPCB listing text"
+  },
+  {
+   "ref-role": "multi-band option: band-filter bank between two SP3T switches (U302, U303; pins RFC 4, RF1 3, RF2 5, RF3 2, A 1, B 8, VDD 7, GND 6/9)",
+   "value": "three parallel filter paths; all DNP and without values in Kiisu V4b (antenna fed straight through 100 pF C315). Control: A of both = RF_SW_1 (CC1101 GDO2), B of both = RF_SW_0 (MCU pin)",
+   "part": "SP3T candidates in stock: Infineon BGS13SN8E6327 (0.1-6 GHz, 1.65-3.4 V), Skyworks SKY13317-373LF (20 MHz-6 GHz, 1.8-5 V)",
+   "lcsc": "C3312946 (703); C129190 (2386)",
+   "between": [
+    "balun unbalanced",
+    "antenna"
+   ],
+   "source": "src/A_kiisu p3; Flipper firmware furi_hal_subghz.c (GPL-3.0) lines 339-394 for the control truth table"
+  },
+  {
+   "ref-role": "GDO0 to brain (1.8 V pad)",
+   "value": "RX direction only: divider 10k (series) / 12k (to GND) gives 1.8 V from 3.3 V. For async TX the brain must drive GDO0 to >= VDD-0.7 = 2.6 V: use a direction-controlled translator instead",
+   "part": "SN74LVC1T45DCKR (or SN74AXC1T45DCKR)",
+   "lcsc": "C9382 (21344); C2677392 (3198)",
+   "between": [
+    "6",
+    "EMC_B2_19"
+   ],
+   "source": "levels: CC1101 datasheet SWRS061I (src/A_cc1101.pdf) p20 Table 17; divider values are my arithmetic"
+  },
+  {
+   "ref-role": "antenna connector",
+   "value": "U.FL, 50 ohm",
+   "part": "Hirose U.FL-R-SMT-1(80)",
+   "lcsc": "C88374 (243692)",
+   "between": [
+    "RF common",
+    "antenna"
+   ],
+   "source": "JLCPCB listing; KiCad Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical"
+  }
+ ],
+ "supplies": {
+  "range": "1.8-3.6 V, all supply pins at the same voltage (p8)",
+  "sleep": "0.2 uA typ / 1 uA max (SLEEP, GDO pins at 0x2F); 0.5 uA with WOR; XOFF 165 uA; IDLE 1.7 mA (p9)",
+  "rx": "about 14-17 mA (p9-10)",
+  "tx": "315 MHz +10 dBm 27.4 mA; 433 MHz +10 dBm 29.2 mA; 868 MHz +12 dBm 34.2 mA; 915 MHz +11 dBm 33.4 mA (p9-10)",
+  "power_on": "ramp 0 to 1.8 V in <= 5 ms, off time >= 1 ms, else issue SRES (p20 Table 18)"
+ },
+ "logic": {
+  "VIL": "0.7 V max",
+  "VIH": "VDD-0.7 V min",
+  "VOL": "0.5 V max @4 mA",
+  "VOH": "VDD-0.3 min @4 mA",
+  "abs_max_digital": "VDD+0.3 V, max 3.9 V (p8)",
+  "can_io_run_at_1V8": "only if the whole chip is supplied at 1.8 V; there is no separate I/O supply. With VDD=3.3 V a 1.8 V driver does not reach VIH (2.6 V)",
+  "spi": "4-wire, data clocked on the positive edge of SCLK, MSB first (p30-31) = mode 0 [mode number from mem]; fSCLK max 10 MHz, 9 MHz single access without the 100 ns delay, 6.5 MHz burst (p30 Table 22)",
+  "reset": "no reset pin; power-on reset or SRES strobe; wait for SO (CHIP_RDYn) low after CSn low (p31, p51)",
+  "defaults": "GDO0 = CLK_XOSC/192 output, GDO1/SO = 3-state, GDO2 = CHIP_RDYn (p61-62)",
+  "rf_abs_max": "input RF level +10 dBm; RF_P/RF_N max 2.0 V (p8)"
+ },
+ "to_brain": [
+  "SCLK, SI, SO, CSn (RF_SCK/RF_MOSI/RF_MISO/RF_CS_CC1101_N)",
+  "GDO0 (CC1101_GDO0, timer capture/compare, through level translation)"
+ ],
+ "to_expander": [
+  "band-switch control B (and A if GDO2 is not used for it)",
+  "shared-antenna switch control lines",
+  "direction pin of the GDO0 translator",
+  "optionally GDO2 as a slow status input"
+ ],
+ "antenna": {
+  "type": "external 50 ohm antenna on a coax connector (TI EM uses SMA; matched to 50 ohm, p24 7.7)",
+  "sharing": "not described by TI. Kiisu/Flipper use a dedicated sub-GHz antenna. If the connector is shared with LR1121 (+22 dBm class) and the SDR, the switch must keep the level at CC1101 below +10 dBm abs max (p8)"
+ },
+ "notes": [
+  "TI gives no multi-band network: its two reference designs are band-specific (315/433 on one PCB with different values, 868/915 on another). Differential load to present: 116+j41 ohm at 315/433, 86.5+j43 ohm at 868/915 (p16).",
+  "Open multi-band reference found: Kiisu V4b (github.com/kiisu-io/kiisu4, CERN-OHL-S-2.0, PDF schematics only). It has the Flipper-style two-SP3T bank drawn but unpopulated and feeds the antenna from a wide-band 1:1 balun with 100 pF DC blocks. No harmonic filtering in that build: transmit harmonics are not addressed by the source.",
+  "CERN-OHL-S is strongly reciprocal: copying that schematic sheet obliges the same licence on the derived design files. Check against the project's licence decision.",
+  "Flipper Zero schematics are published 'for educational purposes only' (docs.flipper.net/zero/development/hardware/schematic) -- not an open licence -- and the sub-GHz PDF could not be downloaded (links are expired signed URLs). Flipper firmware (GPL-3.0) confirms three paths: 299.999755-348.000335, 386.999938-464, 778.999847-928 MHz, selected by one MCU pin plus CC1101 GDO2 (IOCFG2 = HW low, optionally inverted): 433 -> sw0=0, GDO2 high; 315 -> sw0=1, GDO2 low; 868 -> sw0=1, GDO2 high; isolate -> sw0=0, GDO2 low.",
+  "27 MHz crystal is recommended by TI above 869 MHz for EN 300 220 bandwidth compliance (p23); 26 MHz is what the brief asks for.",
+  "External clock instead of a crystal is allowed on XOSC_Q1 (full-swing 0-VDD digital, or sine <= 1 Vpp through a series capacitor), XOSC_Q2 open (p23-24)."
+ ],
+ "pin_plan_conflicts": [
+  "CC1101_GDO0 sits on a 1.8 V pad (EMC_B2_19) 'through a divider'. A divider works for receive only. In asynchronous transmit GDO0 is the data INPUT and needs >= VDD-0.7 = 2.6 V with the chip on 3.3 V: a 1.8 V pad cannot drive it. Needs a direction-controlled translator (SN74LVC1T45) or a 3.3 V pad, or split: RX data out on GDO2 (divider) and TX data in on GDO0 (1.8->3.3 V buffer).",
+  "No pin is planned for GDO2 and none for the band-switch / antenna-switch controls: 2-4 expander lines needed."
+ ],
+ "unverified": [
+  "Wide-band balun part number and its fit to CC1101's differential impedance (Kiisu does not name the part; ATB2012-50011 is my candidate from the JLCPCB listing, datasheet not read).",
+  "Filter values for a switched three-band bank: none read from any source.",
+  "Flipper Zero's own RF schematic values: not read.",
+  "SPI 'mode 0' naming [mem]; edges are from the datasheet.",
+  "C111 value in the 315/433 EM: schematic render shows 220 pF, TI's 315 MHz BOM text lists 10 nF.",
+  "Height 1.0 mm is the package maximum (p101)."
+ ]
+}

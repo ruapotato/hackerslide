@@ -1,0 +1,335 @@
+{
+ "block": "F",
+ "read_on": "2026-11-26",
+ "part": "Si24R1 (Nanjing Zhongke Microelectronics / CSM), order code 'Si24R1' tape and reel (p34)",
+ "lcsc": "C14436",
+ "stock": 7987,
+ "price": "$0.8691 @1",
+ "package": "QFN-20 4x4 mm, 0.5 mm pitch, exposed pad 2.65 x 2.65 mm nominal (p29)",
+ "height_mm": 0.8,
+ "kicad_symbol": "RF:nRF24L01P (extends RF:NRF24L01). Pin numbers match the Si24R1 table on p7: 1 CE, 2 CSN, 3 SCK, 4 MOSI, 5 MISO, 6 IRQ, 7/15/18 VDD(VCC), 8/14/17/20 VSS, 9 XC2 = XO, 10 XC1 = XI, 11 VDD_PA, 12 ANT1 = RFP, 13 ANT2 = RFN, 16 IREF, 19 DVDD = VDD_D. The symbol has NO exposed-pad pin.",
+ "kicad_footprint": "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm (exists; EP 2.6 vs 2.65 nominal). Its pad 21 (EP) has no symbol pin: add a GND pin 21 or tie the pad in the generator.",
+ "pins": [
+  [
+   1,
+   "CE",
+   "in",
+   "chip enable: RX/TX activate"
+  ],
+  [
+   2,
+   "CSN",
+   "in",
+   "RF_CS_NRF_N"
+  ],
+  [
+   3,
+   "SCK",
+   "in",
+   "RF_SCK"
+  ],
+  [
+   4,
+   "MOSI",
+   "in",
+   "RF_MOSI"
+  ],
+  [
+   5,
+   "MISO",
+   "out",
+   "RF_MISO"
+  ],
+  [
+   6,
+   "IRQ",
+   "out, active low",
+   "interrupt (maskable)"
+  ],
+  [
+   7,
+   "VCC",
+   "power",
+   "+3V3 (1.9-3.6 V)"
+  ],
+  [
+   8,
+   "VSS",
+   "gnd",
+   "GND"
+  ],
+  [
+   9,
+   "XO",
+   "analog out",
+   "crystal"
+  ],
+  [
+   10,
+   "XI",
+   "analog in",
+   "crystal"
+  ],
+  [
+   11,
+   "VDD_PA",
+   "power out 1.8 V",
+   "PA supply output: feeds L3, decoupled by C6||C7"
+  ],
+  [
+   12,
+   "RFP",
+   "RF",
+   "antenna port 1"
+  ],
+  [
+   13,
+   "RFN",
+   "RF",
+   "antenna port 2"
+  ],
+  [
+   14,
+   "VSS",
+   "gnd",
+   "GND"
+  ],
+  [
+   15,
+   "VCC",
+   "power",
+   "+3V3"
+  ],
+  [
+   16,
+   "IREF",
+   "analog",
+   "22 k 1% to GND"
+  ],
+  [
+   17,
+   "VSS",
+   "gnd",
+   "GND"
+  ],
+  [
+   18,
+   "VCC",
+   "power",
+   "+3V3"
+  ],
+  [
+   19,
+   "VDD_D",
+   "power out",
+   "33 nF to GND only"
+  ],
+  [
+   20,
+   "VSS",
+   "gnd",
+   "GND"
+  ],
+  [
+   "EP",
+   "die pad",
+   "gnd",
+   "GND"
+  ]
+ ],
+ "circuit": [
+  {
+   "ref-role": "C1 supply",
+   "value": "figure says 10 nF, BOM table says '100uF' X7R 0402 (table entry is not credible for 0402; footnote recommends 100 uF only for coin-cell supplies)",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "VCC",
+    "GND"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30-31"
+  },
+  {
+   "ref-role": "C2 supply",
+   "value": "1 nF X7R 10%",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "VCC",
+    "GND"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "C3",
+   "value": "33 nF X7R 10%",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "19",
+    "GND"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "R1",
+   "value": "22 k 1%",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "16",
+    "GND"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "Y1",
+   "value": "16 MHz, +-60 ppm, CL 12 pF, ESR <= 100 ohm (p27, p30)",
+   "part": "YXC X322516MOB4SI (3225, 12 pF, +-10 ppm)",
+   "lcsc": "C12668 (97920)",
+   "between": [
+    "9",
+    "10"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p27,p30"
+  },
+  {
+   "ref-role": "C4, C5 crystal load",
+   "value": "12-22 pF NP0 2% each (p30). For CL 12 pF about 18 pF each [my arithmetic, assuming ~3 pF stray]",
+   "part": "generic NP0",
+   "lcsc": "",
+   "between": [
+    "9-GND",
+    "10-GND"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "L1",
+   "value": "8.2 nH 5% 0402 chip inductor",
+   "part": "Murata LQG15HS8N2J02D",
+   "lcsc": "C98003 (120908)",
+   "between": [
+    "12",
+    "13"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30 Fig. 9-1"
+  },
+  {
+   "ref-role": "L3",
+   "value": "2.7 nH 5% 0402",
+   "part": "Murata LQG15HS2N7S02D (+-0.3 nH)",
+   "lcsc": "C77108 (5636)",
+   "between": [
+    "12",
+    "11 (VDD_PA node)"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "C6, C7",
+   "value": "2.2 nF X7R 10% and 4.7 pF NP0 +-0.25 pF",
+   "part": "generic",
+   "lcsc": "",
+   "between": [
+    "11",
+    "GND"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "L2",
+   "value": "3.9 nH 5% 0402",
+   "part": "Murata LQG15HS3N9S02D (+-0.3 nH)",
+   "lcsc": "C77109 (13066)",
+   "between": [
+    "13",
+    "node A"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "C8",
+   "value": "1.5 pF NP0 +-0.1 pF, series",
+   "part": "generic NP0",
+   "lcsc": "",
+   "between": [
+    "node A",
+    "ANT (50 ohm)"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "C9",
+   "value": "1.0 pF NP0 +-0.1 pF, shunt",
+   "part": "generic NP0",
+   "lcsc": "",
+   "between": [
+    "ANT",
+    "GND"
+   ],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "R2",
+   "value": "not mounted (not shown in the figure)",
+   "part": "",
+   "lcsc": "",
+   "between": [],
+   "source": "Si24R1 datasheet Rev 1.2 2024/04/03 (src/F_si24r1.pdf) p30"
+  },
+  {
+   "ref-role": "antenna",
+   "value": "2.4 GHz, 50 ohm",
+   "part": "PCB inverted-F: KiCad RF_Antenna:Texas_SWRA117D_2.4GHz_Left/Right (no part); or chip antenna Walsin RFANT3216120A5T (1206) / Rainsun AN9520-245",
+   "lcsc": "C127629 (5814) / C99665 (56075)",
+   "between": [
+    "ANT",
+    "-"
+   ],
+   "source": "KiCad library; JLCPCB listings (antenna datasheets not read)"
+  }
+ ],
+ "supplies": {
+  "range": "1.9-3.6 V (p26)",
+  "shutdown": "1 uA",
+  "standby": "15 uA",
+  "idle_tx": "380 uA",
+  "rx": "15 mA @2 Mbps, 14.5 mA @1 Mbps, 14 mA @250 kbps",
+  "tx": "25 mA @+7 dBm, 16 mA @+4 dBm, 12 mA @0 dBm (p26-27)",
+  "power_on": "100 ms power-on delay after VDD >= 1.9 V (p8); crystal start 1.5-2 ms (p9)"
+ },
+ "logic": {
+  "levels": "VIH/VIL are NOT given in the datasheet; input voltage abs max 5.25 V (p26). Run at 3.3 V with the 3.3 V radio SPI",
+  "can_io_run_at_1V8": "not specified (supply minimum is 1.9 V, single supply) -> no",
+  "spi": "4-wire, max 10 MHz (p19 Fsck), MSBit first per byte (p17); nRF24L01+ compatible = mode 0 [mem]",
+  "reset": "no reset pin; CE low at power-up keeps it in standby/shutdown",
+  "note": "when the MCU is not driving, CE/CSN/SCK/MOSI must be held at a defined level; MISO and IRQ float (p31)"
+ },
+ "to_brain": [
+  "SCK, MOSI, MISO, CSN (RF_SCK/RF_MOSI/RF_MISO/RF_CS_NRF_N)"
+ ],
+ "to_expander": [
+  "CE (needs >= 10 us high pulse to transmit, p9; expander latency only delays the start)",
+  "IRQ (expander input with interrupt, or leave unconnected and poll STATUS)"
+ ],
+ "antenna": {
+  "type": "single-ended 50 ohm after the L1/L2/L3/C8/C9 network; datasheet layout uses a PCB antenna with no copper under it (p31)",
+  "sharing": "not described"
+ },
+ "notes": [
+  "Bare chip is the better-stocked route: 7,987 chips at $0.87 versus modules SI24R1-Z (Silicontra, 12x12 mm, C5456962, 1,559, $1.60), SI24R1-ZTX (18x12 mm with PCB antenna, C42381996, 833), DL-Si24R1-A (C2894788, 404). Genuine NRF24L01P-R is C8791 (10,057, $5.03) and fits the same footprint and network class.",
+  "The matching network is the nRF24L01+ topology with the datasheet's own values."
+ ],
+ "pin_plan_conflicts": [
+  "Only RF_CS_NRF_N is planned. CE and IRQ need two expander lines (or brain pins)."
+ ],
+ "unverified": [
+  "VIH/VIL (absent from datasheet)",
+  "SPI mode number [mem]",
+  "C1 value discrepancy (10 nF in figure vs 100 uF in table): use 100 nF + 10 nF + 1 nF [my choice]",
+  "module SI24R1-Z datasheet (src/F_si24r1_z_module.pdf) is image-only Chinese: pinout not read",
+  "antenna part datasheets not read",
+  "crystal load capacitor value is arithmetic"
+ ]
+}
