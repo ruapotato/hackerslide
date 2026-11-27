@@ -207,3 +207,38 @@ falls from 2-3 weeks to about 1 week on 1,000 mAh; LTE-M in power-saving mode co
 a personal prototype with a certified module generally works on T-Mobile; AT&T and Verizon are stricter about
 unknown devices, and voice over LTE depends on the carrier enabling it. Selling one would need FCC and carrier
 approval.
+
+## 10. A Linux phone with a real display (David, 2026-11-26, first look)
+
+Calls, texts and 4G data through the Quectel EG25-G (proven on mainline Linux in the PinePhone; JLCPCB stock thin,
+DigiKey to check). Two levels:
+
+| | Linux "feature phone" | Linux smartphone |
+|---|---|---|
+| Brain | i.MX 6ULL module (512 MB, no GPU) | i.MX 8M Mini (1-2 GB, GPU) |
+| Display | 3.5-4" LCD on the parallel RGB port, capacitive touch | 5-6" phone LCD over MIPI DSI, capacitive touch |
+| Software | a light phone interface (calls, texts, music, terminal, simple apps) | Phosh or Plasma Mobile (they want 2 GB or more; 1 GB is tight) |
+| Board | simple main board under a solder-down module | 0.5 mm-pitch BGA, about 8 layers, or a module on board-to-board connectors (thicker) |
+| Thickness (estimate) | about 9 mm | about 9-10 mm (the PinePhone, a similar design, is about 9.2 mm: from memory) |
+| Battery life (rough) | standby about 2-3 weeks on 2,500 mAh; screen on about 10 h | standby similar if suspend works; screen on about 5-8 h |
+
+Thinness comes from the layout real phones use: the board beside the battery, not under it, with the display on
+top of both. Stack: display with touch and cover glass about 2.0 mm, battery about 4.0 mm, back about 0.8 mm,
+frame and adhesive about 0.5 mm; a printed case adds about 1-1.5 mm.
+
+**Certification (general information, not legal advice; to confirm with a test lab before anything is sold):**
+- A certified module carries its own FCC ID and covers its radio only under its grant conditions (antenna type
+  and gain, distance from the body, no other transmitters active alongside it).
+- Cellular modules are normally granted for "mobile" use, 20 cm or more from people. A phone held to the head is
+  "portable", so the **whole device** needs RF-exposure (SAR) testing, plus an evaluation of the modem, Wi-Fi and
+  Bluetooth transmitting together. That makes a phone a whole-device certification, through a permissive change
+  on the module's grant or a new FCC ID.
+- The device maker is always responsible for the rest: unintentional emissions (Part 15 Subpart B), labelling
+  ("Contains FCC ID ..."), and for a handset sold in the US also rules such as hearing-aid compatibility and 911.
+- Carriers have their own approvals (PTCRB for AT&T and T-Mobile, Verizon's own programme). Uncertified devices
+  can be refused on the network, voice over LTE most of all.
+- A handful of units built for development and not sold or marketed is the usual hobby situation; selling even a
+  few requires the full set above. Costs of SAR, FCC and carrier testing are typically tens of thousands of
+  dollars (rough, from memory).
+- In the EU the maker likewise assesses the whole device under the Radio Equipment Directive, using the module's
+  reports as input.
