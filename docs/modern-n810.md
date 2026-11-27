@@ -291,3 +291,30 @@ David likes this one. What it takes, as far as checked:
   call, even at a 25 % transmit duty cycle (about 31 mW), is over the threshold at ear distance. So a handset sold
   for use at the head would need SAR testing or a lower transmit power near the head (as phones do with a
   proximity sensor) or headset-only calls. For a personal build this does not change anything (Part 15.23).
+
+## 12. Designing so it can be sold without expensive certification (David, 2026-11-26)
+
+Requirement: prototype a device that could later be sold, without paying for a new FCC certification. The cheap
+path (general information, not legal advice; to confirm with a test lab):
+
+1. **Every transmitter is a pre-certified module**, used exactly within its grant: the approved antenna types and
+   gains, the stated use (mobile, 20 cm or more, or portable), its co-location conditions. Then the host needs no
+   FCC filing for the radios.
+2. **The host needs only Part 15 Subpart B** (unintentional emissions) through a Supplier's Declaration of
+   Conformity: lab testing, no FCC grant. Rough cost: a few thousand dollars, versus tens of thousands for SAR, a
+   new FCC ID or carrier approval.
+3. **No cellular modem in a handset**, and no radio used closer to the body than its grant allows. A module granted
+   only for mobile use in a handheld triggers a permissive change or a new FCC ID; so prefer modules whose grants
+   allow portable use, or low-power radios below the RF-exposure exemption at the designed distance.
+4. **No simultaneous transmission** across radios unless the grants allow it (firmware takes turns), or one combo
+   module covering several radios.
+5. **Design for low emissions from the start:** solid ground planes, filtered and short cables, the memory and
+   processor on a module, a pre-compliance scan before the paid test.
+6. **Batteries:** buy packs already tested to UN 38.3 (needed to ship them), with safety documentation (IEC 62133)
+   for retailers.
+7. **Labelling:** FCC rules allow the label to be shown on the device's own screen (electronic labelling) for
+   devices with a display: to confirm.
+
+What it means for the concepts so far: the cellular phone is out for selling; the pocket player, watch and a
+HaLow/SIP handset are fine **if** their radio modules' grants allow handheld use, which is being checked grant by
+grant (HaLow modules at 21-24 dBm are the doubtful ones for use at the ear).
