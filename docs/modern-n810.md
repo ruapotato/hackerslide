@@ -73,6 +73,31 @@ possible. 256 MB is too little for a modern Firefox or Chromium; a light browser
   e-paper + i.MX 6ULL (512 MB, longest battery, easier board) or LCD + i.MX 8M Mini (GPU, 1 GB, about 2.3 mm
   thicker, roughly 8-13 hours of use by Claude's arithmetic, harder board, about $200-400 more per prototype).
 
+## 2c. Fewer layers: a solder-down module, and other low-power displays (2026-11-26, first look)
+
+**Modules.** Stamp-hole ("castellated") modules carry the processor, memory and storage on their own small board
+and solder flat onto a simple 2-4 layer main board, which then needs no BGA or memory routing. Seen so far, prices
+and stock still to confirm at the distributors:
+
+| Module | Chip | Notes |
+|---|---|---|
+| MYIR MYC-Y6ULX | i.MX 6UL/6ULL | 140-pin stamp-hole edge; was "from $18" at launch (old article); one variant listed at Mouser $31.25 |
+| Forlinx FETMX6ULL-S | i.MX 6ULL | 44 x 35 mm stamp-hole module; price not found |
+| Luckfox Core1106 | Rockchip RV1106 (memory inside the chip) | stamp-hole; $27-49 at Waveshare/Luckfox; Rockchip's own kernel rather than mainline |
+
+In the hack pad model the strip beside the battery has 6.8 mm of height, so a module of about 3-3.5 mm would sit
+there without making the device thicker. The JLCPCB parts library stocks none of these modules.
+
+**Displays other than e-paper.**
+
+| Display | Size, pixels | Why consider it | Against |
+|---|---|---|---|
+| Good Display e-paper (current choice) | 4.26", 800 x 480 | the N810's resolution, touch, front light, 1.98 mm | 0.42 s partial updates |
+| Sharp memory LCD LS032B7DD02 | 3.2", 336 x 536 | microwatts when still, fast enough for scrolling and games, reflective; a Linux driver for this family was submitted to the kernel in 2024 | smaller and much lower resolution; no light of its own; DigiKey about $38, stock figures conflict |
+| Sharp memory LCD LS044Q7DH01 | 4.4", 320 x 240 | N810-like size | coarse (0.28 mm pixels); JLCPCB 122 at $61 |
+| Sharp memory LCD LS027B7DH01A | 2.7", 400 x 240 | the screen of the Beepy keyboard handheld (from memory) | small; DigiKey about $29, stock unclear |
+| Monochrome LCD like the Flipper Zero's (ST7565-class, 128 x 64) | about 1.4" | very low power | far too small for this device |
+
 ## 3. What the board would carry
 
 | Block | Plan | Status |
