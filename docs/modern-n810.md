@@ -348,3 +348,26 @@ with just a Part 15B declaration. Adding Wi-Fi, HaLow or LoRa to a handheld mean
 module maker, a fee to be asked about (David's call: Claude does not contact vendors). A device without a built-in
 earpiece (headphones or speaker only) may fall outside the hearing-aid definition of "handset": to confirm with a
 test lab before relying on it.
+
+## 13. A WiBrain-style UMPC: screen in the middle, a thumb keyboard on each side (David, 2026-11-27)
+
+Concept model `mechanical/src/umpc.py`, render script `mechanical/render/umpc_scene.py` (stills in
+`~/Videos/hackerslide/concepts/`). Layout as asked: screen on top; under it the carrier board with the module and
+the two batteries side by side in one layer.
+
+| | |
+|---|---|
+| Size | **207 x 79 x 11.5 mm** (model; no collisions). Width comes from a 5" screen plus two 5 x 4 thumb keyboards |
+| Brain | LuckFox Core3566 module (Rockchip RK3566, 4 x Cortex-A55, Mali GPU, 2 GB), the module of the Linux handheld, hanging under the carrier on its two sockets; SoC lid to an aluminium plate in the back through a 1.1 mm pad |
+| Screen | 5" 1024 x 600-class LCD with touch (outline estimated at 118 x 70 x 3.0 mm with cover glass; panel not chosen) |
+| Batteries | two flat cells, about 34 x 62 x 5 mm each, under the keyboard halves (estimated 1,500-1,800 mAh each; cells not chosen; better as one factory-made parallel pack with one protection board) |
+| Keyboard | 2 x 20 thumb keys (Q-T, A-G, Z-B and modifiers left; Y-P, H-L, N-. and modifiers right), a mini joystick above the right half for the pointer, two shoulder buttons as mouse buttons; TCA8418 scanner as before |
+| Ports | USB-C, headphone jack, microSD; speakers and microphone |
+| Centre stack | back 1.2, pad 1.1, module 3.6, carrier 1.0, carrier parts and gap 1.2, LCD with touch 3.0, frame 0.4 |
+| Side stack | back 1.2, cell 5.0, gap 0.3, keyboard board 0.8, switch and keycap 2.6 |
+| Battery life (rough) | 3,000-3,600 mAh at 2-3 W under load: about 4-5 h; light use about 8-10 h |
+| Cost (rough) | close to the Linux handheld: first prototype about $800-1,200, whole effort $2,000-3,000. Most of its carrier schematic (power, module sockets, display, audio, card) is done and checked on branch `linux-handheld` |
+
+Open: the module's own Wi-Fi has no known FCC modular approval for handheld use (see section 12): selling it needs a
+portable-cleared radio instead or a filing. Screen and cells to choose. With an i.MX 6ULL stamp module instead, the
+same shape gets about 1.5-2 mm thinner and much cooler, but slower and without a GPU.
