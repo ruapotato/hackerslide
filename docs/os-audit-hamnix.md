@@ -103,3 +103,14 @@ model, the others against register models written from the reference manual; the
 constant and every pin setting are checked by script. The checks found and fixed two kernel bugs that would have
 stopped the board. Fits the Teensy's 1 MB of RAM for one shell and four-program pipelines; a second shell needs
 PSRAM. Bring-up checklist: `docs/boards/teensy41.md` in the hackos repo. Every hardware-facing part is untested.
+
+## First real-board target: Adafruit Feather nRF52840 Express (2026-11-27, not run on hardware)
+
+David decided HackOS becomes a multi-board microcontroller OS, starting on a board he owns. Pushed to
+`ruapotato/hackos`: `make BOARD=feather-nrf52840` gives a `.uf2` for drag-and-drop flashing (double-tap reset,
+drive FTHR840BOOT; the image starts after Adafruit's bootloader and Nordic's SoftDevice, which stay untouched).
+Console on the TX/RX pins at 115200 through a 3.3 V USB-serial adapter; red LED blinks once running. The unchanged
+image boots and runs a 52-command shell session in Renode's nRF52840 emulator (37 checks pass). Programs run in
+place from flash so the shell plus five-program pipelines fit in 256 KB of RAM, with smaller shell limits. No
+compiler change was needed; double-precision floats use LLVM's software routines (BSD/Apache compiler-rt).
+Guide: `docs/boards/feather-nrf52840.md` in the hackos repo; porting notes for RP2040/RP2350: `docs/porting.md`.
