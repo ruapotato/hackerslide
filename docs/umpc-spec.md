@@ -123,3 +123,8 @@ Search report: `docs/research/lipo-cells-2026-11-27.md` (DigiKey stock and datas
   cell sets the thickness; ends less rounded, radius 11 mm).
 - Rough life with the Core3566 (light use about 1.5-2 W): about 7-10 h; under load about 4-5 h. To be redone with
   the module chosen for 8 GB.
+
+## Priorities for the brain (David, 2026-11-27)
+
+Performance and battery life come before memory: 8 GB is ideal, 4 GB is acceptable. The battery (two Adafruit
+#2011 cells) is settled. Module comparison in progress (RK3576 modules, an 8 GB RK3566 module, Raspberry Pi CM4/CM5).
