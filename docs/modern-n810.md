@@ -140,3 +140,22 @@ the hack pad (`docs/hack-pad-cost.md`).
 6. Expect two board rounds; the memory layout is the part most likely to need a second.
 
 HackOS stays a project for the Teensy and the hack pad branch.
+
+## 7. Smaller still: a pocket player without a keyboard (David, 2026-11-26, first look)
+
+Same processor (i.MX 6ULL, module or chip), e-paper, no GPU, keyboard possibly dropped; the goal is the smallest,
+most power-efficient pocket device that is also a good MP3 and audiobook player.
+
+| | Pocket, 3.7" | Mini, 2.9" | N810 |
+|---|---|---|---|
+| Panel | Good Display GDEY037T03-FT21: 416 x 240, touch, front light (outline of the touch version 93.0 x 53.0 x 1.48 mm; reseller $17.91) | GDEY029T94-T01: 296 x 128, touch, no light (79.0 x 36.7 x 1.58 mm; reseller $10.20) | 4.13", 800 x 480 |
+| Size (Claude's estimate) | about 100 x 60 x 9.5 mm | about 86 x 45 x 9 mm | 128 x 72 x 14 mm |
+| Volume | about 45 % of the N810 | about 27 % | |
+| Battery that fits | about 1,000 mAh (50 x 50 x 4 mm class) | about 600 mAh | |
+| Controls | touch plus side buttons: power, play/pause, previous/next, volume | same | keyboard, D-pad |
+
+Stack (estimate): back 1.0, battery 4.3 with the module beside it under the main board, main board 0.8, connectors
+0.3, panel about 2.0, front 0.6 = about 9-9.5 mm. Audio: the ES8316 codec and the 3-pole jack from the hack pad,
+plus Bluetooth headphones through a Wi-Fi/Bluetooth module. Rough playback estimate with a wired headset: about
+0.1 W in total, so over a day of listening on 1,000 mAh; standby weeks. Panel stock, the module's size, a battery in
+stock and the playback power all still to confirm. Rough cost: first prototype about $300-500 delivered.
