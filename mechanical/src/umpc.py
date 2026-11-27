@@ -31,7 +31,12 @@ CARRIER_T = 1.0
 KEY = dict(pitch_x=7.0, pitch_y=7.0, cap_w=6.3, cap_h=6.2, cols=5, rows=4)
 SWITCH_H, NUB, FLANGE, CAP_TOP = 0.6, 0.3, 0.5, 1.2           # as the keyboards of the earlier designs
 KBD_PCB_T = 0.8
-CELL = dict(w=32.0, h=52.0, t=5.0, inset=7.0)                # [est] one flat cell per side, about 1,100-1,300 mAh each
+CELL = dict(w=34.0, h=62.0, t=5.0, inset=6.0)                # one 503562-size cell per side (5.0 x 34 x 62 mm, about
+                                                             # 1,200 mAh, e.g. Adafruit #258 / PKCELL LP503562: TO VERIFY)
+CONTROLS = 'ball'                                            # 'ball': trackball + slide thumbstick; 'fallback': D-pad + touchpad
+TRACKBALL = dict(w=25.0, h=22.0, t=9.5, ball=8.0, protrude=1.0)   # Pimoroni PIM447 breakout: 25 x 22 x 9.5 mm (retailer
+                                                             # data); ball size and how far it stands out: ESTIMATES
+SLIDEPAD = dict(base=19.0, t=4.0, cap=15.0, cap_t=1.6)       # SparkFun COM-09426, PSP-1000-style slide stick: ALL ESTIMATES
 BACK, WALL, FRONT = 1.2, 1.6, 0.8                            # [est] printed back; front frame over the screen border
 THERMAL_MIN = 0.5                                            # [est] thinnest pad from the SoC lid to an aluminium plate in the back
 GAP = 0.3
@@ -46,13 +51,17 @@ END_R = 14.0                                                 # rounded grips at 
 Z_CARRIER = BACK + max(THERMAL_MIN + MODULE['soc_top'], MODULE['mated'] + 0.2)
 THERMAL = Z_CARRIER - MODULE['soc_top'] - BACK
 Z_CARRIER_TOP = Z_CARRIER + CARRIER_T
-Z_PANEL = Z_CARRIER_TOP + 0.9 + GAP                          # 0.9 [est]: tallest part on the carrier's screen side
-Z_FRONT = Z_PANEL + PANEL['t']                               # the front frame sits on the panel border
-Z_TOP = Z_FRONT + FRONT * 0.5
+KEYSTACK = KBD_PCB_T + SWITCH_H + NUB + FLANGE + CAP_TOP
 Z_CELL = BACK
-Z_KBD = max(Z_CELL + CELL['t'] + GAP, Z_TOP - (KBD_PCB_T + SWITCH_H + NUB + FLANGE + CAP_TOP))
-Z_KEYTOP = Z_KBD + KBD_PCB_T + SWITCH_H + NUB + FLANGE + CAP_TOP
-T = max(Z_TOP, Z_KEYTOP)
+T_CENTRE = Z_CARRIER_TOP + 0.9 + GAP + PANEL['t'] + FRONT * 0.5    # 0.9 [est]: tallest part on the carrier's screen side
+T_SIDE = Z_CELL + CELL['t'] + GAP + KEYSTACK
+T_BALL = Z_CELL + CELL['t'] + GAP + TRACKBALL['t'] - TRACKBALL['protrude'] if CONTROLS == 'ball' else 0
+T = max(T_CENTRE, T_SIDE, T_BALL)                            # everything is then raised to one top surface
+Z_TOP = T
+Z_FRONT = T - FRONT * 0.5                                    # the front frame sits on the panel border
+Z_PANEL = Z_FRONT - PANEL['t']
+Z_KBD = T - KEYSTACK
+Z_KEYTOP = T
 CX, CY = W / 2, H / 2
 
 
@@ -79,6 +88,45 @@ LEGENDS = {'L': [['Esc', '1', '2', '3', '4'], ['Q', 'W', 'E', 'R', 'T'], ['A', '
            'R': [['5', '6', '7', '8', 'Del'], ['Y', 'U', 'I', 'O', 'P'], ['H', 'J', 'K', 'L', 'Ent'], ['B', 'N', 'M', 'Spc', 'Fn']]}
 
 
+
+
+def controls(front):
+    """Bottom-left and bottom-right controls; returns the front frame with its openings, the control solids, and the
+    holes they need through the keyboard board."""
+    zone_top = H - WALL - 3.5 - KEY['rows'] * KEY['pitch_y'] - 2.0
+    dx, dy = WALL + 3.0 + KEY['cols'] * KEY['pitch_x'] / 2, (WALL + zone_top) / 2
+    tx, ty = W - WALL - 3.0 - KEY['cols'] * KEY['pitch_x'] / 2, dy
+    if CONTROLS == 'ball':
+        # left: PSP-style slide stick standing on the keyboard board, its cap moving in a round opening
+        s = SLIDEPAD
+        z0 = Z_FRONT - 0.1 - s['t']                         # body just under the frame, through a hole in the keyboard board
+        body = rbox(dx - s['base'] / 2, dy - s['base'] / 2, z0, dx + s['base'] / 2, dy + s['base'] / 2, z0 + s['t'], 1.5)
+        hole_l = rbox(dx - s['base'] / 2 - 0.3, dy - s['base'] / 2 - 0.3, Z_KBD - 1, dx + s['base'] / 2 + 0.3, dy + s['base'] / 2 + 0.3, Z_KBD + KBD_PCB_T + 1, 1.5)
+        cap = cq.Workplane('XY').circle(s['cap'] / 2).extrude(s['cap_t']).translate((dx, dy, T - 0.2)).edges('>Z').fillet(0.6)
+        stem = cq.Workplane('XY').circle(3.0).extrude(T - 0.2 - (z0 + s['t'])).translate((dx, dy, z0 + s['t']))
+        front = front.cut(cq.Workplane('XY').circle(s['cap'] / 2 + 2.5).extrude(3).translate((dx, dy, Z_FRONT - 1)))
+        # right: trackball module hanging through the keyboard board, ball standing out of the frame
+        b = TRACKBALL
+        zt = T + b['protrude']
+        mod = rbox(tx - b['w'] / 2, ty - b['h'] / 2, zt - b['t'], tx + b['w'] / 2, ty + b['h'] / 2, zt - b['ball'], 1.0)
+        ball = cq.Workplane('XY').sphere(b['ball'] / 2).translate((tx, ty, zt - b['ball'] / 2))
+        front = front.cut(cq.Workplane('XY').circle(b['ball'] / 2 + 0.6).extrude(3).translate((tx, ty, Z_FRONT - 1)))
+        hole = rbox(tx - b['w'] / 2 - 0.3, ty - b['h'] / 2 - 0.3, Z_KBD - 1, tx + b['w'] / 2 + 0.3, ty + b['h'] / 2 + 0.3, Z_KBD + KBD_PCB_T + 1, 1.0)
+        return front, body.union(stem).union(cap).union(mod).union(ball), [hole, hole_l]
+    # fallback: a 5-way D-pad (cross cap over five switches) and a touchpad drawn as copper under a 0.5 mm overlay
+    # bottom left: a 5-way D-pad (cross cap over five switches on the keyboard board); bottom right: a touchpad drawn
+    # as copper on the keyboard board under a 0.5 mm overlay, read by an Azoteq trackpad controller (stock to check)
+    cross = rbox(dx - 9.5, dy - 3.2, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, dx + 9.5, dy + 3.2, Z_KEYTOP, 1.0).union(
+        rbox(dx - 3.2, dy - 9.5, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, dx + 3.2, dy + 9.5, Z_KEYTOP, 1.0))
+    front = front.cut(cq.Workplane('XY').circle(11.0).extrude(3).translate((dx, dy, Z_FRONT - 1)))
+    tw, th = KEY['cols'] * KEY['pitch_x'] - 2.0, (zone_top - WALL) - 5.0
+    pad = rbox(tx - tw / 2, ty - th / 2, T - 0.6, tx + tw / 2, ty + th / 2, T - 0.3, 2.0)
+    front = front.cut(rbox(tx - tw / 2 - 0.2, ty - th / 2 - 0.2, Z_FRONT - 1, tx + tw / 2 + 0.2, ty + th / 2 + 0.2, T + 1, 2.2))
+    well = cq.Workplane('XY').circle(10.8).extrude(0.3).translate((dx, dy, Z_KBD + KBD_PCB_T))   # dark disc under the cross
+    stick = cross.union(pad).union(well)
+    return front, stick, []
+
+
 def parts():
     shell = outline(0, Z_FRONT).cut(outline(BACK, T, WALL))
     px0, py0 = CX - PANEL['w'] / 2, CY - PANEL['h'] / 2
@@ -91,23 +139,13 @@ def parts():
         cap = rbox(x - w / 2, y - KEY['cap_h'] / 2, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, x + w / 2, y + KEY['cap_h'] / 2, Z_KEYTOP, 1.2)
         caps = cap if caps is None else caps.union(cap)
         front = front.cut(rbox(x - w / 2 - 0.3, y - KEY['cap_h'] / 2 - 0.3, T - FRONT - 1, x + w / 2 + 0.3, y + KEY['cap_h'] / 2 + 0.3, T + 1, 1.4))
-    # bottom left: a 5-way D-pad (cross cap over five switches on the keyboard board); bottom right: a touchpad drawn
-    # as copper on the keyboard board under a 0.5 mm overlay, read by an Azoteq trackpad controller (stock to check)
-    zone_top = H - WALL - 3.5 - KEY['rows'] * KEY['pitch_y'] - 2.0
-    dx, dy = WALL + 3.0 + KEY['cols'] * KEY['pitch_x'] / 2, (WALL + zone_top) / 2
-    cross = rbox(dx - 9.5, dy - 3.2, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, dx + 9.5, dy + 3.2, Z_KEYTOP, 1.0).union(
-        rbox(dx - 3.2, dy - 9.5, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, dx + 3.2, dy + 9.5, Z_KEYTOP, 1.0))
-    front = front.cut(cq.Workplane('XY').circle(11.0).extrude(3).translate((dx, dy, Z_FRONT - 1)))
-    tx, ty = W - WALL - 3.0 - KEY['cols'] * KEY['pitch_x'] / 2, dy
-    tw, th = KEY['cols'] * KEY['pitch_x'] - 2.0, (zone_top - WALL) - 5.0
-    pad = rbox(tx - tw / 2, ty - th / 2, T - 0.6, tx + tw / 2, ty + th / 2, T - 0.3, 2.0)
-    front = front.cut(rbox(tx - tw / 2 - 0.2, ty - th / 2 - 0.2, Z_FRONT - 1, tx + tw / 2 + 0.2, ty + th / 2 + 0.2, T + 1, 2.2))
-    well = cq.Workplane('XY').circle(10.8).extrude(0.3).translate((dx, dy, Z_KBD + KBD_PCB_T))   # dark disc under the cross
-    stick = cross.union(pad).union(well)
+    front, stick, holes = controls(front)
     kbd = None
     for x0 in (WALL + 1.0, W - WALL - 1.0 - (HALF_W - 1.0)):
         b = rbox(x0, WALL + 2, Z_KBD, x0 + HALF_W - 1.0, H - WALL - 2, Z_KBD + KBD_PCB_T, END_R - WALL - 1.0)
         kbd = b if kbd is None else kbd.union(b)
+    for hole in holes:
+        kbd = kbd.cut(hole)
     cells = None
     for x0 in (WALL + CELL['inset'], W - WALL - CELL['inset'] - CELL['w']):
         b = rbox(x0, CY - CELL['h'] / 2, Z_CELL, x0 + CELL['w'], CY + CELL['h'] / 2, Z_CELL + CELL['t'], 2.0)

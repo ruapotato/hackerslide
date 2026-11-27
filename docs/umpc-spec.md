@@ -1,0 +1,74 @@
+# HackerSlide UMPC: specification draft (2026-11-27)
+
+**Status: concept, nothing ordered or drawn as a schematic.** A WiBrain B1-style handheld PC: a landscape screen in
+the middle, thumb keys at the top of each side, an analogue thumbstick at the bottom left and a trackball at the
+bottom right. Model: `mechanical/src/umpc.py` (`CONTROLS = 'ball'` or `'fallback'`); renders:
+`mechanical/render/umpc_scene.py`, stills in `~/Videos/hackerslide/concepts/umpc7_*`. Aim (David): good performance
+and good battery life; WiBrain-sized or smaller; normal colour screen; the module's built-in Wi-Fi.
+
+## Summary
+
+| | |
+|---|---|
+| Size | **160.0 x 72.0 x 15.0 mm** (the trackball sets the thickness; 12.7 mm with the fallback D-pad and touchpad). WiBrain B1: 192 x 82 x 28 mm; Nokia N810: 128 x 72 x 14 mm |
+| Brain | LuckFox Core3566 module with Wi-Fi and Bluetooth (Rockchip RK3566: 4 x Cortex-A55 at 1.8 GHz, Mali-G52 GPU, video decode). 4 GB version recommended ($102.99 with Wi-Fi at LuckFox when read on 2026-11-26; 2 GB $83.99) |
+| Storage | microSD (the eMMC versions of the module were out of stock) |
+| Screen | 3.5" 640 x 480 (4:3) IPS with capacitive touch: BuyDisplay ER-TFT035-7 (RGB/SPI, outline 76.84 x 63.84 x 3.2 mm before touch, $20.87) or Newhaven NHD-3.5-640480EF-MSXP-CTP (MIPI DSI, touch, DigiKey) |
+| Keys | 20 per side: left Esc 1-4, Q-T, A-G, Shift Z-V; right 5-8 Del, Y-P, H-L Enter, B N M Space Fn; two shoulder buttons |
+| Pointer | Pimoroni PIM447 trackball breakout (phone-style trackball with click and RGBW light, I2C; 25 x 22 x 9.5 mm) bottom right |
+| Thumbstick | SparkFun COM-09426, PSP-1000-style analogue slide stick (two potentiometers), bottom left |
+| Battery | two 5.0 x 34 x 62 mm (503562-size) cells, about 1,200 mAh each, 2,400 mAh / 8.9 Wh in total (cell part to choose; e.g. Adafruit #258: verify) |
+| Audio | ES8316 codec, headphone jack, two small speakers, microphone (from the Linux handheld) |
+| Power | USB-C, BQ25895 charger, MAX17048 gauge, battery limiter, 5 V boost for the module (from the Linux handheld) |
+| Cooling | SoC lid to an aluminium plate in the back through a 1.1 mm pad; no fan |
+
+## Inputs: how they reach the processor
+
+Proposed: a small microcontroller on each keyboard board, or one shared (an RP2040, in deep JLCPCB stock), scans the
+keys, reads the thumbstick's two potentiometers, talks to the trackball's I2C controller and presents all of it to
+the module as one USB keyboard + mouse + gamepad. Linux then needs no driver of ours, and the firmware is small.
+The alternative is the TCA8418 keyboard scanner of the earlier designs plus an I2C analogue converter for the stick
+and a small Linux driver for the trackball.
+
+## Stack (from the model)
+
+| Centre, bottom to top | mm | Sides, bottom to top | mm |
+|---|---|---|---|
+| Back | 1.2 | Back | 1.2 |
+| Thermal pad | 1.1 | Cell | 5.0 |
+| Module (SoC lid to carrier) | 3.6 | Gap | 0.3 |
+| Carrier board | 1.0 | Trackball module below the frame (standing 1.0 mm out) | 8.5 |
+| Parts and gap | 1.2 | | |
+| Raised to the common top: screen with touch, frame | 4.2 + 0.4 | | |
+| **Total** | **15.0** | | **15.0** |
+
+## Performance and battery (rough estimates, not measured)
+
+- RK3566 under load about 2-3 W with the screen; light use (terminal, music, reading) about 1.5-2 W.
+- On 8.9 Wh: about 4.5-6 h of light use, about 3 h under load.
+- More battery: the 15 mm body leaves room for cells about 8-9 mm thick everywhere except under the trackball. A
+  custom-size pack (one factory-made 2-cell pack shaped around the trackball) could reach roughly 4,000 mAh and
+  7-10 h. That needs a pack maker; off-the-shelf cells come in fixed sizes.
+- Faster but hungrier: a Rockchip RK3576 module would fit the same carrier design (as planned for the Linux
+  handheld) at higher power.
+
+## Fallback controls
+
+If the trackball or the slide stick disappoints: a 5-way D-pad (cross cap over five switches) and a touchpad drawn
+as copper on the keyboard board with an Azoteq controller. Device 12.7 mm thick.
+
+## Open items
+
+- Real cells (exact part, stock, protection board, mating plug).
+- Trackball and slide stick: exact heights, cap size and travel from datasheets or a sample; long-term supply
+  (both are maker-shop parts; the trackball is a recovered phone design).
+- Screen: touch thickness, interface (MIPI DSI preferred), driver timing.
+- Whether the Core3566 suspends reliably (battery in standby).
+- Carrier: reuse of the Linux handheld's checked schematic (branch `linux-handheld`) in the new outline.
+- FCC: deferred by David (2026-11-27); the module's own Wi-Fi is used.
+
+## Cost (rough)
+
+Close to the Linux handheld: parts per unit about $230-290 (module $84-103, screen $21-40, two cells, trackball
+about $15-20, stick about $4-7, boards and small parts); first prototype about $850-1,250 delivered; whole effort
+about $2,000-3,000.
