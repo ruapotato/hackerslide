@@ -128,3 +128,24 @@ Search report: `docs/research/lipo-cells-2026-11-27.md` (DigiKey stock and datas
 
 Performance and battery life come before memory: 8 GB is ideal, 4 GB is acceptable. The battery (two Adafruit
 #2011 cells) is settled. Module comparison in progress (RK3576 modules, an 8 GB RK3566 module, Raspberry Pi CM4/CM5).
+
+## Brain: module comparison (2026-11-27)
+
+Full report: `docs/research/cm4-format-modules-2026-11-27.md`. Ranked by David's priorities (performance and
+battery first, 8 GB ideal, 4 GB acceptable):
+
+1. **Radxa CM4 (Rockchip RK3576: 4 x A72 2.2 GHz + 4 x A53, Mali-G52), 4 or 8 GB with Wi-Fi 6.** Fastest of the
+   CM4-format options that sleep at all; same chip measured at about 1.4 W idle and 4.2 W load on ArmSoM's board.
+   Fits the existing carrier design without changes (its pin column is already one of the strap options). About
+   $115 for 8 GB at launch. **Stock not verified**: Radxa's partner stores blocked automated reading; AliExpress is
+   a marketplace. Linux: Radxa's vendor kernel; no mainline device tree yet; suspend to RAM reported working on
+   vendor firmware and broken on mainline (secondary sources). Wi-Fi is a Quectel FCU760K on the module's USB.
+2. **LuckFox Core3566 (current), 4 GB.** Slower cores (A55), already designed in, mainline support for the RK3566 is
+   good; idle power not measured anywhere we found.
+3. **Raspberry Pi CM4108000, 8 GB.** In stock (DigiKey 631, $160), best documented, mainline. But slowest of the
+   8 GB options, 2.0 W idle and about 7 W flat out, and no suspend (full power-off and cold boot instead); needs
+   carrier changes (power button off pin 99, backlight PWM, audio clock, taller SoC).
+4. Raspberry Pi CM5 (fastest, 8/16 GB): out of stock at DigiKey and PiShop.
+
+Rough battery life on 14.8 Wh with the RK3576 module and the 3.5" screen: light use about 1.8-2 W, so about
+7-8 h; under load about 4.5-5 W, about 3 h; depends on suspend working.
