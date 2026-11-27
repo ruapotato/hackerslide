@@ -106,3 +106,20 @@ $9.62) is the first choice, since the dished surface feels more like a ball; **T
 space under the right keys. Interface I2C or SPI to the input microcontroller, which adds the momentum; the haptic
 tick comes from a DRV2605L driver and an LRA motor (both JLCPCB stock). Brain stays the Core3566, 4 GB version, for
 performance (David: "keep the power").
+
+## Battery chosen (2026-11-27): two Adafruit #2011 cells
+
+Search report: `docs/research/lipo-cells-2026-11-27.md` (DigiKey stock and datasheets read 2026-11-27).
+
+- **Adafruit #2011**, 2000 mAh, 7.4 Wh each (cell: PKCELL LP803860, protection board, JST-PH plug, UN 38.3 report),
+  DigiKey 3,704 in stock at $12.50, Active. One under each keyboard half, in parallel: **14.8 Wh**, the most of
+  any off-the-shelf option found. Rated 2 A continuous each; at the 1.5 A peak each carries about 0.75 A.
+- Size not settled between sources (Adafruit 60 x 36 x 7; a test sample 60 x 37 x 7.4; maker's drawing maximum
+  62 x 38.5 x 8.5 mm): the bays are sized to the maximum.
+- No thermistor in the cells: one on the board against each cell.
+- Runner-up with better paperwork: Jauch LP503759JU (1350 mAh, 62 x 38 x 5.8 mm, DigiKey 1,304): 10 Wh per pair,
+  thinner device.
+- Model with these cells: **166.0 x 72.0 x 14.4 mm** (wider halves for the 38.5 mm cells; the slide stick over the
+  cell sets the thickness; ends less rounded, radius 11 mm).
+- Rough life with the Core3566 (light use about 1.5-2 W): about 7-10 h; under load about 4-5 h. To be redone with
+  the module chosen for 8 GB.

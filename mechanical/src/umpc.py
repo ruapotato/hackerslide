@@ -31,9 +31,10 @@ CARRIER_T = 1.0
 KEY = dict(pitch_x=7.0, pitch_y=7.0, cap_w=6.3, cap_h=6.2, cols=5, rows=4)
 SWITCH_H, NUB, FLANGE, CAP_TOP = 0.6, 0.3, 0.5, 1.2           # as the keyboards of the earlier designs
 KBD_PCB_T = 0.8
-CELL = dict(w=34.0, h=62.0, t=6.0, inset=6.0)                # one 603562-size cell per side (6.0 x 34 x 62 mm, about 1,500 mAh
-                                                             # each: ESTIMATE, cell not chosen); with the two slide sticks
-                                                             # there is room for 6 mm under the 12.7 mm top (5 mm cells: 503562)
+CELL = dict(w=38.5, h=62.0, t=8.5, inset=2.5)                # Adafruit #2011 (PKCELL LP803860, 2000 mAh, protection board, JST-PH),
+                                                             # one per side, in parallel: DigiKey 3,704 at $12.50 on 2026-11-27.
+                                                             # Bay sized to the maker's drawing maximum 62 x 38.5 x 8.5 mm
+                                                             # (Adafruit says 60 x 36 x 7; a UN 38.3 sample measured 60 x 37 x 7.4)
 CONTROLS = 'padball'                                         # 'padball': slide stick left, round 35 mm trackpad right used as a
                                                              # 'virtual trackball' (momentum + haptic, as the Steam Controller);
                                                              # 'sticks': two slide thumbsticks (David, 2026-11-27, to stay thin);
@@ -46,10 +47,10 @@ SLIDEPAD = dict(base=19.0, t=4.0, cap=15.0, cap_t=1.6)       # SparkFun COM-0942
 BACK, WALL, FRONT = 1.2, 1.6, 0.8                            # [est] printed back; front frame over the screen border
 THERMAL_MIN = 0.5                                            # [est] thinnest pad from the SoC lid to an aluminium plate in the back
 GAP = 0.3
-HALF_W = KEY['cols'] * KEY['pitch_x'] + 4.0                  # keyboard half including its margin
+HALF_W = max(KEY['cols'] * KEY['pitch_x'] + 4.0, CELL['w'] + CELL['inset'] + 1.0)   # keyboard half, wide enough for its cell
 W = PANEL['w'] + 2 * HALF_W + 2 * WALL + 2.0
 H = 72.0                                                     # the N810's height: room for keys above and a pad below on each side
-END_R = 14.0                                                 # rounded grips at the two ends
+END_R = 11.0                                                 # rounded grips at the two ends
 
 # Z stack, centre (screen over the module) and sides (keys over the cells)
 # carrier bottom face; the module hangs under it.  Its tallest part (an inductor, 4.50 below the carrier) needs 0.2 mm
@@ -62,7 +63,8 @@ Z_CELL = BACK
 T_CENTRE = Z_CARRIER_TOP + 0.9 + GAP + PANEL['t'] + FRONT * 0.5    # 0.9 [est]: tallest part on the carrier's screen side
 T_SIDE = Z_CELL + CELL['t'] + GAP + KEYSTACK
 T_BALL = Z_CELL + CELL['t'] + GAP + TRACKBALL['t'] - TRACKBALL['protrude'] if CONTROLS == 'ball' else 0
-T = max(T_CENTRE, T_SIDE, T_BALL)                            # everything is then raised to one top surface
+T_STICK = Z_CELL + CELL['t'] + 0.2 + SLIDEPAD['t'] + 0.1 + FRONT * 0.5 if CONTROLS in ('ball', 'sticks', 'padball') else 0
+T = max(T_CENTRE, T_SIDE, T_BALL, T_STICK)                            # everything is then raised to one top surface
 Z_TOP = T
 Z_FRONT = T - FRONT * 0.5                                    # the front frame sits on the panel border
 Z_PANEL = Z_FRONT - PANEL['t']
