@@ -1,0 +1,50 @@
+{
+ "w": 35.4,
+ "h": 40.92,
+ "t": 9.6,
+ "screen": [
+  4.199999999999999,
+  9.46,
+  8.6,
+  27.0,
+  27.0
+ ],
+ "stack": [
+  [
+   "Back",
+   1.0
+  ],
+  [
+   "Battery, 200 mAh class",
+   3.8
+  ],
+  [
+   "Clearance",
+   0.2
+  ],
+  [
+   "Parts under the board",
+   1.0
+  ],
+  [
+   "Board",
+   0.8
+  ],
+  [
+   "Clearance",
+   0.2
+  ],
+  [
+   "E-paper with touch",
+   1.6
+  ],
+  [
+   "Cover glass",
+   0.7
+  ],
+  [
+   "Bezel lip",
+   0.3
+  ]
+ ]
+}

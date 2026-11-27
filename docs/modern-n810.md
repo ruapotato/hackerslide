@@ -159,3 +159,27 @@ Stack (estimate): back 1.0, battery 4.3 with the module beside it under the main
 plus Bluetooth headphones through a Wi-Fi/Bluetooth module. Rough playback estimate with a wired headset: about
 0.1 W in total, so over a day of listening on 1,000 mAh; standby weeks. Panel stock, the module's size, a battery in
 stock and the playback power all still to confirm. Rough cost: first prototype about $300-500 delivered.
+
+## 8. A watch, and glasses (David, 2026-11-26, first look)
+
+**Watch** (concept model `mechanical/src/watch.py`, render script `mechanical/render/watch_scene.py`): a case around
+the Good Display GDEY0154D67 1.54" e-paper (200 x 200; outline 31.80 x 37.32 x 1.0 mm, touch version a little
+thicker) comes to **35.4 x 40.9 x 9.6 mm** without lugs and buttons, about Pebble-sized. Stack: back 1.0, battery
+3.8 (200 mAh class, to find), parts 1.0, board 0.8, panel with touch 1.6, cover glass 0.7, clearances and lip 0.7.
+
+The i.MX 6ULL does not suit a watch: asleep it draws about 10 mW, which would empty a 200 mAh cell in about three
+days doing nothing. A watch wants a microcontroller, and HackOS fits that:
+
+| Brain (JLCPCB stock 2026-11-26) | Why | Audio to headphones |
+|---|---|---|
+| Nordic nRF5340 (7 x 7 mm, 4,079-4,325, $7.25-9.24) | Bluetooth LE Audio, very low sleep current, Cortex-M33 (HackOS needs a new target) | LE Audio earbuds only (newer models) |
+| Nordic nRF52840 (7 x 7 mm, 35,199, $5.60) | the PineTime/Bangle class; Cortex-M4F, so HackOS's current target | none suitable for music |
+| Espressif ESP32-PICO-V3-02 (7 x 7 mm, 2,362, $5.70) | classic Bluetooth audio, so any headphones | works with all headphones, but draws far more |
+
+Rough life (estimate): weeks as a watch; with LE Audio streaming about a day of listening on 200 mAh; with classic
+Bluetooth a few hours.
+
+**Glasses:** e-paper cannot work in near-eye optics (it gives off no light). The realistic route is a small OLED
+microdisplay (0.5-1") with a beam splitter or prism and a lens, as a clip-on module for existing glasses, driven by
+a microcontroller over Bluetooth. Hard parts: the optics (focus distance, eye box, alignment), brightness outdoors,
+weight balance; to be researched before any estimate.
