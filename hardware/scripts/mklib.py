@@ -207,6 +207,10 @@ def symbols():
         [('9', 'L1', P), ('7', 'L2', P), None, ('6', 'VOUT', PO), ('4', 'FB', I), ('5', 'PG', 'open_collector')],
         descr='TI TPS63802 2 A buck-boost converter, 11 uA quiescent',
         footprint='hackerslide:Texas_DLA0010A_VSON-HR-10_3x2mm', datasheet='https://www.ti.com/lit/ds/symlink/tps63802.pdf'))
+    # XKB PJ-3528S (circuit diagram of the drawing): 1 sleeve, 2 and 3 the two signal contacts, 4-5 an isolated switch
+    out.append(box_symbol('PJ-3528S', [('3', 'A', P), ('2', 'B', P), ('1', 'S', P)], [('5', 'SW1', P), ('4', 'SW2', P)], ref='J',
+        descr='XKB PJ-3528S 3.5 mm 3-pole jack with an isolated detect switch (terminals 4-5)',
+        footprint='hackerslide:Jack_3.5mm_XKB_PJ-3528S_EdgeNotch', datasheet='~'))
     # LM3630A (TI SNVS974B, pin functions table p.3)
     out.append(box_symbol('LM3630A',
         [('C3', 'IN', PI), ('B1', 'HWEN', I), ('C1', 'PWM', I), ('C2', 'SEL', I), None, ('A1', 'SDA', B), ('A2', 'SCL', I),
@@ -369,6 +373,25 @@ def dla0010a():
     return name, fp_text(name, 'TI DLA0010A VSON-HR-10, 3 x 2 mm, 1 mm high, for TPS63802', body, ref_y=-2.2, val_y=2.2)
 
 
+def pj3528s():
+    # XKB PJ-3528S drawing (JLCPCB C2764617), "PCB layout top view": a 3-pole jack that sits in a 7.6 mm wide notch in the
+    # board edge, 4.1 mm tall in all with about 2.15 mm above the board.  Origin: centre of the body front (the 2.5 mm
+    # collar sticks out to -Y), +Y into the board.  Terminal centres: 1 (+X side) and 2 (-X side) at y = 2.4, 3 (-X) at
+    # y = 5.7, 4 (-X) and 5 (+X) at y = 11.3; the drawing's pad outer edges are 8.6 apart.  The lands here are widened
+    # outward (the drawing leaves only 0.5 mm of land on the board).  CHECK lands and notch depth with a sample.
+    name = 'Jack_3.5mm_XKB_PJ-3528S_EdgeNotch'
+    body = ''
+    for num, sx, y, h in (('1', 1, 2.4, 1.9), ('2', -1, 2.4, 1.9), ('3', -1, 5.7, 1.9), ('4', -1, 11.3, 1.7), ('5', 1, 11.3, 1.7)):
+        body += (f'\t(pad "{num}" smd rect (at {sx * 4.55:.2f} {y:.2f}) (size 1.3 {h}) (layers "F.Cu" "F.Paste" "F.Mask") '
+                 f'(uuid "{uid(name, num)}"))\n')
+    body += rect('Dwgs.User', -3.8, 0, 3.8, 12.5, w=0.1, tag=name + 'notch')
+    body += rect('F.Fab', -3.15, -2.5, 3.15, 0, w=0.1, tag=name + 'collar')
+    body += rect('F.CrtYd', -5.45, -2.7, 5.45, 12.9, tag=name)
+    return name, fp_text(name, 'XKB PJ-3528S 3.5 mm 3-pole jack, sunk into a board-edge notch (Dwgs.User rectangle: 7.6 x 12.5 mm '
+                               'to cut out). TODO(verify) lands, notch depth and which terminal is tip with a sample.',
+                         body, ref_y=-3.6, val_y=14)
+
+
 def pj342():
     # SHOU HAN PJ-342 drawing (LCSC C668606), "PCB terminal dimension, TOP VIEW": jack opening at -X.
     # x measured from the body front face (the 2 mm collar sticks out to x = -2); body 12 x 6.4 x 4.5 mm.
@@ -459,7 +482,7 @@ def m2_hole():
 def main():
     os.makedirs(FP, exist_ok=True)
     open(os.path.join(LIB, 'hackerslide.kicad_sym'), 'w').write(symbols())
-    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8), lambda: fh34(24), lambda: fh34(6), dsbga12_yfq, dla0010a, fpc_fingers, contact_pad):
+    for f in (df40, sksw, dome5135, keycap_hole, m2_hole, pj342, hole_m16_pad, hole_m2_npth, lambda: fh34(20), lambda: fh34(8), lambda: fh34(24), lambda: fh34(6), dsbga12_yfq, dla0010a, pj3528s, fpc_fingers, contact_pad):
         name, text = f()
         open(os.path.join(FP, name + '.kicad_mod'), 'w').write(text)
 

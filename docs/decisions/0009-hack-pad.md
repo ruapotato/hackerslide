@@ -130,6 +130,9 @@ set by the Linux-class processor.
   4.15 mm in an edge notch; 3-pole sunk types exist. Open: accept about 4.2 mm at that spot, or a 3-pole jack
   (no headset microphone), or audio over USB-C only.
 
+- **Headphone jack: 3-pole, sunk into the board, audio out only (David, 2026-11-26).** No headset microphone
+  input; the built-in microphones cover recording.
+
 ## What carries over from the Linux design
 
 The slider body and its rails, travel stop and hooks; the thumb keyboard with its next layout (N810 rows, Fn

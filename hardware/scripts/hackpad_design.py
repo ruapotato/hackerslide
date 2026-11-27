@@ -20,7 +20,7 @@ import hackpad_lid_design as LID
 import hackpad_pins as PINS
 import hp_layout as HP
 from kigen import Design
-from parts import C, CAP, R, RES, SCHOTTKY, TP, fields
+from parts import C, CAP, R, RES, SCHOTTKY, TP, TVS, fields
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, '..', 'hackpad', 'data')
@@ -418,6 +418,42 @@ def build():
     SCHOTTKY(pw, 'D202', 'CHG_QON_N', 'PWR_SW_N', note='/QON'); SCHOTTKY(pw, 'D203', 'ONOFF', 'PWR_SW_N', note='brain ONOFF (internal pull-up)')
     for i, net in enumerate(('VBUS', 'VSYS', 'VBAT', 'VSYS_LIM', 'BB_PG', 'REGN', 'CHG_TS', 'CHG_QON_N', 'BATT_OC_N')):
         TP(pw, f'TP{30 + i}', net)
+
+    # ------------------------------------------------------------------------------------------ audio
+    au = d.sheet('audio', 'Audio out: ES8316 codec and 3-pole headphone jack', paper='A3', notes=[
+        'Audio OUT only (David 2026-11-26): 3-pole jack sunk into a notch in the board edge, about 2.15 mm above the board.',
+        'Codec circuit carried over from the Linux design (Everest application circuit): AVDD/PVDD 3.3 V, DVDD/CPVDD 1.8 V,',
+        '    I2C address 0x10 on the I2C_U bus, master clock required. Its two recording inputs are grounded through',
+        '    capacitors: the built-in microphones go straight to the brain.',
+        'The master clock pad is also boot strap 9 (pulled low by 10k on the brain sheet); the codec pin is an input.',
+        'Jack terminals from the XKB drawing: 1 sleeve, 2 and 3 signal, 4-5 an isolated switch. Which of 2 and 3 is the tip',
+        '    is not stated: a wrong guess swaps left and right, which the firmware can swap back. Whether the switch is',
+        '    closed with or without a plug is not stated either: the firmware learns the polarity.',
+        'HPGND joins GND only through R236, placed at the jack.'])
+    for net in ('AUD_DAC', 'AUD_ADC', 'AUD_BCLK', 'AUD_LRCK'):
+        use(net)
+    au.add('U18', 'hackerslide', 'ES8316', 'ES8316', 'Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm',
+           {'1': 'I2C_U_SCL', '32': 'I2C_U_SDA', '31': 'GND', '2': 'BT_CFG9', '6': 'AUD_BCLK', '8': 'AUD_LRCK', '7': 'AUD_DAC',
+            '9': 'AUD_ADC', '10': 'HP_DET', '11': 'CODEC_GPIO2', '12': 'CODEC_IRQ', '3': '+1V8', '4': '+3V3', '22': 'AVDD_CODEC',
+            '14': '+1V8', '20': 'HP_L', '19': 'HP_R', '30': 'MIC_P', '29': 'MIC_N', '26': 'MICBIAS', '21': 'DACVREF', '24': 'ADCVREF',
+            '25': 'VMID', '15': 'CPTOP', '16': 'CPBOT', '13': 'CPVSSP', '18': 'HPGND', '5': 'GND', '23': 'GND', '17': 'GND', '33': 'GND'},
+           fields=fields('C365735', 'ES8316', 'Everest Semiconductor'))
+    R(au, 'R230', '0', '+3V3', 'AVDD_CODEC', note='place a ferrite here if noise shows up')
+    for i, net in enumerate(('+1V8', '+3V3', 'AVDD_CODEC', '+1V8')):
+        C(au, f'C{230 + i}', '100n', net)
+    C(au, 'C234', '10u', 'AVDD_CODEC'); C(au, 'C235', '1u', 'DACVREF'); C(au, 'C236', '1u', 'ADCVREF'); C(au, 'C237', '1u', 'VMID')
+    C(au, 'C238', '1u', 'CPTOP', 'CPBOT'); C(au, 'C239', '4.7u', 'CPVSSP'); C(au, 'C240', '1u', 'MICBIAS'); C(au, 'C241', '1u', '+1V8')
+    C(au, 'C242', '1u', 'MIC_P', 'HPGND'); C(au, 'C243', '1u', 'MIC_N', 'HPGND')
+    R(au, 'R231', '33', 'HP_L', 'JACK_A'); R(au, 'R232', '33', 'HP_R', 'JACK_B')
+    R(au, 'R233', '100k', 'HP_DET', '+3V3', note='jack switch to ground on the other side')
+    R(au, 'R234', '100k', 'CODEC_GPIO2', 'GND'); R(au, 'R235', '100k', 'CODEC_IRQ', 'GND')
+    R(au, 'R236', '0', 'HPGND', 'GND', note='single ground join, at the jack')
+    au.add('J5', 'hackerslide', 'PJ-3528S', 'PJ-3528S', 'hackerslide:Jack_3.5mm_XKB_PJ-3528S_EdgeNotch',
+           {'3': 'JACK_A', '2': 'JACK_B', '1': 'HPGND', '5': 'HP_DET', '4': 'GND'},
+           fields=fields('C2764617', 'PJ-3528S', 'XKB Connection', Description='3-pole, 4.1 mm tall, sunk into the board edge'))
+    TVS(au, 'D210', 'JACK_A'); TVS(au, 'D211', 'JACK_B')
+    for i, net in enumerate(('AUD_LRCK', 'AUD_BCLK', 'AUD_DAC', 'HP_DET')):
+        TP(au, f'TP{40 + i}', net)
 
     # the brain itself goes on the first sheet, with every ball claimed above
     p.add('U1', 'hackerslide', 'MIMXRT117x_BGA289', 'MIMXRT1176', 'Package_BGA:MAPBGA-289_14x14mm_Layout17x17_P0.8mm', dict(U),

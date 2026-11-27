@@ -1,0 +1,1149 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "0fcc64a6-a264-5381-96ed-6ea58f2da715")
+	(paper "A3")
+	(title_block
+		(title "HackerSlide hack pad main board - Audio out: ES8316 codec and 3-pole headphone jack")
+		(rev "0.1")
+		(company "HackerSlide project (AGPL-3.0)")
+		(comment 1 "Rev 0.1 DRAFT: brain, supplies, clocks, boot, debug and memory only. Not built, not reviewed.")
+		(comment 2 "Source of every brain connection: hardware/hackpad/data (NXP data sheet IMXRT1170BIEC rev 1, MIMXRT1170-EVKB schematic).")
+	)
+	(lib_symbols
+		(symbol
+			"Connector:TestPoint"
+			(pin_numbers (hide yes))
+			(pin_names (offset 0.762) (hide yes))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP" (at 0 6.858 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "TestPoint" (at 0 5.08 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 5.08 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "~" (at 5.08 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Description" "test point" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "ki_keywords" "test point tp" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "ki_fp_filters" "Pin* Test*" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(symbol
+				"TestPoint_0_1"
+				(circle (center 0 3.302) (radius 0.762) (stroke (width 0) (type default)) (fill (type none)))
+			)
+			(symbol
+				"TestPoint_1_1"
+				(pin
+					passive
+					line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1" (effects (font (size 1.27 1.27))))
+					(number "1" (effects (font (size 1.27 1.27))))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol
+			"Device:C"
+			(pin_numbers (hide yes))
+			(pin_names (offset 0.254))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C" (at 0.635 2.54 0) (effects (font (size 1.27 1.27)) (justify left)))
+			(property "Value" "C" (at 0.635 -2.54 0) (effects (font (size 1.27 1.27)) (justify left)))
+			(property "Footprint" "" (at 0.9652 -3.81 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property
+				"Description"
+				"Unpolarized capacitor"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(property "ki_keywords" "cap capacitor" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "ki_fp_filters" "C_*" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(symbol
+				"C_0_1"
+				(polyline
+					(pts (xy -2.032 0.762) (xy 2.032 0.762))
+					(stroke (width 0.508) (type default))
+					(fill (type none))
+				)
+				(polyline
+					(pts (xy -2.032 -0.762) (xy 2.032 -0.762))
+					(stroke (width 0.508) (type default))
+					(fill (type none))
+				)
+			)
+			(symbol
+				"C_1_1"
+				(pin
+					passive
+					line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~" (effects (font (size 1.27 1.27))))
+					(number "1" (effects (font (size 1.27 1.27))))
+				)
+				(pin
+					passive
+					line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~" (effects (font (size 1.27 1.27))))
+					(number "2" (effects (font (size 1.27 1.27))))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol
+			"Device:D_TVS"
+			(pin_numbers (hide yes))
+			(pin_names (offset 1.016) (hide yes))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "D_TVS" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property
+				"Description"
+				"Bidirectional transient-voltage-suppression diode"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(property
+				"ki_keywords"
+				"diode TVS thyrector"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(property
+				"ki_fp_filters"
+				"TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(symbol
+				"D_TVS_0_1"
+				(polyline
+					(pts (xy -2.54 1.27) (xy -2.54 -1.27) (xy 2.54 1.27) (xy 2.54 -1.27) (xy -2.54 1.27))
+					(stroke (width 0.254) (type default))
+					(fill (type none))
+				)
+				(polyline
+					(pts (xy 0.508 1.27) (xy 0 1.27) (xy 0 -1.27) (xy -0.508 -1.27))
+					(stroke (width 0.254) (type default))
+					(fill (type none))
+				)
+				(polyline (pts (xy 1.27 0) (xy -1.27 0)) (stroke (width 0) (type default)) (fill (type none)))
+			)
+			(symbol
+				"D_TVS_1_1"
+				(pin
+					passive
+					line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A1" (effects (font (size 1.27 1.27))))
+					(number "1" (effects (font (size 1.27 1.27))))
+				)
+				(pin
+					passive
+					line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A2" (effects (font (size 1.27 1.27))))
+					(number "2" (effects (font (size 1.27 1.27))))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol
+			"Device:R"
+			(pin_numbers (hide yes))
+			(pin_names (offset 0))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R" (at 2.032 0 90) (effects (font (size 1.27 1.27))))
+			(property "Value" "R" (at 0 0 90) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at -1.778 0 90) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Description" "Resistor" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "ki_keywords" "R res resistor" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "ki_fp_filters" "R_*" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(symbol
+				"R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke (width 0.254) (type default))
+					(fill (type none))
+				)
+			)
+			(symbol
+				"R_1_1"
+				(pin
+					passive
+					line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~" (effects (font (size 1.27 1.27))))
+					(number "1" (effects (font (size 1.27 1.27))))
+				)
+				(pin
+					passive
+					line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~" (effects (font (size 1.27 1.27))))
+					(number "2" (effects (font (size 1.27 1.27))))
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol
+			"hackerslide:ES8316"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property
+				"Reference"
+				"U"
+				(at -12.70 29.21 0)
+				(effects (font (size 1.27 1.27)) (justify left bottom))
+			)
+			(property
+				"Value"
+				"ES8316"
+				(at -12.70 -29.21 0)
+				(effects (font (size 1.27 1.27)) (justify left top))
+			)
+			(property
+				"Footprint"
+				"Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(property
+				"Datasheet"
+				"https://www.lcsc.com/datasheet/lcsc_datasheet_1811151643_Everest-semi-Everest-Semiconductor-ES8316_C365735.pdf"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(property
+				"Description"
+				"Everest ES8316 low-power audio codec with headphone driver (mainline Linux: snd-soc-es8316)"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(symbol
+				"ES8316_0_1"
+				(rectangle
+					(start -12.70 27.94)
+					(end 12.70 -27.94)
+					(stroke (width 0.254) (type default))
+					(fill (type background))
+				)
+			)
+			(symbol
+				"ES8316_1_1"
+				(pin
+					input
+					line
+					(at -15.24 25.40 0)
+					(length 2.54)
+					(name "CCLK" (effects (font (size 1.016 1.016))))
+					(number "1" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					bidirectional
+					line
+					(at -15.24 22.86 0)
+					(length 2.54)
+					(name "CDATA" (effects (font (size 1.016 1.016))))
+					(number "32" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					input
+					line
+					(at -15.24 20.32 0)
+					(length 2.54)
+					(name "CE" (effects (font (size 1.016 1.016))))
+					(number "31" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					input
+					line
+					(at -15.24 15.24 0)
+					(length 2.54)
+					(name "MCLK" (effects (font (size 1.016 1.016))))
+					(number "2" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					bidirectional
+					line
+					(at -15.24 12.70 0)
+					(length 2.54)
+					(name "SCLK" (effects (font (size 1.016 1.016))))
+					(number "6" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					bidirectional
+					line
+					(at -15.24 10.16 0)
+					(length 2.54)
+					(name "DLRCK" (effects (font (size 1.016 1.016))))
+					(number "8" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					input
+					line
+					(at -15.24 7.62 0)
+					(length 2.54)
+					(name "DSDIN" (effects (font (size 1.016 1.016))))
+					(number "7" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					output
+					line
+					(at -15.24 5.08 0)
+					(length 2.54)
+					(name "ASDOUT" (effects (font (size 1.016 1.016))))
+					(number "9" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					bidirectional
+					line
+					(at -15.24 0.00 0)
+					(length 2.54)
+					(name "GPIO1" (effects (font (size 1.016 1.016))))
+					(number "10" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					bidirectional
+					line
+					(at -15.24 -2.54 0)
+					(length 2.54)
+					(name "GPIO2" (effects (font (size 1.016 1.016))))
+					(number "11" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					bidirectional
+					line
+					(at -15.24 -5.08 0)
+					(length 2.54)
+					(name "GPIO3" (effects (font (size 1.016 1.016))))
+					(number "12" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_in
+					line
+					(at -15.24 -10.16 0)
+					(length 2.54)
+					(name "DVDD" (effects (font (size 1.016 1.016))))
+					(number "3" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_in
+					line
+					(at -15.24 -12.70 0)
+					(length 2.54)
+					(name "PVDD" (effects (font (size 1.016 1.016))))
+					(number "4" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_in
+					line
+					(at -15.24 -15.24 0)
+					(length 2.54)
+					(name "AVDD" (effects (font (size 1.016 1.016))))
+					(number "22" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_in
+					line
+					(at -15.24 -17.78 0)
+					(length 2.54)
+					(name "CPVDD" (effects (font (size 1.016 1.016))))
+					(number "14" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					output
+					line
+					(at 15.24 25.40 180)
+					(length 2.54)
+					(name "LOUT" (effects (font (size 1.016 1.016))))
+					(number "20" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					output
+					line
+					(at 15.24 22.86 180)
+					(length 2.54)
+					(name "ROUT" (effects (font (size 1.016 1.016))))
+					(number "19" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					input
+					line
+					(at 15.24 17.78 180)
+					(length 2.54)
+					(name "LIN1" (effects (font (size 1.016 1.016))))
+					(number "30" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					input
+					line
+					(at 15.24 15.24 180)
+					(length 2.54)
+					(name "RIN1" (effects (font (size 1.016 1.016))))
+					(number "29" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					input
+					line
+					(at 15.24 12.70 180)
+					(length 2.54)
+					(name "LIN2" (effects (font (size 1.016 1.016))))
+					(number "28" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					input
+					line
+					(at 15.24 10.16 180)
+					(length 2.54)
+					(name "RIN2" (effects (font (size 1.016 1.016))))
+					(number "27" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_out
+					line
+					(at 15.24 7.62 180)
+					(length 2.54)
+					(name "MICBIAS" (effects (font (size 1.016 1.016))))
+					(number "26" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 2.54 180)
+					(length 2.54)
+					(name "DACVREF" (effects (font (size 1.016 1.016))))
+					(number "21" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 0.00 180)
+					(length 2.54)
+					(name "ADCVREF" (effects (font (size 1.016 1.016))))
+					(number "24" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 -2.54 180)
+					(length 2.54)
+					(name "VMID" (effects (font (size 1.016 1.016))))
+					(number "25" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 -5.08 180)
+					(length 2.54)
+					(name "CPTOP" (effects (font (size 1.016 1.016))))
+					(number "15" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 -7.62 180)
+					(length 2.54)
+					(name "CPBOT" (effects (font (size 1.016 1.016))))
+					(number "16" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 -10.16 180)
+					(length 2.54)
+					(name "CPVSSP" (effects (font (size 1.016 1.016))))
+					(number "13" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 -12.70 180)
+					(length 2.54)
+					(name "CPGNDREF" (effects (font (size 1.016 1.016))))
+					(number "18" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_in
+					line
+					(at 15.24 -17.78 180)
+					(length 2.54)
+					(name "DGND" (effects (font (size 1.016 1.016))))
+					(number "5" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_in
+					line
+					(at 15.24 -20.32 180)
+					(length 2.54)
+					(name "AGND" (effects (font (size 1.016 1.016))))
+					(number "23" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					power_in
+					line
+					(at 15.24 -22.86 180)
+					(length 2.54)
+					(name "CPGND" (effects (font (size 1.016 1.016))))
+					(number "17" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 15.24 -25.40 180)
+					(length 2.54)
+					(name "EP" (effects (font (size 1.016 1.016))))
+					(number "33" (effects (font (size 1.016 1.016))))
+				)
+			)
+		)
+		(symbol
+			"hackerslide:PJ-3528S"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property
+				"Reference"
+				"J"
+				(at -7.62 6.35 0)
+				(effects (font (size 1.27 1.27)) (justify left bottom))
+			)
+			(property
+				"Value"
+				"PJ-3528S"
+				(at -7.62 -6.35 0)
+				(effects (font (size 1.27 1.27)) (justify left top))
+			)
+			(property
+				"Footprint"
+				"hackerslide:Jack_3.5mm_XKB_PJ-3528S_EdgeNotch"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property
+				"Description"
+				"XKB PJ-3528S 3.5 mm 3-pole jack with an isolated detect switch (terminals 4-5)"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(symbol
+				"PJ-3528S_0_1"
+				(rectangle
+					(start -7.62 5.08)
+					(end 7.62 -5.08)
+					(stroke (width 0.254) (type default))
+					(fill (type background))
+				)
+			)
+			(symbol
+				"PJ-3528S_1_1"
+				(pin
+					passive
+					line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "A" (effects (font (size 1.016 1.016))))
+					(number "3" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at -10.16 0.00 0)
+					(length 2.54)
+					(name "B" (effects (font (size 1.016 1.016))))
+					(number "2" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "S" (effects (font (size 1.016 1.016))))
+					(number "1" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "SW1" (effects (font (size 1.016 1.016))))
+					(number "5" (effects (font (size 1.016 1.016))))
+				)
+				(pin
+					passive
+					line
+					(at 10.16 0.00 180)
+					(length 2.54)
+					(name "SW2" (effects (font (size 1.016 1.016))))
+					(number "4" (effects (font (size 1.016 1.016))))
+				)
+			)
+		)
+		(symbol
+			"power:PWR_FLAG"
+			(power)
+			(pin_numbers (hide yes))
+			(pin_names (offset 0) (hide yes))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG" (at 0 1.905 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Value" "PWR_FLAG" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property
+				"Description"
+				"Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects (font (size 1.27 1.27)) (hide yes))
+			)
+			(property "ki_keywords" "flag power" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(symbol
+				"PWR_FLAG_0_0"
+				(pin
+					power_out
+					line
+					(at 0 0 90)
+					(length 0)
+					(name "~" (effects (font (size 1.27 1.27))))
+					(number "1" (effects (font (size 1.27 1.27))))
+				)
+			)
+			(symbol
+				"PWR_FLAG_0_1"
+				(polyline
+					(pts (xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27))
+					(stroke (width 0) (type default))
+					(fill (type none))
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(symbol (lib_id "hackerslide:ES8316") (at 50.8 73.66 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ca644eb5-baa0-50e8-a9a0-7e006e431917")
+		(property "Reference" "U18" (at 53.34 69.85 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "ES8316" (at 53.34 77.47 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_4x4mm_P0.4mm_EP2.8x2.8mm" (at 50.8 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 50.8 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 50.8 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C365735" (at 50.8 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "ES8316" (at 50.8 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Everest Semiconductor" (at 50.8 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "96d8609e-2d0e-57d4-8316-a87b9d261c0e"))
+		(pin "32" (uuid "6680d599-3277-53bc-900c-6268740c89a9"))
+		(pin "31" (uuid "5c087bb6-8d6f-50d9-8fef-005c56c2136a"))
+		(pin "2" (uuid "1456378a-c3a1-5c8f-9201-32bdaa7ac1e9"))
+		(pin "6" (uuid "8ab7f98b-7c19-52cf-b8f3-1899dc0a3572"))
+		(pin "8" (uuid "c82a9b6e-cb20-5167-809d-ec3884a5a8c8"))
+		(pin "7" (uuid "ddbdfe4c-0723-540e-a991-146ec3111be5"))
+		(pin "9" (uuid "403f8eeb-1cb5-5138-afbc-55273367ee14"))
+		(pin "10" (uuid "0713de17-16e8-55eb-b0fc-8c6de7214076"))
+		(pin "11" (uuid "33a869d9-d8e3-5ba7-b561-d4c98d14b7ab"))
+		(pin "12" (uuid "66bf1127-8db9-5ede-8960-0aee00e3690d"))
+		(pin "3" (uuid "50a1f2cc-809b-554f-a344-6093bb4dd407"))
+		(pin "4" (uuid "4129d0a1-aef5-55b7-9b7d-920d551a8f2c"))
+		(pin "22" (uuid "5d708cbd-91c9-5ee1-97ec-49d3f7e143a2"))
+		(pin "14" (uuid "48af84bd-bb1a-5b12-a8fd-2cb5f2f1a628"))
+		(pin "20" (uuid "bbab1c35-6aee-518d-9c35-4d1d86338086"))
+		(pin "19" (uuid "05fd4706-88d3-5e75-bdc4-e72ce52ee45c"))
+		(pin "30" (uuid "bed4f568-216c-5a07-b2c5-0f19eda7da9e"))
+		(pin "29" (uuid "47150d20-8084-5610-aba2-1d446f5c8142"))
+		(pin "28" (uuid "c7cf1cc2-3ca9-5810-9317-f4fb00e630da"))
+		(pin "27" (uuid "baef19b4-ee88-5be8-b380-bfddfe9bef6b"))
+		(pin "26" (uuid "236e69b5-ee89-5b93-addb-6c7d60110f5f"))
+		(pin "21" (uuid "1f9417bb-047e-5908-9565-b0bbaabe4474"))
+		(pin "24" (uuid "ffef91e9-12f3-55ef-8d9b-3d22f23de115"))
+		(pin "25" (uuid "ba801c09-f971-58c7-93bd-42b879d4db3c"))
+		(pin "15" (uuid "e6203746-7911-55a4-b8b2-04ba60ab8289"))
+		(pin "16" (uuid "44afb463-e818-5757-9f2d-558d46103559"))
+		(pin "13" (uuid "77ec2237-40fb-53a5-92bd-1f6df0167743"))
+		(pin "18" (uuid "ff7d8400-2f6a-5c30-81a5-889f9c1cf371"))
+		(pin "5" (uuid "091ff42c-bc74-5471-8ec2-a95fdbb1c541"))
+		(pin "23" (uuid "f233a52b-3103-5206-8424-bee4d910c6b3"))
+		(pin "17" (uuid "6bd20fc7-e698-5c95-bd72-51fe060fd905"))
+		(pin "33" (uuid "ee87dd4f-0f17-5233-8b6f-23c016a13d0e"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "U18") (unit 1))))
+	)
+	(global_label "I2C_U_SCL" (shape bidirectional) (at 35.56 48.26 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "66834e9d-c94c-5c2a-8dcb-7bc0d0f5172d") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 48.26 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "I2C_U_SDA" (shape bidirectional) (at 35.56 50.8 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "b4a92efa-a722-5eaa-9385-a095332f699f") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 50.8 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 35.56 53.34 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "49f369b6-97bb-5ee0-b239-67789e2dc46b") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 53.34 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "BT_CFG9" (shape bidirectional) (at 35.56 58.42 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "c18893b9-1b53-5758-bb1c-ab9fea5c8417") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 58.42 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "AUD_BCLK" (shape bidirectional) (at 35.56 60.96 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "02970620-2e6a-5bda-9b6b-6e69099365e4") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 60.96 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "AUD_LRCK" (shape bidirectional) (at 35.56 63.5 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "f8fd4489-6257-533e-a77b-d491e7470295") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 63.5 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "AUD_DAC" (shape bidirectional) (at 35.56 66.04 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "3b050ec8-6c47-5468-9540-a05b734635a5") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 66.04 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "AUD_ADC" (shape bidirectional) (at 35.56 68.58 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "61465bef-dd06-5fd6-bb0d-5cd30d9a3444") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 68.58 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HP_DET" (shape bidirectional) (at 35.56 73.66 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "671b6c6a-bcc7-58af-978f-99b54e803d37") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 73.66 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "CODEC_GPIO2" (shape bidirectional) (at 35.56 76.2 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "08c3ae1e-0e71-5d72-b359-cfded8d1c1b4") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 76.2 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "CODEC_IRQ" (shape bidirectional) (at 35.56 78.74 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "4f69604d-f6bd-5f66-ad4b-64e82c9d6e83") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 78.74 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "+1V8" (shape bidirectional) (at 35.56 83.82 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "2cffef32-e996-5842-a6bb-b0efe40fab41") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 83.82 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "+3V3" (shape bidirectional) (at 35.56 86.36 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "f6100b3a-c3d2-5cc0-9cf2-813779f9e215") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 86.36 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "AVDD_CODEC" (shape bidirectional) (at 35.56 88.9 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "276b06b5-c1f3-5068-b1df-a510772fc78e") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 88.9 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "+1V8" (shape bidirectional) (at 35.56 91.44 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "28fd94b3-e3a0-5a4c-923b-08925403662a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 35.56 91.44 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HP_L" (shape bidirectional) (at 66.04 48.26 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "6c5de933-f98e-50c7-bfeb-e8062904a344") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 48.26 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HP_R" (shape bidirectional) (at 66.04 50.8 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "b5d3660e-4937-5cf3-8ce5-00b927d7c9aa") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 50.8 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "MIC_P" (shape bidirectional) (at 66.04 55.88 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "4d43d183-d706-5648-9d95-03f97cd7a6fe") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 55.88 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "MIC_N" (shape bidirectional) (at 66.04 58.42 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "3bb7e8ad-0526-5258-884c-74df05298899") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 58.42 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(no_connect (at 66.04 60.96) (uuid "d7230826-75e7-53a2-a0a4-dc2adad5ec02"))
+	(no_connect (at 66.04 63.5) (uuid "0a7470a3-5001-51d3-abda-c362f3611954"))
+	(global_label "MICBIAS" (shape bidirectional) (at 66.04 66.04 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "5bb581d1-44be-5cfa-b92d-bc6334ef071a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 66.04 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "DACVREF" (shape bidirectional) (at 66.04 71.12 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "759957d5-6d64-5f28-ad4a-6ef27b120364") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 71.12 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "ADCVREF" (shape bidirectional) (at 66.04 73.66 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "d9dc3f2d-84b6-577c-baf4-72f36633f445") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 73.66 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "VMID" (shape bidirectional) (at 66.04 76.2 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "f7fc012f-59ee-5b03-92c0-746c0a19403e") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 76.2 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "CPTOP" (shape bidirectional) (at 66.04 78.74 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "e252dfcc-0e2c-512f-ba19-c5e10408577b") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 78.74 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "CPBOT" (shape bidirectional) (at 66.04 81.28 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "b66e425b-77ff-5dd2-a17d-a39d25011576") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 81.28 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "CPVSSP" (shape bidirectional) (at 66.04 83.82 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "dad6a829-bbf6-511c-b80f-9aad0b7a0951") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 83.82 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HPGND" (shape bidirectional) (at 66.04 86.36 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "405587af-f6bb-5891-8766-a0b1ed5f05de") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 86.36 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 66.04 91.44 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "c0055676-22a7-51f5-9456-c41416a9f6e0") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 91.44 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 66.04 93.98 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "6568d061-a88c-5702-8524-4d5e7191b0bc") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 93.98 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 66.04 96.52 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "22a8e0a6-40b7-5655-b1c1-97ec05f943ba") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 96.52 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 66.04 99.06 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "bf916448-5e38-53f0-a518-73f453d51b6a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 66.04 99.06 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:R") (at 88.9 58.42 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e27b83cd-4a65-53f4-ab62-8ddd16e3eb38")
+		(property "Reference" "R230" (at 91.44 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "0" (at 91.44 62.23 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 88.9 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 88.9 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "place a ferrite here if noise shows up" (at 88.9 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C17168" (at 88.9 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "0402WGF0000TCE" (at 88.9 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "UNI-ROYAL" (at 88.9 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "4d1cfebc-b663-5ee2-b27c-c3a4bce864f5"))
+		(pin "2" (uuid "9c658340-5c3f-56e7-8b25-975c16c22dc7"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "R230") (unit 1))))
+	)
+	(global_label "+3V3" (shape bidirectional) (at 88.9 54.61 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "25ecf530-0edc-5c73-82ce-deb3f3030dd0") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 88.9 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "AVDD_CODEC" (shape bidirectional) (at 88.9 62.23 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "47ce1475-e48f-5ffd-86ea-7eeb59479692") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 88.9 62.23 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 106.68 50.8 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9ef386e1-5eaf-58d1-848d-82b6d02f7da3")
+		(property "Reference" "C230" (at 109.22 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100n" (at 109.22 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 106.68 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 106.68 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 106.68 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C1525" (at 106.68 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05B104KO5NNNC" (at 106.68 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 106.68 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "6ff3902c-ec53-502b-b1ca-c21ed7856bd6"))
+		(pin "2" (uuid "95dbe7a4-d7eb-5c93-908f-2a56a12a7e6b"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C230") (unit 1))))
+	)
+	(global_label "+1V8" (shape bidirectional) (at 106.68 46.99 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "189cf2a3-d775-570f-9544-ab5d465c33c5") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 106.68 46.99 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 106.68 54.61 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "ceb77ba4-635e-539e-9bc7-7ac9a9fa1027") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 106.68 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 121.92 50.8 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "68811f23-7905-5789-afb6-ff3b3b1177c6")
+		(property "Reference" "C231" (at 124.46 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100n" (at 124.46 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 121.92 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 121.92 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 121.92 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C1525" (at 121.92 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05B104KO5NNNC" (at 121.92 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 121.92 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "4da684e0-361f-5bae-9713-24cb2fed9acb"))
+		(pin "2" (uuid "08f4872c-4267-5f11-bf85-1622acf4aa33"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C231") (unit 1))))
+	)
+	(global_label "+3V3" (shape bidirectional) (at 121.92 46.99 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "67908ceb-c69f-5e38-9d52-86e2bc2a84b8") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 121.92 46.99 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 121.92 54.61 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "341cd80b-7e89-5124-9147-6c02cb492782") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 121.92 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 139.7 58.42 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "eb17f533-046f-5b78-8f88-2e3c9d29c4e6")
+		(property "Reference" "C232" (at 142.24 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100n" (at 142.24 62.23 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 139.7 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 139.7 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 139.7 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C1525" (at 139.7 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05B104KO5NNNC" (at 139.7 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 139.7 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "805222ac-7dce-5110-b4f2-3497d20a7868"))
+		(pin "2" (uuid "7d7c0887-07d2-509b-9737-04faa32d6e18"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C232") (unit 1))))
+	)
+	(global_label "AVDD_CODEC" (shape bidirectional) (at 139.7 54.61 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "4714da7e-524d-510f-8455-3720578aa884") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 139.7 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 139.7 62.23 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "fb5dd1cf-ada4-52b1-8047-1ed6de30f854") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 139.7 62.23 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 157.48 50.8 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6f9cde86-d5bb-5b43-8c05-8d2752093d60")
+		(property "Reference" "C233" (at 160.02 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100n" (at 160.02 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C1525" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05B104KO5NNNC" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "1b4d5f29-5024-5d2f-96f0-0d68fdf045e0"))
+		(pin "2" (uuid "d03ad51c-0563-5e16-934a-5ee261690442"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C233") (unit 1))))
+	)
+	(global_label "+1V8" (shape bidirectional) (at 157.48 46.99 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "1f11a8e4-3c28-5791-8c24-8dbe5bd6040e") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 157.48 46.99 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 157.48 54.61 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "aa449c1d-efac-5459-a04c-7c9829cb0d5a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 157.48 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 175.26 58.42 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "08273924-32d8-5ce2-81b9-e8ec6d65fb4f")
+		(property "Reference" "C234" (at 177.8 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "10u" (at 177.8 62.23 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 175.26 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 175.26 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 175.26 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C19702" (at 175.26 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL10A106KP8NNNC" (at 175.26 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 175.26 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "bd987b3a-f47e-57f5-9934-95c1136a5959"))
+		(pin "2" (uuid "b84345d4-9707-5e6c-921f-e823f15f5fb8"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C234") (unit 1))))
+	)
+	(global_label "AVDD_CODEC" (shape bidirectional) (at 175.26 54.61 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "cfbd9a7b-bcd6-5d0e-b1ed-d0ca75f99e4f") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 175.26 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 175.26 62.23 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "7674fb34-e0a5-541e-84f9-52db8c837842") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 175.26 62.23 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 190.5 55.88 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b9c56961-7f9a-5487-b22f-2973abe73885")
+		(property "Reference" "C235" (at 193.04 52.07 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 193.04 59.69 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 190.5 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 190.5 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 190.5 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 190.5 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 190.5 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 190.5 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "49b9fa16-febb-56fc-8965-852bbc5ceab8"))
+		(pin "2" (uuid "fd0e64d8-fdd8-5dd0-9739-9f480e26fb29"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C235") (unit 1))))
+	)
+	(global_label "DACVREF" (shape bidirectional) (at 190.5 52.07 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "e655cfaf-9831-5047-bcd1-fb472311cb54") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 190.5 52.07 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 190.5 59.69 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "ce5137e9-c4da-5669-a1b0-5a82415e1871") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 190.5 59.69 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 208.28 55.88 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a119c0a2-6158-5f25-8adc-08537a4297e7")
+		(property "Reference" "C236" (at 210.82 52.07 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 210.82 59.69 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 208.28 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 208.28 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 208.28 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 208.28 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 208.28 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 208.28 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "5b35fec1-b4d3-5793-b1ae-3113a59e52de"))
+		(pin "2" (uuid "6df60069-86bf-53d4-9cfb-987c25d2abff"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C236") (unit 1))))
+	)
+	(global_label "ADCVREF" (shape bidirectional) (at 208.28 52.07 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "00232a51-ff14-5a28-8ec3-75a542bcc150") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 208.28 52.07 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 208.28 59.69 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "db0187ad-75ea-5ef1-b5b6-f908ddb8218a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 208.28 59.69 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 226.06 50.8 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "27f5b57b-b682-56a5-8b39-34b11bfaa180")
+		(property "Reference" "C237" (at 228.6 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 228.6 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 226.06 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 226.06 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 226.06 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 226.06 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 226.06 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 226.06 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "09f25284-5ade-5754-9340-277587df6fca"))
+		(pin "2" (uuid "31149660-4bcd-5191-aa02-badfebd3aa46"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C237") (unit 1))))
+	)
+	(global_label "VMID" (shape bidirectional) (at 226.06 46.99 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "7697cb0e-506e-55d1-ad3a-94271a51be51") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 226.06 46.99 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 226.06 54.61 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "6f3629fb-b299-5b21-9211-cdaf71963c50") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 226.06 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 241.3 53.34 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "75e5935e-0936-57a6-8e07-d7fbb5460f02")
+		(property "Reference" "C238" (at 243.84 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 243.84 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 241.3 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 241.3 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 241.3 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 241.3 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 241.3 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 241.3 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "395c3058-9e98-5378-813f-640aaaf0bce7"))
+		(pin "2" (uuid "940a4bfe-2ec9-5070-b1d4-33939d774eb6"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C238") (unit 1))))
+	)
+	(global_label "CPTOP" (shape bidirectional) (at 241.3 49.53 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "4cd34f42-592f-54cd-abd8-7b767d8434e8") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 241.3 49.53 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "CPBOT" (shape bidirectional) (at 241.3 57.15 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "1572095d-4f72-52b5-b845-b45787475338") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 241.3 57.15 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 259.08 53.34 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "24735654-8be7-5837-8ba4-66fa6f221474")
+		(property "Reference" "C239" (at 261.62 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "4.7u" (at 261.62 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 259.08 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 259.08 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 259.08 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C23733" (at 259.08 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A475MP5NRNC" (at 259.08 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 259.08 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "596cde0c-b427-5314-90ef-19537f0a32ba"))
+		(pin "2" (uuid "9ddbb5b6-fc94-5868-ab1e-fa8d2e07378b"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C239") (unit 1))))
+	)
+	(global_label "CPVSSP" (shape bidirectional) (at 259.08 49.53 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "6d0c0b78-76a7-5c18-bbe8-790e8950e469") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 259.08 49.53 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 259.08 57.15 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "fb21618e-abff-59e5-84d7-bd4dd774b8f3") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 259.08 57.15 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 276.86 55.88 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "22272ede-7633-5e79-97f9-1aa6de3f6b90")
+		(property "Reference" "C240" (at 279.4 52.07 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 279.4 59.69 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 276.86 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 276.86 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 276.86 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 276.86 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 276.86 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 276.86 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "f1a33d97-a87f-560d-94e5-b7ade5d765d6"))
+		(pin "2" (uuid "dc935c80-d247-5d91-9711-d4180c13c358"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C240") (unit 1))))
+	)
+	(global_label "MICBIAS" (shape bidirectional) (at 276.86 52.07 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "b3f152a7-1c68-589f-a344-7f7f3ba0023b") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 276.86 52.07 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 276.86 59.69 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "dbfc714f-85dc-5476-af16-ea6dc2e04b0f") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 276.86 59.69 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 294.64 50.8 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d1545aa6-701a-5348-a39a-4e699edecb66")
+		(property "Reference" "C241" (at 297.18 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 297.18 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 294.64 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 294.64 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 294.64 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 294.64 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 294.64 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 294.64 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "353cffa3-ef2f-5e57-bbf6-86101a96c56a"))
+		(pin "2" (uuid "53e22789-b9f6-581d-bb7b-d34e5b5df7ae"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C241") (unit 1))))
+	)
+	(global_label "+1V8" (shape bidirectional) (at 294.64 46.99 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "ca593b86-21a9-5021-88bf-ec2d675c810d") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 294.64 46.99 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 294.64 54.61 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "3a88d728-d577-5821-8767-546f5aea90dc") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 294.64 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 309.88 53.34 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9c689e8b-a834-5040-92a4-d93240800a27")
+		(property "Reference" "C242" (at 312.42 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 312.42 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 309.88 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 309.88 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 309.88 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 309.88 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 309.88 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 309.88 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "c1dfad30-6638-5c7b-8ec2-d07523bfac8d"))
+		(pin "2" (uuid "6f5ed311-3fac-5b9a-8685-ab4d0be11492"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C242") (unit 1))))
+	)
+	(global_label "MIC_P" (shape bidirectional) (at 309.88 49.53 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "bb509128-ffe0-54cf-baf3-b8feb5a487a9") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 309.88 49.53 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HPGND" (shape bidirectional) (at 309.88 57.15 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "6b946eec-f89b-5dd0-8ac2-8782b5099f95") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 309.88 57.15 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:C") (at 327.66 53.34 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "dc49f58c-61ca-51e0-9e63-8b8dee3af873")
+		(property "Reference" "C243" (at 330.2 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1u" (at 330.2 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 327.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 327.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 327.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C52923" (at 327.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "CL05A105KA5NQNC" (at 327.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Samsung" (at 327.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "85e35fa1-da67-5dbb-884a-63cd4ad0c73a"))
+		(pin "2" (uuid "d1aa6156-7887-51fa-9c54-fbd658b1e35a"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "C243") (unit 1))))
+	)
+	(global_label "MIC_N" (shape bidirectional) (at 327.66 49.53 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "41a8eeb2-bf51-523c-a7be-4c9d96bd80dc") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 327.66 49.53 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HPGND" (shape bidirectional) (at 327.66 57.15 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "1dc675f3-7b47-5c8e-ab35-4cd9d4571f7c") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 327.66 57.15 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:R") (at 342.9 53.34 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "86730afa-0d27-56bb-ad2e-6f7ce73d4b8c")
+		(property "Reference" "R231" (at 345.44 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "33" (at 345.44 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 342.9 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 342.9 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 342.9 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C25105" (at 342.9 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "0402WGF330JTCE" (at 342.9 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "UNI-ROYAL" (at 342.9 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "5541f3fa-8f3c-5604-9b36-58dc54cd7d6b"))
+		(pin "2" (uuid "712dc86b-8785-56f5-af3b-9ac5bdcdb045"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "R231") (unit 1))))
+	)
+	(global_label "HP_L" (shape bidirectional) (at 342.9 49.53 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "7923e92d-5d2e-5a06-9c65-4e828ada4126") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 342.9 49.53 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "JACK_A" (shape bidirectional) (at 342.9 57.15 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "f7f95297-b3fc-55b8-b676-e538e72f5683") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 342.9 57.15 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:R") (at 358.14 53.34 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c718a1d8-1670-5ecb-b3d7-a89b6f4a7504")
+		(property "Reference" "R232" (at 360.68 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "33" (at 360.68 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 358.14 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 358.14 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 358.14 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C25105" (at 358.14 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "0402WGF330JTCE" (at 358.14 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "UNI-ROYAL" (at 358.14 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "5f595793-7813-500a-9f21-ec20657ef34b"))
+		(pin "2" (uuid "7ecbd90e-16d5-5166-b4a2-561ee13215e1"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "R232") (unit 1))))
+	)
+	(global_label "HP_R" (shape bidirectional) (at 358.14 49.53 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "610dc333-391d-5c6c-ab43-cf4f0c8a8ca2") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 358.14 49.53 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "JACK_B" (shape bidirectional) (at 358.14 57.15 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "25627778-97c1-5376-8a3b-7cc3376c9185") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 358.14 57.15 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:R") (at 373.38 53.34 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7ae56786-2514-5797-bb0d-487abd616d41")
+		(property "Reference" "R233" (at 375.92 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100k" (at 375.92 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 373.38 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 373.38 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "jack switch to ground on the other side" (at 373.38 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C25741" (at 373.38 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "0402WGF1003TCE" (at 373.38 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "UNI-ROYAL" (at 373.38 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "f6c84f9a-0df7-55f8-9eb0-46f6da2cb5cf"))
+		(pin "2" (uuid "712a500c-ce42-5da4-aa7e-f8f1d7791e98"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "R233") (unit 1))))
+	)
+	(global_label "HP_DET" (shape bidirectional) (at 373.38 49.53 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "f8ae5fea-7d3f-5210-9c07-6ea1518aee05") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 373.38 49.53 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "+3V3" (shape bidirectional) (at 373.38 57.15 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "5170c205-c63e-55ef-b0d9-8874f467b650") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 373.38 57.15 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:R") (at 388.62 58.42 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9cc216b0-fb1b-59cc-8b3f-48aa69aab9c2")
+		(property "Reference" "R234" (at 391.16 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100k" (at 391.16 62.23 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 388.62 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 388.62 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 388.62 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C25741" (at 388.62 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "0402WGF1003TCE" (at 388.62 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "UNI-ROYAL" (at 388.62 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "bef6e21e-5ad9-53e4-a5bd-03fd047dbb80"))
+		(pin "2" (uuid "15a9592f-f52b-5269-8c9e-9c8cd754f169"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "R234") (unit 1))))
+	)
+	(global_label "CODEC_GPIO2" (shape bidirectional) (at 388.62 54.61 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "0846b8eb-180f-5bcb-a707-f8df44c8a4c6") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 388.62 54.61 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 388.62 62.23 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "bbfe19d8-78e7-5e4e-b1c3-b454ce8c0518") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 388.62 62.23 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:R") (at 25.4 127 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "c91a1087-aa07-5e34-ac87-eb2c7ee5d1e1")
+		(property "Reference" "R235" (at 27.94 123.19 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100k" (at 27.94 130.81 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 25.4 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 25.4 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 25.4 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C25741" (at 25.4 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "0402WGF1003TCE" (at 25.4 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "UNI-ROYAL" (at 25.4 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "7792e2fa-95ba-52a2-9af4-19a006e2ffba"))
+		(pin "2" (uuid "88f8356e-aaee-53d3-9fac-7bbb14dccbeb"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "R235") (unit 1))))
+	)
+	(global_label "CODEC_IRQ" (shape bidirectional) (at 25.4 123.19 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "f4266b1c-419b-5463-aa96-cb416d005a7d") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 25.4 123.19 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 25.4 130.81 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "b566fb5e-8107-5593-b4eb-495e21df0a6d") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 25.4 130.81 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:R") (at 40.64 124.46 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "33405251-d805-537b-bf19-1f048cdd03dc")
+		(property "Reference" "R236" (at 43.18 120.65 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "0" (at 43.18 128.27 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 40.64 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 40.64 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "single ground join, at the jack" (at 40.64 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C17168" (at 40.64 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "0402WGF0000TCE" (at 40.64 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "UNI-ROYAL" (at 40.64 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "6dcdbe4d-516b-5cb3-903f-0ea29468feef"))
+		(pin "2" (uuid "a51431bb-5598-5a95-b1db-aef8933b9cd3"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "R236") (unit 1))))
+	)
+	(global_label "HPGND" (shape bidirectional) (at 40.64 120.65 90) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "f8e840f1-0520-5ad8-b2a0-80bf4ac670f3") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 40.64 120.65 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 40.64 128.27 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "b293b800-672b-594f-9f6a-e35615f0d0ba") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 40.64 128.27 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "hackerslide:PJ-3528S") (at 68.58 121.92 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "befa63a9-804a-5476-9c26-39f31af7cc27")
+		(property "Reference" "J5" (at 71.12 118.11 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "PJ-3528S" (at 71.12 125.73 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "hackerslide:Jack_3.5mm_XKB_PJ-3528S_EdgeNotch" (at 68.58 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 68.58 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "3-pole, 4.1 mm tall, sunk into the board edge" (at 68.58 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C2764617" (at 68.58 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "PJ-3528S" (at 68.58 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "XKB Connection" (at 68.58 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "3" (uuid "705f25fd-52d4-57b6-bf0d-99ac13ea6e30"))
+		(pin "2" (uuid "d8d62910-29a9-5eff-aba0-cd3c152652f0"))
+		(pin "1" (uuid "45aa6a7e-2f92-5b3a-9eb1-db00b5e6cd9e"))
+		(pin "5" (uuid "05576e93-e1a6-50b9-8b3e-ff48e7c36d8c"))
+		(pin "4" (uuid "2233851a-d6b7-504f-9e5c-af4985c0f53c"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "J5") (unit 1))))
+	)
+	(global_label "JACK_A" (shape bidirectional) (at 58.42 119.38 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "67f0b6a7-db46-5ec4-b6b3-fcb893126d78") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 58.42 119.38 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "JACK_B" (shape bidirectional) (at 58.42 121.92 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "f7e8087d-1160-557b-b083-1cbc23c151b5") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 58.42 121.92 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HPGND" (shape bidirectional) (at 58.42 124.46 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "085bb7a3-d59f-53bd-a703-76eb9840f3d7") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 58.42 124.46 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "HP_DET" (shape bidirectional) (at 78.74 119.38 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "138c0805-a3b2-5e3d-8f3d-233134618b66") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 78.74 119.38 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 78.74 121.92 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "7fc7f935-e25f-5f2f-9c63-7c175bec32f1") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 78.74 121.92 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:D_TVS") (at 106.68 116.84 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "98b16133-e255-59c3-8ed6-be39786c9bcb")
+		(property "Reference" "D210" (at 109.22 113.03 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "PESD5V0S1BL" (at 109.22 120.65 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Diode_SMD:D_SOD-882" (at 106.68 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 106.68 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "ESD, bidirectional" (at 106.68 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C84374" (at 106.68 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "PESD5V0S1BL,315" (at 106.68 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Nexperia" (at 106.68 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "13560869-8399-5652-b7be-06693f19330d"))
+		(pin "2" (uuid "b73b410c-8739-50c2-bf47-1ab8b555098e"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "D210") (unit 1))))
+	)
+	(global_label "JACK_A" (shape bidirectional) (at 102.87 116.84 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "ff4d2654-ec5b-55df-ac59-dded4c7521ed") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 102.87 116.84 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 110.49 116.84 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "fee1cd83-3df8-538f-b413-5949c741b3c9") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 110.49 116.84 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Device:D_TVS") (at 139.7 116.84 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "31d26885-557c-52bd-bb3f-9b586f505e47")
+		(property "Reference" "D211" (at 142.24 113.03 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "PESD5V0S1BL" (at 142.24 120.65 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Diode_SMD:D_SOD-882" (at 139.7 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 139.7 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "ESD, bidirectional" (at 139.7 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "LCSC" "C84374" (at 139.7 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "MPN" "PESD5V0S1BL,315" (at 139.7 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Manufacturer" "Nexperia" (at 139.7 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "dc43b4d7-a782-5908-8fd1-1f49e4ae2fc3"))
+		(pin "2" (uuid "bd5f9eb9-5067-5266-af27-3e5db3d3bfd6"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "D211") (unit 1))))
+	)
+	(global_label "JACK_B" (shape bidirectional) (at 135.89 116.84 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "ba2ed89d-6c4c-5297-bc72-f630d4ac918a") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 135.89 116.84 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(global_label "GND" (shape bidirectional) (at 143.51 116.84 0) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify left)) (uuid "f8c69707-de30-5c65-a3a7-53c0923c7cea") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 143.51 116.84 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Connector:TestPoint") (at 160.02 119.38 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "63cc6ce9-3454-5885-9280-e1b62c699c97")
+		(property "Reference" "TP40" (at 162.56 115.57 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "AUD_LRCK" (at 162.56 123.19 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 160.02 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 160.02 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 160.02 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "94a30c51-3b6d-549f-a466-5d5e19c3e93e"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "TP40") (unit 1))))
+	)
+	(global_label "AUD_LRCK" (shape bidirectional) (at 160.02 119.38 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "d6244cea-c6d0-5f1d-96a1-93b9cbedf5b4") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 160.02 119.38 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Connector:TestPoint") (at 172.72 119.38 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "32326561-544e-52cf-abb8-076300c307e9")
+		(property "Reference" "TP41" (at 175.26 115.57 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "AUD_BCLK" (at 175.26 123.19 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 172.72 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 172.72 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 172.72 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "a3d7295d-d772-545d-99a4-ce3d6eb77164"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "TP41") (unit 1))))
+	)
+	(global_label "AUD_BCLK" (shape bidirectional) (at 172.72 119.38 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "9b7f4fa1-1f0d-59b9-89a3-6fd9452ae0f9") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 172.72 119.38 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Connector:TestPoint") (at 187.96 119.38 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "ff31a82a-cb44-5d0f-b572-32aaca31ecee")
+		(property "Reference" "TP42" (at 190.5 115.57 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "AUD_DAC" (at 190.5 123.19 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 187.96 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 187.96 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 187.96 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "ab365941-2643-5465-921d-d6c668d584bd"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "TP42") (unit 1))))
+	)
+	(global_label "AUD_DAC" (shape bidirectional) (at 187.96 119.38 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "2d4e53c6-2fa5-517d-a0f0-0d7848882740") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 187.96 119.38 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "Connector:TestPoint") (at 200.66 119.38 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "95b4603c-e024-55fb-bc61-e0f67bb8ebb2")
+		(property "Reference" "TP43" (at 203.2 115.57 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "HP_DET" (at 203.2 123.19 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (at 200.66 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 200.66 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 200.66 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "a1c842e0-b5ee-55db-863e-1707f7eed950"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "TP43") (unit 1))))
+	)
+	(global_label "HP_DET" (shape bidirectional) (at 200.66 119.38 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "e0e739de-f435-59f0-b65e-c60ce8cafd33") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 200.66 119.38 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(symbol (lib_id "power:PWR_FLAG") (at 220.98 114.3 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "f683dc67-9294-5ce3-a0a0-d78729ff73a9")
+		(property "Reference" "#FLG023" (at 223.52 110.49 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "PWR_FLAG" (at 223.52 118.11 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 220.98 114.3 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "~" (at 220.98 114.3 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "" (at 220.98 114.3 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "fe88a4f8-372d-5cac-b669-88ac9d221576"))
+		(instances (project "hackpad" (path "/cded560f-d6ef-5c44-b173-b5eaf18e9374/e1527894-8c66-53f0-b3dc-36a57b2b5425" (reference "#FLG023") (unit 1))))
+	)
+	(global_label "AVDD_CODEC" (shape bidirectional) (at 220.98 114.3 270) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "52efb89e-fc7b-549f-9795-2c32e9cc5416") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 220.98 114.3 0) (effects (font (size 1.27 1.27)) (hide yes))))
+	(text "Audio out: ES8316 codec and 3-pole headphone jack" (exclude_from_sim no) (at 15.24 15.24 0) (effects (font (size 3.0 3.0)) (justify left bottom)) (uuid "80b879f3-6cd8-5719-96b6-199035723681"))
+	(text "Audio OUT only (David 2026-11-26): 3-pole jack sunk into a notch in the board edge, about 2.15 mm above the board." (exclude_from_sim no) (at 15.24 21.24 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "86b38fd9-2747-58c5-8c2f-1d7cb153270b"))
+	(text "Codec circuit carried over from the Linux design (Everest application circuit): AVDD/PVDD 3.3 V, DVDD/CPVDD 1.8 V," (exclude_from_sim no) (at 15.24 25.44 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "4d421b7e-1cc9-5685-b118-1e7b1588d99b"))
+	(text "    I2C address 0x10 on the I2C_U bus, master clock required. Its two recording inputs are grounded through" (exclude_from_sim no) (at 15.24 29.64 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "ada0db0c-14b6-57d9-8cad-c40d89a4bb7a"))
+	(text "    capacitors: the built-in microphones go straight to the brain." (exclude_from_sim no) (at 15.24 33.84 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "92400ac6-6976-51cd-b196-ce4e7f57f126"))
+	(text "The master clock pad is also boot strap 9 (pulled low by 10k on the brain sheet); the codec pin is an input." (exclude_from_sim no) (at 15.24 38.04 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "b4c134cf-b589-5a83-815c-ca57f2fb26b8"))
+	(text "Jack terminals from the XKB drawing: 1 sleeve, 2 and 3 signal, 4-5 an isolated switch. Which of 2 and 3 is the tip" (exclude_from_sim no) (at 15.24 42.24 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "d53142c2-0b6a-5710-965c-e1f769b57561"))
+	(text "    is not stated: a wrong guess swaps left and right, which the firmware can swap back. Whether the switch is" (exclude_from_sim no) (at 15.24 46.44 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "a152e9d7-510e-5360-beea-60098188761a"))
+	(text "    closed with or without a plug is not stated either: the firmware learns the polarity." (exclude_from_sim no) (at 15.24 50.64 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "ad701a92-a172-5b2a-b960-2adb0daa76e4"))
+	(text "HPGND joins GND only through R236, placed at the jack." (exclude_from_sim no) (at 15.24 54.84 0) (effects (font (size 1.6 1.6)) (justify left bottom)) (uuid "45cd7695-1a69-5768-8af6-1c92e9f5185a"))
+	(embedded_fonts no)
+)
