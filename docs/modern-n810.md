@@ -371,3 +371,14 @@ the two batteries side by side in one layer.
 Open: the module's own Wi-Fi has no known FCC modular approval for handheld use (see section 12): selling it needs a
 portable-cleared radio instead or a filing. Screen and cells to choose. With an i.MX 6ULL stamp module instead, the
 same shape gets about 1.5-2 mm thinner and much cooler, but slower and without a GPU.
+
+### 13b. Smaller than the WiBrain B1, normal colour screen (David, 2026-11-27)
+
+The original WiBrain B1: 192 x 82 x 28 mm, 4.8" 1024 x 600 touch screen, about 510 g (UMPCPortal). Revised model:
+the Linux handheld's own panel, Focus LCDs E40RB-I-MW430-CB (4.0" 480 x 800 IPS, capacitive touch, 98.10 x 58.26 x
+4.25 mm, used landscape: dimensions from its data sheet), keys at 7.0 mm pitch, cells 32 x 52 x 5 mm (estimate,
+about 1,100-1,300 mAh each). Result: **181.3 x 67.5 x 12.75 mm**, smaller than the B1 in every direction and less
+than half as thick. Rough battery life with about 2,400 mAh: 3-4.5 h under load, 6-9 h light use. A larger
+alternative panel: Focus LCDs E43GB-I-MW405-C (4.3" 480 x 800, MIPI DSI, touch; DigiKey) at about +7 mm width and
++9 mm height. The panel's folded tails carry parts (1.7 mm, see the Linux design): the carrier must keep that strip
+clear.

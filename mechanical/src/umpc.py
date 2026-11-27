@@ -4,7 +4,7 @@
 
 CONCEPT MODEL.  Brain: the LuckFox Core3566 module of the Linux handheld (55 x 40 mm, 4.50 mm above the carrier when
 mated on its two DF40 sockets: measured on LuckFox's STEP model, mechanical/src/config.py on branch linux-handheld).
-Screen: a 5" 1024 x 600-class LCD with touch; the outline here is an ESTIMATE, no panel chosen yet.  Batteries: two
+Screen: Focus LCDs E40RB-I-MW430-CB 4.0" 480 x 800 IPS with touch (data sheet dimensions), used landscape.  Batteries: two
 flat cells under the keyboard halves, size an ESTIMATE, no cell chosen yet.  Everything marked [est] is a guess.
 
 Layout, as asked (David, 2026-11-27): screen on top; under it the board and the batteries side by side in one
@@ -18,20 +18,22 @@ import cadquery as cq
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 # ------------------------------------------------------------------------------------------- dimensions (mm)
-PANEL = dict(w=118.0, h=70.0, t=3.0, aa_w=108.0, aa_h=63.5)  # [est] 5" LCD 2.2 + touch and cover glass 0.8
+# Focus LCDs E40RB-I-MW430-CB, the Linux handheld's 4.0" 480 x 800 IPS with capacitive touch, used landscape:
+# outline, active area and thickness from its data sheet (mechanical/src/config.py on branch linux-handheld)
+PANEL = dict(w=98.10, h=58.26, t=4.25, aa_w=86.40, aa_h=51.84)
 MODULE = dict(w=55.0, h=40.0, mated=4.50, soc_top=3.60)      # LuckFox Core3566 (measured, see above)
 CARRIER_T = 1.0
-KEY = dict(pitch_x=7.4, pitch_y=7.0, cap_w=6.6, cap_h=6.2, cols=5, rows=4)
+KEY = dict(pitch_x=7.0, pitch_y=7.0, cap_w=6.3, cap_h=6.2, cols=5, rows=4)
 SWITCH_H, NUB, FLANGE, CAP_TOP = 0.6, 0.3, 0.5, 1.2           # as the keyboards of the earlier designs
 KBD_PCB_T = 0.8
-CELL = dict(w=34.0, h=62.0, t=5.0)                           # [est] one flat cell per side, about 1,500-1,800 mAh each
+CELL = dict(w=32.0, h=52.0, t=5.0, inset=7.0)                # [est] one flat cell per side, about 1,100-1,300 mAh each
 BACK, WALL, FRONT = 1.2, 1.6, 0.8                            # [est] printed back; front frame over the screen border
 THERMAL_MIN = 0.5                                            # [est] thinnest pad from the SoC lid to an aluminium plate in the back
 GAP = 0.3
 HALF_W = KEY['cols'] * KEY['pitch_x'] + 4.0                  # keyboard half including its margin
-W = PANEL['w'] + 2 * HALF_W + 2 * WALL + 4.0
+W = PANEL['w'] + 2 * HALF_W + 2 * WALL + 2.0
 H = PANEL['h'] + 2 * WALL + 6.0
-END_R = 16.0                                                 # rounded grips at the two ends
+END_R = 14.0                                                 # rounded grips at the two ends
 
 # Z stack, centre (screen over the module) and sides (keys over the cells)
 # carrier bottom face; the module hangs under it.  Its tallest part (an inductor, 4.50 below the carrier) needs 0.2 mm
@@ -92,7 +94,7 @@ def parts():
         b = rbox(x0, WALL + 2, Z_KBD, x0 + HALF_W - 1.0, H - WALL - 2, Z_KBD + KBD_PCB_T, END_R - WALL - 1.0)
         kbd = b if kbd is None else kbd.union(b)
     cells = None
-    for x0 in (WALL + 3.0, W - WALL - 3.0 - CELL['w']):
+    for x0 in (WALL + CELL['inset'], W - WALL - CELL['inset'] - CELL['w']):
         b = rbox(x0, CY - CELL['h'] / 2, Z_CELL, x0 + CELL['w'], CY + CELL['h'] / 2, Z_CELL + CELL['t'], 2.0)
         cells = b if cells is None else cells.union(b)
     carrier = rbox(px0 + 2, py0 + 2, Z_CARRIER, px0 + PANEL['w'] - 2, py0 + PANEL['h'] - 2, Z_CARRIER_TOP, 3.0)
@@ -145,7 +147,7 @@ def main():
     keys = [dict(side=s, r=r, c=c, x=x, y=y, label=LEGENDS[s][r][c]) for s, r, c, x, y in key_centres()]
     stack = [('Back (printed; aluminium plate behind the SoC)', BACK), ('Thermal pad', THERMAL),
              ('Module, hanging under the carrier (SoC lid to carrier)', MODULE['soc_top']), ('Carrier board', CARRIER_T),
-             ('Parts on the carrier\'s screen side + gap', 0.9 + GAP), ('LCD with touch and cover glass [est]', PANEL['t']),
+             ('Parts on the carrier\'s screen side + gap', 0.9 + GAP), ('LCD with touch and cover glass', PANEL['t']),
              ('Front frame, half above the glass', FRONT * 0.5)]
     json.dump(dict(w=W, h=H, t=T, z_keytop=Z_KEYTOP, screen=screen, keys=keys, explode=EXPLODE,
                    stack=stack, side_stack=[('Back', BACK), ('Cell [est]', CELL['t']), ('Gap', GAP), ('Keyboard board', KBD_PCB_T),
