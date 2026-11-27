@@ -318,3 +318,33 @@ path (general information, not legal advice; to confirm with a test lab):
 What it means for the concepts so far: the cellular phone is out for selling; the pocket player, watch and a
 HaLow/SIP handset are fine **if** their radio modules' grants allow handheld use, which is being checked grant by
 grant (HaLow modules at 21-24 dBm are the doubtful ones for use at the ear).
+
+### 12b. What the module grants actually say (research of 2026-11-26)
+
+Full report with quotes and sources: `docs/research/fcc-module-grants-2026-11-26.md` (grant texts read from fccid.io
+copies; the FCC's own servers refused automated access). General information, not legal advice.
+
+- **Cleared for use close to the body on their modular grant:** Bluetooth LE modules only. Raytac MDBT50Q
+  (nRF52840, "This is a portable device", 5 mm), Raytac MDBT53 (nRF5340, portable, 5 mm; grant forbids operating
+  alongside other transmitters), u-blox NINA-B4 (mobile and/or portable, 5 mm), u-blox ANNA-B4 (0-5 mm, built-in
+  antenna), u-blox NINA-B31x (10 mm). The original Ezurio Sterling-LWB Wi-Fi/Bluetooth module allows portable use at
+  29 mm or more (availability not checked).
+- **20 cm only (mobile):** every Wi-Fi HaLow module checked (Morse Micro MF08651, MF08251, MM8108-MF15457 except in
+  Morse Micro's own dongle; AzureWave AW-HM593; Quectel FGH100M), every ESP32 module checked (C6, C3, S3, PICO), the
+  Murata 1DX (professional installation only), Sterling-LWB+, the RTL8723DS modules, and every LoRa module checked
+  (RAK3172, Seeed Wio-E5; Ebyte E22-900M22S is granted at only 9 dBm).
+- **The exemption does not fix that by itself:** the FCC rule says the RF-exposure exemption "is not exemption from
+  the equipment authorization procedures"; a 20 cm module in a handheld needs a Class II permissive change, which
+  only the grant holder can file (cheapest when backed by an exemption calculation instead of SAR tests), or a
+  change of FCC ID filed by the device maker plus that change.
+- **On-screen FCC labels are allowed** (47 CFR 2.935) for devices with a built-in screen, with conditions.
+- **Voice handsets fall under the hearing-aid-compatibility rules even for Wi-Fi/HaLow VoIP** (47 CFR 20.19:
+  "handset" = built-in speaker, typically held to the ear; VoIP over 614 MHz-6 GHz is covered). From 14 Dec 2026
+  there is no small-maker exemption. So a calling handset is not a cheap product to sell, whatever the radio.
+
+**Consequence for a sellable first product:** a device whose only radio is a portable-cleared Bluetooth LE module
+(for example the pocket player or the watch, with Bluetooth LE Audio earbuds, files loaded over USB-C) can be sold
+with just a Part 15B declaration. Adding Wi-Fi, HaLow or LoRa to a handheld means a permissive change through the
+module maker, a fee to be asked about (David's call: Claude does not contact vendors). A device without a built-in
+earpiece (headphones or speaker only) may fall outside the hearing-aid definition of "handset": to confirm with a
+test lab before relying on it.
