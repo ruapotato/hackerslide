@@ -382,3 +382,16 @@ than half as thick. Rough battery life with about 2,400 mAh: 3-4.5 h under load,
 alternative panel: Focus LCDs E43GB-I-MW405-C (4.3" 480 x 800, MIPI DSI, touch; DigiKey) at about +7 mm width and
 +9 mm height. The panel's folded tails carry parts (1.7 mm, see the Linux design): the carrier must keep that strip
 clear.
+
+### 13c. WiBrain-like control layout (David, 2026-11-27, from a photo of the WiBrain B1)
+
+Keys at the top of each side (left: Esc 1-4, Q-T, A-G, Shift Z-V; right: 5-8 Del, Y-P, H-L Enter, B N M Space Fn),
+a 5-way D-pad at the bottom left and a touchpad at the bottom right; shoulder buttons as mouse clicks. Body
+**181.3 x 72.0 x 12.75 mm** (the N810's height). Parts:
+- A low-profile analogue "circle pad" like the 3DS's is not sold by distributors (JLCPCB's thumbsticks are full-height
+  potentiometer sticks, 17-25 mm across, much too tall); replacement 3DS pads come only from marketplaces, which the
+  parts rule excludes. So the D-pad is a cross cap over five switches on the keyboard board (as on the hack pad), or
+  Alps SKRHABE010 5-way switch (JLCPCB 6,494; height to check).
+- Touchpad: electrodes drawn as copper on the keyboard board under a 0.5 mm overlay, read by an Azoteq trackpad
+  controller (IQS7211E or IQS550; JLCPCB 0 in stock, DigiKey to check). An optical "ball-like" sensor (PixArt
+  PAT9125) is also 0 at JLCPCB.

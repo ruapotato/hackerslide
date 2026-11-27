@@ -32,7 +32,7 @@ THERMAL_MIN = 0.5                                            # [est] thinnest pa
 GAP = 0.3
 HALF_W = KEY['cols'] * KEY['pitch_x'] + 4.0                  # keyboard half including its margin
 W = PANEL['w'] + 2 * HALF_W + 2 * WALL + 2.0
-H = PANEL['h'] + 2 * WALL + 6.0
+H = 72.0                                                     # the N810's height: room for keys above and a pad below on each side
 END_R = 14.0                                                 # rounded grips at the two ends
 
 # Z stack, centre (screen over the module) and sides (keys over the cells)
@@ -66,12 +66,12 @@ def key_centres():
     for side, x0 in (('L', WALL + 3.0), ('R', W - WALL - 3.0 - KEY['cols'] * KEY['pitch_x'])):
         for r in range(KEY['rows']):
             for c in range(KEY['cols']):
-                out.append((side, r, c, x0 + (c + 0.5) * KEY['pitch_x'], CY + (1.5 - r) * KEY['pitch_y'] - 2.0))
+                out.append((side, r, c, x0 + (c + 0.5) * KEY['pitch_x'], H - WALL - 3.5 - (r + 0.5) * KEY['pitch_y']))
     return out
 
 
-LEGENDS = {'L': [['Q', 'W', 'E', 'R', 'T'], ['A', 'S', 'D', 'F', 'G'], ['Z', 'X', 'C', 'V', 'B'], ['Esc', 'Tab', 'Fn', 'Shift', 'Spc']],
-           'R': [['Y', 'U', 'I', 'O', 'P'], ['H', 'J', 'K', 'L', 'Del'], ['N', 'M', ',', '.', 'Ent'], ['Spc', 'Alt', 'Ctrl', 'Sym', 'Shift']]}
+LEGENDS = {'L': [['Esc', '1', '2', '3', '4'], ['Q', 'W', 'E', 'R', 'T'], ['A', 'S', 'D', 'F', 'G'], ['Shift', 'Z', 'X', 'C', 'V']],
+           'R': [['5', '6', '7', '8', 'Del'], ['Y', 'U', 'I', 'O', 'P'], ['H', 'J', 'K', 'L', 'Ent'], ['B', 'N', 'M', 'Spc', 'Fn']]}
 
 
 def parts():
@@ -86,9 +86,19 @@ def parts():
         cap = rbox(x - w / 2, y - KEY['cap_h'] / 2, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, x + w / 2, y + KEY['cap_h'] / 2, Z_KEYTOP, 1.2)
         caps = cap if caps is None else caps.union(cap)
         front = front.cut(rbox(x - w / 2 - 0.3, y - KEY['cap_h'] / 2 - 0.3, T - FRONT - 1, x + w / 2 + 0.3, y + KEY['cap_h'] / 2 + 0.3, T + 1, 1.4))
-    jx, jy = W - WALL - 3.0 - KEY['cols'] * KEY['pitch_x'] / 2, CY + 2.5 * KEY['pitch_y'] + 1.5     # mini joystick above the right keys
-    stick = cq.Workplane('XY').circle(2.2).extrude(1.6).translate((jx, jy, T - 0.4))
-    front = front.cut(cq.Workplane('XY').circle(3.0).extrude(3).translate((jx, jy, T - FRONT - 1)))
+    # bottom left: a 5-way D-pad (cross cap over five switches on the keyboard board); bottom right: a touchpad drawn
+    # as copper on the keyboard board under a 0.5 mm overlay, read by an Azoteq trackpad controller (stock to check)
+    zone_top = H - WALL - 3.5 - KEY['rows'] * KEY['pitch_y'] - 2.0
+    dx, dy = WALL + 3.0 + KEY['cols'] * KEY['pitch_x'] / 2, (WALL + zone_top) / 2
+    cross = rbox(dx - 9.5, dy - 3.2, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, dx + 9.5, dy + 3.2, Z_KEYTOP, 1.0).union(
+        rbox(dx - 3.2, dy - 9.5, Z_KBD + KBD_PCB_T + SWITCH_H + NUB, dx + 3.2, dy + 9.5, Z_KEYTOP, 1.0))
+    front = front.cut(cq.Workplane('XY').circle(11.0).extrude(3).translate((dx, dy, Z_FRONT - 1)))
+    tx, ty = W - WALL - 3.0 - KEY['cols'] * KEY['pitch_x'] / 2, dy
+    tw, th = KEY['cols'] * KEY['pitch_x'] - 2.0, (zone_top - WALL) - 5.0
+    pad = rbox(tx - tw / 2, ty - th / 2, T - 0.6, tx + tw / 2, ty + th / 2, T - 0.3, 2.0)
+    front = front.cut(rbox(tx - tw / 2 - 0.2, ty - th / 2 - 0.2, Z_FRONT - 1, tx + tw / 2 + 0.2, ty + th / 2 + 0.2, T + 1, 2.2))
+    well = cq.Workplane('XY').circle(10.8).extrude(0.3).translate((dx, dy, Z_KBD + KBD_PCB_T))   # dark disc under the cross
+    stick = cross.union(pad).union(well)
     kbd = None
     for x0 in (WALL + 1.0, W - WALL - 1.0 - (HALF_W - 1.0)):
         b = rbox(x0, WALL + 2, Z_KBD, x0 + HALF_W - 1.0, H - WALL - 2, Z_KBD + KBD_PCB_T, END_R - WALL - 1.0)

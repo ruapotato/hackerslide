@@ -31,7 +31,7 @@ def main():
     az, el, dist, ex = (float(v) for v in (argv[1:5] if len(argv) >= 5 else (-25, 40, 520, 0)))
     bpy.ops.wm.read_factory_settings(use_empty=True)
     M = dict(shell=S.mat('u_shell', (0.62, 0.36, 0.12), 0.42, coat=0.25), front=S.mat('u_front', (0.05, 0.05, 0.055), 0.4, coat=0.3),
-             keycaps=S.mat('u_cap', (0.10, 0.10, 0.11), 0.45), stick=S.mat('u_stick', (0.6, 0.15, 0.1), 0.6),
+             keycaps=S.mat('u_cap', (0.10, 0.10, 0.11), 0.45), stick=S.mat('u_stick', (0.13, 0.13, 0.14), 0.3, coat=0.4),
              kbd_pcb=S.mat('u_kbd', (0.03, 0.22, 0.10), 0.35), cells=S.mat('u_cell', (0.55, 0.57, 0.62), 0.3, metal=0.6),
              carrier=S.mat('u_carrier', (0.03, 0.22, 0.10), 0.35), module=S.mat('u_mod', (0.08, 0.2, 0.45), 0.35),
              thermal=S.mat('u_pad', (0.85, 0.45, 0.2), 0.6), panel=S.mat('u_panel', (0.02, 0.02, 0.025), 0.15),
