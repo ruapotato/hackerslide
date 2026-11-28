@@ -153,6 +153,22 @@ Not done: catchable notes and the shell's `services`. Not run on real hardware y
 real serial line, and the fix for `sleep` hanging on the real chip (an RTC compare set too late; found on the
 board, fixed in `a2c97fd`, emulators cannot show it).
 
+Milestone 6 (pushed 2026-11-28, `3d37e22`; all four suites pass from a clean build, emulators only) hardens it:
+
+- the nRF52 drivers were read for timing faults an emulator hides, and a driver test was added in which time passes
+  at every register access; it reproduces the `sleep` hang with the old RTC driver. Two more RTC start-up faults
+  and the console's flow control were fixed. Still suspected: serial receive is one byte per transfer and tolerates
+  about 430 us of interrupt delay at 115200 baud, so a 9P burst may lose bytes on the real chip;
+- `exportfs` on the console gives the line back when the PC is silent (30 s default) or the server dies, and holds
+  kernel messages during a session;
+- notes the Plan 9 way: `notify`/`noted`, `echo kill > /proc/7/note`, Ctrl-C as the note `interrupt`,
+  `/proc/<pid>/ctl` with `kill`/`stop`/`start`;
+- services: `/proc/svc` and its `ctl` behind the shell's `svc`;
+- 9P: an interrupted request no longer costs the connection.
+
+Known weak point: the Feather's kernel heap (46 KB) is nearly used up in a 9P session; a 6 KB file in `/tmp`
+then exhausts it and nothing more can be started. Feather image: 44 KB spare below the bootloader limit.
+
 On 2026-11-28 David renamed the system and its repository to **Hamnix Micro** (`hamnix-micro`). Its earlier
 name, used in commits before that date, was "Hack" + "OS" in one word (repository `hackos`); he found that name overloaded.
 This file was reworded to match.
