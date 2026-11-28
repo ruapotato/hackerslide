@@ -114,3 +114,29 @@ image boots and runs a 52-command shell session in Renode's nRF52840 emulator (3
 place from flash so the shell plus five-program pipelines fit in 256 KB of RAM, with smaller shell limits. No
 compiler change was needed; double-precision floats use LLVM's software routines (BSD/Apache compiler-rt).
 Guide: `docs/boards/feather-nrf52840.md` in the hackos repo; porting notes for RP2040/RP2350: `docs/porting.md`.
+
+## Milestone 4 result (2026-11-27, emulator only)
+
+Pushed to `ruapotato/hackos`; all four suites pass from a clean build (`make test`, `test-m4`, `test-teensy`,
+`test-nrf52`). Closed holes (a new program starts with zeroed registers; a process binds only pipes and files it
+holds; the kernel suite also runs on QEMU's Cortex-M4F machine; pasted console input is throttled, not lost).
+Shell: background jobs, history, Tab completion, `> file 2>&1`, Ctrl-C for a whole pipeline. Sixteen more Hamnix
+programs unmodified, including `vi`. `/proc`. Tickless idle and suspend (an idle shell wakes about 5 times a second
+instead of 1000). Display and keyboard layers against a fake e-paper panel and a TCA8418 model. Not reached: an
+nRF52 I2C/SPI driver, a flash file system, any current measurement. Report: REPORT-M4.md beside the sources.
+
+## First run on real hardware: Feather nRF52840 Express (2026-11-28)
+
+HackOS booted on David's Feather and ran a shell session over a USB-serial cable: `ls /bin`, pipelines of up to four
+programs, a file in tmpfs, and a deliberate bad memory access ended by the memory protection unit (status 139).
+This was the milestone-3 image; milestone-4 features have not run on the board yet.
+
+It took an evening because the board's bootloader (Adafruit 0.2.6, 2018) silently drops every part of a flash file
+at or above address 0xAD000. The image ended at 0xBD000, so its initial data was never written and the chip reset
+in a loop. The emulator loads the whole image and could not show it. Found by writing a start-up and fault log into
+a spare flash page and reading it back through the bootloader's USB drive. Fixed by moving the programs lower; the
+build now refuses an image that ends above the limit. The milestone-4 image ends 11 KB below it, so size is now a
+real constraint on boards with this bootloader (a newer bootloader raises the limit to 0xED000).
+
+Milestone 5 (per-process namespaces, drivers as files, 9P) was started and stopped part-way: two local commits and
+uncommitted work, none of it verified or pushed.
