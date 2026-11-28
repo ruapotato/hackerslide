@@ -49,7 +49,7 @@ and calls are slower. Start that way and measure; a true 32-bit mode is weeks of
 
 ## Milestone 1 reached (2026-11-27)
 
-HackOS lives at https://github.com/ruapotato/hackos (AGPL-3.0) and needs the `cortex-m7` branch of
+HackOS lives at https://github.com/ruapotato/hamnix-micro (AGPL-3.0) and needs the `cortex-m7` branch of
 https://github.com/ruapotato/adder (GPL-3.0-or-later, a fork of HamnixOS/adder). One command builds the compiler and
 the image and runs them on QEMU's Cortex-M7 machine: 44 checks pass (start-up, serial output, a timer interrupt and
 a system-call handler written in Adder, double-precision and 64-bit arithmetic, register access, fault reporting).
@@ -62,7 +62,7 @@ ordinary code, 3 times in call-heavy stubs, and pointers in structures take 8 by
 
 ## Milestone 2 result (2026-11-26, emulator only)
 
-Pushed to `ruapotato/hackos` (main) and `ruapotato/adder` (branch `cortex-m7`). `make test` passes from a clean build.
+Pushed to `ruapotato/hamnix-micro` (main) and `ruapotato/adder` (branch `cortex-m7`). `make test` passes from a clean build.
 
 - Kernel: preemptive threads, mutexes with priority inheritance, semaphores, condition variables, message queues,
   31 system calls (Hamnix's numbers where shared), memory-protection guards, a heap, faults that end only the
@@ -78,7 +78,7 @@ Pushed to `ruapotato/hackos` (main) and `ruapotato/adder` (branch `cortex-m7`). 
 
 ## Milestone 3 result (2026-11-26, emulator only)
 
-Pushed to `ruapotato/hackos` and `ruapotato/adder` (`cortex-m7`). `make test` passes from a clean build.
+Pushed to `ruapotato/hamnix-micro` and `ruapotato/adder` (`cortex-m7`). `make test` passes from a clean build.
 
 - HackOS boots to Hamnix's `hamsh` on the serial console as an unprivileged process and runs programs loaded from
   files: `echo cat ls cp rm mkdir wc head grep`, pipelines, redirection, a script file.
@@ -96,7 +96,7 @@ Pushed to `ruapotato/hackos` and `ruapotato/adder` (`cortex-m7`). `make test` pa
 
 ## Teensy 4.1 target (2026-11-26, not run on hardware)
 
-Pushed to `ruapotato/hackos`. `make BOARD=teensy41` builds a .hex for the Teensy loader that boots to the same shell
+Pushed to `ruapotato/hamnix-micro`. `make BOARD=teensy41` builds a .hex for the Teensy loader that boots to the same shell
 (console on Serial1, pins 0/1, 115200; LED blinks once running). Drivers for the serial port, GPIO, pin mux, clocks,
 I2C, SPI and the SD card, written against NXP's register definitions; the SD driver passes against QEMU's own SD
 model, the others against register models written from the reference manual; the boot header, every register
@@ -107,7 +107,7 @@ PSRAM. Bring-up checklist: `docs/boards/teensy41.md` in the hackos repo. Every h
 ## First real-board target: Adafruit Feather nRF52840 Express (2026-11-27, not run on hardware)
 
 David decided HackOS becomes a multi-board microcontroller OS, starting on a board he owns. Pushed to
-`ruapotato/hackos`: `make BOARD=feather-nrf52840` gives a `.uf2` for drag-and-drop flashing (double-tap reset,
+`ruapotato/hamnix-micro`: `make BOARD=feather-nrf52840` gives a `.uf2` for drag-and-drop flashing (double-tap reset,
 drive FTHR840BOOT; the image starts after Adafruit's bootloader and Nordic's SoftDevice, which stay untouched).
 Console on the TX/RX pins at 115200 through a 3.3 V USB-serial adapter; red LED blinks once running. The unchanged
 image boots and runs a 52-command shell session in Renode's nRF52840 emulator (37 checks pass). Programs run in
@@ -117,7 +117,7 @@ Guide: `docs/boards/feather-nrf52840.md` in the hackos repo; porting notes for R
 
 ## Milestone 4 result (2026-11-27, emulator only)
 
-Pushed to `ruapotato/hackos`; all four suites pass from a clean build (`make test`, `test-m4`, `test-teensy`,
+Pushed to `ruapotato/hamnix-micro`; all four suites pass from a clean build (`make test`, `test-m4`, `test-teensy`,
 `test-nrf52`). Closed holes (a new program starts with zeroed registers; a process binds only pipes and files it
 holds; the kernel suite also runs on QEMU's Cortex-M4F machine; pasted console input is throttled, not lost).
 Shell: background jobs, history, Tab completion, `> file 2>&1`, Ctrl-C for a whole pipeline. Sixteen more Hamnix
@@ -140,3 +140,5 @@ real constraint on boards with this bootloader (a newer bootloader raises the li
 
 Milestone 5 (per-process namespaces, drivers as files, 9P) was started and stopped part-way: two local commits and
 uncommitted work, none of it verified or pushed.
+
+On 2026-11-28 David renamed the repository from `hackos` to `hamnix-micro` ("hackos is overloaded"). Older text above still says HackOS for the system itself.
