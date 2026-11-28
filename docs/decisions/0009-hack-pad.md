@@ -42,7 +42,7 @@ set by the Linux-class processor.
   they fit and reimplementing where needed ([os-audit-hamnix.md](../os-audit-hamnix.md)). Work starts in an
   emulator (QEMU's Cortex-M7 machine). An NXP evaluation board for bring-up is approved in principle; David buys it.
 
-- **Name (David, 2026-11-27):** the operating system is **HackOS**. It gets its own repository, and the Adder
+- **Name (David, 2026-11-27):** the operating system is **Hamnix Micro** (named Hamnix Micro until 2026-11-28). It gets its own repository, and the Adder
   compiler work for this chip gets its own repository too, separate from the existing Adder and Hamnix ones.
 
 - **Pointing (David, 2026-11-27):** the display's touch panel, and a D-pad with a centre key on the keyboard.
@@ -57,17 +57,17 @@ set by the Linux-class processor.
 
 - **Battery (David, 2026-11-27):** the GlobTek BL1950P4071611S1PCPT (1950 mAh, 4.5 x 61.5 x 76.5 mm, 3.9 A, 317
   at DigiKey) is acceptable as long as it fits the final dimensions.
-- **Repositories:** HackOS and the Adder fork go under David's own account (`ruapotato`), public, not the HamnixOS
-  organisation. HackOS is AGPL-3.0; the Adder fork keeps Adder's GPL-3.0-or-later.
+- **Repositories:** Hamnix Micro and the Adder fork go under David's own account (`ruapotato`), public, not the HamnixOS
+  organisation. Hamnix Micro is AGPL-3.0; the Adder fork keeps Adder's GPL-3.0-or-later.
 
-- **Languages (David, 2026-11-27):** HackOS is a mix of Adder and C. Adder for the kernel core, file systems,
+- **Languages (David, 2026-11-27):** Hamnix Micro is a mix of Adder and C. Adder for the kernel core, file systems,
   shell and tools; C for the chip makers' drivers and third-party stacks linked in. This needs Adder to call C
   functions directly, which is being added to the compiler fork.
 - **MicroPython dropped (David, 2026-11-27):** Adder is already Python-like, so MicroPython adds little. Open
   question this left: Adder is compiled on a PC, so how are programs written or changed on the device itself?
 - **On-device building is a requirement (David, 2026-11-27).** Adder is self-hosted and has its own native
   backend for x86_64; LLVM will not run on the device. So the plan is a native backend for this chip in the Adder
-  compiler, so that the compiler itself runs under HackOS. An assessment (structure, size, memory, effort) is
+  compiler, so that the compiler itself runs under Hamnix Micro. An assessment (structure, size, memory, effort) is
   being written with milestone 2. This is also a reason to fit 128 MB.
 - **On-device scripting is the Hamnix shell (David, 2026-11-27).** `hamsh` has variables, globs and control flow,
   and is the everyday way to write and change things on the device. Compiling Adder on the device becomes a later
@@ -142,7 +142,7 @@ set by the Linux-class processor.
   **15.4 mm** (keyboard half 11.6, display half 3.4, gap 0.4), from `mechanical/src/hackpad.py`; the stack is
   in `docs/hack-pad-stack.md`. Earlier "13.3 mm" was arithmetic with the battery beside the parts, which does
   not fit (`docs/hack-pad-area.md`).
-- **Development board:** David will probably buy a Teensy 4.1 (RT1062, same peripheral family) and keep HackOS
+- **Development board:** David will probably buy a Teensy 4.1 (RT1062, same peripheral family) and keep Hamnix Micro
   work on the emulator until then; the NXP EVKB is out of stock nearly everywhere (Amazon about $500).
 
 ## What carries over from the Linux design

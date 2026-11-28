@@ -49,7 +49,7 @@ and calls are slower. Start that way and measure; a true 32-bit mode is weeks of
 
 ## Milestone 1 reached (2026-11-27)
 
-HackOS lives at https://github.com/ruapotato/hamnix-micro (AGPL-3.0) and needs the `cortex-m7` branch of
+Hamnix Micro lives at https://github.com/ruapotato/hamnix-micro (AGPL-3.0) and needs the `cortex-m7` branch of
 https://github.com/ruapotato/adder (GPL-3.0-or-later, a fork of HamnixOS/adder). One command builds the compiler and
 the image and runs them on QEMU's Cortex-M7 machine: 44 checks pass (start-up, serial output, a timer interrupt and
 a system-call handler written in Adder, double-precision and 64-bit arithmetic, register access, fault reporting).
@@ -80,7 +80,7 @@ Pushed to `ruapotato/hamnix-micro` (main) and `ruapotato/adder` (branch `cortex-
 
 Pushed to `ruapotato/hamnix-micro` and `ruapotato/adder` (`cortex-m7`). `make test` passes from a clean build.
 
-- HackOS boots to Hamnix's `hamsh` on the serial console as an unprivileged process and runs programs loaded from
+- Hamnix Micro boots to Hamnix's `hamsh` on the serial console as an unprivileged process and runs programs loaded from
   files: `echo cat ls cp rm mkdir wc head grep`, pipelines, redirection, a script file.
 - Processes are position-independent ELF files, each in its own memory block that the protection unit fences off
   from the kernel and from other processes (tested by faulting on purpose). `rfork` is implemented as vfork.
@@ -102,18 +102,18 @@ I2C, SPI and the SD card, written against NXP's register definitions; the SD dri
 model, the others against register models written from the reference manual; the boot header, every register
 constant and every pin setting are checked by script. The checks found and fixed two kernel bugs that would have
 stopped the board. Fits the Teensy's 1 MB of RAM for one shell and four-program pipelines; a second shell needs
-PSRAM. Bring-up checklist: `docs/boards/teensy41.md` in the hackos repo. Every hardware-facing part is untested.
+PSRAM. Bring-up checklist: `docs/boards/teensy41.md` in the hamnix-micro repo. Every hardware-facing part is untested.
 
 ## First real-board target: Adafruit Feather nRF52840 Express (2026-11-27, not run on hardware)
 
-David decided HackOS becomes a multi-board microcontroller OS, starting on a board he owns. Pushed to
+David decided Hamnix Micro becomes a multi-board microcontroller OS, starting on a board he owns. Pushed to
 `ruapotato/hamnix-micro`: `make BOARD=feather-nrf52840` gives a `.uf2` for drag-and-drop flashing (double-tap reset,
 drive FTHR840BOOT; the image starts after Adafruit's bootloader and Nordic's SoftDevice, which stay untouched).
 Console on the TX/RX pins at 115200 through a 3.3 V USB-serial adapter; red LED blinks once running. The unchanged
 image boots and runs a 52-command shell session in Renode's nRF52840 emulator (37 checks pass). Programs run in
 place from flash so the shell plus five-program pipelines fit in 256 KB of RAM, with smaller shell limits. No
 compiler change was needed; double-precision floats use LLVM's software routines (BSD/Apache compiler-rt).
-Guide: `docs/boards/feather-nrf52840.md` in the hackos repo; porting notes for RP2040/RP2350: `docs/porting.md`.
+Guide: `docs/boards/feather-nrf52840.md` in the hamnix-micro repo; porting notes for RP2040/RP2350: `docs/porting.md`.
 
 ## Milestone 4 result (2026-11-27, emulator only)
 
@@ -127,7 +127,7 @@ nRF52 I2C/SPI driver, a flash file system, any current measurement. Report: REPO
 
 ## First run on real hardware: Feather nRF52840 Express (2026-11-28)
 
-HackOS booted on David's Feather and ran a shell session over a USB-serial cable: `ls /bin`, pipelines of up to four
+Hamnix Micro booted on David's Feather and ran a shell session over a USB-serial cable: `ls /bin`, pipelines of up to four
 programs, a file in tmpfs, and a deliberate bad memory access ended by the memory protection unit (status 139).
 This was the milestone-3 image; milestone-4 features have not run on the board yet.
 
@@ -141,4 +141,5 @@ real constraint on boards with this bootloader (a newer bootloader raises the li
 Milestone 5 (per-process namespaces, drivers as files, 9P) was started and stopped part-way: two local commits and
 uncommitted work, none of it verified or pushed.
 
-On 2026-11-28 David renamed the repository from `hackos` to `hamnix-micro` ("hackos is overloaded"). Older text above still says HackOS for the system itself.
+On 2026-11-28 David renamed the system and its repository from Hamnix Micro (`hackos`) to **Hamnix Micro**
+(`hamnix-micro`): "hackos is overloaded". This file was reworded to match; earlier commits say Hamnix Micro.

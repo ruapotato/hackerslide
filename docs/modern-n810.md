@@ -139,7 +139,7 @@ the hack pad (`docs/hack-pad-cost.md`).
 5. Enclosure: the hack pad model, adjusted to the chosen stack.
 6. Expect two board rounds; the memory layout is the part most likely to need a second.
 
-HackOS stays a project for the Teensy and the hack pad branch.
+Hamnix Micro stays a project for the Teensy and the hack pad branch.
 
 ## 7. Smaller still: a pocket player without a keyboard (David, 2026-11-26, first look)
 
@@ -168,12 +168,12 @@ thicker) comes to **35.4 x 40.9 x 9.6 mm** without lugs and buttons, about Pebbl
 3.8 (200 mAh class, to find), parts 1.0, board 0.8, panel with touch 1.6, cover glass 0.7, clearances and lip 0.7.
 
 The i.MX 6ULL does not suit a watch: asleep it draws about 10 mW, which would empty a 200 mAh cell in about three
-days doing nothing. A watch wants a microcontroller, and HackOS fits that:
+days doing nothing. A watch wants a microcontroller, and Hamnix Micro fits that:
 
 | Brain (JLCPCB stock 2026-11-26) | Why | Audio to headphones |
 |---|---|---|
-| Nordic nRF5340 (7 x 7 mm, 4,079-4,325, $7.25-9.24) | Bluetooth LE Audio, very low sleep current, Cortex-M33 (HackOS needs a new target) | LE Audio earbuds only (newer models) |
-| Nordic nRF52840 (7 x 7 mm, 35,199, $5.60) | the PineTime/Bangle class; Cortex-M4F, so HackOS's current target | none suitable for music |
+| Nordic nRF5340 (7 x 7 mm, 4,079-4,325, $7.25-9.24) | Bluetooth LE Audio, very low sleep current, Cortex-M33 (Hamnix Micro needs a new target) | LE Audio earbuds only (newer models) |
+| Nordic nRF52840 (7 x 7 mm, 35,199, $5.60) | the PineTime/Bangle class; Cortex-M4F, so Hamnix Micro's current target | none suitable for music |
 | Espressif ESP32-PICO-V3-02 (7 x 7 mm, 2,362, $5.70) | classic Bluetooth audio, so any headphones | works with all headphones, but draws far more |
 
 Rough life (estimate): weeks as a watch; with LE Audio streaming about a day of listening on 200 mAh; with classic

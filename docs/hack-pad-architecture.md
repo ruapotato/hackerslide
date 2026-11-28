@@ -60,4 +60,4 @@ thermometer, one for the lamp, one antenna connector, USB-C, headphone jack, car
 2. Radio layout: five transmitters and two sensitive receivers on one board.
 3. The moving cable now carries the display's signals.
 4. Sleep current with this many parts: every block needs a way to be switched off.
-5. Firmware: every part above needs a driver in HackOS.
+5. Firmware: every part above needs a driver in Hamnix Micro.

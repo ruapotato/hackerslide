@@ -22,7 +22,7 @@ An opinion based on the two designs as they stand, not a measurement. Neither de
 | Memory chip type | Medium-high | The low-power memory chosen for 256 MB has never been shown working on this controller; fallback: the 3.3 V chips NXP uses, 128 MB |
 | Radio front ends | High | Six or more radios in a small box, several matching networks not from the makers' reference designs, antennas that need tuning with instruments we do not have |
 | SDR | Medium-high | FPGA gateware, a fast differential link, an FPGA with 182 in stock and a 40-week lead time |
-| Firmware | High (schedule) | Every driver is written from scratch in Adder and C; HackOS runs in an emulator only so far |
+| Firmware | High (schedule) | Every driver is written from scratch in Adder and C; Hamnix Micro runs in an emulator only so far |
 | Space and pins | Medium | Solved on paper by putting the battery under the board (15.4 mm) and, for the pins, by a helper chip or fewer radios; not yet drawn |
 | Heat | Low | Under 1 W flat out (data sheet: 144 mA at 800 MHz) |
 | Battery life | Low | Rough estimate: a day or more of mixed use, about 10 hours with the SDR running; standby days to weeks |
@@ -38,6 +38,6 @@ hack pad has more risks, but every one of them can be checked, tested in stages 
 
 **What would make it the safer build:** a staged first board, the "core" only: brain, memory, power, e-paper,
 keyboard, card, audio, USB, plus the two most-wanted radios (sub-GHz and NFC). That board is about as hard as the
-Linux carrier plus the BGA, every part of it can be tested with HackOS on the bench, and it is useful on its own.
+Linux carrier plus the BGA, every part of it can be tested with Hamnix Micro on the bench, and it is useful on its own.
 The SDR, the other radios and the sensors follow on a second board once the core works. That costs a second order
 but turns one large gamble into two smaller ones.
