@@ -141,5 +141,6 @@ real constraint on boards with this bootloader (a newer bootloader raises the li
 Milestone 5 (per-process namespaces, drivers as files, 9P) was started and stopped part-way: two local commits and
 uncommitted work, none of it verified or pushed.
 
-On 2026-11-28 David renamed the system and its repository from Hamnix Micro (`hackos`) to **Hamnix Micro**
-(`hamnix-micro`): "hackos is overloaded". This file was reworded to match; earlier commits say Hamnix Micro.
+On 2026-11-28 David renamed the system and its repository to **Hamnix Micro** (`hamnix-micro`). Its earlier
+name, used in commits before that date, was "Hack" + "OS" in one word (repository `hackos`); he found that name overloaded.
+This file was reworded to match.
