@@ -138,8 +138,20 @@ a spare flash page and reading it back through the bootloader's USB drive. Fixed
 build now refuses an image that ends above the limit. The milestone-4 image ends 11 KB below it, so size is now a
 real constraint on boards with this bootloader (a newer bootloader raises the limit to 0xED000).
 
-Milestone 5 (per-process namespaces, drivers as files, 9P) was started and stopped part-way: two local commits and
-uncommitted work, none of it verified or pushed.
+Milestone 5 (pushed 2026-11-28, `ruapotato/hamnix-micro` at `f9fee6f`; all four emulator suites pass from a clean
+build) makes it feel like Plan 9:
+
+- a mount table per process: `bind`, `mount`, `unmount`, union directories, `rfork` with RFNAMEG/RFCNAMEG, and
+  `/proc/<pid>/ns` printed as shell commands that rebuild it; Hamnix's shell commands for these run unmodified;
+- drivers as files: `/dev/gpio`, `/dev/i2c`, `/dev/power`, `/dev/screen`, `/dev/keys`, the SHT4x as text, and on the
+  Feather its LEDs, button and 21 pins (`echo 1 > /dev/gpio/blue`);
+- 9P: a kernel client that mounts servers posted in `/srv`, `exportfs` (a PC mounts the device over the console
+  UART itself with `tools/hm9p.py`), and user-space servers in Adder.
+
+The Feather image is built for size (`-Oz`) and ends 50 KB below the old bootloader's limit with `vi` still in it.
+Not done: catchable notes and the shell's `services`. Not run on real hardware yet: all of milestone 5, 9P over a
+real serial line, and the fix for `sleep` hanging on the real chip (an RTC compare set too late; found on the
+board, fixed in `a2c97fd`, emulators cannot show it).
 
 On 2026-11-28 David renamed the system and its repository to **Hamnix Micro** (`hamnix-micro`). Its earlier
 name, used in commits before that date, was "Hack" + "OS" in one word (repository `hackos`); he found that name overloaded.
